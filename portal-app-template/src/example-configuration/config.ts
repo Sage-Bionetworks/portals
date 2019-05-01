@@ -1,5 +1,5 @@
-import HomeConfig from './HomeConfig'
+import homeConfig from './homeConfig'
 
 export default {
-  homePageConfig: HomeConfig
+  homeConfig
 }

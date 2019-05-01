@@ -1,17 +1,17 @@
 import * as React from 'react'
-import { HomePageHeaderConfig } from './types/portal-config'
+import headerConfig from './example-configuration/headerConfig'
 
-export const Header: React.SFC<HomePageHeaderConfig> = (props) => {
-  const { summary, title } = props
+export const Header: React.SFC<{}> = () => {
+  const { summary, title } = headerConfig
   return (
     <header>
       <div id="header" className="center-content">
         <div className="header-text">
           <h2>
-           {summary}
+            {title}
           </h2>
           <p className="normal-weight">
-            {title}
+           {summary}
           </p>
         </div>
       </div>

@@ -19,6 +19,7 @@
       "allow-pascal-case",
       "allow-leading-underscore"
     ],
+    "match-default-export-name": false,
     // uuid library and various other legacy libraries in use have unforunate
     // need for the requires statement
     "no-var-requires": false,
