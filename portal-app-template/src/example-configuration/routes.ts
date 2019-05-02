@@ -9,8 +9,8 @@ const routes: GenericRoute [] = [
       title: 'About',
       name: 'Markdown',
       props: {
-        ownerId: '123',
-        synapseId: '123'
+        ownerId: 'syn7080714',
+        wikiId: '470467'
       }
     }
   },
@@ -27,12 +27,31 @@ const routes: GenericRoute [] = [
           name: 'Markdown',
           props: {
             ownerId: '123',
-            synapseId: '123'
+            wikiId: '470467'
           }
         }
       }
     ]
-  }
+  },
+  {
+    name: 'Organizations',
+    isNested: true,
+    routes: [
+      {
+        name: 'Organization-CTF',
+        isNested: false,
+        to: '/Organizations/Organization-CTF',
+        synapseObject: {
+          title: 'Grants',
+          name: 'Markdown',
+          props: {
+            ownerId: 'syn18421331',
+            wikiId: '590615'
+          }
+        }
+      }
+    ]
+  },
 ]
 
 export default routes
