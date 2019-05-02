@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import * as React from 'react'
+import routes from './example-configuration/routes'
 
 // tslint:disable-next-line:function-name
 export function Navbar() {
@@ -30,11 +31,44 @@ export function Navbar() {
           <span onClick={toggleDropdown} className="menu-wall hand-cursor"/>
         }
         <div className="center-content nav-logo-container">
-          <Link onClick={goToTop} to="/" id="home-link"> TODO </Link>
+          <Link onClick={goToTop} to="/" id="home-link"> ICON </Link>
         </div>
         <div className="nav-link-container">
-          <Link className={`center-content nav-button ${getBorder('About')}`} to="/About"> About </Link>
-          {}
+          {
+            routes.map(
+              (el) => {
+                if (el.isNested) {
+                  return (
+                    <div className={`dropdown ${isDropdownOpen ? 'open' : ''} ${getBorder(el.name)}`}>
+                      <div onClick={toggleDropdown} className="center-content nav-button hand-cursor"> {el.name} </div>
+                      {
+                        isDropdownOpen &&
+                          <div className="dropdown-menu">
+                            {
+                              el.routes.map(
+                                route => (
+                                  <Link
+                                    onClick={toggleDropdown}
+                                    // tslint:disable-next-line:max-line-length
+                                    className="dropdown-link SRC-primary-background-color-hover SRC-nested-color center-content"
+                                    to="/Explore/Grants"
+                                  >
+                                    {route.name}
+                                  </Link>
+                                )
+                              )
+                            }
+                          </div>
+                      }
+                    </div>
+                  )
+                }
+                return (
+                  <Link key={el.name} className={`center-content nav-button ${getBorder('')}`} to={el.to}> {el.name} </Link>
+                )
+              }
+            )
+          }
           <Link className={`center-content nav-button ${getBorder('')}`} to="/"> Home </Link>
         </div>
       </nav>

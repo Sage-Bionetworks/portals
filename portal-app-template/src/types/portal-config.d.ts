@@ -16,7 +16,7 @@ type CardContainerLogic = {
   name: 'CardContainerLogic'
   props: CardContainerLogicProps
 }
-// TODO: Export QueryWrapper props object
+// TODO: Export QueryWrapper props object in SRC
 // type QueryWrapper = {
 //   name: 'QueryWrapper',
 //   props: QueryWrapperProps
@@ -50,14 +50,20 @@ export type HomeConfig = {
 }
 // Home - end
 
+// Route - begin
+// TODO: Figure out a way that the route object maintains the synapseObject typing
 export type Route = {
+  to: string
+  isNested: false
   name: string
   synapseObject: SynapseObject
 }
 
 export type NestedRoute = {
+  name: string
   isNested: true
   routes: Route []
 }
 
-export type GenericRoute = Route | NestedRoute
+export type GenericRoute = (Route | NestedRoute)
+// Route - end

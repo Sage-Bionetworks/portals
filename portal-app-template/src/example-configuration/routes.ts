@@ -2,7 +2,9 @@ import { GenericRoute } from '../types/portal-config'
 
 const routes: GenericRoute [] = [
   {
+    isNested: false,
     name: 'About',
+    to: '/About',
     synapseObject: {
       title: 'About',
       name: 'Markdown',
@@ -13,12 +15,15 @@ const routes: GenericRoute [] = [
     }
   },
   {
+    name: 'Explore',
     isNested: true,
     routes: [
       {
-        name: 'About',
+        name: 'Grants',
+        isNested: false,
+        to: '/Explore/Grants',
         synapseObject: {
-          title: 'About',
+          title: 'Grants',
           name: 'Markdown',
           props: {
             ownerId: '123',
