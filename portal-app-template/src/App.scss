@@ -39,10 +39,10 @@ body {
   display: flex;
   align-items: center;
 }
-
+// $primary-text-color: #407BA0;
+// $primary-action-color: #47337D;
 $header-height : 75px;
-$primary-text-color: #407BA0;
-$primary-action-color: #47337D;
+@import "example-configuration/overides";
 
 
 .SRC-primary-background-color {
@@ -141,7 +141,7 @@ $primary-action-color: #47337D;
   @extend %hoverFade;
   border-bottom-style: solid;
   border-bottom-width: 3px;
-  border-bottom-color:#47337D;
+  border-bottom-color:$primary-action-color;
   // margin-bottom: -3px;
   color: $primary-action-color;
 }
@@ -150,7 +150,7 @@ $primary-action-color: #47337D;
 .bottom-border {
   border-bottom-style: solid;
   border-bottom-width: 3px;
-  border-bottom-color:#47337D;
+  border-bottom-color:$primary-action-color;
   margin-bottom: -3px;
 }
 

@@ -57,6 +57,9 @@ export const data = {
       tumorType: 'Disease Type',
     },
   },
+  // below is the props for the home page bar chart
+  rgbIndex: 0,
+  facetName: 'tumorType',
   initQueryRequest : {
     concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
     partMask: SynapseConstants.BUNDLE_MASK_QUERY_FACETS
