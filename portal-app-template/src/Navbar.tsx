@@ -34,6 +34,7 @@ export function Navbar() {
         </div>
         <div className="nav-link-container">
           <Link className={`center-content nav-button ${getBorder('About')}`} to="/About"> About </Link>
+          {}
           <Link className={`center-content nav-button ${getBorder('')}`} to="/"> Home </Link>
         </div>
       </nav>

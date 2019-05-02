@@ -5,7 +5,7 @@ import { ExploreButtons } from './ExploreButtons'
 import { SynapseComponents } from 'synapse-react-client'
 import { Link } from 'react-router-dom'
 import { BarLoader } from 'react-spinners'
-import { synapseConfigs } from './example-configuration/explore'
+import { exploreSynapseConfigs } from './example-configuration/explore'
 
 type HomeState = {
   activeSynObject: any
@@ -16,7 +16,7 @@ class Home extends React.Component<{}, HomeState> {
   constructor(props: any) {
     super(props)
     this.state = {
-      activeSynObject: synapseConfigs.default
+      activeSynObject: exploreSynapseConfigs.default
     }
   }
 
@@ -25,7 +25,7 @@ class Home extends React.Component<{}, HomeState> {
     of the explore buttons
   */
   handleChange = (name: string) => {
-    const activeSynObject = (synapseConfigs as any)[name.toLowerCase()]
+    const activeSynObject = (exploreSynapseConfigs as any)[name]
     this.setState({
       activeSynObject
     })
@@ -72,7 +72,7 @@ class Home extends React.Component<{}, HomeState> {
                 <Link to={`/Explore/${name}`} id="exploreData"> Explore {name} </Link>
               </div>
               {
-                homeConfig.synapseObjects.map(
+                homeConfig.homeSynapseObjects.map(
                   (el) => {
                     const SynapseComponent = (SynapseComponents as any)[el.name]
                     return (

@@ -2,7 +2,7 @@ import { HomeConfig } from '../types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
 
 const Home: HomeConfig = {
-  synapseObjects: [
+  homeSynapseObjects: [
     {
       title: 'Explore Cards',
       name: 'CardContainerLogic',

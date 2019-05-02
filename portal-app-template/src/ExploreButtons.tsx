@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { synapseConfigs } from './example-configuration/explore'
+import { exploreSynapseConfigs } from './example-configuration/explore'
 
 type HandleChanges = (text: string) => void
 type ExploreButtonProps = {
@@ -12,7 +12,7 @@ export const ExploreButtons: React.SFC<ExploreButtonProps> = ({ handleChanges, i
   return (
     <div className="explore-buttons">
       {
-        Object.keys(synapseConfigs).map(
+        Object.keys(exploreSynapseConfigs).map(
           (el) => {
             if (el === 'default') {
               // special case this, its not an intentional key

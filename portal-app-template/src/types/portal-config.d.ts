@@ -46,8 +46,18 @@ type Title = {
 export type SynapseObject = (CardContainerLogic | StackedBarChart | QueryWrapperMenu | UserCard | Markdown) & Title
 
 export type HomeConfig = {
-  synapseObjects: (SynapseObject) []
+  homeSynapseObjects: (SynapseObject) []
 }
 // Home - end
 
-export type ExploreButtonConfig = string []
+export type Route = {
+  name: string
+  synapseObject: SynapseObject
+}
+
+export type NestedRoute = {
+  isNested: true
+  routes: Route []
+}
+
+export type GenericRoute = Route | NestedRoute

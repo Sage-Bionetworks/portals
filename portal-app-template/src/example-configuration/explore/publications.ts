@@ -1,26 +1,51 @@
 import { SynapseConstants } from 'synapse-react-client'
-const sql = 'SELECT * FROM syn18488466'
-const unitDescription = 'Datasets'
-const synapseId = 'syn18488466'
 
-export const Data = {
-  name: 'Data',
-  type: SynapseConstants.CSBC_DATASET,
+const sql = 'SELECT * FROM syn10923842'
+const unitDescription = 'Publications'
+const synapseId = 'syn10923842'
+
+export const Publications = {
+  name: 'Publications',
+  type: SynapseConstants.CSBC_PUBLICATION,
   menuConfig: [
     {
+      unitDescription,
       sql,
       synapseId,
+      facetName: 'Publication Year',
+    },
+    {
+      sql,
       unitDescription,
-      facetName: 'species',
+      synapseId,
+      facetName: 'Consortium',
       facetAliases: {
-        species: 'Species',
-      }
+        Consortium: 'Program',
+      },
+    },
+    {
+      sql,
+      unitDescription,
+      synapseId,
+      facetName: 'grantType',
+      facetAliases: {
+        grantType: 'Grant Type',
+      },
+    },
+    {
+      sql,
+      unitDescription,
+      synapseId,
+      facetName: 'diseaseType',
+      facetAliases: {
+        diseaseType: 'Disease',
+      },
     },
     {
       sql,
       synapseId,
       unitDescription,
-      facetName: 'Theme'
+      facetName: 'Theme',
     },
     {
       sql,
@@ -28,30 +53,15 @@ export const Data = {
       unitDescription,
       facetName: 'experimentalStrategy',
       facetAliases: {
-        experimentalStrategy: 'Assay'
-      }
+        experimentalStrategy: 'Assay',
+      },
     },
-    {
-      sql,
-      synapseId,
-      unitDescription,
-      facetName: 'platform',
-      facetAliases: {
-        platform: 'Platform'
-      }
-    },
-    {
-      sql,
-      synapseId,
-      unitDescription,
-      facetName: 'tumorType',
-      facetAliases: {
-        tumorType: 'Disease Type'
-      }
-    }
   ],
-  rgbIndex: 0,
-  facetName: 'tumorType',
+  rgbIndex: 1,
+  facetName: 'Consortium',
+  facetAliases: {
+    Consortium: 'Program',
+  },
   initQueryRequest : {
     concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
     partMask: SynapseConstants.BUNDLE_MASK_QUERY_FACETS
@@ -62,9 +72,6 @@ export const Data = {
       limit: 25,
       offset: 0,
     }
-  },
-  facetAliases: {
-    tumorType: 'Disease Type',
   },
   countQuery : {
     concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',

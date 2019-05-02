@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { SynapseComponents, SynapseClient } from 'synapse-react-client'
-// import { synapseConfigs } from './synapseConfigs'
+import { exploreSynapseConfigs } from './example-configuration/explore'
 import { ExploreButtons } from './ExploreButtons'
 import { BarLoader } from 'react-spinners'
 import { QueryWrapperMenuProps } from 'synapse-react-client/dist/containers/QueryWrapperMenu'
@@ -28,11 +28,11 @@ export default class Explore extends React.Component<{}, ExploreState> {
   }
 
   componentDidMount() {
-    // this.updateExploreCount()
+    this.updateExploreCount()
   }
 
   componentDidUpdate() {
-    // this.updateExploreCount()
+    this.updateExploreCount()
   }
 
   updateExploreCount = () => {
@@ -75,32 +75,18 @@ export default class Explore extends React.Component<{}, ExploreState> {
     }
   }
 
-  getSynapseConfigFromHash(): void {
+  getSynapseConfigFromHash(): QueryWrapperMenuProps {
     const hash = window.location.hash
-    // TODO
-    // switch (hash) {
-    //   case '#/Explore/Grants':
-    //     return synapseConfigs.grants
-    //   case '#/Explore/Publications':
-    //     return synapseConfigs.publications
-    //   case '#/Explore/Studies':
-    //     return synapseConfigs.studies
-    //   case '#/Explore/Data':
-    //     return synapseConfigs.data
-    //   case '#/Explore/Datasets':
-    //     return synapseConfigs.datasets
-    //   default:
-    //     throw new Error(`Incompatible Hash: ${hash}`)
-    // }
+    const subPath = hash.substring('#/Explore/'.length)
+    return exploreSynapseConfigs[subPath]
   }
 
   render () {
-    // const config = this.getSynapseConfigFromHash()
+    const config = this.getSynapseConfigFromHash()
     const handleChanges = (val: string) => window.location.hash = `Explore/${val}`
     const subPath = window.location.hash.substring('#/Explore/'.length)
-    const subPathDisplay = subPath === 'Data' ? 'Files' : subPath
-    const isSelected = (val: string) => val === subPathDisplay
-    // const { queryCount = '' } = this.state.currentCountQuery
+    const isSelected = (val: string) => val === subPath
+    const { queryCount = '' } = this.state.currentCountQuery
     return (
       <div className={'container explore'}>
         <div className="row">
@@ -114,18 +100,18 @@ export default class Explore extends React.Component<{}, ExploreState> {
             />
             <h3 id="exploreCount" className="SRC-boldText">
               {/* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString#Using_toLocaleString */}
-              {/* {subPathDisplay} ({queryCount && queryCount.toLocaleString()}) */}
-              TODO
+              {/* TODO */}
+              {subPath} ({queryCount && queryCount.toLocaleString()})
             </h3>
             <div className="break">
               <hr/>
             </div>
-            {/* <div className="row">
+            <div className="row">
               <SynapseComponents.QueryWrapperMenu
                 loadingScreen={<div className="bar-loader"><BarLoader color="#47337D" loading={true} /></div>}
                 {...config}
               />
-            </div> */}
+            </div>
           </div>
         </div>
       </div>
