@@ -1,9 +1,10 @@
 import * as React from 'react'
 import { SynapseComponents, SynapseClient } from 'synapse-react-client'
-import { exploreSynapseConfigs } from './example-configuration/explore'
 import { ExploreButtons } from './ExploreButtons'
 import { BarLoader } from 'react-spinners'
-import { QueryWrapperMenuProps } from 'synapse-react-client/dist/containers/QueryWrapperMenu'
+import { getSynapseObjectFromParams } from './RouteResolver'
+import { withRouter } from 'react-router'
+
 const cloneDeep = require('clone-deep')
 
 type CountQuery = {
@@ -16,11 +17,16 @@ type ExploreState = {
   currentCountQuery: CountQuery
 }
 
-export default class Explore extends React.Component<{}, ExploreState> {
+type ExploreProps = {
+  location: any
+  history: any
+  match: any
+}
+
+class Explore extends React.Component<ExploreProps, ExploreState> {
 
   constructor(props: any) {
     super(props)
-    this.getSynapseConfigFromHash = this.getSynapseConfigFromHash.bind(this)
     this.state = {
       headerCountQueries: [],
       currentCountQuery: {} as CountQuery
@@ -36,55 +42,57 @@ export default class Explore extends React.Component<{}, ExploreState> {
   }
 
   updateExploreCount = () => {
-    const subPath = window.location.hash.substring('#/Explore/'.length)
+    const { location } = this.props
+    const pathname = location.pathname
+    const subPath = pathname.substring('/Explore/'.length)
+    const synapseObject = getSynapseObjectFromParams(pathname)!.synapseObject[0]
     const { headerCountQueries } =  this.state
-    if (headerCountQueries.findIndex(el => el.subPath === subPath) === -1) {
-      // while its loading don't show the prior number
-      if (this.state.currentCountQuery.queryCount !== '') {
-        this.setState({
-          currentCountQuery: {
-            queryCount: ''
+    if (synapseObject.name === 'QueryWrapperMenuOverload') {
+      if (headerCountQueries.findIndex(el => el.subPath === subPath) === -1) {
+        // while its loading don't show the prior number
+        if (this.state.currentCountQuery.queryCount !== '') {
+          this.setState({
+            currentCountQuery: {
+              queryCount: ''
+            }
+          })
+        }
+        const { countQuery } = synapseObject
+        SynapseClient.getQueryTableResults(
+          countQuery
+        ).then(
+          (data: any) => {
+            const newCountQuery = {
+              subPath,
+              queryCount: data.queryCount
+            } as CountQuery
+            // add new query count and create new object
+            this.setState(
+              {
+                headerCountQueries: [...headerCountQueries, newCountQuery],
+                currentCountQuery: newCountQuery
+              }
+            )
           }
+        )
+      } else if (this.state.currentCountQuery.subPath !== subPath) {
+        // check that were not already on the path and use the precomputed value
+        const newCountQuery = cloneDeep(headerCountQueries.find(el => el.subPath === subPath))
+        this.setState({
+          currentCountQuery: newCountQuery
         })
       }
-      const config = this.getSynapseConfigFromHash() as any
-      const { countQuery } = config
-      SynapseClient.getQueryTableResults(
-        countQuery
-      ).then(
-        (data: any) => {
-          const newCountQuery = {
-            subPath,
-            queryCount: data.queryCount
-          } as CountQuery
-          // add new query count and create new object
-          this.setState(
-            {
-              headerCountQueries: [...headerCountQueries, newCountQuery],
-              currentCountQuery: newCountQuery
-            }
-          )
-        }
-      )
-    } else if (this.state.currentCountQuery.subPath !== subPath) {
-      // check that were not already on the path and use the precomputed value
-      const newCountQuery = cloneDeep(headerCountQueries.find(el => el.subPath === subPath))
-      this.setState({
-        currentCountQuery: newCountQuery
-      })
+    } else {
+      console.error('Error: Explore page did not recieve correct setup')
     }
   }
 
-  getSynapseConfigFromHash(): QueryWrapperMenuProps {
-    const hash = window.location.hash
-    const subPath = hash.substring('#/Explore/'.length)
-    return exploreSynapseConfigs[subPath]
-  }
-
   render () {
-    const config = this.getSynapseConfigFromHash()
-    const handleChanges = (val: string) => window.location.hash = `Explore/${val}`
-    const subPath = window.location.hash.substring('#/Explore/'.length)
+    const { location } = this.props
+    const pathname = location.pathname
+    const subPath = pathname.substring('/Explore/'.length)
+    const synapseObject = getSynapseObjectFromParams(pathname)!.synapseObject[0]
+    const handleChanges = (val: string) => pathname === `/Explore/${val}`
     const isSelected = (val: string) => val === subPath
     const { queryCount = '' } = this.state.currentCountQuery
     return (
@@ -109,7 +117,7 @@ export default class Explore extends React.Component<{}, ExploreState> {
             <div className="row">
               <SynapseComponents.QueryWrapperMenu
                 loadingScreen={<div className="bar-loader"><BarLoader color="#47337D" loading={true} /></div>}
-                {...config}
+                {...synapseObject.props}
               />
             </div>
           </div>
@@ -118,3 +126,5 @@ export default class Explore extends React.Component<{}, ExploreState> {
     )
   }
 }
+
+export default withRouter(Explore)

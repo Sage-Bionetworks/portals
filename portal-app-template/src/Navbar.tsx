@@ -72,7 +72,7 @@ export class Navbar extends React.Component<{}, NavbarState> {
                     const toggleDropdown = this.toggleDropdown(currentNestedRouteCount)
                     currentNestedRouteCount += 1
                     return (
-                      <div className={`dropdown ${isCurrnetDropdownOpen ? 'open' : ''} ${this.getBorder(el.name)}`}>
+                      <div key={el.name} className={`dropdown ${isCurrnetDropdownOpen ? 'open' : ''} ${this.getBorder(el.name)}`}>
                         {/* tslint:disable-next-line:max-line-length */}
                         <div onClick={toggleDropdown} className="center-content nav-button hand-cursor"> {el.name} </div>
                         {

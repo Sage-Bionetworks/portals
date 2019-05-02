@@ -4,6 +4,7 @@ import { CardContainerLogicProps } from "synapse-react-client/dist/containers/Ca
 import { MarkdownSynapseProps } from "synapse-react-client/dist/containers/MarkdownSynapse";
 import { StackedBarChartProps } from "synapse-react-client/dist/containers/StackedBarChart";
 import { QueryWrapperMenuProps } from "synapse-react-client/dist/containers/QueryWrapperMenu";
+import { QueryBundleRequest } from "synapse-react-client/dist/utils/jsonResponses/Table/QueryBundleRequest";
 
 // Home - start
 export type HomePageHeaderConfig = {
@@ -26,9 +27,10 @@ type StackedBarChart = {
   name: 'StackedBarChart',
   props: StackedBarChartProps
 }
-type QueryWrapperMenu = {
-  name: 'QueryWrapperMenu',
+type QueryWrapperMenuOverload = {
+  name: 'QueryWrapperMenuOverload',
   props: QueryWrapperMenuProps
+  countQuery: QueryBundleRequest
 }
 type UserCard = {
   name: 'UserCard',
@@ -43,10 +45,11 @@ type Title = {
   title: string
 }
 
-export type SynapseObject = (CardContainerLogic | StackedBarChart | QueryWrapperMenu | UserCard | Markdown) & Title
+export type SynapseObjectSingle = (CardContainerLogic | StackedBarChart | QueryWrapperMenuOverload | UserCard | Markdown) & Title
+export type SynapseObject = SynapseObjectSingle [] 
 
 export type HomeConfig = {
-  homeSynapseObjects: (SynapseObject) []
+  homeSynapseObjects: SynapseObject
 }
 // Home - end
 

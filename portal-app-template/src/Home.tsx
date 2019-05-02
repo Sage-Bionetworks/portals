@@ -65,6 +65,7 @@ class Home extends React.Component<{}, HomeState> {
                     <SynapseComponents.StackedBarChart
                       loadingScreen={loadingScreen}
                       unitDescription={unitDescription}
+                      // todo: remove synapseId as a prop
                       synapseId={''}
                     />
                   </SynapseComponents.QueryWrapper>

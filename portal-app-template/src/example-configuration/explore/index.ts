@@ -1,15 +1,15 @@
-import { Data } from './data'
+import { data } from './data'
 import { Publications } from './publications'
 import { QueryWrapperMenuProps } from 'synapse-react-client/dist/containers/QueryWrapperMenu'
 
 export type QWMProps = {
-  [index:string]: QueryWrapperMenuProps
+  [index:string]: any
 }
 
 const exploreSynapseConfigs: QWMProps = {
-  Data,
   Publications,
-  default: Data
+  default: data,
+  data: data.props,
 }
 
 export { exploreSynapseConfigs }
