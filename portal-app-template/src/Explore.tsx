@@ -4,6 +4,7 @@ import { ExploreButtons } from './ExploreButtons'
 import { BarLoader } from 'react-spinners'
 import { getSynapseObjectFromParams } from './RouteResolver'
 import { withRouter } from 'react-router'
+import { HomeExploreConfig } from './types/portal-config'
 
 const cloneDeep = require('clone-deep')
 
@@ -45,9 +46,10 @@ class Explore extends React.Component<ExploreProps, ExploreState> {
     const { location } = this.props
     const pathname = location.pathname
     const subPath = pathname.substring('/Explore/'.length)
-    const synapseObject = getSynapseObjectFromParams(pathname)!.synapseObject[0]
+    const routeObject = getSynapseObjectFromParams(pathname) as HomeExploreConfig
+    const { explorePageSynapseObject } = routeObject
     const { headerCountQueries } =  this.state
-    if (synapseObject.name === 'QueryWrapperMenuOverload') {
+    if (explorePageSynapseObject.name === 'QueryWrapperMenu') {
       if (headerCountQueries.findIndex(el => el.subPath === subPath) === -1) {
         // while its loading don't show the prior number
         if (this.state.currentCountQuery.queryCount !== '') {
@@ -57,7 +59,7 @@ class Explore extends React.Component<ExploreProps, ExploreState> {
             }
           })
         }
-        const { countQuery } = synapseObject
+        const { countQuery } = explorePageSynapseObject
         SynapseClient.getQueryTableResults(
           countQuery
         ).then(
@@ -91,8 +93,8 @@ class Explore extends React.Component<ExploreProps, ExploreState> {
     const { location } = this.props
     const pathname = location.pathname
     const subPath = pathname.substring('/Explore/'.length)
-    const synapseObject = getSynapseObjectFromParams(pathname)!.synapseObject[0]
-    const handleChanges = (val: string) => this.props.history.push(`/Explore/${val}`)
+    const synapseObject = getSynapseObjectFromParams(pathname) as HomeExploreConfig
+    const handleChanges = (val: string, _index: number) => this.props.history.push(`/Explore/${val}`)
     const isSelected = (val: string) => pathname === `/Explore/${val}`
     const { queryCount = '' } = this.state.currentCountQuery
     return (
@@ -117,7 +119,7 @@ class Explore extends React.Component<ExploreProps, ExploreState> {
             <div className="row">
               <SynapseComponents.QueryWrapperMenu
                 loadingScreen={<div className="bar-loader"><BarLoader color="#47337D" loading={true} /></div>}
-                {...synapseObject.props}
+                {...synapseObject.explorePageSynapseObject.props}
               />
             </div>
           </div>

@@ -10,7 +10,8 @@ const Home: HomeConfig = {
         sql: 'SELECT * FROM syn9630847',
         type: SynapseConstants.CSBC_DATASET,
         limit: 3
-      }
+      },
+      link: 'Explore/Datasets'
     },
     {
       title: 'Some Markdown',

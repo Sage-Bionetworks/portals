@@ -5,10 +5,12 @@ import { ExploreButtons } from './ExploreButtons'
 import { SynapseComponents } from 'synapse-react-client'
 import { Link } from 'react-router-dom'
 import { BarLoader } from 'react-spinners'
-import { exploreSynapseConfigs } from './example-configuration/explore'
+import routesConfig from './example-configuration/routesConfig'
+import { ExploreNestedRoute } from './types/portal-config'
 
 type HomeState = {
-  activeSynObject: any
+  activeSynObject: ExploreNestedRoute
+  activeSynObjectIndex: number
 }
 
 class Home extends React.Component<{}, HomeState> {
@@ -16,7 +18,8 @@ class Home extends React.Component<{}, HomeState> {
   constructor(props: any) {
     super(props)
     this.state = {
-      activeSynObject: exploreSynapseConfigs.default
+      activeSynObjectIndex: 0,
+      activeSynObject: (routesConfig.find(el => el.name === 'Explore') as any)!.routes
     }
   }
 
@@ -24,23 +27,22 @@ class Home extends React.Component<{}, HomeState> {
     This sets the synapse config from the corresponding click event
     of the explore buttons
   */
-  handleChange = (name: string) => {
-    const activeSynObject = (exploreSynapseConfigs as any)[name]
+  handleChange = (_val: string, index: number) => {
     this.setState({
-      activeSynObject
+      activeSynObjectIndex: index
     })
   }
 
   render () {
     const { activeSynObject } = this.state
+    const { homePageSynapseObject, name } = activeSynObject[this.state.activeSynObjectIndex]
     const {
       initQueryRequest,
       rgbIndex,
       facetName,
       unitDescription,
       facetAliases,
-      name
-    } = activeSynObject
+    } = homePageSynapseObject.props
     const isSelected = (val: string) => val === name
     const loadingScreen = <div className="bar-loader"><BarLoader color="#47337D" loading={true} /></div>
     return (
@@ -61,11 +63,12 @@ class Home extends React.Component<{}, HomeState> {
                     rgbIndex={rgbIndex}
                     facetName={facetName}
                     facetAliases={facetAliases}
+                    unitDescription={unitDescription}
                   >
                     <SynapseComponents.StackedBarChart
                       loadingScreen={loadingScreen}
+                      // todo: remove synapseId and unitDescription as props
                       unitDescription={unitDescription}
-                      // todo: remove synapseId as a prop
                       synapseId={''}
                     />
                   </SynapseComponents.QueryWrapper>
@@ -82,7 +85,7 @@ class Home extends React.Component<{}, HomeState> {
                         <SynapseComponent
                           {...el.props}
                         />
-                        <Link to={'/Explore/Studies'} className="viewAll center-content"> View All </Link>
+                        {el.link && <Link to={el.link} className="viewAll center-content"> View All </Link>}
                       </div>
                     )
                   }

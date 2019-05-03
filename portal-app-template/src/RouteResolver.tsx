@@ -1,8 +1,8 @@
 import * as React from 'react'
 import './App.css'
 import { withRouter } from 'react-router'
-import routes from './example-configuration/routes'
-import { SynapseObject, SynapseObjectSingle } from './types/portal-config'
+import routesConfig from './example-configuration/routesConfig'
+import { SynapseObject, SynapseObjectSingle, Route, ExploreRoute } from './types/portal-config'
 import { SynapseComponents, SynapseConstants } from 'synapse-react-client'
 
 export type RouteResolverProps = {
@@ -11,17 +11,15 @@ export type RouteResolverProps = {
 
 export const getSynapseObjectFromParams = (pathname: string) => {
   const split = pathname.split('/')
-  const routeOrNestedRoute =  routes.find(el => split[1] === el.name)
+  const routeOrNestedRoute =  routesConfig.find(el => split[1] === el.name)
   if (!routeOrNestedRoute) {
-    console.error(`Error: url at ${pathname} has no route mapping`)
-  } else {
-    let route = undefined
-    if (routeOrNestedRoute.isNested) {
-      route = routeOrNestedRoute.routes.find(el => split[2] === el.name)
-      return route
-    }
-    return routeOrNestedRoute
+    return fail(`Error: url at ${pathname} has no route mapping`)
   }
+  if (routeOrNestedRoute.isNested) {
+    const router = routeOrNestedRoute.routes as (Route | ExploreRoute) []
+    return router.find(el => el.name === split[2])!
+  }
+  return routeOrNestedRoute!
 }
 
 export const generateSynapseObject = (synapseObject: SynapseObjectSingle) => {
@@ -37,7 +35,7 @@ const RouteResolver: React.SFC<RouteResolverProps> = ({ location }) => {
   // Map this to route in configuration files
   const pathname = location.pathname
   const route = getSynapseObjectFromParams(pathname)
-  if (route) {
+  if (route.type === 'Route') {
     return (
       <div className="container">
         {route.synapseObject.map(
@@ -55,7 +53,6 @@ const RouteResolver: React.SFC<RouteResolverProps> = ({ location }) => {
       </div>
     )
   }
-  console.log('route not found!')
   return <div/>
 }
 

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import * as React from 'react'
-import routes from './example-configuration/routes'
+import routesConfig from './example-configuration/routesConfig'
+import { Route } from './types/portal-config'
 
 export type NavbarState = {
   [index:string]: boolean | number
@@ -9,7 +10,7 @@ export class Navbar extends React.Component<{}, NavbarState> {
 
   constructor(props: any) {
     super(props)
-    const numNestedRoutes = routes.filter(el => el.isNested).length
+    const numNestedRoutes = routesConfig.filter(el => el.isNested).length
     const state: NavbarState = {
       numNestedRoutes
     }
@@ -64,9 +65,10 @@ export class Navbar extends React.Component<{}, NavbarState> {
           </div>
           <div className="nav-link-container">
             {
-              routes.map(
+              routesConfig.map(
                 (el) => {
                   if (el.isNested) {
+                    const plainRoutes = el.routes as Route []
                     const key = `dropdown${currentNestedRouteCount}`
                     const isCurrnetDropdownOpen = this.state[key]
                     const toggleDropdown = this.toggleDropdown(currentNestedRouteCount)
@@ -79,9 +81,10 @@ export class Navbar extends React.Component<{}, NavbarState> {
                           isCurrnetDropdownOpen &&
                             <div className="dropdown-menu">
                               {
-                                el.routes.map(
+                                plainRoutes.map(
                                   route => (
                                     <Link
+                                      key={route.name}
                                       onClick={toggleDropdown}
                                       // tslint:disable-next-line:max-line-length
                                       className="dropdown-link SRC-primary-background-color-hover SRC-nested-color center-content"

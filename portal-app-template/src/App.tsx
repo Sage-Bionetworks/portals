@@ -10,7 +10,9 @@ const Explore = React.lazy(() => import('./Explore'))
 const RouteResolver = React.lazy(() => import('./RouteResolver'))
 
 const App: React.SFC<{}> = ({}) => {
-  document.title = docTitleConfig.name
+  if (document.title !== docTitleConfig.name) {
+    document.title = docTitleConfig.name
+  }
   return (
     <HashRouter>
       <ScrollToTop>

@@ -5,6 +5,7 @@ import { MarkdownSynapseProps } from "synapse-react-client/dist/containers/Markd
 import { StackedBarChartProps } from "synapse-react-client/dist/containers/StackedBarChart";
 import { QueryWrapperMenuProps } from "synapse-react-client/dist/containers/QueryWrapperMenu";
 import { QueryBundleRequest } from "synapse-react-client/dist/utils/jsonResponses/Table/QueryBundleRequest";
+import { QueryResultBundle } from "synapse-react-client/dist/utils/jsonResponses/Table/QueryResultBundle";
 
 // Home - start
 export type HomePageHeaderConfig = {
@@ -18,20 +19,23 @@ type CardContainerLogic = {
   props: CardContainerLogicProps
 }
 // TODO: Export QueryWrapper props object in SRC
-// type QueryWrapper = {
-//   name: 'QueryWrapper',
-//   props: QueryWrapperProps
-// }
+type QueryWrapper = {
+  name: 'QueryWrapper',
+  props: any
+}
+
+// TODO: correct the props of StackedBarChart
+export type OptionalStackedBarChartProps = Partial<StackedBarChartProps>
 
 type StackedBarChart = {
   name: 'StackedBarChart',
-  props: StackedBarChartProps
+  props: OptionalStackedBarChartProps
 }
-type QueryWrapperMenuOverload = {
-  name: 'QueryWrapperMenuOverload',
+type QueryWrapperMenu = {
+  name: 'QueryWrapperMenu',
   props: QueryWrapperMenuProps
-  countQuery: QueryBundleRequest
 }
+
 type UserCard = {
   name: 'UserCard',
   props: UserCardProps
@@ -41,27 +45,45 @@ type Markdown = {
   props: MarkdownProps
 }
 
-type Title = {
-  title: string
+type Metatdata = {
+  title?: string
+  link?: string
 }
 
-export type SynapseObjectSingle = (CardContainerLogic | StackedBarChart | QueryWrapperMenuOverload | UserCard | Markdown) & Title
+export type SynapseObjectSingle = (CardContainerLogic | StackedBarChart | QueryWrapper | QueryWrapperMenu | UserCard | Markdown ) & Metatdata
 export type SynapseObject = SynapseObjectSingle [] 
-
-export type HomeConfig = {
-  homeSynapseObjects: SynapseObject
-}
-// Home - end
 
 // Route - begin
 // TODO: Figure out a way that the route object maintains the synapseObject typing
+
+export type CountQuery = {
+  countQuery: QueryBundleRequest
+}
+
+// utility for inside the explore page
+export type HomeExploreConfig = {
+  homePageSynapseObject: QueryWrapper
+  explorePageSynapseObject: SynapseObjectSingle & CountQuery
+}
+
 export type ExploreRoute = {
-  isNested: true
+  type: 'ExploreRoute'
+  to: string
+  isNested: false
+  name: string
+  homePageSynapseObject: SynapseObjectSingle
+  explorePageSynapseObject: SynapseObjectSingle & CountQuery
+} 
+
+export type ExploreNestedRoute = {
   name: 'Explore'
-  routes: Route []
+  isNested: true
+  [index:number]: ExploreRoute
+  routes: ExploreRoute []
 }
 
 export type Route = {
+  type: 'Route'
   to: string
   isNested: false
   name: string
@@ -74,7 +96,7 @@ export type NestedRoute = {
   routes: Route []
 }
 
-export type GenericRoute = (Route | NestedRoute | ExploreRoute)
+export type GenericRoute = (Route | NestedRoute | ExploreNestedRoute)
 // Route - end
 
 // Footer - start
@@ -90,3 +112,8 @@ export type DocTitleConfig = {
 }
 // Footer end
 
+// home
+export type HomeConfig = {
+  homeSynapseObjects: SynapseObject
+}
+// 

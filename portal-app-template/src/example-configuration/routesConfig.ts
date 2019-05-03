@@ -1,13 +1,14 @@
 import { GenericRoute } from '../types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
 import { data } from './explore/data'
-import { Publications } from './explore/publications'
+// import { Publications } from './explore/publications'
 
 const routes: GenericRoute [] = [
   {
     isNested: false,
     name: 'About',
     to: '/About',
+    type: 'Route',
     synapseObject: [{
       title: 'About',
       name: 'Markdown',
@@ -23,25 +24,11 @@ const routes: GenericRoute [] = [
     routes: [
       {
         name: 'Data',
+        type: 'ExploreRoute',
         isNested: false,
         to: '/Explore/Data',
-        synapseObject: [{
-          title: 'Data',
-          name: 'QueryWrapperMenuOverload',
-          props: data.props,
-          countQuery: data.countQuery
-        }]
-      },
-      {
-        name: 'Publications',
-        isNested: false,
-        to: '/Explore/Publications',
-        synapseObject: [{
-          title: 'Publications',
-          name: 'QueryWrapperMenuOverload',
-          props: { ...Publications },
-          countQuery: Publications.countQuery
-        }]
+        homePageSynapseObject: data.homePageSynapseObject,
+        explorePageSynapseObject: data.explorePageSynapseObject
       }
     ]
   },
@@ -53,6 +40,7 @@ const routes: GenericRoute [] = [
         name: 'Organization-CTF',
         isNested: false,
         to: '/Organizations/Organization-CTF',
+        type: 'Route',
         synapseObject: [
           {
             title: 'Grants',
