@@ -1,14 +1,12 @@
 import { data } from './data'
-import { Publications } from './publications'
+import { publications } from './publications'
 
-export type QWMProps = {
-  [index:string]: any
+export {
+  data,
+  publications
 }
 
-const exploreSynapseConfigs: QWMProps = {
-  Publications,
-  default: Publications,
-  Data: data,
+export default {
+  data,
+  publications
 }
-
-export { exploreSynapseConfigs }

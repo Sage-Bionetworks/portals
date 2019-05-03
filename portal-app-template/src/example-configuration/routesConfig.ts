@@ -1,7 +1,6 @@
 import { GenericRoute } from '../types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
-import { data } from './explore/data'
-// import { Publications } from './explore/publications'
+import { publications, data } from './explore/'
 
 const routes: GenericRoute [] = [
   {
@@ -29,8 +28,16 @@ const routes: GenericRoute [] = [
         to: '/Explore/Data',
         homePageSynapseObject: data.homePageSynapseObject,
         explorePageSynapseObject: data.explorePageSynapseObject
+      },
+      {
+        name: 'Publication',
+        type: 'ExploreRoute',
+        isNested: false,
+        to: '/Explore/Publication',
+        homePageSynapseObject: publications.homePageSynapseObject,
+        explorePageSynapseObject: publications.explorePageSynapseObject
       }
-    ]
+    ],
   },
   {
     name: 'Organizations',
