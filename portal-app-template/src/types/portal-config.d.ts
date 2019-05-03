@@ -76,3 +76,17 @@ export type NestedRoute = {
 
 export type GenericRoute = (Route | NestedRoute | ExploreRoute)
 // Route - end
+
+// Footer - start
+export type FooterConfig = {
+  contactUs: string
+  termsOfService: string
+}
+// Footer end
+
+// docTitleConfig - start
+export type DocTitleConfig = {
+  name: string
+}
+// Footer end
+

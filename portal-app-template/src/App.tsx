@@ -4,11 +4,13 @@ import './App.css'
 import { Footer } from './Footer'
 import ScrollToTop from './ScrollToTop'
 import { Navbar } from './Navbar'
+import docTitleConfig from './example-configuration/docTitleConfig'
 const Home = React.lazy(() => import('./Home'))
 const Explore = React.lazy(() => import('./Explore'))
 const RouteResolver = React.lazy(() => import('./RouteResolver'))
 
 const App: React.SFC<{}> = ({}) => {
+  document.title = docTitleConfig.name
   return (
     <HashRouter>
       <ScrollToTop>

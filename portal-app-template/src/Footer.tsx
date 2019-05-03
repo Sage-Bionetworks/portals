@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
+import footerConfig from './example-configuration/footerConfig'
 
 export const Footer:React.SFC<{}> = () => {
   const goToTop = (_event:any) => { window.scroll({ top: 0, behavior: 'smooth' }) }
@@ -9,8 +10,8 @@ export const Footer:React.SFC<{}> = () => {
         <Link onClick={goToTop} to="/" id="home-link"> TODO </Link>
       </div>
       <div id="portal-contact-footer" className="center-content">
-        <a target="_blank" href="https://s3.amazonaws.com/static.synapse.org/governance/SageBionetworksSynapseTermsandConditionsofUse.pdf?v=5" className="footer-link"> Terms of Service </a>
-        <a href="mailto:csbc_pson_dcc@sagebase.org" className="footer-link"> Contact Us </a>
+        <a target="_blank" href={footerConfig.termsOfService} className="footer-link"> Terms of Service </a>
+        <a href={footerConfig.contactUs} className="footer-link"> Contact Us </a>
       </div>
     </footer>
   )
