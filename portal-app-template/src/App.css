@@ -220,7 +220,6 @@ body {
     height: 50px;
     color: white; }
     .explore-buttons button:nth-child(1) {
-      margin-left: 0px;
       background: #47337D; }
       .explore-buttons button:nth-child(1).active-button::after {
         border-top-color: #47337D; }
@@ -236,10 +235,8 @@ body {
       background: #77BBBF; }
       .explore-buttons button:nth-child(4).active-button::after {
         border-top-color: #77BBBF; }
-    .explore-buttons button:nth-child(5) {
-      background: #5E697D; }
-      .explore-buttons button:nth-child(5).active-button::after {
-        border-top-color: #5E697D; }
+    .explore-buttons button:nth-child(1) {
+      margin-left: 0px; }
     .explore-buttons button.active-button::after {
       border-right: solid 12px transparent;
       border-left: solid 12px transparent;

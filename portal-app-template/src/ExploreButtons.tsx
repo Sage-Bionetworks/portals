@@ -1,5 +1,6 @@
 import * as React from 'react'
-import { exploreSynapseConfigs } from './example-configuration/explore'
+import routes from './example-configuration/routes'
+import { ExploreRoute } from './types/portal-config'
 
 type HandleChanges = (text: string) => void
 type ExploreButtonProps = {
@@ -9,19 +10,17 @@ type ExploreButtonProps = {
 
 export const ExploreButtons: React.SFC<ExploreButtonProps> = ({ handleChanges, isSelected }) => {
   const setActiveClass = (isSelected: boolean) => isSelected ? 'active-button' : ''
+  // TODO: Configure routes type to enforce there to be at least one ExploreRoute object
+  const exploreRoute: ExploreRoute = routes.find(el => el.name === 'Explore') as ExploreRoute
   return (
     <div className="explore-buttons">
       {
-        Object.keys(exploreSynapseConfigs).map(
+        exploreRoute.routes.map(
           (el) => {
-            if (el === 'default') {
-              // special case this, its not an intentional key
-              return false
-            }
-            const handleClick = () => handleChanges(el)
+            const handleClick = () => handleChanges(el.name)
             return (
-              <button key={el} className={`${setActiveClass(isSelected(el))}`} onClick={handleClick}>
-                {el}
+              <button key={el.name} className={`${setActiveClass(isSelected(el.name))}`} onClick={handleClick}>
+                {el.name}
               </button>
             )
           }

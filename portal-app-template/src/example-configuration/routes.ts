@@ -1,6 +1,7 @@
 import { GenericRoute } from '../types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
 import { data } from './explore/data'
+import { Publications } from './explore/publications'
 
 const routes: GenericRoute [] = [
   {
@@ -21,14 +22,25 @@ const routes: GenericRoute [] = [
     isNested: true,
     routes: [
       {
-        name: 'Grants',
+        name: 'Data',
         isNested: false,
-        to: '/Explore/Grants',
+        to: '/Explore/Data',
         synapseObject: [{
-          title: 'Grants',
+          title: 'Data',
           name: 'QueryWrapperMenuOverload',
           props: data.props,
           countQuery: data.countQuery
+        }]
+      },
+      {
+        name: 'Publications',
+        isNested: false,
+        to: '/Explore/Publications',
+        synapseObject: [{
+          title: 'Publications',
+          name: 'QueryWrapperMenuOverload',
+          props: { ...Publications },
+          countQuery: Publications.countQuery
         }]
       }
     ]

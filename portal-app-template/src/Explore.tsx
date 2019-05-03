@@ -92,8 +92,8 @@ class Explore extends React.Component<ExploreProps, ExploreState> {
     const pathname = location.pathname
     const subPath = pathname.substring('/Explore/'.length)
     const synapseObject = getSynapseObjectFromParams(pathname)!.synapseObject[0]
-    const handleChanges = (val: string) => pathname === `/Explore/${val}`
-    const isSelected = (val: string) => val === subPath
+    const handleChanges = (val: string) => this.props.history.push(`/Explore/${val}`)
+    const isSelected = (val: string) => pathname === `/Explore/${val}`
     const { queryCount = '' } = this.state.currentCountQuery
     return (
       <div className={'container explore'}>

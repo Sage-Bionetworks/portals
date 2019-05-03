@@ -42,7 +42,7 @@ body {
 // $primary-text-color: #407BA0;
 // $primary-action-color: #47337D;
 $header-height : 75px;
-@import "example-configuration/overides";
+@import "example-configuration/style/overides";
 
 
 .SRC-primary-background-color {
@@ -218,9 +218,9 @@ $header-height : 75px;
 #footer {
   text-transform: uppercase;
   // TODO: Replace image
-  // background-image: url("./assets/dna.svg");
+  // background-image: url("./example-configuration/style/footer.svg");
   background-blend-mode: multiply;
-  background-color: #407BA0;;
+  background-color: $primary-text-color;
   background-repeat: no-repeat;
   background-size: cover;
   color: white;
@@ -244,11 +244,11 @@ $header-height : 75px;
 // header
 #header {
   // TODO: Replace img
-  // background-image: url("./assets/dna_header.svg");
+  // background-image: url("./example-configuration/style/header.svg");
   background-blend-mode: multiply;
   background-repeat: no-repeat;
   background-size: cover;
-  background-color: #407BA0;;
+  background-color: $primary-text-color;
   height: fit-content;
   padding: 40px;
 }
@@ -272,6 +272,18 @@ $header-height : 75px;
 }
 // ExploreButtons 
 
+ 
+@mixin buttonColor {
+  @for $i from 1 to length($button-colors) {
+    &:nth-child(#{$i}) {
+       background: map-get($button-colors, $i);
+       &.active-button::after {
+        border-top-color: map-get($button-colors, $i);;
+      }
+    }
+  }
+}
+
 .explore-buttons {
   margin-top: 30px;
   margin-bottom: 32px;
@@ -280,6 +292,7 @@ $header-height : 75px;
   align-content: center;
   justify-content: center;
   button {
+    @include buttonColor;
     text-transform: uppercase;
     border-radius: 16px;
     flex-basis: 18%;
@@ -288,41 +301,9 @@ $header-height : 75px;
     position: relative;
     height: 50px;
     color: white;
+    // TODO: Replace these hard coded colors
     &:nth-child(1) {
       margin-left: 0px;
-      $bg-color : #47337D;
-      background: $bg-color;
-      &.active-button::after {
-        border-top-color: $bg-color;
-      }
-    }
-    &:nth-child(2) {
-      $bg-color :#407BA0;
-      background: $bg-color;
-      &.active-button::after {
-        border-top-color: $bg-color;
-      }
-    }
-    &:nth-child(3) {
-      $bg-color :#7798AC;;
-      background: $bg-color;
-      &.active-button::after {
-        border-top-color: $bg-color;
-      }
-    }
-    &:nth-child(4) {
-      $bg-color :#77BBBF;
-      background: $bg-color;
-      &.active-button::after {
-        border-top-color: $bg-color;
-      }
-    }
-    &:nth-child(5) {
-      $bg-color :#5E697D;
-      background: $bg-color;
-      &.active-button::after {
-        border-top-color: $bg-color;
-      }
     }
     // caret dropdown
     &.active-button::after {

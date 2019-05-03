@@ -55,6 +55,12 @@ export type HomeConfig = {
 
 // Route - begin
 // TODO: Figure out a way that the route object maintains the synapseObject typing
+export type ExploreRoute = {
+  isNested: true
+  name: 'Explore'
+  routes: Route []
+}
+
 export type Route = {
   to: string
   isNested: false
@@ -68,5 +74,5 @@ export type NestedRoute = {
   routes: Route []
 }
 
-export type GenericRoute = (Route | NestedRoute)
+export type GenericRoute = (Route | NestedRoute | ExploreRoute)
 // Route - end
