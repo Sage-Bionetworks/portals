@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import * as React from 'react'
 import routesConfig from './example-configuration/routesConfig'
 import { Route } from './types/portal-config'
+import name from './example-configuration/name'
 
 export type NavbarState = {
   [index:string]: boolean | number
@@ -61,7 +62,7 @@ export class Navbar extends React.Component<{}, NavbarState> {
             <span onClick={toggleOff} className="menu-wall hand-cursor"/>
           }
           <div className="center-content nav-logo-container">
-            <Link onClick={goToTop} to="/" id="home-link"> ICON </Link>
+            <Link onClick={goToTop} to="/" id="home-link"> {name} </Link>
           </div>
           <div className="nav-link-container">
             {

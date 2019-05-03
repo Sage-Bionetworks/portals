@@ -116,4 +116,8 @@ export type DocTitleConfig = {
 export type HomeConfig = {
   homeSynapseObjects: SynapseObject
 }
-// 
+// home end
+
+// name 
+export type Name = string
+// name end
