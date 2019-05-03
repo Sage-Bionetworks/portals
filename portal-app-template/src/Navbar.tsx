@@ -107,7 +107,6 @@ export class Navbar extends React.Component<{}, NavbarState> {
                 }
               )
             }
-            <Link className={`center-content nav-button ${this.getBorder('')}`} to="/"> Home </Link>
           </div>
         </nav>
         <div className="spacer"/>

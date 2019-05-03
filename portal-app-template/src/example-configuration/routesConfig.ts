@@ -1,6 +1,6 @@
 import { GenericRoute } from '../types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
-import { publications, data } from './explore/'
+import { publications, data } from './exploreHomeConfiguration'
 
 const routes: GenericRoute [] = [
   {
@@ -67,8 +67,33 @@ const routes: GenericRoute [] = [
           }
         ]
       }
-    ]
+    ],
   },
+  {
+    name: 'Home',
+    type: 'Route',
+    to: '/',
+    isNested: false,
+    synapseObject: [
+      {
+        title: 'Explore Cards',
+        name: 'CardContainerLogic',
+        props: {
+          sql: 'SELECT * FROM syn9630847',
+          type: SynapseConstants.CSBC_DATASET,
+          limit: 3
+        },
+      },
+      {
+        title: 'Some Markdown',
+        name: 'Markdown',
+        props: {
+          ownerId: 'syn7080714',
+          wikiId: '470467',
+        }
+      }
+    ]
+  }
 ]
 
 export default routes

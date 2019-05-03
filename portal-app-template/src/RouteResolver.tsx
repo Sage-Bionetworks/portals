@@ -2,18 +2,23 @@ import * as React from 'react'
 import './App.css'
 import { withRouter } from 'react-router'
 import routesConfig from './example-configuration/routesConfig'
-import { SynapseObject, SynapseObjectSingle, Route, ExploreRoute } from './types/portal-config'
-import { SynapseComponents, SynapseConstants } from 'synapse-react-client'
+import { SynapseObjectSingle, Route, ExploreRoute } from './types/portal-config'
+import { SynapseComponents } from 'synapse-react-client'
 
 export type RouteResolverProps = {
   location: any
 }
 
-export const getSynapseObjectFromParams = (pathname: string) => {
-  const split = pathname.split('/')
+// https://basarat.gitbooks.io/typescript/docs/types/never.html
+function fail(message: string): never { throw new Error(message) }
+
+export const getRouteFromParams = (pathname: string) => {
+  // special case the home page path
+  const pathWithName = pathname === '/' ? '/Home' : pathname
+  const split = pathWithName.split('/')
   const routeOrNestedRoute =  routesConfig.find(el => split[1] === el.name)
   if (!routeOrNestedRoute) {
-    return fail(`Error: url at ${pathname} has no route mapping`)
+    return fail(`Error: url at ${pathWithName} has no route mapping`)
   }
   if (routeOrNestedRoute.isNested) {
     const router = routeOrNestedRoute.routes as (Route | ExploreRoute) []
@@ -23,18 +28,18 @@ export const getSynapseObjectFromParams = (pathname: string) => {
 }
 
 export const generateSynapseObject = (synapseObject: SynapseObjectSingle) => {
-  switch (synapseObject.name) {
-    case 'CardContainerLogic':
-      return <SynapseComponents.CardContainerLogic {...synapseObject.props} />
-    case 'Markdown':
-      return <SynapseComponents.Markdown {...synapseObject.props} />
-  }
+  const SynapseComponent = (SynapseComponents as any)[synapseObject.name]
+  return (
+    <SynapseComponent
+      {...synapseObject.props}
+    />
+  )
 }
 
 const RouteResolver: React.SFC<RouteResolverProps> = ({ location }) => {
   // Map this to route in configuration files
   const pathname = location.pathname
-  const route = getSynapseObjectFromParams(pathname)
+  const route = getRouteFromParams(pathname)
   if (route.type === 'Route') {
     return (
       <div className="container">

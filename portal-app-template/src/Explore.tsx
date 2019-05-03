@@ -2,7 +2,7 @@ import * as React from 'react'
 import { SynapseComponents, SynapseClient } from 'synapse-react-client'
 import { ExploreButtons } from './ExploreButtons'
 import { BarLoader } from 'react-spinners'
-import { getSynapseObjectFromParams } from './RouteResolver'
+import { getRouteFromParams } from './RouteResolver'
 import { withRouter } from 'react-router'
 import { HomeExploreConfig } from './types/portal-config'
 
@@ -46,7 +46,7 @@ class Explore extends React.Component<ExploreProps, ExploreState> {
     const { location } = this.props
     const pathname = location.pathname
     const subPath = pathname.substring('/Explore/'.length)
-    const routeObject = getSynapseObjectFromParams(pathname) as HomeExploreConfig
+    const routeObject = getRouteFromParams(pathname) as HomeExploreConfig
     const { explorePageSynapseObject } = routeObject
     const { headerCountQueries } =  this.state
     if (explorePageSynapseObject.name === 'QueryWrapperMenu') {
@@ -93,7 +93,7 @@ class Explore extends React.Component<ExploreProps, ExploreState> {
     const { location } = this.props
     const pathname = location.pathname
     const subPath = pathname.substring('/Explore/'.length)
-    const synapseObject = getSynapseObjectFromParams(pathname) as HomeExploreConfig
+    const synapseObject = getRouteFromParams(pathname) as HomeExploreConfig
     const handleChanges = (val: string, _index: number) => this.props.history.push(`/Explore/${val}`)
     const isSelected = (val: string) => pathname === `/Explore/${val}`
     const { queryCount = '' } = this.state.currentCountQuery

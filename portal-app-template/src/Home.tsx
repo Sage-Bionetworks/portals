@@ -1,19 +1,25 @@
 import * as React from 'react'
 import { Header } from './Header'
-import homeConfig from './example-configuration/homeConfig'
 import { ExploreButtons } from './ExploreButtons'
 import { SynapseComponents } from 'synapse-react-client'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import { BarLoader } from 'react-spinners'
 import routesConfig from './example-configuration/routesConfig'
-import { ExploreNestedRoute } from './types/portal-config'
+import { ExploreNestedRoute, Route } from './types/portal-config'
+import { getRouteFromParams, generateSynapseObject } from './RouteResolver'
 
 type HomeState = {
   activeSynObject: ExploreNestedRoute
   activeSynObjectIndex: number
 }
 
-class Home extends React.Component<{}, HomeState> {
+type HomeProps = {
+  location: any
+  history: any
+  match: any
+}
+
+class Home extends React.Component<HomeProps, HomeState> {
 
   constructor(props: any) {
     super(props)
@@ -43,8 +49,12 @@ class Home extends React.Component<{}, HomeState> {
       unitDescription,
       facetAliases,
     } = homePageSynapseObject.props
+    const { location } = this.props
+    const pathname = location.pathname
     const isSelected = (val: string) => val === name
     const loadingScreen = <div className="bar-loader"><BarLoader color="#47337D" loading={true} /></div>
+    const homeRoute = getRouteFromParams(pathname)
+    const { synapseObject } = homeRoute as Route
     return (
       <div>
         <Header />
@@ -76,15 +86,14 @@ class Home extends React.Component<{}, HomeState> {
                 <Link to={`/Explore/${name}`} id="exploreData"> Explore {name} </Link>
               </div>
               {
-                homeConfig.homeSynapseObjects.map(
+                synapseObject.map(
                   (el) => {
-                    const SynapseComponent = (SynapseComponents as any)[el.name]
                     return (
                       <div key={el.title} className="newContainer">
                         <h2 className="title"> {el.title} </h2>
-                        <SynapseComponent
-                          {...el.props}
-                        />
+                        {
+                          generateSynapseObject(el)
+                        }
                         {el.link && <Link to={el.link} className="viewAll center-content"> View All </Link>}
                       </div>
                     )
@@ -99,4 +108,4 @@ class Home extends React.Component<{}, HomeState> {
   }
 }
 
-export default Home
+export default withRouter(Home)
