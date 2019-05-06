@@ -1,5 +1,8 @@
+import * as React from 'react'
 import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from '../../types/portal-config'
+import { BarLoader } from 'react-spinners'
+
 const sql = 'SELECT * FROM syn18488466'
 const unitDescription = 'Datasets'
 const synapseId = 'syn18488466'
@@ -31,6 +34,7 @@ export const data: HomeExploreConfig = {
     name: 'QueryWrapperMenu',
     props: {
       rgbIndex,
+      loadingScreen: <div className="bar-loader"><BarLoader color="#47337D" loading={true} /></div>,
       type: SynapseConstants.CSBC_DATASET,
       menuConfig: [
         {

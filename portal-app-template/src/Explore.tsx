@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { SynapseClient } from 'synapse-react-client'
 import { ExploreButtons } from './ExploreButtons'
-import { BarLoader } from 'react-spinners'
 import RouteResolver, { getRouteFromParams } from './RouteResolver'
 import { withRouter } from 'react-router'
 import { HomeExploreConfig } from './types/portal-config'
