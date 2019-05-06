@@ -7,7 +7,6 @@ const routes: GenericRoute [] = [
     isNested: false,
     name: 'About',
     to: '/About',
-    type: 'Route',
     synapseObject: [{
       title: 'About',
       name: 'Markdown',
@@ -24,7 +23,6 @@ const routes: GenericRoute [] = [
     routes: [
       {
         name: 'Data',
-        type: 'ExploreRoute',
         isNested: false,
         to: '/Explore/Data',
         homePageSynapseObject: data.homePageSynapseObject,
@@ -32,7 +30,6 @@ const routes: GenericRoute [] = [
       },
       {
         name: 'Publication',
-        type: 'ExploreRoute',
         isNested: false,
         to: '/Explore/Publication',
         homePageSynapseObject: publications.homePageSynapseObject,
@@ -48,7 +45,6 @@ const routes: GenericRoute [] = [
         name: 'Organization-CTF',
         isNested: false,
         to: '/Organizations/Organization-CTF',
-        type: 'Route',
         synapseObject: [
           {
             title: 'Grants',
@@ -72,7 +68,6 @@ const routes: GenericRoute [] = [
   },
   {
     name: 'Home',
-    type: 'Route',
     to: '/',
     isNested: false,
     synapseObject: [

@@ -5,11 +5,11 @@ import { SynapseComponents } from 'synapse-react-client'
 import { Link, withRouter } from 'react-router-dom'
 import { BarLoader } from 'react-spinners'
 import routesConfig from './example-configuration/routesConfig'
-import { ExploreNestedRoute, Route } from './types/portal-config'
+import { NestedRoute, Route } from './types/portal-config'
 import { getRouteFromParams, generateSynapseObject } from './RouteResolver'
 
 type HomeState = {
-  activeSynObject: ExploreNestedRoute
+  activeSynRoute: NestedRoute
   activeSynObjectIndex: number
 }
 
@@ -23,9 +23,11 @@ class Home extends React.Component<HomeProps, HomeState> {
 
   constructor(props: any) {
     super(props)
+    const synObj = routesConfig.find(el => el.name === 'Explore') as NestedRoute
+    const activeSynRoute = synObj
     this.state = {
+      activeSynRoute,
       activeSynObjectIndex: 0,
-      activeSynObject: (routesConfig.find(el => el.name === 'Explore') as any)!.routes
     }
   }
 
@@ -40,15 +42,16 @@ class Home extends React.Component<HomeProps, HomeState> {
   }
 
   render () {
-    const { activeSynObject } = this.state
-    const { homePageSynapseObject, name } = activeSynObject[this.state.activeSynObjectIndex]
+    const { activeSynRoute } = this.state
+    const activeSynapseObject = activeSynRoute.routes[this.state.activeSynObjectIndex]
+    const { homePageSynapseObject, name } = activeSynapseObject
     const {
       initQueryRequest,
       rgbIndex,
       facetName,
       unitDescription,
       facetAliases,
-    } = homePageSynapseObject.props
+    } = homePageSynapseObject!.props
     const { location } = this.props
     const pathname = location.pathname
     const isSelected = (val: string) => val === name
@@ -86,7 +89,7 @@ class Home extends React.Component<HomeProps, HomeState> {
                 <Link to={`/Explore/${name}`} id="exploreData"> Explore {name} </Link>
               </div>
               {
-                synapseObject.map(
+                synapseObject!.map(
                   (el) => {
                     return (
                       <div key={el.title} className="newContainer">

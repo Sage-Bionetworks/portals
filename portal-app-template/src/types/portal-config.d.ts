@@ -65,38 +65,21 @@ export type HomeExploreConfig = {
   explorePageSynapseObject: SynapseObjectSingle & CountQuery
 }
 
-// Routing -- we break down routes that used for either the Explore/Home page combination OR any page in general
-export type ExploreRoute = {
-  type: 'ExploreRoute'
-  to: string
-  isNested: false
-  name: string
-} & HomeExploreConfig
-
-export type ExploreNestedRoute = {
-  name: 'Explore'
-  isNested: true
-  link?: string
-  [index:number]: ExploreRoute
-  routes: ExploreRoute []
-}
-
 export type Route = {
-  type: 'Route'
   to: string
   isNested: false
   name: string
   link?: string
-  synapseObject: SynapseObject
-}
+  synapseObject?: SynapseObject
+} & Partial<HomeExploreConfig>
 
 export type NestedRoute = {
   name: string
   isNested: true
-  routes: Route []
+  routes: Array<Route>
 }
 
-export type GenericRoute = (Route | NestedRoute | ExploreNestedRoute)
+export type GenericRoute = (Route | NestedRoute)
 // Route - end
 
 // Footer - start
