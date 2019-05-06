@@ -54,7 +54,6 @@ type Metatdata = {
 export type SynapseObjectSingle = (CardContainerLogic | StackedBarChart | QueryWrapper | QueryWrapperMenu | UserCard | Markdown ) & Metatdata
 export type SynapseObject = SynapseObjectSingle [] 
 
-// TODO: Figure out a way that the route object maintains the synapseObject typing
 export type CountQuery = {
   countQuery: QueryBundleRequest
 }
@@ -67,7 +66,7 @@ export type HomeExploreConfig = {
 
 export type Route = {
   to: string
-  isNested: false
+  isNested: false       
   name: string
   link?: string
   synapseObject?: SynapseObject

@@ -42,22 +42,20 @@ const RouteResolver: React.SFC<RouteResolverProps> = ({ location }) => {
   const route = getRouteFromParams(pathname)
   if (route.synapseObject) {
     return (
-      <React.Fragment>
-        <div className="container">
-          {route.synapseObject.map(
-            (el) => {
-              return (
-                <React.Fragment key={el.title}>
-                  <h2>
-                    {el.title}
-                  </h2>
-                  {generateSynapseObject(el)}
-                </React.Fragment>
-              )
-            }
-          )}
-        </div>
-      </React.Fragment>
+      <div className="container">
+        {route.synapseObject.map(
+          (el) => {
+            return (
+              <React.Fragment key={el.title}>
+                <h2>
+                  {el.title}
+                </h2>
+                {generateSynapseObject(el)}
+              </React.Fragment>
+            )
+          }
+        )}
+      </div>
     )
   }
   if (route.explorePageSynapseObject) {

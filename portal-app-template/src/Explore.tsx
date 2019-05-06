@@ -84,7 +84,7 @@ class Explore extends React.Component<ExploreProps, ExploreState> {
         })
       }
     } else {
-      console.error('Error: Explore page did not recieve correct setup')
+      throw Error('Error: Explore page did not recieve correct setup')
     }
   }
 
