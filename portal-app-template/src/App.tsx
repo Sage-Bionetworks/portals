@@ -21,9 +21,10 @@ const App: React.SFC<{}> = ({}) => {
           {/* all the content below */}
           <React.Suspense fallback={<div/>}>
             <Switch>
+              {/* exact takes precendence over RouteResolver */}
               <Route exact={true} path="/" component={Home}/>
               <Route path="/Explore" component={Explore}/>
-              {/* all other routes generated programatically */}
+              {/* all other routes handled programatically */}
               <Route path="/" component={RouteResolver}/>
             </Switch>
           </React.Suspense>

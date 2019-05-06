@@ -104,21 +104,15 @@ export type FooterConfig = {
 }
 // Footer end
 
-// docTitleConfig - start
+// DocTitleConfig - start
 export type DocTitleConfig = {
   name: string
 }
-// Footer end
+// DocTitleConfig - end
 
-// home
-export type HomeConfig = {
-  homeSynapseObjects: SynapseObject
-}
-// home end
-
-// name 
+// LogoHeaderConfig
 export type LogoHeaderConfig = {
   name?: string  // plain text
   icon?: string  // svg
 }
-// name end
+// LogoHeaderConfig end
