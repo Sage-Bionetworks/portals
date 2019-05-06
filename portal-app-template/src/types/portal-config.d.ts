@@ -7,7 +7,7 @@ import { QueryWrapperMenuProps } from "synapse-react-client/dist/containers/Quer
 import { QueryBundleRequest } from "synapse-react-client/dist/utils/jsonResponses/Table/QueryBundleRequest";
 import { QueryResultBundle } from "synapse-react-client/dist/utils/jsonResponses/Table/QueryResultBundle";
 
-// Home - start
+// For styling the header on the home page -- the main title and the summary text
 export type HomePageHeaderConfig = {
   summary: string
   title: string
@@ -25,6 +25,7 @@ type QueryWrapper = {
 }
 
 // TODO: correct the props of StackedBarChart
+// Below we make all the props optional using Partial
 export type OptionalStackedBarChartProps = Partial<StackedBarChartProps>
 
 type StackedBarChart = {
@@ -53,9 +54,7 @@ type Metatdata = {
 export type SynapseObjectSingle = (CardContainerLogic | StackedBarChart | QueryWrapper | QueryWrapperMenu | UserCard | Markdown ) & Metatdata
 export type SynapseObject = SynapseObjectSingle [] 
 
-// Route - begin
 // TODO: Figure out a way that the route object maintains the synapseObject typing
-
 export type CountQuery = {
   countQuery: QueryBundleRequest
 }
@@ -66,14 +65,13 @@ export type HomeExploreConfig = {
   explorePageSynapseObject: SynapseObjectSingle & CountQuery
 }
 
+// Routing -- we break down routes that used for either the Explore/Home page combination OR any page in general
 export type ExploreRoute = {
   type: 'ExploreRoute'
   to: string
   isNested: false
   name: string
-  homePageSynapseObject: SynapseObjectSingle
-  explorePageSynapseObject: SynapseObjectSingle & CountQuery
-} 
+} & HomeExploreConfig
 
 export type ExploreNestedRoute = {
   name: 'Explore'

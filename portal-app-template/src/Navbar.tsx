@@ -21,6 +21,7 @@ export class Navbar extends React.Component<{}, NavbarState> {
     this.state = state
   }
 
+  // Toggle the dropdown menu, if index === -1 all the dropdown menus will close
   toggleDropdown = (index: number) => (_event: any) => {
     for (let i = 0; i < this.state.numNestedRoutes; i += 1) {
       const key = `dropdown${i}`
@@ -62,6 +63,7 @@ export class Navbar extends React.Component<{}, NavbarState> {
             <span onClick={toggleOff} className="menu-wall hand-cursor"/>
           }
           <div className="center-content nav-logo-container">
+            {/* TODO - this may be an img tag which will require a change */}
             <Link onClick={goToTop} to="/" id="home-link"> {name} </Link>
           </div>
           <div className="nav-link-container">
@@ -69,6 +71,7 @@ export class Navbar extends React.Component<{}, NavbarState> {
               routesConfig.map(
                 (el) => {
                   if (el.isNested) {
+                    // handle the case when the menu has sub options
                     const plainRoutes = el.routes as Route []
                     const key = `dropdown${currentNestedRouteCount}`
                     const isCurrnetDropdownOpen = this.state[key]

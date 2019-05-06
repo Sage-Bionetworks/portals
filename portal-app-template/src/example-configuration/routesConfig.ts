@@ -18,6 +18,7 @@ const routes: GenericRoute [] = [
     }]
   },
   {
+    // Explore route is a special case
     name: 'Explore',
     isNested: true,
     routes: [
