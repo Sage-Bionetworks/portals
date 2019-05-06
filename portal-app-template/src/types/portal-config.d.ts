@@ -76,6 +76,7 @@ export type ExploreRoute = {
 export type ExploreNestedRoute = {
   name: 'Explore'
   isNested: true
+  link?: string
   [index:number]: ExploreRoute
   routes: ExploreRoute []
 }
@@ -85,6 +86,7 @@ export type Route = {
   to: string
   isNested: false
   name: string
+  link?: string
   synapseObject: SynapseObject
 }
 

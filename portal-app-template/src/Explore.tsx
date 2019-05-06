@@ -1,8 +1,8 @@
 import * as React from 'react'
-import { SynapseComponents, SynapseClient } from 'synapse-react-client'
+import { SynapseClient } from 'synapse-react-client'
 import { ExploreButtons } from './ExploreButtons'
 import { BarLoader } from 'react-spinners'
-import { getRouteFromParams } from './RouteResolver'
+import RouteResolver, { getRouteFromParams } from './RouteResolver'
 import { withRouter } from 'react-router'
 import { HomeExploreConfig } from './types/portal-config'
 
@@ -93,7 +93,6 @@ class Explore extends React.Component<ExploreProps, ExploreState> {
     const { location } = this.props
     const pathname = location.pathname
     const subPath = pathname.substring('/Explore/'.length)
-    const synapseObject = getRouteFromParams(pathname) as HomeExploreConfig
     const handleChanges = (val: string, _index: number) => this.props.history.push(`/Explore/${val}`)
     const isSelected = (val: string) => pathname === `/Explore/${val}`
     const { queryCount = '' } = this.state.currentCountQuery
@@ -117,10 +116,10 @@ class Explore extends React.Component<ExploreProps, ExploreState> {
               <hr/>
             </div>
             <div className="row">
-              <SynapseComponents.QueryWrapperMenu
-                loadingScreen={<div className="bar-loader"><BarLoader color="#47337D" loading={true} /></div>}
-                {...synapseObject.explorePageSynapseObject.props}
-              />
+              {
+                // TODO: Inject loading bar into QueryWrapperMenu
+                <RouteResolver/>
+              }
             </div>
           </div>
         </div>

@@ -309,7 +309,7 @@ body button:focus {
 
 .newContainer {
   position: relative;
-  margin: 40px 0px; }
+  padding: 40px 0px; }
 
 .viewAll {
   margin-right: 15px;

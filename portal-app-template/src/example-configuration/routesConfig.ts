@@ -79,6 +79,7 @@ const routes: GenericRoute [] = [
       {
         title: 'Explore Cards',
         name: 'CardContainerLogic',
+        link: '/Explore/Data',
         props: {
           sql: 'SELECT * FROM syn9630847',
           type: SynapseConstants.CSBC_DATASET,
