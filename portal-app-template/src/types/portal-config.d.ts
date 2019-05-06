@@ -117,5 +117,8 @@ export type HomeConfig = {
 // home end
 
 // name 
-export type Name = string
+export type LogoHeaderConfig = {
+  name?: string  // plain text
+  icon?: string  // svg
+}
 // name end

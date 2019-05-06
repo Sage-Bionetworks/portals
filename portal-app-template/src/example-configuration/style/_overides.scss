@@ -10,4 +10,13 @@ $button-colors: (
   3: #7798AC,
   4: #77BBBF,
   5: #5E697D
-)
+);
+
+// Since scss breaks if a file is missing in a local url link these functinons must get manually overwitten
+@function getHeader($path) {
+  @return url($path + "./header.svg");
+}
+
+@function getFooter($path) {
+  @return "";
+}

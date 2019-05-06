@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import * as React from 'react'
 import routesConfig from './example-configuration/routesConfig'
 import { Route } from './types/portal-config'
-import name from './example-configuration/name'
+import logoHeaderConfig from './example-configuration/logoHeaderConfig'
 
 export type NavbarState = {
   [index:string]: boolean | number
@@ -54,6 +54,8 @@ export class Navbar extends React.Component<{}, NavbarState> {
     const { hasDropdownOpen } = this.state
     const toggleOff = this.toggleDropdown(-1)
     let currentNestedRouteCount = 0
+    const { name, icon } = logoHeaderConfig
+    const logo = name ? name : <img src={icon} />
     return (
       <React.Fragment>
         <nav className="flex-display nav">
@@ -64,7 +66,7 @@ export class Navbar extends React.Component<{}, NavbarState> {
           }
           <div className="center-content nav-logo-container">
             {/* TODO - this may be an img tag which will require a change */}
-            <Link onClick={goToTop} to="/" id="home-link"> {name} </Link>
+            <Link onClick={goToTop} to="/" id="home-link"> {logo} </Link>
           </div>
           <div className="nav-link-container">
             {
