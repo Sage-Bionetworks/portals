@@ -60,9 +60,7 @@ const RouteResolver: React.SFC<RouteResolverProps> = ({ location }) => {
   }
   const { explorePageSynapseObject } = route
   return (
-    <div className="container">
-        {generateSynapseObject(explorePageSynapseObject)}
-    </div>
+    generateSynapseObject(explorePageSynapseObject)
   )
 }
 

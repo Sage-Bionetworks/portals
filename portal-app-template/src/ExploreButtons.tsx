@@ -9,7 +9,6 @@ type ExploreButtonProps = {
 
 export const ExploreButtons: React.SFC<ExploreButtonProps> = ({ handleChanges, isSelected }) => {
   const setActiveClass = (isSelected: boolean) => isSelected ? 'active-button' : ''
-  // TODO: Configure routes type to enforce there to be at least one ExploreRoute object
   const exploreRoute: ExploreNestedRoute = routesConfig.find(el => el.name === 'Explore') as ExploreNestedRoute
   return (
     <div className="explore-buttons">

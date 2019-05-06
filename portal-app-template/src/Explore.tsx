@@ -108,7 +108,6 @@ class Explore extends React.Component<ExploreProps, ExploreState> {
             />
             <h3 id="exploreCount" className="SRC-boldText">
               {/* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString#Using_toLocaleString */}
-              {/* TODO */}
               {subPath} ({queryCount && queryCount.toLocaleString()})
             </h3>
             <div className="break">
