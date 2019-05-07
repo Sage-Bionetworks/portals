@@ -2,7 +2,7 @@ import * as React from 'react'
 import './App.css'
 import { withRouter } from 'react-router'
 import routesConfig from './example-configuration/routesConfig'
-import { SynapseObjectSingle, Route } from './types/portal-config'
+import { SynapseObjectSingle } from './types/portal-config'
 import { SynapseComponents } from 'synapse-react-client'
 
 export type RouteResolverProps = {
@@ -40,30 +40,23 @@ const RouteResolver: React.SFC<RouteResolverProps> = ({ location }) => {
   // Map this to route in configuration files
   const pathname = location.pathname
   const route = getRouteFromParams(pathname)
-  if (route.synapseObject) {
-    return (
-      <div className="container">
-        {route.synapseObject.map(
-          (el) => {
-            return (
-              <React.Fragment key={el.title}>
-                <h2>
-                  {el.title}
-                </h2>
-                {generateSynapseObject(el)}
-              </React.Fragment>
-            )
-          }
-        )}
-      </div>
-    )
-  }
-  if (route.explorePageSynapseObject) {
-    return (
-      generateSynapseObject(route.explorePageSynapseObject)
-    )
-  }
-  throw Error('No Route was resolved')
+  return (
+    <div className="container">
+      {route.synapseObject.map(
+        (el) => {
+          return (
+            <React.Fragment key={el.title}>
+            {/* re-think how this renders! remove specific styling */}
+              <h2>
+                {el.title}
+              </h2>
+              {generateSynapseObject(el)}
+            </React.Fragment>
+          )
+        }
+      )}
+    </div>
+  )
 }
 
 export default withRouter(RouteResolver)

@@ -25,15 +25,13 @@ const routes: GenericRoute [] = [
         name: 'Data',
         isNested: false,
         to: '/Explore/Data',
-        homePageSynapseObject: data.homePageSynapseObject,
-        explorePageSynapseObject: data.explorePageSynapseObject
+        synapseObject: [{ ...data.explorePageSynapseObject }]
       },
       {
         name: 'Publication',
         isNested: false,
         to: '/Explore/Publication',
-        homePageSynapseObject: publications.homePageSynapseObject,
-        explorePageSynapseObject: publications.explorePageSynapseObject
+        synapseObject: [{ ...publications.homePageSynapseObject }]
       }
     ],
   },

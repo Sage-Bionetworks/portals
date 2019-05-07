@@ -54,10 +54,6 @@ type Metatdata = {
 export type SynapseObjectSingle = (CardContainerLogic | StackedBarChart | QueryWrapper | QueryWrapperMenu | UserCard | Markdown ) & Metatdata
 export type SynapseObject = SynapseObjectSingle [] 
 
-export type CountQuery = {
-  countQuery: QueryBundleRequest
-}
-
 // utility for inside the explore page
 export type HomeExploreConfig = {
   homePageSynapseObject: QueryWrapper
@@ -69,8 +65,8 @@ export type Route = {
   isNested: false       
   name: string
   link?: string
-  synapseObject?: SynapseObject
-} & Partial<HomeExploreConfig>
+  synapseObject: SynapseObject
+}
 
 export type NestedRoute = {
   name: string

@@ -33,60 +33,60 @@ class Explore extends React.Component<ExploreProps, ExploreState> {
     }
   }
 
-  componentDidMount() {
-    this.updateExploreCount()
-  }
+  // componentDidMount() {
+  //   this.updateExploreCount()
+  // }
 
-  componentDidUpdate() {
-    this.updateExploreCount()
-  }
+  // componentDidUpdate() {
+  //   this.updateExploreCount()
+  // }
 
-  updateExploreCount = () => {
-    const { location } = this.props
-    const pathname = location.pathname
-    const subPath = pathname.substring('/Explore/'.length)
-    const routeObject = getRouteFromParams(pathname) as HomeExploreConfig
-    const { explorePageSynapseObject } = routeObject
-    const { headerCountQueries } =  this.state
-    if (explorePageSynapseObject.name === 'QueryWrapperMenu') {
-      if (headerCountQueries.findIndex(el => el.subPath === subPath) === -1) {
-        // while its loading don't show the prior number
-        if (this.state.currentCountQuery.queryCount !== '') {
-          this.setState({
-            currentCountQuery: {
-              queryCount: ''
-            }
-          })
-        }
-        const { countQuery } = explorePageSynapseObject
-        SynapseClient.getQueryTableResults(
-          countQuery
-        ).then(
-          (data: any) => {
-            const newCountQuery = {
-              subPath,
-              queryCount: data.queryCount
-            } as CountQuery
-            // add new query count and create new object
-            this.setState(
-              {
-                headerCountQueries: [...headerCountQueries, newCountQuery],
-                currentCountQuery: newCountQuery
-              }
-            )
-          }
-        )
-      } else if (this.state.currentCountQuery.subPath !== subPath) {
-        // check that were not already on the path and use the precomputed value
-        const newCountQuery = cloneDeep(headerCountQueries.find(el => el.subPath === subPath))
-        this.setState({
-          currentCountQuery: newCountQuery
-        })
-      }
-    } else {
-      throw Error('Error: Explore page did not recieve correct setup')
-    }
-  }
+  // updateExploreCount = () => {
+  //   const { location } = this.props
+  //   const pathname = location.pathname
+  //   const subPath = pathname.substring('/Explore/'.length)
+  //   const routeObject = getRouteFromParams(pathname) as HomeExploreConfig
+  //   const { explorePageSynapseObject } = routeObject
+  //   const { headerCountQueries } =  this.state
+  //   if (explorePageSynapseObject.name === 'QueryWrapperMenu') {
+  //     if (headerCountQueries.findIndex(el => el.subPath === subPath) === -1) {
+  //       // while its loading don't show the prior number
+  //       if (this.state.currentCountQuery.queryCount !== '') {
+  //         this.setState({
+  //           currentCountQuery: {
+  //             queryCount: ''
+  //           }
+  //         })
+  //       }
+  //       const { countQuery } = explorePageSynapseObject
+  //       SynapseClient.getQueryTableResults(
+  //         countQuery
+  //       ).then(
+  //         (data: any) => {
+  //           const newCountQuery = {
+  //             subPath,
+  //             queryCount: data.queryCount
+  //           } as CountQuery
+  //           // add new query count and create new object
+  //           this.setState(
+  //             {
+  //               headerCountQueries: [...headerCountQueries, newCountQuery],
+  //               currentCountQuery: newCountQuery
+  //             }
+  //           )
+  //         }
+  //       )
+  //     } else if (this.state.currentCountQuery.subPath !== subPath) {
+  //       // check that were not already on the path and use the precomputed value
+  //       const newCountQuery = cloneDeep(headerCountQueries.find(el => el.subPath === subPath))
+  //       this.setState({
+  //         currentCountQuery: newCountQuery
+  //       })
+  //     }
+  //   } else {
+  //     throw Error('Error: Explore page did not recieve correct setup')
+  //   }
+  // }
 
   render () {
     const { location } = this.props
