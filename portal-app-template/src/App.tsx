@@ -2,7 +2,7 @@ import { HashRouter, Route, Switch } from 'react-router-dom'
 import * as React from 'react'
 import './App.css'
 import { Footer } from './Footer'
-import ScrollToTop from './ScrollToTop'
+import AppInitializer from './AppInitializer'
 import { Navbar } from './Navbar'
 const Home = React.lazy(() => import('./Home'))
 const Explore = React.lazy(() => import('./Explore'))
@@ -11,7 +11,7 @@ const RouteResolver = React.lazy(() => import('./RouteResolver'))
 const App: React.SFC<{}> = ({}) => {
   return (
     <HashRouter>
-      <ScrollToTop>
+      <AppInitializer>
         <Navbar/>
         <main className="main">
           {/* all the content below */}
@@ -26,7 +26,7 @@ const App: React.SFC<{}> = ({}) => {
           </React.Suspense>
         </main>
         <Footer/>
-      </ScrollToTop>
+      </AppInitializer>
     </HashRouter >
   )
 }

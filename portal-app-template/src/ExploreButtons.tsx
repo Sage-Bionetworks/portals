@@ -3,7 +3,7 @@ import routesConfig from './example-configuration/routesConfig'
 
 type ExploreButtonProps = {
   handleChanges: (text: string, index: number) => void
-  isSelected: (val: string) => boolean
+  isSelected: (name: string) => boolean
 }
 
 export const ExploreButtons: React.FunctionComponent<ExploreButtonProps> = ({ handleChanges, isSelected }) => {

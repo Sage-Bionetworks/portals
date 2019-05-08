@@ -28,10 +28,10 @@ const routes: GenericRoute [] = [
         synapseObject: [{ ...data.explorePageSynapseObject }]
       },
       {
-        name: 'Publication',
+        name: 'Publications',
         isNested: false,
-        to: '/Explore/Publication',
-        synapseObject: [{ ...publications.homePageSynapseObject }]
+        to: '/Explore/Publications',
+        synapseObject: [{ ...publications.explorePageSynapseObject }]
       }
     ],
   },
@@ -69,6 +69,20 @@ const routes: GenericRoute [] = [
     to: '/',
     isNested: false,
     synapseObject: [
+      {
+        title: 'Explore Portals',
+        name: 'StackedBarChartPreview',
+        props: {
+          queryWrapperConfigs: [
+            {
+              ...data.homePageSynapseObject.props,
+            },
+            {
+              ...publications.homePageSynapseObject.props
+            }
+          ],
+        },
+      },
       {
         title: 'Explore Cards',
         name: 'CardContainerLogic',

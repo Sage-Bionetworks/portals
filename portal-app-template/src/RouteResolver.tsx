@@ -4,6 +4,7 @@ import { withRouter } from 'react-router'
 import routesConfig from './example-configuration/routesConfig'
 import { SynapseObjectSingle } from './types/portal-config'
 import { SynapseComponents } from 'synapse-react-client'
+import StackedBarChartPreview from './custom-components/StackedBarChartPreview'
 
 export type RouteResolverProps = {
   location: any
@@ -28,6 +29,9 @@ export const getRouteFromParams = (pathname: string) => {
 }
 
 export const generateSynapseObject = (synapseObject: SynapseObjectSingle) => {
+  if (synapseObject.name === 'StackedBarChartPreview') {
+    return <StackedBarChartPreview {...synapseObject.props} />
+  }
   const SynapseComponent = (SynapseComponents as any)[synapseObject.name]
   return (
     <SynapseComponent
@@ -45,7 +49,7 @@ const RouteResolver: React.SFC<RouteResolverProps> = ({ location }) => {
       {route.synapseObject.map(
         (el) => {
           return (
-            <React.Fragment key={el.title}>
+            <React.Fragment key={JSON.stringify(el.props)}>
             {/* re-think how this renders! remove specific styling */}
               <h2>
                 {el.title}

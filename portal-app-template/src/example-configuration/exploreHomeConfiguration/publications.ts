@@ -12,6 +12,7 @@ export const publications = {
       rgbIndex,
       facetName,
       unitDescription,
+      name: 'Publications',
       initQueryRequest : {
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
         partMask: SynapseConstants.BUNDLE_MASK_QUERY_FACETS
@@ -83,16 +84,6 @@ export const publications = {
         Consortium: 'Program',
       },
       type: SynapseConstants.CSBC_PUBLICATION,
-    },
-    countQuery : {
-      concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-      partMask: SynapseConstants.BUNDLE_MASK_QUERY_COUNT,
-      query: {
-        sql,
-        isConsistent: false,
-        limit: 25,
-        offset: 0,
-      }
     }
   }
 }

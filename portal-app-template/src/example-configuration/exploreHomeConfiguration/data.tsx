@@ -17,6 +17,7 @@ export const data: HomeExploreConfig = {
       rgbIndex,
       facetName,
       unitDescription,
+      name: 'Data',
       initQueryRequest : {
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
         partMask: SynapseConstants.BUNDLE_MASK_QUERY_FACETS
@@ -31,11 +32,58 @@ export const data: HomeExploreConfig = {
     }
   },
   explorePageSynapseObject: {
-    title: 'About',
-    name: 'Markdown',
+    name: 'QueryWrapperMenu',
     props: {
-      ownerId: 'syn7080714',
-      wikiId: '470467'
-    }
+      rgbIndex,
+      type: SynapseConstants.CSBC_DATASET,
+      menuConfig: [
+        {
+          sql,
+          synapseId,
+          unitDescription,
+          facetName: 'species',
+          facetAliases: {
+            species: 'Species',
+          }
+        },
+        {
+          sql,
+          synapseId,
+          unitDescription,
+          facetName: 'Theme'
+        },
+        {
+          sql,
+          synapseId,
+          unitDescription,
+          facetName: 'experimentalStrategy',
+          facetAliases: {
+            experimentalStrategy: 'Assay'
+          }
+        },
+        {
+          sql,
+          synapseId,
+          unitDescription,
+          facetName: 'platform',
+          facetAliases: {
+            platform: 'Platform'
+          }
+        },
+        {
+          sql,
+          synapseId,
+          unitDescription,
+          facetName: 'tumorType',
+          facetAliases: {
+            tumorType: 'Disease Type'
+          }
+        }
+      ],
+      facetName: 'tumorType',
+      facetAliases: {
+        tumorType: 'Disease Type',
+      },
+    },
   }
 }
