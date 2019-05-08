@@ -1,21 +1,39 @@
-# pseudocode
+#!/bin/bash
+# USAGE
+#   Sync current with staging:
+#     ./run.sh --push-staging --all
+#     ./run.sh --push-staging --[portal-name]
 #
-# cd portal-app-template
-# yarn # install dependencies
-# cd ../
-# for each directory that is not portal-configurations
-#   if that directory has been updated in this commit
-#      cp -r directory portal-app-template/example-configuration
-#      cd portal-app-template
-#      yarn build
-#      if PRODUCTION
-#         echo "pushing local to production"
-#         chmod +x ./portal-app-template/example-configuration/scripts/exportS3ProductionBucketName
-#         ./portal-app-template/example-configuration/scripts/exportS3ProductionBucketName
-#         aws s3 sync --delete --cache-control max-age=3000 $S3_PRODUCTION_BUCK_LOCATION
-#      else
-#        echo "pushing local to staging"
-#        chmod +x ./portal-app-template/example-configuration/scripts/exportS3StagingBucketName
-#        ./portal-app-template/example-configuration/scripts/exportS3StagingBucketName
-#        ./runEnvSetup
-#        aws s3 sync --delete --cache-control max-age=0 ./build $S3_STAGING_BUCKET_LOCATION
+#   Sync production with production:
+#     ./run.sh --WARNING-push-production --all
+#     ./run.sh --WARNING-push-production --[portal-name]
+
+cd portal-app-template
+yarn # install dependencies
+cd ../
+# ls -d */ looks at only the directories below
+for dir in `ls -d portal-configurations/*/`
+do
+  # if all job specified or directory given
+  # if directory has changed
+  if [[ $2 && $2 = "--all" || "portal-configurations/$2"/ = $dir ]]; then
+    # if that directory has been updated in this commit
+    # cp -r $dir portal-app-template/example-configuration
+    cd portal-app-template
+    # yarn build
+    if [ "$1" = "--WARNING-push-production" ]; then
+      echo "pushing local to production"
+    #   chmod +x ./example-configuration/scripts/exportS3ProductionBucketName
+    #   ./example-configuration/scripts/exportS3ProductionBucketName
+    #   aws s3 sync --delete --cache-control max-age=3000 $S3_PRODUCTION_BUCK_LOCATION
+    elif [ "$1" = "--push-staging" ]; then
+      echo "pushing local to staging"
+    #   chmod +x ./example-configuration/scripts/exportS3StagingBucketName
+    #   ./example-configuration/scripts/exportS3StagingBucketName
+    #   aws s3 sync --delete --cache-control max-age=0 ./build $S3_STAGING_BUCKET_LOCATION
+    # cd ../
+    fi
+  else
+    echo $dir "didn't pass"
+  fi
+done
