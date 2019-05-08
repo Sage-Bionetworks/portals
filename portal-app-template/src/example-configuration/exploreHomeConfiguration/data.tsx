@@ -9,7 +9,6 @@ const synapseId = 'syn18488466'
 const rgbIndex = 0
 const facetName = 'tumorType'
 
-// spread out in a seperate file
 export const data: HomeExploreConfig = {
   homePageSynapseObject: {
     name: 'QueryWrapper',
