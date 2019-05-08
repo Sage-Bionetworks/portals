@@ -7,10 +7,19 @@ export type AppInitializerProps = {
   location: any
 }
 
-class AppInitializer extends React.Component<AppInitializerProps, {}> {
+export type AppInitializerToken = {
+  token: string
+}
+
+export const TokenContext = React.createContext('')
+
+class AppInitializer extends React.Component<AppInitializerProps, AppInitializerToken> {
 
   constructor(props: any) {
     super(props)
+    this.state = {
+      token: ''
+    }
   }
 
   componentDidMount() {
@@ -35,7 +44,11 @@ class AppInitializer extends React.Component<AppInitializerProps, {}> {
   }
 
   render() {
-    return this.props.children
+    return (
+      <TokenContext.Provider value={this.state.token}>
+        {this.props.children}
+      </TokenContext.Provider>
+    )
   }
 }
 
