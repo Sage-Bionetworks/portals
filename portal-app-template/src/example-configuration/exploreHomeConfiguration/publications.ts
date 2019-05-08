@@ -1,4 +1,5 @@
 import { SynapseConstants } from 'synapse-react-client'
+import loadingScreen from '../loadingScreen'
 
 const sql = 'SELECT * FROM syn10923842'
 const unitDescription = 'Publications'
@@ -29,6 +30,7 @@ export const publications = {
   explorePageSynapseObject: {
     name: 'QueryWrapperMenu',
     props: {
+      loadingScreen,
       menuConfig: [
         {
           unitDescription,

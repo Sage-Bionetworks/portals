@@ -1,11 +1,7 @@
 import * as React from 'react'
-import { SynapseClient } from 'synapse-react-client'
 import { ExploreButtons } from './ExploreButtons'
-import RouteResolver, { getRouteFromParams } from './RouteResolver'
+import RouteResolver from './RouteResolver'
 import { withRouter } from 'react-router'
-import { HomeExploreConfig } from './types/portal-config'
-
-const cloneDeep = require('clone-deep')
 
 type CountQuery = {
   queryCount: number | string

@@ -27,7 +27,7 @@
     "start-js": "react-scripts-ts start",
     "start": "npm-run-all -p watch-css start-js",
     "build": "react-scripts-ts build",
-    "test": "react-scripts-ts test",
+    "test": "react-scripts-ts test --env=jsdom --setupFiles ./src/setupTests.js",
     "eject": "react-scripts-ts eject"
   },
   "devDependencies": {
@@ -36,8 +36,7 @@
   },
   "browserslist": {
     "production": [
-      ">0.2%",
-      "not op_mini all"
+      ">0.5%", "last 2 versions", "Firefox ESR", "not ie <= 10", "not ie_mob <= 10", "not bb <= 10", "not op_mob <= 12.1"
     ],
     "development": [
       "last 1 chrome version",

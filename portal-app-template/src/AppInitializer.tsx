@@ -28,7 +28,6 @@ class AppInitializer extends React.Component<AppInitializerProps, AppInitializer
     }
     SynapseClient.getSessionTokenFromCookie().then(
       (sessionToken) => {
-        // TODO: Pass up token throughout application
         this.setState({ token: sessionToken })
       }
     ).catch((_err) => {

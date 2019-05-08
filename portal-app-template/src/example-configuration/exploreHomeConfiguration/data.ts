@@ -1,6 +1,6 @@
-import * as React from 'react'
 import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from '../../types/portal-config'
+import loadingScreen from '../loadingScreen'
 
 const sql = 'SELECT * FROM syn18488466'
 const unitDescription = 'Datasets'
@@ -33,6 +33,7 @@ export const data: HomeExploreConfig = {
   explorePageSynapseObject: {
     name: 'QueryWrapperMenu',
     props: {
+      loadingScreen,
       rgbIndex,
       type: SynapseConstants.CSBC_DATASET,
       menuConfig: [

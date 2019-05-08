@@ -1,5 +1,6 @@
-global.markdownit = {}
-global.markdownitSynapse = {}
+jest.mock('markdownit')
+// global.markdownit = jest.mock()
+global.markdownitSynapse = jest.fn().mocl
 global.markdownitSub = {}
 global.markdownitSup = {}
 global.markdownitCentertext = {}

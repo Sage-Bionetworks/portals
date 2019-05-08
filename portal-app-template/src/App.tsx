@@ -4,9 +4,9 @@ import './App.css'
 import { Footer } from './Footer'
 import AppInitializer from './AppInitializer'
 import { Navbar } from './Navbar'
-const Home = React.lazy(() => import('./Home'))
-const Explore = React.lazy(() => import('./Explore'))
-const RouteResolver = React.lazy(() => import('./RouteResolver'))
+import Home from './Home'
+import Explore from './Explore'
+import RouteResolver from './RouteResolver'
 
 const App: React.SFC<{}> = ({}) => {
   return (
