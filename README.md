@@ -7,11 +7,9 @@ portal-configurations/ is a directory of configurations for portal development.
 # Build Process
 ./run.sh
 
-USAGE:
-   Sync current with staging:
-     ./run.sh --push-staging --all
-     ./run.sh --push-staging --[portal-name]
+Usage:
+  Sync current with staging:
+    ./run.sh push-staging [portal-name]
 
-   Sync production with production:
-     ./run.sh --WARNING-push-production --all
-     ./run.sh --WARNING-push-production --[portal-name]
+  Sync production with production:
+    ./run.sh WARNING-push-production [portal-name]

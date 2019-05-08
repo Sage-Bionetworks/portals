@@ -1,19 +1,18 @@
 #!/bin/bash
-# USAGE:
+# Usage:
 #   Sync current with staging:
-#     ./run.sh --push-staging --[portal-name]
+#     ./run.sh push-staging [portal-name]
 #
 #   Sync production with production:
-#     ./run.sh --WARNING-push-production --[portal-name]
+#     ./run.sh WARNING-push-production [portal-name]
 
 if [[ -z $1 || -z $2 ]]; then
-  echo "  Error - 
-  Usage:
-    Sync current with staging:
-      ./run.sh push-staging [portal-name]
+  echo "Error: Usage -
+  Sync current with staging:
+    ./run.sh push-staging [portal-name]
 
-    Sync production with production:
-      ./run.sh WARNING-push-production [portal-name]
+  Sync production with production:
+    ./run.sh WARNING-push-production [portal-name]
   "
   exit 1
 fi
