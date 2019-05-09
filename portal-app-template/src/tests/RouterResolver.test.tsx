@@ -1,8 +1,5 @@
 import * as React from 'react'
 import { getRouteFromParams } from '../RouteResolver'
-import { SynapseComponents } from 'synapse-react-client'
-import routesConfig from '../example-configuration/routesConfig'
-
 describe('getRouteFromParams works', () => {
 
   // The home page route is a special case that we have to handle

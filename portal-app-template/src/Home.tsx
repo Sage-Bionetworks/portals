@@ -1,11 +1,7 @@
 import * as React from 'react'
 import { Header } from './Header'
-import { ExploreButtons } from './ExploreButtons'
-import { SynapseComponents } from 'synapse-react-client'
 import { Link, withRouter } from 'react-router-dom'
-import { BarLoader } from 'react-spinners'
-import routesConfig from './example-configuration/routesConfig'
-import { NestedRoute, Route } from './types/portal-config'
+import { Route } from './types/portal-config'
 import { getRouteFromParams, generateSynapseObject } from './RouteResolver'
 
 type HomeState = {
