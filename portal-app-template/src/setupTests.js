@@ -30,5 +30,3 @@ configure({ adapter: new Adapter() });
 // js testing, so we shim the function below. 
 // View - https://github.com/mapbox/mapbox-gl-js/issues/3436
 window.URL.createObjectURL = function () {}
-// TODO: Mock synapse api calls possibly, instead of individually
-// in each test file
