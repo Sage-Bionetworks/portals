@@ -29,7 +29,7 @@ export const getRouteFromParams = (pathname: string) => {
   return routeOrNestedRoute!
 }
 
-const generateSynapseObjectHelper = (synapseObject: SynapseObjectSingle) => {
+export const generateSynapseObjectHelper = (synapseObject: SynapseObjectSingle) => {
   if (synapseObject.name === 'StackedBarChartPreview') {
     return <StackedBarChartPreview {...synapseObject.props} />
   }
@@ -61,7 +61,7 @@ const RouteResolver: React.SFC<RouteResolverProps> = ({ location }) => {
         (el) => {
           return (
             <React.Fragment key={JSON.stringify(el.props)}>
-            {/* re-think how this renders! remove specific styling */}
+              {/* re-think how this renders! remove specific styling */}
               <h2>
                 {el.title}
               </h2>
