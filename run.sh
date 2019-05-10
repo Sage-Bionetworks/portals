@@ -23,6 +23,12 @@ cp -r $PORTAL_CONFIGURATIONS/$2 $PORTAL_APP_TEMPLATE/src/configuration
 cd $PORTAL_APP_TEMPLATE/src
 yarn && yarn build
 if [ "$1" = "WARNING-push-production" ]; then
+  chmod +x ./src/configuration/scripts/exportS3StagingBucketName
+  ./src/configuration/scripts/exportS3StagingBucketName
+  if [ -z "$S3_STAGING_BUCKET_LOCATION" ]; then
+    echo 'Error: exportS3StagingBucketName.sh must export bash variable S3_STAGING_BUCKET_LOCATION'
+    exit 1
+  fi
   chmod +x ./src/configuration/scripts/exportS3ProductionBucketName
   ./src/configuration/scripts/exportS3ProductionBucketName
   # check they defined the s3 bucket variable
@@ -30,7 +36,9 @@ if [ "$1" = "WARNING-push-production" ]; then
     echo 'Error: exportS3ProductionBucketName.sh must export bash variable S3_PRODUCTION_BUCK_LOCATION'
     exit 1
   fi
-  aws s3 sync --delete --cache-control max-age=3000 $S3_PRODUCTION_BUCK_LOCATION
+  # sync staging with prod
+  aws s3 sync --delete --cache-control max-age=3000 $S3_STAGING_BUCKET_LOCATION $S3_PRODUCTION_BUCK_LOCATION
+
 elif [ "$1" = "push-staging" ]; then
   chmod +x ./src/configuration/scripts/exportS3StagingBucketName
   ./src/configuration/scripts/exportS3StagingBucketName
