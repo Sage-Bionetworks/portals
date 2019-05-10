@@ -19,7 +19,7 @@ Structure of the codebase
 </pre>
 
 # Configuartion Example
-For full code see [example-configuration](https://github.com/portals/portal-app-template/src/example-configuration)
+For full code see [example-configuration](https://github.com/portals/app-template/src/example-configuration)
 
 Structure of example-configuration
 <pre>
