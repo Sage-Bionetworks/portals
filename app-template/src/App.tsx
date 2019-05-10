@@ -4,6 +4,7 @@ import './App.css'
 import { Footer } from './Footer'
 import AppInitializer from './AppInitializer'
 import { Navbar } from './Navbar'
+// change to React.lazy!
 import Home from './Home'
 import Explore from './Explore'
 import RouteResolver from './RouteResolver'

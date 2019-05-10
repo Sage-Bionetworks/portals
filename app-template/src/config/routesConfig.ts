@@ -18,21 +18,11 @@ const routes: GenericRoute [] = [
         title: 'EXPLORE PORTALS',
         props: {
           queryWrapperConfigs: [
-            {
-              ...grants.homePageSynapseObject.props
-            },
-            {
-              ...publications.homePageSynapseObject.props
-            },
-            {
-              ...studies.homePageSynapseObject.props
-            },
-            {
-              ...datasets.homePageSynapseObject.props
-            },
-            {
-              ...data.homePageSynapseObject.props,
-            },
+            grants.homePageSynapseObject.props,
+            publications.homePageSynapseObject.props,
+            studies.homePageSynapseObject.props,
+            datasets.homePageSynapseObject.props,
+            data.homePageSynapseObject.props
           ]
         }
       },
@@ -76,41 +66,31 @@ const routes: GenericRoute [] = [
         name: 'Grants',
         to: '/Explore/Grants',
         isNested: false,
-        synapseObject: [{
-          ...grants.explorePageSynapseObject
-        }],
+        synapseObject: [grants.explorePageSynapseObject],
       },
       {
         name: 'Publications',
         to: '/Explore/Publications',
         isNested: false,
-        synapseObject: [{
-          ...publications.explorePageSynapseObject
-        }],
+        synapseObject: [publications.explorePageSynapseObject],
       },
       {
         name: 'Studies',
         to: '/Explore/Studies',
         isNested: false,
-        synapseObject: [{
-          ...studies.explorePageSynapseObject
-        }],
+        synapseObject: [studies.explorePageSynapseObject],
       },
       {
         name: 'Datasets',
         to: '/Explore/Datasets',
         isNested: false,
-        synapseObject: [{
-          ...datasets.explorePageSynapseObject
-        }],
+        synapseObject: [datasets.explorePageSynapseObject],
       },
       {
         name: 'Data',
         to: '/Explore/Data',
         isNested: false,
-        synapseObject: [{
-          ...data.explorePageSynapseObject
-        }],
+        synapseObject: [data.explorePageSynapseObject],
       }
     ]
   },
