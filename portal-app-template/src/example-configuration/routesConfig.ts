@@ -3,10 +3,10 @@ import { SynapseConstants } from 'synapse-react-client'
 import { publications, data } from './exploreHomeConfiguration'
 
 // Constants used for testing
-export const ABOUT_INDEX =  0
+export const ABOUT_INDEX =  3
 export const EXPLORE_INDEX = 1
 export const ORGANIZATION_INDEX = 2
-export const HOME_INDEX = 3
+export const HOME_INDEX = 0
 
 const routes: GenericRoute [] = []
 

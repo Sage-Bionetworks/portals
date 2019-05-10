@@ -143,8 +143,7 @@ export const data: HomeExploreConfig = {
           title: 'Tissue',
           facetName: 'tissue',
         },
-      ],
-
+      ]
     }
   }
 }
