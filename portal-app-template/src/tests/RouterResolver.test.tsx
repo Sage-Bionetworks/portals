@@ -49,7 +49,7 @@ describe('RouteResolver works', () => {
           {
             facetName: '',
             name: '',
-            initQueryRequest: { query: { sql: {} } },
+            initQueryRequest: { query: { sql: '' },  concreteType: '', partMask: 123 },
           }
         ]
       }

@@ -1,5 +1,6 @@
 import { SynapseConstants } from 'synapse-react-client'
-import { HomeExploreConfig } from '../../types/portal-config';
+import { HomeExploreConfig } from '../../types/portal-config'
+export const datasetsSql = `SELECT * FROM syn18488466 WHERE ( ( "featured" = 'TRUE' ) )`
 const sql = 'SELECT * FROM syn18488466'
 const unitDescription = 'Datasets'
 const synapseId = 'syn18488466'
@@ -9,9 +10,9 @@ export const datasets: HomeExploreConfig = {
   homePageSynapseObject: {
     name: 'QueryWrapper',
     props: {
+      unitDescription,
       rgbIndex: 0,
       facetName: 'tumorType',
-      unitDescription,
       name: 'Datasets',
       initQueryRequest : {
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
@@ -32,8 +33,8 @@ export const datasets: HomeExploreConfig = {
   explorePageSynapseObject: {
     name: 'QueryWrapperMenu',
     props: {
-      type: SynapseConstants.CSBC_DATASET,
       rgbIndex,
+      type: SynapseConstants.CSBC_DATASET,
       menuConfig: [
         {
           sql,

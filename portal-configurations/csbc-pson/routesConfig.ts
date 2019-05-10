@@ -1,5 +1,11 @@
 import { GenericRoute } from '../types/portal-config'
 import { publications, data, datasets, grants, studies } from './exploreHomeConfiguration'
+import { SynapseConstants } from 'synapse-react-client'
+import { studiesSql } from './exploreHomeConfiguration/studies'
+import { publicationSql } from './exploreHomeConfiguration/publications'
+import { datasetsSql } from './exploreHomeConfiguration/datasets'
+
+const homeLimit = 3
 
 const routes: GenericRoute [] = [
   {
@@ -9,6 +15,7 @@ const routes: GenericRoute [] = [
     synapseObject: [
       {
         name: 'StackedBarChartPreview',
+        title: 'Explore Portal',
         props: {
           queryWrapperConfigs: [
             {
@@ -28,6 +35,33 @@ const routes: GenericRoute [] = [
             },
           ]
         }
+      },
+      {
+        name: 'CardContainerLogic',
+        title: 'Explore Studies',
+        props: {
+          sql: studiesSql,
+          limit: homeLimit,
+          type: SynapseConstants.CSBC_STUDY
+        },
+      },
+      {
+        name: 'CardContainerLogic',
+        title: 'Explore Publications',
+        props: {
+          sql: publicationSql,
+          limit: homeLimit,
+          type: SynapseConstants.CSBC_PUBLICATION
+        },
+      },
+      {
+        name: 'CardContainerLogic',
+        title: 'Explore Datasets',
+        props: {
+          sql: datasetsSql,
+          limit: homeLimit,
+          type: SynapseConstants.CSBC_DATASET
+        },
       },
     ]
   },
@@ -85,8 +119,8 @@ const routes: GenericRoute [] = [
       {
         name: 'Markdown',
         props: {
-          ownerId: "syn7080714",
-          wikiId: "470467"
+          ownerId: 'syn7080714',
+          wikiId: '470467'
         }
       }
     ]

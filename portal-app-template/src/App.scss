@@ -274,7 +274,7 @@ $header-height : 75px;
 
  
 @mixin buttonColor {
-  @for $i from 1 to length($button-colors) {
+  @for $i from 1 to length($button-colors) + 1 {
     &:nth-child(#{$i}) {
        background: map-get($button-colors, $i);
        &.active-button::after {

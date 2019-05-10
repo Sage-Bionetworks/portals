@@ -1,7 +1,7 @@
 import { SynapseConstants } from 'synapse-react-client'
-import { HomeExploreConfig } from '../../types/portal-config';
-
-const sql = 'SELECT * FROM syn10923842'
+import { HomeExploreConfig } from '../../types/portal-config'
+export const publicationSql = 'SELECT * FROM syn10923842'
+const sql = publicationSql
 const unitDescription = 'Publications'
 const synapseId = 'syn10923842'
 const rgbIndex = 1

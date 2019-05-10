@@ -1,5 +1,5 @@
 import { SynapseConstants } from 'synapse-react-client'
-import { HomeExploreConfig } from '../../types/portal-config';
+import { HomeExploreConfig } from '../../types/portal-config'
 const sql = `SELECT * FROM syn10142562 WHERE ( "grantType" = 'U54' OR "grantType" = 'U01')`
 const unitDescription = 'grants'
 const synapseId = 'syn10142562'
@@ -9,10 +9,10 @@ export const grants: HomeExploreConfig = {
   homePageSynapseObject: {
     name: 'QueryWrapper',
     props: {
+      unitDescription,
       rgbIndex: 3,
       facetName: 'grantType',
       name: 'Grants',
-      unitDescription,
       facetAliases: {
         grantType: 'Grant Type',
       },
@@ -32,8 +32,8 @@ export const grants: HomeExploreConfig = {
   explorePageSynapseObject: {
     name: 'QueryWrapperMenu',
     props: {
-      type: SynapseConstants.CSBC_PROJECT,
       rgbIndex,
+      type: SynapseConstants.CSBC_PROJECT,
       menuConfig: [
         {
           sql,

@@ -1,7 +1,8 @@
 import { SynapseConstants } from 'synapse-react-client'
-import { HomeExploreConfig } from '../../types/portal-config';
+import { HomeExploreConfig } from '../../types/portal-config'
 const unitDescription = 'studies'
-const sql = `SELECT * FROM syn18483791 WHERE ( ( "is.study" = 'TRUE' ) )`
+export const studiesSql = `SELECT * FROM syn18483791 WHERE ( ( "is.study" = 'TRUE' ) )`
+const sql = studiesSql
 const synapseId = 'syn18483791'
 const rgbIndex = 1
 
@@ -87,7 +88,6 @@ export const studies: HomeExploreConfig = {
           }
         },
       ],
-    
     }
   }
 }

@@ -1,5 +1,5 @@
 import { SynapseConstants } from 'synapse-react-client'
-import { HomeExploreConfig } from '../../types/portal-config';
+import { HomeExploreConfig } from '../../types/portal-config'
 
 // tslint:disable-next-line:max-line-length
 const sql = 'SELECT grantType AS "Grant Type", centerName AS "Grant", consortium AS "Program", species AS "Species", fileFormat AS "Data Format", experimentalStrategy AS "Assay", platform AS "Platform", tumorType AS "Disease Type", sex AS "Gender", tissue AS "Tissue", name as "File Name"  FROM syn9630847'
@@ -23,7 +23,6 @@ const unitDescription = 'files'
 const synapseId  = 'syn9630847'
 const facetName = 'grantType'
 
-
 export const data: HomeExploreConfig = {
   homePageSynapseObject: {
     name: 'QueryWrapper',
@@ -36,16 +35,14 @@ export const data: HomeExploreConfig = {
         grantType: 'Grant Type',
       },
       initQueryRequest: {
-        initQueryRequest : {
-          concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-          partMask: SynapseConstants.BUNDLE_MASK_QUERY_FACETS
-            | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
-          query: {
-            sql,
-            isConsistent: false,
-            limit: 25,
-            offset: 0,
-          }
+        concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
+        partMask: SynapseConstants.BUNDLE_MASK_QUERY_FACETS
+          | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
+        query: {
+          sql,
+          isConsistent: false,
+          limit: 25,
+          offset: 0,
         }
       }
     }

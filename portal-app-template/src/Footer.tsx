@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
-import footerConfig from './example-configuration/footerConfig'
-import logoHeaderConfig from './example-configuration/logoHeaderConfig'
+import footerConfig from './configuration/footerConfig'
+import logoHeaderConfig from './configuration/logoHeaderConfig'
 
 export const Footer:React.SFC<{}> = () => {
   const goToTop = (_event:any) => { window.scroll({ top: 0, behavior: 'smooth' }) }

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import routesConfig from './example-configuration/routesConfig'
+import routesConfig from './configuration/routesConfig'
 
 type ExploreButtonProps = {
   handleChanges: (text: string, index: number) => void
