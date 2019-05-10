@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
 import * as React from 'react'
-import routesConfig from './configuration/routesConfig'
+import routesConfig from './config/routesConfig'
 import { Route } from './types/portal-config'
-import logoHeaderConfig from './configuration/logoHeaderConfig'
+import logoHeaderConfig from './config/logoHeaderConfig'
 
 export type NavbarState = {
   [index:string]: boolean | number

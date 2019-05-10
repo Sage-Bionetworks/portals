@@ -1,7 +1,7 @@
 import * as React from 'react'
 import './App.css'
 import { withRouter } from 'react-router'
-import routesConfig from './configuration/routesConfig'
+import routesConfig from './config/routesConfig'
 import { SynapseObjectSingle } from './types/portal-config'
 import { SynapseComponents } from 'synapse-react-client'
 import StackedBarChartPreview from './custom-components/StackedBarChartPreview'

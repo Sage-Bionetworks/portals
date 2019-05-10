@@ -1,5 +1,5 @@
 import * as React from 'react'
-import headerConfig from './configuration/headerConfig'
+import headerConfig from './config/headerConfig'
 
 export const Header: React.SFC<{}> = () => {
   const { summary, title } = headerConfig

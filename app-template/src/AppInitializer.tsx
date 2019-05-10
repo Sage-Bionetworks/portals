@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { withRouter } from 'react-router-dom'
-import docTitleConfig from './configuration/docTitleConfig'
+import docTitleConfig from './config/docTitleConfig'
 import { SynapseClient } from 'synapse-react-client'
 
 export type AppInitializerProps = {
