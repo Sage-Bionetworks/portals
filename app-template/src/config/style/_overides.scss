@@ -4,18 +4,18 @@ $primary-action-color: #47337D;
 
 // Note length($button-colors) must equal length of explore page routes
 $button-colors: (
-  1: $bg-color #47337D,
-  2: $bg-color #407BA0,
-  3: $bg-color #7798AC,
-  4: $bg-color #77BBBF,
-  5: $bg-color #5E697D,
+  1: #47337D,
+  2: #407BA0,
+  3: #7798AC,
+  4: #77BBBF,
+  5: #5E697D,
 );
 
 // Since scss breaks if a file is missing in a local url link these functinons must get manually overwitten
 @function getHeader($path) {
-  @return url($path + "./header.svg");
+  @return url($path + "/dna_header.svg");
 }
 
 @function getFooter($path) {
-  @return url($path + "./dna.svg");
+  @return url($path + "/dna.svg");
 }

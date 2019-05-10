@@ -38,10 +38,8 @@ body {
   display: flex;
   align-items: center;
 }
-// $primary-text-color: #407BA0;
-// $primary-action-color: #47337D;
 $header-height : 75px;
-@import "example-configuration/style/overides";
+@import "config/style/overides";
 
 
 .SRC-primary-background-color {
@@ -219,7 +217,7 @@ $header-height : 75px;
 #footer {
   text-transform: uppercase;
   // TODO: Replace image
-  background-image: getFooter("./example-configuration/style");
+  background-image: getFooter("config/style/");
   background-blend-mode: multiply;
   background-color: $primary-text-color;
   background-repeat: no-repeat;
@@ -244,7 +242,7 @@ $header-height : 75px;
 
 // header
 #header {
-  background-image: url("./example-configuration/style/header.svg");
+  background-image: getHeader("config/style");
   background-blend-mode: multiply;
   background-repeat: no-repeat;
   background-size: cover;
