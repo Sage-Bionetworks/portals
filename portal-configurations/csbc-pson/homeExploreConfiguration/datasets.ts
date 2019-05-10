@@ -1,5 +1,6 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from '../../types/portal-config'
+import loadingScreen from '../loadingScreen'
 export const datasetsSql = `SELECT * FROM syn18488466 WHERE ( ( "featured" = 'TRUE' ) )`
 const sql = 'SELECT * FROM syn18488466'
 const unitDescription = 'Datasets'
@@ -11,6 +12,7 @@ export const datasets: HomeExploreConfig = {
     name: 'QueryWrapper',
     props: {
       unitDescription,
+      loadingScreen,
       rgbIndex: 0,
       facetName: 'tumorType',
       name: 'Datasets',
@@ -34,6 +36,7 @@ export const datasets: HomeExploreConfig = {
     name: 'QueryWrapperMenu',
     props: {
       rgbIndex,
+      loadingScreen,
       type: SynapseConstants.CSBC_DATASET,
       menuConfig: [
         {

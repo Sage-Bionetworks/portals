@@ -39,7 +39,7 @@ export default class StackedBarChartPreview extends React.Component<
 
   render() {
     const props = this.props.queryWrapperConfigs[this.state.index]
-    const { unitDescription = '', name } = props
+    const { unitDescription = '', name, loadingScreen } = props
     const isSelected = (curName: string) => curName === name
     return (
       <React.Fragment>
@@ -56,7 +56,7 @@ export default class StackedBarChartPreview extends React.Component<
               >
                 <StackedBarChart
                   unitDescription={unitDescription}
-                  loadingScreen={<div className="bar-loader"><BarLoader color="#47337D" loading={true} /></div>}
+                  loadingScreen={loadingScreen}
                   synapseId={''}
                 />
               </QueryWrapper>

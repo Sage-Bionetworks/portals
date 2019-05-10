@@ -73,7 +73,6 @@ body {
       padding-right: 0px; } }
 
 .nav {
-  opacity: 0.9;
   padding-bottom: 3px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
   min-height: 75px;
@@ -81,7 +80,7 @@ body {
   position: fixed;
   width: 100%;
   z-index: 4;
-  background: white;
+  background: rgba(255, 255, 255, 0.9);
   height: 67px; }
   .nav a:hover {
     text-decoration: none; }

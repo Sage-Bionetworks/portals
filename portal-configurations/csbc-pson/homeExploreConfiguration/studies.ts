@@ -1,21 +1,23 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from '../../types/portal-config'
-export const publicationSql = 'SELECT * FROM syn10923842'
-const sql = publicationSql
-const unitDescription = 'Publications'
-const synapseId = 'syn10923842'
+import loadingScreen from '../loadingScreen'
+const unitDescription = 'studies'
+export const studiesSql = `SELECT * FROM syn18483791 WHERE ( ( "is.study" = 'TRUE' ) )`
+const sql = studiesSql
+const synapseId = 'syn18483791'
 const rgbIndex = 1
 
-export const publications: HomeExploreConfig = {
+export const studies: HomeExploreConfig = {
   homePageSynapseObject: {
     name: 'QueryWrapper',
     props: {
       rgbIndex,
       unitDescription,
-      name: 'Publications',
-      facetName: 'Consortium',
+      loadingScreen,
+      name: 'Studies',
+      facetName: 'grantType',
       facetAliases: {
-        Consortium: 'Program',
+        grantType: 'Grant Type',
       },
       initQueryRequest : {
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
@@ -27,62 +29,66 @@ export const publications: HomeExploreConfig = {
           limit: 25,
           offset: 0,
         }
-      }
+      },
     }
   },
   explorePageSynapseObject: {
     name: 'QueryWrapperMenu',
     props: {
       rgbIndex,
-      type: SynapseConstants.CSBC_PUBLICATION,
+      loadingScreen,
+      type: SynapseConstants.CSBC_STUDY,
       menuConfig: [
         {
           unitDescription,
           sql,
           synapseId,
-          facetName: 'Publication Year',
-        },
-        {
-          sql,
-          unitDescription,
-          synapseId,
-          facetName: 'Consortium',
-          facetAliases: {
-            Consortium: 'Program',
-          },
-        },
-        {
-          sql,
-          unitDescription,
-          synapseId,
           facetName: 'grantType',
           facetAliases: {
             grantType: 'Grant Type',
-          },
+          }
         },
         {
-          sql,
           unitDescription,
+          sql,
           synapseId,
-          facetName: 'diseaseType',
+          facetName: 'centerName',
           facetAliases: {
-            diseaseType: 'Disease',
-          },
+            centerName: 'Grant',
+          }
         },
         {
+          unitDescription,
           sql,
           synapseId,
-          unitDescription,
-          facetName: 'Theme',
+          facetName: 'consortium',
+          facetAliases: {
+            consortium: 'Program',
+          }
         },
         {
+          unitDescription,
           sql,
           synapseId,
+          facetName: 'Theme'
+        },
+        {
           unitDescription,
+          sql,
+          synapseId,
           facetName: 'experimentalStrategy',
           facetAliases: {
             experimentalStrategy: 'Assay',
-          },
+          }
+        },
+        {
+          unitDescription,
+          sql,
+          synapseId,
+          facetName: 'tumorType',
+          facetAliases: {
+            tumorType: 'Disease Type',
+          }
         },
       ],
     }

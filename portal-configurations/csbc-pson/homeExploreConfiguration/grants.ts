@@ -1,5 +1,6 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from '../../types/portal-config'
+import loadingScreen from '../loadingScreen'
 const sql = `SELECT * FROM syn10142562 WHERE ( "grantType" = 'U54' OR "grantType" = 'U01')`
 const unitDescription = 'grants'
 const synapseId = 'syn10142562'
@@ -10,6 +11,7 @@ export const grants: HomeExploreConfig = {
     name: 'QueryWrapper',
     props: {
       unitDescription,
+      loadingScreen,
       rgbIndex: 3,
       facetName: 'grantType',
       name: 'Grants',
@@ -33,6 +35,7 @@ export const grants: HomeExploreConfig = {
     name: 'QueryWrapperMenu',
     props: {
       rgbIndex,
+      loadingScreen,
       type: SynapseConstants.CSBC_PROJECT,
       menuConfig: [
         {

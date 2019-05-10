@@ -98,7 +98,6 @@ $header-height : 75px;
 }
 
 .nav {
-  opacity: 0.9;
   padding-bottom: 3px;
   box-shadow: 0 2px 4px 0 rgba(0,0,0,.5);
   min-height: $header-height;
@@ -106,7 +105,8 @@ $header-height : 75px;
   position: fixed;
   width: 100%;
   z-index: 4;
-  background: white;
+  background: rgba(256,256,256,0.9);
+  // background: white;
   height: 67px;
   a:hover {
     text-decoration: none;

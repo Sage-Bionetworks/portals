@@ -1,9 +1,9 @@
 import { GenericRoute } from '../types/portal-config'
-import { publications, data, datasets, grants, studies } from './exploreHomeConfiguration'
+import { publications, data, datasets, grants, studies } from './homeExploreConfiguration'
 import { SynapseConstants } from 'synapse-react-client'
-import { studiesSql } from './exploreHomeConfiguration/studies'
-import { publicationSql } from './exploreHomeConfiguration/publications'
-import { datasetsSql } from './exploreHomeConfiguration/datasets'
+import { studiesSql } from './homeExploreConfiguration/studies'
+import { publicationSql } from './homeExploreConfiguration/publications'
+import { datasetsSql } from './homeExploreConfiguration/datasets'
 
 const homeLimit = 3
 
@@ -15,7 +15,7 @@ const routes: GenericRoute [] = [
     synapseObject: [
       {
         name: 'StackedBarChartPreview',
-        title: 'Explore Portal',
+        title: 'EXPLORE PORTALS',
         props: {
           queryWrapperConfigs: [
             {
@@ -38,16 +38,18 @@ const routes: GenericRoute [] = [
       },
       {
         name: 'CardContainerLogic',
-        title: 'Explore Studies',
+        title: 'EXPLORE STUDIES',
+        link: 'Explore/Studies',
         props: {
           sql: studiesSql,
           limit: homeLimit,
           type: SynapseConstants.CSBC_STUDY
-        },
+        }
       },
       {
         name: 'CardContainerLogic',
-        title: 'Explore Publications',
+        title: 'EXPLORE PUBLICATIONS',
+        link: 'Explore/Publications',
         props: {
           sql: publicationSql,
           limit: homeLimit,
@@ -56,7 +58,8 @@ const routes: GenericRoute [] = [
       },
       {
         name: 'CardContainerLogic',
-        title: 'Explore Datasets',
+        title: 'EXPLORE DATASETS',
+        link: 'Explore/Datasets',
         props: {
           sql: datasetsSql,
           limit: homeLimit,
@@ -73,41 +76,41 @@ const routes: GenericRoute [] = [
         name: 'Grants',
         to: '/Explore/Grants',
         isNested: false,
-        synapseObject: {
-          ...grants.explorePageSynapseObject.props
-        },
+        synapseObject: [{
+          ...grants.explorePageSynapseObject
+        }],
       },
       {
         name: 'Publications',
         to: '/Explore/Publications',
         isNested: false,
-        synapseObject: {
-          ...publications.explorePageSynapseObject.props
-        },
+        synapseObject: [{
+          ...publications.explorePageSynapseObject
+        }],
       },
       {
         name: 'Studies',
         to: '/Explore/Studies',
         isNested: false,
-        synapseObject: {
-          ...studies.explorePageSynapseObject.props
-        },
+        synapseObject: [{
+          ...studies.explorePageSynapseObject
+        }],
       },
       {
         name: 'Datasets',
         to: '/Explore/Datasets',
         isNested: false,
-        synapseObject: {
-          ...datasets.explorePageSynapseObject.props
-        },
+        synapseObject: [{
+          ...datasets.explorePageSynapseObject
+        }],
       },
       {
         name: 'Data',
         to: '/Explore/Data',
         isNested: false,
-        synapseObject: {
-          ...data.explorePageSynapseObject.props
-        },
+        synapseObject: [{
+          ...data.explorePageSynapseObject
+        }],
       }
     ]
   },
