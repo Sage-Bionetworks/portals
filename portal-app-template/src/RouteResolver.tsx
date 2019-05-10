@@ -39,11 +39,12 @@ export const generateSynapseObjectHelper = (synapseObject: SynapseObjectSingle) 
 
 export const generateSynapseObject = (synapseObject: SynapseObjectSingle) => {
   // return the synapse object but with token injected into its props from the context created in AppInitializer
+  const { props, ...rest } = synapseObject
   return (
     <TokenContext.Consumer>
       {
         (value: string) => {
-          const synapseObjectWithToken = { ...synapseObject, props: { ...synapseObject.props, token: value } }
+          const synapseObjectWithToken = { props: { ...props, token: value }, ...rest }
           return generateSynapseObjectHelper(synapseObjectWithToken)
         }
       }

@@ -71,7 +71,7 @@ export class Navbar extends React.Component<{}, NavbarState> {
           <div className="nav-link-container">
             {
               // we have to loop backwards due to css rendering of flex-direction: row-reverse
-              routesConfig.reverse().map(
+              routesConfig.slice().reverse().map(
                 (el) => {
                   if (el.isNested) {
                     // handle the case when the menu has sub options
