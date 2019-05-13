@@ -62,7 +62,7 @@ You will also see any lint errors in the console.
 
 ### `yarn test`
 
-Note - tests are run under example-configuration copied over to the config folder.
+Note - tests are specific to example-configuration
 
 Launches the test runner in the interactive watch mode.<br>
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
