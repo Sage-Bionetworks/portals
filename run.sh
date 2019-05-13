@@ -40,7 +40,7 @@ if [ "$1" = "WARNING-push-production" ]; then
   aws s3 sync --delete --cache-control max-age=3000 $S3_STAGING_BUCKET_LOCATION $S3_PRODUCTION_BUCK_LOCATION
 elif [ "$1" = "push-staging" ]; then
   # only need to build if on staging
-  # yarn && yarn build
+  yarn && yarn build
   chmod +x ./src/config/scripts/exportS3StagingBucketName.sh
   source ./src/config/scripts/exportS3StagingBucketName.sh
   # check they defined the s3 bucket variable
