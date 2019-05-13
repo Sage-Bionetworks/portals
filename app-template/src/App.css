@@ -57,7 +57,7 @@ body button:focus {
 .flex-display {
   display: flex; }
 
-.nav-button:hover, .explore-buttons button:hover, #exploreData:hover, .viewAll:hover, .SRC-viewMoreButton:hover {
+.nav-button-container:hover, .explore-buttons button:hover, #exploreData:hover, .viewAll:hover, .SRC-viewMoreButton:hover {
   transition: all 400ms; }
 
 .explore-buttons button:hover, #exploreData:hover, .viewAll:hover, .SRC-viewMoreButton:hover {
@@ -94,6 +94,11 @@ body button:focus {
   text-decoration: none;
   color: #47337D; }
 
+.nav-button, .dropdown.nav-button-container {
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+  border-bottom-color: transparent; }
+
 .nav-button {
   text-transform: uppercase;
   font-weight: bold;
@@ -104,25 +109,13 @@ body button:focus {
   color: #404B63;
   text-decoration: none;
   padding: 0px 40px;
-  min-width: 100px;
-  border-bottom-style: solid;
-  border-bottom-width: 3px;
-  border-bottom-color: transparent; }
+  min-width: 100px; }
 
-.quarter-flex-basis {
-  flex-basis: 50%; }
-
-.nav-button:hover {
+.nav-button-container:hover, .bottom-border {
   border-bottom-style: solid;
   border-bottom-width: 3px;
   border-bottom-color: #47337D;
   color: #47337D; }
-
-.bottom-border {
-  border-bottom-style: solid;
-  border-bottom-width: 3px;
-  border-bottom-color: #47337D;
-  margin-bottom: -3px; }
 
 #home-link {
   font-weight: bold;

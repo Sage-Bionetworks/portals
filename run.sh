@@ -21,7 +21,6 @@ PORTAL_CONFIGURATIONS=configurations
 # copy over the directory
 cp -r $PORTAL_CONFIGURATIONS/$2 $PORTAL_APP_TEMPLATE/src/configuration
 cd $PORTAL_APP_TEMPLATE/src
-yarn && yarn build
 if [ "$1" = "WARNING-push-production" ]; then
   chmod +x ./src/configuration/scripts/exportS3StagingBucketName
   ./src/configuration/scripts/exportS3StagingBucketName
@@ -38,8 +37,9 @@ if [ "$1" = "WARNING-push-production" ]; then
   fi
   # sync staging with prod
   aws s3 sync --delete --cache-control max-age=3000 $S3_STAGING_BUCKET_LOCATION $S3_PRODUCTION_BUCK_LOCATION
-
 elif [ "$1" = "push-staging" ]; then
+  # only need to build if on staging
+  yarn && yarn build
   chmod +x ./src/configuration/scripts/exportS3StagingBucketName
   ./src/configuration/scripts/exportS3StagingBucketName
   # check they defined the s3 bucket variable

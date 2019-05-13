@@ -40,13 +40,13 @@ export class Navbar extends React.Component<{}, NavbarState> {
   }
 
   // given the hash, decide if the link should have a bottom border
-  getBorder = (path: string) => {
-    if (path === '') {
+  getBorder = (name: string) => {
+    if (name === '') {
       // special case the home page
-      return window.location.hash === '/#'
+      return
     }
     const hash = window.location.hash.substring(2)
-    return hash.includes(path) ? 'bottom-border' : ''
+    return hash.includes(name) ? 'bottom-border' : ''
   }
 
   render() {
@@ -77,15 +77,15 @@ export class Navbar extends React.Component<{}, NavbarState> {
                     // handle the case when the menu has sub options
                     const plainRoutes = el.routes as Route []
                     const key = `dropdown${currentNestedRouteCount}`
-                    const isCurrnetDropdownOpen = this.state[key]
+                    const isCurrentDropdownOpen = this.state[key]
                     const toggleDropdown = this.toggleDropdown(currentNestedRouteCount)
                     currentNestedRouteCount += 1
                     return (
-                      <div key={el.name} className={`dropdown ${isCurrnetDropdownOpen ? 'open' : ''} ${this.getBorder(el.name)}`}>
+                      <div key={el.name} className={`dropdown nav-button-container ${isCurrentDropdownOpen ? 'open' : ''} ${this.getBorder(el.name)}`}>
                         {/* tslint:disable-next-line:max-line-length */}
                         <div onClick={toggleDropdown} className="center-content nav-button hand-cursor"> {el.name} </div>
                         {
-                          isCurrnetDropdownOpen &&
+                          isCurrentDropdownOpen &&
                             <div className="dropdown-menu">
                               {
                                 plainRoutes.map(
@@ -108,7 +108,7 @@ export class Navbar extends React.Component<{}, NavbarState> {
                     )
                   }
                   return (
-                    <Link key={el.name} className={`center-content nav-button ${this.getBorder('')}`} to={el.to}> {el.name} </Link>
+                    <Link key={el.name} className={`center-content nav-button nav-button-container ${this.getBorder(el.name)}`} to={el.to}> {el.name} </Link>
                   )
                 }
               )
