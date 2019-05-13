@@ -3,18 +3,21 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 Structure of the codebase
 <pre>
 ├── App.scss                # Main styling for the application, uses variables from example-configuration/_overrides.scss
-├── App.test.tsx            # Tests for the application, most functionality exists in SRC, so tests are lightweight
 ├── App.tsx                 # Main entry point with route configuration
+├── AppInitializer.tsx      # e.g. getting token for the app, setting document title
 ├── Explore.tsx             # Functionality for Explore page
 ├── ExploreButtons.tsx      # Explore buttons that are used both on the home page and the explore page
 ├── Footer.tsx              # Footer with contact us/terms of service
 ├── Header.tsx              # Home page header with summary and title
 ├── Home.tsx                # Home page
 ├── Navbar.tsx              # Navbar that reads over the routes in example-configuration
+├── config                  # The main configuration read for the app
+├── custom-components       # portal specific components that are not related to layout
+├── example-configuration   # Directory that contains all the configuration for the app
 ├── RouteResolver.tsx       # For any subpage not in Home/Explore this hooks up the configuration to that URL
 ├── ScrollToTop.tsx         # Utility so that on route change the page starts at the top
-├── example-configuration   # Directory that contains all the configuration for the app
 ├── index.tsx               # Boilerplate code that hooks the application up with index.html
+├── tests                   # all the tests for the application
 └── types                   # types used throughout the project
 </pre>
 
@@ -59,8 +62,11 @@ You will also see any lint errors in the console.
 
 ### `yarn test`
 
+Note - tests are run under example-configuration copied over to the config folder.
+
 Launches the test runner in the interactive watch mode.<br>
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
 
 ### `yarn run build`
 

@@ -2,7 +2,7 @@ import * as React from 'react'
 import './App.css'
 import { withRouter } from 'react-router'
 import routesConfig from './config/routesConfig'
-import { SynapseObjectSingle, GenericRoute } from './types/portal-config'
+import { SynapseObjectSingle } from './types/portal-config'
 import { SynapseComponents } from 'synapse-react-client'
 import StackedBarChartControl from './custom-components/StackedBarChartControl'
 import { TokenContext } from './AppInitializer'
@@ -14,12 +14,11 @@ export type RouteResolverProps = {
 // https://basarat.gitbooks.io/typescript/docs/types/never.html
 function fail(message: string): never { throw new Error(message) }
 
-export const getRouteFromParams = (pathname: string, routesConfigForTesting: GenericRoute[] = []) => {
-  const routeConfigUsed = process.env.NODE_ENV === 'test' ? routesConfigForTesting : routesConfig
+export const getRouteFromParams = (pathname: string) => {
   // special case the home page path
   const pathWithName = pathname === '/' ? '/Home' :  pathname
   const split = pathWithName.split('/')
-  const routeOrNestedRoute =  routeConfigUsed.find(el => split[1] === el.name)
+  const routeOrNestedRoute =  routesConfig.find(el => split[1] === el.name)
   if (!routeOrNestedRoute) {
     return fail(`Error: url at ${pathWithName} has no route mapping`)
   }

@@ -12,16 +12,16 @@ describe('getRouteFromParams works', () => {
 
   // The home page route is a special case that we have to handle
   it('gets the expected route for Home', () => {
-    expect(getRouteFromParams('/', routesConfig)).toEqual(routesConfig[HOME_INDEX])
+    expect(getRouteFromParams('/')).toEqual(routesConfig[HOME_INDEX])
   })
 
   it('gets the expected route for About', () => {
-    expect(getRouteFromParams('/About', routesConfig)).toEqual(routesConfig[ABOUT_INDEX])
+    expect(getRouteFromParams('/About')).toEqual(routesConfig[ABOUT_INDEX])
   })
 
   it('gets a Nested Route correctly', () => {
     const orgRoutes = routesConfig[ORGANIZATION_INDEX] as NestedRoute
-    expect(getRouteFromParams('/Organizations/Organization-CTF', routesConfig)).toEqual(orgRoutes.routes[0])
+    expect(getRouteFromParams('/Organizations/Organization-CTF')).toEqual(orgRoutes.routes[0])
   })
 
 })
