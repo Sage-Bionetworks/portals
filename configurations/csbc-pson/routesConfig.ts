@@ -14,7 +14,7 @@ const routes: GenericRoute [] = [
     isNested: false,
     synapseObject: [
       {
-        name: 'StackedBarChartPreview',
+        name: 'StackedBarChartControl',
         title: 'EXPLORE PORTALS',
         props: {
           queryWrapperConfigs: [
@@ -87,8 +87,8 @@ const routes: GenericRoute [] = [
         synapseObject: [datasets.explorePageSynapseObject],
       },
       {
-        name: 'Data',
-        to: '/Explore/Data',
+        name: 'Files',
+        to: '/Explore/Files',
         isNested: false,
         synapseObject: [data.explorePageSynapseObject],
       }

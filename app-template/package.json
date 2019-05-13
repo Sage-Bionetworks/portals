@@ -27,7 +27,9 @@
     "start-js": "react-scripts-ts start",
     "start": "npm-run-all -p watch-css start-js",
     "build": "react-scripts-ts build",
-    "test": "react-scripts-ts test --env=jsdom --setupFiles ./src/setupTests.js",
+    "copy-example-configuration": "cp -r src/example-configuration/ src/config/" ,
+    "run-tests": "react-scripts-ts test --env=jsdom --setupFiles ./src/tests/setupTests.ts" ,
+    "test": "yarn run copy-example-configuration && yarn run run-tests",
     "eject": "react-scripts-ts eject"
   },
   "devDependencies": {

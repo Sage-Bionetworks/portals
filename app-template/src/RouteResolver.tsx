@@ -4,7 +4,7 @@ import { withRouter } from 'react-router'
 import routesConfig from './config/routesConfig'
 import { SynapseObjectSingle } from './types/portal-config'
 import { SynapseComponents } from 'synapse-react-client'
-import StackedBarChartPreview from './custom-components/StackedBarChartPreview'
+import StackedBarChartControl from './custom-components/StackedBarChartControl'
 import { TokenContext } from './AppInitializer'
 
 export type RouteResolverProps = {
@@ -16,7 +16,7 @@ function fail(message: string): never { throw new Error(message) }
 
 export const getRouteFromParams = (pathname: string) => {
   // special case the home page path
-  const pathWithName = pathname === '/' ? '/Home' : pathname
+  const pathWithName = pathname === '/' ? '/Home' :  pathname
   const split = pathWithName.split('/')
   const routeOrNestedRoute =  routesConfig.find(el => split[1] === el.name)
   if (!routeOrNestedRoute) {
@@ -30,8 +30,8 @@ export const getRouteFromParams = (pathname: string) => {
 }
 
 export const generateSynapseObjectHelper = (synapseObject: SynapseObjectSingle) => {
-  if (synapseObject.name === 'StackedBarChartPreview') {
-    return <StackedBarChartPreview {...synapseObject.props} />
+  if (synapseObject.name === 'StackedBarChartControl') {
+    return <StackedBarChartControl {...synapseObject.props} />
   }
   const SynapseComponent = (SynapseComponents as any)[synapseObject.name]
   return <SynapseComponent {...synapseObject.props} />

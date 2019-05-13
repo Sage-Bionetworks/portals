@@ -1,0 +1,9 @@
+language: node_js
+node_js:
+  - "10.15.3"
+script:
+  - cd app-template
+  - cp -r src/example-configuration/ src/config/
+  - yarn install
+  - yarn test
+  - yarn build

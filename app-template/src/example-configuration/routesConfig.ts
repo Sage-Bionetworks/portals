@@ -33,13 +33,13 @@ routes[EXPLORE_INDEX] = {
       name: 'Data',
       isNested: false,
       to: '/Explore/Data',
-      synapseObject: [{ ...data.explorePageSynapseObject }]
+      synapseObject: [data.explorePageSynapseObject]
     },
     {
       name: 'Publications',
       isNested: false,
       to: '/Explore/Publications',
-      synapseObject: [{ ...publications.explorePageSynapseObject }]
+      synapseObject: [publications.explorePageSynapseObject]
     }
   ],
 },
@@ -81,15 +81,11 @@ routes[HOME_INDEX] = {
   synapseObject: [
     {
       title: 'Explore Portals',
-      name: 'StackedBarChartPreview',
+      name: 'StackedBarChartControl',
       props: {
         queryWrapperConfigs: [
-          {
-            ...data.homePageSynapseObject.props,
-          },
-          {
-            ...publications.homePageSynapseObject.props
-          }
+          data.homePageSynapseObject.props,
+          publications.homePageSynapseObject.props
         ],
       },
     },
