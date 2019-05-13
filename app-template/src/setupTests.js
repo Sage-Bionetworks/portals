@@ -2,7 +2,6 @@ import "isomorphic-fetch" // polyfill for fetch
 import 'raf/polyfill'     // polyfill for requestAnimationFrame
 import {configure} from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16';
-
 // SRC dependencies below --
 // When using the component in production it relies on these imports being globals,
 // however, the testing environment doesn't have a browser loading CDNs, so we 

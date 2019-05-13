@@ -14,7 +14,7 @@ const routes: GenericRoute [] = [
     isNested: false,
     synapseObject: [
       {
-        name: 'StackedBarChartPreview',
+        name: 'StackedBarChartControl',
         title: 'EXPLORE PORTALS',
         props: {
           queryWrapperConfigs: [

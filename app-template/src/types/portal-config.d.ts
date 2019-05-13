@@ -6,7 +6,7 @@ import { StackedBarChartProps } from "synapse-react-client/dist/containers/Stack
 import { QueryWrapperMenuProps } from "synapse-react-client/dist/containers/QueryWrapperMenu";
 import { QueryBundleRequest } from "synapse-react-client/dist/utils/jsonResponses/Table/QueryBundleRequest";
 import { QueryResultBundle } from "synapse-react-client/dist/utils/jsonResponses/Table/QueryResultBundle";
-import { StackedBarChartPreviewProps } from "../custom-components/StackedBarChartPreview";
+import { StackedBarChartControlProps } from "../custom-components/StackedBarChartControl";
 
 // For styling the header on the home page -- the main title and the summary text
 export type HomePageHeaderConfig = {
@@ -47,9 +47,9 @@ type Markdown = {
   props: MarkdownProps
 }
 
-type StackedBarChartPreview = {
-  name: 'StackedBarChartPreview',
-  props: StackedBarChartPreviewProps
+type StackedBarChartControl = {
+  name: 'StackedBarChartControl',
+  props: StackedBarChartControlProps
 }
 
 type Metatdata = {
@@ -57,7 +57,7 @@ type Metatdata = {
   link?: string
 }
 
-export type SynapseObjectSingle = (StackedBarChartPreview | CardContainerLogic | StackedBarChart | QueryWrapper | QueryWrapperMenu | UserCard | Markdown ) & Metatdata
+export type SynapseObjectSingle = (StackedBarChartControl | CardContainerLogic | StackedBarChart | QueryWrapper | QueryWrapperMenu | UserCard | Markdown ) & Metatdata
 export type SynapseObject = SynapseObjectSingle [] 
 
 // utility for inside the explore page
