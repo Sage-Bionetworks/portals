@@ -4,5 +4,6 @@ node_js:
 script:
   - cd app-template
   - cp -r src/example-configuration/ src/config/
+  - yarn install
   - yarn test
   - yarn build
