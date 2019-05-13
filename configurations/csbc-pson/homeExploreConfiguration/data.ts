@@ -32,7 +32,7 @@ export const data: HomeExploreConfig = {
       facetName,
       unitDescription,
       loadingScreen,
-      name: 'Data',
+      name: 'Files',
       facetAliases: {
         grantType: 'Grant Type',
       },
