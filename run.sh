@@ -21,33 +21,28 @@ PORTAL_CONFIGURATIONS=configurations
 # copy over the directory
 cp -r $PORTAL_CONFIGURATIONS/$2/ $PORTAL_APP_TEMPLATE/src/config
 cd $PORTAL_APP_TEMPLATE
+
+chmod +x ./src/config/scripts/exportS3StagingBucketName.sh
+# source lets the child process run in the current shell instead of creating its own
+source ./src/config/scripts/exportS3StagingBucketName.sh
+# check they defined the s3 bucket variable
+if [ -z "$S3_STAGING_BUCKET_LOCATION" ]; then
+  echo 'Error: exportS3StagingBucketName.sh must export bash variable S3_STAGING_BUCKET_LOCATION'
+  exit 1
+fi
+chmod +x ./src/config/scripts/exportS3ProductionBucketName.sh
+source  ./src/config/scripts/exportS3ProductionBucketName.sh
+if [ -z "$S3_PRODUCTION_BUCK_LOCATION" ]; then
+  echo 'Error: exportS3ProductionBucketName.sh must export bash variable S3_PRODUCTION_BUCK_LOCATION'
+  exit 1
+fi
+
 if [ "$1" = "WARNING-push-production" ]; then
-  chmod +x ./src/config/scripts/exportS3StagingBucketName.sh
-  # source lets the child process run in the current shell instead of creating its own
-  source ./src/config/scripts/exportS3StagingBucketName.sh
-  if [ -z "$S3_STAGING_BUCKET_LOCATION" ]; then
-    echo 'Error: exportS3StagingBucketName.sh must export bash variable S3_STAGING_BUCKET_LOCATION'
-    exit 1
-  fi
-  chmod +x ./src/config/scripts/exportS3ProductionBucketName.sh
-  source  ./src/config/scripts/exportS3ProductionBucketName.sh
-  # check they defined the s3 bucket variable
-  if [ -z "$S3_PRODUCTION_BUCK_LOCATION" ]; then
-    echo 'Error: exportS3ProductionBucketName.sh must export bash variable S3_PRODUCTION_BUCK_LOCATION'
-    exit 1
-  fi
   # sync staging with prod
   aws s3 sync --delete --cache-control max-age=3000 $S3_STAGING_BUCKET_LOCATION $S3_PRODUCTION_BUCK_LOCATION
 elif [ "$1" = "push-staging" ]; then
-  # only need to build if on staging
+  # sync current with staging
   yarn && yarn build
-  chmod +x ./src/config/scripts/exportS3StagingBucketName.sh
-  source ./src/config/scripts/exportS3StagingBucketName.sh
-  # check they defined the s3 bucket variable
-  if [ -z "$S3_STAGING_BUCKET_LOCATION" ]; then
-    echo 'Error: exportS3StagingBucketName.sh must export bash variable S3_STAGING_BUCKET_LOCATION'
-    exit 1
-  fi
   aws s3 sync --delete --cache-control max-age=0 ./build $S3_STAGING_BUCKET_LOCATION
 fi
 echo 'Success - finished!'
