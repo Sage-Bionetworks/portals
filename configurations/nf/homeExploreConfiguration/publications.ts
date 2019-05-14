@@ -1,93 +1,81 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from '../../types/portal-config'
 import loadingScreen from '../loadingScreen'
-export const publicationSql = 'SELECT * FROM syn10923842'
-const sql = publicationSql
-const unitDescription = 'Publications'
-const synapseId = 'syn10923842'
-const rgbIndex = 1
 
-export const publications: HomeExploreConfig = {
+const sql = 'SELECT * FROM syn16857542'
+export const publicationsSql = sql
+const type = 'publication'
+const unitDescription = 'Publications'
+const synapseId = 'syn16857542'
+const rgbIndex = 0
+
+const facetAliases = {
+  projectStatus: 'Project Status',
+  dataStatus: 'Data Status',
+  fundingAgency: 'Funding Agency',
+  tumorType: 'Tumor Type',
+  diseaseFocus: 'Disease Focus',
+}
+
+const publications: HomeExploreConfig = {
   homePageSynapseObject: {
     name: 'QueryWrapper',
     props: {
-      rgbIndex,
       unitDescription,
+      rgbIndex,
       loadingScreen,
       name: 'Publications',
-      facetName: 'Consortium',
-      facetAliases: {
-        Consortium: 'Program',
-      },
-      initQueryRequest : {
+      initQueryRequest: {
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-        partMask: SynapseConstants.BUNDLE_MASK_QUERY_FACETS
-          | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
+        partMask:
+            SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS
+            | SynapseConstants.BUNDLE_MASK_QUERY_FACETS
+            | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
         query: {
           sql,
           isConsistent: false,
           limit: 25,
           offset: 0,
-        }
-      }
+        },
+      },
+      facetName: 'diseaseFocus',
+      facetAliases: {
+        diseaseFocus: 'Disease Focus',
+      },
     }
   },
   explorePageSynapseObject: {
     name: 'QueryWrapperMenu',
     props: {
       rgbIndex,
+      synapseId,
+      type,
       loadingScreen,
-      type: SynapseConstants.CSBC_PUBLICATION,
       menuConfig: [
         {
-          unitDescription,
           sql,
+          facetAliases,
           synapseId,
-          facetName: 'Publication Year',
+          unitDescription,
+          facetName: 'fundingAgency',
         },
         {
           sql,
-          unitDescription,
+          facetAliases,
           synapseId,
-          facetName: 'Consortium',
-          facetAliases: {
-            Consortium: 'Program',
-          },
-        },
-        {
-          sql,
           unitDescription,
-          synapseId,
-          facetName: 'grantType',
-          facetAliases: {
-            grantType: 'Grant Type',
-          },
-        },
-        {
-          sql,
-          unitDescription,
-          synapseId,
-          facetName: 'diseaseType',
-          facetAliases: {
-            diseaseType: 'Disease',
-          },
+          facetName: 'tumorType',
         },
         {
           sql,
           synapseId,
+          facetAliases,
           unitDescription,
-          facetName: 'Theme',
-        },
-        {
-          sql,
-          synapseId,
-          unitDescription,
-          facetName: 'experimentalStrategy',
-          facetAliases: {
-            experimentalStrategy: 'Assay',
-          },
-        },
-      ],
+          facetName: 'diseaseFocus',
+        }
+      ]
     }
   }
 }
+
+export default publications

@@ -1,9 +1,9 @@
 import { GenericRoute } from '../types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
-import { datasets, files, studies, publications, tools, funders } from './exploreHomeConfiguration'
-import { studiesSql } from './exploreHomeConfiguration/studies'
-import { datasetsSql } from './exploreHomeConfiguration/datasets'
-import { publicationsSql } from './exploreHomeConfiguration/publications'
+import { datasets, files, studies, publications, tools, funders } from './homeExploreConfiguration'
+import { studiesSql } from './homeExploreConfiguration/studies'
+import { datasetsSql } from './homeExploreConfiguration/datasets'
+import { publicationsSql } from './homeExploreConfiguration/publications'
 
 const limit = 3
 
