@@ -10,6 +10,7 @@ const routes: GenericRoute [] = [
     synapseObject: [
       {
         name: 'CardContainerLogic',
+        title: 'PROGRAMS',
         props: {
           sql: 'SELECT * FROM syn17024173',
           type: SynapseConstants.AMP_CONSORTIUM
@@ -17,6 +18,7 @@ const routes: GenericRoute [] = [
       },
       {
         name: 'Markdown',
+        title: "WHAT'S NEW",
         props: {
           ownerId:'syn12666371',
           wikiId:'582408'
@@ -34,31 +36,32 @@ const routes: GenericRoute [] = [
     // }
   },
   {
-    name: 'Research Tools',
+    name: 'ResearchTools',
     to: '/ResearchTools',
     isNested: false,
     synapseObject: [
       {
-       name: 'Markdown',
-       title: 'Research Tools',
-       props: {
-        ownerId:'syn2580853',
-        wikiId:'409845'
-       } 
+        name: 'Markdown',
+        title: 'Research Tools',
+        props: {
+          ownerId:'syn2580853',
+          wikiId:'409845'
+        }
       }
     ]
   },
   {
-    name: 'Data Access',
+    name: 'DataAccess',
     isNested: true,
     routes: [
       {
-        name: 'Getting Access to Data',
+        name: 'Instructions',
         isNested: false,
-        to: '/DataAcess/Instructions',
+        to: '/DataAccess/Instructions',
         synapseObject: [
           {
             name: 'Markdown',
+            title: 'GETTING ACCESS TO DATA',
             props: {
               ownerId: 'syn12666371',
               wikiId: '585317'
@@ -67,12 +70,13 @@ const routes: GenericRoute [] = [
         ]
       },
       {
-        name: 'Acknowleding Data Use',
+        name: 'Acknowleding-Data-Use',
         isNested: false,
-        to: '/DataAccess',
+        to: '/DataAccess/Acknowleding-Data-Use',
         synapseObject: [
           {
             name: 'Markdown',
+            title: 'ACKNOWLEDGEMENT STATEMENTS',
             props: {
               ownerId: 'syn2580853',
               wikiId: '584597'
@@ -80,19 +84,20 @@ const routes: GenericRoute [] = [
           }
         ]
       },
+    ]
+  },
+  {
+    name: 'About',
+    isNested: false,
+    to: '/About',
+    synapseObject: [
       {
-        name: 'About',
-        isNested: false,
-        to: '/About',
-        synapseObject: [
-          {
-            name: 'Markdown',
-            props: {
-              wikiId:'581939',
-              ownerId:'syn12666371'
-            }
-          }
-        ]
+        name: 'Markdown',
+        title: 'About',
+        props: {
+          wikiId:'581939',
+          ownerId:'syn12666371'
+        }
       }
     ]
   }

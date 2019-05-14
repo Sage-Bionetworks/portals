@@ -26,7 +26,7 @@ class Home extends React.Component<HomeProps, HomeState> {
     const pathname = location.pathname
     const { synapseObject  } = getRouteFromParams(pathname)
     return (
-      <div>
+      <div className="home">
         <Header />
         <div className="container">
           <div className="row">

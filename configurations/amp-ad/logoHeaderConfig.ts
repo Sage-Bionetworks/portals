@@ -1,8 +1,8 @@
 import { LogoHeaderConfig } from '../types/portal-config'
 // @ts-ignore
-import logo from './style/amp-ad-logo'
+import ampAdLogoSvg from './style/amp-ad-logo.svg'
 
 const logoHeader: LogoHeaderConfig = {
-  icon: logo,
+  icon: ampAdLogoSvg,
 }
 export default logoHeader

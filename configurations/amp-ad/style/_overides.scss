@@ -1,18 +1,28 @@
 
-// $primary-text-color: ;// TODO
-// $primary-action-color: ; // TODO
+$primary-text-color: #4d5491;
+$primary-action-color: #4d5491;
 
-// // Note length($button-colors) must equal length of explore page routes
-// $button-colors: (
-// );
+// Note length($button-colors) must equal length of explore page routes
+$button-colors: (
+  1: #6C5C97,
+  2: #E5AE4C,
+  3: #5BB0B5,
+  4: #5171C0,
+  5: #0F9488,
+  6: #D4689A,
+);
 
-// // Since scss breaks if a file is missing in a local url link these functinons must get manually overwitten
-// @function getHeader($path) {
-//   // TODO
-//   @return url($path + "./header.svg");
-// }
+// hide home explore button
+.home {
+}
 
-// @function getFooter($path) {
-//   // TODO
-//   @return "";
-// }
+// Since scss breaks if a file is missing in a local url link these functinons must get manually overwitten
+@function getHeader($path) {
+  // TODO
+  @return url("");
+}
+
+@function getFooter($path) {
+  // TODO
+  @return "";
+}
