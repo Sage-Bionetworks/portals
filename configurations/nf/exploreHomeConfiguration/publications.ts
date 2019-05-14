@@ -1,5 +1,5 @@
 import { SynapseConstants } from 'synapse-react-client'
-import { HomeExploreConfig } from 'types/portal-config'
+import { HomeExploreConfig } from '../../types/portal-config'
 
 const sql = 'SELECT * FROM syn16857542'
 export const publicationsSql = sql
@@ -18,7 +18,7 @@ const facetAliases = {
 
 const publications: HomeExploreConfig = {
   homePageSynapseObject: {
-    name: 'StackedBarChartControl',
+    name: 'QueryWrapper',
     props: {
       unitDescription,
       rgbIndex,

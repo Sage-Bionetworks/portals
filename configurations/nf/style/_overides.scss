@@ -1,6 +1,7 @@
 
-$primary-text-color: #404b63;
-$primary-action-color: #c94281;
+// $primary-text-color: #404b63;
+$primary-text-color:#c94281;
+$primary-action-color: #4db7ad;
 
 // Note length($button-colors) must equal length of explore page routes
 $button-colors: (
@@ -12,9 +13,14 @@ $button-colors: (
 
 // Since scss breaks if a file is missing in a local url link these functinons must get manually overwitten
 @function getHeader($path) {
-  // TODO
-  @return url($path + "./molecul-back.svg");
+  @return "";
 }
+
+#header {
+  background: linear-gradient(#109488,#4db7ad), url("config/style/molecule-back.svg") no-repeat;
+  background-color: $primary-action-color !important;
+}
+
 
 @function getFooter($path) {
   // TODO

@@ -1,5 +1,6 @@
 import { LogoHeaderConfig } from '../types/portal-config'
-import nfPortalLogo from './style/nfPortalLogo'
+// @ts-ignore
+import * as nfPortalLogo from './style/nfPortalLogo.svg'
 
 const logoHeader: LogoHeaderConfig = {
   icon: nfPortalLogo

@@ -1,7 +1,7 @@
-import { SynapseConstants } from "synapse-react-client"
+import { SynapseConstants } from 'synapse-react-client'
 
 const funder = {
-  sql: "SELECT * FROM syn16858699",
+  sql: 'SELECT * FROM syn16858699',
   type: SynapseConstants.FUNDER,
 }
 
