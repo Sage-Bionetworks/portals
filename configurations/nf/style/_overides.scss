@@ -1,0 +1,22 @@
+
+$primary-text-color: #404b63;
+$primary-action-color: #c94281;
+
+// Note length($button-colors) must equal length of explore page routes
+$button-colors: (
+  1: #119488,
+  2: #58A058,
+  3: #407BA0,
+  4: #5BB0B5
+);
+
+// Since scss breaks if a file is missing in a local url link these functinons must get manually overwitten
+@function getHeader($path) {
+  // TODO
+  @return url($path + "./molecul-back.svg");
+}
+
+@function getFooter($path) {
+  // TODO
+  @return "";
+}
