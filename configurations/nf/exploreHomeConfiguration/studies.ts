@@ -2,6 +2,7 @@ import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from 'types/portal-config'
 
 const sql = 'SELECT * FROM syn16787123'
+export const studiesSql = sql
 const facetAliases = {
   projectStatus: 'Project Status',
   dataStatus: 'Data Status',

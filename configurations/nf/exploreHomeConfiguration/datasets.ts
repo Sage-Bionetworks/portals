@@ -2,6 +2,7 @@ import { SynapseConstants } from "synapse-react-client"
 import { HomeExploreConfig } from "types/portal-config";
 
 const sql = `SELECT * FROM syn16859580`
+export const datasetsSql = sql
 const type = "dataset"
 const unitDescription = 'datasets'
 const rgbIndex = 5
