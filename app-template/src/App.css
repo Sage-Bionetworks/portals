@@ -4,6 +4,9 @@ body {
 body button:focus {
   outline: none; }
 
+.nav-logo {
+  height: 50px; }
+
 .main {
   min-height: 100vh;
   /* will cover the 100% of viewport */
@@ -33,11 +36,15 @@ body button:focus {
   display: flex;
   align-items: center; }
 
+#header {
+  background: linear-gradient(#109488, #4db7ad), url("config/style/molecule-back.svg") no-repeat;
+  background-color: #4db7ad !important; }
+
 .SRC-primary-background-color {
-  background-color: #47337D !important; }
+  background-color: #4db7ad !important; }
 
 .SRC-primary-background-color-hover:hover {
-  background: #47337D !important;
+  background: #4db7ad !important;
   color: white !important; }
 
 .SRC-primary-background-color-hover:hover svg.SRC-primary-text-color {
@@ -47,7 +54,7 @@ body button:focus {
   color: white; }
 
 .SRC-primary-background-color-hover.SRC-nested-color:hover * {
-  background-color: #47337D !important;
+  background-color: #4db7ad !important;
   color: white !important; }
 
 .spacer {
@@ -92,7 +99,7 @@ body button:focus {
 
 .nav a:focus {
   text-decoration: none;
-  color: #47337D; }
+  color: #4db7ad; }
 
 .nav-button, .dropdown.nav-button-container, .nav-button-container:hover, .dropdown.nav-button-container.bottom-border {
   border-bottom-style: solid;
@@ -114,17 +121,17 @@ body button:focus {
   min-width: 100px; }
 
 .nav-button-container:hover, .dropdown.nav-button-container.bottom-border {
-  border-bottom-color: #47337D;
-  color: #47337D; }
+  border-bottom-color: #4db7ad;
+  color: #4db7ad; }
 
 #home-link {
   font-weight: bold;
   font-size: 25px;
-  color: #47337D;
+  color: #4db7ad;
   margin-left: 15px; }
 
 .open > a {
-  color: #47337D !important;
+  color: #4db7ad !important;
   background-color: white !important; }
 
 .open > a:focus {
@@ -168,9 +175,9 @@ body button:focus {
 
 #footer {
   text-transform: uppercase;
-  background-image: url("config/style//dna.svg");
+  background-image: "";
   background-blend-mode: multiply;
-  background-color: #407BA0;
+  background-color: #c94281;
   background-repeat: no-repeat;
   background-size: cover;
   color: white;
@@ -181,17 +188,17 @@ body button:focus {
   color: white; }
 
 .SRC-primary-text-color {
-  color: #407BA0 !important; }
+  color: #c94281 !important; }
 
 .footer-help {
   flex-basis: 50%; }
 
 #header {
-  background-image: url("config/style/dna_header.svg");
+  background-image: "";
   background-blend-mode: multiply;
   background-repeat: no-repeat;
   background-size: cover;
-  background-color: #407BA0;
+  background-color: #c94281;
   height: fit-content;
   padding: 40px; }
 
@@ -229,34 +236,28 @@ body button:focus {
   color: white; }
 
 .explore-buttons button:nth-child(1) {
-  background: #47337D; }
+  background: #119488; }
 
 .explore-buttons button:nth-child(1).active-button::after {
-  border-top-color: #47337D; }
+  border-top-color: #119488; }
 
 .explore-buttons button:nth-child(2) {
-  background: #407BA0; }
+  background: #58A058; }
 
 .explore-buttons button:nth-child(2).active-button::after {
-  border-top-color: #407BA0; }
+  border-top-color: #58A058; }
 
 .explore-buttons button:nth-child(3) {
-  background: #7798AC; }
+  background: #407BA0; }
 
 .explore-buttons button:nth-child(3).active-button::after {
-  border-top-color: #7798AC; }
+  border-top-color: #407BA0; }
 
 .explore-buttons button:nth-child(4) {
-  background: #77BBBF; }
+  background: #5BB0B5; }
 
 .explore-buttons button:nth-child(4).active-button::after {
-  border-top-color: #77BBBF; }
-
-.explore-buttons button:nth-child(5) {
-  background: #5E697D; }
-
-.explore-buttons button:nth-child(5).active-button::after {
-  border-top-color: #5E697D; }
+  border-top-color: #5BB0B5; }
 
 .explore-buttons button:nth-child(1) {
   margin-left: 0px; }
@@ -279,7 +280,7 @@ body button:focus {
   right: 50px;
   position: absolute;
   border-radius: 24px;
-  background-color: #47337D;
+  background-color: #4db7ad;
   position: absolute;
   color: white;
   height: 44px;
@@ -322,7 +323,7 @@ body button:focus {
   justify-content: center; }
 
 .viewAll:hover {
-  background-color: #47337D;
+  background-color: #4db7ad;
   color: white;
   text-decoration: none; }
 
@@ -336,13 +337,13 @@ body button:focus {
   border-width: 0px; }
 
 div.SRC-title > h3 a {
-  color: #407BA0; }
+  color: #c94281; }
 
 button.btn-sm.SRC-floatRight {
   border: none; }
 
 button.btn-sm.SRC-floatRight svg {
-  color: #47337D !important; }
+  color: #4db7ad !important; }
 
 #exploreCount {
   padding-top: 20px; }

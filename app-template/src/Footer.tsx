@@ -6,7 +6,7 @@ import logoHeaderConfig from './config/logoHeaderConfig'
 export const Footer:React.SFC<{}> = () => {
   const goToTop = (_event:any) => { window.scroll({ top: 0, behavior: 'smooth' }) }
   const { name, icon } = logoHeaderConfig
-  const logo = name ? name : <img src={icon} />
+  const logo = name ? name : <img className="nav-logo" src={icon} />
   return (
     <footer id="footer" className="center-content">
       <div id="portal-title-footer">

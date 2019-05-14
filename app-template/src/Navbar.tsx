@@ -55,7 +55,7 @@ export class Navbar extends React.Component<{}, NavbarState> {
     const toggleOff = this.toggleDropdown(-1)
     let currentNestedRouteCount = 0
     const { name, icon } = logoHeaderConfig
-    const logo = name ? name : <img src={icon} />
+    const logo = name ? name : <img className="nav-logo" src={icon} />
     return (
       <React.Fragment>
         <nav className="flex-display nav">
