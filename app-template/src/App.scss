@@ -115,9 +115,13 @@ $header-height : 75px;
   }
 }
 
-%fillerBorder {
+%borderStyle {
   border-bottom-style: solid;
   border-bottom-width: 3px;
+}
+
+%fillerBorder {
+  @extend %borderStyle;
   border-bottom-color:transparent;
 }
 
@@ -136,8 +140,7 @@ $header-height : 75px;
 }
 
 %bottomBorderNav {
-  border-bottom-style: solid;
-  border-bottom-width: 3px;
+  @extend %borderStyle;
   border-bottom-color:$primary-action-color;
   color: $primary-action-color;
 }
@@ -150,7 +153,7 @@ $header-height : 75px;
   @extend %fillerBorder;
 }
 
-.bottom-border {
+.dropdown.nav-button-container.bottom-border {
   @extend %bottomBorderNav;
 }
 
