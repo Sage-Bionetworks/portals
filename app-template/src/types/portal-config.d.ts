@@ -70,12 +70,14 @@ export type Route = {
   to: string
   isNested: false       
   name: string
+  displayName?: string
   link?: string
   synapseObject: SynapseObject
 }
 
 export type NestedRoute = {
   name: string
+  displayName?: string
   isNested: true
   routes: Array<Route>
 }

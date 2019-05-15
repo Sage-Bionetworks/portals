@@ -37,6 +37,7 @@ const routes: GenericRoute [] = [
   },
   {
     name: 'ResearchTools',
+    displayName: 'Research Tools',
     to: '/ResearchTools',
     isNested: false,
     synapseObject: [
@@ -52,10 +53,12 @@ const routes: GenericRoute [] = [
   },
   {
     name: 'DataAccess',
+    displayName: 'Data Access',
     isNested: true,
     routes: [
       {
         name: 'Instructions',
+        displayName: 'Getting Access to Data',
         isNested: false,
         to: '/DataAccess/Instructions',
         synapseObject: [
@@ -71,6 +74,7 @@ const routes: GenericRoute [] = [
       },
       {
         name: 'Acknowleding-Data-Use',
+        displayName: 'Acknowleding Data Use',
         isNested: false,
         to: '/DataAccess/Acknowleding-Data-Use',
         synapseObject: [
