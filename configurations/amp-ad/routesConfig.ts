@@ -1,6 +1,6 @@
 import { GenericRoute } from '../types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
-// import { publications, data } from './exploreHomeConfiguration'
+import { projects, studies, data, people, programs, publications } from './homeExploreConfiguration'
 
 const routes: GenericRoute [] = [
   {
@@ -8,6 +8,24 @@ const routes: GenericRoute [] = [
     to: '/',
     isNested: false,
     synapseObject: [
+      {
+        name: 'StackedBarChartControl',
+        title: 'EXPLORE CONTENT',
+        props: {
+          queryWrapperConfigs: [
+            projects.homePageSynapseObject.props,
+            studies.homePageSynapseObject.props,
+            data.homePageSynapseObject.props,
+            people.homePageSynapseObject.props
+          ],
+          colors: [
+            '#E5AE4C',
+            '#5BB0B5',
+            '#5171C0',
+            '#D4689A',
+          ]
+        }
+      },
       {
         name: 'CardContainerLogic',
         title: 'PROGRAMS',
@@ -25,15 +43,70 @@ const routes: GenericRoute [] = [
         }
       }
     ],
-    // {
-    //   name: 'Explore',
-    //   isNested: true,
-    //   routes: [
-    //     {
-
-    //     }
-    //   ]
-    // }
+  },
+  {
+    name: 'Explore',
+    isNested: true,
+    addOns: {
+      colors: [
+        '#6C5C97',
+        '#E5AE4C',
+        '#5BB0B5',
+        '#5171C0',
+        '#0F9488',
+        '#D4689A',
+      ]
+    },
+    routes: [
+      {
+        name: 'Programs',
+        isNested: false,
+        to: '/Explore/Programs',
+        synapseObject: [
+          programs
+        ]
+      },
+      {
+        name: 'Projects',
+        isNested: false,
+        to: '/Explore/Projects',
+        synapseObject: [
+          projects.explorePageSynapseObject
+        ]
+      },
+      {
+        name: 'Studies',
+        isNested: false,
+        to: '/Explore/Studies',
+        synapseObject: [
+          studies.explorePageSynapseObject
+        ]
+      },
+      {
+        name: 'Data',
+        isNested: false,
+        to: '/Explore/Data',
+        synapseObject: [
+          data.explorePageSynapseObject
+        ]
+      },
+      {
+        name: 'Publications',
+        isNested: false,
+        to: '/Explore/Publications',
+        synapseObject: [
+          publications
+        ]
+      },
+      {
+        name: 'People',
+        isNested: false,
+        to: '/Explore/People',
+        synapseObject: [
+          people.explorePageSynapseObject
+        ]
+      }
+    ]
   },
   {
     name: 'ResearchTools',

@@ -67,12 +67,14 @@ export type HomeExploreConfig = {
 }
 
 export type Route = {
-  to: string
-  isNested: false       
   name: string
   displayName?: string
+  isNested: false       
+  to: string
   link?: string
   synapseObject: SynapseObject
+  // catch all
+  addOns?: any
 }
 
 export type NestedRoute = {
@@ -80,6 +82,8 @@ export type NestedRoute = {
   displayName?: string
   isNested: true
   routes: Array<Route>
+  // catch all
+  addOns?: any
 }
 
 export type GenericRoute = (Route | NestedRoute)

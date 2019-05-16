@@ -12,10 +12,6 @@ $button-colors: (
   6: #D4689A,
 );
 
-// hide home explore button
-.home {
-}
-
 // Since scss breaks if a file is missing in a local url link these functinons must get manually overwitten
 @function getHeader($path) {
   // TODO

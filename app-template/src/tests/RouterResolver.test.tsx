@@ -49,8 +49,9 @@ describe('RouteResolver works', () => {
             facetName: '',
             name: '',
             initQueryRequest: { query: { sql: '' },  concreteType: '', partMask: 123 },
-          }
-        ]
+          },
+        ],
+        colors: []
       }
     }
     // have to mock the routing because stackedbarchart preview uses a Link object

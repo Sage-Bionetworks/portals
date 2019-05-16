@@ -10,6 +10,7 @@ type Info = {
 
 export type StackedBarChartControlProps = {
   queryWrapperConfigs: (QueryWrapperProps & Info) []
+  colors: string []
 }
 
 export type StackedBarChartControlState = {
@@ -40,11 +41,14 @@ export default class StackedBarChartControl extends React.Component<
     const props = this.props.queryWrapperConfigs[this.state.index]
     const { unitDescription = '', name, loadingScreen } = props
     const isSelected = (val: string) => val === name
+    const customRoutes = this.props.queryWrapperConfigs
     return (
       <React.Fragment>
         <ExploreButtons
           handleChanges={this.handleChange}
           isSelected={isSelected}
+          customRoutes={customRoutes}
+          colors={this.props.colors}
         />
          <div className="homeExploreContainer">
             <div id="homePageBarChart">

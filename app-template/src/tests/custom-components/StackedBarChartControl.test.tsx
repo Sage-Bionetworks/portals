@@ -13,6 +13,10 @@ describe('functions correctly', () => {
       data.homePageSynapseObject.props,
       publications.homePageSynapseObject.props
     ],
+    colors: [
+      'purple',
+      'blue'
+    ]
   }
 
   it('renders without crashing', () => {

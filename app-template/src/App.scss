@@ -282,11 +282,10 @@ $header-height : 75px;
 
  
 @mixin buttonColor {
-  @for $i from 1 to length($button-colors) + 1 {
+  @for $i from 1 to 8 {
     &:nth-child(#{$i}) {
-       background: map-get($button-colors, $i);
        &.active-button::after {
-        border-top-color: map-get($button-colors, $i);;
+        border-top-color: green;
       }
     }
   }
@@ -300,7 +299,6 @@ $header-height : 75px;
   align-content: center;
   justify-content: center;
   button {
-    @include buttonColor;
     text-transform: uppercase;
     border-radius: 16px;
     flex-basis: 18%;
@@ -309,12 +307,12 @@ $header-height : 75px;
     position: relative;
     height: 50px;
     color: white;
-    // TODO: Replace these hard coded colors
     &:nth-child(1) {
       margin-left: 0px;
     }
     // caret dropdown
     &.active-button::after {
+      border-top-color: inherit !important;
       border-right: solid 12px transparent;
       border-left: solid 12px transparent;
       border-top: solid 12px;

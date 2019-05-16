@@ -2,6 +2,8 @@ import * as React from 'react'
 import { ExploreButtons } from './ExploreButtons'
 import RouteResolver from './RouteResolver'
 import { withRouter } from 'react-router'
+import routesConfig from './config/routesConfig'
+import { NestedRoute } from './types/portal-config'
 
 type CountQuery = {
   queryCount: number | string
@@ -35,6 +37,8 @@ class Explore extends React.Component<ExploreProps, ExploreState> {
     const subPath = pathname.substring('/Explore/'.length)
     const handleChanges = (val: string, _index: number) => this.props.history.push(`/Explore/${val}`)
     const isSelected = (name: string) => name === subPath
+    const explore = routesConfig.find(el => el.name === 'Explore') as NestedRoute
+    const colors = explore.addOns.colors
     return (
       <div className={'container explore'}>
         <div className="row">
@@ -45,6 +49,7 @@ class Explore extends React.Component<ExploreProps, ExploreState> {
             <ExploreButtons
               isSelected={isSelected}
               handleChanges={handleChanges}
+              colors={colors}
             />
             <div className="row">
               {

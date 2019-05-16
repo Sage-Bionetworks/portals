@@ -87,6 +87,10 @@ routes[HOME_INDEX] = {
           data.homePageSynapseObject.props,
           publications.homePageSynapseObject.props
         ],
+        colors: [
+          'green',
+          'blue'
+        ]
       },
     },
     {
