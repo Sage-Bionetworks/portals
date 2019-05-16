@@ -102,9 +102,9 @@ export type DocTitleConfig = {
 }
 // DocTitleConfig - end
 
-// LogoHeaderConfig
-export type LogoHeaderConfig = {
+// LogoConfig
+export type LogoConfig = {
   name?: string  // plain text
   icon?: string  // svg
 }
-// LogoHeaderConfig end
+// LogoConfig end

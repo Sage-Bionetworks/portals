@@ -113,8 +113,10 @@ body button:focus {
   justify-content: center;
   color: #404B63;
   text-decoration: none;
-  padding: 0px 40px;
-  min-width: 100px; }
+  padding: 0px 20px;
+  margin: 0px 5px;
+  min-width: 100px;
+  white-space: nowrap; }
 
 .nav-button-container:hover, .dropdown.nav-button-container.bottom-border {
   border-bottom-color: #4d5491;
@@ -171,8 +173,7 @@ body button:focus {
 
 #footer {
   text-transform: uppercase;
-  background-image: "";
-  background-blend-mode: multiply;
+  background-image: url("config/style//header.svg");
   background-color: #4d5491;
   background-repeat: no-repeat;
   background-size: cover;
@@ -190,8 +191,7 @@ body button:focus {
   flex-basis: 50%; }
 
 #header {
-  background-image: url("");
-  background-blend-mode: multiply;
+  background-image: url("config/style/header.svg");
   background-repeat: no-repeat;
   background-size: cover;
   background-color: #4d5491;
@@ -203,7 +203,8 @@ body button:focus {
   padding: 30px;
   color: white;
   background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px); }
+  backdrop-filter: blur(10px);
+  width: -webkit-fill-available; }
 
 .header-text h2 {
   font-weight: bold; }

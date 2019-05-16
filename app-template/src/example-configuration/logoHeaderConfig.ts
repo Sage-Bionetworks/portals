@@ -1,6 +1,6 @@
-import { LogoHeaderConfig } from '../types/portal-config'
+import { LogoConfig } from '../types/portal-config'
 
-const logoHeader: LogoHeaderConfig = {
+const logoHeader: LogoConfig = {
   name: 'Science Portal'
 }
 export default logoHeader

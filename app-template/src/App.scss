@@ -138,8 +138,10 @@ $header-height : 75px;
   justify-content: center;
   color: #404B63;
   text-decoration: none;
-  padding: 0px 40px;
+  padding: 0px 20px;
+  margin: 0px 5px;
   min-width: 100px;
+  white-space: nowrap;
   @extend %fillerBorder;
 }
 
@@ -228,7 +230,6 @@ $header-height : 75px;
   text-transform: uppercase;
   // TODO: Replace image
   background-image: getFooter("config/style/");
-  background-blend-mode: multiply;
   background-color: $primary-text-color;
   background-repeat: no-repeat;
   background-size: cover;
@@ -253,7 +254,6 @@ $header-height : 75px;
 // header
 #header {
   background-image: getHeader("config/style");
-  background-blend-mode: multiply;
   background-repeat: no-repeat;
   background-size: cover;
   background-color: $primary-text-color;
@@ -270,6 +270,7 @@ $header-height : 75px;
   color: white;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
+  width: -webkit-fill-available;
 }
 // end header
 
