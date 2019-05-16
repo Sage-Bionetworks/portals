@@ -4,7 +4,7 @@ import { SynapseConstants } from 'synapse-react-client'
 import loadingScreen from '../loadingScreen'
 
 const unitDescription = 'studies'
-const rgbIndex = 1
+const rgbIndex = 0
 const sql = 'SELECT * FROM syn17083367'
 const synapseId = 'syn17083367'
 const facetName = 'Species'

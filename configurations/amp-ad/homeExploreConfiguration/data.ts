@@ -4,7 +4,7 @@ import { SynapseConstants } from 'synapse-react-client'
 import loadingScreen from '../loadingScreen'
 
 const unitDescription = 'data files'
-const rgbIndex = 2
+const rgbIndex = 1
 const sql = 'SELECT * FROM syn11346063'
 const synapseId = 'syn11346063'
 const title = 'Data'
