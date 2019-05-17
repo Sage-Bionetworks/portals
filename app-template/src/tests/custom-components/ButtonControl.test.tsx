@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { mount, shallow } from 'enzyme'
-import StackedBarChartControl, { StackedBarChartControlProps } from '../../custom-components/StackedBarChartControl'
+import ButtonControl, { ButtonControlProps } from '../../custom-components/ButtonControl'
 import { publications, data } from '../../example-configuration/exploreHomeConfiguration'
 import { ExploreButtons } from '../../ExploreButtons'
 // https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/api/MemoryRouter.md
@@ -8,7 +8,7 @@ import { MemoryRouter } from 'react-router'
 
 describe('functions correctly', () => {
 
-  const props: StackedBarChartControlProps = {
+  const props: ButtonControlProps = {
     queryWrapperConfigs: [
       data.homePageSynapseObject.props,
       publications.homePageSynapseObject.props
@@ -20,19 +20,19 @@ describe('functions correctly', () => {
   }
 
   it('renders without crashing', () => {
-    const component = shallow(<MemoryRouter><StackedBarChartControl {...props}/></MemoryRouter>)
+    const component = shallow(<MemoryRouter><ButtonControl {...props}/></MemoryRouter>)
     expect(component).toBeDefined()
   })
 
   it('renders the UI correctly', () => {
-    const component = mount(<MemoryRouter><StackedBarChartControl {...props} /></MemoryRouter>)
-    const stackedBarChart = component.find(StackedBarChartControl)
+    const component = mount(<MemoryRouter><ButtonControl {...props} /></MemoryRouter>)
+    const stackedBarChart = component.find(ButtonControl)
     expect(stackedBarChart.find('a#exploreData').text()).toEqual(` Explore ${data.homePageSynapseObject.props.name} `)
   })
 
   it('handles click event correctly', () => {
-    const component = mount(<MemoryRouter><StackedBarChartControl {...props} /></MemoryRouter>)
-    const stackedBarChart = component.find(StackedBarChartControl)
+    const component = mount(<MemoryRouter><ButtonControl {...props} /></MemoryRouter>)
+    const stackedBarChart = component.find(ButtonControl)
     stackedBarChart.setState({
       index: 1
     })

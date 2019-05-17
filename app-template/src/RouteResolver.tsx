@@ -4,7 +4,7 @@ import { withRouter } from 'react-router'
 import routesConfig from './config/routesConfig'
 import { SynapseObjectSingle, GenericRoute } from './types/portal-config'
 import { SynapseComponents } from 'synapse-react-client'
-import StackedBarChartControl from './custom-components/StackedBarChartControl'
+import ButtonControl from './custom-components/ButtonControl'
 import { TokenContext } from './AppInitializer'
 
 export type RouteResolverProps = {
@@ -33,8 +33,8 @@ export const getRouteFromParams = (pathname: string) => {
 }
 
 export const generateSynapseObjectHelper = (synapseObject: SynapseObjectSingle) => {
-  if (synapseObject.name === 'StackedBarChartControl') {
-    return <StackedBarChartControl {...synapseObject.props} />
+  if (synapseObject.name === 'ButtonControl') {
+    return <ButtonControl {...synapseObject.props} />
   }
   const SynapseComponent = (SynapseComponents as any)[synapseObject.name]
   return <SynapseComponent {...synapseObject.props} />

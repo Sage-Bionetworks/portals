@@ -1,14 +1,10 @@
 import * as React from 'react'
 import { ExploreButtons, ExploreButtonProps } from '../ExploreButtons'
-import { Link, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import { SynapseObject } from '../types/portal-config'
-import { generateSynapseObject, getRouteFromParams } from '../RouteResolver'
+import { getRouteFromParams } from '../RouteResolver'
 
-type Info = {
-  name: string
-}
-
-export type StackedBarChartControlProps = {
+export type ButtonControlProps = {
   queryWrapperConfigs: SynapseObject
   colors: string []
   location: any
@@ -18,14 +14,14 @@ export type StackedBarChartControlProps = {
   customRenderSynapseObject: any
 }
 
-export type StackedBarChartControlState = {
+export type ButtonControlState = {
   index: number
 }
 
-class StackedBarChartControl extends React.Component<
-  StackedBarChartControlProps, StackedBarChartControlState> {
+class ButtonControl extends React.Component<
+  ButtonControlProps, ButtonControlState> {
 
-  constructor(props: StackedBarChartControlProps) {
+  constructor(props: ButtonControlProps) {
     super(props)
     this.state = {
       index: 0
@@ -53,6 +49,10 @@ class StackedBarChartControl extends React.Component<
     let synapseObject
     // typecasting is treating customRoutes oddly, casting to unknown is the workaround
     let exploreProps = { colors, customRoutes: queryWrapperConfigs } as unknown as ExploreButtonProps
+    /*
+      We special case the rendering based on the use case for button control, whether it should retrieve data
+      from props or through the URL.
+    */
     if (renderFromUrl) {
       synapseObject = getRouteFromParams(location)
       exploreProps = {
@@ -83,4 +83,4 @@ class StackedBarChartControl extends React.Component<
   }
 }
 
-export default withRouter(StackedBarChartControl)
+export default withRouter(ButtonControl)

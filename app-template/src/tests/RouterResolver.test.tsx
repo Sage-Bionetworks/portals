@@ -5,7 +5,7 @@ import routesConfig,
 import { NestedRoute, SynapseObjectSingle } from '../types/portal-config'
 import CardContainerLogic from 'synapse-react-client/dist/containers/CardContainerLogic'
 import { mount } from 'enzyme'
-import StackedBarChartControl from '../custom-components/StackedBarChartControl'
+import ButtonControl from '../custom-components/ButtonControl'
 import { MemoryRouter } from 'react-router'
 
 describe('getRouteFromParams works', () => {
@@ -42,7 +42,7 @@ describe('RouteResolver works', () => {
 
   it('renders portal specific components correctly', () => {
     const mockedSynObject: SynapseObjectSingle = {
-      name: 'StackedBarChartControl',
+      name: 'ButtonControl',
       props: {
         queryWrapperConfigs: [
           {
@@ -56,7 +56,7 @@ describe('RouteResolver works', () => {
     }
     // have to mock the routing because stackedbarchart preview uses a Link object
     const synObj = mount(<MemoryRouter>{generateSynapseObjectHelper(mockedSynObject)}</MemoryRouter>)
-    expect(synObj.find(StackedBarChartControl)).toHaveLength(1)
+    expect(synObj.find(ButtonControl)).toHaveLength(1)
   })
 
 })

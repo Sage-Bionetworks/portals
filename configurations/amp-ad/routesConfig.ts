@@ -9,7 +9,7 @@ const routes: GenericRoute [] = [
     isNested: false,
     synapseObject: [
       {
-        name: 'StackedBarChartControl',
+        name: 'ButtonControl',
         title: 'EXPLORE CONTENT',
         props: {
           queryWrapperConfigs: [

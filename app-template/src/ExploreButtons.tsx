@@ -1,6 +1,6 @@
 import * as React from 'react'
 import routesConfig from './config/routesConfig'
-import { GenericRoute, NestedRoute } from './types/portal-config'
+import { NestedRoute } from './types/portal-config'
 
 type Element = {
   name: string

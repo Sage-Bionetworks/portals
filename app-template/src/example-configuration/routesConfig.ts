@@ -81,7 +81,7 @@ routes[HOME_INDEX] = {
   synapseObject: [
     {
       title: 'Explore Portals',
-      name: 'StackedBarChartControl',
+      name: 'ButtonControl',
       props: {
         queryWrapperConfigs: [
           data.homePageSynapseObject.props,
