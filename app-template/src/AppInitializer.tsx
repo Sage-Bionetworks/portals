@@ -37,21 +37,26 @@ class AppInitializer extends React.Component<AppInitializerProps, AppInitializer
       console.log('no token from cookie could be fetched ', _err)
     })
     // PORTALS-490: Set Synapse callback cookie
-    // TODO: get the computed style color (and background-color) property values (from the footer?)!
-    // TODO: set the icon url (), or name
-    let background = '#4db7ad'
     let color = 'white'
+    let background = '#4db7ad'
     let name = ''
+    let icon = ''
     const footerElement = document.querySelector('#footer')
     if (footerElement) {
       color = window.getComputedStyle(footerElement, null).getPropertyValue('color')
       background = window.getComputedStyle(footerElement, null).getPropertyValue('background-color')
     }
+    const homeLinkImgElement = document.querySelector('#home-link img')
+    if (homeLinkImgElement) {
+      const imageSrc = homeLinkImgElement.getAttribute('src')
+      if (imageSrc) {
+        icon = imageSrc
+      }
+    }
     const homeLinkElement = document.querySelector('#home-link')
     if (homeLinkElement && homeLinkElement.textContent) {
       name = homeLinkElement.textContent
     }
-    const icon = 'https://nf.synapse.org/static/media/nf-logo-white.b126d37b.svg'
     const cookieValue = {
       foregroundColor: color,
       backgroundColor: background,
@@ -61,7 +66,7 @@ class AppInitializer extends React.Component<AppInitializerProps, AppInitializer
     }
     this.props.cookies.set(
       'org.sagebionetworks.security.cookies.portal.config',
-      JSON.stringify(cookieValue), { path: '/' }) // , domain: '.synapse.org' })
+      JSON.stringify(cookieValue), { path: '/', domain: '.synapse.org' })
   }
 
   componentDidUpdate(prevProps: any) {
