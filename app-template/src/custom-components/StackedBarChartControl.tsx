@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { ExploreButtons } from '../ExploreButtons'
-import QueryWrapper, { QueryWrapperProps } from 'synapse-react-client/dist/containers/QueryWrapper'
+import QueryWrapper from 'synapse-react-client/dist/containers/QueryWrapper'
 import StackedBarChart from 'synapse-react-client/dist/containers/StackedBarChart'
 import { Link } from 'react-router-dom'
 
@@ -9,7 +9,7 @@ type Info = {
 }
 
 export type StackedBarChartControlProps = {
-  queryWrapperConfigs: (QueryWrapperProps & Info) []
+  queryWrapperConfigs: (any & Info) []
 }
 
 export type StackedBarChartControlState = {
