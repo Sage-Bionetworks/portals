@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import * as React from 'react'
 import routesConfig from './config/routesConfig'
-import { Route } from './types/portal-config'
+import { GenericRoute } from './types/portal-config'
 import logoHeaderConfig from './config/logoHeaderConfig'
 
 export type NavbarState = {
@@ -76,7 +76,7 @@ export class Navbar extends React.Component<{}, NavbarState> {
                   const displayName = el.displayName ? el.displayName : el.name
                   if (el.isNested) {
                     // handle the case when the menu has sub options
-                    const plainRoutes = el.routes as Route []
+                    const plainRoutes = el.routes as GenericRoute []
                     const key = `dropdown${currentNestedRouteCount}`
                     const isCurrentDropdownOpen = this.state[key]
                     const toggleDropdown = this.toggleDropdown(currentNestedRouteCount)
@@ -97,7 +97,7 @@ export class Navbar extends React.Component<{}, NavbarState> {
                                       onClick={toggleDropdown}
                                       // tslint:disable-next-line:max-line-length
                                       className="dropdown-link SRC-primary-background-color-hover SRC-nested-color center-content"
-                                      to={route.to}
+                                      to={route.to!}
                                     >
                                       {routeDisplayName}
                                     </Link>)

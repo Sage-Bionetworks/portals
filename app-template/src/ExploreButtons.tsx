@@ -6,7 +6,7 @@ type Element = {
   name: string
 }
 
-type ExploreButtonProps = {
+export type ExploreButtonProps = {
   handleChanges: (text: string, index: number) => void
   isSelected: (name: string) => boolean
   customRoutes?: Element []

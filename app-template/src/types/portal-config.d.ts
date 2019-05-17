@@ -66,27 +66,26 @@ export type HomeExploreConfig = {
   explorePageSynapseObject: SynapseObjectSingle
 }
 
-export type Route = {
+export interface BaseRoute {
   name: string
   displayName?: string
   isNested: false       
   to: string
   link?: string
   synapseObject: SynapseObject
+  routes?: Array<Route>
   // catch all
   addOns?: any
 }
 
-export type NestedRoute = {
-  name: string
-  displayName?: string
+export interface NestedRoute extends BaseRoute {
   isNested: true
-  routes: Array<Route>
-  // catch all
-  addOns?: any
+  routes: Array<BaseRoute>
+  synapseObject?: SynapseObject
+  to?: string
 }
 
-export type GenericRoute = (Route | NestedRoute)
+export type GenericRoute = NestedRoute | BaseRoute
 // Route - end
 
 // Footer - start

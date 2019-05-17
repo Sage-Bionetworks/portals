@@ -19,7 +19,7 @@ const App: React.SFC<{}> = ({}) => {
             <Switch>
               {/* exact takes precendence over RouteResolver */}
               <Route exact={true} path="/" component={Home}/>
-              <Route path="/Explore" component={Explore}/>
+              {/* <Route path="/Explore/{}/" component={Explore}/> */}
               {/* all other routes handled programatically */}
               <Route path="/" component={RouteResolver}/>
             </Switch>
