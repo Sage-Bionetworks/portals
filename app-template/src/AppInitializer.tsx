@@ -43,6 +43,7 @@ class AppInitializer extends React.Component<AppInitializerProps, AppInitializer
     // https://github.com/ReactTraining/react-router/blob/master/packages/react-router-dom/docs/guides/scroll-restoration.md
     if (this.props.location !== prevProps.location) {
       window.scrollTo(0, 0)
+      this.updateSynapseCallbackCookie()
     }
   }
 
