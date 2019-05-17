@@ -36,7 +36,30 @@ class AppInitializer extends React.Component<AppInitializerProps, AppInitializer
     ).catch((_err) => {
       console.log('no token from cookie could be fetched ', _err)
     })
-    // PORTALS-490: Set Synapse callback cookie
+    this.updateSynapseCallbackCookie()
+  }
+
+  componentDidUpdate(prevProps: any) {
+    // https://github.com/ReactTraining/react-router/blob/master/packages/react-router-dom/docs/guides/scroll-restoration.md
+    if (this.props.location !== prevProps.location) {
+      window.scrollTo(0, 0)
+    }
+  }
+
+  render() {
+    return (
+      <TokenContext.Provider value={this.state.token}>
+        {this.props.children}
+      </TokenContext.Provider>
+    )
+  }
+
+  /**
+   * PORTALS-490: Set Synapse callback cookie
+   * Will attempt to set a .synapse.org domain cookie that has enough information to lead the user
+   * back to this portal after visiting www.synapse.org.
+   */
+  updateSynapseCallbackCookie() {
     let color = 'white'
     let background = '#4db7ad'
     let name = ''
@@ -67,21 +90,6 @@ class AppInitializer extends React.Component<AppInitializerProps, AppInitializer
     this.props.cookies.set(
       'org.sagebionetworks.security.cookies.portal.config',
       JSON.stringify(cookieValue), { path: '/', domain: '.synapse.org' })
-  }
-
-  componentDidUpdate(prevProps: any) {
-    // https://github.com/ReactTraining/react-router/blob/master/packages/react-router-dom/docs/guides/scroll-restoration.md
-    if (this.props.location !== prevProps.location) {
-      window.scrollTo(0, 0)
-    }
-  }
-
-  render() {
-    return (
-      <TokenContext.Provider value={this.state.token}>
-        {this.props.children}
-      </TokenContext.Provider>
-    )
   }
 }
 
