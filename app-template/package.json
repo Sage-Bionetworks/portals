@@ -19,7 +19,8 @@
     "sass": "^1.5.1",
     "synapse-react-client": "1.11.29",
     "typescript": "3.4.5",
-    "source-map-explorer": "^1.6.0"
+    "source-map-explorer": "^1.6.0",
+    "react-cookie": "4.0.0"
   },
   "scripts": {
     "build-css": "node-sass src/ -o src/",
