@@ -4,8 +4,9 @@ import { withRouter } from 'react-router'
 import routesConfig from './config/routesConfig'
 import { SynapseObjectSingle, GenericRoute } from './types/portal-config'
 import { SynapseComponents } from 'synapse-react-client'
-import ButtonControl from './custom-components/ButtonControl'
 import { TokenContext } from './AppInitializer'
+import HomeButtonControl from './portal-components/HomeButtonControl'
+import ExploreButtonControl from './portal-components/ExploreButtonControl'
 
 export type RouteResolverProps = {
   location: any
@@ -33,10 +34,11 @@ export const getRouteFromParams = (pathname: string) => {
 }
 
 export const generateSynapseObjectHelper = (synapseObject: SynapseObjectSingle) => {
-  console.log('in helper with synapseObject = ', synapseObject)
-  console.log('in helper with synapseObject.name = ', synapseObject.name)
-  if (synapseObject.name === 'ButtonControl') {
-    return <ButtonControl {...synapseObject.props} />
+  if (synapseObject.name === 'HomeButtonControl') {
+    return <HomeButtonControl {...synapseObject.props} />
+  }
+  if (synapseObject.name === 'ExploreButtonControl') {
+    return <ExploreButtonControl {...synapseObject.props} />
   }
   const SynapseComponent = (SynapseComponents as any)[synapseObject.name]
   if (!SynapseComponent) {

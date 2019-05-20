@@ -1,7 +1,7 @@
 import { SynapseObjectSingle } from '../types/portal-config'
 
 const exploreButtonsConfiguration: SynapseObjectSingle = {
-  name: 'ButtonControl',
+  name: 'ExploreButtonControl',
   title: 'Explore',
   props: {
     renderFromUrl: true,

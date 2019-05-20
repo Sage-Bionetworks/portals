@@ -10,7 +10,7 @@ const routes: GenericRoute [] = [
     isNested: false,
     synapseObject: [
       {
-        name: 'ButtonControl',
+        name: 'HomeButtonControl',
         title: 'EXPLORE CONTENT',
         props: {
           renderFromUrl: false,
@@ -49,23 +49,45 @@ const routes: GenericRoute [] = [
   {
     name: 'Explore',
     isNested: true,
-    addOns: {
-      colors: [
-        '#6C5C97',
-        '#E5AE4C',
-        '#5BB0B5',
-        '#5171C0',
-        '#0F9488',
-        '#D4689A',
-      ]
-    },
     routes: [
       {
         name: 'Programs',
-        isNested: false,
+        isNested: true,
         to: '/Explore/Programs',
         synapseObject: [
-          exploreButtonsConfiguration
+          {
+            ...exploreButtonsConfiguration,
+            props: {
+              ...exploreButtonsConfiguration.props,
+              synapseObjectSingle: programs
+            }
+          }
+        ],
+        routes: [
+          {
+            name: 'AMP-AD',
+            isNested: false,
+            to: '/Explore/Programs/AMP-AD',
+            synapseObject: [programs]
+          },
+          {
+            name: 'M2OVE-AD',
+            isNested: false,
+            to: '/Explore/Programs/M2OVE-AD',
+            synapseObject: [programs]
+          },
+          {
+            name: 'MODEL-AD',
+            isNested: false,
+            to: '/Explore/Programs/MODEL-AD',
+            synapseObject: [programs]
+          },
+          {
+            name: 'Resilience-AD',
+            isNested: false,
+            to: '/Explore/Programs/AResilience-AD',
+            synapseObject: [programs]
+          },
         ]
       },
       {
@@ -73,7 +95,13 @@ const routes: GenericRoute [] = [
         isNested: false,
         to: '/Explore/Projects',
         synapseObject: [
-          projects.explorePageSynapseObject
+          {
+            ...exploreButtonsConfiguration,
+            props: {
+              ...exploreButtonsConfiguration.props,
+              synapseObjectSingle: projects.explorePageSynapseObject
+            }
+          }
         ]
       },
       {
@@ -81,7 +109,13 @@ const routes: GenericRoute [] = [
         isNested: false,
         to: '/Explore/Studies',
         synapseObject: [
-          studies.explorePageSynapseObject
+          {
+            ...exploreButtonsConfiguration,
+            props: {
+              ...exploreButtonsConfiguration.props,
+              synapseObjectSingle: studies.explorePageSynapseObject
+            }
+          }
         ]
       },
       {
@@ -89,7 +123,13 @@ const routes: GenericRoute [] = [
         isNested: false,
         to: '/Explore/Data',
         synapseObject: [
-          data.explorePageSynapseObject
+          {
+            ...exploreButtonsConfiguration,
+            props: {
+              ...exploreButtonsConfiguration.props,
+              synapseObjectSingle: data.explorePageSynapseObject
+            }
+          }
         ]
       },
       {
@@ -97,7 +137,13 @@ const routes: GenericRoute [] = [
         isNested: false,
         to: '/Explore/Publications',
         synapseObject: [
-          publications
+          {
+            ...exploreButtonsConfiguration,
+            props: {
+              ...exploreButtonsConfiguration.props,
+              synapseObjectSingle: publications
+            }
+          }
         ]
       },
       {
@@ -105,7 +151,13 @@ const routes: GenericRoute [] = [
         isNested: false,
         to: '/Explore/People',
         synapseObject: [
-          people.explorePageSynapseObject
+          {
+            ...exploreButtonsConfiguration,
+            props: {
+              ...exploreButtonsConfiguration.props,
+              synapseObjectSingle: people.explorePageSynapseObject
+            }
+          }
         ]
       }
     ]

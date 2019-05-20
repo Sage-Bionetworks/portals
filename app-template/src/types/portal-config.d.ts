@@ -1,12 +1,15 @@
 /// <reference types="synapse-react-client" />
 
-import { CardContainerLogicProps } from "synapse-react-client/dist/containers/CardContainerLogic";
-import { MarkdownSynapseProps } from "synapse-react-client/dist/containers/MarkdownSynapse";
-import { StackedBarChartProps } from "synapse-react-client/dist/containers/StackedBarChart";
-import { QueryWrapperMenuProps } from "synapse-react-client/dist/containers/QueryWrapperMenu";
-import { QueryBundleRequest } from "synapse-react-client/dist/utils/jsonResponses/Table/QueryBundleRequest";
-import { QueryResultBundle } from "synapse-react-client/dist/utils/jsonResponses/Table/QueryResultBundle";
-import { ButtonControlProps } from "../custom-components/ButtonControl";
+import { CardContainerLogicProps } from "synapse-react-client/dist/containers/CardContainerLogic"
+import { MarkdownSynapseProps } from "synapse-react-client/dist/containers/MarkdownSynapse"
+import { StackedBarChartProps } from "synapse-react-client/dist/containers/StackedBarChart"
+import { QueryWrapperMenuProps } from "synapse-react-client/dist/containers/QueryWrapperMenu"
+import { QueryBundleRequest } from "synapse-react-client/dist/utils/jsonResponses/Table/QueryBundleRequest"
+import { QueryResultBundle } from "synapse-react-client/dist/utils/jsonResponses/Table/QueryResultBundle"
+import { HomeButtonControlProps } from "../portal-components/HomeButtonControlPropsl"
+import { ExploreButtonControlProps } from "../portal-components/ExploreButtonControlPropsl"
+import { HomeButtonControlProps } from "src/portal-components/HomeButtonControl"
+import { ExploreButtonControlProps } from "src/portal-components/ExploreButtonControl"
 
 // For styling the header on the home page -- the main title and the summary text
 export type HomePageHeaderConfig = {
@@ -47,9 +50,14 @@ type Markdown = {
   props: MarkdownProps
 }
 
-type ButtonControl = {
-  name: 'ButtonControl',
-  props: ButtonControlProps
+type HomeButtonControl = {
+  name: 'HomeButtonControl',
+  props: HomeButtonControlProps
+}
+
+type ExploreButtonControl = {
+  name: 'ExploreButtonControl',
+  props: ExploreButtonControlProps
 }
 
 type Metatdata = {
@@ -57,7 +65,17 @@ type Metatdata = {
   link?: string
 }
 
-export type SynapseObjectSingle = (ButtonControl | CardContainerLogic | StackedBarChart | QueryWrapper | QueryWrapperMenu | UserCard | Markdown ) & Metatdata
+export type SynapseObjectSingle = (
+    HomeButtonControl
+  | ExploreButtonControl
+  | CardContainerLogic
+  | StackedBarChart
+  | QueryWrapper
+  | QueryWrapperMenu
+  | UserCard 
+  | Markdown 
+) 
+& Metatdata
 export type SynapseObject = SynapseObjectSingle [] 
 
 // utility for inside the explore page
@@ -80,7 +98,7 @@ export interface BaseRoute {
 
 export interface NestedRoute extends BaseRoute {
   isNested: true
-  routes: Array<BaseRoute>
+  routes: Array<BaseRoute | NestedRoute>
   synapseObject?: SynapseObject
   to?: string
 }

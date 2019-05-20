@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { mount, shallow } from 'enzyme'
-import ButtonControl, { ButtonControlProps } from '../../custom-components/ButtonControl'
+import ButtonControl, { ButtonControlProps } from '../../portal-components/ButtonControl'
 import { publications, data } from '../../example-configuration/exploreHomeConfiguration'
 import { ExploreButtons } from '../../ExploreButtons'
 // https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/api/MemoryRouter.md
