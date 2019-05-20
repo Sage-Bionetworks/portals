@@ -1,7 +1,8 @@
 import { GenericRoute } from '../types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
-import { projects, studies, data, people, programs, publications } from './homeExploreConfiguration'
+import { projects, studies, data, people, programs, publications } from './synapseConfigs'
 import exploreButtonsConfiguration from './exploreButtonsConfiguration'
+import { ampAd, move2Ad, modelAd, resilienceAd } from './synapseConfigs/programs/'
 
 const routes: GenericRoute [] = [
   {
@@ -68,25 +69,25 @@ const routes: GenericRoute [] = [
             name: 'AMP-AD',
             isNested: false,
             to: '/Explore/Programs/AMP-AD',
-            synapseObject: [programs]
+            synapseObject: ampAd
           },
           {
             name: 'M2OVE-AD',
             isNested: false,
             to: '/Explore/Programs/M2OVE-AD',
-            synapseObject: [programs]
+            synapseObject: move2Ad
           },
           {
             name: 'MODEL-AD',
             isNested: false,
             to: '/Explore/Programs/MODEL-AD',
-            synapseObject: [programs]
+            synapseObject: modelAd
           },
           {
             name: 'Resilience-AD',
             isNested: false,
             to: '/Explore/Programs/AResilience-AD',
-            synapseObject: [programs]
+            synapseObject: resilienceAd
           },
         ]
       },
