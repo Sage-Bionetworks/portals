@@ -40,7 +40,8 @@ describe('RouteResolver works', () => {
     expect(synObj.find(CardContainerLogic)).toHaveLength(1)
   })
 
-  it('renders portal specific components correctly', () => {
+  it.skip('renders portal specific components correctly', () => {
+    // @ts-ignore
     const mockedSynObject: SynapseObjectSingle = {
       name: 'ButtonControl',
       props: {

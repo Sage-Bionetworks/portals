@@ -1,27 +1,30 @@
 import * as React from 'react'
 import { ExploreButtons, ExploreButtonProps } from '../ExploreButtons'
-import { withRouter } from 'react-router-dom'
-import { SynapseObject } from '../types/portal-config'
-import { getRouteFromParams } from '../RouteResolver'
+import { withRouter, RouteComponentProps } from 'react-router-dom'
+import { SynapseObject, SynapseObjectSingle } from '../types/portal-config'
+import homeSynapseObjectRenderer from './homeSynapseObjectRenderer'
+import exploreSynapseObjectRenderer from './exploreSynapseObjectRenderer'
+import { generateSynapseObject, getRouteFromParams } from '../RouteResolver'
+
+type StatefulConfiguration = {
+  synapseObject: SynapseObjectSingle
+  name: string
+}
 
 export type ButtonControlProps = {
-  queryWrapperConfigs: SynapseObject
+  statefulConfigurations?: StatefulConfiguration []
   colors: string []
-  location: any
-  history: any
-  match: any
   renderFromUrl: boolean
-  customRenderSynapseObject: any
 }
 
 export type ButtonControlState = {
   index: number
 }
 
-class ButtonControl extends React.Component<
-  ButtonControlProps, ButtonControlState> {
+type InternalProps = RouteComponentProps & ButtonControlProps
+class ButtonControl extends React.Component<InternalProps, ButtonControlState> {
 
-  constructor(props: ButtonControlProps) {
+  constructor(props: InternalProps) {
     super(props)
     this.state = {
       index: 0
@@ -42,38 +45,41 @@ class ButtonControl extends React.Component<
     const {
       renderFromUrl,
       location,
-      customRenderSynapseObject,
-      queryWrapperConfigs,
+      statefulConfigurations,
       colors,
     } = this.props
-    let synapseObject
+    let synapseObject: any
     // typecasting is treating customRoutes oddly, casting to unknown is the workaround
-    let exploreProps = { colors, customRoutes: queryWrapperConfigs } as unknown as ExploreButtonProps
+    let exploreButtonProps = { colors, customRoutes: statefulConfigurations } as unknown as ExploreButtonProps
     /*
       We special case the rendering based on the use case for button control, whether it should retrieve data
       from props or through the URL.
     */
+    const pathname = location.pathname
+    let customRenderSynapseObject
     if (renderFromUrl) {
-      synapseObject = getRouteFromParams(location)
-      exploreProps = {
-        ...exploreProps,
-        handleChanges: this.handleChange,
-        isSelected: (val: string) => val === name,
-      }
-    } else {
-      synapseObject = queryWrapperConfigs[this.state.index]
-      const pathname = location.pathname
+      synapseObject = getRouteFromParams(pathname).synapseObject
       const subPath = pathname.substring('/Explore/'.length)
-      exploreProps = {
-        ...exploreProps,
+      exploreButtonProps = {
+        ...exploreButtonProps,
         handleChanges: (val: string, _index: number) => this.props.history.push(`/Explore/${val}`),
         isSelected: (name: string) => name === subPath,
       }
+      customRenderSynapseObject = exploreSynapseObjectRenderer
+    } else {
+      const statefulConfig = statefulConfigurations![this.state.index]
+      synapseObject = statefulConfig.synapseObject
+      exploreButtonProps = {
+        ...exploreButtonProps,
+        handleChanges: this.handleChange,
+        isSelected: (val: string) => val === statefulConfig.name,
+      }
+      customRenderSynapseObject = homeSynapseObjectRenderer
     }
     return (
       <React.Fragment>
         <ExploreButtons
-          {...exploreProps}
+          {...exploreButtonProps}
         />
         {
           customRenderSynapseObject(synapseObject)
@@ -83,4 +89,5 @@ class ButtonControl extends React.Component<
   }
 }
 
-export default withRouter(ButtonControl)
+// Use the 'as React..' so that the routing props which are injected don't raise any compiler warnings
+export default withRouter(ButtonControl) as React.ComponentClass<ButtonControlProps, {}>

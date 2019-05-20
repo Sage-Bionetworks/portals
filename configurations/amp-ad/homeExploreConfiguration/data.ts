@@ -17,7 +17,6 @@ const data: HomeExploreConfig = {
       rgbIndex,
       loadingScreen,
       facetName: 'study',
-      name: 'Data',
       initQueryRequest : {
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
         partMask: SynapseConstants.BUNDLE_MASK_QUERY_FACETS

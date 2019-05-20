@@ -1,6 +1,7 @@
 import { GenericRoute } from '../types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
 import { projects, studies, data, people, programs, publications } from './homeExploreConfiguration'
+import exploreButtonsConfiguration from './exploreButtonsConfiguration'
 
 const routes: GenericRoute [] = [
   {
@@ -12,11 +13,12 @@ const routes: GenericRoute [] = [
         name: 'ButtonControl',
         title: 'EXPLORE CONTENT',
         props: {
-          queryWrapperConfigs: [
-            projects.homePageSynapseObject.props,
-            studies.homePageSynapseObject.props,
-            data.homePageSynapseObject.props,
-            people.homePageSynapseObject.props
+          renderFromUrl: false,
+          statefulConfigurations: [
+            { name: 'Projects', synapseObject: projects.homePageSynapseObject },
+            { name: 'Studies', synapseObject: studies.homePageSynapseObject },
+            { name: 'Data', synapseObject: data.homePageSynapseObject },
+            { name: 'People', synapseObject: people.homePageSynapseObject }
           ],
           colors: [
             '#E5AE4C',
@@ -63,7 +65,7 @@ const routes: GenericRoute [] = [
         isNested: false,
         to: '/Explore/Programs',
         synapseObject: [
-          programs
+          exploreButtonsConfiguration
         ]
       },
       {

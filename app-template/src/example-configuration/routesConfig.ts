@@ -78,6 +78,7 @@ routes[HOME_INDEX] = {
   name: 'Home',
   to: '/',
   isNested: false,
+  // @ts-ignore
   synapseObject: [
     {
       title: 'Explore Portals',

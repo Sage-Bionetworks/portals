@@ -8,10 +8,11 @@ import { MemoryRouter } from 'react-router'
 
 describe('functions correctly', () => {
 
+  // @ts-ignore
   const props: ButtonControlProps = {
-    queryWrapperConfigs: [
-      data.homePageSynapseObject.props,
-      publications.homePageSynapseObject.props
+    statefulConfigurations: [
+      { name: 'data', synapseObject: data.homePageSynapseObject.props },
+      { name: 'publications', synapseObject: publications.homePageSynapseObject.props }
     ],
     colors: [
       'purple',

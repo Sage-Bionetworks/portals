@@ -33,10 +33,15 @@ export const getRouteFromParams = (pathname: string) => {
 }
 
 export const generateSynapseObjectHelper = (synapseObject: SynapseObjectSingle) => {
+  console.log('in helper with synapseObject = ', synapseObject)
+  console.log('in helper with synapseObject.name = ', synapseObject.name)
   if (synapseObject.name === 'ButtonControl') {
     return <ButtonControl {...synapseObject.props} />
   }
   const SynapseComponent = (SynapseComponents as any)[synapseObject.name]
+  if (!SynapseComponent) {
+    return <div> no luck ! </div>
+  }
   return <SynapseComponent {...synapseObject.props} />
 }
 

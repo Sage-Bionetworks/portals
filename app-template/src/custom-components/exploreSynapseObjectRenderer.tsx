@@ -1,13 +1,13 @@
 import * as React from 'react'
-import RouteResolver from '../RouteResolver'
+import RouteResolver, { generateSynapseObject } from '../RouteResolver'
 import { SynapseObjectSingle } from '../types/portal-config'
 
-const ExplorePage = (_synapseObject: SynapseObjectSingle) => {
+const ExplorePage = (synapseObject: SynapseObjectSingle) => {
   return (
     <div className={'container explore'}>
         <div className="row">
           {
-            <RouteResolver />
+            generateSynapseObject(synapseObject)
           }
         </div>
     </div>

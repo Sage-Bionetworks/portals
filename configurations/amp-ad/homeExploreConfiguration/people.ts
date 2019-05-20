@@ -16,7 +16,6 @@ const people: HomeExploreConfig = {
       rgbIndex,
       loadingScreen,
       facetName: 'Program',
-      name: 'People',
       initQueryRequest : {
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
         partMask: SynapseConstants.BUNDLE_MASK_QUERY_FACETS
