@@ -4,6 +4,7 @@ $primary-action-color: #47337D;
 
 #header, #footer {
   background-blend-mode: multiply;
+  background-color: $primary-text-color;
 }
 
 // Since scss breaks if a file is missing in a local url link these functinons must get manually overwitten

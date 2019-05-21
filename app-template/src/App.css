@@ -36,18 +36,15 @@ body button:focus {
   display: flex;
   align-items: center; }
 
-#header {
-  background: linear-gradient(#109488, #05635b), url("config/style/molecule-back.svg") no-repeat;
-  background-blend-mode: color; }
-
-#footer {
-  background-color: #4db7ad !important; }
+#header, #footer {
+  background-blend-mode: multiply;
+  background-color: #407BA0; }
 
 .SRC-primary-background-color {
-  background-color: #4db7ad !important; }
+  background-color: #47337D !important; }
 
 .SRC-primary-background-color-hover:hover {
-  background: #4db7ad !important;
+  background: #47337D !important;
   color: white !important; }
 
 .SRC-primary-background-color-hover:hover svg.SRC-primary-text-color {
@@ -57,7 +54,7 @@ body button:focus {
   color: white; }
 
 .SRC-primary-background-color-hover.SRC-nested-color:hover * {
-  background-color: #4db7ad !important;
+  background-color: #47337D !important;
   color: white !important; }
 
 .spacer {
@@ -102,7 +99,7 @@ body button:focus {
 
 .nav a:focus {
   text-decoration: none;
-  color: #4db7ad; }
+  color: #47337D; }
 
 .nav-button, .dropdown.nav-button-container, .nav-button-container:hover, .dropdown.nav-button-container.bottom-border {
   border-bottom-style: solid;
@@ -126,17 +123,17 @@ body button:focus {
   white-space: nowrap; }
 
 .nav-button-container:hover, .dropdown.nav-button-container.bottom-border {
-  border-bottom-color: #4db7ad;
-  color: #4db7ad; }
+  border-bottom-color: #47337D;
+  color: #47337D; }
 
 #home-link {
   font-weight: bold;
   font-size: 25px;
-  color: #4db7ad;
+  color: #47337D;
   margin-left: 15px; }
 
 .open > a {
-  color: #4db7ad !important;
+  color: #47337D !important;
   background-color: white !important; }
 
 .open > a:focus {
@@ -180,8 +177,8 @@ body button:focus {
 
 #footer {
   text-transform: uppercase;
-  background-image: "";
-  background-color: #c94281;
+  background-image: url("config/style//dna.svg");
+  background-color: #407BA0;
   background-repeat: no-repeat;
   background-size: cover;
   color: white;
@@ -192,13 +189,13 @@ body button:focus {
   color: white; }
 
 .SRC-primary-text-color {
-  color: #c94281 !important; }
+  color: #407BA0 !important; }
 
 .footer-help {
   flex-basis: 50%; }
 
 #header {
-  background-image: "";
+  background-image: url("config/style/dna_header.svg");
   background-repeat: no-repeat;
   background-size: cover;
   height: fit-content;
@@ -260,7 +257,7 @@ body button:focus {
   right: 50px;
   position: absolute;
   border-radius: 24px;
-  background-color: #4db7ad;
+  background-color: #47337D;
   position: absolute;
   color: white;
   height: 44px;
@@ -303,7 +300,7 @@ body button:focus {
   justify-content: center; }
 
 .viewAll:hover {
-  background-color: #4db7ad;
+  background-color: #47337D;
   color: white;
   text-decoration: none; }
 
@@ -317,13 +314,13 @@ body button:focus {
   border-width: 0px; }
 
 div.SRC-title > h3 a {
-  color: #c94281; }
+  color: #407BA0; }
 
 button.btn-sm.SRC-floatRight {
   border: none; }
 
 button.btn-sm.SRC-floatRight svg {
-  color: #4db7ad !important; }
+  color: #47337D !important; }
 
 #exploreCount {
   padding-top: 20px; }
