@@ -51,7 +51,7 @@ class ButtonControl extends React.Component<InternalProps, ButtonControlState> {
       isSelected: (val: string) => val === statefulConfig.name,
     }
     const statefulConfig = configs![this.state.index]
-    const synapseObject = statefulConfig.synapseObjectSingle
+    const synapseObjectSingle = statefulConfig.synapseObjectSingle
     return (
       <React.Fragment>
         <ExploreButtons
@@ -59,9 +59,9 @@ class ButtonControl extends React.Component<InternalProps, ButtonControlState> {
         />
         <div className="homeExploreContainer">
           <div id="homePageBarChart">
-            {generateSynapseObject(synapseObject)}
+            {generateSynapseObject(synapseObjectSingle)}
           </div>
-          <Link to={`/Explore/${synapseObject.name}`} id="exploreData"> Explore {statefulConfig.name} </Link>
+          <Link to={`/Explore/${statefulConfig.name}`} id="exploreData"> Explore {statefulConfig.name} </Link>
         </div>
       </React.Fragment>
     )

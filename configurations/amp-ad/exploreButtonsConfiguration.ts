@@ -12,8 +12,28 @@ const exploreButtonsConfiguration: SynapseObjectSingle = {
       '#5171C0',
       '#0f9488',
       '#D4689A',
+    ],
+    customRoutes: [
+      {
+        name: 'Programs'
+      },
+      {
+        name: 'Projects'
+      },
+      {
+        name: 'Studies'
+      },
+      {
+        name: 'Data'
+      },
+      {
+        name: 'Publications'
+      },
+      {
+        name: 'People'
+      }
     ]
-  }
+  },
 }
 
 export default exploreButtonsConfiguration

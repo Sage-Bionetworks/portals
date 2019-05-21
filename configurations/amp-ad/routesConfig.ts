@@ -15,10 +15,10 @@ const routes: GenericRoute [] = [
         title: 'EXPLORE CONTENT',
         props: {
           configs: [
-            { name: 'Projects', synapseObject: projects.homePageSynapseObject },
-            { name: 'Studies', synapseObject: studies.homePageSynapseObject },
-            { name: 'Data', synapseObject: data.homePageSynapseObject },
-            { name: 'People', synapseObject: people.homePageSynapseObject }
+            { name: 'Projects', synapseObjectSingle: projects.homePageSynapseObject },
+            { name: 'Studies', synapseObjectSingle: studies.homePageSynapseObject },
+            { name: 'Data', synapseObjectSingle: data.homePageSynapseObject },
+            { name: 'People', synapseObjectSingle: people.homePageSynapseObject }
           ],
           colors: [
             '#E5AE4C',

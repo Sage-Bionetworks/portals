@@ -5,7 +5,6 @@ import { Footer } from './Footer'
 import AppInitializer from './AppInitializer'
 import { Navbar } from './Navbar'
 const Home = React.lazy(() => import('./Home'))
-const Explore = React.lazy(() => import('./Explore'))
 const RouteResolver = React.lazy(() => import('./RouteResolver'))
 
 const App: React.SFC<{}> = ({}) => {
@@ -19,7 +18,6 @@ const App: React.SFC<{}> = ({}) => {
             <Switch>
               {/* exact takes precendence over RouteResolver */}
               <Route exact={true} path="/" component={Home}/>
-              {/* <Route path="/Explore/{}/" component={Explore}/> */}
               {/* all other routes handled programatically */}
               <Route path="/" component={RouteResolver}/>
             </Switch>
