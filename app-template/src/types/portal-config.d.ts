@@ -72,9 +72,9 @@ export type SynapseObjectSingle = (
   | QueryWrapperMenu
   | UserCard 
   | Markdown 
-) 
+)
 & Metatdata
-export type SynapseObject = SynapseObjectSingle [] 
+export type SynapseObject = SynapseObjectSingle []
 
 // utility for inside the explore page
 export type HomeExploreConfig = {
@@ -85,7 +85,7 @@ export type HomeExploreConfig = {
 export interface BaseRoute {
   name: string
   displayName?: string
-  isNested: false       
+  isNested: false
   to: string
   link?: string
   synapseObject: SynapseObject

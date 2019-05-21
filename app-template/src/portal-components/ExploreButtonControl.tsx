@@ -15,9 +15,9 @@ export type ButtonControlState = {
   index: number
 }
 
-type InternalProps = RouteComponentProps & ExploreButtonControlProps
+type Props = RouteComponentProps & ExploreButtonControlProps
 
-const ButtonControl:React.FunctionComponent<InternalProps> = ({ location, synapseObjectSingle, colors, history, customRoutes }) => {
+const ButtonControl:React.FunctionComponent<Props> = ({ location, synapseObjectSingle, colors, history, customRoutes }) => {
   const pathname = location.pathname
   const subPath = pathname.substring('/Explore/'.length)
   const exploreButtonProps: ExploreButtonProps = {

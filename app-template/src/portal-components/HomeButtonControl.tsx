@@ -18,10 +18,10 @@ export type ButtonControlState = {
   index: number
 }
 
-type InternalProps = RouteComponentProps & HomeButtonControlProps
-class ButtonControl extends React.Component<InternalProps, ButtonControlState> {
+type Props = RouteComponentProps & HomeButtonControlProps
+class ButtonControl extends React.Component<Props, ButtonControlState> {
 
-  constructor(props: InternalProps) {
+  constructor(props: Props) {
     super(props)
     this.state = {
       index: 0

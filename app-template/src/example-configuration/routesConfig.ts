@@ -50,7 +50,7 @@ routes[ORGANIZATION_INDEX] = {
   routes: [
     {
       name: 'Organization-CTF',
-      isNested: false,
+      isNested: true,
       to: '/Organizations/Organization-CTF',
       synapseObject: [
         {
@@ -68,6 +68,20 @@ routes[ORGANIZATION_INDEX] = {
             type: SynapseConstants.CSBC_DATASET,
             sql: `SELECT * FROM syn18488466 WHERE ( ( "featured" = 'TRUE' ) )`
           }
+        }
+      ],
+      routes: [
+        {
+          name: 'CTF',
+          isNested: false,
+          to: '/Organizations/Organization-CTF',
+          synapseObject: [{
+            name: 'Markdown',
+            props: {
+              ownerId: 'syn18421331',
+              wikiId: '590615'
+            }
+          }],
         }
       ]
     }
