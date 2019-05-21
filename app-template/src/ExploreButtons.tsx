@@ -1,30 +1,23 @@
 import * as React from 'react'
-import routesConfig from './config/routesConfig'
-import { NestedRoute } from './types/portal-config'
 
-type Element = {
+export type NamedRoute = {
   name: string
 }
 
 export type ExploreButtonProps = {
   handleChanges: (text: string, index: number) => void
   isSelected: (name: string) => boolean
-  customRoutes?: Element []
+  customRoutes: NamedRoute []
   colors: string []
 }
 
-export const ExploreButtons: React.FunctionComponent<ExploreButtonProps> = ({ handleChanges, isSelected, customRoutes = undefined, colors }) => {
+export const ExploreButtons: React.FunctionComponent<ExploreButtonProps> = ({ handleChanges, isSelected, customRoutes, colors }) => {
   const setActiveClass = (isSelected: boolean) => isSelected ? 'active-button' : ''
-  const exploreRoute = routesConfig.find(el => el.name === 'Explore') as NestedRoute
-  const usedRoutes = customRoutes ? customRoutes : exploreRoute.routes
-  if (colors.length !== usedRoutes.length) {
-    throw Error('Explore buttons require that colors.length equal the number of buttons rendered to the screen')
-  }
-  if (usedRoutes) {
+  if (customRoutes) {
     return (
       <div className="explore-buttons">
         {
-          usedRoutes.map(
+          customRoutes.map(
             (el, index) => {
               const handleClick = () => handleChanges(el.name, index)
               const style = { background: colors[index], borderTopColor: colors[index] }

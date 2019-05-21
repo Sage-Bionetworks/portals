@@ -1,13 +1,14 @@
 import * as React from 'react'
-import { ExploreButtons, ExploreButtonProps } from '../ExploreButtons'
+import { ExploreButtons, ExploreButtonProps, NamedRoute } from '../ExploreButtons'
 import { withRouter, RouteComponentProps } from 'react-router-dom'
 import { SynapseObjectSingle } from '../types/portal-config'
-import { generateSynapseObject, getRouteFromParams } from '../RouteResolver'
+import { generateSynapseObject } from '../RouteResolver'
 
 export type ExploreButtonControlProps = {
   synapseObjectSingle: SynapseObjectSingle
   colors: string []
-  renderFromUrl: boolean
+  // we have to pass in all the custom routes because unlike the home page the explore buttons configs aren't held in state
+  customRoutes: NamedRoute []
 }
 
 export type ButtonControlState = {
@@ -15,58 +16,34 @@ export type ButtonControlState = {
 }
 
 type InternalProps = RouteComponentProps & ExploreButtonControlProps
-class ButtonControl extends React.Component<InternalProps, ButtonControlState> {
 
-  constructor(props: InternalProps) {
-    super(props)
-    this.state = {
-      index: 0
-    }
+const ButtonControl:React.FunctionComponent<InternalProps> = ({ location, synapseObjectSingle, colors, history, customRoutes }) => {
+  const pathname = location.pathname
+  const subPath = pathname.substring('/Explore/'.length)
+  const exploreButtonProps: ExploreButtonProps = {
+    colors,
+    customRoutes,
+    handleChanges: (val: string, _index: number) => history.push(`/Explore/${val}`),
+    isSelected: (name: string) => name === subPath,
   }
-
   /*
-    This sets the synapse config from the corresponding click event
-    of the explore buttons
+    We special case the rendering based on the use case for button control, whether it should retrieve data
+    from props or through the URL.
   */
-  public handleChange = (_val: string, index: number) => {
-    this.setState({
-      index
-    })
-  }
-
-  render() {
-    const {
-      location,
-      synapseObjectSingle,
-      colors,
-    } = this.props
-    const pathname = location.pathname
-    const subPath = pathname.substring('/Explore/'.length)
-    const exploreButtonProps: ExploreButtonProps = {
-      colors,
-      handleChanges: (val: string, _index: number) => this.props.history.push(`/Explore/${val}`),
-      isSelected: (name: string) => name === subPath,
-    }
-    /*
-      We special case the rendering based on the use case for button control, whether it should retrieve data
-      from props or through the URL.
-    */
-    return (
-      <React.Fragment>
-        <ExploreButtons
-          {...exploreButtonProps}
-        />
-        <div className={'container explore'}>
-          <div className="row">
-            {
-              generateSynapseObject(synapseObjectSingle)
-            }
-          </div>
+  return (
+    <React.Fragment>
+      <ExploreButtons
+        {...exploreButtonProps}
+      />
+      <div className={'container explore'}>
+        <div className="row">
+          {
+            generateSynapseObject(synapseObjectSingle)
+          }
         </div>
-      </React.Fragment>
-    )
-  }
+      </div>
+    </React.Fragment>
+  )
 }
 
-// Use the 'as React..' so that the routing props which are injected don't raise any compiler warnings
-export default withRouter(ButtonControl) as React.ComponentClass<ExploreButtonControlProps, {}>
+export default withRouter(ButtonControl)

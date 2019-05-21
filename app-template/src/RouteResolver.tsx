@@ -33,23 +33,23 @@ export const getRouteFromParams = (pathname: string) => {
   return route
 }
 
-export const generateSynapseObjectHelper = (synapseObject: SynapseObjectSingle) => {
-  if (synapseObject.name === 'HomeButtonControl') {
-    return <HomeButtonControl {...synapseObject.props} />
+export const generateSynapseObjectHelper = (synapseObjectSingle: SynapseObjectSingle) => {
+  if (synapseObjectSingle.name === 'HomeButtonControl') {
+    return <HomeButtonControl {...synapseObjectSingle.props} />
   }
-  if (synapseObject.name === 'ExploreButtonControl') {
-    return <ExploreButtonControl {...synapseObject.props} />
+  if (synapseObjectSingle.name === 'ExploreButtonControl') {
+    return <ExploreButtonControl {...synapseObjectSingle.props} />
   }
-  const SynapseComponent = (SynapseComponents as any)[synapseObject.name]
+  const SynapseComponent = (SynapseComponents as any)[synapseObjectSingle.name]
   if (!SynapseComponent) {
     return <div> no luck ! </div>
   }
-  return <SynapseComponent {...synapseObject.props} />
+  return <SynapseComponent {...synapseObjectSingle.props} />
 }
 
-export const generateSynapseObject = (synapseObject: SynapseObjectSingle) => {
+export const generateSynapseObject = (synapseObjectSingle: SynapseObjectSingle) => {
   // return the synapse object but with token injected into its props from the context created in AppInitializer
-  const { props, ...rest } = synapseObject
+  const { props, ...rest } = synapseObjectSingle
   return (
     <TokenContext.Consumer>
       {

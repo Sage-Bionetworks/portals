@@ -14,8 +14,7 @@ const routes: GenericRoute [] = [
         name: 'HomeButtonControl',
         title: 'EXPLORE CONTENT',
         props: {
-          renderFromUrl: false,
-          statefulConfigurations: [
+          configs: [
             { name: 'Projects', synapseObject: projects.homePageSynapseObject },
             { name: 'Studies', synapseObject: studies.homePageSynapseObject },
             { name: 'Data', synapseObject: data.homePageSynapseObject },

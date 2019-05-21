@@ -5,7 +5,7 @@ import routesConfig,
 import { NestedRoute, SynapseObjectSingle } from '../types/portal-config'
 import CardContainerLogic from 'synapse-react-client/dist/containers/CardContainerLogic'
 import { mount } from 'enzyme'
-import ButtonControl from '../portal-components/ButtonControl'
+import HomeButtonControl from '../portal-components/HomeButtonControl'
 import { MemoryRouter } from 'react-router'
 
 describe('getRouteFromParams works', () => {
@@ -40,24 +40,27 @@ describe('RouteResolver works', () => {
     expect(synObj.find(CardContainerLogic)).toHaveLength(1)
   })
 
-  it.skip('renders portal specific components correctly', () => {
-    // @ts-ignore
+  it('renders portal specific components correctly', () => {
     const mockedSynObject: SynapseObjectSingle = {
       name: 'HomeButtonControl',
       props: {
-        queryWrapperConfigs: [
+        configs: [
           {
-            facetName: '',
-            name: '',
-            initQueryRequest: { query: { sql: '' },  concreteType: '', partMask: 123 },
-          },
+            name: 'mock',
+            synapseObjectSingle: {
+              name: 'CardContainerLogic',
+              props: {
+                sql: '',
+                type: ''
+              }
+            }
+          }
         ],
-        colors: []
+        colors: ['red']
       }
     }
-    // have to mock the routing because stackedbarchart preview uses a Link object
     const synObj = mount(<MemoryRouter>{generateSynapseObjectHelper(mockedSynObject)}</MemoryRouter>)
-    expect(synObj.find(ButtonControl)).toHaveLength(1)
+    expect(synObj.find(HomeButtonControl)).toHaveLength(1)
   })
 
 })

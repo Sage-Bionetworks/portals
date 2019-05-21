@@ -1,15 +1,13 @@
 /// <reference types="synapse-react-client" />
 
-import { CardContainerLogicProps } from "synapse-react-client/dist/containers/CardContainerLogic"
-import { MarkdownSynapseProps } from "synapse-react-client/dist/containers/MarkdownSynapse"
-import { StackedBarChartProps } from "synapse-react-client/dist/containers/StackedBarChart"
-import { QueryWrapperMenuProps } from "synapse-react-client/dist/containers/QueryWrapperMenu"
-import { QueryBundleRequest } from "synapse-react-client/dist/utils/jsonResponses/Table/QueryBundleRequest"
-import { QueryResultBundle } from "synapse-react-client/dist/utils/jsonResponses/Table/QueryResultBundle"
-import { HomeButtonControlProps } from "../portal-components/HomeButtonControlPropsl"
-import { ExploreButtonControlProps } from "../portal-components/ExploreButtonControlPropsl"
-import { HomeButtonControlProps } from "src/portal-components/HomeButtonControl"
-import { ExploreButtonControlProps } from "src/portal-components/ExploreButtonControl"
+import { CardContainerLogicProps } from 'synapse-react-client/dist/containers/CardContainerLogic'
+import { MarkdownSynapseProps } from 'synapse-react-client/dist/containers/MarkdownSynapse'
+import { StackedBarChartProps } from 'synapse-react-client/dist/containers/StackedBarChart'
+import { QueryWrapperMenuProps } from 'synapse-react-client/dist/containers/QueryWrapperMenu'
+import { QueryBundleRequest } from 'synapse-react-client/dist/utils/jsonResponses/Table/QueryBundleRequest'
+import { QueryResultBundle } from 'synapse-react-client/dist/utils/jsonResponses/Table/QueryResultBundle'
+import { HomeButtonControlProps } from '../portal-components/HomeButtonControl'
+import { ExploreButtonControlProps } from '../portal-components/ExploreButtonControl'
 
 // For styling the header on the home page -- the main title and the summary text
 export type HomePageHeaderConfig = {

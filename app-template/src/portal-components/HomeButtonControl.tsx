@@ -4,15 +4,14 @@ import { withRouter, RouteComponentProps, Link } from 'react-router-dom'
 import { SynapseObjectSingle } from '../types/portal-config'
 import { generateSynapseObject } from '../RouteResolver'
 
-type StatefulConfiguration = {
-  synapseObject: SynapseObjectSingle
+type HomeButtonControlConfigs = {
+  synapseObjectSingle: SynapseObjectSingle
   name: string
 }
 
 export type HomeButtonControlProps = {
-  statefulConfigurations?: StatefulConfiguration []
+  configs: HomeButtonControlConfigs []
   colors: string []
-  renderFromUrl: boolean
 }
 
 export type ButtonControlState = {
@@ -41,18 +40,18 @@ class ButtonControl extends React.Component<InternalProps, ButtonControlState> {
 
   render() {
     const {
-      statefulConfigurations,
+      configs,
       colors,
     } = this.props
     // typecasting is treating customRoutes oddly, casting to unknown is the workaround
     const exploreButtonProps: ExploreButtonProps = {
       colors,
-      customRoutes: statefulConfigurations,
+      customRoutes: configs,
       handleChanges: this.handleChange,
       isSelected: (val: string) => val === statefulConfig.name,
     }
-    const statefulConfig = statefulConfigurations![this.state.index]
-    const synapseObject = statefulConfig.synapseObject
+    const statefulConfig = configs![this.state.index]
+    const synapseObject = statefulConfig.synapseObjectSingle
     return (
       <React.Fragment>
         <ExploreButtons
@@ -62,7 +61,7 @@ class ButtonControl extends React.Component<InternalProps, ButtonControlState> {
           <div id="homePageBarChart">
             {generateSynapseObject(synapseObject)}
           </div>
-          <Link to={`/Explore/${synapseObject.name}`} id="exploreData"> Explore {synapseObject.name} </Link>
+          <Link to={`/Explore/${synapseObject.name}`} id="exploreData"> Explore {statefulConfig.name} </Link>
         </div>
       </React.Fragment>
     )

@@ -4,7 +4,7 @@ const exploreButtonsConfiguration: SynapseObjectSingle = {
   name: 'ExploreButtonControl',
   title: 'Explore',
   props: {
-    renderFromUrl: true,
+    synapseObjectSingle: {} as SynapseObjectSingle,
     colors: [
       '#6c5c97',
       '#E5AE4C',
