@@ -215,7 +215,6 @@ $header-height : 75px;
   padding: 0px 30px;
 }
 
-
 .hand-cursor {
   cursor: pointer;
 }
@@ -236,6 +235,26 @@ $header-height : 75px;
   width: 100%;
 }
 
+.SRC-primary-text-color-background {
+  background-color: $primary-text-color;
+  color: white;
+}
+
+#signin-button {
+  height: 39px;
+  border-radius: 30px;
+  padding: 8px 37px;
+  border: none;
+  &:hover {
+    @extend %hoverFade;
+    @extend %defaultBoxShadow;
+  }
+}
+
+#loginPage {
+  background: white;
+  padding: 30px;
+}
 .SRC-primary-text-color {
   color: $primary-text-color !important;
 }

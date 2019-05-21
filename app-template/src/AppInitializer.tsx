@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom'
 import docTitleConfig from './config/docTitleConfig'
 import { SynapseClient } from 'synapse-react-client'
 import { withCookies, Cookies } from 'react-cookie'
+import { detectSSOCode } from './LoginUtils'
 
 export type AppInitializerProps = {
   location: any,
@@ -37,6 +38,8 @@ class AppInitializer extends React.Component<AppInitializerProps, AppInitializer
       console.log('no token from cookie could be fetched ', _err)
     })
     this.updateSynapseCallbackCookie()
+    // on first time, also check for the SSO code
+    detectSSOCode()
   }
 
   componentDidUpdate(prevProps: any) {

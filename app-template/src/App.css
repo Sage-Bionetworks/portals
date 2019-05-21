@@ -57,10 +57,10 @@ body button:focus {
 .flex-display {
   display: flex; }
 
-.nav-button-container:hover, .explore-buttons button:hover, #exploreData:hover, .viewAll:hover, .SRC-viewMoreButton:hover {
+.nav-button-container:hover, #signin-button:hover, .explore-buttons button:hover, #exploreData:hover, .viewAll:hover, .SRC-viewMoreButton:hover {
   transition: all 400ms; }
 
-.explore-buttons button:hover, #exploreData:hover, .viewAll:hover, .SRC-viewMoreButton:hover {
+#signin-button:hover, .explore-buttons button:hover, #exploreData:hover, .viewAll:hover, .SRC-viewMoreButton:hover {
   box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.5); }
 
 .nav-logo-container {
@@ -168,7 +168,7 @@ body button:focus {
 
 #footer {
   text-transform: uppercase;
-  background-image: url("config/style//dna.svg");
+  background-image: "";
   background-blend-mode: multiply;
   background-color: #407BA0;
   background-repeat: no-repeat;
@@ -180,6 +180,20 @@ body button:focus {
 #footer a {
   color: white; }
 
+.SRC-primary-text-color-background {
+  background-color: #407BA0;
+  color: white; }
+
+#signin-button {
+  height: 39px;
+  border-radius: 30px;
+  padding: 8px 37px;
+  border: none; }
+
+#loginPage {
+  background: white;
+  padding: 30px; }
+
 .SRC-primary-text-color {
   color: #407BA0 !important; }
 
@@ -187,7 +201,7 @@ body button:focus {
   flex-basis: 50%; }
 
 #header {
-  background-image: url("config/style/dna_header.svg");
+  background-image: url("config/style/header.svg");
   background-blend-mode: multiply;
   background-repeat: no-repeat;
   background-size: cover;

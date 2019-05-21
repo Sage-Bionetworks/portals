@@ -3,9 +3,12 @@ import * as React from 'react'
 import routesConfig from './config/routesConfig'
 import { Route } from './types/portal-config'
 import logoHeaderConfig from './config/logoHeaderConfig'
+import Modal from '@material-ui/core/Modal'
+import { SynapseComponents } from 'synapse-react-client'
+import * as LoginUtils from './LoginUtils'
 
 export type NavbarState = {
-  [index:string]: boolean | number
+  [index:string]: any
 }
 export class Navbar extends React.Component<{}, NavbarState> {
 
@@ -13,12 +16,15 @@ export class Navbar extends React.Component<{}, NavbarState> {
     super(props)
     const numNestedRoutes = routesConfig.filter(el => el.isNested).length
     const state: NavbarState = {
-      numNestedRoutes
+      numNestedRoutes,
+      showLoginDialog: false,
+      token: props.token
     }
     for (let i = 0; i < numNestedRoutes; i += 1) {
       state[`dropdown${i}`] = false
     }
     this.state = state
+    this.onTokenChange = this.onTokenChange.bind(this)
   }
 
   // Toggle the dropdown menu, if index === -1 all the dropdown menus will close
@@ -39,6 +45,12 @@ export class Navbar extends React.Component<{}, NavbarState> {
     }
   }
 
+  onSignIn = (event: any) => {
+    console.log('TODO: show login dialog')
+    this.setState({
+      showLoginDialog: true
+    })
+  }
   // given the hash, decide if the link should have a bottom border
   getBorder = (name: string) => {
     if (name === '') {
@@ -56,6 +68,8 @@ export class Navbar extends React.Component<{}, NavbarState> {
     let currentNestedRouteCount = 0
     const { name, icon } = logoHeaderConfig
     const logo = name ? name : <img src={icon} />
+    const { token } = this.state
+    const { isUserDropdownOpen } = this.state
     return (
       <React.Fragment>
         <nav className="flex-display nav">
@@ -69,6 +83,45 @@ export class Navbar extends React.Component<{}, NavbarState> {
             <Link onClick={goToTop} to="/" id="home-link"> {logo} </Link>
           </div>
           <div className="nav-link-container">
+            {
+              // sign in is the right-most item and shown when not logged in
+              !token
+              &&
+              <div className="center-content nav-button">
+                <button
+                  id="signin-button"
+                  className="SRC-primary-text-color-background"
+                  onClick={this.onSignIn}
+                >
+                  SIGN&nbsp;IN
+                </button>
+                <Modal open={this.state.showLoginDialog}>
+                  <SynapseComponents.Login
+                      token={this.state.token}
+                      theme={'light'}
+                      icon={true}
+                      authProvider={LoginUtils.AUTH_PROVIDER}
+                      redirectURL={LoginUtils.getRootURL()}
+                  />
+                </Modal>
+              </div>
+            }
+            {
+              // user dropdown menu is the right-most item and shown when not logged in
+              token
+              &&
+              <div className="center-content nav-button">
+                <div className={`dropdown nav-button-container ${isUserDropdownOpen ? 'open' : ''}`}>
+                    <Link
+                      to="https://www.synapse.org/#!Profile:v/projects"
+                      // tslint:disable-next-line:max-line-length
+                      className="dropdown-link SRC-primary-background-color-hover SRC-nested-color center-content"
+                    >
+                      Projects
+                    </Link>
+                </div>
+              </div>
+            }
             {
               // we have to loop backwards due to css rendering of flex-direction: row-reverse
               routesConfig.slice().reverse().map(
