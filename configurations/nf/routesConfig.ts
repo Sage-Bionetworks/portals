@@ -4,6 +4,7 @@ import { datasets, files, studies, publications, tools, funders } from './homeEx
 import { studiesSql } from './homeExploreConfiguration/studies'
 import { datasetsSql } from './homeExploreConfiguration/datasets'
 import { publicationsSql } from './homeExploreConfiguration/publications'
+import exploreButtonControlProps from './exploreButtonControlProps'
 
 const limit = 3
 
@@ -14,14 +15,28 @@ const routes: GenericRoute [] = [
     isNested: false,
     synapseObject: [
       {
-        name: 'ButtonControl',
+        name: 'HomeButtonControl',
         title: 'EXPLORE PORTAL',
         props: {
-          queryWrapperConfigs: [
-            datasets.homePageSynapseObject.props,
-            files.homePageSynapseObject.props,
-            studies.homePageSynapseObject.props,
-            publications.homePageSynapseObject.props
+          colors: [
+            '#119488',
+            '#58A058',
+            '#407BA0',
+            '#5BB0B5',
+          ],
+          configs: [
+            {
+              name: 'Datasets', synapseObjectSingle: datasets.homePageSynapseObject
+            },
+            {
+              name: 'Files', synapseObjectSingle: files.homePageSynapseObject
+            },
+            {
+              name: 'Studies', synapseObjectSingle: studies.homePageSynapseObject
+            },
+            {
+              name: 'Publications', synapseObjectSingle: publications.homePageSynapseObject
+            }
           ]
         }
       },
@@ -85,7 +100,13 @@ const routes: GenericRoute [] = [
         isNested: false,
         to: '/Explore/Datasets',
         synapseObject: [
-          datasets.explorePageSynapseObject
+          {
+            name: 'ExploreButtonControl',
+            props: {
+              ...exploreButtonControlProps,
+              synapseObjectSingle: datasets.explorePageSynapseObject
+            }
+          }
         ]
       },
       {
@@ -93,7 +114,13 @@ const routes: GenericRoute [] = [
         isNested: false,
         to: '/Explore/Files',
         synapseObject: [
-          files.explorePageSynapseObject
+          {
+            name: 'ExploreButtonControl',
+            props: {
+              ...exploreButtonControlProps,
+              synapseObjectSingle: files.explorePageSynapseObject
+            }
+          }
         ]
       },
       {
@@ -101,7 +128,13 @@ const routes: GenericRoute [] = [
         isNested: false,
         to: '/Explore/Studies',
         synapseObject: [
-          studies.explorePageSynapseObject
+          {
+            name: 'ExploreButtonControl',
+            props: {
+              ...exploreButtonControlProps,
+              synapseObjectSingle: studies.explorePageSynapseObject
+            }
+          }
         ]
       },
       {
@@ -109,7 +142,13 @@ const routes: GenericRoute [] = [
         isNested: false,
         to: '/Explore/Publications',
         synapseObject: [
-          publications.explorePageSynapseObject
+          {
+            name: 'ExploreButtonControl',
+            props: {
+              ...exploreButtonControlProps,
+              synapseObjectSingle: publications.explorePageSynapseObject
+            }
+          }
         ]
       }
     ]

@@ -3,21 +3,17 @@
 $primary-text-color:#c94281;
 $primary-action-color: #4db7ad;
 
-// Note length($button-colors) must equal length of explore page routes
-$button-colors: (
-  1: #119488,
-  2: #58A058,
-  3: #407BA0,
-  4: #5BB0B5
-);
-
 // Since scss breaks if a file is missing in a local url link these functinons must get manually overwitten
 @function getHeader($path) {
   @return "";
 }
 
 #header {
-  background: linear-gradient(#109488,#4db7ad), url("config/style/molecule-back.svg") no-repeat;
+  background: linear-gradient(#109488,#05635b), url("config/style/molecule-back.svg") no-repeat;
+  background-blend-mode: color;
+}
+
+#footer {
   background-color: $primary-action-color !important;
 }
 
