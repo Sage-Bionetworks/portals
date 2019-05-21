@@ -1,6 +1,6 @@
 import { LogoConfig } from '../types/portal-config'
 
-const logoHeader: LogoConfig = {
+const logo: LogoConfig = {
   name: 'CSBC / PS-ON'
 }
-export default logoHeader
+export default logo

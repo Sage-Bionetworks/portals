@@ -4,6 +4,7 @@ import { SynapseConstants } from 'synapse-react-client'
 import { studiesSql } from './homeExploreConfiguration/studies'
 import { publicationSql } from './homeExploreConfiguration/publications'
 import { datasetsSql } from './homeExploreConfiguration/datasets'
+import exploreButtonControlProps from './exploreButtonControlProps'
 
 const homeLimit = 3
 
@@ -14,15 +15,22 @@ const routes: GenericRoute [] = [
     isNested: false,
     synapseObject: [
       {
-        name: 'ButtonControl',
+        name: 'HomeButtonControl',
         title: 'EXPLORE PORTALS',
         props: {
-          queryWrapperConfigs: [
-            grants.homePageSynapseObject.props,
-            publications.homePageSynapseObject.props,
-            studies.homePageSynapseObject.props,
-            datasets.homePageSynapseObject.props,
-            data.homePageSynapseObject.props,
+          colors: [
+            '#47337D',
+            '#407BA0',
+            '#7798AC',
+            '#77BBBF',
+            '#5E697D',
+          ],
+          configs: [
+            { name: 'Grants', synapseObjectSingle: grants.homePageSynapseObject },
+            { name: 'Publications', synapseObjectSingle: publications.homePageSynapseObject },
+            { name: 'Studies', synapseObjectSingle: studies.homePageSynapseObject },
+            { name: 'Datasets', synapseObjectSingle: datasets.homePageSynapseObject },
+            { name: 'Data', synapseObjectSingle: data.homePageSynapseObject },
           ]
         }
       },
@@ -66,31 +74,76 @@ const routes: GenericRoute [] = [
         name: 'Grants',
         to: '/Explore/Grants',
         isNested: false,
-        synapseObject: [grants.explorePageSynapseObject],
+        synapseObject: [
+          {
+            name: 'ExploreButtonControl',
+            title: 'Explore',
+            props: {
+              ...exploreButtonControlProps,
+              synapseObjectSingle: grants.explorePageSynapseObject
+            }
+          }
+        ],
       },
       {
         name: 'Publications',
         to: '/Explore/Publications',
         isNested: false,
-        synapseObject: [publications.explorePageSynapseObject],
+        synapseObject: [
+          {
+            name: 'ExploreButtonControl',
+            title: 'Explore',
+            props: {
+              ...exploreButtonControlProps,
+              synapseObjectSingle: publications.explorePageSynapseObject
+            }
+          }
+        ],
       },
       {
         name: 'Studies',
         to: '/Explore/Studies',
         isNested: false,
-        synapseObject: [studies.explorePageSynapseObject],
+        synapseObject: [
+          {
+            name: 'ExploreButtonControl',
+            title: 'Explore',
+            props: {
+              ...exploreButtonControlProps,
+              synapseObjectSingle: studies.explorePageSynapseObject
+            }
+          }
+        ],
       },
       {
         name: 'Datasets',
         to: '/Explore/Datasets',
         isNested: false,
-        synapseObject: [datasets.explorePageSynapseObject],
+        synapseObject: [
+          {
+            name: 'ExploreButtonControl',
+            title: 'Explore',
+            props: {
+              ...exploreButtonControlProps,
+              synapseObjectSingle: datasets.explorePageSynapseObject
+            }
+          }
+        ],
       },
       {
         name: 'Files',
         to: '/Explore/Files',
         isNested: false,
-        synapseObject: [data.explorePageSynapseObject],
+        synapseObject: [
+          {
+            name: 'ExploreButtonControl',
+            title: 'Explore',
+            props: {
+              ...exploreButtonControlProps,
+              synapseObjectSingle: data.explorePageSynapseObject
+            }
+          }
+        ],
       }
     ]
   },
