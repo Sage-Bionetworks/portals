@@ -9,7 +9,7 @@ const rgbIndex = 0
 
 export const datasets: HomeExploreConfig = {
   homePageSynapseObject: {
-    name: 'QueryWrapper',
+    name: 'QueryWrapperHelper',
     props: {
       unitDescription,
       loadingScreen,

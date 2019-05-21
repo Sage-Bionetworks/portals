@@ -19,7 +19,7 @@ const facetAliases = {
 
 const publications: HomeExploreConfig = {
   homePageSynapseObject: {
-    name: 'QueryWrapper',
+    name: 'QueryWrapperHelper',
     props: {
       unitDescription,
       rgbIndex,

@@ -10,7 +10,7 @@ const title = 'People'
 
 const people: HomeExploreConfig = {
   homePageSynapseObject: {
-    name: 'QueryWrapper',
+    name: 'QueryWrapperHelper',
     props: {
       unitDescription,
       rgbIndex,

@@ -9,7 +9,7 @@ const rgbIndex = 1
 
 export const studies: HomeExploreConfig = {
   homePageSynapseObject: {
-    name: 'QueryWrapper',
+    name: 'QueryWrapperHelper',
     props: {
       rgbIndex,
       unitDescription,

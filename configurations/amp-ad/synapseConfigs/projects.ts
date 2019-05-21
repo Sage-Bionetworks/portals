@@ -9,7 +9,7 @@ const facetName = 'Program'
 
 const projects: HomeExploreConfig = {
   homePageSynapseObject: {
-    name: 'QueryWrapper',
+    name: 'QueryWrapperHelper',
     props: {
       unitDescription,
       rgbIndex,

@@ -16,7 +16,7 @@ const routes: GenericRoute [] = [
     synapseObject: [
       {
         name: 'HomeButtonControl',
-        title: 'EXPLORE PORTALS',
+        title: 'EXPLORE PORTAL',
         props: {
           colors: [
             '#47337D',

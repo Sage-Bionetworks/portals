@@ -11,7 +11,7 @@ const title = 'Data'
 
 const data: HomeExploreConfig = {
   homePageSynapseObject: {
-    name: 'QueryWrapper',
+    name: 'QueryWrapperHelper',
     props: {
       unitDescription,
       rgbIndex,

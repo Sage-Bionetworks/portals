@@ -18,7 +18,7 @@ const synapseId = 'syn16787123'
 
 const studies: HomeExploreConfig = {
   homePageSynapseObject: {
-    name: 'QueryWrapper',
+    name: 'QueryWrapperHelper',
     props: {
       facetAliases,
       unitDescription,

@@ -17,10 +17,11 @@ const facetAliases = {
 
 const datasets: HomeExploreConfig = {
   homePageSynapseObject: {
-    name: 'QueryWrapper',
+    name: 'QueryWrapperHelper',
     props: {
       unitDescription,
       rgbIndex,
+      facetAliases,
       loadingScreen,
       name: 'Datasets',
       facetName: 'diseaseFocus',

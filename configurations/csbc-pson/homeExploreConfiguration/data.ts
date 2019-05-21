@@ -26,7 +26,7 @@ const facetName = 'grantType'
 
 export const data: HomeExploreConfig = {
   homePageSynapseObject: {
-    name: 'QueryWrapper',
+    name: 'QueryWrapperHelper',
     props: {
       rgbIndex,
       facetName,

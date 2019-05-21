@@ -95,7 +95,7 @@ routes[HOME_INDEX] = {
   // @ts-ignore
   synapseObject: [
     {
-      title: 'Explore Portals',
+      title: 'Explore Portal',
       name: 'ButtonControl',
       props: {
         queryWrapperConfigs: [

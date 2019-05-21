@@ -28,7 +28,7 @@ const synapseId = 'syn16858331'
 
 const files: HomeExploreConfig = {
   homePageSynapseObject: {
-    name: 'QueryWrapper',
+    name: 'QueryWrapperHelper',
     props: {
       rgbIndex,
       unitDescription,

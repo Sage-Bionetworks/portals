@@ -7,6 +7,7 @@ import { SynapseComponents } from 'synapse-react-client'
 import { TokenContext } from './AppInitializer'
 import HomeButtonControl from './portal-components/HomeButtonControl'
 import ExploreButtonControl from './portal-components/ExploreButtonControl'
+import QueryWrapperHelper from './portal-components/QueryWrapperHelper'
 
 export type RouteResolverProps = {
   location: any
@@ -39,6 +40,9 @@ export const generateSynapseObjectHelper = (synapseObjectSingle: SynapseObjectSi
   }
   if (synapseObjectSingle.name === 'ExploreButtonControl') {
     return <ExploreButtonControl {...synapseObjectSingle.props} />
+  }
+  if (synapseObjectSingle.name === 'QueryWrapperHelper') {
+    return <QueryWrapperHelper {...synapseObjectSingle.props} />
   }
   const SynapseComponent = (SynapseComponents as any)[synapseObjectSingle.name]
   if (!SynapseComponent) {
