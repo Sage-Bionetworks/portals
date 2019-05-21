@@ -256,7 +256,6 @@ $header-height : 75px;
   background-image: getHeader("config/style");
   background-repeat: no-repeat;
   background-size: cover;
-  background-color: $primary-text-color;
   height: fit-content;
   padding: 40px;
 }
@@ -280,17 +279,6 @@ $header-height : 75px;
   margin-bottom: 10px;
 }
 // ExploreButtons 
-
- 
-@mixin buttonColor {
-  @for $i from 1 to 8 {
-    &:nth-child(#{$i}) {
-       &.active-button::after {
-        border-top-color: green;
-      }
-    }
-  }
-}
 
 .explore-buttons {
   margin-top: 30px;
