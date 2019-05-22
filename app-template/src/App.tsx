@@ -4,11 +4,9 @@ import './App.css'
 import { Footer } from './Footer'
 import AppInitializer from './AppInitializer'
 import { Navbar } from './Navbar'
-// change to React.lazy!
-import Home from './Home'
-import Explore from './Explore'
-import RouteResolver from './RouteResolver'
 import { CookiesProvider } from 'react-cookie'
+const Home = React.lazy(() => import('./Home'))
+const RouteResolver = React.lazy(() => import('./RouteResolver'))
 
 const App: React.SFC<{}> = ({}) => {
   return (
@@ -22,7 +20,6 @@ const App: React.SFC<{}> = ({}) => {
               <Switch>
                 {/* exact takes precendence over RouteResolver */}
                 <Route exact={true} path="/" component={Home}/>
-                <Route path="/Explore" component={Explore}/>
                 {/* all other routes handled programatically */}
                 <Route path="/" component={RouteResolver}/>
               </Switch>

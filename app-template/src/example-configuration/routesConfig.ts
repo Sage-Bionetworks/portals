@@ -25,7 +25,6 @@ routes[ABOUT_INDEX] = {
 }
 
 routes[EXPLORE_INDEX] = {
-  // Explore route is a special case
   name: 'Explore',
   isNested: true,
   routes: [
@@ -50,7 +49,7 @@ routes[ORGANIZATION_INDEX] = {
   routes: [
     {
       name: 'Organization-CTF',
-      isNested: false,
+      isNested: true,
       to: '/Organizations/Organization-CTF',
       synapseObject: [
         {
@@ -69,6 +68,20 @@ routes[ORGANIZATION_INDEX] = {
             sql: `SELECT * FROM syn18488466 WHERE ( ( "featured" = 'TRUE' ) )`
           }
         }
+      ],
+      routes: [
+        {
+          name: 'CTF',
+          isNested: false,
+          to: '/Organizations/Organization-CTF',
+          synapseObject: [{
+            name: 'Markdown',
+            props: {
+              ownerId: 'syn18421331',
+              wikiId: '590615'
+            }
+          }],
+        }
       ]
     }
   ],
@@ -80,13 +93,17 @@ routes[HOME_INDEX] = {
   isNested: false,
   synapseObject: [
     {
-      title: 'Explore Portals',
-      name: 'StackedBarChartControl',
+      title: 'Explore Portal',
+      name: 'HomeButtonControlWrapper',
       props: {
-        queryWrapperConfigs: [
+        configs: [
           data.homePageSynapseObject.props,
           publications.homePageSynapseObject.props
         ],
+        colors: [
+          'green',
+          'blue'
+        ]
       },
     },
     {
