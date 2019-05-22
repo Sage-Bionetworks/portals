@@ -3,7 +3,6 @@ import { withRouter } from 'react-router-dom'
 import docTitleConfig from './config/docTitleConfig'
 import { SynapseClient } from 'synapse-react-client'
 import { withCookies, Cookies } from 'react-cookie'
-import { detectSSOCode } from './LoginUtils'
 
 export type AppInitializerProps = {
   location: any,
@@ -39,7 +38,7 @@ class AppInitializer extends React.Component<AppInitializerProps, AppInitializer
     })
     this.updateSynapseCallbackCookie()
     // on first time, also check for the SSO code
-    detectSSOCode()
+    SynapseClient.detectSSOCode()
   }
 
   componentDidUpdate(prevProps: any) {
@@ -96,7 +95,7 @@ class AppInitializer extends React.Component<AppInitializerProps, AppInitializer
     expireDate.setDate(Date.now() + 1000 * 60 * 20)
     this.props.cookies.set(
       'org.sagebionetworks.security.cookies.portal.config',
-      JSON.stringify(cookieValue), 
+      JSON.stringify(cookieValue),
       {
         path: '/',
         domain: '.synapse.org',

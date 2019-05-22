@@ -8477,10 +8477,10 @@ symbol-tree@^3.2.1, symbol-tree@^3.2.2:
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.2.tgz#ae27db38f660a7ae2e1c3b7d1bc290819b8519e6"
 
-synapse-react-client@1.11.30:
-  version "1.11.30"
-  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-1.11.30.tgz#a1601626e4568403f588fcb3be7fb2dcc87cd754"
-  integrity sha512-yXe2ndK/sZLMPuC6tI94F+aJj2gsHa60kf9COa3rb2wpiJ2ctTOXhAnX6Tt6m6DAz5Cn3tbV7T/KHqazw91iiQ==
+synapse-react-client@1.11.32:
+  version "1.11.32"
+  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-1.11.32.tgz#77f95ff82478601903fbd248554528651a66745e"
+  integrity sha512-+Q/Cz6PPcInH++ArH8efjRSmDmghmFwkgAkMN06HXxrr9uNS4SS8Ah0bUe6XlTPOlqVX0ZqeWIAhvzcyjpjHHQ==
   dependencies:
     "@babel/runtime" "^7.4.3"
     "@fortawesome/fontawesome-svg-core" "^1.2.4"

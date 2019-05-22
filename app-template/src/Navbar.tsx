@@ -4,8 +4,9 @@ import routesConfig from './config/routesConfig'
 import { Route } from './types/portal-config'
 import logoHeaderConfig from './config/logoHeaderConfig'
 import Modal from '@material-ui/core/Modal'
-import { SynapseComponents } from 'synapse-react-client'
-import * as LoginUtils from './LoginUtils'
+import { SynapseComponents, SynapseClient } from 'synapse-react-client'
+// import { TokenContext } from './AppInitializer'
+// import UserCard from 'synapse-react-client/dist/containers/UserCard'
 
 export type NavbarState = {
   [index:string]: any
@@ -17,14 +18,12 @@ export class Navbar extends React.Component<{}, NavbarState> {
     const numNestedRoutes = routesConfig.filter(el => el.isNested).length
     const state: NavbarState = {
       numNestedRoutes,
-      showLoginDialog: false,
-      token: props.token
+      showLoginDialog: false
     }
     for (let i = 0; i < numNestedRoutes; i += 1) {
       state[`dropdown${i}`] = false
     }
     this.state = state
-    this.onTokenChange = this.onTokenChange.bind(this)
   }
 
   // Toggle the dropdown menu, if index === -1 all the dropdown menus will close
@@ -46,7 +45,6 @@ export class Navbar extends React.Component<{}, NavbarState> {
   }
 
   onSignIn = (event: any) => {
-    console.log('TODO: show login dialog')
     this.setState({
       showLoginDialog: true
     })
@@ -60,7 +58,55 @@ export class Navbar extends React.Component<{}, NavbarState> {
     const hash = window.location.hash.substring(2)
     return hash.includes(name) ? 'bottom-border' : ''
   }
-
+  // renderUserDropdown = () => {
+  //   const { isUserDropdownOpen } = this.state
+  //   // return the synapse object but with token injected into its props from the context created in AppInitializer
+  //   return (
+  //     <TokenContext.Consumer>
+  //       {
+  //         (token: string) => {
+  //           if (token) {
+  //             return SynapseClient.getUserProfile(token).then((profile: any) => {
+  //               const userId = profile.ownerId
+  //               return <div className="center-content nav-button">
+  //               <div className={`dropdown nav-button-container ${isUserDropdownOpen ? 'open' : ''}`}>
+  //                 <div className="center-content nav-button hand-cursor">
+  //                   <UserCard ownerId={userId} size="SMALL_USER_CARD"/>
+  //                 </div>
+  //                   <a
+  //                     href={`https://www.synapse.org/#!Profile:${userId}/projects`}
+  //                     // tslint:disable-next-line:max-line-length
+  //                     className="dropdown-link SRC-primary-background-color-hover SRC-nested-color center-content"
+  //                   >
+  //                     Projects
+  //                   </a>
+  //               </div>
+  //             </div>
+  //             })
+  //           }
+  //           // else
+  //           // sign in is shown when not logged in
+  //           return <div className="center-content nav-button">
+  //               <button
+  //                 id="signin-button"
+  //                 className="SRC-primary-text-color-background"
+  //                 onClick={this.onSignIn}
+  //               >
+  //                 SIGN&nbsp;IN
+  //               </button>
+  //               <Modal open={this.state.showLoginDialog}>
+  //                 <SynapseComponents.Login
+  //                     token={this.state.token}
+  //                     theme={'light'}
+  //                     icon={true}
+  //                 />
+  //               </Modal>
+  //             </div>
+  //         }
+  //       }
+  //     </TokenContext.Consumer>
+  //   )
+  // }
   render() {
     const goToTop = (_event:any) => { window.scroll({ top: 0 }) }
     const { hasDropdownOpen } = this.state
@@ -68,8 +114,6 @@ export class Navbar extends React.Component<{}, NavbarState> {
     let currentNestedRouteCount = 0
     const { name, icon } = logoHeaderConfig
     const logo = name ? name : <img src={icon} />
-    const { token } = this.state
-    const { isUserDropdownOpen } = this.state
     return (
       <React.Fragment>
         <nav className="flex-display nav">
@@ -83,45 +127,22 @@ export class Navbar extends React.Component<{}, NavbarState> {
             <Link onClick={goToTop} to="/" id="home-link"> {logo} </Link>
           </div>
           <div className="nav-link-container">
-            {
-              // sign in is the right-most item and shown when not logged in
-              !token
-              &&
-              <div className="center-content nav-button">
-                <button
-                  id="signin-button"
-                  className="SRC-primary-text-color-background"
-                  onClick={this.onSignIn}
-                >
-                  SIGN&nbsp;IN
-                </button>
-                <Modal open={this.state.showLoginDialog}>
-                  <SynapseComponents.Login
-                      token={this.state.token}
-                      theme={'light'}
-                      icon={true}
-                      authProvider={LoginUtils.AUTH_PROVIDER}
-                      redirectURL={LoginUtils.getRootURL()}
-                  />
-                </Modal>
-              </div>
-            }
-            {
-              // user dropdown menu is the right-most item and shown when not logged in
-              token
-              &&
-              <div className="center-content nav-button">
-                <div className={`dropdown nav-button-container ${isUserDropdownOpen ? 'open' : ''}`}>
-                    <Link
-                      to="https://www.synapse.org/#!Profile:v/projects"
-                      // tslint:disable-next-line:max-line-length
-                      className="dropdown-link SRC-primary-background-color-hover SRC-nested-color center-content"
-                    >
-                      Projects
-                    </Link>
-                </div>
-              </div>
-            }
+          <div className="center-content nav-button">
+              <button
+                id="signin-button"
+                className="SRC-primary-text-color-background"
+                onClick={this.onSignIn}
+              >
+                SIGN&nbsp;IN
+              </button>
+              <Modal open={this.state.showLoginDialog}>
+                <SynapseComponents.Login
+                    token={this.state.token}
+                    theme={'light'}
+                    icon={true}
+                />
+              </Modal>
+            </div>
             {
               // we have to loop backwards due to css rendering of flex-direction: row-reverse
               routesConfig.slice().reverse().map(
