@@ -5,7 +5,7 @@ import routesConfig,
 import { NestedRoute, SynapseObjectSingle } from '../types/portal-config'
 import CardContainerLogic from 'synapse-react-client/dist/containers/CardContainerLogic'
 import { mount } from 'enzyme'
-import HomeButtonControl from '../portal-components/HomeButtonControl'
+import HomeButtonControlWrapper from '../portal-components/HomeButtonControlWrapper'
 import { MemoryRouter } from 'react-router'
 
 describe('getRouteFromParams works', () => {
@@ -47,7 +47,7 @@ describe('RouteResolver works', () => {
 
   it('renders portal specific components correctly', () => {
     const mockedSynObject: SynapseObjectSingle = {
-      name: 'HomeButtonControl',
+      name: 'HomeButtonControlWrapper',
       props: {
         configs: [
           {
@@ -65,7 +65,7 @@ describe('RouteResolver works', () => {
       }
     }
     const synObj = mount(<MemoryRouter>{generateSynapseObjectHelper(mockedSynObject)}</MemoryRouter>)
-    expect(synObj.find(HomeButtonControl)).toHaveLength(1)
+    expect(synObj.find(HomeButtonControlWrapper)).toHaveLength(1)
   })
 
 })

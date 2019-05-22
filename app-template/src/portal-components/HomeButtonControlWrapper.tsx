@@ -9,7 +9,7 @@ type HomeButtonControlConfigs = {
   name: string
 }
 
-export type HomeButtonControlProps = {
+export type HomeButtonControlWrapperProps = {
   configs: HomeButtonControlConfigs []
   colors: string []
 }
@@ -18,7 +18,7 @@ export type ButtonControlState = {
   index: number
 }
 
-type Props = RouteComponentProps & HomeButtonControlProps
+type Props = RouteComponentProps & HomeButtonControlWrapperProps
 
 /**
  * HomeButtonControl is the set of buttons used on the home page to navigate between
@@ -76,4 +76,4 @@ class HomeButtonControl extends React.Component<Props, ButtonControlState> {
 }
 
 // Use the 'as React..' so that the routing props which are injected don't raise any compiler warnings
-export default withRouter(HomeButtonControl) as React.ComponentClass<HomeButtonControlProps, {}>
+export default withRouter(HomeButtonControl) as React.ComponentClass<HomeButtonControlWrapperProps, {}>

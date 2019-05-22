@@ -2,10 +2,10 @@ import * as React from 'react'
 import { mount } from 'enzyme'
 import { MemoryRouter } from 'react-router'
 import CardContainerLogic from 'synapse-react-client/dist/containers/CardContainerLogic'
-import HomeButtonControl, { HomeButtonControlProps } from '../../portal-components/HomeButtonControl'
+import HomeButtonControlWrapper, { HomeButtonControlWrapperProps } from '../../portal-components/HomeButtonControlWrapper'
 
 describe('ExploreButtonControl works', () => {
-  const props: HomeButtonControlProps = {
+  const props: HomeButtonControlWrapperProps = {
     configs: [{
       synapseObjectSingle: {
         name: 'CardContainerLogic',
@@ -20,7 +20,7 @@ describe('ExploreButtonControl works', () => {
   }
 
   it('renders correctly', async () => {
-    const component = await mount(<MemoryRouter><HomeButtonControl {...props} /></MemoryRouter>)
+    const component = await mount(<MemoryRouter><HomeButtonControlWrapper {...props} /></MemoryRouter>)
     // check its defined
     expect(component).toBeDefined()
     // check that it renders a markdown component

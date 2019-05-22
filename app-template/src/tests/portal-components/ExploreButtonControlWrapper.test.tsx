@@ -1,12 +1,12 @@
 import * as React from 'react'
 import { mount } from 'enzyme'
-import ExploreButtonControlWrapper, { ExploreButtonControlProps } from '../../portal-components/ExploreButtonControlWrapper'
+import ExploreButtonControlWrapper, { ExploreButtonControlWrapperProps } from '../../portal-components/ExploreButtonControlWrapper'
 import { MemoryRouter } from 'react-router'
 import CardContainerLogic from 'synapse-react-client/dist/containers/CardContainerLogic'
 
-describe('ExploreButtonControl works', () => {
+describe('ExploreButtonControlWrapper works', () => {
 
-  const props: ExploreButtonControlProps = {
+  const props: ExploreButtonControlWrapperProps = {
     synapseObjectSingle: {
       name: 'CardContainerLogic',
       props: {

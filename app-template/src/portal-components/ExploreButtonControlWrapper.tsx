@@ -4,7 +4,7 @@ import { withRouter, RouteComponentProps } from 'react-router-dom'
 import { SynapseObjectSingle } from '../types/portal-config'
 import { generateSynapseObject } from '../RouteResolver'
 
-export type ExploreButtonControlProps = {
+export type ExploreButtonControlWrapperProps = {
   synapseObjectSingle: SynapseObjectSingle
   colors: string []
   // we have to pass in all the custom routes because unlike the home page the explore buttons configs aren't held in state
@@ -15,7 +15,7 @@ export type ButtonControlState = {
   index: number
 }
 
-type Props = RouteComponentProps & ExploreButtonControlProps
+type Props = RouteComponentProps & ExploreButtonControlWrapperProps
 
 /**
  * ExploreButtonControl is the set of buttons used on the /Explore page to navigate the
