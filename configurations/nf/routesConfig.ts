@@ -4,7 +4,7 @@ import { datasets, files, studies, publications, tools, funders } from './synaps
 import { studiesSql } from './synapseConfigs/studies'
 import { datasetsSql } from './synapseConfigs/datasets'
 import { publicationsSql } from './synapseConfigs/publications'
-import exploreButtonControlWrappersProps from './exploreButtonControlWrapperProps'
+import exploreButtonControlWrapperProps from './exploreButtonControlWrapperProps'
 
 const limit = 3
 
@@ -101,9 +101,9 @@ const routes: GenericRoute [] = [
         to: '/Explore/Datasets',
         synapseObject: [
           {
-            ...exploreButtonControlWrappersProps,
+            ...exploreButtonControlWrapperProps,
             props: {
-              ...exploreButtonControlWrappersProps.props,
+              ...exploreButtonControlWrapperProps.props,
               synapseObjectSingle: datasets.explorePageSynapseObject
             }
           }
@@ -115,9 +115,9 @@ const routes: GenericRoute [] = [
         to: '/Explore/Files',
         synapseObject: [
           {
-            ...exploreButtonControlWrappersProps,
+            ...exploreButtonControlWrapperProps,
             props: {
-              ...exploreButtonControlWrappersProps.props,
+              ...exploreButtonControlWrapperProps.props,
               synapseObjectSingle: files.explorePageSynapseObject
             }
           }
@@ -129,9 +129,9 @@ const routes: GenericRoute [] = [
         to: '/Explore/Studies',
         synapseObject: [
           {
-            ...exploreButtonControlWrappersProps,
+            ...exploreButtonControlWrapperProps,
             props: {
-              ...exploreButtonControlWrappersProps.props,
+              ...exploreButtonControlWrapperProps.props,
               synapseObjectSingle: studies.explorePageSynapseObject
             }
           }
@@ -143,9 +143,9 @@ const routes: GenericRoute [] = [
         to: '/Explore/Publications',
         synapseObject: [
           {
-            ...exploreButtonControlWrappersProps,
+            ...exploreButtonControlWrapperProps,
             props: {
-              ...exploreButtonControlWrappersProps.props,
+              ...exploreButtonControlWrapperProps.props,
               synapseObjectSingle: publications.explorePageSynapseObject
             }
           }
@@ -286,6 +286,7 @@ const routes: GenericRoute [] = [
     synapseObject: [
       {
         name: 'Markdown',
+        title: 'About',
         props: {
           ownerId:'syn5702691',
           wikiId:'583906'

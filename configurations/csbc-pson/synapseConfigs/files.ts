@@ -23,7 +23,7 @@ const unitDescription = 'files'
 const synapseId  = 'syn9630847'
 const facetName = 'grantType'
 
-export const data: HomeExploreConfig = {
+export const files: HomeExploreConfig = {
   homePageSynapseObject: {
     name: 'QueryWrapperHelper',
     props: {

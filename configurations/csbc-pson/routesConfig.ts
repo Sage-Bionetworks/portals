@@ -1,5 +1,5 @@
 import { GenericRoute } from '../types/portal-config'
-import { publications, data, datasets, grants, studies } from './synapseConfigs'
+import { publications, files, datasets, grants, studies } from './synapseConfigs'
 import { SynapseConstants } from 'synapse-react-client'
 import { studiesSql } from './synapseConfigs/studies'
 import { publicationSql } from './synapseConfigs/publications'
@@ -30,7 +30,7 @@ const routes: GenericRoute [] = [
             { name: 'Publications', synapseObjectSingle: publications.homePageSynapseObject },
             { name: 'Studies', synapseObjectSingle: studies.homePageSynapseObject },
             { name: 'Datasets', synapseObjectSingle: datasets.homePageSynapseObject },
-            { name: 'Data', synapseObjectSingle: data.homePageSynapseObject },
+            { name: 'Files', synapseObjectSingle: files.homePageSynapseObject },
           ]
         }
       },
@@ -135,7 +135,7 @@ const routes: GenericRoute [] = [
             ...exploreButtonControlWrapperProps,
             props: {
               ...exploreButtonControlWrapperProps.props,
-              synapseObjectSingle: data.explorePageSynapseObject
+              synapseObjectSingle: files.explorePageSynapseObject
             }
           }
         ],

@@ -2,6 +2,7 @@ import { SynapseObjectSingle } from '../types/portal-config'
 
 const exploreButtonControlProps: SynapseObjectSingle = {
   name: 'ExploreButtonControlWrapper',
+  title: 'Explore',
   props: {
     synapseObjectSingle: {} as SynapseObjectSingle,
     colors: [
