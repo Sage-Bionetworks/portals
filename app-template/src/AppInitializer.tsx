@@ -91,9 +91,18 @@ class AppInitializer extends React.Component<AppInitializerProps, AppInitializer
       logoUrl: icon,
       portalName: name
     }
+    const expireDate = new Date()
+    // expire after 20 minutes
+    expireDate.setDate(Date.now() + 1000 * 60 * 20)
     this.props.cookies.set(
       'org.sagebionetworks.security.cookies.portal.config',
-      JSON.stringify(cookieValue), { path: '/', domain: '.synapse.org' })
+      JSON.stringify(cookieValue), 
+      {
+        path: '/',
+        domain: '.synapse.org',
+        expires: expireDate
+      }
+    )
   }
 }
 
