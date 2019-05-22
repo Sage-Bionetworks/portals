@@ -1,10 +1,10 @@
 import { GenericRoute } from '../types/portal-config'
-import { publications, data, datasets, grants, studies } from './homeExploreConfiguration'
+import { publications, data, datasets, grants, studies } from './synapseConfigs'
 import { SynapseConstants } from 'synapse-react-client'
-import { studiesSql } from './homeExploreConfiguration/studies'
-import { publicationSql } from './homeExploreConfiguration/publications'
-import { datasetsSql } from './homeExploreConfiguration/datasets'
-import exploreButtonControlProps from './exploreButtonControlProps'
+import { studiesSql } from './synapseConfigs/studies'
+import { publicationSql } from './synapseConfigs/publications'
+import { datasetsSql } from './synapseConfigs/datasets'
+import exploreButtonControlWrapperProps from './exploreButtonControlWrapperProps'
 
 const homeLimit = 3
 
@@ -15,7 +15,7 @@ const routes: GenericRoute [] = [
     isNested: false,
     synapseObject: [
       {
-        name: 'HomeButtonControl',
+        name: 'HomeButtonControlWrapper',
         title: 'EXPLORE PORTAL',
         props: {
           colors: [
@@ -76,10 +76,9 @@ const routes: GenericRoute [] = [
         isNested: false,
         synapseObject: [
           {
-            name: 'ExploreButtonControl',
-            title: 'Explore',
+            ...exploreButtonControlWrapperProps,
             props: {
-              ...exploreButtonControlProps,
+              ...exploreButtonControlWrapperProps.props,
               synapseObjectSingle: grants.explorePageSynapseObject
             }
           }
@@ -91,10 +90,9 @@ const routes: GenericRoute [] = [
         isNested: false,
         synapseObject: [
           {
-            name: 'ExploreButtonControl',
-            title: 'Explore',
+            ...exploreButtonControlWrapperProps,
             props: {
-              ...exploreButtonControlProps,
+              ...exploreButtonControlWrapperProps.props,
               synapseObjectSingle: publications.explorePageSynapseObject
             }
           }
@@ -106,10 +104,9 @@ const routes: GenericRoute [] = [
         isNested: false,
         synapseObject: [
           {
-            name: 'ExploreButtonControl',
-            title: 'Explore',
+            ...exploreButtonControlWrapperProps,
             props: {
-              ...exploreButtonControlProps,
+              ...exploreButtonControlWrapperProps.props,
               synapseObjectSingle: studies.explorePageSynapseObject
             }
           }
@@ -121,10 +118,9 @@ const routes: GenericRoute [] = [
         isNested: false,
         synapseObject: [
           {
-            name: 'ExploreButtonControl',
-            title: 'Explore',
+            ...exploreButtonControlWrapperProps,
             props: {
-              ...exploreButtonControlProps,
+              ...exploreButtonControlWrapperProps.props,
               synapseObjectSingle: datasets.explorePageSynapseObject
             }
           }
@@ -136,10 +132,9 @@ const routes: GenericRoute [] = [
         isNested: false,
         synapseObject: [
           {
-            name: 'ExploreButtonControl',
-            title: 'Explore',
+            ...exploreButtonControlWrapperProps,
             props: {
-              ...exploreButtonControlProps,
+              ...exploreButtonControlWrapperProps.props,
               synapseObjectSingle: data.explorePageSynapseObject
             }
           }

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { ExploreButtons, ExploreButtonProps, NamedRoute } from '../ExploreButtons'
+import { ButtonControl, ButtonControlProps, NamedRoute } from '../ButtonControl'
 import { withRouter, RouteComponentProps } from 'react-router-dom'
 import { SynapseObjectSingle } from '../types/portal-config'
 import { generateSynapseObject } from '../RouteResolver'
@@ -17,10 +17,17 @@ export type ButtonControlState = {
 
 type Props = RouteComponentProps & ExploreButtonControlProps
 
-const ButtonControl:React.FunctionComponent<Props> = ({ location, synapseObjectSingle, colors, history, customRoutes }) => {
+/**
+ * ExploreButtonControl is the set of buttons used on the /Explore page to navigate the
+ * different keys.
+ *
+ * @param {*} { location, synapseObjectSingle, colors, history, customRoutes }
+ * @returns
+ */
+const ExploreButtonControl:React.FunctionComponent<Props> = ({ location, synapseObjectSingle, colors, history, customRoutes }) => {
   const pathname = location.pathname
   const subPath = pathname.substring('/Explore/'.length)
-  const exploreButtonProps: ExploreButtonProps = {
+  const buttonControlProps: ButtonControlProps = {
     colors,
     customRoutes,
     handleChanges: (val: string, _index: number) => history.push(`/Explore/${val}`),
@@ -28,8 +35,8 @@ const ButtonControl:React.FunctionComponent<Props> = ({ location, synapseObjectS
   }
   return (
     <React.Fragment>
-      <ExploreButtons
-        {...exploreButtonProps}
+      <ButtonControl
+        {...buttonControlProps}
       />
       <div className={'container explore'}>
         <div className="row">
@@ -42,4 +49,4 @@ const ButtonControl:React.FunctionComponent<Props> = ({ location, synapseObjectS
   )
 }
 
-export default withRouter(ButtonControl)
+export default withRouter(ExploreButtonControl)

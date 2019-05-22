@@ -83,7 +83,6 @@ export class Navbar extends React.Component<{}, NavbarState> {
                     currentNestedRouteCount += 1
                     return (
                       <div key={el.name} className={`dropdown nav-button-container ${isCurrentDropdownOpen ? 'open' : ''} ${this.getBorder(el.name)}`}>
-                        {/* tslint:disable-next-line:max-line-length */}
                         <div onClick={toggleDropdown} className="center-content nav-button hand-cursor"> {displayName} </div>
                         {
                           isCurrentDropdownOpen &&
@@ -95,7 +94,6 @@ export class Navbar extends React.Component<{}, NavbarState> {
                                     return (<Link
                                       key={route.name}
                                       onClick={toggleDropdown}
-                                      // tslint:disable-next-line:max-line-length
                                       className="dropdown-link SRC-primary-background-color-hover SRC-nested-color center-content"
                                       to={route.to!}
                                     >

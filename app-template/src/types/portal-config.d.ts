@@ -6,8 +6,8 @@ import { StackedBarChartProps } from 'synapse-react-client/dist/containers/Stack
 import { QueryWrapperMenuProps } from 'synapse-react-client/dist/containers/QueryWrapperMenu'
 import { QueryBundleRequest } from 'synapse-react-client/dist/utils/jsonResponses/Table/QueryBundleRequest'
 import { QueryResultBundle } from 'synapse-react-client/dist/utils/jsonResponses/Table/QueryResultBundle'
-import { HomeButtonControlProps } from '../portal-components/HomeButtonControl'
-import { ExploreButtonControlProps } from '../portal-components/ExploreButtonControl'
+import { HomeButtonControlProps } from '../portal-components/HomeButtonControlWrapper'
+import { ExploreButtonControlProps } from '../portal-components/ExploreButtonControlWrapper'
 import { QueryWrapperProps } from 'synapse-react-client/dist/containers/QueryWrapper'
 
 // For styling the header on the home page -- the main title and the summary text
@@ -55,12 +55,12 @@ type Markdown = {
 }
 
 type HomeButtonControl = {
-  name: 'HomeButtonControl',
+  name: 'HomeButtonControlWrapper',
   props: HomeButtonControlProps
 }
 
 type ExploreButtonControl = {
-  name: 'ExploreButtonControl',
+  name: 'ExploreButtonControlWrapper',
   props: ExploreButtonControlProps
 }
 

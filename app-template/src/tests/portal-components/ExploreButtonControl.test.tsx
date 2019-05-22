@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { mount } from 'enzyme'
-import ExploreButtonControl, { ExploreButtonControlProps } from '../../portal-components/ExploreButtonControl'
+import ExploreButtonControlWrapper, { ExploreButtonControlProps } from '../../portal-components/ExploreButtonControlWrapper'
 import { MemoryRouter } from 'react-router'
 import CardContainerLogic from 'synapse-react-client/dist/containers/CardContainerLogic'
 
@@ -23,7 +23,7 @@ describe('ExploreButtonControl works', () => {
   }
 
   it('renders correctly', () => {
-    const component = mount(<MemoryRouter><ExploreButtonControl {...props} /></MemoryRouter>)
+    const component = mount(<MemoryRouter><ExploreButtonControlWrapper {...props} /></MemoryRouter>)
     // check its defined
     expect(component).toBeDefined()
     // check that it renders a CardContainerLogic component

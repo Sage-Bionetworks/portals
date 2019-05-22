@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { ExploreButtons, ExploreButtonProps } from '../ExploreButtons'
+import { ButtonControl, ButtonControlProps } from '../ButtonControl'
 import { withRouter, RouteComponentProps, Link } from 'react-router-dom'
 import { SynapseObjectSingle } from '../types/portal-config'
 import { generateSynapseObject } from '../RouteResolver'
@@ -19,7 +19,15 @@ export type ButtonControlState = {
 }
 
 type Props = RouteComponentProps & HomeButtonControlProps
-class ButtonControl extends React.Component<Props, ButtonControlState> {
+
+/**
+ * HomeButtonControl is the set of buttons used on the home page to navigate between
+ * the preview of the various data.
+ *
+ * @class HomeButtonControl
+ * @extends {React.Component<Props, ButtonControlState>}
+ */
+class HomeButtonControl extends React.Component<Props, ButtonControlState> {
 
   constructor(props: Props) {
     super(props)
@@ -43,7 +51,7 @@ class ButtonControl extends React.Component<Props, ButtonControlState> {
       configs,
       colors,
     } = this.props
-    const exploreButtonProps: ExploreButtonProps = {
+    const buttonControlProps: ButtonControlProps = {
       colors,
       customRoutes: configs,
       handleChanges: this.handleChange,
@@ -53,8 +61,8 @@ class ButtonControl extends React.Component<Props, ButtonControlState> {
     const synapseObjectSingle = statefulConfig.synapseObjectSingle
     return (
       <React.Fragment>
-        <ExploreButtons
-          {...exploreButtonProps}
+        <ButtonControl
+          {...buttonControlProps}
         />
         <div className="homeExploreContainer">
           <div id="homePageBarChart">
@@ -68,4 +76,4 @@ class ButtonControl extends React.Component<Props, ButtonControlState> {
 }
 
 // Use the 'as React..' so that the routing props which are injected don't raise any compiler warnings
-export default withRouter(ButtonControl) as React.ComponentClass<HomeButtonControlProps, {}>
+export default withRouter(HomeButtonControl) as React.ComponentClass<HomeButtonControlProps, {}>

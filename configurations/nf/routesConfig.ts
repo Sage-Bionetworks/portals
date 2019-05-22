@@ -1,10 +1,10 @@
 import { GenericRoute } from '../types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
-import { datasets, files, studies, publications, tools, funders } from './homeExploreConfiguration'
-import { studiesSql } from './homeExploreConfiguration/studies'
-import { datasetsSql } from './homeExploreConfiguration/datasets'
-import { publicationsSql } from './homeExploreConfiguration/publications'
-import exploreButtonControlProps from './exploreButtonControlProps'
+import { datasets, files, studies, publications, tools, funders } from './synapseConfigs'
+import { studiesSql } from './synapseConfigs/studies'
+import { datasetsSql } from './synapseConfigs/datasets'
+import { publicationsSql } from './synapseConfigs/publications'
+import exploreButtonControlWrappersProps from './exploreButtonControlWrapperProps'
 
 const limit = 3
 
@@ -15,7 +15,7 @@ const routes: GenericRoute [] = [
     isNested: false,
     synapseObject: [
       {
-        name: 'HomeButtonControl',
+        name: 'HomeButtonControlWrapper',
         title: 'EXPLORE PORTAL',
         props: {
           colors: [
@@ -101,9 +101,9 @@ const routes: GenericRoute [] = [
         to: '/Explore/Datasets',
         synapseObject: [
           {
-            name: 'ExploreButtonControl',
+            ...exploreButtonControlWrappersProps,
             props: {
-              ...exploreButtonControlProps,
+              ...exploreButtonControlWrappersProps.props,
               synapseObjectSingle: datasets.explorePageSynapseObject
             }
           }
@@ -115,9 +115,9 @@ const routes: GenericRoute [] = [
         to: '/Explore/Files',
         synapseObject: [
           {
-            name: 'ExploreButtonControl',
+            ...exploreButtonControlWrappersProps,
             props: {
-              ...exploreButtonControlProps,
+              ...exploreButtonControlWrappersProps.props,
               synapseObjectSingle: files.explorePageSynapseObject
             }
           }
@@ -129,9 +129,9 @@ const routes: GenericRoute [] = [
         to: '/Explore/Studies',
         synapseObject: [
           {
-            name: 'ExploreButtonControl',
+            ...exploreButtonControlWrappersProps,
             props: {
-              ...exploreButtonControlProps,
+              ...exploreButtonControlWrappersProps.props,
               synapseObjectSingle: studies.explorePageSynapseObject
             }
           }
@@ -143,9 +143,9 @@ const routes: GenericRoute [] = [
         to: '/Explore/Publications',
         synapseObject: [
           {
-            name: 'ExploreButtonControl',
+            ...exploreButtonControlWrappersProps,
             props: {
-              ...exploreButtonControlProps,
+              ...exploreButtonControlWrappersProps.props,
               synapseObjectSingle: publications.explorePageSynapseObject
             }
           }

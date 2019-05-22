@@ -5,8 +5,8 @@ import routesConfig from './config/routesConfig'
 import { SynapseObjectSingle, GenericRoute } from './types/portal-config'
 import { SynapseComponents } from 'synapse-react-client'
 import { TokenContext } from './AppInitializer'
-import HomeButtonControl from './portal-components/HomeButtonControl'
-import ExploreButtonControl from './portal-components/ExploreButtonControl'
+import HomeButtonControlWrapper from './portal-components/HomeButtonControlWrapper'
+import ExploreButtonControlWrapper from './portal-components/ExploreButtonControlWrapper'
 import QueryWrapperHelper from './portal-components/QueryWrapperHelper'
 
 export type RouteResolverProps = {
@@ -36,11 +36,11 @@ export const getRouteFromParams = (pathname: string) => {
 }
 
 export const generateSynapseObjectHelper = (synapseObjectSingle: SynapseObjectSingle) => {
-  if (synapseObjectSingle.name === 'HomeButtonControl') {
-    return <HomeButtonControl {...synapseObjectSingle.props} />
+  if (synapseObjectSingle.name === 'HomeButtonControlWrapper') {
+    return <HomeButtonControlWrapper {...synapseObjectSingle.props} />
   }
-  if (synapseObjectSingle.name === 'ExploreButtonControl') {
-    return <ExploreButtonControl {...synapseObjectSingle.props} />
+  if (synapseObjectSingle.name === 'ExploreButtonControlWrapper') {
+    return <ExploreButtonControlWrapper {...synapseObjectSingle.props} />
   }
   if (synapseObjectSingle.name === 'QueryWrapperHelper') {
     return <QueryWrapperHelper {...synapseObjectSingle.props} />
