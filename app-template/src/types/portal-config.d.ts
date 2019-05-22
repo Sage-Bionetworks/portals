@@ -97,8 +97,6 @@ export interface BaseRoute {
   link?: string
   synapseObject: SynapseObject
   routes?: Array<Route>
-  // catch all
-  addOns?: any
 }
 
 export interface NestedRoute extends BaseRoute {

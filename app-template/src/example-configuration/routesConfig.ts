@@ -25,7 +25,6 @@ routes[ABOUT_INDEX] = {
 }
 
 routes[EXPLORE_INDEX] = {
-  // Explore route is a special case
   name: 'Explore',
   isNested: true,
   routes: [
@@ -92,13 +91,12 @@ routes[HOME_INDEX] = {
   name: 'Home',
   to: '/',
   isNested: false,
-  // @ts-ignore
   synapseObject: [
     {
       title: 'Explore Portal',
-      name: 'ButtonControl',
+      name: 'HomeButtonControl',
       props: {
-        queryWrapperConfigs: [
+        configs: [
           data.homePageSynapseObject.props,
           publications.homePageSynapseObject.props
         ],

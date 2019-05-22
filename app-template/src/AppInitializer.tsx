@@ -1,11 +1,7 @@
 import * as React from 'react'
-import { withRouter } from 'react-router-dom'
+import { withRouter, RouteComponentProps } from 'react-router-dom'
 import docTitleConfig from './config/docTitleConfig'
 import { SynapseClient } from 'synapse-react-client'
-
-export type AppInitializerProps = {
-  location: any
-}
 
 export type AppInitializerToken = {
   token: string
@@ -13,7 +9,7 @@ export type AppInitializerToken = {
 
 export const TokenContext = React.createContext('')
 
-class AppInitializer extends React.Component<AppInitializerProps, AppInitializerToken> {
+class AppInitializer extends React.Component<RouteComponentProps, AppInitializerToken> {
 
   constructor(props: any) {
     super(props)
@@ -51,5 +47,4 @@ class AppInitializer extends React.Component<AppInitializerProps, AppInitializer
   }
 }
 
-// @ts-ignore
 export default withRouter(AppInitializer)

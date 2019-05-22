@@ -26,10 +26,6 @@ const ButtonControl:React.FunctionComponent<Props> = ({ location, synapseObjectS
     handleChanges: (val: string, _index: number) => history.push(`/Explore/${val}`),
     isSelected: (name: string) => name === subPath,
   }
-  /*
-    We special case the rendering based on the use case for button control, whether it should retrieve data
-    from props or through the URL.
-  */
   return (
     <React.Fragment>
       <ExploreButtons

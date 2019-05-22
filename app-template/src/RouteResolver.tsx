@@ -21,6 +21,7 @@ export const getRouteFromParams = (pathname: string) => {
   const pathWithName = pathname === '/' ? '/Home' :  pathname
   const split = pathWithName.split('/')
   let route = routesConfig.find(el => split[1] === el.name)!
+  // search the route configs for the pathname
   for (let i = 2; i < split.length; i += 1) {
     if (!route) {
       return fail(`Error: url at ${pathWithName} has no route mapping`)
@@ -46,7 +47,7 @@ export const generateSynapseObjectHelper = (synapseObjectSingle: SynapseObjectSi
   }
   const SynapseComponent = (SynapseComponents as any)[synapseObjectSingle.name]
   if (!SynapseComponent) {
-    return <div> no luck ! </div>
+    throw Error(`No synapse object could be mapped for ${synapseObjectSingle.name}`)
   }
   return <SynapseComponent {...synapseObjectSingle.props} />
 }

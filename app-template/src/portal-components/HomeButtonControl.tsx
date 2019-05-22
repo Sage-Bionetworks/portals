@@ -43,7 +43,6 @@ class ButtonControl extends React.Component<Props, ButtonControlState> {
       configs,
       colors,
     } = this.props
-    // typecasting is treating customRoutes oddly, casting to unknown is the workaround
     const exploreButtonProps: ExploreButtonProps = {
       colors,
       customRoutes: configs,
