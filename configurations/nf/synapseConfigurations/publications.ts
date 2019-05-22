@@ -2,30 +2,29 @@ import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from '../../types/portal-config'
 import loadingScreen from '../loadingScreen'
 
-const sql = 'SELECT * FROM syn16787123'
-export const studiesSql = sql
+const sql = 'SELECT * FROM syn16857542'
+export const publicationsSql = sql
+const type = 'publication'
+const unitDescription = 'Publications'
+const synapseId = 'syn16857542'
+const rgbIndex = 0
+
 const facetAliases = {
   projectStatus: 'Project Status',
   dataStatus: 'Data Status',
   fundingAgency: 'Funding Agency',
   tumorType: 'Tumor Type',
-  diseaseFocus: 'Disease Focus'
+  diseaseFocus: 'Disease Focus',
 }
-const type = 'study'
-const unitDescription = 'Studies'
-const rgbIndex = 1
-const synapseId = 'syn16787123'
 
-const studies: HomeExploreConfig = {
+const publications: HomeExploreConfig = {
   homePageSynapseObject: {
-    name: 'QueryWrapperHelper',
+    name: 'QueryWrapperWithStackedBarChart',
     props: {
-      facetAliases,
       unitDescription,
       rgbIndex,
       loadingScreen,
-      name: 'Studies',
-      facetName: 'diseaseFocus',
+      name: 'Publications',
       initQueryRequest: {
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
         partMask:
@@ -36,9 +35,13 @@ const studies: HomeExploreConfig = {
           sql,
           isConsistent: false,
           limit: 25,
-          offset: 0
-        }
-      }
+          offset: 0,
+        },
+      },
+      facetName: 'diseaseFocus',
+      facetAliases: {
+        diseaseFocus: 'Disease Focus',
+      },
     }
   },
   explorePageSynapseObject: {
@@ -52,30 +55,16 @@ const studies: HomeExploreConfig = {
         {
           sql,
           facetAliases,
-          unitDescription,
           synapseId,
-          facetName: 'projectStatus',
+          unitDescription,
+          facetName: 'fundingAgency',
         },
         {
           sql,
-          unitDescription,
-          synapseId,
           facetAliases,
-          facetName: 'dataStatus'
-        },
-        {
-          sql,
-          unitDescription,
           synapseId,
-          facetAliases,
-          facetName: 'fundingAgency'
-        },
-        {
-          sql,
           unitDescription,
-          synapseId,
-          facetAliases,
-          facetName: 'tumorType'
+          facetName: 'tumorType',
         },
         {
           sql,
@@ -83,10 +72,10 @@ const studies: HomeExploreConfig = {
           facetAliases,
           unitDescription,
           facetName: 'diseaseFocus',
-        },
+        }
       ]
     }
   }
 }
 
-export default studies
+export default publications

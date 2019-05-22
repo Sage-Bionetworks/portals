@@ -1,11 +1,11 @@
 import * as React from 'react'
 import { ButtonControl, ButtonControlProps } from '../ButtonControl'
 import { withRouter, RouteComponentProps, Link } from 'react-router-dom'
-import { SynapseObjectSingle } from '../types/portal-config'
+import { SynapseConfig } from '../types/portal-config'
 import { generateSynapseObject } from '../RouteResolver'
 
 type HomeButtonControlConfigs = {
-  synapseObjectSingle: SynapseObjectSingle
+  SynapseConfig: SynapseConfig
   name: string
 }
 
@@ -53,12 +53,12 @@ class HomeButtonControl extends React.Component<Props, ButtonControlState> {
     } = this.props
     const buttonControlProps: ButtonControlProps = {
       colors,
-      customRoutes: configs,
+      customRoutes: configs.map(el => el.name),
       handleChanges: this.handleChange,
       isSelected: (val: string) => val === statefulConfig.name,
     }
     const statefulConfig = configs![this.state.index]
-    const synapseObjectSingle = statefulConfig.synapseObjectSingle
+    const SynapseConfig = statefulConfig.SynapseConfig
     return (
       <React.Fragment>
         <ButtonControl
@@ -66,7 +66,7 @@ class HomeButtonControl extends React.Component<Props, ButtonControlState> {
         />
         <div className="homeExploreContainer">
           <div id="homePageBarChart">
-            {generateSynapseObject(synapseObjectSingle)}
+            {generateSynapseObject(SynapseConfig)}
           </div>
           <Link to={`/Explore/${statefulConfig.name}`} id="exploreData"> Explore {statefulConfig.name} </Link>
         </div>

@@ -2,12 +2,12 @@ import * as React from 'react'
 import './App.css'
 import { withRouter } from 'react-router'
 import routesConfig from './config/routesConfig'
-import { SynapseObjectSingle, GenericRoute } from './types/portal-config'
+import { SynapseConfig, GenericRoute } from './types/portal-config'
 import { SynapseComponents } from 'synapse-react-client'
 import { TokenContext } from './AppInitializer'
 import HomeButtonControlWrapper from './portal-components/HomeButtonControlWrapper'
 import ExploreButtonControlWrapper from './portal-components/ExploreButtonControlWrapper'
-import QueryWrapperHelper from './portal-components/QueryWrapperHelper'
+import QueryWrapperWithStackedBarChart from './portal-components/QueryWrapperWithStackedBarChart'
 
 export type RouteResolverProps = {
   location: any
@@ -17,7 +17,11 @@ export type RouteResolverProps = {
 function fail(message: string): never { throw new Error(message) }
 
 export const getRouteFromParams = (pathname: string) => {
+  // e.g. pathname = /Explore/Programs
+  // '', Explore, Programs
+
   // special case the home page path
+  // look into deep find
   const pathWithName = pathname === '/' ? '/Home' :  pathname
   const split = pathWithName.split('/')
   let route = routesConfig.find(el => split[1] === el.name)!
@@ -29,32 +33,32 @@ export const getRouteFromParams = (pathname: string) => {
     if (route.isNested) {
       route = route.routes.find(el => split[i] === el.name)!
     } else {
-      fail(`Route at ${pathname} has no synapseObject mapping`)
+      fail(`Route at ${pathname} has no SynapseConfigArray mapping`)
     }
   }
   return route
 }
 
-export const generateSynapseObjectHelper = (synapseObjectSingle: SynapseObjectSingle) => {
-  if (synapseObjectSingle.name === 'HomeButtonControlWrapper') {
-    return <HomeButtonControlWrapper {...synapseObjectSingle.props} />
+export const generateSynapseObjectHelper = (SynapseConfig: SynapseConfig) => {
+  if (SynapseConfig.name === 'HomeButtonControlWrapper') {
+    return <HomeButtonControlWrapper {...SynapseConfig.props} />
   }
-  if (synapseObjectSingle.name === 'ExploreButtonControlWrapper') {
-    return <ExploreButtonControlWrapper {...synapseObjectSingle.props} />
+  if (SynapseConfig.name === 'ExploreButtonControlWrapper') {
+    return <ExploreButtonControlWrapper {...SynapseConfig.props} />
   }
-  if (synapseObjectSingle.name === 'QueryWrapperHelper') {
-    return <QueryWrapperHelper {...synapseObjectSingle.props} />
+  if (SynapseConfig.name === 'QueryWrapperWithStackedBarChart') {
+    return <QueryWrapperWithStackedBarChart {...SynapseConfig.props} />
   }
-  const SynapseComponent = (SynapseComponents as any)[synapseObjectSingle.name]
+  const SynapseComponent = (SynapseComponents as any)[SynapseConfig.name]
   if (!SynapseComponent) {
-    throw Error(`No synapse object could be mapped for ${synapseObjectSingle.name}`)
+    throw Error(`No synapse object could be mapped for ${SynapseConfig.name}`)
   }
-  return <SynapseComponent {...synapseObjectSingle.props} />
+  return <SynapseComponent {...SynapseConfig.props} />
 }
 
-export const generateSynapseObject = (synapseObjectSingle: SynapseObjectSingle) => {
+export const generateSynapseObject = (SynapseConfig: SynapseConfig) => {
   // return the synapse object but with token injected into its props from the context created in AppInitializer
-  const { props, ...rest } = synapseObjectSingle
+  const { props, ...rest } = SynapseConfig
   return (
     <TokenContext.Consumer>
       {
@@ -73,7 +77,7 @@ const RouteResolver: React.SFC<RouteResolverProps> = ({ location }) => {
   const route = getRouteFromParams(pathname) as GenericRoute
   return (
     <div className="container">
-      {route.synapseObject!.map(
+      {route.SynapseConfigArray!.map(
         (el) => {
           return (
             <React.Fragment key={JSON.stringify(el.props)}>

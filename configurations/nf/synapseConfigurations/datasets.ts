@@ -2,80 +2,76 @@ import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from '../../types/portal-config'
 import loadingScreen from '../loadingScreen'
 
-const sql = 'SELECT * FROM syn16857542'
-export const publicationsSql = sql
-const type = 'publication'
-const unitDescription = 'Publications'
-const synapseId = 'syn16857542'
-const rgbIndex = 0
+const sql = 'SELECT * FROM syn16859580'
+export const datasetsSql = sql
+const type = 'dataset'
+const unitDescription = 'datasets'
+const rgbIndex = 5
+const synapseId = 'syn16859580'
 
 const facetAliases = {
-  projectStatus: 'Project Status',
-  dataStatus: 'Data Status',
-  fundingAgency: 'Funding Agency',
-  tumorType: 'Tumor Type',
   diseaseFocus: 'Disease Focus',
+  tumorType: 'Tumor Type',
+  fundingAgency: 'Funding Agency',
 }
 
-const publications: HomeExploreConfig = {
+const datasets: HomeExploreConfig = {
   homePageSynapseObject: {
-    name: 'QueryWrapperHelper',
+    name: 'QueryWrapperWithStackedBarChart',
     props: {
       unitDescription,
       rgbIndex,
+      facetAliases,
       loadingScreen,
-      name: 'Publications',
+      name: 'Datasets',
+      facetName: 'diseaseFocus',
       initQueryRequest: {
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
         partMask:
-            SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS
-            | SynapseConstants.BUNDLE_MASK_QUERY_FACETS
-            | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
+          SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS
+          | SynapseConstants.BUNDLE_MASK_QUERY_FACETS
+          | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
         query: {
           sql,
           isConsistent: false,
           limit: 25,
           offset: 0,
         },
-      },
-      facetName: 'diseaseFocus',
-      facetAliases: {
-        diseaseFocus: 'Disease Focus',
-      },
+      }
     }
   },
   explorePageSynapseObject: {
     name: 'QueryWrapperMenu',
     props: {
+      unitDescription,
       rgbIndex,
-      synapseId,
       type,
       loadingScreen,
       menuConfig: [
         {
           sql,
           facetAliases,
-          synapseId,
           unitDescription,
-          facetName: 'fundingAgency',
+          synapseId,
+          facetName: 'diseaseFocus',
         },
         {
           sql,
           facetAliases,
-          synapseId,
           unitDescription,
+          synapseId,
           facetName: 'tumorType',
         },
         {
           sql,
-          synapseId,
           facetAliases,
           unitDescription,
-          facetName: 'diseaseFocus',
-        }
+          synapseId,
+          facetName: 'fundingAgency',
+        },
       ]
     }
   }
 }
 
-export default publications
+export default datasets

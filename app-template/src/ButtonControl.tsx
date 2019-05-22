@@ -7,7 +7,8 @@ export type NamedRoute = {
 export type ButtonControlProps = {
   handleChanges: (text: string, index: number) => void
   isSelected: (name: string) => boolean
-  customRoutes: NamedRoute []
+  // make array of strings!
+  customRoutes: string []
   colors: string []
 }
 
@@ -17,19 +18,19 @@ export const ButtonControl: React.FunctionComponent<ButtonControlProps> = ({ han
     <div className="explore-buttons">
       {
         customRoutes.map(
-          (el, index) => {
-            const handleClick = () => handleChanges(el.name, index)
+          (name, index) => {
+            const handleClick = () => handleChanges(name, index)
             // have to set borderTopColor so that the pseudo element triangle can inherit
             // the color of the button
             const style = { background: colors[index], borderTopColor: colors[index] }
             return (
               <button
                 style={style}
-                key={el.name}
-                className={`${setActiveClass(isSelected(el.name))}`}
+                key={name}
+                className={`${setActiveClass(isSelected(name))}`}
                 onClick={handleClick}
               >
-                {el.name}
+                {name}
               </button>
             )
           }

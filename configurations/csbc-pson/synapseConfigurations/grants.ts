@@ -8,7 +8,7 @@ const rgbIndex = 3
 
 export const grants: HomeExploreConfig = {
   homePageSynapseObject: {
-    name: 'QueryWrapperHelper',
+    name: 'QueryWrapperWithStackedBarChart',
     props: {
       unitDescription,
       loadingScreen,

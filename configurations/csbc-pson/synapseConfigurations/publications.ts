@@ -1,21 +1,24 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from '../../types/portal-config'
 import loadingScreen from '../loadingScreen'
-export const datasetsSql = `SELECT * FROM syn18488466 WHERE ( ( "featured" = 'TRUE' ) )`
-const sql = 'SELECT * FROM syn18488466'
-const unitDescription = 'Datasets'
-const synapseId = 'syn18488466'
-const rgbIndex = 0
+export const publicationSql = 'SELECT * FROM syn10923842'
+const sql = publicationSql
+const unitDescription = 'Publications'
+const synapseId = 'syn10923842'
+const rgbIndex = 1
 
-export const datasets: HomeExploreConfig = {
+export const publications: HomeExploreConfig = {
   homePageSynapseObject: {
-    name: 'QueryWrapperHelper',
+    name: 'QueryWrapperWithStackedBarChart',
     props: {
+      rgbIndex,
       unitDescription,
       loadingScreen,
-      rgbIndex: 0,
-      facetName: 'tumorType',
-      name: 'Datasets',
+      name: 'Publications',
+      facetName: 'Consortium',
+      facetAliases: {
+        Consortium: 'Program',
+      },
       initQueryRequest : {
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
         partMask: SynapseConstants.BUNDLE_MASK_QUERY_FACETS
@@ -26,10 +29,7 @@ export const datasets: HomeExploreConfig = {
           limit: 25,
           offset: 0,
         }
-      },
-      facetAliases: {
-        tumorType: 'Disease Type',
-      },
+      }
     }
   },
   explorePageSynapseObject: {
@@ -37,22 +37,46 @@ export const datasets: HomeExploreConfig = {
     props: {
       rgbIndex,
       loadingScreen,
-      type: SynapseConstants.CSBC_DATASET,
+      type: SynapseConstants.CSBC_PUBLICATION,
       menuConfig: [
         {
+          unitDescription,
           sql,
           synapseId,
+          facetName: 'Publication Year',
+        },
+        {
+          sql,
           unitDescription,
-          facetName: 'species',
+          synapseId,
+          facetName: 'Consortium',
           facetAliases: {
-            species: 'Species',
-          }
+            Consortium: 'Program',
+          },
+        },
+        {
+          sql,
+          unitDescription,
+          synapseId,
+          facetName: 'grantType',
+          facetAliases: {
+            grantType: 'Grant Type',
+          },
+        },
+        {
+          sql,
+          unitDescription,
+          synapseId,
+          facetName: 'diseaseType',
+          facetAliases: {
+            diseaseType: 'Disease',
+          },
         },
         {
           sql,
           synapseId,
           unitDescription,
-          facetName: 'Theme'
+          facetName: 'Theme',
         },
         {
           sql,
@@ -60,27 +84,9 @@ export const datasets: HomeExploreConfig = {
           unitDescription,
           facetName: 'experimentalStrategy',
           facetAliases: {
-            experimentalStrategy: 'Assay'
-          }
+            experimentalStrategy: 'Assay',
+          },
         },
-        {
-          sql,
-          synapseId,
-          unitDescription,
-          facetName: 'platform',
-          facetAliases: {
-            platform: 'Platform'
-          }
-        },
-        {
-          sql,
-          synapseId,
-          unitDescription,
-          facetName: 'tumorType',
-          facetAliases: {
-            tumorType: 'Disease Type'
-          }
-        }
       ],
     }
   }

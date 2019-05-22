@@ -1,24 +1,20 @@
 import { SynapseConstants } from 'synapse-react-client'
-import { HomeExploreConfig } from '../../types/portal-config'
 import loadingScreen from '../loadingScreen'
-export const publicationSql = 'SELECT * FROM syn10923842'
-const sql = publicationSql
+import { HomeExploreConfig } from '../../types/portal-config'
+
+const sql = 'SELECT * FROM syn10923842'
 const unitDescription = 'Publications'
 const synapseId = 'syn10923842'
-const rgbIndex = 1
-
+const rgbIndex = 0
+const facetName = 'Theme'
 export const publications: HomeExploreConfig = {
   homePageSynapseObject: {
-    name: 'QueryWrapperHelper',
+    name: 'QueryWrapper',
     props: {
       rgbIndex,
+      facetName,
       unitDescription,
-      loadingScreen,
       name: 'Publications',
-      facetName: 'Consortium',
-      facetAliases: {
-        Consortium: 'Program',
-      },
       initQueryRequest : {
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
         partMask: SynapseConstants.BUNDLE_MASK_QUERY_FACETS
@@ -29,15 +25,13 @@ export const publications: HomeExploreConfig = {
           limit: 25,
           offset: 0,
         }
-      }
+      },
     }
   },
   explorePageSynapseObject: {
     name: 'QueryWrapperMenu',
     props: {
-      rgbIndex,
       loadingScreen,
-      type: SynapseConstants.CSBC_PUBLICATION,
       menuConfig: [
         {
           unitDescription,
@@ -88,6 +82,11 @@ export const publications: HomeExploreConfig = {
           },
         },
       ],
+      rgbIndex: 1,
+      facetAliases: {
+        Consortium: 'Program',
+      },
+      type: SynapseConstants.CSBC_PUBLICATION,
     }
   }
 }

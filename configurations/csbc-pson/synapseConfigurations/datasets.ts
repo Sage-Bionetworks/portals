@@ -1,23 +1,21 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from '../../types/portal-config'
 import loadingScreen from '../loadingScreen'
-
+export const datasetsSql = `SELECT * FROM syn18488466 WHERE ( ( "featured" = 'TRUE' ) )`
 const sql = 'SELECT * FROM syn18488466'
 const unitDescription = 'Datasets'
 const synapseId = 'syn18488466'
-
 const rgbIndex = 0
-const facetName = 'tumorType'
 
-export const data: HomeExploreConfig = {
+export const datasets: HomeExploreConfig = {
   homePageSynapseObject: {
-    name: 'QueryWrapperHelper',
+    name: 'QueryWrapperWithStackedBarChart',
     props: {
-      rgbIndex,
-      facetName,
-      loadingScreen,
       unitDescription,
-      name: 'Data',
+      loadingScreen,
+      rgbIndex: 0,
+      facetName: 'tumorType',
+      name: 'Datasets',
       initQueryRequest : {
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
         partMask: SynapseConstants.BUNDLE_MASK_QUERY_FACETS
@@ -29,13 +27,16 @@ export const data: HomeExploreConfig = {
           offset: 0,
         }
       },
+      facetAliases: {
+        tumorType: 'Disease Type',
+      },
     }
   },
   explorePageSynapseObject: {
     name: 'QueryWrapperMenu',
     props: {
-      loadingScreen,
       rgbIndex,
+      loadingScreen,
       type: SynapseConstants.CSBC_DATASET,
       menuConfig: [
         {
@@ -81,10 +82,6 @@ export const data: HomeExploreConfig = {
           }
         }
       ],
-      facetName: 'tumorType',
-      facetAliases: {
-        tumorType: 'Disease Type',
-      },
-    },
+    }
   }
 }

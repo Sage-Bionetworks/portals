@@ -1,4 +1,4 @@
-import { SynapseObjectSingle } from './portal-config'
+import { SynapseConfig } from './portal-config'
 
 /* 
   These are types that come up frequently between portals but are an
@@ -8,7 +8,7 @@ import { SynapseObjectSingle } from './portal-config'
 
 export type HomeExploreConfig = {
   homePageSynapseObject: QueryWrapper
-  explorePageSynapseObject: SynapseObjectSingle
+  explorePageSynapseObject: SynapseConfig
 }
 
 declare module "*.svg" {

@@ -1,9 +1,9 @@
 import { GenericRoute } from '../types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
-import { datasets, files, studies, publications, tools, funders } from './synapseConfigs'
-import { studiesSql } from './synapseConfigs/studies'
-import { datasetsSql } from './synapseConfigs/datasets'
-import { publicationsSql } from './synapseConfigs/publications'
+import { datasets, files, studies, publications, tools, funders } from './synapseConfigurations'
+import { studiesSql } from './synapseConfigurations/studies'
+import { datasetsSql } from './synapseConfigurations/datasets'
+import { publicationsSql } from './synapseConfigurations/publications'
 import exploreButtonControlWrapperProps from './exploreButtonControlWrapperProps'
 
 const limit = 3
@@ -13,7 +13,7 @@ const routes: GenericRoute [] = [
     name: 'Home',
     to: '/',
     isNested: false,
-    synapseObject: [
+    SynapseConfigArray: [
       {
         name: 'HomeButtonControlWrapper',
         title: 'EXPLORE PORTAL',
@@ -26,16 +26,16 @@ const routes: GenericRoute [] = [
           ],
           configs: [
             {
-              name: 'Datasets', synapseObjectSingle: datasets.homePageSynapseObject
+              name: 'Datasets', SynapseConfig: datasets.homePageSynapseObject
             },
             {
-              name: 'Files', synapseObjectSingle: files.homePageSynapseObject
+              name: 'Files', SynapseConfig: files.homePageSynapseObject
             },
             {
-              name: 'Studies', synapseObjectSingle: studies.homePageSynapseObject
+              name: 'Studies', SynapseConfig: studies.homePageSynapseObject
             },
             {
-              name: 'Publications', synapseObjectSingle: publications.homePageSynapseObject
+              name: 'Publications', SynapseConfig: publications.homePageSynapseObject
             }
           ]
         }
@@ -99,12 +99,12 @@ const routes: GenericRoute [] = [
         name: 'Datasets',
         isNested: false,
         to: '/Explore/Datasets',
-        synapseObject: [
+        SynapseConfigArray: [
           {
             ...exploreButtonControlWrapperProps,
             props: {
               ...exploreButtonControlWrapperProps.props,
-              synapseObjectSingle: datasets.explorePageSynapseObject
+              SynapseConfig: datasets.explorePageSynapseObject
             }
           }
         ]
@@ -113,12 +113,12 @@ const routes: GenericRoute [] = [
         name: 'Files',
         isNested: false,
         to: '/Explore/Files',
-        synapseObject: [
+        SynapseConfigArray: [
           {
             ...exploreButtonControlWrapperProps,
             props: {
               ...exploreButtonControlWrapperProps.props,
-              synapseObjectSingle: files.explorePageSynapseObject
+              SynapseConfig: files.explorePageSynapseObject
             }
           }
         ]
@@ -127,12 +127,12 @@ const routes: GenericRoute [] = [
         name: 'Studies',
         isNested: false,
         to: '/Explore/Studies',
-        synapseObject: [
+        SynapseConfigArray: [
           {
             ...exploreButtonControlWrapperProps,
             props: {
               ...exploreButtonControlWrapperProps.props,
-              synapseObjectSingle: studies.explorePageSynapseObject
+              SynapseConfig: studies.explorePageSynapseObject
             }
           }
         ]
@@ -141,12 +141,12 @@ const routes: GenericRoute [] = [
         name: 'Publications',
         isNested: false,
         to: '/Explore/Publications',
-        synapseObject: [
+        SynapseConfigArray: [
           {
             ...exploreButtonControlWrapperProps,
             props: {
               ...exploreButtonControlWrapperProps.props,
-              synapseObjectSingle: publications.explorePageSynapseObject
+              SynapseConfig: publications.explorePageSynapseObject
             }
           }
         ]
@@ -161,7 +161,7 @@ const routes: GenericRoute [] = [
         name: 'CTF',
         to: '/Organizations/CTF',
         isNested: false,
-        synapseObject: [
+        SynapseConfigArray: [
           {
             name: 'CardContainerLogic',
             props: {
@@ -201,7 +201,7 @@ const routes: GenericRoute [] = [
         name: 'NTAP',
         to: '/Organizations/NTAP',
         isNested: false,
-        synapseObject: [
+        SynapseConfigArray: [
           {
             name: 'CardContainerLogic',
             props: {
@@ -241,7 +241,7 @@ const routes: GenericRoute [] = [
         name: 'DHART-SPORE',
         to: '/Organizations/DHART-SPORE',
         isNested: false,
-        synapseObject: [
+        SynapseConfigArray: [
           {
             name: 'CardContainerLogic',
             props: {
@@ -283,7 +283,7 @@ const routes: GenericRoute [] = [
     name: 'About',
     to: '/About',
     isNested: false,
-    synapseObject: [
+    SynapseConfigArray: [
       {
         name: 'Markdown',
         title: 'About',

@@ -64,14 +64,14 @@ class AppInitializer extends React.Component<RouteComponentProps & ReactCookiePr
       color = window.getComputedStyle(footerElement, null).getPropertyValue('color')
       background = window.getComputedStyle(footerElement, null).getPropertyValue('background-color')
     }
-    const homeLinkImgElement = document.querySelector('#home-link img')
+    const homeLinkImgElement = document.querySelector('#footer-link img')
     if (homeLinkImgElement) {
       const imageSrc = homeLinkImgElement.getAttribute('src')
       if (imageSrc) {
         icon = imageSrc
       }
     }
-    const homeLinkElement = document.querySelector('#home-link')
+    const homeLinkElement = document.querySelector('#footer-link')
     if (homeLinkElement && homeLinkElement.textContent) {
       name = homeLinkElement.textContent
     }
