@@ -2,6 +2,7 @@ import * as React from 'react'
 import { withRouter, RouteComponentProps } from 'react-router-dom'
 import docTitleConfig from './config/docTitleConfig'
 import { SynapseClient } from 'synapse-react-client'
+import { withCookies, ReactCookieProps } from 'react-cookie'
 
 export type AppInitializerToken = {
   token: string
@@ -9,7 +10,7 @@ export type AppInitializerToken = {
 
 export const TokenContext = React.createContext('')
 
-class AppInitializer extends React.Component<RouteComponentProps, AppInitializerToken> {
+class AppInitializer extends React.Component<RouteComponentProps & ReactCookieProps, AppInitializerToken> {
 
   constructor(props: any) {
     super(props)
@@ -29,12 +30,14 @@ class AppInitializer extends React.Component<RouteComponentProps, AppInitializer
     ).catch((_err) => {
       console.log('no token from cookie could be fetched ', _err)
     })
+    this.updateSynapseCallbackCookie()
   }
 
   componentDidUpdate(prevProps: any) {
     // https://github.com/ReactTraining/react-router/blob/master/packages/react-router-dom/docs/guides/scroll-restoration.md
     if (this.props.location !== prevProps.location) {
       window.scrollTo(0, 0)
+      this.updateSynapseCallbackCookie()
     }
   }
 
@@ -45,6 +48,45 @@ class AppInitializer extends React.Component<RouteComponentProps, AppInitializer
       </TokenContext.Provider>
     )
   }
+
+  /**
+   * PORTALS-490: Set Synapse callback cookie
+   * Will attempt to set a .synapse.org domain cookie that has enough information to lead the user
+   * back to this portal after visiting www.synapse.org.
+   */
+  updateSynapseCallbackCookie() {
+    let color = 'white'
+    let background = '#4db7ad'
+    let name = ''
+    let icon = ''
+    const footerElement = document.querySelector('#footer')
+    if (footerElement) {
+      color = window.getComputedStyle(footerElement, null).getPropertyValue('color')
+      background = window.getComputedStyle(footerElement, null).getPropertyValue('background-color')
+    }
+    const homeLinkImgElement = document.querySelector('#home-link img')
+    if (homeLinkImgElement) {
+      const imageSrc = homeLinkImgElement.getAttribute('src')
+      if (imageSrc) {
+        icon = imageSrc
+      }
+    }
+    const homeLinkElement = document.querySelector('#home-link')
+    if (homeLinkElement && homeLinkElement.textContent) {
+      name = homeLinkElement.textContent
+    }
+    const cookieValue = {
+      foregroundColor: color,
+      backgroundColor: background,
+      callbackUrl: window.location.href,
+      logoUrl: icon,
+      portalName: name
+    }
+    // Cookies provider exists about AppInitializer so the cookies prop will exist
+    this.props.cookies!.set(
+      'org.sagebionetworks.security.cookies.portal.config',
+      JSON.stringify(cookieValue), { path: '/', domain: '.synapse.org' })
+  }
 }
 
-export default withRouter(AppInitializer)
+export default withCookies(withRouter(AppInitializer))
