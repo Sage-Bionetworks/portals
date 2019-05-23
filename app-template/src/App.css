@@ -35,14 +35,15 @@ body {
   display: flex;
   align-items: center; }
 
-#header {
-  background-color: #4d5491; }
+#header, #footer {
+  background-blend-mode: multiply;
+  background-color: #407BA0; }
 
 .SRC-primary-background-color {
-  background-color: #4d5491 !important; }
+  background-color: #47337D !important; }
 
 .SRC-primary-background-color-hover:hover {
-  background: #4d5491 !important;
+  background: #47337D !important;
   color: white !important; }
   .SRC-primary-background-color-hover:hover svg.SRC-primary-text-color {
     color: white !important; }
@@ -50,7 +51,7 @@ body {
     color: white; }
 
 .SRC-primary-background-color-hover.SRC-nested-color:hover * {
-  background-color: #4d5491 !important;
+  background-color: #47337D !important;
   color: white !important; }
 
 .spacer {
@@ -92,7 +93,7 @@ body {
     text-decoration: none; }
   .nav a:focus {
     text-decoration: none;
-    color: #4d5491; }
+    color: #47337D; }
 
 .nav-button, .dropdown.nav-button-container, .nav-button-container:hover, .dropdown.nav-button-container.bottom-border {
   border-bottom-style: solid;
@@ -116,17 +117,17 @@ body {
   white-space: nowrap; }
 
 .nav-button-container:hover, .dropdown.nav-button-container.bottom-border {
-  border-bottom-color: #4d5491;
-  color: #4d5491; }
+  border-bottom-color: #47337D;
+  color: #47337D; }
 
 #home-link {
   font-weight: bold;
   font-size: 25px;
-  color: #4d5491;
+  color: #47337D;
   margin-left: 15px; }
 
 .open > a {
-  color: #4d5491 !important;
+  color: #47337D !important;
   background-color: white !important; }
   .open > a:focus {
     border-color: unset !important; }
@@ -167,8 +168,8 @@ body {
 
 #footer {
   text-transform: uppercase;
-  background-image: url("config/style//header.svg");
-  background-color: #4d5491;
+  background-image: url("config/style//dna.svg");
+  background-color: #407BA0;
   background-repeat: no-repeat;
   background-size: cover;
   color: white;
@@ -178,13 +179,13 @@ body {
     color: white; }
 
 .SRC-primary-text-color {
-  color: #4d5491 !important; }
+  color: #407BA0 !important; }
 
 .footer-help {
   flex-basis: 50%; }
 
 #header {
-  background-image: url("config/style/header.svg");
+  background-image: url("config/style/dna_header.svg");
   background-repeat: no-repeat;
   background-size: cover;
   height: fit-content;
@@ -242,7 +243,7 @@ body {
   right: 50px;
   position: absolute;
   border-radius: 24px;
-  background-color: #4d5491;
+  background-color: #47337D;
   position: absolute;
   color: white;
   height: 44px;
@@ -284,7 +285,7 @@ body {
   text-align: center;
   justify-content: center; }
   .viewAll:hover {
-    background-color: #4d5491;
+    background-color: #47337D;
     color: white;
     text-decoration: none; }
 
@@ -298,12 +299,12 @@ body {
   border-width: 0px; }
 
 div.SRC-title > h3 a {
-  color: #4d5491; }
+  color: #407BA0; }
 
 button.btn-sm.SRC-floatRight {
   border: none; }
   button.btn-sm.SRC-floatRight svg {
-    color: #4d5491 !important; }
+    color: #47337D !important; }
 
 #exploreCount {
   padding-top: 20px; }
