@@ -11,6 +11,7 @@ fi
 # configuration to the react app, we copy over the configuration and symlink
 # the contents back to the configuration
 
+# remove ending slash if directory given had a slash
 folderNoSlash=${1%/}
 # clear out config
 rm -rf $folderNoSlash

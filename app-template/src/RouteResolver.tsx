@@ -56,9 +56,9 @@ export const generateSynapseObjectHelper = (synapseConfig: SynapseConfig) => {
   return <SynapseComponent {...synapseConfig.props} />
 }
 
-export const generateSynapseObject = (SynapseConfig: SynapseConfig) => {
+export const generateSynapseObject = (synapseConfig: SynapseConfig) => {
   // return the synapse object but with token injected into its props from the context created in AppInitializer
-  const { props, ...rest } = SynapseConfig
+  const { props, ...rest } = synapseConfig
   return (
     <TokenContext.Consumer>
       {
@@ -75,7 +75,6 @@ const RouteResolver: React.SFC<RouteResolverProps> = ({ location }) => {
   // Map this to route in configuration files
   const pathname = location.pathname
   const route = getRouteFromParams(pathname) as GenericRoute
-  console.log('route = ', route)
   return (
     <div className="container">
       {route.synapseConfigArray!.map(

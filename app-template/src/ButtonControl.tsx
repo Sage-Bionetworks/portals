@@ -7,7 +7,6 @@ export type NamedRoute = {
 export type ButtonControlProps = {
   handleChanges: (text: string, index: number) => void
   isSelected: (name: string) => boolean
-  // make array of strings!
   customRoutes: string []
   colors: string []
 }
@@ -19,7 +18,6 @@ export const ButtonControl: React.FunctionComponent<ButtonControlProps> = ({ han
       {
         customRoutes.map(
           (name, index) => {
-            console.log('name  = ', name)
             const handleClick = () => handleChanges(name, index)
             // have to set borderTopColor so that the pseudo element triangle can inherit
             // the color of the button

@@ -12,6 +12,7 @@ if [[ -z $1 ]]; then
   exit 1
 fi
 
+# remove ending slash if directory given had a slash
 folderNoSlash=${1%/}
 # React applications can't resolve symlinks, so instead of symlinking the 
 # configuration to the react app, we copy over the configuration and symlink
