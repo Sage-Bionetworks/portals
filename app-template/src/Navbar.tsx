@@ -3,7 +3,7 @@ import * as React from 'react'
 import routesConfig from './config/routesConfig'
 import { GenericRoute, SynapseObject } from './types/portal-config'
 import logoHeaderConfig from './config/logoHeaderConfig'
-import Modal from '@material-ui/core/Modal'
+import Dialog from '@material-ui/core/Dialog'
 import { SynapseComponents, SynapseClient, SynapseConstants } from 'synapse-react-client'
 import UserCard from 'synapse-react-client/dist/containers/UserCard'
 import * as AppInitializer from './AppInitializer'
@@ -70,6 +70,13 @@ export class Navbar extends React.Component<{}, NavbarState> {
       showLoginDialog: true
     })
   }
+
+  handleCloseLoginDialog = () => {
+    this.setState({
+      showLoginDialog: false
+    })
+  }
+
   // given the hash, decide if the link should have a bottom border
   getBorder = (name: string) => {
     if (name === '') {
@@ -135,13 +142,13 @@ export class Navbar extends React.Component<{}, NavbarState> {
                   >
                     SIGN&nbsp;IN
                   </button>
-                  <Modal open={this.state.showLoginDialog}>
+                  <Dialog onClose={this.handleCloseLoginDialog} open={this.state.showLoginDialog}>
                     <SynapseComponents.Login
                         token={this.state.token}
                         theme={'light'}
                         icon={true}
                     />
-                  </Modal>
+                  </Dialog>
                 </div>
             }
             {
