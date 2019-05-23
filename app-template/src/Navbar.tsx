@@ -11,9 +11,11 @@ import SvgIcon from '@material-ui/core/SvgIcon'
 import { signOut } from 'synapse-react-client/dist/utils/SynapseClient'
 
 export type NavbarState = {
+  // keep track of dropdown menu state (open/closed)
+  [index:string]: any,
   token: string | undefined,
   userprofile: any,
-  [index:string]: any
+  showLoginDialog: boolean,
 }
 export class Navbar extends React.Component<{}, NavbarState> {
 
@@ -22,8 +24,8 @@ export class Navbar extends React.Component<{}, NavbarState> {
     const numNestedRoutes = routesConfig.filter(el => el.isNested).length
     const state: NavbarState = {
       numNestedRoutes,
-      userprofile: undefined,
       token: undefined,
+      userprofile: undefined,
       showLoginDialog: false
     }
     for (let i = 0; i < numNestedRoutes; i += 1) {
@@ -40,7 +42,7 @@ export class Navbar extends React.Component<{}, NavbarState> {
       if (index === -1) {
         this.setState({
           [key]: false,
-          hasDropdownOpen: false,
+          hasDropdownOpen: false
         })
       } else if (index === i) {
         this.setState({
