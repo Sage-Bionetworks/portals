@@ -1,12 +1,12 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
 import footerConfig from './config/footerConfig'
-import logoHeaderConfig from './config/logoHeaderConfig'
+import logoFooterConfig from './config/logoFooterConfig'
 
 export const Footer:React.SFC<{}> = () => {
   const goToTop = (_event:any) => { window.scroll({ top: 0, behavior: 'smooth' }) }
-  const { name, icon } = logoHeaderConfig
-  const logo = name ? name : <img src={icon} />
+  const { name, icon } = logoFooterConfig
+  const logo = name ? name : <img className="nav-logo" src={icon} />
   return (
     <footer id="footer" className="center-content">
       <div id="portal-title-footer">

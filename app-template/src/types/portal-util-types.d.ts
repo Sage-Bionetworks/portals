@@ -10,3 +10,8 @@ export type HomeExploreConfig = {
   homePageSynapseObject: QueryWrapper
   explorePageSynapseObject: SynapseObjectSingle
 }
+
+declare module "*.svg" {
+  const content: string;
+  export default content;
+}

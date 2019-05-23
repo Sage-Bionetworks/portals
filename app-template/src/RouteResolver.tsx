@@ -2,10 +2,12 @@ import * as React from 'react'
 import './App.css'
 import { withRouter } from 'react-router'
 import routesConfig from './config/routesConfig'
-import { SynapseObjectSingle } from './types/portal-config'
+import { SynapseObjectSingle, GenericRoute } from './types/portal-config'
 import { SynapseComponents } from 'synapse-react-client'
-import StackedBarChartControl from './custom-components/StackedBarChartControl'
 import { TokenContext } from './AppInitializer'
+import HomeButtonControlWrapper from './portal-components/HomeButtonControlWrapper'
+import ExploreButtonControlWrapper from './portal-components/ExploreButtonControlWrapper'
+import QueryWrapperHelper from './portal-components/QueryWrapperHelper'
 
 export type RouteResolverProps = {
   location: any
@@ -18,28 +20,41 @@ export const getRouteFromParams = (pathname: string) => {
   // special case the home page path
   const pathWithName = pathname === '/' ? '/Home' :  pathname
   const split = pathWithName.split('/')
-  const routeOrNestedRoute =  routesConfig.find(el => split[1] === el.name)
-  if (!routeOrNestedRoute) {
-    return fail(`Error: url at ${pathWithName} has no route mapping`)
+  let route = routesConfig.find(el => split[1] === el.name)!
+  // search the route configs for the pathname
+  for (let i = 2; i < split.length; i += 1) {
+    if (!route) {
+      return fail(`Error: url at ${pathWithName} has no route mapping`)
+    }
+    if (route.isNested) {
+      route = route.routes.find(el => split[i] === el.name)!
+    } else {
+      fail(`Route at ${pathname} has no synapseObject mapping`)
+    }
   }
-  if (routeOrNestedRoute.isNested) {
-    const router = routeOrNestedRoute.routes
-    return router.find(el => el.name === split[2])!
-  }
-  return routeOrNestedRoute!
+  return route
 }
 
-export const generateSynapseObjectHelper = (synapseObject: SynapseObjectSingle) => {
-  if (synapseObject.name === 'StackedBarChartControl') {
-    return <StackedBarChartControl {...synapseObject.props} />
+export const generateSynapseObjectHelper = (synapseObjectSingle: SynapseObjectSingle) => {
+  if (synapseObjectSingle.name === 'HomeButtonControlWrapper') {
+    return <HomeButtonControlWrapper {...synapseObjectSingle.props} />
   }
-  const SynapseComponent = (SynapseComponents as any)[synapseObject.name]
-  return <SynapseComponent {...synapseObject.props} />
+  if (synapseObjectSingle.name === 'ExploreButtonControlWrapper') {
+    return <ExploreButtonControlWrapper {...synapseObjectSingle.props} />
+  }
+  if (synapseObjectSingle.name === 'QueryWrapperHelper') {
+    return <QueryWrapperHelper {...synapseObjectSingle.props} />
+  }
+  const SynapseComponent = (SynapseComponents as any)[synapseObjectSingle.name]
+  if (!SynapseComponent) {
+    throw Error(`No synapse object could be mapped for ${synapseObjectSingle.name}`)
+  }
+  return <SynapseComponent {...synapseObjectSingle.props} />
 }
 
-export const generateSynapseObject = (synapseObject: SynapseObjectSingle) => {
+export const generateSynapseObject = (synapseObjectSingle: SynapseObjectSingle) => {
   // return the synapse object but with token injected into its props from the context created in AppInitializer
-  const { props, ...rest } = synapseObject
+  const { props, ...rest } = synapseObjectSingle
   return (
     <TokenContext.Consumer>
       {
@@ -55,17 +70,15 @@ export const generateSynapseObject = (synapseObject: SynapseObjectSingle) => {
 const RouteResolver: React.SFC<RouteResolverProps> = ({ location }) => {
   // Map this to route in configuration files
   const pathname = location.pathname
-  const route = getRouteFromParams(pathname)
+  const route = getRouteFromParams(pathname) as GenericRoute
   return (
     <div className="container">
-      {route.synapseObject.map(
+      {route.synapseObject!.map(
         (el) => {
           return (
             <React.Fragment key={JSON.stringify(el.props)}>
               {/* re-think how this renders! remove specific styling */}
-              <h2>
-                {el.title}
-              </h2>
+              {el.title &&  <h2> {el.title} </h2>}
               {generateSynapseObject(el)}
             </React.Fragment>
           )

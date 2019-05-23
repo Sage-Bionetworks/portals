@@ -3,6 +3,9 @@ body {
   body button:focus {
     outline: none; }
 
+.nav-logo {
+  height: 50px; }
+
 .main {
   min-height: 100vh;
   /* will cover the 100% of viewport */
@@ -31,6 +34,10 @@ body {
 .center-content {
   display: flex;
   align-items: center; }
+
+#header, #footer {
+  background-blend-mode: multiply;
+  background-color: #407BA0; }
 
 .SRC-primary-background-color {
   background-color: #47337D !important; }
@@ -104,8 +111,10 @@ body {
   justify-content: center;
   color: #404B63;
   text-decoration: none;
-  padding: 0px 40px;
-  min-width: 100px; }
+  padding: 0px 20px;
+  margin: 0px 5px;
+  min-width: 100px;
+  white-space: nowrap; }
 
 .nav-button-container:hover, .dropdown.nav-button-container.bottom-border {
   border-bottom-color: #47337D;
@@ -159,8 +168,7 @@ body {
 
 #footer {
   text-transform: uppercase;
-  background-image: "";
-  background-blend-mode: multiply;
+  background-image: url("config/style//dna.svg");
   background-color: #407BA0;
   background-repeat: no-repeat;
   background-size: cover;
@@ -191,11 +199,9 @@ body {
   flex-basis: 50%; }
 
 #header {
-  background-image: url("config/style/header.svg");
-  background-blend-mode: multiply;
+  background-image: url("config/style/dna_header.svg");
   background-repeat: no-repeat;
   background-size: cover;
-  background-color: #407BA0;
   height: fit-content;
   padding: 40px; }
 
@@ -204,7 +210,8 @@ body {
   padding: 30px;
   color: white;
   background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px); }
+  backdrop-filter: blur(10px);
+  width: -webkit-fill-available; }
   .header-text h2 {
     font-weight: bold; }
 
@@ -230,28 +237,9 @@ body {
     height: 50px;
     color: white; }
     .explore-buttons button:nth-child(1) {
-      background: #47337D; }
-      .explore-buttons button:nth-child(1).active-button::after {
-        border-top-color: #47337D; }
-    .explore-buttons button:nth-child(2) {
-      background: #407BA0; }
-      .explore-buttons button:nth-child(2).active-button::after {
-        border-top-color: #407BA0; }
-    .explore-buttons button:nth-child(3) {
-      background: #7798AC; }
-      .explore-buttons button:nth-child(3).active-button::after {
-        border-top-color: #7798AC; }
-    .explore-buttons button:nth-child(4) {
-      background: #77BBBF; }
-      .explore-buttons button:nth-child(4).active-button::after {
-        border-top-color: #77BBBF; }
-    .explore-buttons button:nth-child(5) {
-      background: #5E697D; }
-      .explore-buttons button:nth-child(5).active-button::after {
-        border-top-color: #5E697D; }
-    .explore-buttons button:nth-child(1) {
       margin-left: 0px; }
     .explore-buttons button.active-button::after {
+      border-top-color: inherit !important;
       border-right: solid 12px transparent;
       border-left: solid 12px transparent;
       border-top: solid 12px;

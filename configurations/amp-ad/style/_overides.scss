@@ -1,0 +1,17 @@
+
+$primary-text-color: #4d5491;
+$primary-action-color: #4d5491;
+
+#header {
+  background-color: $primary-action-color;
+}
+
+// Since scss breaks if a file is missing in a local url link these functinons must get manually overwitten
+@function getHeader($path) {
+  @return url($path + "/header.svg");
+}
+
+@function getFooter($path) {
+  // TODO
+  @return url($path + "/header.svg");
+}

@@ -1,13 +1,8 @@
 import * as React from 'react'
-import { withRouter } from 'react-router-dom'
+import { withRouter, RouteComponentProps } from 'react-router-dom'
 import docTitleConfig from './config/docTitleConfig'
 import { SynapseClient } from 'synapse-react-client'
-import { withCookies, Cookies } from 'react-cookie'
-
-export type AppInitializerProps = {
-  location: any,
-  cookies: Cookies
-}
+import { withCookies, ReactCookieProps } from 'react-cookie'
 
 export type AppInitializerToken = {
   token: string
@@ -15,7 +10,7 @@ export type AppInitializerToken = {
 
 export const TokenContext = React.createContext('')
 
-class AppInitializer extends React.Component<AppInitializerProps, AppInitializerToken> {
+class AppInitializer extends React.Component<RouteComponentProps & ReactCookieProps, AppInitializerToken> {
 
   constructor(props: any) {
     super(props)
@@ -93,7 +88,8 @@ class AppInitializer extends React.Component<AppInitializerProps, AppInitializer
     const expireDate = new Date()
     // expire after 20 minutes
     expireDate.setDate(Date.now() + 1000 * 60 * 20)
-    this.props.cookies.set(
+    // Cookies provider exists about AppInitializer so the cookies prop will exist
+    this.props.cookies!.set(
       'org.sagebionetworks.security.cookies.portal.config',
       JSON.stringify(cookieValue),
       {

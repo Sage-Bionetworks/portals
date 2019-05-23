@@ -1,9 +1,10 @@
 import { GenericRoute } from '../types/portal-config'
-import { publications, data, datasets, grants, studies } from './homeExploreConfiguration'
+import { publications, files, datasets, grants, studies } from './synapseConfigs'
 import { SynapseConstants } from 'synapse-react-client'
-import { studiesSql } from './homeExploreConfiguration/studies'
-import { publicationSql } from './homeExploreConfiguration/publications'
-import { datasetsSql } from './homeExploreConfiguration/datasets'
+import { studiesSql } from './synapseConfigs/studies'
+import { publicationSql } from './synapseConfigs/publications'
+import { datasetsSql } from './synapseConfigs/datasets'
+import exploreButtonControlWrapperProps from './exploreButtonControlWrapperProps'
 
 const homeLimit = 3
 
@@ -14,15 +15,22 @@ const routes: GenericRoute [] = [
     isNested: false,
     synapseObject: [
       {
-        name: 'StackedBarChartControl',
-        title: 'EXPLORE PORTALS',
+        name: 'HomeButtonControlWrapper',
+        title: 'EXPLORE PORTAL',
         props: {
-          queryWrapperConfigs: [
-            grants.homePageSynapseObject.props,
-            publications.homePageSynapseObject.props,
-            studies.homePageSynapseObject.props,
-            datasets.homePageSynapseObject.props,
-            data.homePageSynapseObject.props,
+          colors: [
+            '#47337D',
+            '#407BA0',
+            '#7798AC',
+            '#77BBBF',
+            '#5E697D',
+          ],
+          configs: [
+            { name: 'Grants', synapseObjectSingle: grants.homePageSynapseObject },
+            { name: 'Publications', synapseObjectSingle: publications.homePageSynapseObject },
+            { name: 'Studies', synapseObjectSingle: studies.homePageSynapseObject },
+            { name: 'Datasets', synapseObjectSingle: datasets.homePageSynapseObject },
+            { name: 'Files', synapseObjectSingle: files.homePageSynapseObject },
           ]
         }
       },
@@ -66,31 +74,71 @@ const routes: GenericRoute [] = [
         name: 'Grants',
         to: '/Explore/Grants',
         isNested: false,
-        synapseObject: [grants.explorePageSynapseObject],
+        synapseObject: [
+          {
+            ...exploreButtonControlWrapperProps,
+            props: {
+              ...exploreButtonControlWrapperProps.props,
+              synapseObjectSingle: grants.explorePageSynapseObject
+            }
+          }
+        ],
       },
       {
         name: 'Publications',
         to: '/Explore/Publications',
         isNested: false,
-        synapseObject: [publications.explorePageSynapseObject],
+        synapseObject: [
+          {
+            ...exploreButtonControlWrapperProps,
+            props: {
+              ...exploreButtonControlWrapperProps.props,
+              synapseObjectSingle: publications.explorePageSynapseObject
+            }
+          }
+        ],
       },
       {
         name: 'Studies',
         to: '/Explore/Studies',
         isNested: false,
-        synapseObject: [studies.explorePageSynapseObject],
+        synapseObject: [
+          {
+            ...exploreButtonControlWrapperProps,
+            props: {
+              ...exploreButtonControlWrapperProps.props,
+              synapseObjectSingle: studies.explorePageSynapseObject
+            }
+          }
+        ],
       },
       {
         name: 'Datasets',
         to: '/Explore/Datasets',
         isNested: false,
-        synapseObject: [datasets.explorePageSynapseObject],
+        synapseObject: [
+          {
+            ...exploreButtonControlWrapperProps,
+            props: {
+              ...exploreButtonControlWrapperProps.props,
+              synapseObjectSingle: datasets.explorePageSynapseObject
+            }
+          }
+        ],
       },
       {
         name: 'Files',
         to: '/Explore/Files',
         isNested: false,
-        synapseObject: [data.explorePageSynapseObject],
+        synapseObject: [
+          {
+            ...exploreButtonControlWrapperProps,
+            props: {
+              ...exploreButtonControlWrapperProps.props,
+              synapseObjectSingle: files.explorePageSynapseObject
+            }
+          }
+        ],
       }
     ]
   },

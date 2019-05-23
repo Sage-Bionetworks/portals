@@ -1,11 +1,11 @@
 import * as React from 'react'
 import { Header } from './Header'
 import { Link, withRouter } from 'react-router-dom'
-import { Route } from './types/portal-config'
+import { GenericRoute } from './types/portal-config'
 import { getRouteFromParams, generateSynapseObject } from './RouteResolver'
 
 type HomeState = {
-  activeSynRoute: Route []
+  activeSynRoute: GenericRoute []
   activeSynObjectIndex: number
 }
 

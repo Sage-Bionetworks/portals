@@ -5,7 +5,7 @@ import routesConfig,
 import { NestedRoute, SynapseObjectSingle } from '../types/portal-config'
 import CardContainerLogic from 'synapse-react-client/dist/containers/CardContainerLogic'
 import { mount } from 'enzyme'
-import StackedBarChartControl from '../custom-components/StackedBarChartControl'
+import HomeButtonControlWrapper from '../portal-components/HomeButtonControlWrapper'
 import { MemoryRouter } from 'react-router'
 
 describe('getRouteFromParams works', () => {
@@ -22,6 +22,11 @@ describe('getRouteFromParams works', () => {
   it('gets a Nested Route correctly', () => {
     const orgRoutes = routesConfig[ORGANIZATION_INDEX] as NestedRoute
     expect(getRouteFromParams('/Organizations/Organization-CTF')).toEqual(orgRoutes.routes[0])
+  })
+
+  it('gets a Double Nested Route correctly', () => {
+    const orgRoutes = routesConfig[ORGANIZATION_INDEX] as NestedRoute
+    expect(getRouteFromParams('/Organizations/Organization-CTF/CTF')).toEqual(orgRoutes.routes[0].routes![0])
   })
 
 })
@@ -42,20 +47,25 @@ describe('RouteResolver works', () => {
 
   it('renders portal specific components correctly', () => {
     const mockedSynObject: SynapseObjectSingle = {
-      name: 'StackedBarChartControl',
+      name: 'HomeButtonControlWrapper',
       props: {
-        queryWrapperConfigs: [
+        configs: [
           {
-            facetName: '',
-            name: '',
-            initQueryRequest: { query: { sql: '' },  concreteType: '', partMask: 123 },
+            name: 'mock',
+            synapseObjectSingle: {
+              name: 'CardContainerLogic',
+              props: {
+                sql: '',
+                type: ''
+              }
+            }
           }
-        ]
+        ],
+        colors: ['red']
       }
     }
-    // have to mock the routing because stackedbarchart preview uses a Link object
     const synObj = mount(<MemoryRouter>{generateSynapseObjectHelper(mockedSynObject)}</MemoryRouter>)
-    expect(synObj.find(StackedBarChartControl)).toHaveLength(1)
+    expect(synObj.find(HomeButtonControlWrapper)).toHaveLength(1)
   })
 
 })
