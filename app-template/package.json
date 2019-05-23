@@ -28,8 +28,8 @@
     "watch-css": "yarn run build-css && node-sass src/ -o src/ --watch --recursive",
     "start-js": "react-scripts-ts start",
     "copy-favicon": "cp src/config/style/favicon* public/",
-    "start":"copy-flavicon; npm-run-all -p watch-css start-js",
-    "build":"copy-flavicon; react-scripts-ts build",
+    "start":"copy-favicon; npm-run-all -p watch-css start-js",
+    "build":"copy-favicon; react-scripts-ts build",
     "copy-example-configuration": "cp -r src/example-configuration/ src/config/" ,
     "test": "yarn run copy-example-configuration && react-scripts-ts test --env=jsdom --setupFiles ./src/tests/setupTests.ts",
     "eject": "react-scripts-ts eject"
