@@ -28,6 +28,7 @@ export class Navbar extends React.Component<{}, NavbarState> {
     for (let i = 0; i < numNestedRoutes; i += 1) {
       state[`dropdown${i}`] = false
     }
+    state['usermenu'] = false
     this.state = state
   }
 
@@ -38,7 +39,7 @@ export class Navbar extends React.Component<{}, NavbarState> {
       if (index === -1) {
         this.setState({
           [key]: false,
-          hasDropdownOpen: false
+          hasDropdownOpen: false,
         })
       } else if (index === i) {
         this.setState({
@@ -47,6 +48,20 @@ export class Navbar extends React.Component<{}, NavbarState> {
         })
       }
     }
+    // special case.  if -1 then we want to close all dropdown menus (including the usermenu)
+    if (index === -1) {
+      this.setState({
+        ['usermenu']: false,
+        hasDropdownOpen: false,
+      })
+    }
+  }
+
+  toggleUserMenu = () => (_event: any) => {
+    this.setState({
+      hasDropdownOpen: !this.state['usermenu'],
+      ['usermenu']: !this.state['usermenu']
+    })
   }
 
   onSignIn = (event: any) => {
@@ -94,6 +109,8 @@ export class Navbar extends React.Component<{}, NavbarState> {
     const { name, icon } = logoHeaderConfig
     const logo = name ? name : <img className="nav-logo" src={icon} />
     const { userprofile } = this.state
+    const isUserMenuOpen = this.state['usermenu']
+    const toggleUserMenu = this.toggleUserMenu()
     return (
       <React.Fragment>
         <nav className="flex-display nav">
@@ -129,8 +146,7 @@ export class Navbar extends React.Component<{}, NavbarState> {
             {
                 userprofile &&
                 <div className="center-content nav-button">
-                  <div className={'dropdown nav-button-container'}>
-                    <div className="center-content nav-button hand-cursor">
+                    <div id="user-menu-button" className="center-content hand-cursor" onClick={toggleUserMenu}>
                       <UserCard
                         userProfile={userprofile}
                         size={SynapseConstants.SMALL_USER_CARD}
@@ -139,20 +155,33 @@ export class Navbar extends React.Component<{}, NavbarState> {
                         link="javascript:void(0)"
                       />
                       <SvgIcon>
+                        {
+                          // Material expand more svg https://material.io/tools/icons/?icon=expand_more&style=baseline
+                        }
                         <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
                       </SvgIcon>
                     </div>
-                    <div className="dropdown-menu">
-                      <a
-                        href={`https://www.synapse.org/#!Profile:${userprofile.ownerId}/projects`}
-                        // tslint:disable-next-line:max-line-length
-                        className="dropdown-link SRC-primary-background-color-hover SRC-nested-color center-content"
-                      >
-                        Projects
-                      </a>
-                    </div>
-                  </div>
                 </div>
+            }
+            {
+                userprofile &&
+                <div className={`dropdown ${isUserMenuOpen ? 'open' : ''}`}>
+                    {
+                      isUserMenuOpen &&
+                      <div className="user-menu-dropdown dropdown-menu">
+                        <p className="dropdown-inactive-item center-content">
+                          Signed in as&nbsp;<strong>{userprofile.userName}</strong>
+                        </p>
+                        <a
+                          href={`https://www.synapse.org/#!Profile:${userprofile.ownerId}/projects`}
+                          onClick={toggleUserMenu}
+                          className="dropdown-item SRC-primary-background-color-hover SRC-nested-color center-content"
+                        >
+                          Projects
+                        </a>
+                      </div>
+                    }
+                    </div>
             }
             {
               // we have to loop backwards due to css rendering of flex-direction: row-reverse
@@ -179,7 +208,7 @@ export class Navbar extends React.Component<{}, NavbarState> {
                                     return (<Link
                                       key={route.name}
                                       onClick={toggleDropdown}
-                                      className="dropdown-link SRC-primary-background-color-hover SRC-nested-color center-content"
+                                      className="dropdown-item SRC-primary-background-color-hover SRC-nested-color center-content"
                                       to={route.to!}
                                     >
                                       {routeDisplayName}
