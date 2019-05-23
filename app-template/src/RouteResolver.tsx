@@ -39,21 +39,21 @@ export const getRouteFromParams = (pathname: string) => {
   return route
 }
 
-export const generateSynapseObjectHelper = (SynapseConfig: SynapseConfig) => {
-  if (SynapseConfig.name === 'HomeButtonControlWrapper') {
-    return <HomeButtonControlWrapper {...SynapseConfig.props} />
+export const generateSynapseObjectHelper = (synapseConfig: SynapseConfig) => {
+  if (synapseConfig.name === 'HomeButtonControlWrapper') {
+    return <HomeButtonControlWrapper {...synapseConfig.props} />
   }
-  if (SynapseConfig.name === 'ExploreButtonControlWrapper') {
-    return <ExploreButtonControlWrapper {...SynapseConfig.props} />
+  if (synapseConfig.name === 'ExploreButtonControlWrapper') {
+    return <ExploreButtonControlWrapper {...synapseConfig.props} />
   }
-  if (SynapseConfig.name === 'QueryWrapperWithStackedBarChart') {
-    return <QueryWrapperWithStackedBarChart {...SynapseConfig.props} />
+  if (synapseConfig.name === 'QueryWrapperWithStackedBarChart') {
+    return <QueryWrapperWithStackedBarChart {...synapseConfig.props} />
   }
-  const SynapseComponent = (SynapseComponents as any)[SynapseConfig.name]
+  const SynapseComponent = (SynapseComponents as any)[synapseConfig.name]
   if (!SynapseComponent) {
-    throw Error(`No synapse object could be mapped for ${SynapseConfig.name}`)
+    throw Error(`No synapse object could be mapped for ${synapseConfig.name}`)
   }
-  return <SynapseComponent {...SynapseConfig.props} />
+  return <SynapseComponent {...synapseConfig.props} />
 }
 
 export const generateSynapseObject = (SynapseConfig: SynapseConfig) => {
