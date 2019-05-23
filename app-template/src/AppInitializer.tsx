@@ -87,7 +87,7 @@ class AppInitializer extends React.Component<RouteComponentProps & ReactCookiePr
     }
     const expireDate = new Date()
     // expire after 20 minutes
-    expireDate.setDate(Date.now() + 1000 * 60 * 20)
+    expireDate.setTime(Date.now() + 1000 * 60 * 20)
     // Cookies provider exists about AppInitializer so the cookies prop will exist
     this.props.cookies!.set(
       'org.sagebionetworks.security.cookies.portal.config',
