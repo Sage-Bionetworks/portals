@@ -7,6 +7,7 @@ import Modal from '@material-ui/core/Modal'
 import { SynapseComponents, SynapseClient, SynapseConstants } from 'synapse-react-client'
 import UserCard from 'synapse-react-client/dist/containers/UserCard'
 import * as AppInitializer from './AppInitializer'
+import SvgIcon from '@material-ui/core/SvgIcon'
 
 export type NavbarState = {
   token: string | undefined,
@@ -134,8 +135,14 @@ export class Navbar extends React.Component<{}, NavbarState> {
                         userProfile={userprofile}
                         size={SynapseConstants.SMALL_USER_CARD}
                         preSignedURL={userprofile.preSignedURL}
+                        hideText={true}
+                        link="javascript:void(0)"
                       />
+                      <SvgIcon>
+                        <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
+                      </SvgIcon>
                     </div>
+                    <div className="dropdown-menu">
                       <a
                         href={`https://www.synapse.org/#!Profile:${userprofile.ownerId}/projects`}
                         // tslint:disable-next-line:max-line-length
@@ -143,6 +150,7 @@ export class Navbar extends React.Component<{}, NavbarState> {
                       >
                         Projects
                       </a>
+                    </div>
                   </div>
                 </div>
             }
