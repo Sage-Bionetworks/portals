@@ -8,6 +8,7 @@ import { SynapseComponents, SynapseClient, SynapseConstants } from 'synapse-reac
 import UserCard from 'synapse-react-client/dist/containers/UserCard'
 import * as AppInitializer from './AppInitializer'
 import SvgIcon from '@material-ui/core/SvgIcon'
+import { signOut } from 'synapse-react-client/dist/utils/SynapseClient'
 
 export type NavbarState = {
   token: string | undefined,
@@ -169,15 +170,56 @@ export class Navbar extends React.Component<{}, NavbarState> {
                     {
                       isUserMenuOpen &&
                       <div className="user-menu-dropdown dropdown-menu">
-                        <p className="dropdown-inactive-item center-content">
+                        <p className="dropdown-inactive-item center-content border-bottom-1">
                           Signed in as&nbsp;<strong>{userprofile.userName}</strong>
                         </p>
+                        <a
+                          href={`https://www.synapse.org/#!Profile:${userprofile.ownerId}`}
+                          onClick={toggleUserMenu}
+                          className="dropdown-item SRC-primary-background-color-hover SRC-nested-color center-content"
+                        >
+                          Profile
+                        </a>
                         <a
                           href={`https://www.synapse.org/#!Profile:${userprofile.ownerId}/projects`}
                           onClick={toggleUserMenu}
                           className="dropdown-item SRC-primary-background-color-hover SRC-nested-color center-content"
                         >
                           Projects
+                        </a>
+                        <a
+                          href={`https://www.synapse.org/#!Profile:${userprofile.ownerId}/teams`}
+                          onClick={toggleUserMenu}
+                          className="dropdown-item SRC-primary-background-color-hover SRC-nested-color center-content"
+                        >
+                          Teams
+                        </a>
+                        <a
+                          href={`https://www.synapse.org/#!Profile:${userprofile.ownerId}/challenges`}
+                          onClick={toggleUserMenu}
+                          className="dropdown-item SRC-primary-background-color-hover SRC-nested-color center-content"
+                        >
+                          Challenges
+                        </a>
+                        <a
+                          href={`https://www.synapse.org/#!Profile:${userprofile.ownerId}/downloads`}
+                          onClick={toggleUserMenu}
+                          className="dropdown-item SRC-primary-background-color-hover SRC-nested-color center-content border-bottom-1"
+                        >
+                          Downloads
+                        </a>
+                        <a
+                          href={`https://www.synapse.org/#!Profile:${userprofile.ownerId}/settings`}
+                          onClick={toggleUserMenu}
+                          className="dropdown-item SRC-primary-background-color-hover SRC-nested-color center-content border-bottom-1"
+                        >
+                          Settings
+                        </a>
+                        <a
+                          onClick={signOut}
+                          className="dropdown-item SRC-primary-background-color-hover SRC-nested-color center-content border-bottom-1"
+                        >
+                          Sign Out
                         </a>
                       </div>
                     }

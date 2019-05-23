@@ -194,9 +194,12 @@ $header-height : 75px;
   padding-left: 20px;
   height: 50px;
   width: 230px;
+  margin-bottom: 0px;
+}
+
+.border-bottom-1 {
   border-bottom: solid 1px;
   border-bottom-color:#e5e5e5;
-  margin-bottom: 0px;
 }
 
 a.dropdown-item:hover {
