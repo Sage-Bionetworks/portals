@@ -13,7 +13,7 @@ const routes: GenericRoute [] = [
     name: 'Home',
     to: '/',
     isNested: false,
-    SynapseConfigArray: [
+    synapseConfigArray: [
       {
         name: 'HomeButtonControlWrapper',
         title: 'EXPLORE PORTAL',
@@ -74,7 +74,7 @@ const routes: GenericRoute [] = [
         name: 'Grants',
         to: '/Explore/Grants',
         isNested: false,
-        SynapseConfigArray: [
+        synapseConfigArray: [
           {
             ...exploreButtonControlWrapperProps,
             props: {
@@ -88,7 +88,7 @@ const routes: GenericRoute [] = [
         name: 'Publications',
         to: '/Explore/Publications',
         isNested: false,
-        SynapseConfigArray: [
+        synapseConfigArray: [
           {
             ...exploreButtonControlWrapperProps,
             props: {
@@ -102,7 +102,7 @@ const routes: GenericRoute [] = [
         name: 'Studies',
         to: '/Explore/Studies',
         isNested: false,
-        SynapseConfigArray: [
+        synapseConfigArray: [
           {
             ...exploreButtonControlWrapperProps,
             props: {
@@ -116,7 +116,7 @@ const routes: GenericRoute [] = [
         name: 'Datasets',
         to: '/Explore/Datasets',
         isNested: false,
-        SynapseConfigArray: [
+        synapseConfigArray: [
           {
             ...exploreButtonControlWrapperProps,
             props: {
@@ -130,7 +130,7 @@ const routes: GenericRoute [] = [
         name: 'Files',
         to: '/Explore/Files',
         isNested: false,
-        SynapseConfigArray: [
+        synapseConfigArray: [
           {
             ...exploreButtonControlWrapperProps,
             props: {
@@ -146,7 +146,7 @@ const routes: GenericRoute [] = [
     name: 'About',
     to: '/About',
     isNested: false,
-    SynapseConfigArray: [
+    synapseConfigArray: [
       {
         name: 'Markdown',
         props: {

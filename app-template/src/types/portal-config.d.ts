@@ -93,14 +93,14 @@ export interface BaseRoute {
   isNested: false
   to: string
   link?: string
-  SynapseConfigArray: SynapseConfigArray
+  synapseConfigArray: SynapseConfigArray
   routes?: Array<Route>
 }
 
 export interface NestedRoute extends BaseRoute {
   isNested: true
   routes: Array<BaseRoute | NestedRoute>
-  SynapseConfigArray?: SynapseConfigArray
+  synapseConfigArray?: SynapseConfigArray
   to?: string
 }
 

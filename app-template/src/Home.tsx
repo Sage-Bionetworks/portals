@@ -18,7 +18,7 @@ class Home extends React.Component<HomeProps, {}> {
   render () {
     const { location } = this.props
     const pathname = location.pathname
-    const { SynapseConfigArray  } = getRouteFromParams(pathname)
+    const { synapseConfigArray  } = getRouteFromParams(pathname)
     return (
       <div>
         <Header />
@@ -26,7 +26,7 @@ class Home extends React.Component<HomeProps, {}> {
           <div className="row">
             <div className="col-xs-12">
               {
-                SynapseConfigArray!.map(
+                synapseConfigArray!.map(
                   (el) => {
                     return (
                       <div key={el.title} className="newContainer">

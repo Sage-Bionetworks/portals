@@ -9,16 +9,16 @@ const routes: GenericRoute [] = [
     name: 'Home',
     to: '/',
     isNested: false,
-    synapseObject: [
+    synapseConfigArray: [
       {
         name: 'HomeButtonControlWrapper',
         title: 'EXPLORE CONTENT',
         props: {
           configs: [
-            { name: 'Projects', synapseObjectSingle: projects.homePageSynapseObject },
-            { name: 'Studies', synapseObjectSingle: studies.homePageSynapseObject },
-            { name: 'Data', synapseObjectSingle: data.homePageSynapseObject },
-            { name: 'People', synapseObjectSingle: people.homePageSynapseObject }
+            { name: 'Projects', synapseConfig: projects.homePageSynapseObject },
+            { name: 'Studies', synapseConfig: studies.homePageSynapseObject },
+            { name: 'Data', synapseConfig: data.homePageSynapseObject },
+            { name: 'People', synapseConfig: people.homePageSynapseObject }
           ],
           colors: [
             '#E5AE4C',
@@ -54,12 +54,12 @@ const routes: GenericRoute [] = [
         name: 'Programs',
         isNested: true,
         to: '/Explore/Programs',
-        synapseObject: [
+        synapseConfigArray: [
           {
             ...exploreButtonWrapperProps,
             props: {
               ...exploreButtonWrapperProps.props,
-              synapseObjectSingle: programs
+              synapseConfig: programs
             }
           }
         ],
@@ -68,25 +68,25 @@ const routes: GenericRoute [] = [
             name: 'AMP-AD',
             isNested: false,
             to: '/Explore/Programs/AMP-AD',
-            synapseObject: ampAd
+            synapseConfigArray: ampAd
           },
           {
             name: 'M2OVE-AD',
             isNested: false,
             to: '/Explore/Programs/M2OVE-AD',
-            synapseObject: move2Ad
+            synapseConfigArray: move2Ad
           },
           {
             name: 'MODEL-AD',
             isNested: false,
             to: '/Explore/Programs/MODEL-AD',
-            synapseObject: modelAd
+            synapseConfigArray: modelAd
           },
           {
             name: 'Resilience-AD',
             isNested: false,
             to: '/Explore/Programs/AResilience-AD',
-            synapseObject: resilienceAd
+            synapseConfigArray: resilienceAd
           },
         ]
       },
@@ -94,12 +94,12 @@ const routes: GenericRoute [] = [
         name: 'Projects',
         isNested: false,
         to: '/Explore/Projects',
-        synapseObject: [
+        synapseConfigArray: [
           {
             ...exploreButtonWrapperProps,
             props: {
               ...exploreButtonWrapperProps.props,
-              synapseObjectSingle: projects.explorePageSynapseObject
+              synapseConfig: projects.explorePageSynapseObject
             }
           }
         ]
@@ -108,12 +108,12 @@ const routes: GenericRoute [] = [
         name: 'Studies',
         isNested: false,
         to: '/Explore/Studies',
-        synapseObject: [
+        synapseConfigArray: [
           {
             ...exploreButtonWrapperProps,
             props: {
               ...exploreButtonWrapperProps.props,
-              synapseObjectSingle: studies.explorePageSynapseObject
+              synapseConfig: studies.explorePageSynapseObject
             }
           }
         ]
@@ -122,12 +122,12 @@ const routes: GenericRoute [] = [
         name: 'Data',
         isNested: false,
         to: '/Explore/Data',
-        synapseObject: [
+        synapseConfigArray: [
           {
             ...exploreButtonWrapperProps,
             props: {
               ...exploreButtonWrapperProps.props,
-              synapseObjectSingle: data.explorePageSynapseObject
+              synapseConfig: data.explorePageSynapseObject
             }
           }
         ]
@@ -136,12 +136,12 @@ const routes: GenericRoute [] = [
         name: 'Publications',
         isNested: false,
         to: '/Explore/Publications',
-        synapseObject: [
+        synapseConfigArray: [
           {
             ...exploreButtonWrapperProps,
             props: {
               ...exploreButtonWrapperProps.props,
-              synapseObjectSingle: publications
+              synapseConfig: publications
             }
           }
         ]
@@ -150,12 +150,12 @@ const routes: GenericRoute [] = [
         name: 'People',
         isNested: false,
         to: '/Explore/People',
-        synapseObject: [
+        synapseConfigArray: [
           {
             ...exploreButtonWrapperProps,
             props: {
               ...exploreButtonWrapperProps.props,
-              synapseObjectSingle: people.explorePageSynapseObject
+              synapseConfig: people.explorePageSynapseObject
             }
           }
         ]
@@ -167,7 +167,7 @@ const routes: GenericRoute [] = [
     displayName: 'Research Tools',
     to: '/ResearchTools',
     isNested: false,
-    synapseObject: [
+    synapseConfigArray: [
       {
         name: 'Markdown',
         title: 'Research Tools',
@@ -188,7 +188,7 @@ const routes: GenericRoute [] = [
         displayName: 'Getting Access to Data',
         isNested: false,
         to: '/DataAccess/Instructions',
-        synapseObject: [
+        synapseConfigArray: [
           {
             name: 'Markdown',
             title: 'GETTING ACCESS TO DATA',
@@ -204,7 +204,7 @@ const routes: GenericRoute [] = [
         displayName: 'Acknowleding Data Use',
         isNested: false,
         to: '/DataAccess/Acknowleding-Data-Use',
-        synapseObject: [
+        synapseConfigArray: [
           {
             name: 'Markdown',
             title: 'ACKNOWLEDGEMENT STATEMENTS',
@@ -221,7 +221,7 @@ const routes: GenericRoute [] = [
     name: 'About',
     isNested: false,
     to: '/About',
-    synapseObject: [
+    synapseConfigArray: [
       {
         name: 'Markdown',
         title: 'About',

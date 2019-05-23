@@ -77,7 +77,7 @@ const RouteResolver: React.SFC<RouteResolverProps> = ({ location }) => {
   const route = getRouteFromParams(pathname) as GenericRoute
   return (
     <div className="container">
-      {route.SynapseConfigArray!.map(
+      {route.synapseConfigArray!.map(
         (el) => {
           return (
             <React.Fragment key={JSON.stringify(el.props)}>

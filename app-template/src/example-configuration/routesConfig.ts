@@ -14,7 +14,7 @@ routes[ABOUT_INDEX] = {
   isNested: false,
   name: 'About',
   to: '/About',
-  SynapseConfigArray: [{
+  synapseConfigArray: [{
     title: 'About',
     name: 'Markdown',
     props: {
@@ -32,13 +32,13 @@ routes[EXPLORE_INDEX] = {
       name: 'Data',
       isNested: false,
       to: '/Explore/Data',
-      SynapseConfigArray: [data.explorePageSynapseObject]
+      synapseConfigArray: [data.explorePageSynapseObject]
     },
     {
       name: 'Publications',
       isNested: false,
       to: '/Explore/Publications',
-      SynapseConfigArray: [publications.explorePageSynapseObject]
+      synapseConfigArray: [publications.explorePageSynapseObject]
     }
   ],
 },
@@ -51,7 +51,7 @@ routes[ORGANIZATION_INDEX] = {
       name: 'Organization-CTF',
       isNested: true,
       to: '/Organizations/Organization-CTF',
-      SynapseConfigArray: [
+      synapseConfigArray: [
         {
           title: 'Grants',
           name: 'Markdown',
@@ -74,7 +74,7 @@ routes[ORGANIZATION_INDEX] = {
           name: 'CTF',
           isNested: false,
           to: '/Organizations/Organization-CTF',
-          SynapseConfigArray: [{
+          synapseConfigArray: [{
             name: 'Markdown',
             props: {
               ownerId: 'syn18421331',
@@ -91,7 +91,7 @@ routes[HOME_INDEX] = {
   name: 'Home',
   to: '/',
   isNested: false,
-  SynapseConfigArray: [
+  synapseConfigArray: [
     {
       title: 'Explore Portal',
       name: 'HomeButtonControlWrapper',

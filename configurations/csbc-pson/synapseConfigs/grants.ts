@@ -1,22 +1,23 @@
-
-import { HomeExploreConfig } from '../../types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
+import { HomeExploreConfig } from '../../types/portal-config'
 import loadingScreen from '../loadingScreen'
+const sql = `SELECT * FROM syn10142562 WHERE ( "grantType" = 'U54' OR "grantType" = 'U01')`
+const unitDescription = 'grants'
+const synapseId = 'syn10142562'
+const rgbIndex = 3
 
-const unitDescription = 'studies'
-const rgbIndex = 0
-const sql = 'SELECT * FROM syn17083367'
-const synapseId = 'syn17083367'
-const facetName = 'Species'
-
-const studies: HomeExploreConfig = {
+export const grants: HomeExploreConfig = {
   homePageSynapseObject: {
     name: 'QueryWrapperWithStackedBarChart',
     props: {
       unitDescription,
-      rgbIndex,
       loadingScreen,
-      facetName,
+      rgbIndex: 3,
+      facetName: 'grantType',
+      name: 'Grants',
+      facetAliases: {
+        grantType: 'Grant Type',
+      },
       initQueryRequest : {
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
         partMask: SynapseConstants.BUNDLE_MASK_QUERY_FACETS
@@ -27,7 +28,7 @@ const studies: HomeExploreConfig = {
           limit: 25,
           offset: 0,
         }
-      }
+      },
     }
   },
   explorePageSynapseObject: {
@@ -35,33 +36,27 @@ const studies: HomeExploreConfig = {
     props: {
       rgbIndex,
       loadingScreen,
-      unitDescription,
-      type: SynapseConstants.AMP_STUDY,
+      type: SynapseConstants.CSBC_PROJECT,
       menuConfig: [
         {
           sql,
-          facetName,
           unitDescription,
           synapseId,
-        },
-        {
-          sql,
-          unitDescription,
-          synapseId,
-          facetName: 'Grant'
-        },
-        {
-          sql,
-          synapseId,
-          facetName: 'Consortium',
-          unitDescription: 'programs',
+          facetName: 'consortium',
           facetAliases: {
-            Consortium: 'Program',
-          },
+            consortium: 'Program',
+          }
+        },
+        {
+          sql,
+          unitDescription,
+          synapseId,
+          facetName: 'grantType',
+          facetAliases: {
+            grantType: 'Grant Type',
+          }
         }
-      ]
+      ],
     }
   }
 }
-
-export default studies

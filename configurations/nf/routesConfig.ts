@@ -13,7 +13,7 @@ const routes: GenericRoute [] = [
     name: 'Home',
     to: '/',
     isNested: false,
-    SynapseConfigArray: [
+    synapseConfigArray: [
       {
         name: 'HomeButtonControlWrapper',
         title: 'EXPLORE PORTAL',
@@ -99,7 +99,7 @@ const routes: GenericRoute [] = [
         name: 'Datasets',
         isNested: false,
         to: '/Explore/Datasets',
-        SynapseConfigArray: [
+        synapseConfigArray: [
           {
             ...exploreButtonControlWrapperProps,
             props: {
@@ -113,7 +113,7 @@ const routes: GenericRoute [] = [
         name: 'Files',
         isNested: false,
         to: '/Explore/Files',
-        SynapseConfigArray: [
+        synapseConfigArray: [
           {
             ...exploreButtonControlWrapperProps,
             props: {
@@ -127,7 +127,7 @@ const routes: GenericRoute [] = [
         name: 'Studies',
         isNested: false,
         to: '/Explore/Studies',
-        SynapseConfigArray: [
+        synapseConfigArray: [
           {
             ...exploreButtonControlWrapperProps,
             props: {
@@ -141,7 +141,7 @@ const routes: GenericRoute [] = [
         name: 'Publications',
         isNested: false,
         to: '/Explore/Publications',
-        SynapseConfigArray: [
+        synapseConfigArray: [
           {
             ...exploreButtonControlWrapperProps,
             props: {
@@ -161,7 +161,7 @@ const routes: GenericRoute [] = [
         name: 'CTF',
         to: '/Organizations/CTF',
         isNested: false,
-        SynapseConfigArray: [
+        synapseConfigArray: [
           {
             name: 'CardContainerLogic',
             props: {
@@ -201,7 +201,7 @@ const routes: GenericRoute [] = [
         name: 'NTAP',
         to: '/Organizations/NTAP',
         isNested: false,
-        SynapseConfigArray: [
+        synapseConfigArray: [
           {
             name: 'CardContainerLogic',
             props: {
@@ -241,7 +241,7 @@ const routes: GenericRoute [] = [
         name: 'DHART-SPORE',
         to: '/Organizations/DHART-SPORE',
         isNested: false,
-        SynapseConfigArray: [
+        synapseConfigArray: [
           {
             name: 'CardContainerLogic',
             props: {
@@ -283,7 +283,7 @@ const routes: GenericRoute [] = [
     name: 'About',
     to: '/About',
     isNested: false,
-    SynapseConfigArray: [
+    synapseConfigArray: [
       {
         name: 'Markdown',
         title: 'About',
