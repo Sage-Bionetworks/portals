@@ -1,6 +1,6 @@
 import * as React from 'react'
 import './App.css'
-import { withRouter } from 'react-router'
+import { withRouter, RouteComponentProps } from 'react-router'
 import routesConfig from './config/routesConfig'
 import { SynapseConfig, GenericRoute } from './types/portal-config'
 import { SynapseComponents } from 'synapse-react-client'
@@ -8,10 +8,6 @@ import { TokenContext } from './AppInitializer'
 import HomeButtonControlWrapper from './portal-components/HomeButtonControlWrapper'
 import ExploreButtonControlWrapper from './portal-components/ExploreButtonControlWrapper'
 import QueryWrapperWithStackedBarChart from './portal-components/QueryWrapperWithStackedBarChart'
-
-export type RouteResolverProps = {
-  location: any
-}
 
 // https://basarat.gitbooks.io/typescript/docs/types/never.html
 function fail(message: string): never { throw new Error(message) }
@@ -71,7 +67,7 @@ export const generateSynapseObject = (synapseConfig: SynapseConfig) => {
   )
 }
 
-const RouteResolver: React.SFC<RouteResolverProps> = ({ location }) => {
+const RouteResolver: React.SFC<RouteComponentProps> = ({ location }) => {
   // Map this to route in configuration files
   const pathname = location.pathname
   const route = getRouteFromParams(pathname) as GenericRoute

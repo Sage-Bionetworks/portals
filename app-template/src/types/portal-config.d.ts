@@ -23,12 +23,12 @@ type CardContainerLogic = {
 // TODO: Export QueryWrapper props object in SRC
 type QueryWrapper = {
   name: 'QueryWrapper',
-  props: any
+  props: QueryWrapperProps
 }
 // TODO: Export QueryWrapper props object in SRC
 type QueryWrapperWithStackedBarChart = {
   name: 'QueryWrapperWithStackedBarChart',
-  props: any
+  props: QueryWrapperProps
 }
 
 // TODO: correct the props of StackedBarChart
