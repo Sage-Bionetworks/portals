@@ -14,6 +14,7 @@ class AppInitializer extends React.Component<RouteComponentProps & ReactCookiePr
 
   constructor(props: any) {
     super(props)
+    const { cookies } = props
     this.state = {
       token: ''
     }
@@ -31,6 +32,8 @@ class AppInitializer extends React.Component<RouteComponentProps & ReactCookiePr
       console.log('no token from cookie could be fetched ', _err)
     })
     this.updateSynapseCallbackCookie()
+    // on first time, also check for the SSO code
+    SynapseClient.detectSSOCode()
   }
 
   componentDidUpdate(prevProps: any) {
@@ -82,11 +85,22 @@ class AppInitializer extends React.Component<RouteComponentProps & ReactCookiePr
       logoUrl: icon,
       portalName: name
     }
+    const expireDate = new Date()
+    // expire after 20 minutes
+    expireDate.setTime(Date.now() + 1000 * 60 * 20)
+    const domainValue = window.location.hostname.toLowerCase().includes('.synapse.org') ? '.synapse.org' : undefined
     // Cookies provider exists about AppInitializer so the cookies prop will exist
     this.props.cookies!.set(
       'org.sagebionetworks.security.cookies.portal.config',
-      JSON.stringify(cookieValue), { path: '/', domain: '.synapse.org' })
+      JSON.stringify(cookieValue),
+      {
+        path: '/',
+        domain: domainValue,
+        expires: expireDate
+      }
+    )
   }
 }
 
+// @ts-ignore
 export default withCookies(withRouter(AppInitializer))

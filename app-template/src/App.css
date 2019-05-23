@@ -61,10 +61,10 @@ body {
 .flex-display {
   display: flex; }
 
-.nav-button-container:hover, .explore-buttons button:hover, #exploreData:hover, .viewAll:hover, .SRC-viewMoreButton:hover {
+.nav-button-container:hover, #signin-button:hover, .explore-buttons button:hover, #exploreData:hover, .viewAll:hover, .SRC-viewMoreButton:hover {
   transition: all 400ms; }
 
-.explore-buttons button:hover, #exploreData:hover, .viewAll:hover, .SRC-viewMoreButton:hover {
+#signin-button:hover, .explore-buttons button:hover, #exploreData:hover, .viewAll:hover, .SRC-viewMoreButton:hover {
   box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.5); }
 
 .nav-logo-container {
@@ -134,13 +134,17 @@ body {
   .open > a:hover {
     border-color: unset !important; }
 
-.dropdown-link {
+.dropdown-item {
   color: #515359;
   padding-left: 20px;
   height: 50px;
   width: 230px; }
 
-.dropdown-link:hover {
+.border-bottom-1 {
+  border-bottom: solid 1px;
+  border-bottom-color: #e5e5e5; }
+
+a.dropdown-item:hover {
   color: white; }
 
 .dropdown-menu {
@@ -177,6 +181,19 @@ body {
   width: 100%; }
   #footer a {
     color: white; }
+
+.SRC-primary-text-color-background {
+  background-color: #407BA0;
+  color: white; }
+
+#signin-button {
+  height: 39px;
+  border-radius: 30px;
+  padding: 8px 37px;
+  border: none; }
+
+#loginPage {
+  padding: 30px; }
 
 .SRC-primary-text-color {
   color: #407BA0 !important; }
@@ -244,7 +261,6 @@ body {
   position: absolute;
   border-radius: 24px;
   background-color: #47337D;
-  position: absolute;
   color: white;
   height: 44px;
   width: 257px;
@@ -308,3 +324,11 @@ button.btn-sm.SRC-floatRight {
 
 #exploreCount {
   padding-top: 20px; }
+
+#user-menu-button {
+  height: 72px; }
+  #user-menu-button .SRC-userCard {
+    width: 28px; }
+
+.user-menu-dropdown {
+  left: -81px; }
