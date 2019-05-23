@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom'
 import * as React from 'react'
 import routesConfig from './config/routesConfig'
-import { GenericRoute } from './types/portal-config'
+import { GenericRoute, SynapseObject } from './types/portal-config'
 import logoHeaderConfig from './config/logoHeaderConfig'
 import Modal from '@material-ui/core/Modal'
-import { SynapseComponents, SynapseClient } from 'synapse-react-client'
+import { SynapseComponents, SynapseClient, SynapseConstants } from 'synapse-react-client'
 import UserCard from 'synapse-react-client/dist/containers/UserCard'
 import * as AppInitializer from './AppInitializer'
 
@@ -72,6 +72,9 @@ export class Navbar extends React.Component<{}, NavbarState> {
     const newToken = this.context
     if (newToken && (!this.state.userprofile || this.state.token !== newToken)) {
       SynapseClient.getUserProfile(newToken, 'https://repo-prod.prod.sagebase.org').then((profile: any) => {
+        if (profile.profilePicureFileHandleId) {
+          profile.preSignedURL = `https://www.synapse.org/Portal/filehandleassociation?associatedObjectId=${profile.ownerId}&associatedObjectType=UserProfileAttachment&fileHandleId=${profile.profilePicureFileHandleId}`
+        }
         this.setState({
           userprofile: profile,
           token: newToken
@@ -127,7 +130,11 @@ export class Navbar extends React.Component<{}, NavbarState> {
                 <div className="center-content nav-button">
                   <div className={'dropdown nav-button-container'}>
                     <div className="center-content nav-button hand-cursor">
-                      <UserCard userProfile={userprofile} size="SMALL_USER_CARD"/>
+                      <UserCard
+                        userProfile={userprofile}
+                        size={SynapseConstants.SMALL_USER_CARD}
+                        preSignedURL={userprofile.preSignedURL}
+                      />
                     </div>
                       <a
                         href={`https://www.synapse.org/#!Profile:${userprofile.ownerId}/projects`}
