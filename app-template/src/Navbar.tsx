@@ -179,9 +179,9 @@ export class Navbar extends React.Component<{}, NavbarState> {
                     {
                       isUserMenuOpen &&
                       <div className="user-menu-dropdown dropdown-menu">
-                        <p className="dropdown-inactive-item center-content border-bottom-1">
+                        <span className="dropdown-item center-content border-bottom-1">
                           Signed in as&nbsp;<strong>{userprofile.userName}</strong>
-                        </p>
+                        </span>
                         <a
                           href={`https://www.synapse.org/#!Profile:${userprofile.ownerId}`}
                           onClick={toggleUserMenu}
