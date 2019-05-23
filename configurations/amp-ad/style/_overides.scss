@@ -1,16 +1,10 @@
 
-$primary-text-color: #407BA0;
-$primary-action-color: #47337D;
+$primary-text-color: #4d5491;
+$primary-action-color: #4d5491;
 
-// Note length($button-colors) must equal length of explore page routes
-$button-colors: (
-  // https://softwareengineering.stackexchange.com/questions/314537/why-does-nth-child-in-css-start-from-1-instead-of-0
-  1: $primary-action-color,
-  2: #407BA0,
-  3: #7798AC,
-  4: #77BBBF,
-  5: #5E697D
-);
+#header {
+  background-color: $primary-action-color;
+}
 
 // Since scss breaks if a file is missing in a local url link these functinons must get manually overwitten
 @function getHeader($path) {
@@ -18,5 +12,6 @@ $button-colors: (
 }
 
 @function getFooter($path) {
-  @return "";
+  // TODO
+  @return url($path + "/header.svg");
 }

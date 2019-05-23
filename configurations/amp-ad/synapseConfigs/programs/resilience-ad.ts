@@ -1,7 +1,7 @@
-import { SynapseConfigArray } from '../../../types/portal-config'
+import { SynapseObject } from '../../../types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
 
-const resilienceAd: SynapseConfigArray = [
+const resilienceAd: SynapseObject = [
   {
     name: 'CardContainerLogic',
     title: 'Explore RESILIENCE-AD',

@@ -1,1 +1,1 @@
-export S3_STAGING_BUCKET_LOCATION='bucket-staging'
+export S3_STAGING_BUCKET_LOCATION='TODO'

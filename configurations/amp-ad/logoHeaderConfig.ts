@@ -1,6 +1,8 @@
 import { LogoConfig } from '../types/portal-config'
+// @ts-ignore
+import ampAdLogoSvg from './style/amp-ad-logo.svg'
 
 const logoHeader: LogoConfig = {
-  name: 'Science Portal'
+  icon: ampAdLogoSvg,
 }
 export default logoHeader

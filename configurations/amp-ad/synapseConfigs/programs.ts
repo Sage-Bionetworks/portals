@@ -1,7 +1,7 @@
-import { SynapseConfig } from '../../types/portal-config'
+import { SynapseObjectSingle } from '../../types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
 
-const programs: SynapseConfig = {
+const programs: SynapseObjectSingle = {
   name: 'CardContainerLogic',
   title: 'Displaying Programs',
   props: {

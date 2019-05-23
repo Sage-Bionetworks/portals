@@ -1,7 +1,7 @@
-import { SynapseConfigArray } from '../../../types/portal-config'
+import { SynapseObject } from '../../../types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
 
-const move2Ad: SynapseConfigArray = [
+const move2Ad: SynapseObject = [
   {
     name: 'CardContainerLogic',
     title: 'Explore MOVE2-AD',

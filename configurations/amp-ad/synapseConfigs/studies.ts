@@ -11,7 +11,7 @@ const facetName = 'Species'
 
 const studies: HomeExploreConfig = {
   homePageSynapseObject: {
-    name: 'QueryWrapperWithStackedBarChart',
+    name: 'QueryWrapperHelper',
     props: {
       unitDescription,
       rgbIndex,

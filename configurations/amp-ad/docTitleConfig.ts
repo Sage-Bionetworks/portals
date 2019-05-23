@@ -1,7 +1,7 @@
 import { DocTitleConfig } from '../types/portal-config'
 
 const docTitleConfig: DocTitleConfig = {
-  name: 'Example Website'
+  name: 'AMP-AD Data Portal'
 }
 
 export default docTitleConfig
