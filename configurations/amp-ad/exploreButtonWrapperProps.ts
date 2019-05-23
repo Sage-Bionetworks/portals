@@ -14,24 +14,12 @@ const exploreButtonsConfiguration: SynapseConfig = {
       '#D4689A',
     ],
     customRoutes: [
-      {
-        name: 'Programs'
-      },
-      {
-        name: 'Projects'
-      },
-      {
-        name: 'Studies'
-      },
-      {
-        name: 'Data'
-      },
-      {
-        name: 'Publications'
-      },
-      {
-        name: 'People'
-      }
+      'Programs',
+      'Projects',
+      'Studies',
+      'Data',
+      'Publications',
+      'People'
     ]
   },
 }

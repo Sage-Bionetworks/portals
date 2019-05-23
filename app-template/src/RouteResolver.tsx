@@ -75,6 +75,7 @@ const RouteResolver: React.SFC<RouteResolverProps> = ({ location }) => {
   // Map this to route in configuration files
   const pathname = location.pathname
   const route = getRouteFromParams(pathname) as GenericRoute
+  console.log('route = ', route)
   return (
     <div className="container">
       {route.synapseConfigArray!.map(

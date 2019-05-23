@@ -5,7 +5,7 @@ import { SynapseConfig } from '../types/portal-config'
 import { generateSynapseObject } from '../RouteResolver'
 
 export type ExploreButtonControlWrapperProps = {
-  SynapseConfig: SynapseConfig
+  synapseConfig: SynapseConfig
   colors: string []
   // we have to pass in all the custom routes because unlike the home page the explore buttons configs aren't held in state
   customRoutes: string []
@@ -24,7 +24,7 @@ type Props = RouteComponentProps & ExploreButtonControlWrapperProps
  * @param {*} { location, SynapseConfig, colors, history, customRoutes }
  * @returns
  */
-const ExploreButtonControl:React.FunctionComponent<Props> = ({ location, SynapseConfig, colors, history, customRoutes }) => {
+const ExploreButtonControl:React.FunctionComponent<Props> = ({ location, synapseConfig, colors, history, customRoutes }) => {
   const pathname = location.pathname
   const subPath = pathname.substring('/Explore/'.length)
   const buttonControlProps: ButtonControlProps = {
@@ -41,7 +41,7 @@ const ExploreButtonControl:React.FunctionComponent<Props> = ({ location, Synapse
       <div className={'container explore'}>
         <div className="row">
           {
-            generateSynapseObject(SynapseConfig)
+            generateSynapseObject(synapseConfig)
           }
         </div>
       </div>

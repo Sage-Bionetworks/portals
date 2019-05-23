@@ -8,7 +8,7 @@ describe('ExploreButtonControlWrapper works', () => {
 
   const routeName = 'custom route'
   const props: ExploreButtonControlWrapperProps = {
-    SynapseConfig: {
+    synapseConfig: {
       name: 'CardContainerLogic',
       props: {
         sql: '',

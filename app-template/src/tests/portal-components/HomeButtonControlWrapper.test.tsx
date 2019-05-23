@@ -7,7 +7,7 @@ import HomeButtonControlWrapper, { HomeButtonControlWrapperProps } from '../../p
 describe('HomeButtonControlWrapper works', () => {
   const props: HomeButtonControlWrapperProps = {
     configs: [{
-      SynapseConfig: {
+      synapseConfig: {
         name: 'CardContainerLogic',
         props: {
           sql: '',
