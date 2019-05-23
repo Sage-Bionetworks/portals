@@ -35,10 +35,6 @@ body {
   display: flex;
   align-items: center; }
 
-#header, #footer {
-  background-blend-mode: multiply;
-  background-color: #407BA0; }
-
 .SRC-primary-background-color {
   background-color: #47337D !important; }
 
@@ -172,7 +168,7 @@ a.dropdown-item:hover {
 
 #footer {
   text-transform: uppercase;
-  background-image: url("config/style//dna.svg");
+  background-image: "";
   background-color: #407BA0;
   background-repeat: no-repeat;
   background-size: cover;
@@ -202,7 +198,7 @@ a.dropdown-item:hover {
   flex-basis: 50%; }
 
 #header {
-  background-image: url("config/style/dna_header.svg");
+  background-image: url("config/style/header.svg");
   background-repeat: no-repeat;
   background-size: cover;
   height: fit-content;
