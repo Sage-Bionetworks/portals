@@ -8,7 +8,6 @@ import { QueryBundleRequest } from 'synapse-react-client/dist/utils/jsonResponse
 import { QueryResultBundle } from 'synapse-react-client/dist/utils/jsonResponses/Table/QueryResultBundle'
 import { HomeButtonControlProps } from '../portal-components/HomeButtonControlWrapper'
 import { ExploreButtonControlProps } from '../portal-components/ExploreButtonControlWrapper'
-import { QueryWrapperProps } from 'synapse-react-client/dist/containers/QueryWrapper'
 
 // For styling the header on the home page -- the main title and the summary text
 export type HomePageHeaderConfig = {
@@ -29,7 +28,7 @@ type QueryWrapper = {
 // TODO: Export QueryWrapper props object in SRC
 type QueryWrapperHelper = {
   name: 'QueryWrapperHelper',
-  props: QueryWrapperProps
+  props: any
 }
 
 // TODO: correct the props of StackedBarChart

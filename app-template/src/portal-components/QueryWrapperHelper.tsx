@@ -1,9 +1,8 @@
 import * as React from 'react'
 import { SynapseComponents } from 'synapse-react-client'
-import { QueryWrapperProps } from 'synapse-react-client/dist/containers/QueryWrapper'
 import loadingScreen from '../config/loadingScreen'
 
-const QueryWrapperHelper: React.FunctionComponent<QueryWrapperProps> = (props: QueryWrapperProps) => {
+const QueryWrapperHelper: React.FunctionComponent<any> = (props: any) => {
   return (
     <SynapseComponents.QueryWrapper
       {...props}

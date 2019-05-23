@@ -35,18 +35,15 @@ body {
   display: flex;
   align-items: center; }
 
-#header {
-  background: linear-gradient(#109488, #05635b), url("config/style/molecule-back.svg") no-repeat;
-  background-blend-mode: color; }
-
-#footer {
-  background-color: #4db7ad !important; }
+#header, #footer {
+  background-blend-mode: multiply;
+  background-color: #407BA0; }
 
 .SRC-primary-background-color {
-  background-color: #4db7ad !important; }
+  background-color: #47337D !important; }
 
 .SRC-primary-background-color-hover:hover {
-  background: #4db7ad !important;
+  background: #47337D !important;
   color: white !important; }
   .SRC-primary-background-color-hover:hover svg.SRC-primary-text-color {
     color: white !important; }
@@ -54,7 +51,7 @@ body {
     color: white; }
 
 .SRC-primary-background-color-hover.SRC-nested-color:hover * {
-  background-color: #4db7ad !important;
+  background-color: #47337D !important;
   color: white !important; }
 
 .spacer {
@@ -64,10 +61,10 @@ body {
 .flex-display {
   display: flex; }
 
-.nav-button-container:hover, .explore-buttons button:hover, #exploreData:hover, .viewAll:hover, .SRC-viewMoreButton:hover {
+.nav-button-container:hover, #signin-button:hover, .explore-buttons button:hover, #exploreData:hover, .viewAll:hover, .SRC-viewMoreButton:hover {
   transition: all 400ms; }
 
-.explore-buttons button:hover, #exploreData:hover, .viewAll:hover, .SRC-viewMoreButton:hover {
+#signin-button:hover, .explore-buttons button:hover, #exploreData:hover, .viewAll:hover, .SRC-viewMoreButton:hover {
   box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.5); }
 
 .nav-logo-container {
@@ -96,7 +93,7 @@ body {
     text-decoration: none; }
   .nav a:focus {
     text-decoration: none;
-    color: #4db7ad; }
+    color: #47337D; }
 
 .nav-button, .dropdown.nav-button-container, .nav-button-container:hover, .dropdown.nav-button-container.bottom-border {
   border-bottom-style: solid;
@@ -120,30 +117,34 @@ body {
   white-space: nowrap; }
 
 .nav-button-container:hover, .dropdown.nav-button-container.bottom-border {
-  border-bottom-color: #4db7ad;
-  color: #4db7ad; }
+  border-bottom-color: #47337D;
+  color: #47337D; }
 
 #home-link {
   font-weight: bold;
   font-size: 25px;
-  color: #4db7ad;
+  color: #47337D;
   margin-left: 15px; }
 
 .open > a {
-  color: #4db7ad !important;
+  color: #47337D !important;
   background-color: white !important; }
   .open > a:focus {
     border-color: unset !important; }
   .open > a:hover {
     border-color: unset !important; }
 
-.dropdown-link {
+.dropdown-item {
   color: #515359;
   padding-left: 20px;
   height: 50px;
   width: 230px; }
 
-.dropdown-link:hover {
+.border-bottom-1 {
+  border-bottom: solid 1px;
+  border-bottom-color: #e5e5e5; }
+
+a.dropdown-item:hover {
   color: white; }
 
 .dropdown-menu {
@@ -171,8 +172,8 @@ body {
 
 #footer {
   text-transform: uppercase;
-  background-image: "";
-  background-color: #c94281;
+  background-image: url("config/style//dna.svg");
+  background-color: #407BA0;
   background-repeat: no-repeat;
   background-size: cover;
   color: white;
@@ -181,14 +182,27 @@ body {
   #footer a {
     color: white; }
 
+.SRC-primary-text-color-background {
+  background-color: #407BA0;
+  color: white; }
+
+#signin-button {
+  height: 39px;
+  border-radius: 30px;
+  padding: 8px 37px;
+  border: none; }
+
+#loginPage {
+  padding: 30px; }
+
 .SRC-primary-text-color {
-  color: #c94281 !important; }
+  color: #407BA0 !important; }
 
 .footer-help {
   flex-basis: 50%; }
 
 #header {
-  background-image: "";
+  background-image: url("config/style/dna_header.svg");
   background-repeat: no-repeat;
   background-size: cover;
   height: fit-content;
@@ -246,8 +260,7 @@ body {
   right: 50px;
   position: absolute;
   border-radius: 24px;
-  background-color: #4db7ad;
-  position: absolute;
+  background-color: #47337D;
   color: white;
   height: 44px;
   width: 257px;
@@ -288,7 +301,7 @@ body {
   text-align: center;
   justify-content: center; }
   .viewAll:hover {
-    background-color: #4db7ad;
+    background-color: #47337D;
     color: white;
     text-decoration: none; }
 
@@ -302,12 +315,20 @@ body {
   border-width: 0px; }
 
 div.SRC-title > h3 a {
-  color: #c94281; }
+  color: #407BA0; }
 
 button.btn-sm.SRC-floatRight {
   border: none; }
   button.btn-sm.SRC-floatRight svg {
-    color: #4db7ad !important; }
+    color: #47337D !important; }
 
 #exploreCount {
   padding-top: 20px; }
+
+#user-menu-button {
+  height: 72px; }
+  #user-menu-button .SRC-userCard {
+    width: 28px; }
+
+.user-menu-dropdown {
+  left: -81px; }

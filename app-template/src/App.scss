@@ -182,14 +182,19 @@ $header-height : 75px;
   }
 }
 
-.dropdown-link {
+.dropdown-item {
   color: #515359;
   padding-left: 20px;
   height: 50px;
   width: 230px;
 }
 
-.dropdown-link:hover {
+.border-bottom-1 {
+  border-bottom: solid 1px;
+  border-bottom-color:#e5e5e5;
+}
+
+a.dropdown-item:hover {
   color: white;
 }
 
@@ -221,7 +226,6 @@ $header-height : 75px;
   padding: 0px 30px;
 }
 
-
 .hand-cursor {
   cursor: pointer;
 }
@@ -241,6 +245,25 @@ $header-height : 75px;
   width: 100%;
 }
 
+.SRC-primary-text-color-background {
+  background-color: $primary-text-color;
+  color: white;
+}
+
+#signin-button {
+  height: 39px;
+  border-radius: 30px;
+  padding: 8px 37px;
+  border: none;
+  &:hover {
+    @extend %hoverFade;
+    @extend %defaultBoxShadow;
+  }
+}
+
+#loginPage {
+  padding: 30px;
+}
 .SRC-primary-text-color {
   color: $primary-text-color !important;
 }
@@ -330,7 +353,6 @@ $header-height : 75px;
   position: absolute;
   border-radius: 24px;
   background-color: $primary-action-color;
-  position: absolute;
   color: white;
   height: 44px;
   width: 257px;
@@ -424,4 +446,15 @@ button.btn-sm.SRC-floatRight {
 
 #exploreCount {
   padding-top: 20px;
+}
+
+#user-menu-button {
+  height: 72px;
+  .SRC-userCard {
+    width: 28px;
+  }
+}
+
+.user-menu-dropdown {
+  left: -81px;
 }
