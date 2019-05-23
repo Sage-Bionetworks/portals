@@ -10,7 +10,7 @@ const title = 'People'
 
 const people: HomeExploreConfig = {
   homePageSynapseObject: {
-    name: 'QueryWrapperHelper',
+    name: 'QueryWrapperWithStackedBarChart',
     props: {
       unitDescription,
       rgbIndex,

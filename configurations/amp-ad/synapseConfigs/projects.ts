@@ -9,7 +9,7 @@ const facetName = 'Program'
 
 const projects: HomeExploreConfig = {
   homePageSynapseObject: {
-    name: 'QueryWrapperHelper',
+    name: 'QueryWrapperWithStackedBarChart',
     props: {
       unitDescription,
       rgbIndex,

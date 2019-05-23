@@ -2,7 +2,7 @@ import * as React from 'react'
 import { getRouteFromParams, generateSynapseObjectHelper } from '../RouteResolver'
 import routesConfig,
  { HOME_INDEX, ABOUT_INDEX, ORGANIZATION_INDEX } from '../example-configuration/routesConfig'
-import { NestedRoute, SynapseObjectSingle } from '../types/portal-config'
+import { NestedRoute, SynapseConfig } from '../types/portal-config'
 import CardContainerLogic from 'synapse-react-client/dist/containers/CardContainerLogic'
 import { mount } from 'enzyme'
 import HomeButtonControlWrapper from '../portal-components/HomeButtonControlWrapper'
@@ -34,7 +34,7 @@ describe('getRouteFromParams works', () => {
 describe('RouteResolver works', () => {
 
   it('renders SRC components correctly', () => {
-    const mockedSynObject: SynapseObjectSingle = {
+    const mockedSynObject: SynapseConfig = {
       name: 'CardContainerLogic',
       props: {
         sql: '',
@@ -46,13 +46,13 @@ describe('RouteResolver works', () => {
   })
 
   it('renders portal specific components correctly', () => {
-    const mockedSynObject: SynapseObjectSingle = {
+    const mockedSynObject: SynapseConfig = {
       name: 'HomeButtonControlWrapper',
       props: {
         configs: [
           {
-            name: 'mock',
-            synapseObjectSingle: {
+            name: 'mock2',
+            SynapseConfig: {
               name: 'CardContainerLogic',
               props: {
                 sql: '',

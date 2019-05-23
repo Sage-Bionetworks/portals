@@ -1,10 +1,10 @@
-import { SynapseObjectSingle } from '../types/portal-config'
+import { SynapseConfig } from '../types/portal-config'
 
-const exploreButtonsConfiguration: SynapseObjectSingle = {
+const exploreButtonsConfiguration: SynapseConfig = {
   name: 'ExploreButtonControlWrapper',
   title: 'Explore',
   props: {
-    synapseObjectSingle: {} as SynapseObjectSingle,
+    synapseConfig: {} as SynapseConfig,
     colors: [
       '#6c5c97',
       '#E5AE4C',
@@ -14,24 +14,12 @@ const exploreButtonsConfiguration: SynapseObjectSingle = {
       '#D4689A',
     ],
     customRoutes: [
-      {
-        name: 'Programs'
-      },
-      {
-        name: 'Projects'
-      },
-      {
-        name: 'Studies'
-      },
-      {
-        name: 'Data'
-      },
-      {
-        name: 'Publications'
-      },
-      {
-        name: 'People'
-      }
+      'Programs',
+      'Projects',
+      'Studies',
+      'Data',
+      'Publications',
+      'People'
     ]
   },
 }

@@ -15,7 +15,7 @@ export type HomePageHeaderConfig = {
   title: string
 }
 
-// Generic SynapseObject Representation -- maps each component to its props
+// Generic SynapseConfigArray Representation -- maps each component to its props
 type CardContainerLogic = {
   name: 'CardContainerLogic'
   props: CardContainerLogicProps
@@ -26,8 +26,8 @@ type QueryWrapper = {
   props: any
 }
 // TODO: Export QueryWrapper props object in SRC
-type QueryWrapperHelper = {
-  name: 'QueryWrapperHelper',
+type QueryWrapperWithStackedBarChart = {
+  name: 'QueryWrapperWithStackedBarChart',
   props: any
 }
 
@@ -68,24 +68,23 @@ type Metatdata = {
   link?: string
 }
 
-export type SynapseObjectSingle = (
+export type SynapseConfig = (
     HomeButtonControl
   | ExploreButtonControl
   | CardContainerLogic
   | StackedBarChart
   | QueryWrapper
-  | QueryWrapperHelper
+  | QueryWrapperWithStackedBarChart
   | QueryWrapperMenu
   | UserCard 
   | Markdown 
-)
-& Metatdata
-export type SynapseObject = SynapseObjectSingle []
+) & Metatdata
+export type SynapseConfigArray = SynapseConfig []
 
 // utility for inside the explore page
 export type HomeExploreConfig = {
-  homePageSynapseObject: SynapseObjectSingle
-  explorePageSynapseObject: SynapseObjectSingle
+  homePageSynapseObject: SynapseConfig
+  explorePageSynapseObject: SynapseConfig
 }
 
 export interface BaseRoute {
@@ -94,14 +93,14 @@ export interface BaseRoute {
   isNested: false
   to: string
   link?: string
-  synapseObject: SynapseObject
+  synapseConfigArray: SynapseConfigArray
   routes?: Array<Route>
 }
 
 export interface NestedRoute extends BaseRoute {
   isNested: true
   routes: Array<BaseRoute | NestedRoute>
-  synapseObject?: SynapseObject
+  synapseConfigArray?: SynapseConfigArray
   to?: string
 }
 

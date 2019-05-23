@@ -1,6 +1,3 @@
 node_modules/
 build/
 app-template/src/config/**
-undoLink.sh
-linkConfig.sh
-runLink.sh

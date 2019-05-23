@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import * as React from 'react'
 import routesConfig from './config/routesConfig'
-import { GenericRoute, SynapseObject } from './types/portal-config'
+import { GenericRoute } from './types/portal-config'
 import logoHeaderConfig from './config/logoHeaderConfig'
 import Dialog from '@material-ui/core/Dialog'
 import { SynapseComponents, SynapseClient, SynapseConstants } from 'synapse-react-client'
@@ -9,12 +9,13 @@ import UserCard from 'synapse-react-client/dist/containers/UserCard'
 import * as AppInitializer from './AppInitializer'
 import SvgIcon from '@material-ui/core/SvgIcon'
 import { signOut } from 'synapse-react-client/dist/utils/SynapseClient'
+import { UserProfile } from 'synapse-react-client/dist/utils/jsonResponses/UserProfile'
 
 export type NavbarState = {
   // keep track of dropdown menu state (open/closed)
   [index:string]: any,
   token: string | undefined,
-  userprofile: any,
+  userprofile: UserProfile | undefined,
   showLoginDialog: boolean,
 }
 export class Navbar extends React.Component<{}, NavbarState> {

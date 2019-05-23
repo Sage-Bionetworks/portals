@@ -4,17 +4,17 @@ import { MemoryRouter } from 'react-router'
 import CardContainerLogic from 'synapse-react-client/dist/containers/CardContainerLogic'
 import HomeButtonControlWrapper, { HomeButtonControlWrapperProps } from '../../portal-components/HomeButtonControlWrapper'
 
-describe('ExploreButtonControl works', () => {
+describe('HomeButtonControlWrapper works', () => {
   const props: HomeButtonControlWrapperProps = {
     configs: [{
-      synapseObjectSingle: {
+      synapseConfig: {
         name: 'CardContainerLogic',
         props: {
           sql: '',
           type: ''
         },
       },
-      name: 'Route 1  '
+      name: 'Route 1'
     }],
     colors: ['red'],
   }

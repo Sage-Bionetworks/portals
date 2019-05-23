@@ -1,13 +1,7 @@
 import * as React from 'react'
 import { Header } from './Header'
 import { Link, withRouter } from 'react-router-dom'
-import { GenericRoute } from './types/portal-config'
 import { getRouteFromParams, generateSynapseObject } from './RouteResolver'
-
-type HomeState = {
-  activeSynRoute: GenericRoute []
-  activeSynObjectIndex: number
-}
 
 type HomeProps = {
   location: any
@@ -15,7 +9,7 @@ type HomeProps = {
   match: any
 }
 
-class Home extends React.Component<HomeProps, HomeState> {
+class Home extends React.Component<HomeProps, {}> {
 
   constructor(props: any) {
     super(props)
@@ -24,7 +18,7 @@ class Home extends React.Component<HomeProps, HomeState> {
   render () {
     const { location } = this.props
     const pathname = location.pathname
-    const { synapseObject  } = getRouteFromParams(pathname)
+    const { synapseConfigArray  } = getRouteFromParams(pathname)
     return (
       <div>
         <Header />
@@ -32,7 +26,7 @@ class Home extends React.Component<HomeProps, HomeState> {
           <div className="row">
             <div className="col-xs-12">
               {
-                synapseObject!.map(
+                synapseConfigArray!.map(
                   (el) => {
                     return (
                       <div key={el.title} className="newContainer">

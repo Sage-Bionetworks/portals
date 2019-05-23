@@ -1,7 +1,7 @@
-import { SynapseObject } from '../../../types/portal-config'
+import { SynapseConfigArray } from '../../../types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
 
-const ampAd: SynapseObject = [
+const ampAd: SynapseConfigArray = [
   {
     name: 'CardContainerLogic',
     title: 'Explore AMP-AD',

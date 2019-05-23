@@ -1,6 +1,6 @@
-import { SynapseObjectSingle } from '../../types/portal-config'
+import { SynapseConfig } from '../../types/portal-config'
 
-const publications: SynapseObjectSingle = {
+const publications: SynapseConfig = {
   name: 'Markdown',
   props: {
     ownerId: 'syn2580853',

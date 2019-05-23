@@ -2,7 +2,7 @@ import * as React from 'react'
 import { SynapseComponents } from 'synapse-react-client'
 import loadingScreen from '../config/loadingScreen'
 
-const QueryWrapperHelper: React.FunctionComponent<any> = (props: any) => {
+const QueryWrapperWithStackedBarChart: React.FunctionComponent<any> = (props: any) => {
   return (
     <SynapseComponents.QueryWrapper
       {...props}
@@ -16,4 +16,4 @@ const QueryWrapperHelper: React.FunctionComponent<any> = (props: any) => {
   )
 }
 
-export default QueryWrapperHelper
+export default QueryWrapperWithStackedBarChart

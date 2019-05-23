@@ -1,9 +1,9 @@
 import { GenericRoute } from '../types/portal-config'
-import { publications, files, datasets, grants, studies } from './synapseConfigs'
+import { publications, files, datasets, grants, studies } from './synapseConfigurations'
 import { SynapseConstants } from 'synapse-react-client'
-import { studiesSql } from './synapseConfigs/studies'
-import { publicationSql } from './synapseConfigs/publications'
-import { datasetsSql } from './synapseConfigs/datasets'
+import { studiesSql } from './synapseConfigurations/studies'
+import { publicationSql } from './synapseConfigurations/publications'
+import { datasetsSql } from './synapseConfigurations/datasets'
 import exploreButtonControlWrapperProps from './exploreButtonControlWrapperProps'
 
 const homeLimit = 3
@@ -13,7 +13,7 @@ const routes: GenericRoute [] = [
     name: 'Home',
     to: '/',
     isNested: false,
-    synapseObject: [
+    synapseConfigArray: [
       {
         name: 'HomeButtonControlWrapper',
         title: 'EXPLORE PORTAL',
@@ -26,11 +26,11 @@ const routes: GenericRoute [] = [
             '#5E697D',
           ],
           configs: [
-            { name: 'Grants', synapseObjectSingle: grants.homePageSynapseObject },
-            { name: 'Publications', synapseObjectSingle: publications.homePageSynapseObject },
-            { name: 'Studies', synapseObjectSingle: studies.homePageSynapseObject },
-            { name: 'Datasets', synapseObjectSingle: datasets.homePageSynapseObject },
-            { name: 'Files', synapseObjectSingle: files.homePageSynapseObject },
+            { name: 'Grants', SynapseConfig: grants.homePageSynapseObject },
+            { name: 'Publications', SynapseConfig: publications.homePageSynapseObject },
+            { name: 'Studies', SynapseConfig: studies.homePageSynapseObject },
+            { name: 'Datasets', SynapseConfig: datasets.homePageSynapseObject },
+            { name: 'Files', SynapseConfig: files.homePageSynapseObject },
           ]
         }
       },
@@ -74,12 +74,12 @@ const routes: GenericRoute [] = [
         name: 'Grants',
         to: '/Explore/Grants',
         isNested: false,
-        synapseObject: [
+        synapseConfigArray: [
           {
             ...exploreButtonControlWrapperProps,
             props: {
               ...exploreButtonControlWrapperProps.props,
-              synapseObjectSingle: grants.explorePageSynapseObject
+              SynapseConfig: grants.explorePageSynapseObject
             }
           }
         ],
@@ -88,12 +88,12 @@ const routes: GenericRoute [] = [
         name: 'Publications',
         to: '/Explore/Publications',
         isNested: false,
-        synapseObject: [
+        synapseConfigArray: [
           {
             ...exploreButtonControlWrapperProps,
             props: {
               ...exploreButtonControlWrapperProps.props,
-              synapseObjectSingle: publications.explorePageSynapseObject
+              SynapseConfig: publications.explorePageSynapseObject
             }
           }
         ],
@@ -102,12 +102,12 @@ const routes: GenericRoute [] = [
         name: 'Studies',
         to: '/Explore/Studies',
         isNested: false,
-        synapseObject: [
+        synapseConfigArray: [
           {
             ...exploreButtonControlWrapperProps,
             props: {
               ...exploreButtonControlWrapperProps.props,
-              synapseObjectSingle: studies.explorePageSynapseObject
+              SynapseConfig: studies.explorePageSynapseObject
             }
           }
         ],
@@ -116,12 +116,12 @@ const routes: GenericRoute [] = [
         name: 'Datasets',
         to: '/Explore/Datasets',
         isNested: false,
-        synapseObject: [
+        synapseConfigArray: [
           {
             ...exploreButtonControlWrapperProps,
             props: {
               ...exploreButtonControlWrapperProps.props,
-              synapseObjectSingle: datasets.explorePageSynapseObject
+              SynapseConfig: datasets.explorePageSynapseObject
             }
           }
         ],
@@ -130,12 +130,12 @@ const routes: GenericRoute [] = [
         name: 'Files',
         to: '/Explore/Files',
         isNested: false,
-        synapseObject: [
+        synapseConfigArray: [
           {
             ...exploreButtonControlWrapperProps,
             props: {
               ...exploreButtonControlWrapperProps.props,
-              synapseObjectSingle: files.explorePageSynapseObject
+              SynapseConfig: files.explorePageSynapseObject
             }
           }
         ],
@@ -146,7 +146,7 @@ const routes: GenericRoute [] = [
     name: 'About',
     to: '/About',
     isNested: false,
-    synapseObject: [
+    synapseConfigArray: [
       {
         name: 'Markdown',
         props: {

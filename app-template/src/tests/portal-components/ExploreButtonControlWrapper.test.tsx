@@ -6,8 +6,9 @@ import CardContainerLogic from 'synapse-react-client/dist/containers/CardContain
 
 describe('ExploreButtonControlWrapper works', () => {
 
+  const routeName = 'custom route'
   const props: ExploreButtonControlWrapperProps = {
-    synapseObjectSingle: {
+    synapseConfig: {
       name: 'CardContainerLogic',
       props: {
         sql: '',
@@ -15,11 +16,7 @@ describe('ExploreButtonControlWrapper works', () => {
       },
     },
     colors: ['red'],
-    customRoutes: [
-      {
-        name: 'Custom Route 1'
-      }
-    ]
+    customRoutes: [routeName]
   }
 
   it('renders correctly', () => {
@@ -28,5 +25,6 @@ describe('ExploreButtonControlWrapper works', () => {
     expect(component).toBeDefined()
     // check that it renders a CardContainerLogic component
     expect(component.find(CardContainerLogic)).toHaveLength(1)
+    expect(component.find('button').text()).toEqual(routeName)
   })
 })
