@@ -172,7 +172,6 @@ a.dropdown-item:hover {
 
 #footer {
   text-transform: uppercase;
-  background-image: url("config/style//dna.svg");
   background-color: #407BA0;
   background-repeat: no-repeat;
   background-size: cover;
@@ -202,7 +201,6 @@ a.dropdown-item:hover {
   flex-basis: 50%; }
 
 #header {
-  background-image: url("config/style/dna_header.svg");
   background-repeat: no-repeat;
   background-size: cover;
   height: fit-content;

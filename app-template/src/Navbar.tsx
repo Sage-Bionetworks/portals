@@ -119,6 +119,9 @@ export class Navbar extends React.Component<{}, NavbarState> {
     let currentNestedRouteCount = 0
     const { name, icon } = logoHeaderConfig
     const logo = name ? name : <img className="nav-logo" src={icon} />
+    const hostname = window.location.hostname.toLowerCase()
+    // for now, we only support login in the dev environment (localstorage) or from a .synapse.org subdomain (http-only secure cookie)
+    const isSynapseSubdomainOrLocal = hostname.includes('.synapse.org') || hostname.includes('127.0.0.1') || hostname.includes('localhost')
     const { userprofile } = this.state
     const isUserMenuOpen = this.state['usermenu']
     const toggleUserMenu = this.toggleUserMenu()
@@ -137,6 +140,7 @@ export class Navbar extends React.Component<{}, NavbarState> {
           <div className="nav-link-container">
             {
               !userprofile &&
+              isSynapseSubdomainOrLocal &&
               <div className="center-content nav-button">
                   <button
                     id="signin-button"
@@ -248,8 +252,8 @@ export class Navbar extends React.Component<{}, NavbarState> {
                     const toggleDropdown = this.toggleDropdown(currentNestedRouteCount)
                     currentNestedRouteCount += 1
                     return (
-                      <div key={el.name} className={`dropdown nav-button-container ${isCurrentDropdownOpen ? 'open' : ''} ${this.getBorder(el.name)}`}>
-                        <div onClick={toggleDropdown} className="center-content nav-button hand-cursor"> {displayName} </div>
+                      <div key={el.name} className={`dropdown  ${isCurrentDropdownOpen ? 'open' : ''} ${this.getBorder(el.name)}`}>
+                        <div onClick={toggleDropdown} className="center-content nav-button-container nav-button hand-cursor"> {displayName} </div>
                         {
                           isCurrentDropdownOpen &&
                             <div className="dropdown-menu">
