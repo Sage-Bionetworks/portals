@@ -26,16 +26,16 @@ const routes: GenericRoute [] = [
           ],
           configs: [
             {
-              name: 'Datasets', SynapseConfig: datasets.homePageSynapseObject
+              name: 'Datasets', synapseConfig: datasets.homePageSynapseObject
             },
             {
-              name: 'Files', SynapseConfig: files.homePageSynapseObject
+              name: 'Files', synapseConfig: files.homePageSynapseObject
             },
             {
-              name: 'Studies', SynapseConfig: studies.homePageSynapseObject
+              name: 'Studies', synapseConfig: studies.homePageSynapseObject
             },
             {
-              name: 'Publications', SynapseConfig: publications.homePageSynapseObject
+              name: 'Publications', synapseConfig: publications.homePageSynapseObject
             }
           ]
         }
@@ -104,7 +104,7 @@ const routes: GenericRoute [] = [
             ...exploreButtonControlWrapperProps,
             props: {
               ...exploreButtonControlWrapperProps.props,
-              SynapseConfig: datasets.explorePageSynapseObject
+              synapseConfig: datasets.explorePageSynapseObject
             }
           }
         ]
@@ -118,7 +118,7 @@ const routes: GenericRoute [] = [
             ...exploreButtonControlWrapperProps,
             props: {
               ...exploreButtonControlWrapperProps.props,
-              SynapseConfig: files.explorePageSynapseObject
+              synapseConfig: files.explorePageSynapseObject
             }
           }
         ]
@@ -132,7 +132,7 @@ const routes: GenericRoute [] = [
             ...exploreButtonControlWrapperProps,
             props: {
               ...exploreButtonControlWrapperProps.props,
-              SynapseConfig: studies.explorePageSynapseObject
+              synapseConfig: studies.explorePageSynapseObject
             }
           }
         ]
@@ -146,7 +146,7 @@ const routes: GenericRoute [] = [
             ...exploreButtonControlWrapperProps,
             props: {
               ...exploreButtonControlWrapperProps.props,
-              SynapseConfig: publications.explorePageSynapseObject
+              synapseConfig: publications.explorePageSynapseObject
             }
           }
         ]
