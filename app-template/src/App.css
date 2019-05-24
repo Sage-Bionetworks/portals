@@ -95,11 +95,11 @@ body {
     text-decoration: none;
     color: #47337D; }
 
-.nav-button, .dropdown.nav-button-container, .nav-button-container:hover, .dropdown.nav-button-container.bottom-border {
+.nav-button, .nav-button-container:hover, .dropdown.nav-button-container.bottom-border {
   border-bottom-style: solid;
   border-bottom-width: 3px; }
 
-.nav-button, .dropdown.nav-button-container {
+.nav-button {
   border-bottom-color: transparent; }
 
 .nav-button {

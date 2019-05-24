@@ -155,10 +155,6 @@ $header-height : 75px;
   @extend %bottomBorderNav;
 }
 
-.dropdown.nav-button-container {
-  @extend %fillerBorder;
-}
-
 .dropdown.nav-button-container.bottom-border {
   @extend %bottomBorderNav;
 }
