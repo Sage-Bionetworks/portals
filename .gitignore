@@ -1,4 +1,3 @@
 node_modules/
 build/
 app-template/src/config/**
-app-template/src/App.css
