@@ -4,7 +4,7 @@ const exploreButtonControlProps: SynapseConfig = {
   name: 'ExploreButtonControlWrapper',
   title: 'Explore',
   props: {
-    SynapseConfig: {} as SynapseConfig,
+    synapseConfig: {} as SynapseConfig,
     colors: [
       '#119488',
       '#58A058',

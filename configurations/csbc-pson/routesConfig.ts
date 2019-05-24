@@ -26,11 +26,11 @@ const routes: GenericRoute [] = [
             '#5E697D',
           ],
           configs: [
-            { name: 'Grants', SynapseConfig: grants.homePageSynapseObject },
-            { name: 'Publications', SynapseConfig: publications.homePageSynapseObject },
-            { name: 'Studies', SynapseConfig: studies.homePageSynapseObject },
-            { name: 'Datasets', SynapseConfig: datasets.homePageSynapseObject },
-            { name: 'Files', SynapseConfig: files.homePageSynapseObject },
+            { name: 'Grants', synapseConfig: grants.homePageSynapseObject },
+            { name: 'Publications', synapseConfig: publications.homePageSynapseObject },
+            { name: 'Studies', synapseConfig: studies.homePageSynapseObject },
+            { name: 'Datasets', synapseConfig: datasets.homePageSynapseObject },
+            { name: 'Files', synapseConfig: files.homePageSynapseObject },
           ]
         }
       },
@@ -79,7 +79,7 @@ const routes: GenericRoute [] = [
             ...exploreButtonControlWrapperProps,
             props: {
               ...exploreButtonControlWrapperProps.props,
-              SynapseConfig: grants.explorePageSynapseObject
+              synapseConfig: grants.explorePageSynapseObject
             }
           }
         ],
@@ -93,7 +93,7 @@ const routes: GenericRoute [] = [
             ...exploreButtonControlWrapperProps,
             props: {
               ...exploreButtonControlWrapperProps.props,
-              SynapseConfig: publications.explorePageSynapseObject
+              synapseConfig: publications.explorePageSynapseObject
             }
           }
         ],
@@ -107,7 +107,7 @@ const routes: GenericRoute [] = [
             ...exploreButtonControlWrapperProps,
             props: {
               ...exploreButtonControlWrapperProps.props,
-              SynapseConfig: studies.explorePageSynapseObject
+              synapseConfig: studies.explorePageSynapseObject
             }
           }
         ],
@@ -121,7 +121,7 @@ const routes: GenericRoute [] = [
             ...exploreButtonControlWrapperProps,
             props: {
               ...exploreButtonControlWrapperProps.props,
-              SynapseConfig: datasets.explorePageSynapseObject
+              synapseConfig: datasets.explorePageSynapseObject
             }
           }
         ],
@@ -135,7 +135,7 @@ const routes: GenericRoute [] = [
             ...exploreButtonControlWrapperProps,
             props: {
               ...exploreButtonControlWrapperProps.props,
-              SynapseConfig: files.explorePageSynapseObject
+              synapseConfig: files.explorePageSynapseObject
             }
           }
         ],

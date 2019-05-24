@@ -5,7 +5,7 @@ const exploreButtonControlTemplate: SynapseConfig = {
   title: 'Explore',
   props: {
     // this has to get overriden,
-    SynapseConfig: {} as SynapseConfig,
+    synapseConfig: {} as SynapseConfig,
     colors: [
       '#47337D',
       '#407BA0',
