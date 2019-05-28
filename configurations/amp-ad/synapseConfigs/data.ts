@@ -23,7 +23,7 @@ const data: HomeExploreConfig = {
           | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
         query: {
           sql,
-          isConsistent: false,
+          isConsistent: true,
           limit: 25,
           offset: 0,
         }
@@ -35,6 +35,7 @@ const data: HomeExploreConfig = {
     props: {
       rgbIndex,
       loadingScreen,
+      isConsistent: true,
       menuConfig: [
         {
           title,
