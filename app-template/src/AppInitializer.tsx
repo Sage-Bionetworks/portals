@@ -27,6 +27,17 @@ class AppInitializer extends React.Component<RouteComponentProps & ReactCookiePr
     SynapseClient.getSessionTokenFromCookie().then(
       (sessionToken) => {
         this.setState({ token: sessionToken })
+        if (sessionToken) {
+          SynapseClient.putRefreshSessionToken(sessionToken).then(
+            (_response) => {
+              // backend doesn't return a response for this call, its empty
+            }
+          ).catch(
+            (err) => {
+              console.log('Session token refresh failed with error ', err)
+            }
+          )
+        }
       }
     ).catch((_err) => {
       console.log('no token from cookie could be fetched ', _err)
