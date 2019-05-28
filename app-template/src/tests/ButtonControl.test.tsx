@@ -22,7 +22,6 @@ describe('ButtonControl works', () => {
     const el = mount(<ButtonControl {...props} />)
     const buttons = el.find('button')
     expect(buttons).toHaveLength(2)
-    console.log('buttons = ', buttons)
     // test that the first button has the right background and text set
     const buttonOne = buttons.at(0)
     expect(buttonOne.props().style).toHaveProperty('background', colors[0])

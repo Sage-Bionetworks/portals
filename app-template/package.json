@@ -31,7 +31,7 @@
     "start":"copy-favicon; npm-run-all -p watch-css start-js",
     "build":"copy-favicon;CI=false react-scripts-ts build",
     "copy-example-configuration": "cp -r src/example-configuration/ src/config/" ,
-    "test": "yarn run copy-example-configuration && react-scripts-ts test --env=jsdom --setupFiles ./src/tests/setupTests.ts",
+    "test": "yarn build-css && yarn run copy-example-configuration && react-scripts-ts test --env=jsdom --setupFiles ./src/tests/setupTests.ts",
     "eject": "react-scripts-ts eject"
   },
   "devDependencies": {
