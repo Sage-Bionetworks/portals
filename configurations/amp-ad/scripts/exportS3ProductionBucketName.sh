@@ -1,1 +1,1 @@
-export S3_PRODUCTION_BUCK_LOCATION='TODO'
+export S3_PRODUCTION_BUCK_LOCATION=s3://ampadportal.org

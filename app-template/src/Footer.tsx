@@ -15,6 +15,7 @@ export const Footer:React.SFC<{}> = () => {
       <div id="portal-contact-footer" className="center-content">
         <a target="_blank" href={footerConfig.termsOfService} className="footer-link"> Terms of Service </a>
         <a href={footerConfig.contactUs} className="footer-link"> Contact Us </a>
+        {footerConfig.forum && <a href={footerConfig.forum} className="footer-link"> Forum </a>}
       </div>
     </footer>
   )
