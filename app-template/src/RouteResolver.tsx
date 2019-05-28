@@ -1,5 +1,4 @@
 import * as React from 'react'
-import './App.css'
 import { withRouter, RouteComponentProps } from 'react-router'
 import routesConfig from './config/routesConfig'
 import { SynapseConfig, GenericRoute } from './types/portal-config'
