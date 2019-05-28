@@ -80,8 +80,11 @@ class AppInitializer extends React.Component<RouteComponentProps & ReactCookiePr
     }
     const homeLinkImgElement = document.querySelector('#footer-link img')
     if (homeLinkImgElement) {
-      const imageSrc = homeLinkImgElement.getAttribute('src')
+      let imageSrc = homeLinkImgElement.getAttribute('src')
       if (imageSrc) {
+        if (!imageSrc.toLowerCase().startsWith('http')) {
+          imageSrc = SynapseClient.getRootURL() + imageSrc
+        }
         icon = imageSrc
       }
     }
