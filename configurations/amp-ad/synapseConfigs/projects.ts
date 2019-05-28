@@ -21,7 +21,7 @@ const projects: HomeExploreConfig = {
           | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
         query: {
           sql,
-          isConsistent: false,
+          isConsistent: true,
           limit: 25,
           offset: 0,
         }
@@ -34,6 +34,7 @@ const projects: HomeExploreConfig = {
       rgbIndex,
       loadingScreen,
       type: SynapseConstants.AMP_PROJECT,
+      isConsistent: true,
       menuConfig: [
         {
           sql,

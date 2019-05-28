@@ -23,7 +23,7 @@ const studies: HomeExploreConfig = {
           | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
         query: {
           sql,
-          isConsistent: false,
+          isConsistent: true,
           limit: 25,
           offset: 0,
         }
@@ -37,6 +37,7 @@ const studies: HomeExploreConfig = {
       loadingScreen,
       unitDescription,
       type: SynapseConstants.AMP_STUDY,
+      isConsistent: true,
       menuConfig: [
         {
           sql,
