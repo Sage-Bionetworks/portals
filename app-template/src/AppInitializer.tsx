@@ -14,7 +14,6 @@ class AppInitializer extends React.Component<RouteComponentProps & ReactCookiePr
 
   constructor(props: any) {
     super(props)
-    const { cookies } = props
     this.state = {
       token: ''
     }
@@ -78,19 +77,19 @@ class AppInitializer extends React.Component<RouteComponentProps & ReactCookiePr
       color = window.getComputedStyle(footerElement, null).getPropertyValue('color')
       background = window.getComputedStyle(footerElement, null).getPropertyValue('background-color')
     }
-    const homeLinkImgElement = document.querySelector('#footer-link img')
-    if (homeLinkImgElement) {
-      let imageSrc = homeLinkImgElement.getAttribute('src')
+    const footerLinkImgElement = document.querySelector('#footer-link img')
+    if (footerLinkImgElement) {
+      let imageSrc = footerLinkImgElement.getAttribute('src')
       if (imageSrc) {
         if (!imageSrc.toLowerCase().startsWith('http')) {
-          imageSrc = SynapseClient.getRootURL() + imageSrc
+          imageSrc = SynapseClient.getRootURL() + imageSrc.substring(1)
         }
         icon = imageSrc
       }
     }
-    const homeLinkElement = document.querySelector('#footer-link')
-    if (homeLinkElement && homeLinkElement.textContent) {
-      name = homeLinkElement.textContent
+    const footerLinkElement = document.querySelector('#footer-link')
+    if (footerLinkElement && footerLinkElement.textContent) {
+      name = footerLinkElement.textContent
     }
     const cookieValue = {
       foregroundColor: color,
