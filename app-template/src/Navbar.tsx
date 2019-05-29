@@ -277,7 +277,7 @@ export class Navbar extends React.Component<{}, NavbarState> {
                       </div>
                     )
                   }
-                  // treat it as standard tag pointing to an external URL
+                  // treat it as standard anchor tag
                   if (el.synapseConfigArray.length === 0) {
                     return <a key={el.name} className={`center-content nav-button nav-button-container ${this.getBorder(el.name)}`} href={el.to}> {icon} {displayName} </a>
                   }
