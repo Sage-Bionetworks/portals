@@ -3,6 +3,8 @@ import { SynapseConstants } from 'synapse-react-client'
 import { projects, studies, data, people, programs, publications } from './synapseConfigs'
 import exploreButtonWrapperProps from './exploreButtonWrapperProps'
 import { ampAd, move2Ad, modelAd, resilienceAd } from './synapseConfigs/programs/'
+// @ts-ignore
+import iconAgoraSvg from './style/icon-agora.svg'
 
 const routes: GenericRoute [] = [
   {
@@ -231,6 +233,14 @@ const routes: GenericRoute [] = [
         }
       }
     ]
+  },
+  {
+    name: 'ExploreResults',
+    displayName: 'Explore Results',
+    icon: iconAgoraSvg,
+    isNested: false,
+    to: 'https://agora.ampadportal.org/genes',
+    synapseConfigArray: []
   }
 ]
 

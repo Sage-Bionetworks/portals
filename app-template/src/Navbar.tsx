@@ -134,7 +134,6 @@ export class Navbar extends React.Component<{}, NavbarState> {
             <span onClick={toggleOff} className="menu-wall hand-cursor"/>
           }
           <div className="center-content nav-logo-container">
-            {/* TODO - this may be an img tag which will require a change */}
             <Link onClick={goToTop} to="/" id="home-link"> {logo} </Link>
           </div>
           <div className="nav-link-container">
@@ -244,6 +243,7 @@ export class Navbar extends React.Component<{}, NavbarState> {
               routesConfig.slice().reverse().map(
                 (el) => {
                   const displayName = el.displayName ? el.displayName : el.name
+                  const icon = <img style={{ padding: '0px 4px' }} src={el.icon}/>
                   if (el.isNested) {
                     // handle the case when the menu has sub options
                     const plainRoutes = el.routes as GenericRoute []
@@ -276,6 +276,10 @@ export class Navbar extends React.Component<{}, NavbarState> {
                         }
                       </div>
                     )
+                  }
+                  // treat it as standard tag pointing to an external URL
+                  if (el.synapseConfigArray.length === 0) {
+                    return <a key={el.name} className={`center-content nav-button nav-button-container ${this.getBorder(el.name)}`} href={el.to}> {icon} {displayName} </a>
                   }
                   return (
                     <Link key={el.name} className={`center-content nav-button nav-button-container ${this.getBorder(el.name)}`} to={el.to}> {displayName} </Link>
