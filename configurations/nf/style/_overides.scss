@@ -1,24 +1,17 @@
 
-// $primary-text-color: #404b63;
 $primary-text-color:#c94281;
-$primary-action-color: #4db7ad;
+$primary-action-color: #c94281;
 
 // Since scss breaks if a file is missing in a local url link these functinons must get manually overwitten
 @function getHeader($path) {
-  @return "";
+  @return url("config/style/molecule-back.svg");
 }
 
-#header {
-  background: linear-gradient(#109488,#05635b), url("config/style/molecule-back.svg") no-repeat;
-  background-blend-mode: color;
+#header, #footer {
+  background-color: #109488;
+  background-blend-mode: multiply;
 }
-
-#footer {
-  background-color: $primary-action-color !important;
-}
-
-
 @function getFooter($path) {
   // TODO
-  @return "";
+  @return url("config/style/molecules-light.svg");
 }
