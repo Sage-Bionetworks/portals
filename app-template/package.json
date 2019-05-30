@@ -9,6 +9,7 @@
     "@types/react": "^16.8.10",
     "@types/react-dom": "16.8.2",
     "clone-deep": "^4.0.1",
+    "node": "^12.3.1",
     "node-sass": "4.12.0",
     "npm-run-all": "^4.1.5",
     "react": "16.8.6",
@@ -28,10 +29,11 @@
     "watch-css": "yarn run build-css && node-sass src/ -o src/ --watch --recursive",
     "start-js": "react-scripts-ts start",
     "copy-favicon": "cp src/config/style/favicon* public/",
-    "start":"npm-run-all -p watch-css start-js",
-    "build":"yarn copy-favicon; yarn run build-css && CI=false react-scripts-ts build",
-    "copy-example-configuration": "cp -r src/example-configuration/ src/config/" ,
+    "start": "npm-run-all -p watch-css start-js",
+    "build": "yarn copy-favicon; yarn run build-css && CI=false react-scripts-ts build",
+    "copy-example-configuration": "cp -r src/example-configuration/ src/config/",
     "test": "yarn run copy-example-configuration && react-scripts-ts test --env=jsdom --setupFiles ./src/tests/setupTests.ts",
+    "generate-sitemap": "node src/generate-sitemap.js",
     "eject": "react-scripts-ts eject"
   },
   "devDependencies": {
