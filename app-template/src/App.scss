@@ -378,16 +378,17 @@ a.dropdown-item:hover {
   text-transform: uppercase;
   font-weight: bold;
   font-size: 21px;
-  margin: 10px 0px;
+  margin: 20px 0px;
 }
 // end title
 // home page utils
 .newContainer {
   position: relative;
-  padding: 30px 0px;
+  padding: 20px 0px;
 }
 
 .viewAll {
+  z-index: 5;
   margin-right: 15px;
   border-radius: 24px;
   background-color: #DFDFDF;
