@@ -8,11 +8,11 @@ fs.readFile('src/config/routesConfig.ts', (err, data) => {
   const baseUrl = 'https://csbc-pson.synapse.org/'
   const now = new Date().toISOString()
   let fileContent = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-  var re = /to[:]\s*\'(.*)\'/g
+  var regex = /to[:]\s*\'(.*)\'/g
   var m;
 
   do {
-      m = re.exec(routesConfigContent)
+      m = regex.exec(routesConfigContent)
       if (m) {
         // assuming hash router
         let path = `#${m[1]}`
