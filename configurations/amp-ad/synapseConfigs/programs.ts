@@ -7,7 +7,7 @@ const programs: SynapseConfig = {
   props: {
     sql: 'SELECT * FROM syn17024173',
     type: SynapseConstants.AMP_CONSORTIUM
-  }
+  },
 }
 
 export default programs
