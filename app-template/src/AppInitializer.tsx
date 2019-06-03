@@ -102,7 +102,7 @@ class AppInitializer extends React.Component<RouteComponentProps & ReactCookiePr
     // expire after 20 minutes
     expireDate.setTime(Date.now() + 1000 * 60 * 20)
     const domainValue = window.location.hostname.toLowerCase().includes('.synapse.org') ? '.synapse.org' : undefined
-    // Cookies provider exists about AppInitializer so the cookies prop will exist
+    // Cookies provider exists above AppInitializer so the cookies prop will exist
     this.props.cookies!.set(
       'org.sagebionetworks.security.cookies.portal.config',
       JSON.stringify(cookieValue),
@@ -115,5 +115,4 @@ class AppInitializer extends React.Component<RouteComponentProps & ReactCookiePr
   }
 }
 
-// @ts-ignore
 export default withCookies(withRouter(AppInitializer))
