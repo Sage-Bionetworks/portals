@@ -37,9 +37,10 @@ class CookiesNotification extends React.Component<Props, CookiesNotificationToke
   }
 
   render() {
+    // show banner if they haven't clicked okay, otherwise show nothing
     return (
       this.state.hasAgreedToCookies ?
-        <div/>
+        false
         :
         (
           <div className="cookiesBanner">
