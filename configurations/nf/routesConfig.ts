@@ -5,6 +5,7 @@ import { studiesSql } from './synapseConfigurations/studies'
 import { datasetsSql } from './synapseConfigurations/datasets'
 import { publicationsSql } from './synapseConfigurations/publications'
 import exploreButtonControlWrapperProps from './exploreButtonControlWrapperProps'
+import loadingScreen from './loadingScreen'
 
 const limit = 3
 
@@ -46,8 +47,9 @@ const routes: GenericRoute [] = [
         link: '/Explore/Studies',
         props: {
           limit,
+          loadingScreen,
           sql: studiesSql,
-          type: SynapseConstants.STUDY
+          type: SynapseConstants.STUDY,
         }
       },
       {
@@ -56,6 +58,7 @@ const routes: GenericRoute [] = [
         link: '/Explore/Publications',
         props: {
           limit,
+          loadingScreen,
           sql: publicationsSql,
           type: SynapseConstants.PUBLICATION
         }
@@ -66,6 +69,7 @@ const routes: GenericRoute [] = [
         link: '/Explore/Datasets',
         props: {
           limit,
+          loadingScreen,
           sql: datasetsSql,
           type: SynapseConstants.DATASET
         }
@@ -76,6 +80,7 @@ const routes: GenericRoute [] = [
         link: '/Explore/Tools',
         props: {
           limit,
+          loadingScreen,
           sql: tools.sql,
           type: tools.type
         }
@@ -85,6 +90,7 @@ const routes: GenericRoute [] = [
         title: 'ORGANIZATIONS',
         props: {
           limit,
+          loadingScreen,
           sql: funders.sql,
           type: funders.type
         }

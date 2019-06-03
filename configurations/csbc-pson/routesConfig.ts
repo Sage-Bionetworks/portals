@@ -5,6 +5,7 @@ import { studiesSql } from './synapseConfigurations/studies'
 import { publicationSql } from './synapseConfigurations/publications'
 import { datasetsSql } from './synapseConfigurations/datasets'
 import exploreButtonControlWrapperProps from './exploreButtonControlWrapperProps'
+import loadingScreen from './loadingScreen'
 
 const homeLimit = 3
 
@@ -39,9 +40,10 @@ const routes: GenericRoute [] = [
         title: 'EXPLORE STUDIES',
         link: 'Explore/Studies',
         props: {
+          loadingScreen,
           sql: studiesSql,
           limit: homeLimit,
-          type: SynapseConstants.CSBC_STUDY
+          type: SynapseConstants.CSBC_STUDY,
         }
       },
       {
@@ -49,6 +51,7 @@ const routes: GenericRoute [] = [
         title: 'EXPLORE PUBLICATIONS',
         link: 'Explore/Publications',
         props: {
+          loadingScreen,
           sql: publicationSql,
           limit: homeLimit,
           type: SynapseConstants.CSBC_PUBLICATION
@@ -59,6 +62,7 @@ const routes: GenericRoute [] = [
         title: 'EXPLORE DATASETS',
         link: 'Explore/Datasets',
         props: {
+          loadingScreen,
           sql: datasetsSql,
           limit: homeLimit,
           type: SynapseConstants.CSBC_DATASET
