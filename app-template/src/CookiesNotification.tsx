@@ -44,7 +44,7 @@ class CookiesNotification extends React.Component<Props, CookiesNotificationToke
         :
         (
           <div className="cookiesBanner">
-            This site uses Cookies to enhance your experience and to analyze our traffic. Using Synapse means that you agree with our cookie policy.
+            This site uses Cookies to enhance your experience and to analyze our traffic. Using this website means that you agree with our cookie policy.
             <a target="_blank" href="https://s3.amazonaws.com/static.synapse.org/governance/SynapsePrivacyPolicy.pdf"> <u> LEARN MORE </u></a>
             <button className="btn btn-default btn-small" onClick={this.setHasAgreedToCookies}> OK </button>
           </div>
