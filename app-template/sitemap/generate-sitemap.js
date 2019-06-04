@@ -4,8 +4,9 @@ fs.readFile('src/config/routesConfig.ts', (err, data) => {
     return console.error(err)
   }
   let routesConfigContent = data.toString()
-  // TODO: change baseUrl depending on the portal domain
-  const baseUrl = 'https://csbc-pson.synapse.org/'
+  //change baseUrl depending on the portal domain
+  const args = process.argv.slice(2)
+  const baseUrl = `https://${args[0]}.synapse.org/`
   const now = new Date().toISOString()
   let fileContent = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
   var regex = /to[:]\s*\'(.*)\'/g

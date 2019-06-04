@@ -43,6 +43,7 @@ if [ "$1" = "WARNING-push-production" ]; then
 elif [ "$1" = "push-staging" ]; then
   # sync current with staging
   yarn && yarn build
+  node sitemap/generate-sitemap.js $2
   aws s3 sync --delete --cache-control max-age=0 ./build $S3_STAGING_BUCKET_LOCATION
 fi
 echo 'Success - finished!'
