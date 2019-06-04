@@ -4,8 +4,11 @@ fs.readFile('src/config/routesConfig.ts', (err, data) => {
     return console.error(err)
   }
   let routesConfigContent = data.toString()
-  //change baseUrl depending on the portal domain
   const args = process.argv.slice(2)
+  if (!args[0]) {
+    return console.error('Usage: node generate-sitemap.js [portal-name]\n Note: sitemap.xml assumes portal is hosted on [portal-name].synapse.org')
+  }
+
   const baseUrl = `https://${args[0]}.synapse.org/`
   const now = new Date().toISOString()
   let fileContent = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
