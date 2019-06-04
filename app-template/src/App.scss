@@ -453,3 +453,29 @@ button.btn-sm.SRC-floatRight {
 .user-menu-dropdown {
   left: -81px;
 }
+
+.cookiesBanner {
+  background: $primary-action-color;
+  height: 50px;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  font-size: 15px;
+  padding-left: 20px;
+  padding-right: 20px;
+  // stick to bottom
+  position: fixed;
+  bottom: 15px;
+  z-index: 6;
+  width: 100%;
+
+  a {
+    margin: 0px 10px;
+    color: white;
+  }
+  button {
+    color: $primary-action-color;
+  }
+}
