@@ -77,7 +77,7 @@ const RouteResolver: React.SFC<RouteComponentProps> = ({ location }) => {
           return (
             <React.Fragment key={JSON.stringify(el.props)}>
               {/* re-think how this renders! remove specific styling */}
-              {el.title &&  <h2> {el.title} </h2>}
+              {el.title &&  <h2 className="title"> {el.title} </h2>}
               {generateSynapseObject(el)}
             </React.Fragment>
           )

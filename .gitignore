@@ -2,3 +2,4 @@ node_modules/
 build/
 app-template/src/config/**
 *.css
+.DS_Store

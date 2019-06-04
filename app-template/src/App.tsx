@@ -4,6 +4,7 @@ import './App.css'
 import { Footer } from './Footer'
 import AppInitializer from './AppInitializer'
 import { Navbar } from './Navbar'
+import CookiesNotification from './CookiesNotification'
 import { CookiesProvider } from 'react-cookie'
 const Home = React.lazy(() => import('./Home'))
 const RouteResolver = React.lazy(() => import('./RouteResolver'))
@@ -14,6 +15,7 @@ const App: React.SFC<{}> = ({}) => {
       <HashRouter>
         <AppInitializer>
           <Navbar/>
+          <CookiesNotification />
           <main className="main">
             {/* all the content below */}
             <React.Suspense fallback={<div/>}>
