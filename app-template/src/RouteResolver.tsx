@@ -71,19 +71,21 @@ const RouteResolver: React.SFC<RouteComponentProps> = ({ location }) => {
   const pathname = location.pathname
   const route = getRouteFromParams(pathname) as GenericRoute
   return (
-    <div className="container">
+    <React.Fragment>
       {route.synapseConfigArray!.map(
         (el) => {
           return (
             <React.Fragment key={JSON.stringify(el.props)}>
-              {/* re-think how this renders! remove specific styling */}
-              {el.title &&  <h2 className="title"> {el.title} </h2>}
-              {generateSynapseObject(el)}
+              <div className={`${el.isOutsideContainer ? 'outside-container' : 'container'}`}>
+                {/* re-think how this renders! remove specific styling */}
+                {el.title &&  <h2 className="title"> {el.title} </h2>}
+                {generateSynapseObject(el)}
+              </div>
             </React.Fragment>
           )
         }
       )}
-    </div>
+    </React.Fragment>
   )
 }
 
