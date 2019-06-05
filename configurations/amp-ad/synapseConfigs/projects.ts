@@ -35,6 +35,7 @@ const projects: HomeExploreConfig = {
       loadingScreen,
       type: SynapseConstants.AMP_PROJECT,
       isConsistent: true,
+      secondaryLabelLimit: 4,
       menuConfig: [
         {
           sql,

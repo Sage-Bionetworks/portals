@@ -5481,7 +5481,7 @@ node-pre-gyp@^0.12.0:
     semver "^5.3.0"
     tar "^4"
 
-node-sass@^4.11.0:
+node-sass@4.12.0:
   version "4.12.0"
   resolved "https://registry.yarnpkg.com/node-sass/-/node-sass-4.12.0.tgz#0914f531932380114a30cc5fa4fa63233a25f017"
   dependencies:
@@ -7697,9 +7697,9 @@ symbol-tree@^3.2.1, symbol-tree@^3.2.2:
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.2.tgz#ae27db38f660a7ae2e1c3b7d1bc290819b8519e6"
 
-synapse-react-client@1.11.29:
-  version "1.11.29"
-  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-1.11.29.tgz#af3dee355df74b0f60e34ad2e6c1fa31a1b77c9f"
+synapse-react-client@1.12.8:
+  version "1.12.8"
+  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-1.12.8.tgz#d343e496c34bc5b418babbe883467dd0c8c0d65b"
   dependencies:
     "@babel/runtime" "^7.4.3"
     "@fortawesome/fontawesome-svg-core" "^1.2.4"
@@ -7734,7 +7734,7 @@ synapse-react-client@1.11.29:
     markdown-it-synapse-heading "^1.0.1"
     markdown-it-synapse-math "^3.0.4"
     markdown-it-synapse-table "^1.0.6"
-    node-sass "^4.11.0"
+    node-sass "4.12.0"
     plotly.js-basic-dist "^1.47.3"
     raf "^3.4.1"
     react latest
