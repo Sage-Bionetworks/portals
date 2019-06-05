@@ -66,6 +66,7 @@ type ExploreButtonControl = {
 type Metatdata = {
   title?: string
   link?: string
+  isOutsideContainer?: booleam
 }
 
 export type SynapseConfig = (
