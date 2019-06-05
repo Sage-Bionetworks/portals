@@ -36,6 +36,7 @@ const studies: HomeExploreConfig = {
       rgbIndex,
       loadingScreen,
       unitDescription,
+      secondaryLabelLimit: 4,
       type: SynapseConstants.AMP_STUDY,
       isConsistent: true,
       menuConfig: [
