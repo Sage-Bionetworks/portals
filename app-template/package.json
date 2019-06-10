@@ -33,6 +33,7 @@
     "build": "yarn copy-favicon; yarn run build-css && CI=false react-scripts-ts build",
     "copy-example-configuration": "cp -r src/example-configuration/ src/config/",
     "test": "yarn run copy-example-configuration && react-scripts-ts test --env=jsdom --setupFiles ./src/tests/setupTests.ts",
+    "generate-sitemap": "node sitemap/generate-sitemap.js",
     "eject": "react-scripts-ts eject"
   },
   "devDependencies": {
@@ -54,7 +55,7 @@
     "markdown-it-synapse-heading": "^1.0.1",
     "markdown-it-synapse-math": "^3.0.4",
     "markdown-it-synapse-table": "^1.0.6",
-    "raf": "^3.4.1",
+    "node": "^12.3.1",
     "sanitize-html": "^1.18.4",
     "tslint-config-airbnb": "^5.11.1",
     "tslint-react": "^3.6.0"
