@@ -3,7 +3,6 @@ import { withRouter, RouteComponentProps } from 'react-router-dom'
 import docTitleConfig from './config/docTitleConfig'
 import { SynapseClient } from 'synapse-react-client'
 import { withCookies, ReactCookieProps } from 'react-cookie'
-
 export type AppInitializerToken = {
   token: string
 }
@@ -17,6 +16,7 @@ class AppInitializer extends React.Component<RouteComponentProps & ReactCookiePr
     this.state = {
       token: ''
     }
+    this.initializePendo = this.initializePendo.bind(this)
   }
 
   componentDidMount() {
@@ -24,26 +24,59 @@ class AppInitializer extends React.Component<RouteComponentProps & ReactCookiePr
       document.title = docTitleConfig.name
     }
     SynapseClient.getSessionTokenFromCookie().then(
-      (sessionToken) => {
+      (sessionToken: string) => {
         if (sessionToken) {
           SynapseClient.putRefreshSessionToken(sessionToken).then(
             // backend doesn't return a response for this call, its empty
             (_response) => {
               this.setState({ token: sessionToken })
-            }
-          ).catch(
-            (err) => {
-              console.log('Session token refresh failed with error ', err)
+              SynapseClient.getUserProfile(sessionToken).then((userProfile) => {
+                this.initializePendo(userProfile.ownerId, `${userProfile.userName}@synapse.org`)
+              })
             }
           )
         }
       }
     ).catch((_err) => {
       console.log('no token from cookie could be fetched ', _err)
+      this.initializePendo()
+    })
+
+    // we return the chained promises so that any caught error is propogated to the last catch statement
+    SynapseClient.getSessionTokenFromCookie()
+    .then((sessionToken: string) => {
+      if (sessionToken) {
+        return SynapseClient.putRefreshSessionToken(sessionToken).then(
+          // backend doesn't return a response for this call, its empty
+          (_response) => {
+            this.setState({ token: sessionToken })
+            return SynapseClient.getUserProfile(sessionToken).then((userProfile) => {
+              this.initializePendo(userProfile.ownerId, `${userProfile.userName}@synapse.org`)
+            })
+          }
+        )
+      }
+    }).catch((_err) => {
+      console.log('no token from cookie could be fetched ', _err)
+      this.initializePendo()
     })
     this.updateSynapseCallbackCookie()
     // on first time, also check for the SSO code
     SynapseClient.detectSSOCode()
+  }
+
+  // initialize pendo with the user's email and unique id, if user is anonymous then default values
+  // for id and email are 'VISITOR_UNIQUE_ID' and 'n/a'respectively
+  initializePendo(id = 'VISITOR_UNIQUE_ID', email = 'n/a') {
+    pendo.initialize({
+      visitor: {
+        id,
+        email
+      },
+      account: {
+        id: docTitleConfig.name
+      }
+    })
   }
 
   componentDidUpdate(prevProps: any) {
