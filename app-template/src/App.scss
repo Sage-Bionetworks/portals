@@ -93,8 +93,12 @@ $header-height : 75px;
 }
 
 // banner
+$bannerHeight: 47px;
 #banner {
-  height: 47px;
+  height: $bannerHeight;
+  width: 100%;
+  position: fixed;
+  z-index: 6;
   @extend %center;
   font-size: 16px;
   span {
@@ -127,6 +131,12 @@ $header-height : 75px;
   @media screen and (max-width: 520px) {
     padding-right: 0px;
   }
+}
+
+// if banner exists then make sure the nav sits right below it bet setting its top to the height of 
+// the banner above it
+#banner + .nav {
+  top: $bannerHeight;
 }
 
 .nav {
