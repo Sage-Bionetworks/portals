@@ -1,8 +1,10 @@
 import * as React from 'react'
 import betaBannerConfig from './config/betaBannerConfig'
+import { withRouter, RouteComponentProps } from 'react-router-dom'
 
-const BetaBanner:React.FunctionComponent = () => {
-  if (betaBannerConfig.name) {
+const BetaBanner:React.FunctionComponent<RouteComponentProps> = ({ location }) => {
+  // check beta banner is defined and that they're on the home page
+  if (betaBannerConfig.name && location.pathname === '/') {
     const style: React.CSSProperties = {
       background: betaBannerConfig.backgroundColor
     }
@@ -18,4 +20,4 @@ const BetaBanner:React.FunctionComponent = () => {
   return <React.Fragment/>
 }
 
-export default BetaBanner
+export default withRouter(BetaBanner)
