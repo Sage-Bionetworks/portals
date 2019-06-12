@@ -130,3 +130,9 @@ export type LogoConfig = {
   icon?: string  // svg
 }
 // LogoConfig end
+
+export type BetaBanner = {
+  name?: string
+  originalSite?: string
+  backgroundColor?: string
+}

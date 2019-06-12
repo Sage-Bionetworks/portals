@@ -4,6 +4,7 @@ import './App.css'
 import { Footer } from './Footer'
 import AppInitializer from './AppInitializer'
 import { Navbar } from './Navbar'
+import BetaBanner from './BetaBanner'
 import CookiesNotification from './CookiesNotification'
 import { CookiesProvider } from 'react-cookie'
 const Home = React.lazy(() => import('./Home'))
@@ -14,6 +15,7 @@ const App: React.SFC<{}> = ({}) => {
     <CookiesProvider>
       <HashRouter>
         <AppInitializer>
+          <BetaBanner/>
           <Navbar/>
           <CookiesNotification />
           <main className="main">
