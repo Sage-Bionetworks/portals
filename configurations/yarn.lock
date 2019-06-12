@@ -170,6 +170,12 @@
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/@types/sizzle/-/sizzle-2.3.2.tgz#a811b8c18e2babab7d542b3365887ae2e4d9de47"
 
+"@types/xml2js@^0.4.4":
+  version "0.4.4"
+  resolved "https://registry.yarnpkg.com/@types/xml2js/-/xml2js-0.4.4.tgz#2093d94359a201806d997dccefc80153db311c66"
+  dependencies:
+    "@types/node" "*"
+
 abab@^1.0.3:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/abab/-/abab-1.0.4.tgz#5faad9c2c07f60dd76770f71cf025b62a63cfd4e"
@@ -7011,6 +7017,13 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
     hash-base "^3.0.0"
     inherits "^2.0.1"
 
+rss-parser@^3.7.1:
+  version "3.7.1"
+  resolved "https://registry.yarnpkg.com/rss-parser/-/rss-parser-3.7.1.tgz#86d15d1c84b860d1aff1c00a2149278a9fe64c0b"
+  dependencies:
+    entities "^1.1.1"
+    xml2js "^0.4.19"
+
 run-async@^2.2.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/run-async/-/run-async-2.3.0.tgz#0371ab4ae0bdd720d4166d7dfda64ff7a445a6c0"
@@ -7083,7 +7096,7 @@ sass-graph@^2.2.4:
     scss-tokenizer "^0.2.3"
     yargs "^7.0.0"
 
-sax@^1.2.1, sax@^1.2.4, sax@~1.2.1:
+sax@>=0.6.0, sax@^1.2.1, sax@^1.2.4, sax@~1.2.1:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.4.tgz#2816234e2378bddc4e5354fab5caa895df7100d9"
 
@@ -7697,9 +7710,9 @@ symbol-tree@^3.2.1, symbol-tree@^3.2.2:
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.2.tgz#ae27db38f660a7ae2e1c3b7d1bc290819b8519e6"
 
-synapse-react-client@1.12.8:
-  version "1.12.8"
-  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-1.12.8.tgz#d343e496c34bc5b418babbe883467dd0c8c0d65b"
+synapse-react-client@1.12.10:
+  version "1.12.10"
+  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-1.12.10.tgz#e82f4d3050e4fb6bcb15257b0bdd3c2e492637ab"
   dependencies:
     "@babel/runtime" "^7.4.3"
     "@fortawesome/fontawesome-svg-core" "^1.2.4"
@@ -7715,6 +7728,7 @@ synapse-react-client@1.12.8:
     "@types/react-router-dom" "^4.3.1"
     "@types/react-tooltip" "^3.9.0"
     "@types/sinon" "^7.0.2"
+    "@types/xml2js" "^0.4.4"
     es6-promise "^4.2.5"
     gh-pages "^2.0.0"
     i "^0.3.6"
@@ -7747,6 +7761,7 @@ synapse-react-client@1.12.8:
     react-test-renderer "^16.4.2"
     react-tooltip "^3.9.2"
     react-transition-group "2.6.0"
+    rss-parser "^3.7.1"
     sanitize-html "^1.18.4"
     uuid "^3.3.2"
 
@@ -8609,6 +8624,17 @@ xml-name-validator@^2.0.1:
 xml-name-validator@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/xml-name-validator/-/xml-name-validator-3.0.0.tgz#6ae73e06de4d8c6e47f9fb181f78d648ad457c6a"
+
+xml2js@^0.4.19:
+  version "0.4.19"
+  resolved "https://registry.yarnpkg.com/xml2js/-/xml2js-0.4.19.tgz#686c20f213209e94abf0d1bcf1efaa291c7827a7"
+  dependencies:
+    sax ">=0.6.0"
+    xmlbuilder "~9.0.1"
+
+xmlbuilder@~9.0.1:
+  version "9.0.7"
+  resolved "https://registry.yarnpkg.com/xmlbuilder/-/xmlbuilder-9.0.7.tgz#132ee63d2ec5565c557e20f4c22df9aca686b10d"
 
 xtend@^4.0.0, xtend@^4.0.1, xtend@~4.0.1:
   version "4.0.1"

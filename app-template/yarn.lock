@@ -6048,7 +6048,6 @@ node@^10.3.0:
 node@^12.3.1:
   version "12.3.1"
   resolved "https://registry.yarnpkg.com/node/-/node-12.3.1.tgz#286e084d98f8f5b2e4cae5e7e36ed290809f8c0c"
-  integrity sha512-v5jzaCc3aQ9RLa4f6Fj4RzvyLzJGyx6OYtuX1o8R/RaouItwBjhrI298hUrGo2A4AQoL23buj0HCRrdw4YvjLg==
   dependencies:
     node-bin-setup "^1.0.0"
 
@@ -7236,7 +7235,6 @@ react-router@^4.3.1:
 react-scripts-ts@3.1.0, react-scripts-ts@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/react-scripts-ts/-/react-scripts-ts-3.1.0.tgz#3f285c54b242ff6ecbfb91785060db10660ee7b0"
-  integrity sha512-D5MobGSGswNH3e8RVa8M50jIsazNIqizO5qwWYqfo/tMYSvG0ENotzD3SYMUWYb1E5fIcM+D9a0XEJgo3VgtCQ==
   dependencies:
     autoprefixer "7.1.6"
     babel-jest "20.0.3"
@@ -8475,9 +8473,9 @@ symbol-tree@^3.2.1, symbol-tree@^3.2.2:
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.2.tgz#ae27db38f660a7ae2e1c3b7d1bc290819b8519e6"
 
-synapse-react-client@1.12.9:
-  version "1.12.9"
-  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-1.12.9.tgz#8928858943a384f854f51c1c5849df276fc1749f"
+synapse-react-client@1.12.10:
+  version "1.12.10"
+  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-1.12.10.tgz#e82f4d3050e4fb6bcb15257b0bdd3c2e492637ab"
   dependencies:
     "@babel/runtime" "^7.4.3"
     "@fortawesome/fontawesome-svg-core" "^1.2.4"
@@ -8884,7 +8882,6 @@ typedarray@^0.0.6:
 typescript@3.4.5:
   version "3.4.5"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.4.5.tgz#2d2618d10bb566572b8d7aad5180d84257d70a99"
-  integrity sha512-YycBxUb49UUhdNMU5aJ7z5Ej2XGmaIBL0x34vZ82fn3hGvD+bgrMrVDpatgz2f7YxUMJxMkbWxJZeAvDxVe7Vw==
 
 ua-parser-js@^0.7.18:
   version "0.7.19"
