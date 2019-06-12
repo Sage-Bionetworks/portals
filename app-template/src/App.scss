@@ -84,6 +84,36 @@ $header-height : 75px;
 }
 // end utilities
 
+
+%center {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+
+// banner
+#banner {
+  height: 47px;
+  @extend %center;
+  font-size: 16px;
+  span {
+    font-weight: 600;
+    margin-right: 5px;
+    @extend %center;
+    border-radius: 24px;
+    width: 65px;
+    height: 28px;
+    background: #ededed;
+  }
+  a {
+    margin-left: 4px;
+    color: black;
+    font-weight: 600;
+    text-decoration: underline;
+  }
+}
+
 // nav
 .nav-logo-container {
   flex-basis: 50%;
