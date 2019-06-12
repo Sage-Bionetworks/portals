@@ -43,6 +43,7 @@ body {
   align-items: center;
 }
 $header-height : 75px;
+$banner-height: 47px;
 @import "config/style/overides";
 
 
@@ -66,9 +67,14 @@ $header-height : 75px;
   color: white !important;
 }
 
-.spacer {
+.nav + .spacer {
   min-height: $header-height;
   height: $header-height;
+}
+
+#banner + .nav + .spacer {
+  min-height: $header-height + $banner-height;
+  height: $header-height + $banner-height;
 }
 
 .flex-display {
@@ -93,9 +99,8 @@ $header-height : 75px;
 }
 
 // banner
-$bannerHeight: 47px;
 #banner {
-  height: $bannerHeight;
+  height: $banner-height;
   width: 100%;
   position: fixed;
   z-index: 6;
@@ -136,7 +141,7 @@ $bannerHeight: 47px;
 // if banner exists then make sure the nav sits right below it bet setting its top to the height of 
 // the banner above it
 #banner + .nav {
-  top: $bannerHeight;
+  top: $banner-height;
 }
 
 .nav {
