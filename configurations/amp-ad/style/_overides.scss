@@ -6,6 +6,12 @@ $primary-action-color: #4d5491;
   background-color: $primary-action-color;
 }
 
+footer {
+  img.nav-logo {
+    width: 250px;
+  }
+}
+
 // Since scss breaks if a file is missing in a local url link these functinons must get manually overwitten
 @function getHeader($path) {
   @return url($path + "/header.svg");

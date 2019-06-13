@@ -3,6 +3,7 @@ import { ButtonControl, ButtonControlProps, NamedRoute } from '../ButtonControl'
 import { withRouter, RouteComponentProps } from 'react-router-dom'
 import { SynapseConfig } from '../types/portal-config'
 import { generateSynapseObject } from '../RouteResolver'
+import Layout from './Layout'
 
 export type ExploreButtonControlWrapperProps = {
   synapseConfig: SynapseConfig
@@ -38,13 +39,9 @@ const ExploreButtonControl:React.FunctionComponent<Props> = ({ location, synapse
       <ButtonControl
         {...buttonControlProps}
       />
-      <div className={'container explore'}>
-        <div className="row">
-          {
-            generateSynapseObject(synapseConfig)
-          }
-        </div>
-      </div>
+      {
+        generateSynapseObject(synapseConfig)
+      }
     </React.Fragment>
   )
 }
