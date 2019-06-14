@@ -7,6 +7,7 @@ import { TokenContext } from './AppInitializer'
 import HomeButtonControlWrapper from './portal-components/HomeButtonControlWrapper'
 import ExploreButtonControlWrapper from './portal-components/ExploreButtonControlWrapper'
 import QueryWrapperWithStackedBarChart from './portal-components/QueryWrapperWithStackedBarChart'
+import Layout from './portal-components/Layout'
 
 // https://basarat.gitbooks.io/typescript/docs/types/never.html
 function fail(message: string): never { throw new Error(message) }
@@ -76,11 +77,19 @@ const RouteResolver: React.SFC<RouteComponentProps> = ({ location }) => {
         (el) => {
           return (
             <React.Fragment key={JSON.stringify(el.props)}>
-              <div className={`${el.isOutsideContainer ? 'outside-container' : 'container'}`}>
-                {/* re-think how this renders! remove specific styling */}
-                {el.title &&  <h2 className="title"> {el.title} </h2>}
-                {generateSynapseObject(el)}
-              </div>
+              {
+                el.isOutsideContainer ?
+                  <div>
+                    {el.title &&  <h2 className="title"> {el.title} </h2>}
+                    {generateSynapseObject(el)}
+                  </div>
+                  :
+                  <Layout>
+                    {/* re-think how this renders! remove specific styling */}
+                    {el.title &&  <h2 className="title"> {el.title} </h2>}
+                    {generateSynapseObject(el)}
+                  </Layout>
+              }
             </React.Fragment>
           )
         }

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { ButtonControl, ButtonControlProps, NamedRoute } from '../ButtonControl'
+import { ButtonControl, ButtonControlProps } from '../ButtonControl'
 import { withRouter, RouteComponentProps } from 'react-router-dom'
 import { SynapseConfig } from '../types/portal-config'
 import { generateSynapseObject } from '../RouteResolver'
@@ -38,13 +38,9 @@ const ExploreButtonControl:React.FunctionComponent<Props> = ({ location, synapse
       <ButtonControl
         {...buttonControlProps}
       />
-      <div className={'container explore'}>
-        <div className="row">
-          {
-            generateSynapseObject(synapseConfig)
-          }
-        </div>
-      </div>
+      {
+        generateSynapseObject(synapseConfig)
+      }
     </React.Fragment>
   )
 }
