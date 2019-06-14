@@ -527,3 +527,11 @@ button.btn-sm.SRC-floatRight {
     color: $primary-action-color;
   }
 }
+
+// workaround for bootstrap 3.3 having no x-lg class
+@media (min-width: 1440px) {
+  .row {
+    max-width: 1440px;
+    margin: auto;
+  }
+}
