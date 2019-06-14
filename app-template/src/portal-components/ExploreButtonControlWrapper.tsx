@@ -1,9 +1,8 @@
 import * as React from 'react'
-import { ButtonControl, ButtonControlProps, NamedRoute } from '../ButtonControl'
+import { ButtonControl, ButtonControlProps } from '../ButtonControl'
 import { withRouter, RouteComponentProps } from 'react-router-dom'
 import { SynapseConfig } from '../types/portal-config'
 import { generateSynapseObject } from '../RouteResolver'
-import Layout from './Layout'
 
 export type ExploreButtonControlWrapperProps = {
   synapseConfig: SynapseConfig

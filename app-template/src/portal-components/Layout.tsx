@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-const ComponentWrapper = ({ children }: { children: any }) => {
+const Layout = ({ children }: { children: any }) => {
   return (
     <div className="container-fluid">
       <div className="row">
@@ -12,4 +12,4 @@ const ComponentWrapper = ({ children }: { children: any }) => {
   )
 }
 
-export default ComponentWrapper
+export default Layout
