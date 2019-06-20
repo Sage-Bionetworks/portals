@@ -96,6 +96,55 @@ const routes: GenericRoute [] = [
         name: 'Projects',
         isNested: false,
         to: '/Explore/Projects',
+        programmaticRouteConfig: {
+          synapseIds: ['syn17024229', 'syn13897207'],
+          synapseConfigArray: [
+            {
+              name: 'CardContainerLogic',
+              isOutsideContainer: true,
+              props: {
+                sql: '',
+                isHeader: true,
+                iconOptions: {},
+                type: SynapseConstants.GENERIC_CARD,
+                genericCardSchema: {
+                  type: 'PROJECT',
+                  title: 'Name',
+                  subTitle: 'Key Investigators',
+                  icon: 'icon',
+                  description: 'Abstract'
+                },
+                backgroundColor: '#DE9A1F'
+              }
+            },
+            {
+              name: 'CardContainerLogic',
+              title: 'People',
+              props: {
+                sql: '',
+                type: SynapseConstants.MEDIUM_USER_CARD
+              }
+            },
+            // {
+            //   name: 'CardContainerLogic',
+            //   title: 'Studies',
+            //   props: {
+            //     sql: '',
+            //     type: SynapseConstants.GENERIC_CARD,
+            //     genericCardSchema: {
+            //       type: 'STUDY',
+            //       title: 'study',
+            //       subTitle: 'name',
+            //       icon: 'icon',
+            //       description: 'grant',
+            //       secondaryLabels: {
+            //         0 : { key: 'grant', alias: 'GRANT' }
+            //       }
+            //     },
+            //   }
+            // },
+          ]
+        },
         synapseConfigArray: [
           {
             ...exploreButtonWrapperProps,
