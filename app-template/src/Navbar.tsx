@@ -68,7 +68,7 @@ export class Navbar extends React.Component<{}, NavbarState> {
     })
   }
 
-  onSignIn = (event: any) => {
+  onSignIn = (_event: any) => {
     this.setState({
       showLoginDialog: true
     })

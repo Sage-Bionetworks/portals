@@ -199,13 +199,29 @@ const routes: GenericRoute [] = [
               wikiId: '585317'
             }
           }
+        ],
+      },
+      {
+        name: 'DataUseCertificates',
+        displayName: 'Data Use Certificates',
+        to: '/DataAccess/DataUseCertificates',
+        isNested: false,
+        synapseConfigArray: [
+          {
+            name: 'Markdown',
+            title: 'Data Use Certificates',
+            props: {
+              ownerId: 'syn12666371',
+              wikiId: '585318'
+            }
+          }
         ]
       },
       {
-        name: 'Acknowleding-Data-Use',
+        name: 'AcknowledgementStatements',
         displayName: 'Acknowleding Data Use',
         isNested: false,
-        to: '/DataAccess/Acknowleding-Data-Use',
+        to: '/DataAccess/AcknowledgementStatements',
         synapseConfigArray: [
           {
             name: 'Markdown',
