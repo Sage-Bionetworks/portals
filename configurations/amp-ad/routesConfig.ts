@@ -206,6 +206,7 @@ const routes: GenericRoute [] = [
         displayName: 'Data Use Certificates',
         to: '/DataAccess/DataUseCertificates',
         isNested: false,
+        hideRouteFromNavbar: true,
         synapseConfigArray: [
           {
             name: 'Markdown',

@@ -92,6 +92,7 @@ export interface BaseRoute {
   name: string
   displayName?: string
   isNested: false
+  hideRouteFromNavbar?: boolean
   to: string
   link?: string
   icon?: string
