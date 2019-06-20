@@ -68,7 +68,7 @@ export class Navbar extends React.Component<{}, NavbarState> {
     })
   }
 
-  onSignIn = (event: any) => {
+  onSignIn = (_event: any) => {
     this.setState({
       showLoginDialog: true
     })
@@ -260,6 +260,9 @@ export class Navbar extends React.Component<{}, NavbarState> {
                               {
                                 plainRoutes.map(
                                   (route) => {
+                                    if (route.hideRouteFromNavbar) {
+                                      return false
+                                    }
                                     const routeDisplayName = route.displayName ? route.displayName : route.name
                                     return (<Link
                                       key={route.name}
