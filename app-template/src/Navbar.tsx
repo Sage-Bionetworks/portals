@@ -100,7 +100,7 @@ export class Navbar extends React.Component<{}, NavbarState> {
     if (newToken && (!this.state.userprofile || this.state.token !== newToken)) {
       SynapseClient.getUserProfile(newToken, 'https://repo-prod.prod.sagebase.org').then((profile: any) => {
         if (profile.profilePicureFileHandleId) {
-          profile.preSignedURL = `https://www.synapse.org/Portal/filehandleassociation?associatedObjectId=${profile.ownerId}&associatedObjectType=UserProfileAttachment&fileHandleId=${profile.profilePicureFileHandleId}`
+          profile.clientPreSignedURL = `https://www.synapse.org/Portal/filehandleassociation?associatedObjectId=${profile.ownerId}&associatedObjectType=UserProfileAttachment&fileHandleId=${profile.profilePicureFileHandleId}`
         }
         this.setState({
           userprofile: profile,
@@ -164,7 +164,7 @@ export class Navbar extends React.Component<{}, NavbarState> {
                       <UserCard
                         userProfile={userprofile}
                         size={SynapseConstants.SMALL_USER_CARD}
-                        preSignedURL={userprofile.preSignedURL}
+                        preSignedURL={userprofile.clientPreSignedURL}
                         hideText={true}
                         link="javascript:void(0)"
                       />

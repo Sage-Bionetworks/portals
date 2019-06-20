@@ -1,23 +1,21 @@
 import * as React from 'react'
 import { withRouter, RouteComponentProps } from 'react-router'
 import routesConfig from './config/routesConfig'
-import { SynapseConfig, GenericRoute } from './types/portal-config'
+import { SynapseConfig } from './types/portal-config'
 import { SynapseComponents } from 'synapse-react-client'
 import { TokenContext } from './AppInitializer'
 import HomeButtonControlWrapper from './portal-components/HomeButtonControlWrapper'
 import ExploreButtonControlWrapper from './portal-components/ExploreButtonControlWrapper'
 import QueryWrapperWithStackedBarChart from './portal-components/QueryWrapperWithStackedBarChart'
 import Layout from './portal-components/Layout'
+import ProgrammaticRoute from './portal-components/ProgrammaticRoute'
 
 // https://basarat.gitbooks.io/typescript/docs/types/never.html
 function fail(message: string): never { throw new Error(message) }
 
 export const getRouteFromParams = (pathname: string) => {
   // e.g. pathname = /Explore/Programs
-  // '', Explore, Programs
-
   // special case the home page path
-  // look into deep find
   const pathWithName = pathname === '/' ? '/Home' :  pathname
   const split = pathWithName.split('/')
   let route = routesConfig.find(el => split[1] === el.name)!
@@ -67,10 +65,22 @@ export const generateSynapseObject = (synapseConfig: SynapseConfig) => {
   )
 }
 
-const RouteResolver: React.SFC<RouteComponentProps> = ({ location }) => {
+const RouteResolver: React.FunctionComponent<RouteComponentProps> = ({ location }) => {
   // Map this to route in configuration files
-  const pathname = location.pathname
-  const route = getRouteFromParams(pathname) as GenericRoute
+  const { pathname, search } = location
+  const route = getRouteFromParams(pathname)
+  const searchParamsProps: any = {}
+  if (search) {
+    // https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams -- needs polyfill for ie11
+    const searchParams = new URLSearchParams(search)
+    const iter = searchParams.entries()
+    let result = iter.next()
+    while (!result.done) {
+      const [key, value] = result.value
+      searchParamsProps[key] = value
+      result = iter.next()
+    }
+  }
   return (
     <React.Fragment>
       {route.synapseConfigArray!.map(
