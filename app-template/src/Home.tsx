@@ -18,7 +18,8 @@ class Home extends React.Component<HomeProps, {}> {
   render () {
     const { location } = this.props
     const pathname = location.pathname
-    const { synapseConfigArray  } = getRouteFromParams(pathname)
+    const route = getRouteFromParams(pathname)
+    const { synapseConfigArray } = route
     return (
       <div>
         <Header />

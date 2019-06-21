@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { withRouter, RouteComponentProps } from 'react-router'
 import routesConfig from './config/routesConfig'
-import { SynapseConfig, GenericRoute } from './types/portal-config'
+import { SynapseConfig } from './types/portal-config'
 import { SynapseComponents } from 'synapse-react-client'
 import { TokenContext } from './AppInitializer'
 import HomeButtonControlWrapper from './portal-components/HomeButtonControlWrapper'
@@ -14,10 +14,7 @@ function fail(message: string): never { throw new Error(message) }
 
 export const getRouteFromParams = (pathname: string) => {
   // e.g. pathname = /Explore/Programs
-  // '', Explore, Programs
-
   // special case the home page path
-  // look into deep find
   const pathWithName = pathname === '/' ? '/Home' :  pathname
   const split = pathWithName.split('/')
   let route = routesConfig.find(el => split[1] === el.name)!
@@ -52,14 +49,14 @@ export const generateSynapseObjectHelper = (synapseConfig: SynapseConfig) => {
   return <SynapseComponent {...synapseConfig.props} />
 }
 
-export const generateSynapseObject = (synapseConfig: SynapseConfig) => {
+export const generateSynapseObject = (synapseConfig: SynapseConfig, searchParams?: any) => {
   // return the synapse object but with token injected into its props from the context created in AppInitializer
   const { props, ...rest } = synapseConfig
   return (
     <TokenContext.Consumer>
       {
         (value: string) => {
-          const synapseObjectWithToken = { props: { ...props, token: value }, ...rest }
+          const synapseObjectWithToken = { props: { ...props, searchParams, token: value }, ...rest }
           return generateSynapseObjectHelper(synapseObjectWithToken)
         }
       }
@@ -67,13 +64,27 @@ export const generateSynapseObject = (synapseConfig: SynapseConfig) => {
   )
 }
 
-const RouteResolver: React.SFC<RouteComponentProps> = ({ location }) => {
+const RouteResolver: React.FunctionComponent<RouteComponentProps> = ({ location }) => {
   // Map this to route in configuration files
-  const pathname = location.pathname
-  const route = getRouteFromParams(pathname) as GenericRoute
+  const { pathname, search } = location
+  const route = getRouteFromParams(pathname)
+  let searchParamsProps: any = undefined
+  if (search) {
+    searchParamsProps = {}
+    // https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams -- needs polyfill for ie11
+    const searchParams = new URLSearchParams(search)
+    const iter = searchParams.entries()
+    let result = iter.next()
+    while (!result.done) {
+      const [key, value] = result.value
+      searchParamsProps[key] = value
+      result = iter.next()
+    }
+  }
+  const synapseConfigArray = search ? route.programmaticRouteConfig : route.synapseConfigArray
   return (
     <React.Fragment>
-      {route.synapseConfigArray!.map(
+      {synapseConfigArray!.map(
         (el) => {
           return (
             <React.Fragment key={JSON.stringify(el.props)}>
@@ -81,13 +92,13 @@ const RouteResolver: React.SFC<RouteComponentProps> = ({ location }) => {
                 el.isOutsideContainer ?
                   <div>
                     {el.title &&  <h2 className="title"> {el.title} </h2>}
-                    {generateSynapseObject(el)}
+                    {generateSynapseObject(el, searchParamsProps)}
                   </div>
                   :
                   <Layout>
                     {/* re-think how this renders! remove specific styling */}
                     {el.title &&  <h2 className="title"> {el.title} </h2>}
-                    {generateSynapseObject(el)}
+                    {generateSynapseObject(el, searchParamsProps)}
                   </Layout>
               }
             </React.Fragment>

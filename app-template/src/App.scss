@@ -177,6 +177,8 @@ $banner-height: 47px;
   text-transform: uppercase;
   font-weight: bold;
   height: -webkit-fill-available;
+  // fallback for mozilla and ie11
+  height: 100%;
   font-size: 16px;
   text-align: center;
   justify-content: center;
@@ -331,6 +333,7 @@ a.dropdown-item:hover {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   width: -webkit-fill-available;
+  width: 100%;
   p {
     font-size: 16px;
   }

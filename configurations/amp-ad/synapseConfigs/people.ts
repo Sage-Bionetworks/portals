@@ -6,7 +6,6 @@ const unitDescription = 'people'
 const rgbIndex = 2
 const sql = 'SELECT * FROM syn13897207'
 const synapseId = 'syn13897207'
-const title = 'People'
 
 const people: HomeExploreConfig = {
   homePageSynapseObject: {
@@ -35,27 +34,24 @@ const people: HomeExploreConfig = {
       rgbIndex,
       loadingScreen,
       isConsistent: true,
+      type: SynapseConstants.MEDIUM_USER_CARD,
       menuConfig: [
         {
           synapseId,
-          title,
           unitDescription,
-          facetName: 'Program',
-          sql: "select firstName as \"First Name\", lastName as \"Last Name\", institution as Institution, Program, 'Grant Number', 'Grant Title' from syn13897207",
+          sql,
+          facetName: 'Program'
         },
         {
           synapseId,
-          title,
           unitDescription,
-          facetName: 'Grant Number',
-          sql: "select firstName as First, lastName as Last, institution as Institution, Program, 'Grant Number', 'Grant Title' from syn13897207",
+          sql,
+          facetName: 'Grant Number'
         },
         {
           synapseId,
-          title,
           unitDescription,
-          sql:
-          "select firstName as First, lastName as Last, institution as Institution, Program, 'Grant Number', 'Grant Title' from syn13897207",
+          sql,
           facetName: 'institution',
           facetDisplayValue: 'Institution',
         },

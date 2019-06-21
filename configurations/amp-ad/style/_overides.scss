@@ -18,6 +18,5 @@ footer {
 }
 
 @function getFooter($path) {
-  // TODO
   @return url($path + "/header.svg");
 }

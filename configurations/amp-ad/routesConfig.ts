@@ -87,7 +87,7 @@ const routes: GenericRoute [] = [
           {
             name: 'Resilience-AD',
             isNested: false,
-            to: '/Explore/Programs/AResilience-AD',
+            to: '/Explore/Programs/Resilience-AD',
             synapseConfigArray: resilienceAd
           },
         ]
@@ -96,6 +96,63 @@ const routes: GenericRoute [] = [
         name: 'Projects',
         isNested: false,
         to: '/Explore/Projects',
+        programmaticRouteConfig: [
+          {
+            name: 'CardContainerLogic',
+            isOutsideContainer: true,
+            props: {
+              sql: 'SELECT * FROM syn17024229',
+              isHeader: true,
+              iconOptions: {},
+              type: SynapseConstants.GENERIC_CARD,
+              genericCardSchema: {
+                type: 'PROJECT',
+                title: 'Name',
+                subTitle: 'Key Investigators',
+                icon: 'icon',
+                description: 'Abstract',
+                secondaryLabels: {
+                  0: { key: 'Grant Number', alias: 'GRANT' },
+                  1: { key: 'Key Data Contributors', alias: 'KEY DATA CONTRIBUTORS' },
+                  2: { key: 'Institutions', alias: 'INSTITUTIONS' },
+                  3: { key: 'Program', alias: 'PROGRAM' },
+                }
+              },
+              secondaryLabelLimit: 4,
+              backgroundColor: '#DE9A1F'
+            }
+          },
+          {
+            name: 'CardContainerLogic',
+            title: 'People',
+            props: {
+              sql: 'SELECT ownerID as ownerId FROM syn13897207',
+              type: SynapseConstants.MEDIUM_USER_CARD
+            }
+          },
+          // {
+          //   name: 'CardContainerLogic',
+          //   title: 'STUDIES',
+          //   props: {
+          //     sql: 'SELECT Study_Name, Data_Contributor, Access_Type, Study_Description, Model_System, Organism, Number_of_Individuals, Consortium FROM syn17083367',
+          //     type: SynapseConstants.MEDIUM_USER_CARD,
+          //     genericCardSchema: {
+          //       type: 'STUDY',
+          //       title: 'Study_Name',
+          //       subTitle: 'Data_Contributor',
+          //       icon: 'Access_Type',
+          //       description: 'Study_Description',
+          //       secondaryLabels: {
+          //         0: { key: 'Model_System', alias: 'MODEL' },
+          //         1: { key: 'Organism', alias: 'Organism' },
+          //         2: { key: 'Number_Of_Individuals', alias: 'INDIVIDUALS' },
+          //         3: { key: 'Consortium', alias: 'PROGRAM' },
+          //         4: { key: 'Grant', alias: 'GRANT' },
+          //       }
+          //     }
+          //   }
+          // },
+        ],
         synapseConfigArray: [
           {
             ...exploreButtonWrapperProps,

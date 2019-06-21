@@ -4,6 +4,7 @@ import { CardContainerLogicProps } from 'synapse-react-client/dist/containers/Ca
 import { MarkdownSynapseProps } from 'synapse-react-client/dist/containers/MarkdownSynapse'
 import { StackedBarChartProps } from 'synapse-react-client/dist/containers/StackedBarChart'
 import { QueryWrapperMenuProps } from 'synapse-react-client/dist/containers/QueryWrapperMenu'
+import { QueryWrapperProps } from 'synapse-react-client/dist/containers/QueryWrapper'
 import { QueryBundleRequest } from 'synapse-react-client/dist/utils/jsonResponses/Table/QueryBundleRequest'
 import { QueryResultBundle } from 'synapse-react-client/dist/utils/jsonResponses/Table/QueryResultBundle'
 import { HomeButtonControlProps } from '../portal-components/HomeButtonControlWrapper'
@@ -16,16 +17,16 @@ export type HomePageHeaderConfig = {
 }
 
 // Generic SynapseConfigArray Representation -- maps each component to its props
-type CardContainerLogic = {
+declare type CardContainerLogic = {
   name: 'CardContainerLogic'
   props: CardContainerLogicProps
 }
-// TODO: Export QueryWrapper props object in SRC
+
 type QueryWrapper = {
   name: 'QueryWrapper',
   props: QueryWrapperProps
 }
-// TODO: Export QueryWrapper props object in SRC
+
 type QueryWrapperWithStackedBarChart = {
   name: 'QueryWrapperWithStackedBarChart',
   props: QueryWrapperProps
@@ -35,7 +36,7 @@ type QueryWrapperWithStackedBarChart = {
 // Below we make all the props optional using Partial
 export type OptionalStackedBarChartProps = Partial<StackedBarChartProps>
 
-type StackedBarChart = {
+declare type StackedBarChart = {
   name: 'StackedBarChart',
   props: OptionalStackedBarChartProps
 }
@@ -92,6 +93,7 @@ export interface BaseRoute {
   name: string
   displayName?: string
   isNested: false
+  programmaticRouteConfig?: SynapseConfigArray
   hideRouteFromNavbar?: boolean
   to: string
   link?: string
