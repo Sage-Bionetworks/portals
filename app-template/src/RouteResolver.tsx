@@ -68,8 +68,9 @@ const RouteResolver: React.FunctionComponent<RouteComponentProps> = ({ location 
   // Map this to route in configuration files
   const { pathname, search } = location
   const route = getRouteFromParams(pathname)
-  const searchParamsProps: any = {}
+  let searchParamsProps: any = undefined
   if (search) {
+    searchParamsProps = {}
     // https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams -- needs polyfill for ie11
     const searchParams = new URLSearchParams(search)
     const iter = searchParams.entries()
