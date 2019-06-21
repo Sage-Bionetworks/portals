@@ -9,7 +9,6 @@ import { QueryBundleRequest } from 'synapse-react-client/dist/utils/jsonResponse
 import { QueryResultBundle } from 'synapse-react-client/dist/utils/jsonResponses/Table/QueryResultBundle'
 import { HomeButtonControlProps } from '../portal-components/HomeButtonControlWrapper'
 import { ExploreButtonControlProps } from '../portal-components/ExploreButtonControlWrapper'
-import { ProgrammaticRouteProps } from '../portal-components/ProgrammaticRoute'
 
 // For styling the header on the home page -- the main title and the summary text
 export type HomePageHeaderConfig = {

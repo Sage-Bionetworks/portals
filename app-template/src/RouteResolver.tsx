@@ -8,7 +8,6 @@ import HomeButtonControlWrapper from './portal-components/HomeButtonControlWrapp
 import ExploreButtonControlWrapper from './portal-components/ExploreButtonControlWrapper'
 import QueryWrapperWithStackedBarChart from './portal-components/QueryWrapperWithStackedBarChart'
 import Layout from './portal-components/Layout'
-import ProgrammaticRoute from './portal-components/ProgrammaticRoute'
 
 // https://basarat.gitbooks.io/typescript/docs/types/never.html
 function fail(message: string): never { throw new Error(message) }
