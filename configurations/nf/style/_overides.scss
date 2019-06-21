@@ -11,7 +11,3 @@ $primary-action-color: #c94281;
   background-color: #109488;
   background-blend-mode: multiply;
 }
-@function getFooter($path) {
-  // TODO
-  @return url("config/style/molecules-light.svg");
-}

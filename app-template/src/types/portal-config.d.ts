@@ -94,7 +94,7 @@ export interface BaseRoute {
   name: string
   displayName?: string
   isNested: false
-  programmaticRouteConfig?: ProgrammaticRouteProps
+  programmaticRouteConfig?: SynapseConfigArray
   hideRouteFromNavbar?: boolean
   to: string
   link?: string

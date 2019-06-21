@@ -15,7 +15,7 @@ const ampAd: SynapseConfigArray = [
         title: 'Full Name',
         subTitle: 'Short Description',
         description: 'Long Description',
-        icon: 'Program',
+        icon: 'Program'
       },
       secondaryLabelLimit: 4,
       sql: `SELECT  * FROM syn17024173 WHERE ( ( "Program" = 'AMP-AD' ) )`,

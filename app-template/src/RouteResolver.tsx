@@ -50,14 +50,14 @@ export const generateSynapseObjectHelper = (synapseConfig: SynapseConfig) => {
   return <SynapseComponent {...synapseConfig.props} />
 }
 
-export const generateSynapseObject = (synapseConfig: SynapseConfig) => {
+export const generateSynapseObject = (synapseConfig: SynapseConfig, searchParams?: any) => {
   // return the synapse object but with token injected into its props from the context created in AppInitializer
   const { props, ...rest } = synapseConfig
   return (
     <TokenContext.Consumer>
       {
         (value: string) => {
-          const synapseObjectWithToken = { props: { ...props, token: value }, ...rest }
+          const synapseObjectWithToken = { props: { ...props, searchParams, token: value }, ...rest }
           return generateSynapseObjectHelper(synapseObjectWithToken)
         }
       }
@@ -81,9 +81,10 @@ const RouteResolver: React.FunctionComponent<RouteComponentProps> = ({ location 
       result = iter.next()
     }
   }
+  const synapseConfigArray = search ? route.programmaticRouteConfig : route.synapseConfigArray
   return (
     <React.Fragment>
-      {route.synapseConfigArray!.map(
+      {synapseConfigArray!.map(
         (el) => {
           return (
             <React.Fragment key={JSON.stringify(el.props)}>
@@ -91,13 +92,13 @@ const RouteResolver: React.FunctionComponent<RouteComponentProps> = ({ location 
                 el.isOutsideContainer ?
                   <div>
                     {el.title &&  <h2 className="title"> {el.title} </h2>}
-                    {generateSynapseObject(el)}
+                    {generateSynapseObject(el, searchParamsProps)}
                   </div>
                   :
                   <Layout>
                     {/* re-think how this renders! remove specific styling */}
                     {el.title &&  <h2 className="title"> {el.title} </h2>}
-                    {generateSynapseObject(el)}
+                    {generateSynapseObject(el, searchParamsProps)}
                   </Layout>
               }
             </React.Fragment>
