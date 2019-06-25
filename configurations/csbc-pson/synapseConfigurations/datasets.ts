@@ -3,8 +3,7 @@ import { HomeExploreConfig } from '../../types/portal-config'
 import loadingScreen from '../loadingScreen'
 export const datasetsSql = `SELECT * FROM syn18488466 WHERE ( ( "featured" = 'TRUE' ) )`
 const sql = 'SELECT * FROM syn18488466'
-const unitDescription = 'Datasets'
-const synapseId = 'syn18488466'
+const unitDescription = 'Datasetsz'
 const rgbIndex = 0
 
 export const datasets: HomeExploreConfig = {
@@ -15,7 +14,6 @@ export const datasets: HomeExploreConfig = {
       loadingScreen,
       rgbIndex: 0,
       facetName: 'tumorType',
-      name: 'Datasets',
       initQueryRequest : {
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
         partMask: SynapseConstants.BUNDLE_MASK_QUERY_FACETS
@@ -37,12 +35,13 @@ export const datasets: HomeExploreConfig = {
     props: {
       rgbIndex,
       loadingScreen,
-      type: SynapseConstants.CSBC_DATASET,
+      unitDescription,
+      cardConfiguration: {
+        type: SynapseConstants.CSBC_DATASET,
+      },
       menuConfig: [
         {
           sql,
-          synapseId,
-          unitDescription,
           facetName: 'species',
           facetAliases: {
             species: 'Species',
@@ -50,14 +49,10 @@ export const datasets: HomeExploreConfig = {
         },
         {
           sql,
-          synapseId,
-          unitDescription,
           facetName: 'Theme'
         },
         {
           sql,
-          synapseId,
-          unitDescription,
           facetName: 'experimentalStrategy',
           facetAliases: {
             experimentalStrategy: 'Assay'
@@ -65,8 +60,6 @@ export const datasets: HomeExploreConfig = {
         },
         {
           sql,
-          synapseId,
-          unitDescription,
           facetName: 'platform',
           facetAliases: {
             platform: 'Platform'
@@ -74,8 +67,6 @@ export const datasets: HomeExploreConfig = {
         },
         {
           sql,
-          synapseId,
-          unitDescription,
           facetName: 'tumorType',
           facetAliases: {
             tumorType: 'Disease Type'
