@@ -14,7 +14,6 @@ export const grants: HomeExploreConfig = {
       loadingScreen,
       rgbIndex: 3,
       facetName: 'grantType',
-      name: 'Grants',
       facetAliases: {
         grantType: 'Grant Type',
       },
@@ -36,12 +35,13 @@ export const grants: HomeExploreConfig = {
     props: {
       rgbIndex,
       loadingScreen,
-      type: SynapseConstants.CSBC_PROJECT,
+      unitDescription,
+      cardConfiguration: {
+        type: SynapseConstants.CSBC_PROJECT,
+      },
       menuConfig: [
         {
           sql,
-          unitDescription,
-          synapseId,
           facetName: 'consortium',
           facetAliases: {
             consortium: 'Program',
@@ -49,8 +49,6 @@ export const grants: HomeExploreConfig = {
         },
         {
           sql,
-          unitDescription,
-          synapseId,
           facetName: 'grantType',
           facetAliases: {
             grantType: 'Grant Type',

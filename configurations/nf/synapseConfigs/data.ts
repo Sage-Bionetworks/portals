@@ -4,7 +4,6 @@ import loadingScreen from '../loadingScreen'
 
 const sql = 'SELECT * FROM syn18488466'
 const unitDescription = 'Datasets'
-const synapseId = 'syn18488466'
 
 const rgbIndex = 0
 const facetName = 'tumorType'
@@ -17,7 +16,6 @@ export const data: HomeExploreConfig = {
       facetName,
       loadingScreen,
       unitDescription,
-      name: 'Data',
       initQueryRequest : {
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
         partMask: SynapseConstants.BUNDLE_MASK_QUERY_FACETS
@@ -36,12 +34,13 @@ export const data: HomeExploreConfig = {
     props: {
       loadingScreen,
       rgbIndex,
-      type: SynapseConstants.CSBC_DATASET,
+      unitDescription,
+      cardConfiguration: {
+        type: SynapseConstants.CSBC_DATASET
+      },
       menuConfig: [
         {
           sql,
-          synapseId,
-          unitDescription,
           facetName: 'species',
           facetAliases: {
             species: 'Species',
@@ -49,14 +48,10 @@ export const data: HomeExploreConfig = {
         },
         {
           sql,
-          synapseId,
-          unitDescription,
           facetName: 'Theme'
         },
         {
           sql,
-          synapseId,
-          unitDescription,
           facetName: 'experimentalStrategy',
           facetAliases: {
             experimentalStrategy: 'Assay'
@@ -64,8 +59,6 @@ export const data: HomeExploreConfig = {
         },
         {
           sql,
-          synapseId,
-          unitDescription,
           facetName: 'platform',
           facetAliases: {
             platform: 'Platform'
@@ -73,18 +66,12 @@ export const data: HomeExploreConfig = {
         },
         {
           sql,
-          synapseId,
-          unitDescription,
           facetName: 'tumorType',
           facetAliases: {
             tumorType: 'Disease Type'
           }
         }
       ],
-      facetName: 'tumorType',
-      facetAliases: {
-        tumorType: 'Disease Type',
-      },
     },
   }
 }

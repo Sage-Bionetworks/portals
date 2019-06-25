@@ -1,17 +1,11 @@
 import * as React from 'react'
 import { Header } from './Header'
-import { Link, withRouter } from 'react-router-dom'
+import { Link, withRouter, RouteComponentProps } from 'react-router-dom'
 import { getRouteFromParams, generateSynapseObject } from './RouteResolver'
 
-type HomeProps = {
-  location: any
-  history: any
-  match: any
-}
+class Home extends React.Component<RouteComponentProps, {}> {
 
-class Home extends React.Component<HomeProps, {}> {
-
-  constructor(props: any) {
+  constructor(props: RouteComponentProps) {
     super(props)
   }
 

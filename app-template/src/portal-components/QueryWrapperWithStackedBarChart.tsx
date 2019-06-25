@@ -9,9 +9,7 @@ const QueryWrapperWithStackedBarChart: React.FunctionComponent<QueryWrapperProps
       {...props}
     >
       <SynapseComponents.StackedBarChart
-        unitDescription={props.unitDescription!}
         loadingScreen={loadingScreen}
-        synapseId={''}
       />
     </SynapseComponents.QueryWrapper>
   )

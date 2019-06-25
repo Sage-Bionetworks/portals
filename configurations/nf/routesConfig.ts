@@ -1,9 +1,9 @@
 import { GenericRoute } from '../types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
-import { datasets, files, studies, publications, tools, funders } from './synapseConfigurations'
-import { studiesSql } from './synapseConfigurations/studies'
-import { datasetsSql } from './synapseConfigurations/datasets'
-import { publicationsSql } from './synapseConfigurations/publications'
+import { datasets, files, studies, publications, tools, funders } from './synapseConfigs'
+import { studiesSql } from './synapseConfigs/studies'
+import { datasetsSql } from './synapseConfigs/datasets'
+import { publicationsSql } from './synapseConfigs/publications'
 import exploreButtonControlWrapperProps from './exploreButtonControlWrapperProps'
 import loadingScreen from './loadingScreen'
 

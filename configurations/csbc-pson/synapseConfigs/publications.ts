@@ -4,7 +4,6 @@ import loadingScreen from '../loadingScreen'
 export const publicationSql = 'SELECT * FROM syn10923842'
 const sql = publicationSql
 const unitDescription = 'Publications'
-const synapseId = 'syn10923842'
 const rgbIndex = 1
 
 export const publications: HomeExploreConfig = {
@@ -14,7 +13,6 @@ export const publications: HomeExploreConfig = {
       rgbIndex,
       unitDescription,
       loadingScreen,
-      name: 'Publications',
       facetName: 'Consortium',
       facetAliases: {
         Consortium: 'Program',
@@ -37,18 +35,17 @@ export const publications: HomeExploreConfig = {
     props: {
       rgbIndex,
       loadingScreen,
-      type: SynapseConstants.CSBC_PUBLICATION,
+      unitDescription,
+      cardConfiguration: {
+        type: SynapseConstants.CSBC_PUBLICATION,
+      },
       menuConfig: [
         {
-          unitDescription,
           sql,
-          synapseId,
           facetName: 'Publication Year',
         },
         {
           sql,
-          unitDescription,
-          synapseId,
           facetName: 'Consortium',
           facetAliases: {
             Consortium: 'Program',
@@ -56,8 +53,6 @@ export const publications: HomeExploreConfig = {
         },
         {
           sql,
-          unitDescription,
-          synapseId,
           facetName: 'grantType',
           facetAliases: {
             grantType: 'Grant Type',
@@ -65,8 +60,6 @@ export const publications: HomeExploreConfig = {
         },
         {
           sql,
-          unitDescription,
-          synapseId,
           facetName: 'diseaseType',
           facetAliases: {
             diseaseType: 'Disease',
@@ -74,14 +67,10 @@ export const publications: HomeExploreConfig = {
         },
         {
           sql,
-          synapseId,
-          unitDescription,
           facetName: 'Theme',
         },
         {
           sql,
-          synapseId,
-          unitDescription,
           facetName: 'experimentalStrategy',
           facetAliases: {
             experimentalStrategy: 'Assay',

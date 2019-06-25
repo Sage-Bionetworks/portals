@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { ButtonControl, ButtonControlProps } from '../ButtonControl'
-import { withRouter, RouteComponentProps, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { SynapseConfig } from '../types/portal-config'
 import { generateSynapseObject } from '../RouteResolver'
 
@@ -18,8 +18,6 @@ export type ButtonControlState = {
   index: number
 }
 
-type Props = RouteComponentProps & HomeButtonControlWrapperProps
-
 /**
  * HomeButtonControl is the set of buttons used on the home page to navigate between
  * the preview of the various data.
@@ -27,9 +25,9 @@ type Props = RouteComponentProps & HomeButtonControlWrapperProps
  * @class HomeButtonControl
  * @extends {React.Component<Props, ButtonControlState>}
  */
-class HomeButtonControl extends React.Component<Props, ButtonControlState> {
+class HomeButtonControl extends React.Component<HomeButtonControlWrapperProps, ButtonControlState> {
 
-  constructor(props: Props) {
+  constructor(props: HomeButtonControlWrapperProps) {
     super(props)
     this.state = {
       index: 0
@@ -75,5 +73,4 @@ class HomeButtonControl extends React.Component<Props, ButtonControlState> {
   }
 }
 
-// Use the 'as React..' so that the routing props which are injected don't raise any compiler warnings
-export default withRouter(HomeButtonControl) as React.ComponentClass<HomeButtonControlWrapperProps, {}>
+export default HomeButtonControl
