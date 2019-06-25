@@ -24,7 +24,6 @@ const publications: HomeExploreConfig = {
       unitDescription,
       rgbIndex,
       loadingScreen,
-      name: 'Publications',
       initQueryRequest: {
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
         partMask:
@@ -48,29 +47,25 @@ const publications: HomeExploreConfig = {
     name: 'QueryWrapperMenu',
     props: {
       rgbIndex,
-      synapseId,
-      type,
       loadingScreen,
+      unitDescription,
+      cardConfiguration: {
+        type,
+      },
       menuConfig: [
         {
           sql,
           facetAliases,
-          synapseId,
-          unitDescription,
           facetName: 'fundingAgency',
         },
         {
           sql,
           facetAliases,
-          synapseId,
-          unitDescription,
           facetName: 'tumorType',
         },
         {
           sql,
-          synapseId,
           facetAliases,
-          unitDescription,
           facetName: 'diseaseFocus',
         }
       ]

@@ -6,7 +6,6 @@ const sql = 'SELECT * FROM syn16857542'
 export const publicationsSql = sql
 const type = 'publication'
 const unitDescription = 'Publications'
-const synapseId = 'syn16857542'
 const rgbIndex = 0
 
 const facetAliases = {
@@ -24,7 +23,6 @@ const publications: HomeExploreConfig = {
       unitDescription,
       rgbIndex,
       loadingScreen,
-      name: 'Publications',
       initQueryRequest: {
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
         partMask:
@@ -48,29 +46,24 @@ const publications: HomeExploreConfig = {
     name: 'QueryWrapperMenu',
     props: {
       rgbIndex,
-      synapseId,
-      type,
       loadingScreen,
+      cardConfiguration: {
+        type,
+      },
       menuConfig: [
         {
           sql,
           facetAliases,
-          synapseId,
-          unitDescription,
           facetName: 'fundingAgency',
         },
         {
           sql,
           facetAliases,
-          synapseId,
-          unitDescription,
           facetName: 'tumorType',
         },
         {
           sql,
-          synapseId,
           facetAliases,
-          unitDescription,
           facetName: 'diseaseFocus',
         }
       ]

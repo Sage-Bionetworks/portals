@@ -24,7 +24,6 @@ const studies: HomeExploreConfig = {
       unitDescription,
       rgbIndex,
       loadingScreen,
-      name: 'Studies',
       facetName: 'diseaseFocus',
       initQueryRequest: {
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
@@ -45,43 +44,35 @@ const studies: HomeExploreConfig = {
     name: 'QueryWrapperMenu',
     props: {
       rgbIndex,
-      synapseId,
-      type,
       loadingScreen,
+      cardConfiguration: {
+        type,
+        unitDescription,
+      },
       menuConfig: [
         {
           sql,
           facetAliases,
-          unitDescription,
-          synapseId,
           facetName: 'projectStatus',
         },
         {
           sql,
-          unitDescription,
-          synapseId,
           facetAliases,
           facetName: 'dataStatus'
         },
         {
           sql,
-          unitDescription,
-          synapseId,
           facetAliases,
           facetName: 'fundingAgency'
         },
         {
           sql,
-          unitDescription,
-          synapseId,
           facetAliases,
           facetName: 'tumorType'
         },
         {
           sql,
-          synapseId,
           facetAliases,
-          unitDescription,
           facetName: 'diseaseFocus',
         },
       ]

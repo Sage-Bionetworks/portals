@@ -4,7 +4,6 @@ import { HomeExploreConfig } from '../../types/portal-config'
 
 const sql = 'SELECT * FROM syn10923842'
 const unitDescription = 'Publications'
-const synapseId = 'syn10923842'
 const rgbIndex = 0
 const facetName = 'Theme'
 export const publications: HomeExploreConfig = {
@@ -14,7 +13,6 @@ export const publications: HomeExploreConfig = {
       rgbIndex,
       facetName,
       unitDescription,
-      name: 'Publications',
       initQueryRequest : {
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
         partMask: SynapseConstants.BUNDLE_MASK_QUERY_FACETS
@@ -32,17 +30,17 @@ export const publications: HomeExploreConfig = {
     name: 'QueryWrapperMenu',
     props: {
       loadingScreen,
+      unitDescription,
+      cardConfiguration: {
+        type: SynapseConstants.CSBC_PUBLICATION,
+      },
       menuConfig: [
         {
-          unitDescription,
           sql,
-          synapseId,
           facetName: 'Publication Year',
         },
         {
           sql,
-          unitDescription,
-          synapseId,
           facetName: 'Consortium',
           facetAliases: {
             Consortium: 'Program',
@@ -50,8 +48,6 @@ export const publications: HomeExploreConfig = {
         },
         {
           sql,
-          unitDescription,
-          synapseId,
           facetName: 'grantType',
           facetAliases: {
             grantType: 'Grant Type',
@@ -59,8 +55,6 @@ export const publications: HomeExploreConfig = {
         },
         {
           sql,
-          unitDescription,
-          synapseId,
           facetName: 'diseaseType',
           facetAliases: {
             diseaseType: 'Disease',
@@ -68,14 +62,10 @@ export const publications: HomeExploreConfig = {
         },
         {
           sql,
-          synapseId,
-          unitDescription,
           facetName: 'Theme',
         },
         {
           sql,
-          synapseId,
-          unitDescription,
           facetName: 'experimentalStrategy',
           facetAliases: {
             experimentalStrategy: 'Assay',
@@ -83,10 +73,6 @@ export const publications: HomeExploreConfig = {
         },
       ],
       rgbIndex: 1,
-      facetAliases: {
-        Consortium: 'Program',
-      },
-      type: SynapseConstants.CSBC_PUBLICATION,
     }
   }
 }

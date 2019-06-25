@@ -7,7 +7,6 @@ export const datasetsSql = sql
 const type = 'dataset'
 const unitDescription = 'datasets'
 const rgbIndex = 5
-const synapseId = 'syn16859580'
 
 const facetAliases = {
   diseaseFocus: 'Disease Focus',
@@ -23,7 +22,6 @@ const datasets: HomeExploreConfig = {
       rgbIndex,
       facetAliases,
       loadingScreen,
-      name: 'Datasets',
       facetName: 'diseaseFocus',
       initQueryRequest: {
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
@@ -43,30 +41,26 @@ const datasets: HomeExploreConfig = {
   explorePageSynapseObject: {
     name: 'QueryWrapperMenu',
     props: {
-      unitDescription,
       rgbIndex,
-      type,
       loadingScreen,
+      cardConfiguration: {
+        type,
+        unitDescription,
+      },
       menuConfig: [
         {
           sql,
           facetAliases,
-          unitDescription,
-          synapseId,
           facetName: 'diseaseFocus',
         },
         {
           sql,
           facetAliases,
-          unitDescription,
-          synapseId,
           facetName: 'tumorType',
         },
         {
           sql,
           facetAliases,
-          unitDescription,
-          synapseId,
           facetName: 'fundingAgency',
         },
       ]
