@@ -6,7 +6,6 @@ const sql = 'SELECT * FROM syn16857542'
 export const publicationsSql = sql
 const type = 'publication'
 const unitDescription = 'Publications'
-const synapseId = 'syn16857542'
 const rgbIndex = 0
 
 const facetAliases = {

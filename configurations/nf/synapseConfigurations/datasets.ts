@@ -7,7 +7,6 @@ export const datasetsSql = sql
 const type = 'dataset'
 const unitDescription = 'datasets'
 const rgbIndex = 5
-const synapseId = 'syn16859580'
 
 const facetAliases = {
   diseaseFocus: 'Disease Focus',
@@ -44,9 +43,9 @@ const datasets: HomeExploreConfig = {
     props: {
       rgbIndex,
       loadingScreen,
+      unitDescription,
       cardConfiguration: {
         type,
-        unitDescription,
       },
       menuConfig: [
         {

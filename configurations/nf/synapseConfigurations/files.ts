@@ -62,7 +62,6 @@ const files: HomeExploreConfig = {
       tableConfiguration: {
         title,
         visibleColumnCount,
-        facetAliases,
         synapseId,
       },
       menuConfig: [

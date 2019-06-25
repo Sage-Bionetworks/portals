@@ -44,7 +44,6 @@ const studies: HomeExploreConfig = {
     name: 'QueryWrapperMenu',
     props: {
       rgbIndex,
-      synapseId,
       loadingScreen,
       unitDescription,
       cardConfiguration: {

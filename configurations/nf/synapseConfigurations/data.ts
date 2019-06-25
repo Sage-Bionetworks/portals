@@ -4,7 +4,6 @@ import loadingScreen from '../loadingScreen'
 
 const sql = 'SELECT * FROM syn18488466'
 const unitDescription = 'Datasets'
-const synapseId = 'syn18488466'
 
 const rgbIndex = 0
 const facetName = 'tumorType'
@@ -35,8 +34,8 @@ export const data: HomeExploreConfig = {
     props: {
       loadingScreen,
       rgbIndex,
+      unitDescription,
       cardConfiguration: {
-        unitDescription,
         type: SynapseConstants.CSBC_DATASET
       },
       menuConfig: [
