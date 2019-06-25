@@ -4,8 +4,7 @@ import docTitleConfig from './config/docTitleConfig'
 import { SynapseClient } from 'synapse-react-client'
 import { withCookies, ReactCookieProps } from 'react-cookie'
 export type AppInitializerToken = {
-  token: string,
-  clickListener: any
+  token: string
 }
 
 export const TokenContext = React.createContext('')
@@ -15,10 +14,10 @@ class AppInitializer extends React.Component<RouteComponentProps & ReactCookiePr
   constructor(props: any) {
     super(props)
     this.state = {
-      token: '',
-      clickListener: undefined
+      token: ''
     }
     this.initializePendo = this.initializePendo.bind(this)
+    this.updateSynapseCallbackCookie = this.updateSynapseCallbackCookie.bind(this)
   }
 
   componentDidMount() {
@@ -64,11 +63,7 @@ class AppInitializer extends React.Component<RouteComponentProps & ReactCookiePr
     })
     // Technically, the AppInitializer is only mounted once during the portal app lifecycle.
     // But it's best practice to clean up the global listener on component unmount.
-    const newClickListener: any = (event: any) => {
-      this.updateSynapseCallbackCookie(event, this)
-    }
-    this.setState({ clickListener: newClickListener })
-    window.addEventListener('click', newClickListener)
+    window.addEventListener('click', this.updateSynapseCallbackCookie)
     // on first time, also check for the SSO code
     SynapseClient.detectSSOCode()
   }
@@ -88,7 +83,7 @@ class AppInitializer extends React.Component<RouteComponentProps & ReactCookiePr
   }
 
   componentWillUnmount() {
-    window.removeEventListener('click', this.state.clickListener)
+    window.removeEventListener('click', this.updateSynapseCallbackCookie)
   }
 
   componentDidUpdate(prevProps: any) {
@@ -112,10 +107,9 @@ class AppInitializer extends React.Component<RouteComponentProps & ReactCookiePr
    * back to this portal after visiting www.synapse.org.
    */
   updateSynapseCallbackCookie(
-    ev: MouseEvent,
-    component: AppInitializer
+    ev: MouseEvent
   ) {
-    if (!component.props || !component.props.cookies) {
+    if (!this.props || !this.props.cookies) {
       return
     }
     let href: string|null = null
@@ -161,7 +155,7 @@ class AppInitializer extends React.Component<RouteComponentProps & ReactCookiePr
     expireDate.setTime(Date.now() + 1000 * 60 * 20)
     const domainValue = window.location.hostname.toLowerCase().includes('.synapse.org') ? '.synapse.org' : undefined
     // Cookies provider exists above AppInitializer so the cookies prop will exist
-    component.props.cookies.set(
+    this.props.cookies.set(
       'org.sagebionetworks.security.cookies.portal.config',
       JSON.stringify(cookieValue),
       {
