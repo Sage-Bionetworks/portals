@@ -35,66 +35,48 @@ const data: HomeExploreConfig = {
     props: {
       rgbIndex,
       loadingScreen,
+      unitDescription,
       isConsistent: true,
+      tableConfiguration: {
+        title,
+        synapseId,
+        visibleColumnCount: 4,
+      },
       menuConfig: [
         {
-          title,
-          synapseId,
-          unitDescription,
           sql: 'SELECT study, dataType, assay, id AS file_id, consortium as program, grant, species, organ, tissue, cellType, fileFormat, specimenID FROM syn11346063',
           facetName: 'study',
           facetDisplayValue: 'Study',
-          visibleColumnCount: 4,
         },
         {
-          title,
-          synapseId,
-          unitDescription,
           sql:
             'SELECT species, dataType, id as file_id, consortium as program, grant, study, organ, tissue, cellType, assay, fileFormat, specimenID FROM syn11346063',
           facetName: 'species',
           facetDisplayValue: 'Species',
-          visibleColumnCount: 3,
         },
         {
-          title,
-          synapseId,
-          unitDescription,
           sql:
             'SELECT organ, tissue, dataType, assay, id AS file_id, consortium as program, grant, study, species, cellType, specimenID FROM syn11346063',
           facetName: 'organ',
           facetDisplayValue: 'Organ',
-          visibleColumnCount: 5,
         },
         {
-          title,
-          synapseId,
-          unitDescription,
           sql:
             'SELECT dataType, assay, study, id AS file_id, consortium as program, grant, species, organ, tissue, cellType, fileFormat, specimenID FROM syn11346063',
           facetName: 'dataType',
           facetDisplayValue: 'Data Type',
-          visibleColumnCount: 4,
         },
         {
-          title,
-          synapseId,
-          unitDescription,
           sql:
             'SELECT assay, fileFormat, id AS file_id, consortium as program, grant, study, species, organ, tissue, cellType, dataType, specimenID FROM syn11346063',
           facetName: 'assay',
           facetDisplayValue: 'Assay',
-          visibleColumnCount: 4,
         },
         {
-          title,
-          synapseId,
-          unitDescription,
           sql:
             'SELECT diagnosis, sex, dataType, assay, id as file_id, consortium as program, grant, study, species, organ, tissue, cellType, fileFormat, specimenID, anonymized_individualID FROM syn17024112',
           facetName: 'diagnosis',
           facetDisplayValue: 'Diagnosis',
-          visibleColumnCount: 5,
         }
       ]
     }

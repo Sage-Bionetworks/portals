@@ -5,7 +5,6 @@ import loadingScreen from '../loadingScreen'
 const unitDescription = 'people'
 const rgbIndex = 2
 const sql = 'SELECT * FROM syn13897207'
-const synapseId = 'syn13897207'
 
 const people: HomeExploreConfig = {
   homePageSynapseObject: {
@@ -33,24 +32,21 @@ const people: HomeExploreConfig = {
     props: {
       rgbIndex,
       loadingScreen,
+      unitDescription,
       isConsistent: true,
-      type: SynapseConstants.MEDIUM_USER_CARD,
+      cardConfiguration: {
+        type: SynapseConstants.MEDIUM_USER_CARD,
+      },
       menuConfig: [
         {
-          synapseId,
-          unitDescription,
           sql,
           facetName: 'Program'
         },
         {
-          synapseId,
-          unitDescription,
           sql,
           facetName: 'Grant Number'
         },
         {
-          synapseId,
-          unitDescription,
           sql,
           facetName: 'institution',
           facetDisplayValue: 'Institution',

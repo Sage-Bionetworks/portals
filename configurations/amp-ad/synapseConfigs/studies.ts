@@ -6,7 +6,6 @@ import loadingScreen from '../loadingScreen'
 const unitDescription = 'studies'
 const rgbIndex = 0
 const sql = 'SELECT * FROM syn17083367'
-const synapseId = 'syn17083367'
 const facetName = 'Species'
 
 const studies: HomeExploreConfig = {
@@ -35,27 +34,24 @@ const studies: HomeExploreConfig = {
     props: {
       rgbIndex,
       loadingScreen,
-      secondaryLabelLimit: 4,
-      type: SynapseConstants.AMP_STUDY,
+      unitDescription,
       isConsistent: true,
+      cardConfiguration: {
+        type: SynapseConstants.AMP_STUDY,
+        secondaryLabelLimit: 4,
+      },
       menuConfig: [
         {
           sql,
           facetName,
-          unitDescription,
-          synapseId,
         },
         {
           sql,
-          unitDescription,
-          synapseId,
           facetName: 'Grant'
         },
         {
           sql,
-          synapseId,
           facetName: 'Consortium',
-          unitDescription: 'programs',
           facetAliases: {
             Consortium: 'Program',
           },

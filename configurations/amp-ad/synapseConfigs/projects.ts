@@ -33,15 +33,15 @@ const projects: HomeExploreConfig = {
     props: {
       rgbIndex,
       loadingScreen,
-      type: SynapseConstants.AMP_PROJECT,
       isConsistent: true,
-      secondaryLabelLimit: 4,
+      cardConfiguration: {
+        type: SynapseConstants.AMP_PROJECT,
+        secondaryLabelLimit: 4,
+      },
       menuConfig: [
         {
           sql,
           facetName,
-          unitDescription,
-          synapseId: 'syn17024229',
         },
       ],
     }
