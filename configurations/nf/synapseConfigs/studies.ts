@@ -1,6 +1,10 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from '../../types/portal-config'
 import loadingScreen from '../loadingScreen'
+// @ts-ignore
+import studyActiveSvg from '../style/study-active.svg'
+// @ts-ignore
+import studyCompleteSvg from '../style/study-complete.svg'
 
 const sql = 'SELECT * FROM syn16787123'
 export const studiesSql = sql
@@ -33,6 +37,10 @@ export const studiesCardConfiguration = {
       5: { key: 'fundingAgency', alias: 'Funding Agency' },
       6: { key: 'studyStatus', alias: 'Study Status' },
     }
+  },
+  iconOptions: {
+    Active: studyActiveSvg,
+    Completed: studyCompleteSvg
   }
 }
 
