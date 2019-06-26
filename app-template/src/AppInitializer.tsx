@@ -24,43 +24,24 @@ class AppInitializer extends React.Component<RouteComponentProps & ReactCookiePr
     if (document.title !== docTitleConfig.name) {
       document.title = docTitleConfig.name
     }
+    // we return the chained promises so that any caught error is propogated to the last catch statement
     SynapseClient.getSessionTokenFromCookie().then(
       (sessionToken: string) => {
         if (sessionToken) {
-          SynapseClient.putRefreshSessionToken(sessionToken).then(
+          return SynapseClient.putRefreshSessionToken(sessionToken).then(
             // backend doesn't return a response for this call, its empty
             (_response) => {
               this.setState({ token: sessionToken })
-              SynapseClient.getUserProfile(sessionToken).then((userProfile) => {
+              return SynapseClient.getUserProfile(sessionToken).then((userProfile) => {
                 this.initializePendo(userProfile.ownerId, `${userProfile.userName}@synapse.org`)
               })
             }
           )
         }
-      }
-    ).catch((_err) => {
-      console.log('no token from cookie could be fetched ', _err)
-      this.initializePendo()
-    })
-
-    // we return the chained promises so that any caught error is propogated to the last catch statement
-    SynapseClient.getSessionTokenFromCookie()
-    .then((sessionToken: string) => {
-      if (sessionToken) {
-        return SynapseClient.putRefreshSessionToken(sessionToken).then(
-          // backend doesn't return a response for this call, its empty
-          (_response) => {
-            this.setState({ token: sessionToken })
-            return SynapseClient.getUserProfile(sessionToken).then((userProfile) => {
-              this.initializePendo(userProfile.ownerId, `${userProfile.userName}@synapse.org`)
-            })
-          }
-        )
-      }
-    }).catch((_err) => {
-      console.log('no token from cookie could be fetched ', _err)
-      this.initializePendo()
-    })
+      }).catch((_err) => {
+        console.log('no token from cookie could be fetched ', _err)
+        this.initializePendo()
+      })
     // Technically, the AppInitializer is only mounted once during the portal app lifecycle.
     // But it's best practice to clean up the global listener on component unmount.
     window.addEventListener('click', this.updateSynapseCallbackCookie)
@@ -112,7 +93,7 @@ class AppInitializer extends React.Component<RouteComponentProps & ReactCookiePr
     if (!this.props || !this.props.cookies) {
       return
     }
-    let href: string|null = null
+    let href: string | null = null
     if (ev.target instanceof HTMLAnchorElement) {
       const anchorElement = ev.target as HTMLAnchorElement
       href = anchorElement.getAttribute('href')
