@@ -11,10 +11,30 @@ const facetAliases = {
   tumorType: 'Tumor Type',
   diseaseFocus: 'Disease Focus'
 }
-const type = 'study'
+const type = SynapseConstants.GENERIC_CARD
 const unitDescription = 'Studies'
 const rgbIndex = 1
-const synapseId = 'syn16787123'
+
+export const studiesCardConfiguration = {
+  type,
+  genericCardSchema: {
+    title: 'studyName',
+    type: SynapseConstants.STUDY,
+    description: 'summary',
+    subTitle: 'studyLeads',
+    link: 'studyId',
+    icon: 'studyStatus',
+    secondaryLabels: {
+      0: { key: 'dataStatus', alias: 'Data Status' },
+      1: { key: 'diseaseFocus', alias: 'Disease Focus' },
+      2: { key: 'manifestation', alias: 'Manifestation' },
+      3: { key: 'fundingAgency', alias: 'Funding Agency' },
+      4: { key: 'institutions', alias: 'Institutions' },
+      5: { key: 'fundingAgency', alias: 'Funding Agency' },
+      6: { key: 'studyStatus', alias: 'Study Status' },
+    }
+  }
+}
 
 const studies: HomeExploreConfig = {
   homePageSynapseObject: {
@@ -46,9 +66,7 @@ const studies: HomeExploreConfig = {
       rgbIndex,
       loadingScreen,
       unitDescription,
-      cardConfiguration: {
-        type,
-      },
+      cardConfiguration: studiesCardConfiguration,
       menuConfig: [
         {
           sql,

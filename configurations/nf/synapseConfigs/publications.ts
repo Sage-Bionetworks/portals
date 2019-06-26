@@ -16,6 +16,26 @@ const facetAliases = {
   diseaseFocus: 'Disease Focus',
 }
 
+export const publicationsCardConfiguration = {
+  type,
+  genericCardSchema: {
+    title: 'title',
+    type: SynapseConstants.PUBLICATION,
+    subTitle: 'author',
+    link: 'doi',
+    secondaryLabels: {
+      0: { key: 'journal', alias: 'Journal' },
+      1: { key: 'year', alias: 'Year' },
+      2: { key: 'studyName', alias: 'Study Name' },
+      3: { key: 'diseaseFocus', alias: 'Disease Focus' },
+      4: { key: 'manifestation', alias: 'Manifestation' },
+      5: { key: 'fundingAgency', alias: 'Funding Agency' },
+      6: { key: 'pmid', alias: 'PubMed ID' },
+      7: { key: 'doi', alias: 'DOI' },
+    }
+  }
+}
+
 const publications: HomeExploreConfig = {
   homePageSynapseObject: {
     name: 'QueryWrapperWithStackedBarChart',
@@ -48,27 +68,7 @@ const publications: HomeExploreConfig = {
       rgbIndex,
       loadingScreen,
       unitDescription,
-      cardConfiguration: {
-        type,
-        genericCardSchema: {
-          title: 'title',
-          type: 'Publication',
-          description: '',
-          icon: '',
-          subTitle: 'author',
-          link: 'doi',
-          secondaryLabels: {
-            0: { key: 'journal', alias: 'Journal' },
-            1: { key: 'year', alias: 'Year' },
-            2: { key: 'studyName', alias: 'Study Name' },
-            3: { key: 'diseaseFocus', alias: 'Disease Focus' },
-            4: { key: 'manifestation', alias: 'Manifestation' },
-            5: { key: 'fundingAgency', alias: 'Funding Agency' },
-            6: { key: 'pmid', alias: 'PubMed ID' },
-            7: { key: 'doi', alias: 'DOI' },
-          }
-        }
-      },
+      cardConfiguration: publicationsCardConfiguration,
       menuConfig: [
         {
           sql,
