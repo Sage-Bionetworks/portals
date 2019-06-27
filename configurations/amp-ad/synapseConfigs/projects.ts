@@ -38,7 +38,7 @@ const projects: HomeExploreConfig = {
       cardConfiguration: {
         type: SynapseConstants.GENERIC_CARD,
         genericCardSchema: {
-          type: 'PROJECT',
+          type: 'Project',
           title: 'Name',
           subTitle: 'Key Investigators',
           description: 'Abstract',
