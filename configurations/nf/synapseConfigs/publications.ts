@@ -4,7 +4,7 @@ import loadingScreen from '../loadingScreen'
 
 const sql = 'SELECT * FROM syn16857542'
 export const publicationsSql = sql
-const type = 'publication'
+const type = SynapseConstants.GENERIC_CARD
 const unitDescription = 'Publications'
 const rgbIndex = 0
 
@@ -14,6 +14,26 @@ const facetAliases = {
   fundingAgency: 'Funding Agency',
   tumorType: 'Tumor Type',
   diseaseFocus: 'Disease Focus',
+}
+
+export const publicationsCardConfiguration = {
+  type,
+  genericCardSchema: {
+    title: 'title',
+    type: SynapseConstants.PUBLICATION,
+    subTitle: 'author',
+    link: 'doi',
+    secondaryLabels: {
+      0: { key: 'journal', alias: 'Journal' },
+      1: { key: 'year', alias: 'Year' },
+      2: { key: 'studyName', alias: 'Study Name' },
+      3: { key: 'diseaseFocus', alias: 'Disease Focus' },
+      4: { key: 'manifestation', alias: 'Manifestation' },
+      5: { key: 'fundingAgency', alias: 'Funding Agency' },
+      6: { key: 'pmid', alias: 'PubMed ID' },
+      7: { key: 'doi', alias: 'DOI' },
+    }
+  }
 }
 
 const publications: HomeExploreConfig = {
@@ -48,9 +68,7 @@ const publications: HomeExploreConfig = {
       rgbIndex,
       loadingScreen,
       unitDescription,
-      cardConfiguration: {
-        type,
-      },
+      cardConfiguration: publicationsCardConfiguration,
       menuConfig: [
         {
           sql,

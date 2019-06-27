@@ -1,9 +1,9 @@
 import { GenericRoute } from '../types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
 import { datasets, files, studies, publications, tools, funders } from './synapseConfigs'
-import { studiesSql } from './synapseConfigs/studies'
+import { studiesSql, studiesCardConfiguration } from './synapseConfigs/studies'
 import { datasetsSql } from './synapseConfigs/datasets'
-import { publicationsSql } from './synapseConfigs/publications'
+import { publicationsSql, publicationsCardConfiguration } from './synapseConfigs/publications'
 import exploreButtonControlWrapperProps from './exploreButtonControlWrapperProps'
 import loadingScreen from './loadingScreen'
 
@@ -49,7 +49,7 @@ const routes: GenericRoute [] = [
           limit,
           loadingScreen,
           sql: studiesSql,
-          type: SynapseConstants.STUDY,
+          ...studiesCardConfiguration
         }
       },
       {
@@ -60,7 +60,7 @@ const routes: GenericRoute [] = [
           limit,
           loadingScreen,
           sql: publicationsSql,
-          type: SynapseConstants.PUBLICATION
+          ...publicationsCardConfiguration
         }
       },
       {
@@ -265,22 +265,6 @@ const routes: GenericRoute [] = [
             },
             title: 'Funded Studies'
           },
-          // {
-          //   name: 'CardContainerLogic',
-          //   props: {
-          //     sql: "SELECT * FROM syn16857542 WHERE fundingAgency = 'DHART SPORE'",
-          //     type: SynapseConstants.PUBLICATION
-          //   },
-          //   title: 'NEW PUBLICATIONS'
-          // },
-          // {
-          //   name: 'CardContainerLogic',
-          //   props: {
-          //     sql: "SELECT * FROM syn16859580 WHERE fundingAgency = 'DHART SPORE'",
-          //     type: SynapseConstants.DATASET
-          //   },
-          //   title: 'DATASETS'
-          // },
         ]
       }
     ]
