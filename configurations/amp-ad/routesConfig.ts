@@ -105,7 +105,7 @@ const routes: GenericRoute [] = [
               isHeader: true,
               type: SynapseConstants.GENERIC_CARD,
               genericCardSchema: {
-                type: 'PROJECT',
+                type: 'Project',
                 title: 'Name',
                 subTitle: 'Key Investigators',
                 icon: 'icon',
