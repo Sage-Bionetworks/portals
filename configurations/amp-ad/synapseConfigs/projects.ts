@@ -34,9 +34,26 @@ const projects: HomeExploreConfig = {
       rgbIndex,
       loadingScreen,
       isConsistent: true,
+      unitDescription: 'Projects',
       cardConfiguration: {
-        type: SynapseConstants.AMP_PROJECT,
+        type: SynapseConstants.GENERIC_CARD,
+        genericCardSchema: {
+          type: 'Project',
+          title: 'Name',
+          subTitle: 'Key Investigators',
+          description: 'Abstract',
+          secondaryLabels: {
+            0: { key: 'Grant Number', alias:  'Grant' },
+            1: { key: 'Key Data Contributors', alias:  'Key Contributors' },
+            2: { key: '	Institutions', alias:  'Grant' },
+            3: { key: 'Program' },
+          }
+        },
         secondaryLabelLimit: 4,
+        internalLinkConfiguration: {
+          baseURL: 'Explore/Projects',
+          columnValues: ['Grant Number']
+        }
       },
       menuConfig: [
         {
