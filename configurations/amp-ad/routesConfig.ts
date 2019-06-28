@@ -136,7 +136,7 @@ const routes: GenericRoute [] = [
               sql: 'SELECT Study_Name, Data_Contributor, Access_Type, Study_Description, Model_System, Organism, Number_of_Individuals, Consortium FROM syn17083367',
               type: SynapseConstants.GENERIC_CARD,
               genericCardSchema: {
-                type: 'STUDY',
+                type: 'study',
                 title: 'Study_Name',
                 subTitle: 'Data_Contributor',
                 icon: 'Access_Type',
