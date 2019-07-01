@@ -35,6 +35,7 @@ const studies: HomeExploreConfig = {
       rgbIndex,
       loadingScreen,
       unitDescription,
+      name: 'Studies',
       isConsistent: true,
       cardConfiguration: {
         type: SynapseConstants.AMP_STUDY,

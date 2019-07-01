@@ -33,6 +33,7 @@ const people: HomeExploreConfig = {
       rgbIndex,
       loadingScreen,
       unitDescription,
+      name: 'People',
       isConsistent: true,
       cardConfiguration: {
         type: SynapseConstants.MEDIUM_USER_CARD,
