@@ -50,14 +50,15 @@ export const generateSynapseObjectHelper = (synapseConfig: SynapseConfig) => {
 }
 
 export const generateSynapseObject = (synapseConfig: SynapseConfig, searchParams?: any) => {
-  // return the synapse object but with token injected into its props from the context created in AppInitializer
+  // return the synapse object but with token/search params injected into its props from the context created in AppInitializer
   const { props, ...rest } = synapseConfig
   return (
     <TokenContext.Consumer>
       {
         (value: string) => {
-          const synapseObjectWithToken = { props: { ...props, searchParams, token: value }, ...rest }
-          return generateSynapseObjectHelper(synapseObjectWithToken)
+          const propsWithSearchAndToken = { ...props, searchParams, token: value }
+          const synapseObjectWithTokenAndSearch = { props: propsWithSearchAndToken, ...rest }
+          return generateSynapseObjectHelper(synapseObjectWithTokenAndSearch)
         }
       }
     </TokenContext.Consumer>
@@ -81,7 +82,11 @@ const RouteResolver: React.FunctionComponent<RouteComponentProps> = ({ location 
       result = iter.next()
     }
   }
-  const synapseConfigArray = search ? route.programmaticRouteConfig : route.synapseConfigArray
+  let synapseConfigArray: SynapseConfig [] = route.synapseConfigArray!
+  const { programmaticRouteConfig } = route
+  if (search && programmaticRouteConfig) {
+    synapseConfigArray = programmaticRouteConfig
+  }
   return (
     <React.Fragment>
       {synapseConfigArray!.map(

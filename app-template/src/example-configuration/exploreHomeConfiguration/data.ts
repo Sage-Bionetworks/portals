@@ -35,6 +35,7 @@ export const data: HomeExploreConfig = {
       loadingScreen,
       rgbIndex,
       unitDescription,
+      name: 'Data',
       cardConfiguration: {
         type: SynapseConstants.CSBC_DATASET,
       },

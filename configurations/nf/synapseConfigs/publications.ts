@@ -68,6 +68,7 @@ const publications: HomeExploreConfig = {
       rgbIndex,
       loadingScreen,
       unitDescription,
+      name: 'Publications',
       cardConfiguration: publicationsCardConfiguration,
       menuConfig: [
         {

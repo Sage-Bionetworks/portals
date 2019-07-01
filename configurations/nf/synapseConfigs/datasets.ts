@@ -44,6 +44,7 @@ const datasets: HomeExploreConfig = {
       rgbIndex,
       loadingScreen,
       unitDescription,
+      name: 'Datasets',
       cardConfiguration: {
         type,
       },
