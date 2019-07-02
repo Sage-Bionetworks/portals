@@ -9,11 +9,12 @@ import studyCompleteSvg from '../style/study-complete.svg'
 const sql = 'SELECT * FROM syn16787123'
 export const studiesSql = sql
 const facetAliases = {
-  projectStatus: 'Project Status',
+  studyStatus: 'Study Status',
   dataStatus: 'Data Status',
-  fundingAgency: 'Funding Agency',
-  tumorType: 'Tumor Type',
-  diseaseFocus: 'Disease Focus'
+  institutions: 'Institutions',
+  diseaseFocus: 'Disease Focus',
+  manifestation: 'Manifestation',
+  fundingAgency: 'Funding Agency'
 }
 const type = SynapseConstants.GENERIC_CARD
 const unitDescription = 'Studies'
@@ -79,7 +80,7 @@ const studies: HomeExploreConfig = {
         {
           sql,
           facetAliases,
-          facetName: 'projectStatus',
+          facetName: 'studyStatus',
         },
         {
           sql,
@@ -89,12 +90,17 @@ const studies: HomeExploreConfig = {
         {
           sql,
           facetAliases,
+          facetName: 'institutions'
+        },
+        {
+          sql,
+          facetAliases,
           facetName: 'fundingAgency'
         },
         {
           sql,
           facetAliases,
-          facetName: 'tumorType'
+          facetName: 'manifestation'
         },
         {
           sql,

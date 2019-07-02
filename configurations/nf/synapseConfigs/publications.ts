@@ -9,11 +9,13 @@ const unitDescription = 'Publications'
 const rgbIndex = 0
 
 const facetAliases = {
-  projectStatus: 'Project Status',
+  studyName: 'Study Name',
   dataStatus: 'Data Status',
   fundingAgency: 'Funding Agency',
-  tumorType: 'Tumor Type',
+  manifestation: 'Manifestation',
   diseaseFocus: 'Disease Focus',
+  journal: 'Journal',
+  year: 'Year',
 }
 
 export const publicationsCardConfiguration = {
@@ -79,13 +81,28 @@ const publications: HomeExploreConfig = {
         {
           sql,
           facetAliases,
-          facetName: 'tumorType',
+          facetName: 'journal',
+        },
+        {
+          sql,
+          facetAliases,
+          facetName: 'year',
+        },
+        {
+          sql,
+          facetAliases,
+          facetName: 'studyName',
         },
         {
           sql,
           facetAliases,
           facetName: 'diseaseFocus',
-        }
+        },
+        {
+          sql,
+          facetAliases,
+          facetName: 'manifestation',
+        },
       ]
     }
   }
