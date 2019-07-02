@@ -12,13 +12,14 @@ if [[ -z $1 ]]; then
   exit 1
 fi
 
-# we want to always make sure that the linking is undone after this script to so we capture
-# ctrl-c
+# we want to always make sure that the linking is undone after this script so we capture
+# ctrl-c. This has removed various bugs when developing locally.
+# See here - https://unix.stackexchange.com/a/407249
 trap handleInt SIGINT
 function handleInt {
-    echo "Shutting down...\n"
-    
-    exit 0
+  cd ../../configurations
+  ./undoLink.sh nf
+  exit 0
 }
 
 # remove ending slash if directory given had a slash
