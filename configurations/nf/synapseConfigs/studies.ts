@@ -34,8 +34,7 @@ export const studiesCardConfiguration = {
       2: { key: 'manifestation', alias: 'Manifestation' },
       3: { key: 'fundingAgency', alias: 'Funding Agency' },
       4: { key: 'institutions', alias: 'Institutions' },
-      5: { key: 'fundingAgency', alias: 'Funding Agency' },
-      6: { key: 'studyStatus', alias: 'Study Status' },
+      5: { key: 'studyStatus', alias: 'Study Status' },
     }
   },
   iconOptions: {
