@@ -56,9 +56,9 @@ const files: HomeExploreConfig = {
     name: 'QueryWrapperMenu',
     props: {
       rgbIndex,
-      facetAliases,
       loadingScreen,
       unitDescription,
+      name: 'Files',
       tableConfiguration: {
         title,
         visibleColumnCount,
@@ -66,10 +66,11 @@ const files: HomeExploreConfig = {
       },
       menuConfig: [
         {
+          facetAliases,
           sql: `
             SELECT id AS "File ID", assay AS "Assay", dataType AS "Data Type", diagnosis AS "Diagnosis", tumorType AS "Tumor Type",  species AS "Species", individualID AS "Individual ID",  fileFormat AS "File Format", dataSubtype AS "Data Subtype", nf1Genotype AS "NF1 Genotype", nf2Genotype AS "NF2 Genotype", studyName AS "Study Name", fundingAgency AS "Funding Agency", consortium AS "Consortium", name AS "File Name" FROM syn16858331 WHERE resourceType = 'experimentalData'
           `,
-          facetName: 'assay'
+          facetName: 'assay',
         },
         {
           facetAliases,

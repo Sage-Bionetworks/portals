@@ -9,6 +9,7 @@ export type ExploreButtonControlWrapperProps = {
   colors: string []
   // we have to pass in all the custom routes because unlike the home page the explore buttons configs aren't held in state
   customRoutes: string []
+  searchParams?: any
 }
 
 export type ButtonControlState = {
@@ -24,7 +25,7 @@ type Props = RouteComponentProps & ExploreButtonControlWrapperProps
  * @param {*} { location, SynapseConfig, colors, history, customRoutes }
  * @returns
  */
-const ExploreButtonControl:React.FunctionComponent<Props> = ({ location, synapseConfig, colors, history, customRoutes }) => {
+const ExploreButtonControl:React.FunctionComponent<Props> = ({ location, synapseConfig, colors, history, customRoutes, searchParams }) => {
   const pathname = location.pathname
   const subPath = pathname.substring('/Explore/'.length)
   const buttonControlProps: ButtonControlProps = {
@@ -39,7 +40,7 @@ const ExploreButtonControl:React.FunctionComponent<Props> = ({ location, synapse
         {...buttonControlProps}
       />
       {
-        generateSynapseObject(synapseConfig)
+        generateSynapseObject(synapseConfig, searchParams)
       }
     </React.Fragment>
   )

@@ -29,9 +29,25 @@ const resilienceAd: SynapseConfigArray = [
     title: 'Explore RESILIENCE-AD',
     props: {
       loadingScreen,
-      secondaryLabelLimit: 4,
       sql: `SELECT * FROM syn17024229 WHERE ( ( "Program" = 'Resilience-AD' ) )`,
-      type: SynapseConstants.AMP_PROJECT
+      type: SynapseConstants.GENERIC_CARD,
+      genericCardSchema: {
+        type: 'Project',
+        title: 'Name',
+        subTitle: 'Key Investigators',
+        description: 'Abstract',
+        secondaryLabels: {
+          0: { key: 'Grant Number', alias:  'Grant' },
+          1: { key: 'Key Data Contributors', alias:  'Key Contributors' },
+          2: { key: 'Institutions' },
+          3: { key: 'Program' },
+        }
+      },
+      secondaryLabelLimit: 4,
+      internalLinkConfiguration: {
+        baseURL: 'Explore/Projects',
+        columnValues: ['Grant Number']
+      },
     }
   }
 ]

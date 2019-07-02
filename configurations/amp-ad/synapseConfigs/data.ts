@@ -37,6 +37,7 @@ const data: HomeExploreConfig = {
       loadingScreen,
       unitDescription,
       isConsistent: true,
+      name: 'Data',
       tableConfiguration: {
         title,
         synapseId,

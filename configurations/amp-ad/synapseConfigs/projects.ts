@@ -33,6 +33,7 @@ const projects: HomeExploreConfig = {
     props: {
       rgbIndex,
       loadingScreen,
+      name: 'Projects',
       isConsistent: true,
       unitDescription: 'Projects',
       cardConfiguration: {
@@ -45,7 +46,7 @@ const projects: HomeExploreConfig = {
           secondaryLabels: {
             0: { key: 'Grant Number', alias:  'Grant' },
             1: { key: 'Key Data Contributors', alias:  'Key Contributors' },
-            2: { key: '	Institutions', alias:  'Grant' },
+            2: { key: 'Institutions' },
             3: { key: 'Program' },
           }
         },

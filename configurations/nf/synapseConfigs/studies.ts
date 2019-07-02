@@ -74,6 +74,7 @@ const studies: HomeExploreConfig = {
       rgbIndex,
       loadingScreen,
       unitDescription,
+      name: 'Studies',
       cardConfiguration: studiesCardConfiguration,
       menuConfig: [
         {

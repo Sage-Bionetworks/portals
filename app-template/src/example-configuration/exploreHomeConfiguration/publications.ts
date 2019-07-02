@@ -31,6 +31,7 @@ export const publications: HomeExploreConfig = {
     props: {
       loadingScreen,
       unitDescription,
+      name: 'Publications',
       cardConfiguration: {
         type: SynapseConstants.CSBC_PUBLICATION,
       },
