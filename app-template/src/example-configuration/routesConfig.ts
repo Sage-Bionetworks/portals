@@ -48,9 +48,9 @@ routes[ORGANIZATION_INDEX] = {
   isNested: true,
   routes: [
     {
-      name: 'Organization-CTF',
+      name: 'Organizations',
       isNested: true,
-      to: '/Organizations/Organization-CTF',
+      to: '/Organizations/Content',
       synapseConfigArray: [
         {
           title: 'Grants',
@@ -71,9 +71,9 @@ routes[ORGANIZATION_INDEX] = {
       ],
       routes: [
         {
-          name: 'CTF',
+          name: 'Subcontent',
           isNested: false,
-          to: '/Organizations/Organization-CTF',
+          to: '/Organizations/Content/Subcontent',
           synapseConfigArray: [{
             name: 'Markdown',
             props: {

@@ -21,12 +21,13 @@ describe('getRouteFromParams works', () => {
 
   it('gets a Nested Route correctly', () => {
     const orgRoutes = routesConfig[ORGANIZATION_INDEX] as NestedRoute
-    expect(getRouteFromParams('/Organizations/Organization-CTF')).toEqual(orgRoutes.routes[0])
+    expect(getRouteFromParams('/Organizations/Content')).toEqual(orgRoutes.routes[0])
   })
 
   it('gets a Double Nested Route correctly', () => {
     const orgRoutes = routesConfig[ORGANIZATION_INDEX] as NestedRoute
-    expect(getRouteFromParams('/Organizations/Organization-CTF/CTF')).toEqual(orgRoutes.routes[0].routes![0])
+    const firstRoute = orgRoutes.routes[0] as NestedRoute
+    expect(getRouteFromParams('/Organizations/Content/Subcontent')).toEqual(firstRoute.routes[0])
   })
 
 })

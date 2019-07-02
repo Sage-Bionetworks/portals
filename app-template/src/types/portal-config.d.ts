@@ -99,7 +99,6 @@ export interface BaseRoute {
   link?: string
   icon?: string
   synapseConfigArray: SynapseConfigArray
-  routes?: Array<Route>
 }
 
 export interface NestedRoute extends BaseRoute {
