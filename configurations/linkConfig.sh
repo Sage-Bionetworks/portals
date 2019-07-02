@@ -12,6 +12,15 @@ if [[ -z $1 ]]; then
   exit 1
 fi
 
+# we want to always make sure that the linking is undone after this script to so we capture
+# ctrl-c
+trap handleInt SIGINT
+function handleInt {
+    echo "Shutting down...\n"
+    
+    exit 0
+}
+
 # remove ending slash if directory given had a slash
 folderNoSlash=${1%/}
 # React applications can't resolve symlinks, so instead of symlinking the 
