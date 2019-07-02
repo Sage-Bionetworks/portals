@@ -6,6 +6,9 @@ import { datasetsSql } from './synapseConfigs/datasets'
 import { publicationsSql, publicationsCardConfiguration } from './synapseConfigs/publications'
 import exploreButtonControlWrapperProps from './exploreButtonControlWrapperProps'
 import loadingScreen from './loadingScreen'
+import { ntap } from './synapseConfigs/organizationConfigs/ntap'
+import { dhartSpore } from './synapseConfigs/organizationConfigs/dhart-spore'
+import { ctf } from './synapseConfigs/organizationConfigs/ctf'
 
 const limit = 3
 
@@ -162,112 +165,7 @@ const routes: GenericRoute [] = [
   {
     name: 'Organizations',
     isNested: true,
-    routes: [
-      {
-        name: 'CTF',
-        to: '/Organizations/CTF',
-        isNested: false,
-        synapseConfigArray: [
-          {
-            name: 'CardContainerLogic',
-            props: {
-              limit: 1,
-              sql: "SELECT * FROM syn16858699 WHERE abbreviation = 'CTF'",
-              type: funders.type
-            },
-            title: "Children's Tumor Foundation"
-          },
-          {
-            name: 'CardContainerLogic',
-            props: {
-              sql: "SELECT * FROM syn16787123 WHERE fundingAgency = 'CTF'",
-              type: SynapseConstants.STUDY
-            },
-            title: 'Funded Studies'
-          },
-          {
-            name: 'CardContainerLogic',
-            props: {
-              sql: "SELECT * FROM syn16857542 WHERE fundingAgency = 'CTF'",
-              type: SynapseConstants.PUBLICATION
-            },
-            title: 'NEW PUBLICATIONS'
-          },
-          {
-            name: 'CardContainerLogic',
-            props: {
-              sql: "SELECT * FROM syn16859580 WHERE fundingAgency = 'CTF'",
-              type: SynapseConstants.DATASET
-            },
-            title: 'DATASETS'
-          },
-        ]
-      },
-      {
-        name: 'NTAP',
-        to: '/Organizations/NTAP',
-        isNested: false,
-        synapseConfigArray: [
-          {
-            name: 'CardContainerLogic',
-            props: {
-              limit: 1,
-              sql: "SELECT * FROM syn16858699 WHERE abbreviation = 'NTAP'",
-              type: funders.type
-            },
-            title: 'The Neurofibromatosis Therapeutic Acceleration Program'
-          },
-          {
-            name: 'CardContainerLogic',
-            props: {
-              sql: "SELECT * FROM syn16787123 WHERE fundingAgency = 'NTAP'",
-              type: SynapseConstants.STUDY
-            },
-            title: 'Funded Studies'
-          },
-          {
-            name: 'CardContainerLogic',
-            props: {
-              sql: "SELECT * FROM syn16857542 WHERE fundingAgency = 'NTAP'",
-              type: SynapseConstants.PUBLICATION
-            },
-            title: 'NEW PUBLICATIONS'
-          },
-          {
-            name: 'CardContainerLogic',
-            props: {
-              sql: "SELECT * FROM syn16859580 WHERE fundingAgency = 'NTAP'",
-              type: SynapseConstants.DATASET
-            },
-            title: 'DATASETS'
-          },
-        ]
-      },
-      {
-        name: 'DHART-SPORE',
-        to: '/Organizations/DHART-SPORE',
-        isNested: false,
-        synapseConfigArray: [
-          {
-            name: 'CardContainerLogic',
-            props: {
-              limit: 1,
-              sql: "SELECT * FROM syn16858699 WHERE abbreviation = 'DHART SPORE'",
-              type: funders.type
-            },
-            title: 'The Developmental And Hyperactive RAS Tumor SPORE'
-          },
-          {
-            name: 'CardContainerLogic',
-            props: {
-              sql: "SELECT * FROM syn16787123 WHERE fundingAgency = 'NIH-NCI'",
-              type: SynapseConstants.STUDY
-            },
-            title: 'Funded Studies'
-          },
-        ]
-      }
-    ]
+    routes: [ctf, ntap, dhartSpore]
   },
   {
     name: 'About',
