@@ -4,8 +4,8 @@ import routesConfig from './config/routesConfig'
 import { SynapseConfig } from './types/portal-config'
 import { SynapseComponents } from 'synapse-react-client'
 import { TokenContext } from './AppInitializer'
-import HomeButtonControlWrapper from './portal-components/HomeButtonControlWrapper'
-import ExploreButtonControlWrapper from './portal-components/ExploreButtonControlWrapper'
+import StatefulButtonControlWrapper from './portal-components/StatefulButtonControlWrapper'
+import RouteButtonControlWrapper from './portal-components/RouteButtonControlWrapper'
 import QueryWrapperWithStackedBarChart from './portal-components/QueryWrapperWithStackedBarChart'
 import Layout from './portal-components/Layout'
 
@@ -33,11 +33,11 @@ export const getRouteFromParams = (pathname: string) => {
 }
 
 export const generateSynapseObjectHelper = (synapseConfig: SynapseConfig) => {
-  if (synapseConfig.name === 'HomeButtonControlWrapper') {
-    return <HomeButtonControlWrapper {...synapseConfig.props} />
+  if (synapseConfig.name === 'StatefulButtonControlWrapper') {
+    return <StatefulButtonControlWrapper {...synapseConfig.props} />
   }
-  if (synapseConfig.name === 'ExploreButtonControlWrapper') {
-    return <ExploreButtonControlWrapper {...synapseConfig.props} />
+  if (synapseConfig.name === 'RouteButtonControlWrapper') {
+    return <RouteButtonControlWrapper {...synapseConfig.props} />
   }
   if (synapseConfig.name === 'QueryWrapperWithStackedBarChart') {
     return <QueryWrapperWithStackedBarChart {...synapseConfig.props} />

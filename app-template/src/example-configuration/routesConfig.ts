@@ -94,7 +94,7 @@ routes[HOME_INDEX] = {
   synapseConfigArray: [
     {
       title: 'Explore Portal',
-      name: 'HomeButtonControlWrapper',
+      name: 'StatefulButtonControlWrapper',
       props: {
         configs: [
           data.homePageSynapseObject.props,

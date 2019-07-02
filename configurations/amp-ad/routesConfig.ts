@@ -13,7 +13,7 @@ const routes: GenericRoute [] = [
     isNested: false,
     synapseConfigArray: [
       {
-        name: 'HomeButtonControlWrapper',
+        name: 'StatefulButtonControlWrapper',
         title: 'EXPLORE CONTENT',
         props: {
           configs: [

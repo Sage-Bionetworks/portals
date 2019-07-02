@@ -1,16 +1,16 @@
 import * as React from 'react'
 import { ButtonControl, ButtonControlProps } from '../ButtonControl'
 import { Link } from 'react-router-dom'
-import { SynapseConfig } from '../types/portal-config'
+import { SynapseConfigArray } from '../types/portal-config'
 import { generateSynapseObject } from '../RouteResolver'
 
-type HomeButtonControlConfigs = {
-  synapseConfig: SynapseConfig
+type StatefulButtonControlConfigs = {
+  synapseConfigArray: SynapseConfigArray
   name: string
 }
 
-export type HomeButtonControlWrapperProps = {
-  configs: HomeButtonControlConfigs []
+export type StatefulButtonControlWrapperProps = {
+  configs: StatefulButtonControlConfigs []
   colors: string []
 }
 
@@ -19,15 +19,15 @@ export type ButtonControlState = {
 }
 
 /**
- * HomeButtonControl is the set of buttons used on the home page to navigate between
+ * StatefulButtonControl is the set of buttons used on the home page to navigate between
  * the preview of the various data.
  *
- * @class HomeButtonControl
+ * @class StatefulButtonControl
  * @extends {React.Component<Props, ButtonControlState>}
  */
-class HomeButtonControl extends React.Component<HomeButtonControlWrapperProps, ButtonControlState> {
+class StatefulButtonControl extends React.Component<StatefulButtonControlWrapperProps, ButtonControlState> {
 
-  constructor(props: HomeButtonControlWrapperProps) {
+  constructor(props: StatefulButtonControlWrapperProps) {
     super(props)
     this.state = {
       index: 0
@@ -55,8 +55,8 @@ class HomeButtonControl extends React.Component<HomeButtonControlWrapperProps, B
       handleChanges: this.handleChange,
       isSelected: (val: string) => val === statefulConfig.name,
     }
-    const statefulConfig = configs![this.state.index]
-    const synapseConfig = statefulConfig.synapseConfig
+    const statefulConfig = configs[this.state.index]
+    const synapseConfig = statefulConfig.synapseConfigArray[0]
     return (
       <React.Fragment>
         <ButtonControl
@@ -73,4 +73,4 @@ class HomeButtonControl extends React.Component<HomeButtonControlWrapperProps, B
   }
 }
 
-export default HomeButtonControl
+export default StatefulButtonControl
