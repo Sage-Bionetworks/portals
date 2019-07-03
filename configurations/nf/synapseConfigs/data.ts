@@ -9,7 +9,7 @@ const rgbIndex = 0
 const facetName = 'tumorType'
 
 export const data: HomeExploreConfig = {
-  homePageSynapseObject: {
+  homePageSynapseObject: [{
     name: 'QueryWrapperWithStackedBarChart',
     props: {
       rgbIndex,
@@ -28,7 +28,7 @@ export const data: HomeExploreConfig = {
         }
       },
     }
-  },
+  }],
   explorePageSynapseObject: {
     name: 'QueryWrapperMenu',
     props: {

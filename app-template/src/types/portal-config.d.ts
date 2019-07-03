@@ -9,6 +9,7 @@ import { QueryBundleRequest } from 'synapse-react-client/dist/utils/jsonResponse
 import { QueryResultBundle } from 'synapse-react-client/dist/utils/jsonResponses/Table/QueryResultBundle'
 import { StatefulButtonControlProps } from '../portal-components/StatefulButtonControlWrapper'
 import { RouteButtonControlProps } from '../portal-components/RouteButtonControlWrapper'
+import { LinkedComponentProps } from '../portal-components/LinkedComponent'
 
 // For styling the header on the home page -- the main title and the summary text
 export type HomePageHeaderConfig = {
@@ -64,6 +65,11 @@ type RouteButtonControl = {
   props: RouteButtonControlProps
 }
 
+type LinkedComponent = {
+  name: 'LinkedComponent',
+  props: LinkedComponentProps
+}
+
 type Metatdata = {
   title?: string
   link?: string
@@ -80,12 +86,13 @@ export type SynapseConfig = (
   | QueryWrapperMenu
   | UserCard 
   | Markdown 
+  | LinkedComponent 
 ) & Metatdata
 export type SynapseConfigArray = SynapseConfig []
 
 // utility for inside the explore page
 export type HomeExploreConfig = {
-  homePageSynapseObject: SynapseConfig
+  homePageSynapseObject: SynapseConfigArray
   explorePageSynapseObject: SynapseConfig
 }
 

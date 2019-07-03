@@ -391,13 +391,13 @@ a.dropdown-item:hover {
 
 // exploreData button
 
-#exploreData {
+.linked-container-anchor {
   bottom: 40px;
   right: 50px;
   position: absolute;
   border-radius: 24px;
   background-color: $primary-action-color;
-  color: white;
+  color: white !important;
   height: 44px;
   width: 257px;
   text-transform: uppercase;
@@ -405,7 +405,7 @@ a.dropdown-item:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  text-decoration: none;
+  text-decoration: none !important;
   &:hover {
     @extend %hoverFade;
     @extend %defaultBoxShadow;
@@ -413,13 +413,13 @@ a.dropdown-item:hover {
 }
 
 // end exploreData button
-#homePageBarChart {
+.linked-container-positioner {
   position: absolute;
   right: 0;
   width: 100%;
 }
 
-.homeExploreContainer {
+.linked-container {
   position: relative; 
   height: 220px;
 }

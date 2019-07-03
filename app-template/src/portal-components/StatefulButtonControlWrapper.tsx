@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { ButtonControl, ButtonControlProps } from '../ButtonControl'
-import { Link } from 'react-router-dom'
 import { SynapseConfigArray } from '../types/portal-config'
 import { generateSynapseObject } from '../RouteResolver'
 
@@ -19,8 +18,8 @@ export type ButtonControlState = {
 }
 
 /**
- * StatefulButtonControl is the set of buttons used on the home page to navigate between
- * the preview of the various data.
+ * StatefulButtonControl is the set of buttons used to navigate between
+ * the preview of the various SRC components.
  *
  * @class StatefulButtonControl
  * @extends {React.Component<Props, ButtonControlState>}
@@ -49,25 +48,25 @@ class StatefulButtonControl extends React.Component<StatefulButtonControlWrapper
       configs,
       colors,
     } = this.props
+    const { name, synapseConfigArray } = configs[this.state.index]
     const buttonControlProps: ButtonControlProps = {
       colors,
       customRoutes: configs.map(el => el.name),
       handleChanges: this.handleChange,
-      isSelected: (val: string) => val === statefulConfig.name,
+      isSelected: (val: string) => val === name,
     }
-    const statefulConfig = configs[this.state.index]
-    const synapseConfig = statefulConfig.synapseConfigArray[0]
     return (
       <React.Fragment>
         <ButtonControl
           {...buttonControlProps}
         />
-        <div className="homeExploreContainer">
-          <div id="homePageBarChart">
-            {generateSynapseObject(synapseConfig)}
-          </div>
-          <Link to={`/Explore/${statefulConfig.name}`} id="exploreData"> Explore {statefulConfig.name} </Link>
-        </div>
+        {
+          synapseConfigArray.map(
+            (config) => {
+              return generateSynapseObject(config)
+            }
+          )
+        }
       </React.Fragment>
     )
   }

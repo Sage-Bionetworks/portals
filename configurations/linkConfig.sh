@@ -19,6 +19,7 @@ trap handleInt SIGINT
 function handleInt {
   cd ../../configurations
   ./undoLink.sh nf
+  printf '\n'
   exit 0
 }
 

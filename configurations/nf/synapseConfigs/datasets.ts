@@ -15,29 +15,36 @@ const facetAliases = {
 }
 
 const datasets: HomeExploreConfig = {
-  homePageSynapseObject: {
-    name: 'QueryWrapperWithStackedBarChart',
+  homePageSynapseObject: [{
+    name: 'LinkedComponent',
     props: {
-      unitDescription,
-      rgbIndex,
-      facetAliases,
-      loadingScreen,
-      facetName: 'diseaseFocus',
-      initQueryRequest: {
-        concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-        partMask:
-          SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS
-          | SynapseConstants.BUNDLE_MASK_QUERY_FACETS
-          | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
-        query: {
-          sql,
-          isConsistent: false,
-          limit: 25,
-          offset: 0,
-        },
+      link: 'Explore/Datasets',
+      text: 'Explore Datasets',
+      synapseConfig: {
+        name: 'QueryWrapperWithStackedBarChart',
+        props: {
+          unitDescription,
+          rgbIndex,
+          facetAliases,
+          loadingScreen,
+          facetName: 'diseaseFocus',
+          initQueryRequest: {
+            concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
+            partMask:
+              SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS
+              | SynapseConstants.BUNDLE_MASK_QUERY_FACETS
+              | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
+            query: {
+              sql,
+              isConsistent: false,
+              limit: 25,
+              offset: 0,
+            },
+          }
+        }
       }
     }
-  },
+  }],
   explorePageSynapseObject: {
     name: 'QueryWrapperMenu',
     props: {
