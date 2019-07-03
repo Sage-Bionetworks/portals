@@ -9,7 +9,7 @@ import loadingScreen from './loadingScreen'
 import { ntap } from './synapseConfigs/organizationConfigs/ntap'
 import { dhartSpore } from './synapseConfigs/organizationConfigs/dhart-spore'
 import { ctf } from './synapseConfigs/organizationConfigs/ctf'
-
+import { buttonColors } from './synapseConfigs/commonProps'
 const limit = 3
 
 const routes: GenericRoute [] = [
@@ -22,12 +22,7 @@ const routes: GenericRoute [] = [
         name: 'StatefulButtonControlWrapper',
         title: 'EXPLORE PORTAL',
         props: {
-          colors: [
-            '#119488',
-            '#58A058',
-            '#407BA0',
-            '#5BB0B5',
-          ],
+          ...buttonColors,
           configs: [
             {
               name: 'Datasets', synapseConfigArray: datasets.homePageSynapseObject
