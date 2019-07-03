@@ -1,5 +1,6 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from '../../types/portal-config'
+import { facetAliases } from './commonProps'
 import loadingScreen from '../loadingScreen'
 // @ts-ignore
 import studyActiveSvg from '../style/study-active.svg'
@@ -8,14 +9,6 @@ import studyCompleteSvg from '../style/study-complete.svg'
 
 const sql = 'SELECT * FROM syn16787123'
 export const studiesSql = sql
-const facetAliases = {
-  studyStatus: 'Study Status',
-  dataStatus: 'Data Status',
-  institutions: 'Institutions',
-  diseaseFocus: 'Disease Focus',
-  manifestation: 'Manifestation',
-  fundingAgency: 'Funding Agency'
-}
 const type = SynapseConstants.GENERIC_CARD
 const unitDescription = 'Studies'
 const rgbIndex = 1

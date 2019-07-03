@@ -1,6 +1,6 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { BaseRoute, SynapseConfigArray } from '../../../types/portal-config'
-import { buttonColors } from '../commonProps'
+import { buttonColors, facetAliases } from '../commonProps'
 import loadingScreen from '../../loadingScreen'
 import { publicationsCardConfiguration } from '../publications'
 import { studiesCardConfiguration } from '../studies'
@@ -15,6 +15,7 @@ const studiesConfig: SynapseConfigArray = [
         name: 'QueryWrapperWithStackedBarChart',
         props: {
           loadingScreen,
+          facetAliases,
           unitDescription: 'Studies',
           rgbIndex: 1,
           facetName: 'diseaseFocus',
@@ -55,6 +56,7 @@ const publicationsConfig: SynapseConfigArray = [
         name: 'QueryWrapperWithStackedBarChart',
         props: {
           loadingScreen,
+          facetAliases,
           unitDescription: 'Publications',
           rgbIndex: 0,
           facetName: 'diseaseFocus',
@@ -95,6 +97,7 @@ const datasetConfig: SynapseConfigArray = [
         name: 'QueryWrapperWithStackedBarChart',
         props: {
           loadingScreen,
+          facetAliases,
           unitDescription: 'Studies',
           rgbIndex: 5,
           facetName: 'diseaseFocus',
@@ -135,6 +138,7 @@ const filesConfig: SynapseConfigArray = [
         name: 'QueryWrapperWithStackedBarChart',
         props: {
           loadingScreen,
+          facetAliases,
           unitDescription: 'Files',
           rgbIndex: 8,
           facetName: 'assay',
