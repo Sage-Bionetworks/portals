@@ -32,11 +32,7 @@ const resilienceAd: SynapseConfigArray = [
       loadingScreen,
       sql: `SELECT * FROM syn17024229 WHERE ( ( "Program" = 'Resilience-AD' ) )`,
       ...projectCardProps,
-      secondaryLabelLimit: 4,
-      internalLinkConfiguration: {
-        baseURL: 'Explore/Projects',
-        columnValues: ['Grant Number']
-      },
+      secondaryLabelLimit: 4
     }
   }
 ]

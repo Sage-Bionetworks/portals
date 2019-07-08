@@ -32,11 +32,7 @@ const modelAd: SynapseConfigArray = [
       loadingScreen,
       secondaryLabelLimit: 4,
       sql:  `SELECT * FROM syn17024229 WHERE ( ( "Program" = 'MODEL-AD' ) )`,
-      ...projectCardProps,
-      internalLinkConfiguration: {
-        baseURL: 'Explore/Projects',
-        columnValues: ['Grant Number']
-      },
+      ...projectCardProps
     }
   }
 ]

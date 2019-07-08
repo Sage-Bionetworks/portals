@@ -33,10 +33,6 @@ const move2Ad: SynapseConfigArray = [
       secondaryLabelLimit: 4,
       sql: `SELECT * FROM syn17024229 WHERE ( ( "Program" = 'M2OVE-AD' ) )`,
       ...projectCardProps,
-      internalLinkConfiguration: {
-        baseURL: 'Explore/Projects',
-        columnValues: ['Grant Number']
-      },
     }
   }
 ]

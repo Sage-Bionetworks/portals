@@ -32,10 +32,6 @@ const ampAd: SynapseConfigArray = [
       loadingScreen,
       ...projectCardProps,
       secondaryLabelLimit: 4,
-      internalLinkConfiguration: {
-        baseURL: 'Explore/Projects',
-        columnValues: ['Grant Number']
-      },
       sql: `SELECT  * FROM syn17024229 WHERE ( ( "Program" = 'AMP-AD' ) )`,
     }
   }

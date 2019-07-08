@@ -20,6 +20,10 @@ export const projectCardProps = {
       2: { key: 'Program' },
       3: { key: 'Grant Number', alias:  'Grant' },
     }
+  },
+  internalLinkConfiguration: {
+    baseURL: 'Explore/Projects',
+    columnValues: ['Grant Number']
   }
 }
 
