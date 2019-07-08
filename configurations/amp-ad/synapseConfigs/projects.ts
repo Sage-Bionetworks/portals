@@ -7,6 +7,26 @@ const rgbIndex = 4
 const sql = 'SELECT * FROM syn17024229'
 const facetName = 'Program'
 
+export const projectCardProps = {
+  type: SynapseConstants.GENERIC_CARD,
+  genericCardSchema: {
+    type: 'Project',
+    title: 'Name',
+    subTitle: 'Key Investigators',
+    description: 'Abstract',
+    secondaryLabels: {
+      0: { key: 'Institutions' },
+      1: { key: 'Key Data Contributors', alias:  'Key Contributors' },
+      2: { key: 'Program' },
+      3: { key: 'Grant Number', alias:  'Grant' },
+    }
+  },
+  internalLinkConfiguration: {
+    baseURL: 'Explore/Projects',
+    columnValues: ['Grant Number']
+  }
+}
+
 const projects: HomeExploreConfig = {
   homePageSynapseObject: {
     name: 'QueryWrapperWithStackedBarChart',
@@ -36,26 +56,7 @@ const projects: HomeExploreConfig = {
       name: 'Projects',
       isConsistent: true,
       unitDescription: 'Projects',
-      cardConfiguration: {
-        type: SynapseConstants.GENERIC_CARD,
-        genericCardSchema: {
-          type: 'Project',
-          title: 'Name',
-          subTitle: 'Key Investigators',
-          description: 'Abstract',
-          secondaryLabels: {
-            0: { key: 'Grant Number', alias:  'Grant' },
-            1: { key: 'Key Data Contributors', alias:  'Key Contributors' },
-            2: { key: 'Institutions' },
-            3: { key: 'Program' },
-          }
-        },
-        secondaryLabelLimit: 4,
-        internalLinkConfiguration: {
-          baseURL: 'Explore/Projects',
-          columnValues: ['Grant Number']
-        }
-      },
+      cardConfiguration: projectCardProps,
       menuConfig: [
         {
           sql,

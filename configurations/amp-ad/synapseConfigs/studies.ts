@@ -8,6 +8,27 @@ const rgbIndex = 0
 const sql = 'SELECT * FROM syn17083367'
 const facetName = 'Species'
 
+export const studyCardProps =  {
+  sql: 'SELECT Study, Study_Name, Data_Contributor, Access_Type, Study_Description, Model_System, Organism, Number_of_Individuals, Consortium FROM syn17083367',
+  type: SynapseConstants.GENERIC_CARD,
+  genericCardSchema: {
+    type: SynapseConstants.STUDY,
+    secondaryLabelLimit: 4,
+    title: 'Study_Name',
+    subTitle: 'Data_Contributor',
+    icon: 'Access_Type',
+    link: 'Study',
+    description: 'Study_Description',
+    secondaryLabels: {
+      0: { key: 'Model_System', alias: 'MODEL' },
+      1: { key: 'Organism', alias: 'Organism' },
+      2: { key: 'Number_Of_Individuals', alias: 'INDIVIDUALS' },
+      3: { key: 'Consortium', alias: 'PROGRAM' },
+      4: { key: 'Grant', alias: 'GRANT' },
+    }
+  }
+}
+
 const studies: HomeExploreConfig = {
   homePageSynapseObject: {
     name: 'QueryWrapperWithStackedBarChart',
@@ -38,8 +59,7 @@ const studies: HomeExploreConfig = {
       name: 'Studies',
       isConsistent: true,
       cardConfiguration: {
-        type: SynapseConstants.AMP_STUDY,
-        secondaryLabelLimit: 4,
+        ...studyCardProps
       },
       menuConfig: [
         {
