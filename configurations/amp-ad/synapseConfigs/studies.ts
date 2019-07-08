@@ -9,7 +9,7 @@ const sql = 'SELECT * FROM syn17083367'
 const facetName = 'Species'
 
 export const studyCardProps =  {
-  sql: 'SELECT Study, Study_Name, Data_Contributor, Access_Type, Study_Description, Model_System, Organism, Number_of_Individuals, Consortium FROM syn17083367',
+  sql: 'SELECT * FROM syn17083367',
   type: SynapseConstants.GENERIC_CARD,
   genericCardSchema: {
     type: SynapseConstants.STUDY,
@@ -20,11 +20,15 @@ export const studyCardProps =  {
     link: 'Study',
     description: 'Study_Description',
     secondaryLabels: {
-      0: { key: 'Model_System', alias: 'MODEL' },
-      1: { key: 'Organism', alias: 'Organism' },
-      2: { key: 'Number_Of_Individuals', alias: 'INDIVIDUALS' },
-      3: { key: 'Consortium', alias: 'PROGRAM' },
-      4: { key: 'Grant', alias: 'GRANT' },
+      0: { key: 'DataType_All', alias: 'Data Types' },
+      1: { key: 'Diagnosis_or_Model_System', alias: 'Diagnosis' },
+      2: { key: 'Number_Of_Individuals', alias: 'Individuals' },
+      3: { key: 'Sample_Type', alias: 'Tissue' },
+      4: { key: 'Species' },
+      5: { key: 'Cohort_Type', alias: 'Cohort Type' },
+      6: { key: 'Study_Status', alias: 'Study Status' },
+      7: { key: 'Consortium', alias: 'Program' },
+      8: { key: 'Grant' }
     }
   }
 }
