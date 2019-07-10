@@ -11,32 +11,27 @@ const rgbIndex = 5
 
 const datasets: HomeExploreConfig = {
   homePageSynapseObject: [{
-    name: 'LinkedComponent',
+    name: 'QueryWrapperWithStackedBarChart',
     props: {
+      unitDescription,
+      rgbIndex,
+      facetAliases,
+      loadingScreen,
       link: 'Explore/Datasets',
-      text: 'Explore Datasets',
-      synapseConfig: {
-        name: 'QueryWrapperWithStackedBarChart',
-        props: {
-          unitDescription,
-          rgbIndex,
-          facetAliases,
-          loadingScreen,
-          facetName: 'diseaseFocus',
-          initQueryRequest: {
-            concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-            partMask:
-              SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS
-              | SynapseConstants.BUNDLE_MASK_QUERY_FACETS
-              | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
-            query: {
-              sql,
-              isConsistent: false,
-              limit: 25,
-              offset: 0,
-            },
-          }
-        }
+      linkText: 'Explore Datasets',
+      facetName: 'diseaseFocus',
+      initQueryRequest: {
+        concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
+        partMask:
+          SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS
+          | SynapseConstants.BUNDLE_MASK_QUERY_FACETS
+          | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
+        query: {
+          sql,
+          isConsistent: false,
+          limit: 25,
+          offset: 0,
+        },
       }
     }
   }],
@@ -44,12 +39,14 @@ const datasets: HomeExploreConfig = {
     name: 'QueryWrapperMenu',
     props: {
       rgbIndex,
-      loadingScreen,
       unitDescription,
-      name: 'Datasets',
+      stackedBarChartProps: {
+        loadingScreen,
+      },
       cardConfiguration: {
         type,
       },
+      name: 'Datasets',
       menuConfig: [
         {
           sql,

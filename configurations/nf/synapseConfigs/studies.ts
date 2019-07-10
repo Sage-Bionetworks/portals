@@ -39,31 +39,28 @@ export const studiesCardConfiguration = {
 
 const studies: HomeExploreConfig = {
   homePageSynapseObject: [{
-    name: 'LinkedComponent',
+    name: 'QueryWrapperWithStackedBarChart',
     props: {
+      facetAliases,
+      unitDescription,
+      rgbIndex,
+      stackedBarChartProps: {
+        loadingScreen,
+      },
       link: 'Explore/Studies',
-      text: 'Explore Studies',
-      synapseConfig: {
-        name: 'QueryWrapperWithStackedBarChart',
-        props: {
-          facetAliases,
-          unitDescription,
-          rgbIndex,
-          loadingScreen,
-          facetName: 'diseaseFocus',
-          initQueryRequest: {
-            concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-            partMask:
-                SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS
-                | SynapseConstants.BUNDLE_MASK_QUERY_FACETS
-                | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
-            query: {
-              sql,
-              isConsistent: false,
-              limit: 25,
-              offset: 0
-            }
-          }
+      linkText: 'Explore Studies',
+      facetName: 'diseaseFocus',
+      initQueryRequest: {
+        concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
+        partMask:
+            SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS
+            | SynapseConstants.BUNDLE_MASK_QUERY_FACETS
+            | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
+        query: {
+          sql,
+          isConsistent: false,
+          limit: 25,
+          offset: 0
         }
       }
     }
@@ -72,8 +69,10 @@ const studies: HomeExploreConfig = {
     name: 'QueryWrapperMenu',
     props: {
       rgbIndex,
-      loadingScreen,
       unitDescription,
+      stackedBarChartProps: {
+        loadingScreen,
+      },
       name: 'Studies',
       cardConfiguration: studiesCardConfiguration,
       menuConfig: [

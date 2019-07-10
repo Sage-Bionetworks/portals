@@ -1,38 +1,31 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { BaseRoute, SynapseConfigArray } from '../../../types/portal-config'
 import { buttonColors, facetAliases } from '../commonProps'
-import loadingScreen from '../../loadingScreen'
 import { publicationsCardConfiguration } from '../publications'
 import { studiesCardConfiguration } from '../studies'
 
 const studiesConfig: SynapseConfigArray = [
   {
-    name: 'LinkedComponent',
+    name: 'QueryWrapperWithStackedBarChart',
     props: {
+      facetAliases,
       link: '/Explore/Studies?menuIndex=3&facetValue=CTF',
-      text: 'Explore Studies',
-      synapseConfig: {
-        name: 'QueryWrapperWithStackedBarChart',
-        props: {
-          loadingScreen,
-          facetAliases,
-          unitDescription: 'Studies',
-          rgbIndex: 1,
-          facetName: 'diseaseFocus',
-          initQueryRequest: {
-            concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-            partMask:
-              SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS
-              | SynapseConstants.BUNDLE_MASK_QUERY_FACETS
-              | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
-            query: {
-              sql: "SELECT * FROM syn16787123 WHERE fundingAgency = 'CTF'",
-              isConsistent: false,
-              limit: 25,
-              offset: 0,
-            },
-          }
-        }
+      linkText: 'Explore Studies',
+      unitDescription: 'Studies',
+      rgbIndex: 1,
+      facetName: 'diseaseFocus',
+      initQueryRequest: {
+        concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
+        partMask:
+          SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS
+          | SynapseConstants.BUNDLE_MASK_QUERY_FACETS
+          | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
+        query: {
+          sql: "SELECT * FROM syn16787123 WHERE fundingAgency = 'CTF'",
+          isConsistent: false,
+          limit: 25,
+          offset: 0,
+        },
       }
     }
   },
@@ -48,32 +41,26 @@ const studiesConfig: SynapseConfigArray = [
 
 const publicationsConfig: SynapseConfigArray = [
   {
-    name: 'LinkedComponent',
+    name: 'QueryWrapperWithStackedBarChart',
     props: {
+      facetAliases,
       link: '/Explore/Publications?menuIndex=0&facetValue=CTF',
-      text: 'Explore Publications',
-      synapseConfig: {
-        name: 'QueryWrapperWithStackedBarChart',
-        props: {
-          loadingScreen,
-          facetAliases,
-          unitDescription: 'Publications',
-          rgbIndex: 0,
-          facetName: 'diseaseFocus',
-          initQueryRequest: {
-            concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-            partMask:
-              SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS
-              | SynapseConstants.BUNDLE_MASK_QUERY_FACETS
-              | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
-            query: {
-              sql: "SELECT * FROM syn16857542 WHERE fundingAgency = 'CTF'",
-              isConsistent: false,
-              limit: 25,
-              offset: 0,
-            },
-          }
-        }
+      linkText: 'Explore Publications',
+      unitDescription: 'Publications',
+      rgbIndex: 0,
+      facetName: 'diseaseFocus',
+      initQueryRequest: {
+        concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
+        partMask:
+          SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS
+          | SynapseConstants.BUNDLE_MASK_QUERY_FACETS
+          | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
+        query: {
+          sql: "SELECT * FROM syn16857542 WHERE fundingAgency = 'CTF'",
+          isConsistent: false,
+          limit: 25,
+          offset: 0,
+        },
       }
     }
   },
@@ -89,32 +76,26 @@ const publicationsConfig: SynapseConfigArray = [
 
 const datasetConfig: SynapseConfigArray = [
   {
-    name: 'LinkedComponent',
+    name: 'QueryWrapperWithStackedBarChart',
     props: {
+      facetAliases,
       link: '/Explore/Datasets?menuIndex=2&facetValue=CTF',
-      text: 'Explore Datasets',
-      synapseConfig: {
-        name: 'QueryWrapperWithStackedBarChart',
-        props: {
-          loadingScreen,
-          facetAliases,
-          unitDescription: 'Studies',
-          rgbIndex: 5,
-          facetName: 'diseaseFocus',
-          initQueryRequest: {
-            concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-            partMask:
-              SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS
-              | SynapseConstants.BUNDLE_MASK_QUERY_FACETS
-              | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
-            query: {
-              sql: "SELECT * FROM syn16859580 WHERE fundingAgency = 'CTF'",
-              isConsistent: false,
-              limit: 25,
-              offset: 0,
-            },
-          }
-        }
+      linkText: 'Explore Datasets',
+      unitDescription: 'Studies',
+      rgbIndex: 5,
+      facetName: 'diseaseFocus',
+      initQueryRequest: {
+        concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
+        partMask:
+          SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS
+          | SynapseConstants.BUNDLE_MASK_QUERY_FACETS
+          | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
+        query: {
+          sql: "SELECT * FROM syn16859580 WHERE fundingAgency = 'CTF'",
+          isConsistent: false,
+          limit: 25,
+          offset: 0,
+        },
       }
     }
   },
@@ -130,32 +111,26 @@ const datasetConfig: SynapseConfigArray = [
 
 const filesConfig: SynapseConfigArray = [
   {
-    name: 'LinkedComponent',
+    name: 'QueryWrapperWithStackedBarChart',
     props: {
+      facetAliases,
       link: '/Explore/Files?menuIndex=4&facetValue=CTF',
-      text: 'Explore Files',
-      synapseConfig: {
-        name: 'QueryWrapperWithStackedBarChart',
-        props: {
-          loadingScreen,
-          facetAliases,
-          unitDescription: 'Files',
-          rgbIndex: 8,
-          facetName: 'assay',
-          initQueryRequest: {
-            concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-            partMask:
-              SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS
-              | SynapseConstants.BUNDLE_MASK_QUERY_FACETS
-              | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
-            query: {
-              sql: "SELECT * FROM syn16858331 WHERE fundingAgency = 'CTF'",
-              isConsistent: false,
-              limit: 25,
-              offset: 0,
-            },
-          }
-        }
+      linkText: 'Explore Files',
+      unitDescription: 'Files',
+      rgbIndex: 8,
+      facetName: 'assay',
+      initQueryRequest: {
+        concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
+        partMask:
+          SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS
+          | SynapseConstants.BUNDLE_MASK_QUERY_FACETS
+          | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
+        query: {
+          sql: "SELECT * FROM syn16858331 WHERE fundingAgency = 'CTF'",
+          isConsistent: false,
+          limit: 25,
+          offset: 0,
+        },
       }
     }
   }]

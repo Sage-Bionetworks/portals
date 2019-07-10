@@ -31,43 +31,39 @@ export const publicationsCardConfiguration = {
 
 const publications: HomeExploreConfig = {
   homePageSynapseObject: [{
-    name: 'LinkedComponent',
+    name: 'QueryWrapperWithStackedBarChart',
     props: {
+      unitDescription,
+      rgbIndex,
       link: 'Explore/Publications',
-      text: 'Explore Publications',
-      synapseConfig: {
-        name: 'QueryWrapperWithStackedBarChart',
-        props: {
-          unitDescription,
-          rgbIndex,
-          loadingScreen,
-          initQueryRequest: {
-            concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-            partMask:
-                SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS
-                | SynapseConstants.BUNDLE_MASK_QUERY_FACETS
-                | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
-            query: {
-              sql,
-              isConsistent: false,
-              limit: 25,
-              offset: 0,
-            },
-          },
-          facetName: 'diseaseFocus',
-          facetAliases: {
-            diseaseFocus: 'Disease Focus',
-          },
-        }
-      }
+      linkText: 'Explore Publications',
+      initQueryRequest: {
+        concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
+        partMask:
+            SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS
+            | SynapseConstants.BUNDLE_MASK_QUERY_FACETS
+            | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
+        query: {
+          sql,
+          isConsistent: false,
+          limit: 25,
+          offset: 0,
+        },
+      },
+      facetName: 'diseaseFocus',
+      facetAliases: {
+        diseaseFocus: 'Disease Focus',
+      },
     }
   }],
   explorePageSynapseObject: {
     name: 'QueryWrapperMenu',
     props: {
       rgbIndex,
-      loadingScreen,
       unitDescription,
+      stackedBarChartProps: {
+        loadingScreen,
+      },
       name: 'Publications',
       cardConfiguration: publicationsCardConfiguration,
       menuConfig: [

@@ -11,44 +11,41 @@ const synapseId = 'syn16858331'
 
 const files: HomeExploreConfig = {
   homePageSynapseObject: [{
-    name: 'LinkedComponent',
+    name: 'QueryWrapperWithStackedBarChart',
     props: {
+      rgbIndex,
+      unitDescription,
+      loadingScreen,
       link: 'Explore/Files',
-      text: 'Explore Files',
-      synapseConfig: {
-        name: 'QueryWrapperWithStackedBarChart',
-        props: {
-          rgbIndex,
-          unitDescription,
-          loadingScreen,
-          initQueryRequest: {
-            concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-            partMask:
-              SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS
-              | SynapseConstants.BUNDLE_MASK_QUERY_FACETS
-              | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
-            query: {
-              isConsistent: false,
-              limit: 25,
-              offset: 0,
-              sql: "SELECT * FROM syn16858331 WHERE resourceType = 'experimentalData'",
-            }
-          },
-          facetName: 'assay',
-          facetAliases: {
-            assay: 'Assay',
-          },
+      linkText: 'Explore Files',
+      initQueryRequest: {
+        concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
+        partMask:
+          SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS
+          | SynapseConstants.BUNDLE_MASK_QUERY_FACETS
+          | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
+        query: {
+          isConsistent: false,
+          limit: 25,
+          offset: 0,
+          sql: "SELECT * FROM syn16858331 WHERE resourceType = 'experimentalData'",
         }
-      }
+      },
+      facetName: 'assay',
+      facetAliases: {
+        assay: 'Assay',
+      },
     }
   }],
   explorePageSynapseObject: {
     name: 'QueryWrapperMenu',
     props: {
       rgbIndex,
-      loadingScreen,
       unitDescription,
       name: 'Files',
+      stackedBarChartProps: {
+        loadingScreen,
+      },
       tableConfiguration: {
         title,
         visibleColumnCount,
