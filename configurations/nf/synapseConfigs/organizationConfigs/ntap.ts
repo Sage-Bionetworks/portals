@@ -1,5 +1,9 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { BaseRoute } from '../../../types/portal-config'
+import { buttonColors } from '../commonProps'
+import { generateOrgConfig } from './generateConfig'
+
+const org = 'NTAP'
 
 export const ntap: BaseRoute = {
   name: 'NTAP',
@@ -13,31 +17,27 @@ export const ntap: BaseRoute = {
         sql: "SELECT * FROM syn16858699 WHERE abbreviation = 'NTAP'",
         type: SynapseConstants.FUNDER
       },
-      title: 'The Neurofibromatosis Therapeutic Acceleration Program'
+      title: "Children's Tumor Foundation"
     },
     {
-      name: 'CardContainerLogic',
+      name: 'StatefulButtonControlWrapper',
       props: {
-        sql: "SELECT * FROM syn16787123 WHERE fundingAgency = 'NTAP'",
-        type: SynapseConstants.STUDY
-      },
-      title: 'Funded Studies'
-    },
-    {
-      name: 'CardContainerLogic',
-      props: {
-        sql: "SELECT * FROM syn16857542 WHERE fundingAgency = 'NTAP'",
-        type: SynapseConstants.PUBLICATION
-      },
-      title: 'NEW PUBLICATIONS'
-    },
-    {
-      name: 'CardContainerLogic',
-      props: {
-        sql: "SELECT * FROM syn16859580 WHERE fundingAgency = 'NTAP'",
-        type: SynapseConstants.DATASET
-      },
-      title: 'DATASETS'
+        ...buttonColors,
+        configs: [
+          {
+            name: 'Datasets', synapseConfigArray: generateOrgConfig(org, 'Dataset')
+          },
+          {
+            name: 'Files', synapseConfigArray: generateOrgConfig(org, 'Files')
+          },
+          {
+            name: 'Studies', synapseConfigArray: generateOrgConfig(org, 'Studies')
+          },
+          {
+            name: 'Publications', synapseConfigArray: generateOrgConfig(org, 'Publications')
+          }
+        ]
+      }
     },
   ]
 }

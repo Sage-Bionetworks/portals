@@ -1,9 +1,12 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { BaseRoute } from '../../../types/portal-config'
+import { generateOrgConfig } from './generateConfig'
+
+const org = 'DHART-SPORE'
 
 export const dhartSpore: BaseRoute = {
-  name: 'DHART-SPORE',
-  to: '/Organizations/DHART-SPORE',
+  name: org,
+  to: `/Organizations/${org}`,
   isNested: false,
   synapseConfigArray: [
     {
@@ -13,15 +16,21 @@ export const dhartSpore: BaseRoute = {
         sql: "SELECT * FROM syn16858699 WHERE abbreviation = 'DHART SPORE'",
         type: SynapseConstants.FUNDER
       },
-      title: 'The Developmental And Hyperactive RAS Tumor SPORE'
+      title: 'THE NEUROFIBROMATOSIS THERAPEUTIC ACCELERATION PROGRAM'
     },
     {
-      name: 'CardContainerLogic',
+      name: 'StatefulButtonControlWrapper',
       props: {
-        sql: "SELECT * FROM syn16787123 WHERE fundingAgency = 'NIH-NCI'",
-        type: SynapseConstants.STUDY
-      },
-      title: 'Funded Studies'
+        colors: ['#58A058', '#407BA0'],
+        configs: [
+          {
+            name: 'Files', synapseConfigArray: generateOrgConfig('NIH-NCI', 'Files')
+          },
+          {
+            name: 'Studies', synapseConfigArray: generateOrgConfig('NIH-NCI', 'Studies')
+          }
+        ]
+      }
     },
   ]
 }
