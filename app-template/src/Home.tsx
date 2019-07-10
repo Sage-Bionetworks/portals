@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Header } from './Header'
-import { Link, withRouter, RouteComponentProps } from 'react-router-dom'
-import { getRouteFromParams, generateSynapseObject } from './RouteResolver'
+import { withRouter, RouteComponentProps } from 'react-router-dom'
+import RouteResolver from './RouteResolver'
 
 class Home extends React.Component<RouteComponentProps, {}> {
 
@@ -11,13 +11,11 @@ class Home extends React.Component<RouteComponentProps, {}> {
 
   render () {
     const { location } = this.props
-    const pathname = location.pathname
-    const route = getRouteFromParams(pathname)
-    const { synapseConfigArray } = route
     return (
       <div>
         <Header />
-        <div className="container">
+        <RouteResolver/>
+        {/* <div className="container">
           <div className="row">
             <div className="col-xs-12">
               {
@@ -37,7 +35,7 @@ class Home extends React.Component<RouteComponentProps, {}> {
               }
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     )
   }

@@ -8,7 +8,6 @@ import StatefulButtonControlWrapper from './portal-components/StatefulButtonCont
 import RouteButtonControlWrapper from './portal-components/RouteButtonControlWrapper'
 import QueryWrapperWithStackedBarChart from './portal-components/QueryWrapperWithStackedBarChart'
 import Layout from './portal-components/Layout'
-import { LinkedComponent } from './portal-components/LinkedComponent'
 
 // https://basarat.gitbooks.io/typescript/docs/types/never.html
 function fail(message: string): never { throw new Error(message) }
@@ -42,9 +41,6 @@ export const generateSynapseObjectHelper = (synapseConfig: SynapseConfig) => {
   }
   if (synapseConfig.name === 'QueryWrapperWithStackedBarChart') {
     return <QueryWrapperWithStackedBarChart {...synapseConfig.props} />
-  }
-  if (synapseConfig.name === 'LinkedComponent') {
-    return <LinkedComponent {...synapseConfig.props} />
   }
   const SynapseComponent = (SynapseComponents as any)[synapseConfig.name]
   if (!SynapseComponent) {

@@ -9,7 +9,6 @@ import { QueryBundleRequest } from 'synapse-react-client/dist/utils/jsonResponse
 import { QueryResultBundle } from 'synapse-react-client/dist/utils/jsonResponses/Table/QueryResultBundle'
 import { StatefulButtonControlProps } from '../portal-components/StatefulButtonControlWrapper'
 import { RouteButtonControlProps } from '../portal-components/RouteButtonControlWrapper'
-import { LinkedComponentProps } from '../portal-components/LinkedComponent'
 
 // For styling the header on the home page -- the main title and the summary text
 export type HomePageHeaderConfig = {
@@ -30,16 +29,12 @@ type QueryWrapper = {
 
 type QueryWrapperWithStackedBarChart = {
   name: 'QueryWrapperWithStackedBarChart',
-  props: QueryWrapperProps
+  props: QueryWrapperProps & Partial<StackedBarChartProps>
 }
-
-// TODO: correct the props of StackedBarChart
-// Below we make all the props optional using Partial
-export type OptionalStackedBarChartProps = Partial<StackedBarChartProps>
 
 declare type StackedBarChart = {
   name: 'StackedBarChart',
-  props: OptionalStackedBarChartProps
+  props: StackedBarChartProps
 }
 type QueryWrapperMenu = {
   name: 'QueryWrapperMenu',
@@ -65,11 +60,6 @@ type RouteButtonControl = {
   props: RouteButtonControlProps
 }
 
-type LinkedComponent = {
-  name: 'LinkedComponent',
-  props: LinkedComponentProps
-}
-
 type Metatdata = {
   title?: string
   link?: string
@@ -86,7 +76,6 @@ export type SynapseConfig = (
   | QueryWrapperMenu
   | UserCard 
   | Markdown 
-  | LinkedComponent 
 ) & Metatdata
 export type SynapseConfigArray = SynapseConfig []
 
