@@ -3,6 +3,7 @@ import { SynapseConstants } from 'synapse-react-client'
 import { projects, studies, data, people, programs, publications } from './synapseConfigs'
 import exploreButtonWrapperProps from './exploreButtonWrapperProps'
 import { ampAd, move2Ad, modelAd, resilienceAd } from './synapseConfigs/programs/'
+import { studyCardProps } from './synapseConfigs/studies'
 // @ts-ignore
 import iconAgoraSvg from './style/icon-agora.svg'
 
@@ -132,24 +133,7 @@ const routes: GenericRoute [] = [
           {
             name: 'CardContainerLogic',
             title: 'STUDIES',
-            props: {
-              sql: 'SELECT Study_Name, Data_Contributor, Access_Type, Study_Description, Model_System, Organism, Number_of_Individuals, Consortium FROM syn17083367',
-              type: SynapseConstants.GENERIC_CARD,
-              genericCardSchema: {
-                type: SynapseConstants.STUDY,
-                title: 'Study_Name',
-                subTitle: 'Data_Contributor',
-                icon: 'Access_Type',
-                description: 'Study_Description',
-                secondaryLabels: {
-                  0: { key: 'Model_System', alias: 'MODEL' },
-                  1: { key: 'Organism', alias: 'Organism' },
-                  2: { key: 'Number_Of_Individuals', alias: 'INDIVIDUALS' },
-                  3: { key: 'Consortium', alias: 'PROGRAM' },
-                  4: { key: 'Grant', alias: 'GRANT' },
-                }
-              }
-            }
+            props: studyCardProps
           },
         ],
         synapseConfigArray: [
