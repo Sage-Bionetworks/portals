@@ -40,7 +40,7 @@ const datasets: HomeExploreConfig = {
     props: {
       rgbIndex,
       unitDescription,
-      stackedBarChartProps: {
+      stackedBarChartConfiguration: {
         loadingScreen,
       },
       cardConfiguration: {

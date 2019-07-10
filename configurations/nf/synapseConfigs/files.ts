@@ -43,7 +43,7 @@ const files: HomeExploreConfig = {
       rgbIndex,
       unitDescription,
       name: 'Files',
-      stackedBarChartProps: {
+      stackedBarChartConfiguration: {
         loadingScreen,
       },
       tableConfiguration: {

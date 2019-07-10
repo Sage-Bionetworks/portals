@@ -61,7 +61,7 @@ const publications: HomeExploreConfig = {
     props: {
       rgbIndex,
       unitDescription,
-      stackedBarChartProps: {
+      stackedBarChartConfiguration: {
         loadingScreen,
       },
       name: 'Publications',

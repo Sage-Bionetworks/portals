@@ -44,7 +44,7 @@ const studies: HomeExploreConfig = {
       facetAliases,
       unitDescription,
       rgbIndex,
-      stackedBarChartProps: {
+      stackedBarChartConfiguration: {
         loadingScreen,
       },
       link: 'Explore/Studies',
@@ -70,7 +70,7 @@ const studies: HomeExploreConfig = {
     props: {
       rgbIndex,
       unitDescription,
-      stackedBarChartProps: {
+      stackedBarChartConfiguration: {
         loadingScreen,
       },
       name: 'Studies',
