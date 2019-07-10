@@ -9,6 +9,7 @@ const BetaBanner:React.FunctionComponent<RouteComponentProps> = ({ location }) =
       background: betaBannerConfig.backgroundColor
     }
     return (
+      // @ts-ignore
       <div id="banner" style={style}>
         <span id="betaSpan"> BETA </span>
         The updated {betaBannerConfig.name} is currently under development.
