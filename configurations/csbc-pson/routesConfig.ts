@@ -1,10 +1,10 @@
 import { GenericRoute } from '../types/portal-config'
-import { publications, files, datasets, grants, studies } from './synapseConfigurations'
+import { publications, files, datasets, grants, studies } from './synapseConfigs'
 import { SynapseConstants } from 'synapse-react-client'
-import { studiesSql } from './synapseConfigurations/studies'
-import { publicationSql } from './synapseConfigurations/publications'
-import { datasetsSql } from './synapseConfigurations/datasets'
-import RouteButtonControlWrapperProps from './RouteButtonControlWrapperProps'
+import { studiesSql } from './synapseConfigs/studies'
+import { publicationSql } from './synapseConfigs/publications'
+import { datasetsSql } from './synapseConfigs/datasets'
+import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
 import loadingScreen from './loadingScreen'
 
 const homeLimit = 3
@@ -80,9 +80,9 @@ const routes: GenericRoute [] = [
         isNested: false,
         synapseConfigArray: [
           {
-            ...RouteButtonControlWrapperProps,
+            ...routeButtonControlWrapperProps,
             props: {
-              ...RouteButtonControlWrapperProps.props,
+              ...routeButtonControlWrapperProps.props,
               synapseConfig: grants.explorePageSynapseObject
             }
           }
@@ -94,9 +94,9 @@ const routes: GenericRoute [] = [
         isNested: false,
         synapseConfigArray: [
           {
-            ...RouteButtonControlWrapperProps,
+            ...routeButtonControlWrapperProps,
             props: {
-              ...RouteButtonControlWrapperProps.props,
+              ...routeButtonControlWrapperProps.props,
               synapseConfig: publications.explorePageSynapseObject
             }
           }
@@ -108,9 +108,9 @@ const routes: GenericRoute [] = [
         isNested: false,
         synapseConfigArray: [
           {
-            ...RouteButtonControlWrapperProps,
+            ...routeButtonControlWrapperProps,
             props: {
-              ...RouteButtonControlWrapperProps.props,
+              ...routeButtonControlWrapperProps.props,
               synapseConfig: studies.explorePageSynapseObject
             }
           }
@@ -122,9 +122,9 @@ const routes: GenericRoute [] = [
         isNested: false,
         synapseConfigArray: [
           {
-            ...RouteButtonControlWrapperProps,
+            ...routeButtonControlWrapperProps,
             props: {
-              ...RouteButtonControlWrapperProps.props,
+              ...routeButtonControlWrapperProps.props,
               synapseConfig: datasets.explorePageSynapseObject
             }
           }
@@ -136,9 +136,9 @@ const routes: GenericRoute [] = [
         isNested: false,
         synapseConfigArray: [
           {
-            ...RouteButtonControlWrapperProps,
+            ...routeButtonControlWrapperProps,
             props: {
-              ...RouteButtonControlWrapperProps.props,
+              ...routeButtonControlWrapperProps.props,
               synapseConfig: files.explorePageSynapseObject
             }
           }

@@ -14,6 +14,8 @@ export const datasets: HomeExploreConfig = {
       loadingScreen,
       rgbIndex: 0,
       facetName: 'tumorType',
+      link: 'Explore/Datasets',
+      linkText: 'Explore Datasets',
       initQueryRequest : {
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
         partMask: SynapseConstants.BUNDLE_MASK_QUERY_FACETS

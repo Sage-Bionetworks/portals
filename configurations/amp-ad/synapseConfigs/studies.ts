@@ -41,6 +41,8 @@ const studies: HomeExploreConfig = {
       rgbIndex,
       loadingScreen,
       facetName,
+      link: 'Explore/Studies',
+      linkText: 'Explore Studies',
       initQueryRequest : {
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
         partMask: SynapseConstants.BUNDLE_MASK_QUERY_FACETS

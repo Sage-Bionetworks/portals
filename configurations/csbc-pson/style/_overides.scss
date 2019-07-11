@@ -7,6 +7,12 @@ $primary-action-color: #47337D;
   background-color: $primary-text-color;
 }
 
+.SRC-chart-link {
+  a {
+    background: $primary-action-color !important;
+  }
+}
+
 // Since scss breaks if a file is missing in a local url link these functinons must get manually overwitten
 @function getHeader($path) {
   @return url($path + "/dna_header.svg");
