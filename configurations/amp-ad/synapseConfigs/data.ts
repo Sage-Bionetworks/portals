@@ -34,8 +34,10 @@ const data: HomeExploreConfig = {
     name: 'QueryWrapperMenu',
     props: {
       rgbIndex,
-      loadingScreen,
       unitDescription,
+      stackedBarChartConfiguration: {
+        loadingScreen,
+      },
       isConsistent: true,
       name: 'Data',
       tableConfiguration: {

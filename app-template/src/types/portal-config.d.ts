@@ -81,7 +81,7 @@ export type SynapseConfigArray = SynapseConfig []
 
 // utility for inside the explore page
 export type HomeExploreConfig = {
-  homePageSynapseObject: SynapseConfigArray
+  homePageSynapseObject: SynapseConfig
   explorePageSynapseObject: SynapseConfig
 }
 

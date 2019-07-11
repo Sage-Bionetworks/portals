@@ -10,7 +10,7 @@ const visibleColumnCount = 7
 const synapseId = 'syn16858331'
 
 const files: HomeExploreConfig = {
-  homePageSynapseObject: [{
+  homePageSynapseObject: {
     name: 'QueryWrapperWithStackedBarChart',
     props: {
       rgbIndex,
@@ -36,7 +36,7 @@ const files: HomeExploreConfig = {
         assay: 'Assay',
       },
     }
-  }],
+  },
   explorePageSynapseObject: {
     name: 'QueryWrapperMenu',
     props: {

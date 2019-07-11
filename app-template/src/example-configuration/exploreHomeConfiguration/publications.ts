@@ -7,7 +7,7 @@ const unitDescription = 'Publications'
 const rgbIndex = 0
 const facetName = 'Theme'
 export const publications: HomeExploreConfig = {
-  homePageSynapseObject: [{
+  homePageSynapseObject: {
     name: 'QueryWrapperWithStackedBarChart',
     props: {
       rgbIndex,
@@ -25,12 +25,14 @@ export const publications: HomeExploreConfig = {
         }
       },
     }
-  }],
+  },
   explorePageSynapseObject: {
     name: 'QueryWrapperMenu',
     props: {
-      loadingScreen,
       unitDescription,
+      stackedBarChartConfiguration: {
+        loadingScreen,
+      },
       name: 'Publications',
       cardConfiguration: {
         type: SynapseConstants.CSBC_PUBLICATION,

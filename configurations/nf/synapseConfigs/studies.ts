@@ -38,15 +38,13 @@ export const studiesCardConfiguration = {
 }
 
 const studies: HomeExploreConfig = {
-  homePageSynapseObject: [{
+  homePageSynapseObject: {
     name: 'QueryWrapperWithStackedBarChart',
     props: {
       facetAliases,
       unitDescription,
       rgbIndex,
-      stackedBarChartConfiguration: {
-        loadingScreen,
-      },
+      loadingScreen,
       link: 'Explore/Studies',
       linkText: 'Explore Studies',
       facetName: 'diseaseFocus',
@@ -64,7 +62,7 @@ const studies: HomeExploreConfig = {
         }
       }
     }
-  }],
+  },
   explorePageSynapseObject: {
     name: 'QueryWrapperMenu',
     props: {

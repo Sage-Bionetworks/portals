@@ -30,7 +30,7 @@ export const publicationsCardConfiguration = {
 }
 
 const publications: HomeExploreConfig = {
-  homePageSynapseObject: [{
+  homePageSynapseObject: {
     name: 'QueryWrapperWithStackedBarChart',
     props: {
       unitDescription,
@@ -55,7 +55,7 @@ const publications: HomeExploreConfig = {
         diseaseFocus: 'Disease Focus',
       },
     }
-  }],
+  },
   explorePageSynapseObject: {
     name: 'QueryWrapperMenu',
     props: {

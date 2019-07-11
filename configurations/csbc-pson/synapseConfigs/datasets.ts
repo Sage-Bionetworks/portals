@@ -34,11 +34,14 @@ export const datasets: HomeExploreConfig = {
     name: 'QueryWrapperMenu',
     props: {
       rgbIndex,
-      loadingScreen,
       unitDescription,
       cardConfiguration: {
         type: SynapseConstants.CSBC_DATASET,
       },
+      stackedBarChartConfiguration: {
+        loadingScreen
+      },
+      name: 'Datasets',
       menuConfig: [
         {
           sql,

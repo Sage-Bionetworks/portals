@@ -97,8 +97,8 @@ routes[HOME_INDEX] = {
       name: 'StatefulButtonControlWrapper',
       props: {
         configs: [
-          data.homePageSynapseObject[0].props,
-          publications.homePageSynapseObject[0].props
+          data.homePageSynapseObject.props,
+          publications.homePageSynapseObject.props
         ],
         colors: [
           'green',

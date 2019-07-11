@@ -31,8 +31,10 @@ const people: HomeExploreConfig = {
     name: 'QueryWrapperMenu',
     props: {
       rgbIndex,
-      loadingScreen,
       unitDescription,
+      stackedBarChartConfiguration: {
+        loadingScreen,
+      },
       name: 'People',
       isConsistent: true,
       cardConfiguration: {

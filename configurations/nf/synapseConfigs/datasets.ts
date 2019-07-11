@@ -10,7 +10,7 @@ const unitDescription = 'datasets'
 const rgbIndex = 5
 
 const datasets: HomeExploreConfig = {
-  homePageSynapseObject: [{
+  homePageSynapseObject: {
     name: 'QueryWrapperWithStackedBarChart',
     props: {
       unitDescription,
@@ -34,7 +34,7 @@ const datasets: HomeExploreConfig = {
         },
       }
     }
-  }],
+  },
   explorePageSynapseObject: {
     name: 'QueryWrapperMenu',
     props: {

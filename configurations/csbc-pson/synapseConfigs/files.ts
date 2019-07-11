@@ -51,12 +51,15 @@ export const files: HomeExploreConfig = {
     name: 'QueryWrapperMenu',
     props: {
       rgbIndex,
-      loadingScreen,
       unitDescription,
       tableConfiguration: {
         synapseId,
         title: 'Files',
       },
+      stackedBarChartConfiguration: {
+        loadingScreen
+      },
+      name: 'Files',
       menuConfig: [
         {
           sql,
