@@ -25,16 +25,16 @@ const routes: GenericRoute [] = [
           ...buttonColors,
           configs: [
             {
-              name: 'Datasets', synapseConfigArray: datasets.homePageSynapseObject
+              name: 'Datasets', synapseConfigArray: [datasets.homePageSynapseObject]
             },
             {
-              name: 'Files', synapseConfigArray: files.homePageSynapseObject
+              name: 'Files', synapseConfigArray: [files.homePageSynapseObject]
             },
             {
-              name: 'Studies', synapseConfigArray: studies.homePageSynapseObject
+              name: 'Studies', synapseConfigArray: [studies.homePageSynapseObject]
             },
             {
-              name: 'Publications', synapseConfigArray: publications.homePageSynapseObject
+              name: 'Publications', synapseConfigArray: [publications.homePageSynapseObject]
             }
           ]
         }

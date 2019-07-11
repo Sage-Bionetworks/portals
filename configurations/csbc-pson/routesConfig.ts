@@ -27,11 +27,11 @@ const routes: GenericRoute [] = [
             '#5E697D',
           ],
           configs: [
-            { name: 'Grants', synapseConfig: grants.homePageSynapseObject },
-            { name: 'Publications', synapseConfig: publications.homePageSynapseObject },
-            { name: 'Studies', synapseConfig: studies.homePageSynapseObject },
-            { name: 'Datasets', synapseConfig: datasets.homePageSynapseObject },
-            { name: 'Files', synapseConfig: files.homePageSynapseObject },
+            { name: 'Grants', synapseConfigArray: [grants.homePageSynapseObject] },
+            { name: 'Publications', synapseConfigArray: [publications.homePageSynapseObject] },
+            { name: 'Studies', synapseConfigArray: [studies.homePageSynapseObject] },
+            { name: 'Datasets', synapseConfigArray: [datasets.homePageSynapseObject] },
+            { name: 'Files', synapseConfigArray: [files.homePageSynapseObject] },
           ]
         }
       },

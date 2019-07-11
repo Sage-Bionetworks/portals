@@ -18,10 +18,10 @@ const routes: GenericRoute [] = [
         title: 'EXPLORE CONTENT',
         props: {
           configs: [
-            { name: 'Projects', synapseConfig: projects.homePageSynapseObject },
-            { name: 'Studies', synapseConfig: studies.homePageSynapseObject },
-            { name: 'Data', synapseConfig: data.homePageSynapseObject },
-            { name: 'People', synapseConfig: people.homePageSynapseObject }
+            { name: 'Projects', synapseConfig: [projects.homePageSynapseObject] },
+            { name: 'Studies', synapseConfig: [studies.homePageSynapseObject] },
+            { name: 'Data', synapseConfig: [data.homePageSynapseObject] },
+            { name: 'People', synapseConfig: [people.homePageSynapseObject] }
           ],
           colors: [
             '#E5AE4C',
