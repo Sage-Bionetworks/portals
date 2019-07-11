@@ -16,7 +16,7 @@ export const dhartSpore: BaseRoute = {
         sql: "SELECT * FROM syn16858699 WHERE abbreviation = 'DHART SPORE'",
         type: SynapseConstants.FUNDER
       },
-      title: 'THE NEUROFIBROMATOSIS THERAPEUTIC ACCELERATION PROGRAM'
+      title: 'THE DEVELOPMENTAL AND HYPERACTIVE RAS TUMOR SPORE'
     },
     {
       name: 'StatefulButtonControlWrapper',

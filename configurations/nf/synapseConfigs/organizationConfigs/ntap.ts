@@ -17,7 +17,7 @@ export const ntap: BaseRoute = {
         sql: "SELECT * FROM syn16858699 WHERE abbreviation = 'NTAP'",
         type: SynapseConstants.FUNDER
       },
-      title: "Children's Tumor Foundation"
+      title: 'THE NEUROFIBROMATOSIS THERAPEUTIC ACCELERATION PROGRAM'
     },
     {
       name: 'StatefulButtonControlWrapper',

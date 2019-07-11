@@ -38,7 +38,9 @@ export const generateOrgConfig: ReturnSynapseConfigArray = (org, type) => {
         name: 'CardContainerLogic',
         props: {
           sql: `SELECT * FROM syn16787123 WHERE fundingAgency = '${org}'`,
-          ...studiesCardConfiguration
+          ...studiesCardConfiguration,
+          unitDescription: 'Studies',
+          filter: 'diseaseFocus',
         },
         title: 'Funded Studies'
       }
@@ -74,7 +76,9 @@ export const generateOrgConfig: ReturnSynapseConfigArray = (org, type) => {
         name: 'CardContainerLogic',
         props: {
           sql: `SELECT * FROM syn16859580 WHERE fundingAgency = '${org}'`,
-          type: SynapseConstants.DATASET
+          type: SynapseConstants.DATASET,
+          unitDescription: 'Datasets',
+          filter: 'diseaseFocus',
         },
         title: 'DATASETS'
       }
@@ -137,7 +141,9 @@ export const generateOrgConfig: ReturnSynapseConfigArray = (org, type) => {
       name: 'CardContainerLogic',
       props: {
         sql: `SELECT * FROM syn16857542 WHERE fundingAgency = '${org}'`,
-        ...publicationsCardConfiguration
+        ...publicationsCardConfiguration,
+        unitDescription: 'Publications',
+        filter: 'diseaseFocus',
       },
       title: 'NEW PUBLICATIONS'
     }
