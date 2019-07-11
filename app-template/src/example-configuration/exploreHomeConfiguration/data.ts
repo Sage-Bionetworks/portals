@@ -4,14 +4,13 @@ import loadingScreen from '../loadingScreen'
 
 const sql = 'SELECT * FROM syn18488466'
 const unitDescription = 'Datasets'
-const synapseId = 'syn18488466'
 
 const rgbIndex = 0
 const facetName = 'tumorType'
 
 export const data: HomeExploreConfig = {
   homePageSynapseObject: {
-    name: 'QueryWrapper',
+    name: 'QueryWrapperWithStackedBarChart',
     props: {
       rgbIndex,
       facetName,
@@ -73,10 +72,6 @@ export const data: HomeExploreConfig = {
           }
         }
       ],
-      facetName: 'tumorType',
-      facetAliases: {
-        tumorType: 'Disease Type',
-      },
     },
   }
 }

@@ -7,8 +7,8 @@ import { QueryWrapperMenuProps } from 'synapse-react-client/dist/containers/Quer
 import { QueryWrapperProps } from 'synapse-react-client/dist/containers/QueryWrapper'
 import { QueryBundleRequest } from 'synapse-react-client/dist/utils/jsonResponses/Table/QueryBundleRequest'
 import { QueryResultBundle } from 'synapse-react-client/dist/utils/jsonResponses/Table/QueryResultBundle'
-import { HomeButtonControlProps } from '../portal-components/HomeButtonControlWrapper'
-import { ExploreButtonControlProps } from '../portal-components/ExploreButtonControlWrapper'
+import { StatefulButtonControlProps } from '../portal-components/StatefulButtonControlWrapper'
+import { RouteButtonControlProps } from '../portal-components/RouteButtonControlWrapper'
 
 // For styling the header on the home page -- the main title and the summary text
 export type HomePageHeaderConfig = {
@@ -29,16 +29,12 @@ type QueryWrapper = {
 
 type QueryWrapperWithStackedBarChart = {
   name: 'QueryWrapperWithStackedBarChart',
-  props: QueryWrapperProps
+  props: QueryWrapperProps & Partial<StackedBarChartProps>
 }
-
-// TODO: correct the props of StackedBarChart
-// Below we make all the props optional using Partial
-export type OptionalStackedBarChartProps = Partial<StackedBarChartProps>
 
 declare type StackedBarChart = {
   name: 'StackedBarChart',
-  props: OptionalStackedBarChartProps
+  props: StackedBarChartProps
 }
 type QueryWrapperMenu = {
   name: 'QueryWrapperMenu',
@@ -54,14 +50,14 @@ type Markdown = {
   props: MarkdownProps
 }
 
-type HomeButtonControl = {
-  name: 'HomeButtonControlWrapper',
-  props: HomeButtonControlProps
+type StatefulButtonControl = {
+  name: 'StatefulButtonControlWrapper',
+  props: StatefulButtonControlProps
 }
 
-type ExploreButtonControl = {
-  name: 'ExploreButtonControlWrapper',
-  props: ExploreButtonControlProps
+type RouteButtonControl = {
+  name: 'RouteButtonControlWrapper',
+  props: RouteButtonControlProps
 }
 
 type Metatdata = {
@@ -71,8 +67,8 @@ type Metatdata = {
 }
 
 export type SynapseConfig = (
-    HomeButtonControl
-  | ExploreButtonControl
+    StatefulButtonControl
+  | RouteButtonControl
   | CardContainerLogic
   | StackedBarChart
   | QueryWrapper
@@ -99,7 +95,6 @@ export interface BaseRoute {
   link?: string
   icon?: string
   synapseConfigArray: SynapseConfigArray
-  routes?: Array<Route>
 }
 
 export interface NestedRoute extends BaseRoute {

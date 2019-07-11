@@ -34,11 +34,14 @@ export const publications: HomeExploreConfig = {
     name: 'QueryWrapperMenu',
     props: {
       rgbIndex,
-      loadingScreen,
       unitDescription,
       cardConfiguration: {
         type: SynapseConstants.CSBC_PUBLICATION,
       },
+      stackedBarChartConfiguration: {
+        loadingScreen
+      },
+      name: 'Publications',
       menuConfig: [
         {
           sql,

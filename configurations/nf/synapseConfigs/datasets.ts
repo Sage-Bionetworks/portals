@@ -1,18 +1,13 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from '../../types/portal-config'
 import loadingScreen from '../loadingScreen'
+import { facetAliases } from './commonProps'
 
 const sql = 'SELECT * FROM syn16859580'
 export const datasetsSql = sql
 const type = 'dataset'
 const unitDescription = 'datasets'
 const rgbIndex = 5
-
-const facetAliases = {
-  diseaseFocus: 'Disease Focus',
-  tumorType: 'Tumor Type',
-  fundingAgency: 'Funding Agency',
-}
 
 const datasets: HomeExploreConfig = {
   homePageSynapseObject: {
@@ -22,6 +17,8 @@ const datasets: HomeExploreConfig = {
       rgbIndex,
       facetAliases,
       loadingScreen,
+      link: 'Explore/Datasets',
+      linkText: 'Explore Datasets',
       facetName: 'diseaseFocus',
       initQueryRequest: {
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
@@ -42,12 +39,14 @@ const datasets: HomeExploreConfig = {
     name: 'QueryWrapperMenu',
     props: {
       rgbIndex,
-      loadingScreen,
       unitDescription,
-      name: 'Datasets',
+      stackedBarChartConfiguration: {
+        loadingScreen,
+      },
       cardConfiguration: {
         type,
       },
+      name: 'Datasets',
       menuConfig: [
         {
           sql,

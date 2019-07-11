@@ -14,14 +14,14 @@ const routes: GenericRoute [] = [
     isNested: false,
     synapseConfigArray: [
       {
-        name: 'HomeButtonControlWrapper',
+        name: 'StatefulButtonControlWrapper',
         title: 'EXPLORE CONTENT',
         props: {
           configs: [
-            { name: 'Projects', synapseConfig: projects.homePageSynapseObject },
-            { name: 'Studies', synapseConfig: studies.homePageSynapseObject },
-            { name: 'Data', synapseConfig: data.homePageSynapseObject },
-            { name: 'People', synapseConfig: people.homePageSynapseObject }
+            { name: 'Projects', synapseConfigArray: [projects.homePageSynapseObject] },
+            { name: 'Studies', synapseConfigArray: [studies.homePageSynapseObject] },
+            { name: 'Data', synapseConfigArray: [data.homePageSynapseObject] },
+            { name: 'People', synapseConfigArray: [people.homePageSynapseObject] }
           ],
           colors: [
             '#E5AE4C',

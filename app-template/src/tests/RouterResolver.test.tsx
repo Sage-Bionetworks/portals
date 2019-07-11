@@ -5,7 +5,7 @@ import routesConfig,
 import { NestedRoute, SynapseConfig } from '../types/portal-config'
 import CardContainerLogic from 'synapse-react-client/dist/containers/CardContainerLogic'
 import { mount } from 'enzyme'
-import HomeButtonControlWrapper from '../portal-components/HomeButtonControlWrapper'
+import StatefulButtonControlWrapper from '../portal-components/StatefulButtonControlWrapper'
 import { MemoryRouter } from 'react-router'
 
 describe('getRouteFromParams works', () => {
@@ -21,12 +21,13 @@ describe('getRouteFromParams works', () => {
 
   it('gets a Nested Route correctly', () => {
     const orgRoutes = routesConfig[ORGANIZATION_INDEX] as NestedRoute
-    expect(getRouteFromParams('/Organizations/Organization-CTF')).toEqual(orgRoutes.routes[0])
+    expect(getRouteFromParams('/Organizations/Content')).toEqual(orgRoutes.routes[0])
   })
 
   it('gets a Double Nested Route correctly', () => {
     const orgRoutes = routesConfig[ORGANIZATION_INDEX] as NestedRoute
-    expect(getRouteFromParams('/Organizations/Organization-CTF/CTF')).toEqual(orgRoutes.routes[0].routes![0])
+    const firstRoute = orgRoutes.routes[0] as NestedRoute
+    expect(getRouteFromParams('/Organizations/Content/Subcontent')).toEqual(firstRoute.routes[0])
   })
 
 })
@@ -47,25 +48,25 @@ describe('RouteResolver works', () => {
 
   it('renders portal specific components correctly', () => {
     const mockedSynObject: SynapseConfig = {
-      name: 'HomeButtonControlWrapper',
+      name: 'StatefulButtonControlWrapper',
       props: {
         configs: [
           {
             name: 'mock2',
-            synapseConfig: {
+            synapseConfigArray: [{
               name: 'CardContainerLogic',
               props: {
                 sql: '',
                 type: ''
               }
-            }
+            }]
           }
         ],
         colors: ['red']
       }
     }
     const synObj = mount(<MemoryRouter>{generateSynapseObjectHelper(mockedSynObject)}</MemoryRouter>)
-    expect(synObj.find(HomeButtonControlWrapper)).toHaveLength(1)
+    expect(synObj.find(StatefulButtonControlWrapper)).toHaveLength(1)
   })
 
 })

@@ -1,5 +1,6 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from '../../types/portal-config'
+import { facetAliases } from './commonProps'
 import loadingScreen from '../loadingScreen'
 
 const sql = 'SELECT * FROM syn16857542'
@@ -7,16 +8,6 @@ export const publicationsSql = sql
 const type = SynapseConstants.GENERIC_CARD
 const unitDescription = 'Publications'
 const rgbIndex = 0
-
-const facetAliases = {
-  studyName: 'Study Name',
-  dataStatus: 'Data Status',
-  fundingAgency: 'Funding Agency',
-  manifestation: 'Manifestation',
-  diseaseFocus: 'Disease Focus',
-  journal: 'Journal',
-  year: 'Year',
-}
 
 export const publicationsCardConfiguration = {
   type,
@@ -44,7 +35,8 @@ const publications: HomeExploreConfig = {
     props: {
       unitDescription,
       rgbIndex,
-      loadingScreen,
+      link: 'Explore/Publications',
+      linkText: 'Explore Publications',
       initQueryRequest: {
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
         partMask:
@@ -68,8 +60,10 @@ const publications: HomeExploreConfig = {
     name: 'QueryWrapperMenu',
     props: {
       rgbIndex,
-      loadingScreen,
       unitDescription,
+      stackedBarChartConfiguration: {
+        loadingScreen,
+      },
       name: 'Publications',
       cardConfiguration: publicationsCardConfiguration,
       menuConfig: [

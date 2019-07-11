@@ -34,11 +34,14 @@ export const studies: HomeExploreConfig = {
     name: 'QueryWrapperMenu',
     props: {
       rgbIndex,
-      loadingScreen,
       unitDescription,
       cardConfiguration: {
         type: SynapseConstants.CSBC_STUDY,
       },
+      stackedBarChartConfiguration: {
+        loadingScreen
+      },
+      name: 'Studies',
       menuConfig: [
         {
           sql,

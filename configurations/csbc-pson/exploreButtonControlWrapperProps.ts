@@ -1,7 +1,7 @@
 import { SynapseConfig } from '../types/portal-config'
 
-const exploreButtonControlTemplate: SynapseConfig = {
-  name: 'ExploreButtonControlWrapper',
+const RouteButtonControlTemplate: SynapseConfig = {
+  name: 'RouteButtonControlWrapper',
   title: 'Explore',
   props: {
     // this has to get overriden,
@@ -23,4 +23,4 @@ const exploreButtonControlTemplate: SynapseConfig = {
   }
 }
 
-export default exploreButtonControlTemplate
+export default RouteButtonControlTemplate

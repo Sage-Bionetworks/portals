@@ -52,7 +52,9 @@ const projects: HomeExploreConfig = {
     name: 'QueryWrapperMenu',
     props: {
       rgbIndex,
-      loadingScreen,
+      stackedBarChartConfiguration: {
+        loadingScreen,
+      },
       name: 'Projects',
       isConsistent: true,
       unitDescription: 'Projects',

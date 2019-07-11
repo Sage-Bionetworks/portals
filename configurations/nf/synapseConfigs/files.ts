@@ -1,24 +1,7 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from '../../types/portal-config'
 import loadingScreen from '../loadingScreen'
-
-const facetAliases = {
-  id: 'File ID',
-  assay: 'Assay',
-  dataType: 'Data Type',
-  diagnosis: 'Diagnosis',
-  tumorType: 'Tumor Type',
-  species: 'Species',
-  individualID: 'Individual ID',
-  fileFormat: 'File Format',
-  dataSubtype: 'Data Subtype',
-  nf1Genotype: 'NF1 Genotype',
-  nf2Genotype: 'NF2 Genotype',
-  fundingAgency: 'Funding Agency',
-  consortium: 'Consortium',
-  name: 'File Name',
-  studyName: 'Study Name',
-}
+import { facetAliases } from './commonProps'
 
 const rgbIndex = 8
 const unitDescription = 'Files'
@@ -33,6 +16,8 @@ const files: HomeExploreConfig = {
       rgbIndex,
       unitDescription,
       loadingScreen,
+      link: 'Explore/Files',
+      linkText: 'Explore Files',
       initQueryRequest: {
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
         partMask:
@@ -56,9 +41,11 @@ const files: HomeExploreConfig = {
     name: 'QueryWrapperMenu',
     props: {
       rgbIndex,
-      loadingScreen,
       unitDescription,
       name: 'Files',
+      stackedBarChartConfiguration: {
+        loadingScreen,
+      },
       tableConfiguration: {
         title,
         visibleColumnCount,

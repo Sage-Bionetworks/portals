@@ -389,41 +389,6 @@ a.dropdown-item:hover {
 }
 // end ExploreButtons
 
-// exploreData button
-
-#exploreData {
-  bottom: 40px;
-  right: 50px;
-  position: absolute;
-  border-radius: 24px;
-  background-color: $primary-action-color;
-  color: white;
-  height: 44px;
-  width: 257px;
-  text-transform: uppercase;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
-  &:hover {
-    @extend %hoverFade;
-    @extend %defaultBoxShadow;
-  }
-}
-
-// end exploreData button
-#homePageBarChart {
-  position: absolute;
-  right: 0;
-  width: 100%;
-}
-
-.homeExploreContainer {
-  position: relative; 
-  height: 220px;
-}
-
 // title
 .title {
   text-transform: uppercase;

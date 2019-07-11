@@ -34,11 +34,14 @@ export const grants: HomeExploreConfig = {
     name: 'QueryWrapperMenu',
     props: {
       rgbIndex,
-      loadingScreen,
       unitDescription,
       cardConfiguration: {
         type: SynapseConstants.CSBC_PROJECT,
       },
+      stackedBarChartConfiguration: {
+        loadingScreen
+      },
+      name: 'Grants',
       menuConfig: [
         {
           sql,

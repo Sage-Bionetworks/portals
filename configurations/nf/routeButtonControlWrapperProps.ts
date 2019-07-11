@@ -1,7 +1,7 @@
 import { SynapseConfig } from '../types/portal-config'
 
-const exploreButtonControlProps: SynapseConfig = {
-  name: 'ExploreButtonControlWrapper',
+const routeButtonControlProps: SynapseConfig = {
+  name: 'RouteButtonControlWrapper',
   title: 'Explore',
   props: {
     synapseConfig: {} as SynapseConfig,
@@ -20,4 +20,4 @@ const exploreButtonControlProps: SynapseConfig = {
   }
 }
 
-export default exploreButtonControlProps
+export default routeButtonControlProps

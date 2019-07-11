@@ -4,9 +4,12 @@ import { datasets, files, studies, publications, tools, funders } from './synaps
 import { studiesSql, studiesCardConfiguration } from './synapseConfigs/studies'
 import { datasetsSql } from './synapseConfigs/datasets'
 import { publicationsSql, publicationsCardConfiguration } from './synapseConfigs/publications'
-import exploreButtonControlWrapperProps from './exploreButtonControlWrapperProps'
+import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
 import loadingScreen from './loadingScreen'
-
+import { ntap } from './synapseConfigs/organizationConfigs/ntap'
+import { dhartSpore } from './synapseConfigs/organizationConfigs/dhart-spore'
+import { ctf } from './synapseConfigs/organizationConfigs/ctf'
+import { buttonColors } from './synapseConfigs/commonProps'
 const limit = 3
 
 const routes: GenericRoute [] = [
@@ -16,27 +19,22 @@ const routes: GenericRoute [] = [
     isNested: false,
     synapseConfigArray: [
       {
-        name: 'HomeButtonControlWrapper',
+        name: 'StatefulButtonControlWrapper',
         title: 'EXPLORE PORTAL',
         props: {
-          colors: [
-            '#119488',
-            '#58A058',
-            '#407BA0',
-            '#5BB0B5',
-          ],
+          ...buttonColors,
           configs: [
             {
-              name: 'Datasets', synapseConfig: datasets.homePageSynapseObject
+              name: 'Datasets', synapseConfigArray: [datasets.homePageSynapseObject]
             },
             {
-              name: 'Files', synapseConfig: files.homePageSynapseObject
+              name: 'Files', synapseConfigArray: [files.homePageSynapseObject]
             },
             {
-              name: 'Studies', synapseConfig: studies.homePageSynapseObject
+              name: 'Studies', synapseConfigArray: [studies.homePageSynapseObject]
             },
             {
-              name: 'Publications', synapseConfig: publications.homePageSynapseObject
+              name: 'Publications', synapseConfigArray: [publications.homePageSynapseObject]
             }
           ]
         }
@@ -107,9 +105,9 @@ const routes: GenericRoute [] = [
         to: '/Explore/Datasets',
         synapseConfigArray: [
           {
-            ...exploreButtonControlWrapperProps,
+            ...routeButtonControlWrapperProps,
             props: {
-              ...exploreButtonControlWrapperProps.props,
+              ...routeButtonControlWrapperProps.props,
               synapseConfig: datasets.explorePageSynapseObject
             }
           }
@@ -121,9 +119,9 @@ const routes: GenericRoute [] = [
         to: '/Explore/Files',
         synapseConfigArray: [
           {
-            ...exploreButtonControlWrapperProps,
+            ...routeButtonControlWrapperProps,
             props: {
-              ...exploreButtonControlWrapperProps.props,
+              ...routeButtonControlWrapperProps.props,
               synapseConfig: files.explorePageSynapseObject
             }
           }
@@ -135,9 +133,9 @@ const routes: GenericRoute [] = [
         to: '/Explore/Studies',
         synapseConfigArray: [
           {
-            ...exploreButtonControlWrapperProps,
+            ...routeButtonControlWrapperProps,
             props: {
-              ...exploreButtonControlWrapperProps.props,
+              ...routeButtonControlWrapperProps.props,
               synapseConfig: studies.explorePageSynapseObject
             }
           }
@@ -149,9 +147,9 @@ const routes: GenericRoute [] = [
         to: '/Explore/Publications',
         synapseConfigArray: [
           {
-            ...exploreButtonControlWrapperProps,
+            ...routeButtonControlWrapperProps,
             props: {
-              ...exploreButtonControlWrapperProps.props,
+              ...routeButtonControlWrapperProps.props,
               synapseConfig: publications.explorePageSynapseObject
             }
           }
@@ -162,112 +160,7 @@ const routes: GenericRoute [] = [
   {
     name: 'Organizations',
     isNested: true,
-    routes: [
-      {
-        name: 'CTF',
-        to: '/Organizations/CTF',
-        isNested: false,
-        synapseConfigArray: [
-          {
-            name: 'CardContainerLogic',
-            props: {
-              limit: 1,
-              sql: "SELECT * FROM syn16858699 WHERE abbreviation = 'CTF'",
-              type: funders.type
-            },
-            title: "Children's Tumor Foundation"
-          },
-          {
-            name: 'CardContainerLogic',
-            props: {
-              sql: "SELECT * FROM syn16787123 WHERE fundingAgency = 'CTF'",
-              type: SynapseConstants.STUDY
-            },
-            title: 'Funded Studies'
-          },
-          {
-            name: 'CardContainerLogic',
-            props: {
-              sql: "SELECT * FROM syn16857542 WHERE fundingAgency = 'CTF'",
-              type: SynapseConstants.PUBLICATION
-            },
-            title: 'NEW PUBLICATIONS'
-          },
-          {
-            name: 'CardContainerLogic',
-            props: {
-              sql: "SELECT * FROM syn16859580 WHERE fundingAgency = 'CTF'",
-              type: SynapseConstants.DATASET
-            },
-            title: 'DATASETS'
-          },
-        ]
-      },
-      {
-        name: 'NTAP',
-        to: '/Organizations/NTAP',
-        isNested: false,
-        synapseConfigArray: [
-          {
-            name: 'CardContainerLogic',
-            props: {
-              limit: 1,
-              sql: "SELECT * FROM syn16858699 WHERE abbreviation = 'NTAP'",
-              type: funders.type
-            },
-            title: 'The Neurofibromatosis Therapeutic Acceleration Program'
-          },
-          {
-            name: 'CardContainerLogic',
-            props: {
-              sql: "SELECT * FROM syn16787123 WHERE fundingAgency = 'NTAP'",
-              type: SynapseConstants.STUDY
-            },
-            title: 'Funded Studies'
-          },
-          {
-            name: 'CardContainerLogic',
-            props: {
-              sql: "SELECT * FROM syn16857542 WHERE fundingAgency = 'NTAP'",
-              type: SynapseConstants.PUBLICATION
-            },
-            title: 'NEW PUBLICATIONS'
-          },
-          {
-            name: 'CardContainerLogic',
-            props: {
-              sql: "SELECT * FROM syn16859580 WHERE fundingAgency = 'NTAP'",
-              type: SynapseConstants.DATASET
-            },
-            title: 'DATASETS'
-          },
-        ]
-      },
-      {
-        name: 'DHART-SPORE',
-        to: '/Organizations/DHART-SPORE',
-        isNested: false,
-        synapseConfigArray: [
-          {
-            name: 'CardContainerLogic',
-            props: {
-              limit: 1,
-              sql: "SELECT * FROM syn16858699 WHERE abbreviation = 'DHART SPORE'",
-              type: funders.type
-            },
-            title: 'The Developmental And Hyperactive RAS Tumor SPORE'
-          },
-          {
-            name: 'CardContainerLogic',
-            props: {
-              sql: "SELECT * FROM syn16787123 WHERE fundingAgency = 'NIH-NCI'",
-              type: SynapseConstants.STUDY
-            },
-            title: 'Funded Studies'
-          },
-        ]
-      }
-    ]
+    routes: [ctf, ntap, dhartSpore]
   },
   {
     name: 'About',

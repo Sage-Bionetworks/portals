@@ -5,5 +5,4 @@
 
 
 # Developing locally (mac instructions)
-1. Run ./linkConfig [portal-name] to symlink the two directories
-2. Run ./unlinkConfig [portal-name] to remove the symlink
+1. Run ./linkConfig [portal-name] to run the portal locally

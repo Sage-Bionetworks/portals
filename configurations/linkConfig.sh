@@ -12,8 +12,20 @@ if [[ -z $1 ]]; then
   exit 1
 fi
 
+
 # remove ending slash if directory given had a slash
 folderNoSlash=${1%/}
+
+# we want to always make sure that the linking is undone after this script so we capture
+# ctrl-c. This has removed various bugs when developing locally.
+# See here - https://unix.stackexchange.com/a/407249
+trap handleInt SIGINT
+function handleInt {
+  cd ../../configurations
+  ./undoLink.sh $folderNoSlash
+  printf '\n'
+  exit 0
+}
 # React applications can't resolve symlinks, so instead of symlinking the 
 # configuration to the react app, we copy over the configuration and symlink
 # the contents back to the configuration
