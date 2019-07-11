@@ -17,6 +17,8 @@ export const publications: HomeExploreConfig = {
       facetAliases: {
         Consortium: 'Program',
       },
+      link: 'Explore/Publications',
+      linkText: 'Explore Publications',
       initQueryRequest : {
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
         partMask: SynapseConstants.BUNDLE_MASK_QUERY_FACETS

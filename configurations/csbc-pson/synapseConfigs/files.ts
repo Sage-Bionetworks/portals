@@ -34,6 +34,8 @@ export const files: HomeExploreConfig = {
       facetAliases: {
         grantType: 'Grant Type',
       },
+      link: 'Explore/Files',
+      linkText: 'Explore Files',
       initQueryRequest: {
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
         partMask: SynapseConstants.BUNDLE_MASK_QUERY_FACETS
