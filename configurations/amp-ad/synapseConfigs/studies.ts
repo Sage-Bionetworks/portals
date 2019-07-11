@@ -58,10 +58,10 @@ const studies: HomeExploreConfig = {
     name: 'QueryWrapperMenu',
     props: {
       rgbIndex,
+      unitDescription,
       stackedBarChartConfiguration: {
         loadingScreen,
       },
-      unitDescription,
       name: 'Studies',
       isConsistent: true,
       cardConfiguration: {
