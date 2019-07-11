@@ -16,6 +16,7 @@ export const getRouteFromParams = (pathname: string) => {
   // e.g. pathname = /Explore/Programs
   // special case the home page path
   const pathWithName = pathname === '/' ? '/Home' :  pathname
+  // e.g. split = '', 'Explore', 'Programs
   const split = pathWithName.split('/')
   let route = routesConfig.find(el => split[1] === el.name)!
   // search the route configs for the pathname

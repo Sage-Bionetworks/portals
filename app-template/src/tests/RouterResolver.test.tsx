@@ -53,13 +53,13 @@ describe('RouteResolver works', () => {
         configs: [
           {
             name: 'mock2',
-            synapseConfig: {
+            synapseConfigArray: [{
               name: 'CardContainerLogic',
               props: {
                 sql: '',
                 type: ''
               }
-            }
+            }]
           }
         ],
         colors: ['red']

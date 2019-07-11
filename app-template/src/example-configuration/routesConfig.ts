@@ -48,7 +48,7 @@ routes[ORGANIZATION_INDEX] = {
   isNested: true,
   routes: [
     {
-      name: 'Organizations',
+      name: 'Content',
       isNested: true,
       to: '/Organizations/Content',
       synapseConfigArray: [
