@@ -25,7 +25,7 @@ export const ctf: BaseRoute = {
         ...buttonColors,
         configs: [
           {
-            name: 'Datasets', synapseConfigArray: generateOrgConfig(org, 'Dataset')
+            name: 'Datasets', synapseConfigArray: generateOrgConfig(org, 'Dataset'),
           },
           {
             name: 'Files', synapseConfigArray: generateOrgConfig(org, 'Files')

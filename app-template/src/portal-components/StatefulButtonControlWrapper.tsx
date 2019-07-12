@@ -63,7 +63,12 @@ class StatefulButtonControl extends React.Component<StatefulButtonControlWrapper
         {
           synapseConfigArray.map(
             (config) => {
-              return generateSynapseObject(config)
+              return (
+                <React.Fragment key={JSON.stringify(config.props)}>
+                  {config.title &&  <h2 className="title"> {config.title} </h2>}
+                  {generateSynapseObject(config)}
+                </React.Fragment>
+              )
             }
           )
         }
