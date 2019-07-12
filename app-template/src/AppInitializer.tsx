@@ -79,7 +79,7 @@ class AppInitializer extends React.Component<RouteComponentProps & ReactCookiePr
       if (gtag) {
         gtag('config', 'UA-29804340-1', {
           page_location: window.location.href,
-          page_path: location.pathname,
+          page_path: `/#${this.props.location.pathname}`,
         })
       }
     }
