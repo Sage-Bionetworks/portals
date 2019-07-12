@@ -13,6 +13,8 @@ const people: HomeExploreConfig = {
       unitDescription,
       rgbIndex,
       loadingScreen,
+      link: 'Explore/People',
+      linkText: 'Explore People',
       facetName: 'Program',
       initQueryRequest : {
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
