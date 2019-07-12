@@ -2,7 +2,7 @@ import { SynapseConfig } from '../../types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
 import loadingScreen from '../loadingScreen'
 
-const rgbIndex = 3
+const rgbIndex = 5
 const unitDescription = 'Publications'
 
 const sql = 'SELECT * FROM syn20448807'

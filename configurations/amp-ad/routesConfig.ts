@@ -1,7 +1,7 @@
 import { GenericRoute } from '../types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
 import { projects, studies, data, people, programs, publications } from './synapseConfigs'
-import routeButtonControlWrapper from './routeButtonControlWrapperProps'
+import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
 import { ampAd, move2Ad, modelAd, resilienceAd } from './synapseConfigs/programs/'
 import { studyCardProps } from './synapseConfigs/studies'
 // @ts-ignore
@@ -59,9 +59,9 @@ const routes: GenericRoute [] = [
         to: '/Explore/Programs',
         synapseConfigArray: [
           {
-            ...routeButtonControlWrapper,
+            ...routeButtonControlWrapperProps,
             props: {
-              ...routeButtonControlWrapper.props,
+              ...routeButtonControlWrapperProps.props,
               synapseConfig: programs
             }
           }
@@ -138,9 +138,9 @@ const routes: GenericRoute [] = [
         ],
         synapseConfigArray: [
           {
-            ...routeButtonControlWrapper,
+            ...routeButtonControlWrapperProps,
             props: {
-              ...routeButtonControlWrapper.props,
+              ...routeButtonControlWrapperProps.props,
               synapseConfig: projects.explorePageSynapseObject
             }
           }
@@ -152,9 +152,9 @@ const routes: GenericRoute [] = [
         to: '/Explore/Studies',
         synapseConfigArray: [
           {
-            ...routeButtonControlWrapper,
+            ...routeButtonControlWrapperProps,
             props: {
-              ...routeButtonControlWrapper.props,
+              ...routeButtonControlWrapperProps.props,
               synapseConfig: studies.explorePageSynapseObject
             }
           }
@@ -166,9 +166,9 @@ const routes: GenericRoute [] = [
         to: '/Explore/Data',
         synapseConfigArray: [
           {
-            ...routeButtonControlWrapper,
+            ...routeButtonControlWrapperProps,
             props: {
-              ...routeButtonControlWrapper.props,
+              ...routeButtonControlWrapperProps.props,
               synapseConfig: data.explorePageSynapseObject
             }
           }
@@ -180,9 +180,9 @@ const routes: GenericRoute [] = [
         to: '/Explore/Publications',
         synapseConfigArray: [
           {
-            ...routeButtonControlWrapper,
+            ...routeButtonControlWrapperProps,
             props: {
-              ...routeButtonControlWrapper.props,
+              ...routeButtonControlWrapperProps.props,
               synapseConfig: publications
             }
           }
@@ -194,9 +194,9 @@ const routes: GenericRoute [] = [
         to: '/Explore/People',
         synapseConfigArray: [
           {
-            ...routeButtonControlWrapper,
+            ...routeButtonControlWrapperProps,
             props: {
-              ...routeButtonControlWrapper.props,
+              ...routeButtonControlWrapperProps.props,
               synapseConfig: people.explorePageSynapseObject
             }
           }
