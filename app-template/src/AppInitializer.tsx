@@ -70,7 +70,18 @@ class AppInitializer extends React.Component<RouteComponentProps & ReactCookiePr
   componentDidUpdate(prevProps: any) {
     // https://github.com/ReactTraining/react-router/blob/master/packages/react-router-dom/docs/guides/scroll-restoration.md
     if (this.props.location !== prevProps.location) {
+      // scroll to the top
       window.scrollTo(0, 0)
+      // send page view event to Google Analytics
+      // (casting to 'any' type to get compile-time access to gtag())
+      const windowAny:any = window
+      const gtag = windowAny.gtag
+      if (gtag) {
+        gtag('config', 'UA-29804340-1', {
+          page_location: window.location.href,
+          page_path: location.pathname,
+        })
+      }
     }
   }
 
