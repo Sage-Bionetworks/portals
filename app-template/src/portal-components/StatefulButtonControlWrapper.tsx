@@ -2,10 +2,12 @@ import * as React from 'react'
 import { ButtonControl, ButtonControlProps } from '../ButtonControl'
 import { SynapseConfigArray } from '../types/portal-config'
 import { generateSynapseObject } from '../RouteResolver'
+import QueryCount from 'synapse-react-client/dist/containers/QueryCount'
 
 type StatefulButtonControlConfigs = {
   synapseConfigArray: SynapseConfigArray
   name: string
+  sql?: string
 }
 
 export type StatefulButtonControlWrapperProps = {
@@ -48,7 +50,7 @@ class StatefulButtonControl extends React.Component<StatefulButtonControlWrapper
       configs,
       colors,
     } = this.props
-    const { name, synapseConfigArray } = configs[this.state.index]
+    const { name, synapseConfigArray, sql } = configs[this.state.index]
     const buttonControlProps: ButtonControlProps = {
       colors,
       customRoutes: configs.map(el => el.name),
@@ -60,12 +62,13 @@ class StatefulButtonControl extends React.Component<StatefulButtonControlWrapper
         <ButtonControl
           {...buttonControlProps}
         />
+        {(name && sql) && <h3 className="SRC-boldText queryCountHeader"> <QueryCount name={name} sql={sql}/> </h3>}
         {
           synapseConfigArray.map(
             (config) => {
               return (
                 <React.Fragment key={JSON.stringify(config.props)}>
-                  {config.title &&  <h2 className="title"> {config.title} </h2>}
+                  {config.title &&  <h2 className="title statefulButtonTitle"> {config.title} </h2>}
                   {generateSynapseObject(config)}
                 </React.Fragment>
               )

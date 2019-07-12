@@ -5,10 +5,18 @@ import { studiesCardConfiguration } from '../studies'
 import { SynapseConfigArray } from '../../../types/portal-config'
 
 type Key = 'Dataset' | 'Studies' | 'Publications' | 'Files'
-type ReturnSynapseConfigArray = (org: string, type: Key) => SynapseConfigArray
+type ReturnSynapseConfigArray = (org: string, type: Key, sqlOnly?: boolean) => SynapseConfigArray | string
+
 // This is a helper
-export const generateOrgConfig: ReturnSynapseConfigArray = (org, type) => {
+export const generateOrgConfig: ReturnSynapseConfigArray = (org, type, sqlOnly = false) => {
+  const studiesSql = `SELECT * FROM syn16787123 WHERE fundingAgency = '${org}'`
+  const datasetsSql = `SELECT * FROM syn16859580 WHERE fundingAgency = '${org}'`
+  const filesSql = `SELECT * FROM syn16858331 WHERE fundingAgency = '${org}'`
+  const publicationsSql = `SELECT * FROM syn16857542 WHERE fundingAgency = '${org}'`
   if (type === 'Studies') {
+    if (sqlOnly) {
+      return studiesSql
+    }
     return [
       {
         name: 'QueryWrapperWithStackedBarChart',
@@ -26,7 +34,7 @@ export const generateOrgConfig: ReturnSynapseConfigArray = (org, type) => {
               | SynapseConstants.BUNDLE_MASK_QUERY_FACETS
               | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
             query: {
-              sql: `SELECT * FROM syn16787123 WHERE fundingAgency = '${org}'`,
+              sql: studiesSql,
               isConsistent: false,
               limit: 25,
               offset: 0,
@@ -37,7 +45,7 @@ export const generateOrgConfig: ReturnSynapseConfigArray = (org, type) => {
       {
         name: 'CardContainerLogic',
         props: {
-          sql: `SELECT * FROM syn16787123 WHERE fundingAgency = '${org}'`,
+          sql: studiesSql,
           ...studiesCardConfiguration,
           filter: 'diseaseFocus',
         },
@@ -46,6 +54,9 @@ export const generateOrgConfig: ReturnSynapseConfigArray = (org, type) => {
     ]
   }
   if (type === 'Dataset') {
+    if (sqlOnly) {
+      return datasetsSql
+    }
     return [
       {
         name: 'QueryWrapperWithStackedBarChart',
@@ -63,7 +74,7 @@ export const generateOrgConfig: ReturnSynapseConfigArray = (org, type) => {
               | SynapseConstants.BUNDLE_MASK_QUERY_FACETS
               | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
             query: {
-              sql: `SELECT * FROM syn16859580 WHERE fundingAgency = '${org}'`,
+              sql: datasetsSql,
               isConsistent: false,
               limit: 25,
               offset: 0,
@@ -74,7 +85,7 @@ export const generateOrgConfig: ReturnSynapseConfigArray = (org, type) => {
       {
         name: 'CardContainerLogic',
         props: {
-          sql: `SELECT * FROM syn16859580 WHERE fundingAgency = '${org}'`,
+          sql: datasetsSql,
           type: SynapseConstants.DATASET,
           filter: 'diseaseFocus',
         },
@@ -83,6 +94,9 @@ export const generateOrgConfig: ReturnSynapseConfigArray = (org, type) => {
     ]
   }
   if (type === 'Files') {
+    if (sqlOnly) {
+      return filesSql
+    }
     return [
       {
         name: 'QueryWrapperWithStackedBarChart',
@@ -100,7 +114,7 @@ export const generateOrgConfig: ReturnSynapseConfigArray = (org, type) => {
               | SynapseConstants.BUNDLE_MASK_QUERY_FACETS
               | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
             query: {
-              sql: `SELECT * FROM syn16858331 WHERE fundingAgency = '${org}'`,
+              sql: filesSql,
               isConsistent: false,
               limit: 25,
               offset: 0,
@@ -109,6 +123,9 @@ export const generateOrgConfig: ReturnSynapseConfigArray = (org, type) => {
         }
       }
     ]
+  }
+  if (sqlOnly) {
+    return publicationsSql
   }
   return [
     {
@@ -127,7 +144,7 @@ export const generateOrgConfig: ReturnSynapseConfigArray = (org, type) => {
             | SynapseConstants.BUNDLE_MASK_QUERY_FACETS
             | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
           query: {
-            sql: `SELECT * FROM syn16857542 WHERE fundingAgency = '${org}'`,
+            sql: publicationsSql,
             isConsistent: false,
             limit: 25,
             offset: 0,
@@ -138,7 +155,7 @@ export const generateOrgConfig: ReturnSynapseConfigArray = (org, type) => {
     {
       name: 'CardContainerLogic',
       props: {
-        sql: `SELECT * FROM syn16857542 WHERE fundingAgency = '${org}'`,
+        sql: publicationsSql,
         ...publicationsCardConfiguration,
         filter: 'diseaseFocus',
       },
