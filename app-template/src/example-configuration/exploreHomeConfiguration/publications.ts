@@ -8,7 +8,7 @@ const rgbIndex = 0
 const facetName = 'Theme'
 export const publications: HomeExploreConfig = {
   homePageSynapseObject: {
-    name: 'QueryWrapperWithStackedBarChart',
+    name: 'QueryWrapperFlattened',
     props: {
       rgbIndex,
       facetName,

@@ -8,7 +8,7 @@ const sql = 'SELECT * FROM syn13897207'
 
 const people: HomeExploreConfig = {
   homePageSynapseObject: {
-    name: 'QueryWrapperWithStackedBarChart',
+    name: 'QueryWrapperFlattened',
     props: {
       unitDescription,
       rgbIndex,

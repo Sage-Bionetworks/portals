@@ -3,6 +3,7 @@ import { facetAliases } from '../commonProps'
 import { publicationsCardConfiguration } from '../publications'
 import { studiesCardConfiguration } from '../studies'
 import { SynapseConfigArray } from '../../../types/portal-config'
+import loadingScreen from '../../loadingScreen'
 
 type Key = 'Dataset' | 'Studies' | 'Publications' | 'Files'
 type ReturnSynapseConfigArray = (org: string, type: Key, sqlOnly?: boolean) => SynapseConfigArray | string
@@ -11,7 +12,7 @@ type ReturnSynapseConfigArray = (org: string, type: Key, sqlOnly?: boolean) => S
 export const generateOrgConfig: ReturnSynapseConfigArray = (org, type, sqlOnly = false) => {
   const studiesSql = `SELECT * FROM syn16787123 WHERE fundingAgency = '${org}'`
   const datasetsSql = `SELECT * FROM syn16859580 WHERE fundingAgency = '${org}'`
-  const filesSql = `SELECT * FROM syn16858331 WHERE fundingAgency = '${org}'`
+  const filesSql = `SELECT id AS "File ID", fundingAgency AS "Funding Agency", studyName AS "Study Name", consortium AS "Consortium", dataType AS "Data Type", assay AS "Assay", diagnosis AS "Diagnosis", tumorType AS "Tumor Type", species AS "Species", fileFormat AS "File Format", individualID AS "Individual ID", dataSubtype AS "Data Subtype", nf1Genotype AS "NF1 Genotype", nf2Genotype AS "NF2 Genotype", name AS "File Name" FROM syn16858331 WHERE fundingAgency = '${org}'`
   const publicationsSql = `SELECT * FROM syn16857542 WHERE fundingAgency = '${org}'`
   if (type === 'Studies') {
     if (sqlOnly) {
@@ -19,11 +20,9 @@ export const generateOrgConfig: ReturnSynapseConfigArray = (org, type, sqlOnly =
     }
     return [
       {
-        name: 'QueryWrapperWithStackedBarChart',
+        name: 'QueryWrapperFlattened',
         props: {
           facetAliases,
-          link: `/Explore/Studies?menuIndex=3&facetValue=${org}`,
-          linkText: 'Explore Studies',
           unitDescription: 'Studies',
           rgbIndex: 1,
           facetName: 'diseaseFocus',
@@ -45,6 +44,7 @@ export const generateOrgConfig: ReturnSynapseConfigArray = (org, type, sqlOnly =
       {
         name: 'CardContainerLogic',
         props: {
+          loadingScreen,
           sql: studiesSql,
           ...studiesCardConfiguration,
           filter: 'diseaseFocus',
@@ -59,11 +59,9 @@ export const generateOrgConfig: ReturnSynapseConfigArray = (org, type, sqlOnly =
     }
     return [
       {
-        name: 'QueryWrapperWithStackedBarChart',
+        name: 'QueryWrapperFlattened',
         props: {
           facetAliases,
-          link: `/Explore/Datasets?menuIndex=2&facetValue=${org}`,
-          linkText: 'Explore Datasets',
           unitDescription: 'Studies',
           rgbIndex: 5,
           facetName: 'diseaseFocus',
@@ -85,6 +83,7 @@ export const generateOrgConfig: ReturnSynapseConfigArray = (org, type, sqlOnly =
       {
         name: 'CardContainerLogic',
         props: {
+          loadingScreen,
           sql: datasetsSql,
           type: SynapseConstants.DATASET,
           filter: 'diseaseFocus',
@@ -99,12 +98,12 @@ export const generateOrgConfig: ReturnSynapseConfigArray = (org, type, sqlOnly =
     }
     return [
       {
-        name: 'QueryWrapperWithStackedBarChart',
+        name: 'QueryWrapperFlattened',
         props: {
           facetAliases,
-          link: `/Explore/Files?menuIndex=4&facetValue=${org}`,
-          linkText: 'Explore Files',
           unitDescription: 'Files',
+          title: 'Files',
+          synapseId: 'syn16858331',
           rgbIndex: 8,
           facetName: 'assay',
           initQueryRequest: {
@@ -129,11 +128,9 @@ export const generateOrgConfig: ReturnSynapseConfigArray = (org, type, sqlOnly =
   }
   return [
     {
-      name: 'QueryWrapperWithStackedBarChart',
+      name: 'QueryWrapperFlattened',
       props: {
         facetAliases,
-        link: `/Explore/Publications?menuIndex=0&facetValue=${org}`,
-        linkText: 'Explore Publications',
         unitDescription: 'Publications',
         rgbIndex: 0,
         facetName: 'diseaseFocus',
@@ -155,6 +152,7 @@ export const generateOrgConfig: ReturnSynapseConfigArray = (org, type, sqlOnly =
     {
       name: 'CardContainerLogic',
       props: {
+        loadingScreen,
         sql: publicationsSql,
         ...publicationsCardConfiguration,
         filter: 'diseaseFocus',

@@ -39,7 +39,7 @@ export const studiesCardConfiguration = {
 
 const studies: HomeExploreConfig = {
   homePageSynapseObject: {
-    name: 'QueryWrapperWithStackedBarChart',
+    name: 'QueryWrapperFlattened',
     props: {
       facetAliases,
       unitDescription,

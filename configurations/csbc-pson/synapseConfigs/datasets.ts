@@ -8,7 +8,7 @@ const rgbIndex = 0
 
 export const datasets: HomeExploreConfig = {
   homePageSynapseObject: {
-    name: 'QueryWrapperWithStackedBarChart',
+    name: 'QueryWrapperFlattened',
     props: {
       unitDescription,
       loadingScreen,

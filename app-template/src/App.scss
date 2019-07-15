@@ -447,6 +447,13 @@ div.SRC-title > h3 a {
   color: $primary-text-color;
 }
 
+// override synapse table label, TODO: add specific class that can get targeted instead
+div.SRC-marginBottomTen {
+  p {
+    margin-top: 15px;
+  }
+} 
+
 // override src explore chart button color
 button.btn-sm.SRC-floatRight {
   border: none;

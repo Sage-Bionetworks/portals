@@ -8,7 +8,7 @@ const rgbIndex = 1
 
 export const studies: HomeExploreConfig = {
   homePageSynapseObject: {
-    name: 'QueryWrapperWithStackedBarChart',
+    name: 'QueryWrapperFlattened',
     props: {
       rgbIndex,
       unitDescription,

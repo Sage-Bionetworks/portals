@@ -29,7 +29,7 @@ export const projectCardProps = {
 
 const projects: HomeExploreConfig = {
   homePageSynapseObject: {
-    name: 'QueryWrapperWithStackedBarChart',
+    name: 'QueryWrapperFlattened',
     props: {
       unitDescription,
       rgbIndex,

@@ -11,7 +11,7 @@ const rgbIndex = 5
 
 const datasets: HomeExploreConfig = {
   homePageSynapseObject: {
-    name: 'QueryWrapperWithStackedBarChart',
+    name: 'QueryWrapperFlattened',
     props: {
       unitDescription,
       rgbIndex,

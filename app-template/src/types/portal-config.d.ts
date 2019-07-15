@@ -1,12 +1,5 @@
 /// <reference types="synapse-react-client" />
 
-import { CardContainerLogicProps } from 'synapse-react-client/dist/containers/CardContainerLogic'
-import { MarkdownSynapseProps } from 'synapse-react-client/dist/containers/MarkdownSynapse'
-import { StackedBarChartProps } from 'synapse-react-client/dist/containers/StackedBarChart'
-import { QueryWrapperMenuProps } from 'synapse-react-client/dist/containers/QueryWrapperMenu'
-import { QueryWrapperProps } from 'synapse-react-client/dist/containers/QueryWrapper'
-import { QueryBundleRequest } from 'synapse-react-client/dist/utils/jsonResponses/Table/QueryBundleRequest'
-import { QueryResultBundle } from 'synapse-react-client/dist/utils/jsonResponses/Table/QueryResultBundle'
 import { StatefulButtonControlProps } from '../portal-components/StatefulButtonControlWrapper'
 import { RouteButtonControlProps } from '../portal-components/RouteButtonControlWrapper'
 
@@ -27,9 +20,10 @@ type QueryWrapper = {
   props: QueryWrapperProps
 }
 
-type QueryWrapperWithStackedBarChart = {
-  name: 'QueryWrapperWithStackedBarChart',
-  props: QueryWrapperProps & Partial<StackedBarChartProps>
+// This should likely be placed in SRC
+type QueryWrapperFlattened = {
+  name: 'QueryWrapperFlattened',
+  props: QueryWrapperProps & Partial<StackedBarChartProps> & Partial<SynapseTableProps>
 }
 
 declare type StackedBarChart = {
@@ -72,7 +66,7 @@ export type SynapseConfig = (
   | CardContainerLogic
   | StackedBarChart
   | QueryWrapper
-  | QueryWrapperWithStackedBarChart
+  | QueryWrapperFlattened
   | QueryWrapperMenu
   | UserCard 
   | Markdown 

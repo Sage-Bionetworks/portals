@@ -11,7 +11,7 @@ const synapseId = 'syn16858331'
 
 const files: HomeExploreConfig = {
   homePageSynapseObject: {
-    name: 'QueryWrapperWithStackedBarChart',
+    name: 'QueryWrapperFlattened',
     props: {
       rgbIndex,
       unitDescription,
