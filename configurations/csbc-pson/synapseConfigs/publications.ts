@@ -8,7 +8,7 @@ const rgbIndex = 1
 
 export const publications: HomeExploreConfig = {
   homePageSynapseObject: {
-    name: 'QueryWrapperWithStackedBarChart',
+    name: 'QueryWrapperFlattened',
     props: {
       rgbIndex,
       unitDescription,

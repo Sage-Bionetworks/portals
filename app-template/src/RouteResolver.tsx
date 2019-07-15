@@ -6,7 +6,7 @@ import { SynapseComponents } from 'synapse-react-client'
 import { TokenContext } from './AppInitializer'
 import StatefulButtonControlWrapper from './portal-components/StatefulButtonControlWrapper'
 import RouteButtonControlWrapper from './portal-components/RouteButtonControlWrapper'
-import QueryWrapperWithStackedBarChart from './portal-components/QueryWrapperWithStackedBarChart'
+import QueryWrapperFlattened from './portal-components/QueryWrapperFlattened'
 import Layout from './portal-components/Layout'
 
 // https://basarat.gitbooks.io/typescript/docs/types/never.html
@@ -40,8 +40,8 @@ export const generateSynapseObjectHelper = (synapseConfig: SynapseConfig) => {
   if (synapseConfig.name === 'RouteButtonControlWrapper') {
     return <RouteButtonControlWrapper {...synapseConfig.props} />
   }
-  if (synapseConfig.name === 'QueryWrapperWithStackedBarChart') {
-    return <QueryWrapperWithStackedBarChart {...synapseConfig.props} />
+  if (synapseConfig.name === 'QueryWrapperFlattened') {
+    return <QueryWrapperFlattened {...synapseConfig.props} />
   }
   const SynapseComponent = (SynapseComponents as any)[synapseConfig.name]
   if (!SynapseComponent) {

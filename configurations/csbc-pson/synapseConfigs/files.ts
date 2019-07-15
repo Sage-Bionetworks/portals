@@ -25,7 +25,7 @@ const facetName = 'grantType'
 
 export const files: HomeExploreConfig = {
   homePageSynapseObject: {
-    name: 'QueryWrapperWithStackedBarChart',
+    name: 'QueryWrapperFlattened',
     props: {
       rgbIndex,
       facetName,

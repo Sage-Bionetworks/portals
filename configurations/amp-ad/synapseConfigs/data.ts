@@ -11,7 +11,7 @@ const title = 'Data'
 
 const data: HomeExploreConfig = {
   homePageSynapseObject: {
-    name: 'QueryWrapperWithStackedBarChart',
+    name: 'QueryWrapperFlattened',
     props: {
       unitDescription,
       rgbIndex,

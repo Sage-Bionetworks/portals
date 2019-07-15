@@ -10,7 +10,7 @@ const facetName = 'tumorType'
 
 export const data: HomeExploreConfig = {
   homePageSynapseObject: {
-    name: 'QueryWrapperWithStackedBarChart',
+    name: 'QueryWrapperFlattened',
     props: {
       rgbIndex,
       facetName,
@@ -31,13 +31,15 @@ export const data: HomeExploreConfig = {
   explorePageSynapseObject: {
     name: 'QueryWrapperMenu',
     props: {
-      loadingScreen,
       rgbIndex,
       unitDescription,
-      name: 'Data',
+      stackedBarChartConfiguration: {
+        loadingScreen,
+      },
       cardConfiguration: {
         type: SynapseConstants.CSBC_DATASET,
       },
+      name: 'Data',
       menuConfig: [
         {
           sql,

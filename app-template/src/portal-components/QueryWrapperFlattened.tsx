@@ -3,11 +3,16 @@ import { SynapseComponents } from 'synapse-react-client'
 import loadingScreen from '../config/loadingScreen'
 import { QueryWrapperProps } from 'synapse-react-client/dist/containers/QueryWrapper'
 import { StackedBarChartProps } from 'synapse-react-client/dist/containers/StackedBarChart'
+import { SynapseTableProps } from 'synapse-react-client/dist/containers/SynapseTable'
 
-const QueryWrapperWithStackedBarChart: React.FunctionComponent<QueryWrapperProps & Partial<StackedBarChartProps>> = (props) => {
+export type QueryWrapperFlattenedProps = QueryWrapperProps & Partial<StackedBarChartProps> & Partial<SynapseTableProps>
+
+const QueryWrapperFlattened: React.FunctionComponent<QueryWrapperFlattenedProps> = (props) => {
   const {
     link,
-    linkText
+    linkText,
+    title,
+    synapseId
   } = props
   return (
     <SynapseComponents.QueryWrapper
@@ -18,8 +23,17 @@ const QueryWrapperWithStackedBarChart: React.FunctionComponent<QueryWrapperProps
         link={link}
         linkText={linkText}
       />
+      {
+        synapseId && title ?
+        <SynapseComponents.SynapseTable
+          synapseId={synapseId}
+          title={title}
+        />
+        :
+        <React.Fragment/>
+      }
     </SynapseComponents.QueryWrapper>
   )
 }
 
-export default QueryWrapperWithStackedBarChart
+export default QueryWrapperFlattened

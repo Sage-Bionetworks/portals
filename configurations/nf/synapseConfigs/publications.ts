@@ -31,7 +31,7 @@ export const publicationsCardConfiguration = {
 
 const publications: HomeExploreConfig = {
   homePageSynapseObject: {
-    name: 'QueryWrapperWithStackedBarChart',
+    name: 'QueryWrapperFlattened',
     props: {
       unitDescription,
       rgbIndex,
