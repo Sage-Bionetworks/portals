@@ -13,6 +13,7 @@ export const publicationCardProps = {
     type: SynapseConstants.PUBLICATION,
     title: 'title',
     subTitle: 'authrors',
+    link: 'doi',
     secondaryLabels: {
       0: { key: 'year', alias: 'Year' },
       1: { key: 'Key Data Contributors', alias:  'Key Contributors' },
