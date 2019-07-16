@@ -24,11 +24,15 @@ export const dhartSpore: BaseRoute = {
         colors: ['#58A058', '#407BA0'],
         configs: [
           {
-            name: 'Files', synapseConfigArray: generateOrgConfig('NIH-NCI', 'Files')
+            name: 'Studies',
+            synapseConfigArray: generateOrgConfig('NIH-NCI', 'Studies'),
+            sql: generateOrgConfig('NIH-NCI', 'Studies', true)
           },
           {
-            name: 'Studies', synapseConfigArray: generateOrgConfig('NIH-NCI', 'Studies')
-          }
+            name: 'Files',
+            synapseConfigArray: generateOrgConfig('NIH-NCI', 'Files'),
+            sql: generateOrgConfig('NIH-NCI', 'Files', true)
+          },
         ]
       }
     },

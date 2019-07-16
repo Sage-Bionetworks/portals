@@ -11,7 +11,7 @@ const sql = 'SELECT * FROM syn16787123'
 export const studiesSql = sql
 const type = SynapseConstants.GENERIC_CARD
 const unitDescription = 'Studies'
-const rgbIndex = 1
+const rgbIndex = 5
 
 export const studiesCardConfiguration = {
   type,

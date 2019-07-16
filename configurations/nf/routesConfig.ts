@@ -24,18 +24,10 @@ const routes: GenericRoute [] = [
         props: {
           ...buttonColors,
           configs: [
-            {
-              name: 'Datasets', synapseConfigArray: [datasets.homePageSynapseObject]
-            },
-            {
-              name: 'Files', synapseConfigArray: [files.homePageSynapseObject]
-            },
-            {
-              name: 'Studies', synapseConfigArray: [studies.homePageSynapseObject]
-            },
-            {
-              name: 'Publications', synapseConfigArray: [publications.homePageSynapseObject]
-            }
+            { name: 'Studies', synapseConfigArray: [studies.homePageSynapseObject] },
+            { name: 'Datasets', synapseConfigArray: [datasets.homePageSynapseObject] },
+            { name: 'Files', synapseConfigArray: [files.homePageSynapseObject] },
+            { name: 'Publications', synapseConfigArray: [publications.homePageSynapseObject] }
           ]
         }
       },
@@ -100,6 +92,20 @@ const routes: GenericRoute [] = [
     isNested: true,
     routes: [
       {
+        name: 'Studies',
+        isNested: false,
+        to: '/Explore/Studies',
+        synapseConfigArray: [
+          {
+            ...routeButtonControlWrapperProps,
+            props: {
+              ...routeButtonControlWrapperProps.props,
+              synapseConfig: studies.explorePageSynapseObject
+            }
+          }
+        ]
+      },
+      {
         name: 'Datasets',
         isNested: false,
         to: '/Explore/Datasets',
@@ -123,20 +129,6 @@ const routes: GenericRoute [] = [
             props: {
               ...routeButtonControlWrapperProps.props,
               synapseConfig: files.explorePageSynapseObject
-            }
-          }
-        ]
-      },
-      {
-        name: 'Studies',
-        isNested: false,
-        to: '/Explore/Studies',
-        synapseConfigArray: [
-          {
-            ...routeButtonControlWrapperProps,
-            props: {
-              ...routeButtonControlWrapperProps.props,
-              synapseConfig: studies.explorePageSynapseObject
             }
           }
         ]

@@ -25,6 +25,11 @@ export const ctf: BaseRoute = {
         ...buttonColors,
         configs: [
           {
+            name: 'Studies',
+            sql: generateOrgConfig(org, 'Studies', true),
+            synapseConfigArray: generateOrgConfig(org, 'Studies', false)
+          },
+          {
             name: 'Datasets',
             sql: generateOrgConfig(org, 'Dataset', true),
             synapseConfigArray: generateOrgConfig(org, 'Dataset', false),
@@ -33,11 +38,6 @@ export const ctf: BaseRoute = {
             name: 'Files',
             sql: generateOrgConfig(org, 'Files', true),
             synapseConfigArray: generateOrgConfig(org, 'Files', false)
-          },
-          {
-            name: 'Studies',
-            sql: generateOrgConfig(org, 'Studies', true),
-            synapseConfigArray: generateOrgConfig(org, 'Studies', false)
           },
           {
             name: 'Publications',
