@@ -24,18 +24,10 @@ const routes: GenericRoute [] = [
         props: {
           ...buttonColors,
           configs: [
-            {
-              name: 'Datasets', synapseConfigArray: [datasets.homePageSynapseObject]
-            },
-            {
-              name: 'Files', synapseConfigArray: [files.homePageSynapseObject]
-            },
-            {
-              name: 'Studies', synapseConfigArray: [studies.homePageSynapseObject]
-            },
-            {
-              name: 'Publications', synapseConfigArray: [publications.homePageSynapseObject]
-            }
+            { name: 'Studies', synapseConfigArray: [studies.homePageSynapseObject] },
+            { name: 'Datasets', synapseConfigArray: [datasets.homePageSynapseObject] },
+            { name: 'Files', synapseConfigArray: [files.homePageSynapseObject] },
+            { name: 'Publications', synapseConfigArray: [publications.homePageSynapseObject] }
           ]
         }
       },
@@ -100,6 +92,55 @@ const routes: GenericRoute [] = [
     isNested: true,
     routes: [
       {
+        name: 'Studies',
+        isNested: false,
+        to: '/Explore/Studies',
+        synapseConfigArray: [
+          {
+            ...routeButtonControlWrapperProps,
+            props: {
+              ...routeButtonControlWrapperProps.props,
+              synapseConfig: studies.explorePageSynapseObject
+            }
+          }
+        ],
+        programmaticRouteConfig: [
+          {
+            name: 'CardContainerLogic',
+            title: 'Study',
+            props: {
+              type: SynapseConstants.GENERIC_CARD,
+              sqlOperator: '=',
+              ...studiesCardConfiguration,
+              genericCardSchema: {
+                link: 'studyId',
+                ...studiesCardConfiguration.genericCardSchema
+              },
+              secondaryLabelLimit: Infinity,
+              sql: 'SELECT * FROM syn16787123'
+            }
+          },
+          {
+            name: 'CardContainerLogic',
+            title: 'Publications',
+            props: {
+              type: SynapseConstants.GENERIC_CARD,
+              sqlOperator: '=',
+              ...publicationsCardConfiguration,
+              sql: 'SELECT * FROM syn16857542'
+            }
+          },
+          {
+            name: 'CardContainerLogic',
+            title: 'Datasets',
+            props: {
+              type: SynapseConstants.DATASET,
+              sql: datasetsSql
+            }
+          }
+        ]
+      },
+      {
         name: 'Datasets',
         isNested: false,
         to: '/Explore/Datasets',
@@ -123,20 +164,6 @@ const routes: GenericRoute [] = [
             props: {
               ...routeButtonControlWrapperProps.props,
               synapseConfig: files.explorePageSynapseObject
-            }
-          }
-        ]
-      },
-      {
-        name: 'Studies',
-        isNested: false,
-        to: '/Explore/Studies',
-        synapseConfigArray: [
-          {
-            ...routeButtonControlWrapperProps,
-            props: {
-              ...routeButtonControlWrapperProps.props,
-              synapseConfig: studies.explorePageSynapseObject
             }
           }
         ]

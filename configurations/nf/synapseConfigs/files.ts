@@ -3,7 +3,7 @@ import { HomeExploreConfig } from '../../types/portal-config'
 import loadingScreen from '../loadingScreen'
 import { facetAliases } from './commonProps'
 
-const rgbIndex = 8
+const rgbIndex = 1
 const unitDescription = 'Files'
 const title = 'Files'
 const visibleColumnCount = 7

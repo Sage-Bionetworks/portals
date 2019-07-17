@@ -24,7 +24,7 @@ export const generateOrgConfig: ReturnSynapseConfigArray = (org, type, sqlOnly =
         props: {
           facetAliases,
           unitDescription: 'Studies',
-          rgbIndex: 1,
+          rgbIndex: 5,
           facetName: 'diseaseFocus',
           initQueryRequest: {
             concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
@@ -63,7 +63,7 @@ export const generateOrgConfig: ReturnSynapseConfigArray = (org, type, sqlOnly =
         props: {
           facetAliases,
           unitDescription: 'Studies',
-          rgbIndex: 5,
+          rgbIndex: 8,
           facetName: 'diseaseFocus',
           initQueryRequest: {
             concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
@@ -104,7 +104,7 @@ export const generateOrgConfig: ReturnSynapseConfigArray = (org, type, sqlOnly =
           unitDescription: 'Files',
           title: 'Files',
           synapseId: 'syn16858331',
-          rgbIndex: 8,
+          rgbIndex: 1,
           facetName: 'assay',
           initQueryRequest: {
             concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',

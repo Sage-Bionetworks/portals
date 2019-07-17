@@ -25,16 +25,24 @@ export const ntap: BaseRoute = {
         ...buttonColors,
         configs: [
           {
-            name: 'Datasets', synapseConfigArray: generateOrgConfig(org, 'Dataset')
+            name: 'Studies',
+            synapseConfigArray: generateOrgConfig(org, 'Studies'),
+            sql: generateOrgConfig(org, 'Studies', true)
           },
           {
-            name: 'Files', synapseConfigArray: generateOrgConfig(org, 'Files')
+            name: 'Datasets',
+            synapseConfigArray: generateOrgConfig(org, 'Dataset'),
+            sql: generateOrgConfig(org, 'Dataset', true)
           },
           {
-            name: 'Studies', synapseConfigArray: generateOrgConfig(org, 'Studies')
+            name: 'Files',
+            synapseConfigArray: generateOrgConfig(org, 'Files'),
+            sql: generateOrgConfig(org, 'Files', true)
           },
           {
-            name: 'Publications', synapseConfigArray: generateOrgConfig(org, 'Publications')
+            name: 'Publications',
+            synapseConfigArray: generateOrgConfig(org, 'Publications'),
+            sql: generateOrgConfig(org, 'Publications', true)
           }
         ]
       }
