@@ -103,6 +103,41 @@ const routes: GenericRoute [] = [
               synapseConfig: studies.explorePageSynapseObject
             }
           }
+        ],
+        programmaticRouteConfig: [
+          {
+            name: 'CardContainerLogic',
+            title: 'Study',
+            props: {
+              type: SynapseConstants.GENERIC_CARD,
+              sqlOperator: '=',
+              ...studiesCardConfiguration,
+              genericCardSchema: {
+                link: 'studyId',
+                ...studiesCardConfiguration.genericCardSchema
+              },
+              secondaryLabelLimit: Infinity,
+              sql: 'SELECT * FROM syn16787123'
+            }
+          },
+          {
+            name: 'CardContainerLogic',
+            title: 'Publications',
+            props: {
+              type: SynapseConstants.GENERIC_CARD,
+              sqlOperator: '=',
+              ...publicationsCardConfiguration,
+              sql: 'SELECT * FROM syn16857542'
+            }
+          },
+          {
+            name: 'CardContainerLogic',
+            title: 'Datasets',
+            props: {
+              type: SynapseConstants.DATASET,
+              sql: datasetsSql
+            }
+          }
         ]
       },
       {

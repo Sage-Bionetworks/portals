@@ -6,6 +6,7 @@ import loadingScreen from '../loadingScreen'
 import studyActiveSvg from '../style/study-active.svg'
 // @ts-ignore
 import studyCompleteSvg from '../style/study-complete.svg'
+import { CommonCardProps } from 'synapse-react-client/dist/containers/CardContainerLogic'
 
 const sql = 'SELECT * FROM syn16787123'
 export const studiesSql = sql
@@ -13,14 +14,13 @@ const type = SynapseConstants.GENERIC_CARD
 const unitDescription = 'Studies'
 const rgbIndex = 5
 
-export const studiesCardConfiguration = {
+export const studiesCardConfiguration: CommonCardProps = {
   type,
   genericCardSchema: {
     title: 'studyName',
     type: SynapseConstants.STUDY,
     description: 'summary',
     subTitle: 'studyLeads',
-    link: 'studyId',
     icon: 'studyStatus',
     secondaryLabels: {
       0: { key: 'dataStatus', alias: 'Data Status' },
@@ -29,7 +29,7 @@ export const studiesCardConfiguration = {
       3: { key: 'fundingAgency', alias: 'Funding Agency' },
       4: { key: 'institutions', alias: 'Institutions' },
       5: { key: 'studyStatus', alias: 'Study Status' },
-    }
+    },
   },
   iconOptions: {
     Active: studyActiveSvg,
@@ -72,7 +72,13 @@ const studies: HomeExploreConfig = {
         loadingScreen,
       },
       name: 'Studies',
-      cardConfiguration: studiesCardConfiguration,
+      cardConfiguration: {
+        ...studiesCardConfiguration,
+        internalLinkConfiguration: {
+          baseURL: 'Explore/Studies',
+          columnValues: ['studyId']
+        },
+      },
       menuConfig: [
         {
           sql,
