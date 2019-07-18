@@ -33,13 +33,17 @@ const routes: GenericRoute [] = [
       },
       {
         name: 'CardContainerLogic',
-        title: 'NEW STUDIES',
         link: '/Explore/Studies',
         props: {
           limit,
           loadingScreen,
           sql: studiesSql,
-          ...studiesCardConfiguration
+          ...studiesCardConfiguration,
+          title: 'NEW STUDIES',
+          internalLinkConfiguration: {
+            baseURL: 'Explore/Studies',
+            columnValues: ['studyId']
+          },
         }
       },
       {
@@ -107,10 +111,12 @@ const routes: GenericRoute [] = [
         programmaticRouteConfig: [
           {
             name: 'CardContainerLogic',
-            title: 'Study',
+            isOutsideContainer: true,
             props: {
               type: SynapseConstants.GENERIC_CARD,
               sqlOperator: '=',
+              isHeader: true,
+              backgroundColor: '#119488',
               ...studiesCardConfiguration,
               genericCardSchema: {
                 link: 'studyId',
@@ -122,8 +128,8 @@ const routes: GenericRoute [] = [
           },
           {
             name: 'CardContainerLogic',
-            title: 'Publications',
             props: {
+              title: 'Publications',
               type: SynapseConstants.GENERIC_CARD,
               sqlOperator: '=',
               ...publicationsCardConfiguration,
@@ -132,8 +138,8 @@ const routes: GenericRoute [] = [
           },
           {
             name: 'CardContainerLogic',
-            title: 'Datasets',
             props: {
+              title: 'Datasets',
               type: SynapseConstants.DATASET,
               sql: datasetsSql
             }

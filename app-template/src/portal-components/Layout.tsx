@@ -2,7 +2,7 @@ import * as React from 'react'
 
 const Layout = ({ children }: { children: any }) => {
   return (
-    <div className="container-fluid">
+    <div className="container-fluid SRC-object">
       <div className="row">
         <div className="col-md-offset-1 col-md-10">
           {children}
