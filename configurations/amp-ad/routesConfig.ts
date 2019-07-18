@@ -124,8 +124,8 @@ const routes: GenericRoute [] = [
           },
           {
             name: 'CardContainerLogic',
-            title: 'People',
             props: {
+              title: 'PEOPLE',
               sql: 'SELECT ownerID as ownerId, firstName, lastName, institution FROM syn13897207',
               type: SynapseConstants.MEDIUM_USER_CARD
             }
