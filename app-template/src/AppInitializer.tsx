@@ -6,7 +6,8 @@ import { withCookies, ReactCookieProps } from 'react-cookie'
 export type AppInitializerToken = {
   token: string
 }
-
+// pendo's declaration should be picked up by node_modules/@types/pendo-io-browser but is not
+declare var pendo: any
 export const TokenContext = React.createContext('')
 
 class AppInitializer extends React.Component<RouteComponentProps & ReactCookieProps, AppInitializerToken> {

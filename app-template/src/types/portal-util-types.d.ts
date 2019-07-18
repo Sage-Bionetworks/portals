@@ -6,7 +6,7 @@ import { SynapseConfig } from './portal-config'
   the portal.
 */
 
-export type HomeExploreConfig = {
+declare type HomeExploreConfig = {
   homePageSynapseObject: QueryWrapper
   explorePageSynapseObject: SynapseConfig
 }

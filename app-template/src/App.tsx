@@ -10,7 +10,7 @@ import { CookiesProvider } from 'react-cookie'
 const Home = React.lazy(() => import('./Home'))
 const RouteResolver = React.lazy(() => import('./RouteResolver'))
 
-const App: React.SFC<{}> = ({}) => {
+const App: React.SFC = () => {
   return (
     <CookiesProvider>
       <HashRouter>
