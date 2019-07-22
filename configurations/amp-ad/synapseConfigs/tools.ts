@@ -5,10 +5,10 @@ import { SynapseConstants } from "synapse-react-client"
 
 const computationalSchema: GenericCardSchema = {
   type: 'TOOL',
-  title: 'title',
+  title: 'name',
   subTitle: 'reagantType',
   description: 'summary',
-  icon: 'icon',
+  icon: 'toolType',
   secondaryLabels: {
     0: { key: 'contributor', alias: 'Contributor' },
     1: { key: 'program', alias: 'Program' },
@@ -20,10 +20,10 @@ const computationalSchema: GenericCardSchema = {
 
 const experimentalSchema: GenericCardSchema = {
   type: 'TOOL',
-  title: 'title',
+  title: 'name',
   subTitle: 'reagantType',
   description: 'summary',
-  icon: 'icon',
+  icon: 'toolType',
   secondaryLabels: {
     0: { key: 'contributor', alias: 'Contributor' },
     1: { key: 'diagnosis', alias: 'Diagnosis' },
@@ -45,8 +45,8 @@ const facetAliases = {
   softwareType: 'Software Type'
 }
 
-const computationalSql = "SELECT * FROM syn20337467 WHERE type = 'computational'"
-const experimentalSql = "SELECT * FROM syn20337467 WHERE type = 'experimental'"
+const computationalSql = "SELECT * FROM syn20337467 WHERE toolType = 'computational'"
+const experimentalSql = "SELECT * FROM syn20337467 WHERE toolType = 'experimental'"
 
 const tools: SynapseConfig = {
   name: 'QueryWrapperMenu',
