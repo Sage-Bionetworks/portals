@@ -1,6 +1,4 @@
 import { LogoConfig } from '../types/portal-config'
-
-// @ts-ignore
 import ampFooterLogoSvg from './style/amp-footer-logo.svg'
 
 const logo: LogoConfig = {
