@@ -35,7 +35,7 @@ const clinicalSql = "SELECT * FROM syn16859448 WHERE type = 'clinical'"
 const tools: SynapseConfig = {
   name: 'QueryWrapperMenu',
   props: {
-    rgbIndex: 2,
+    rgbIndex: 6,
     accordionConfig: [
       {
         name: 'Computational',
@@ -80,7 +80,7 @@ const tools: SynapseConfig = {
       },
       {
         name: 'Experimental',
-        unitDescription: 'tools from experimental',
+        unitDescription: 'tools from Experimental',
         cardConfiguration: {
           type: SynapseConstants.GENERIC_CARD,
           genericCardSchema: toolsSchema,
