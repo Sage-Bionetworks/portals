@@ -1,12 +1,12 @@
-import { data } from './data'
+import { studies } from './studies'
 import { publications } from './publications'
 
 export {
-  data,
+  studies,
   publications
 }
 
 export default {
-  data,
+  studies,
   publications
 }

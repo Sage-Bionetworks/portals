@@ -1,12 +1,31 @@
 import { SynapseConstants } from 'synapse-react-client'
-import loadingScreen from '../loadingScreen'
 import { HomeExploreConfig } from '../../types/portal-config'
+import loadingScreen from '../loadingScreen'
+import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 
-const sql = 'SELECT * FROM syn10923842'
-const unitDescription = 'Publications'
+const sql = 'SELECT * FROM syn18483791'
+const unitDescription = 'studies'
+
 const rgbIndex = 0
-const facetName = 'Theme'
-export const publications: HomeExploreConfig = {
+const facetName = 'tumorType'
+
+
+const studySchema: GenericCardSchema = {
+  type: SynapseConstants.STUDY,
+  title: 'name',
+  subTitle: 'centerName',
+  description: 'description',
+  secondaryLabels: {
+    0: { key: 'Theme' },
+    1: { key: 'tumorType', alias: 'Disease' },
+    2: { key: 'experimentalStrategy', alias: 'Assay' },
+    3: { key: 'consortium', alias: 'Program' },
+    4: { key: 'grantType', alias: 'Grant Type' },
+  },
+  link: 'id',
+}
+
+export const studies: HomeExploreConfig = {
   homePageSynapseObject: {
     name: 'QueryWrapperFlattened',
     props: {
@@ -29,53 +48,32 @@ export const publications: HomeExploreConfig = {
   explorePageSynapseObject: {
     name: 'QueryWrapperMenu',
     props: {
+      rgbIndex,
       unitDescription,
       stackedBarChartConfiguration: {
         loadingScreen,
       },
-      name: 'Publications',
       cardConfiguration: {
-        type: SynapseConstants.CSBC_PUBLICATION,
+        type: SynapseConstants.GENERIC_CARD,
+        genericCardSchema: studySchema
       },
+      name: 'Data',
       menuConfig: [
-        {
-          sql,
-          facetName: 'Publication Year',
-        },
-        {
-          sql,
-          facetName: 'Consortium',
-          facetAliases: {
-            Consortium: 'Program',
-          },
-        },
         {
           sql,
           facetName: 'grantType',
           facetAliases: {
             grantType: 'Grant Type',
-          },
+          }
         },
         {
           sql,
-          facetName: 'diseaseType',
+          facetName: 'consortium',
           facetAliases: {
-            diseaseType: 'Disease',
-          },
-        },
-        {
-          sql,
-          facetName: 'Theme',
-        },
-        {
-          sql,
-          facetName: 'experimentalStrategy',
-          facetAliases: {
-            experimentalStrategy: 'Assay',
-          },
-        },
+            consortium: 'Program',
+          }
+        }
       ],
-      rgbIndex: 1,
-    }
+    },
   }
 }

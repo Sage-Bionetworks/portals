@@ -2,7 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Structure of the codebase
 <pre>
-├── App.scss              # Main styling for the application, uses variables from example-configuration/_overrides.scss
+├── App.scss              # Main styling for the application, uses variables from test-configuration/_overrides.scss
 ├── App.tsx               # Main entry point with route configuration
 ├── AppInitializer.tsx    # e.g. getting token for the app, setting document title
 ├── ButtonControl.tsx     # Explore buttons that are used both on the home page and the explore page
@@ -12,7 +12,7 @@ Structure of the codebase
 ├── Navbar.tsx            # Navbar that reads over the routes
 ├── RouteResolver.tsx     # For any subpage not in Home/Explore this hooks up the configuration to that URL
 ├── config                # The main configuration folder read for the app 
-├── example-configuration # Folder with an example config that gets used for testing
+├── test-configuration # Folder with an example config that gets used for testing
 ├── index.tsx             # Boilerplate code that hooks the application up with index.html
 ├── portal-components     # portal specific components that are not related to layout
 ├── tests                 # all the tests for the application
@@ -20,11 +20,11 @@ Structure of the codebase
 </pre>
 
 # Configuartion Example
-For full code see [example-configuration](https://github.com/portals/app-template/src/example-configuration)
+For full code see [test-configuration](https://github.com/portals/app-template/src/test-configuration)
 
-Structure of example-configuration
+Structure of test-configuration
 <pre>
-example-configuration/
+test-configuration/
 ├── docTitleConfig.ts                       # Configure the document title
 ├── exploreHomeConfiguration                # Configure the data for explore and home page
 │   ├── data.ts                             

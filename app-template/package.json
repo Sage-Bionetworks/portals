@@ -32,8 +32,8 @@
     "copy-favicon": "cp src/config/style/favicon* public/",
     "start": "npm-run-all -p watch-css start-js",
     "build": "yarn copy-favicon; yarn run build-css && CI=false react-scripts build",
-    "copy-example-configuration": "cp -r src/example-configuration/ src/config/",
-    "test": "yarn run copy-example-configuration && react-scripts test --env=jsdom --setupFiles ./src/tests/setupTests.ts",
+    "copy-test-configuration": "cp -r src/test-configuration/ src/config/",
+    "test": "yarn run copy-test-configuration && react-scripts test --env=jsdom --setupFiles ./src/tests/setupTests.ts",
     "generate-sitemap": "node sitemap/generate-sitemap.js",
     "eject": "react-scripts eject"
   },

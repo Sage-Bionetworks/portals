@@ -1,14 +1,23 @@
 import { SynapseConstants } from 'synapse-react-client'
-import { HomeExploreConfig } from '../../types/portal-config'
 import loadingScreen from '../loadingScreen'
+import { HomeExploreConfig } from '../../types/portal-config'
+import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 
-const sql = 'SELECT * FROM syn18488466'
-const unitDescription = 'Datasets'
-
+const sql = 'SELECT * FROM syn10923842'
+const unitDescription = 'Publications'
 const rgbIndex = 0
-const facetName = 'tumorType'
-
-export const data: HomeExploreConfig = {
+const facetName = 'Theme'
+const publicationSchema: GenericCardSchema = {
+  type: 'Project',
+  title: 'Title',
+  subTitle: 'Authors',
+  description: 'abstract',
+  secondaryLabels: {
+    0: { key: 'Journal'},
+  },
+  link: 'PubMed',
+}
+export const publications: HomeExploreConfig = {
   homePageSynapseObject: {
     name: 'QueryWrapperFlattened',
     props: {
@@ -31,49 +40,27 @@ export const data: HomeExploreConfig = {
   explorePageSynapseObject: {
     name: 'QueryWrapperMenu',
     props: {
-      rgbIndex,
       unitDescription,
       stackedBarChartConfiguration: {
         loadingScreen,
       },
+      name: 'Publications',
       cardConfiguration: {
-        type: SynapseConstants.CSBC_DATASET,
+        type: SynapseConstants.GENERIC_CARD,
+        genericCardConfiguration: publicationSchema
       },
-      name: 'Data',
       menuConfig: [
         {
           sql,
-          facetName: 'species',
-          facetAliases: {
-            species: 'Species',
-          }
+          facetName: 'Theme',
+          
         },
         {
           sql,
-          facetName: 'Theme'
+          facetName: 'diseaseType',
         },
-        {
-          sql,
-          facetName: 'experimentalStrategy',
-          facetAliases: {
-            experimentalStrategy: 'Assay'
-          }
-        },
-        {
-          sql,
-          facetName: 'platform',
-          facetAliases: {
-            platform: 'Platform'
-          }
-        },
-        {
-          sql,
-          facetName: 'tumorType',
-          facetAliases: {
-            tumorType: 'Disease Type'
-          }
-        }
       ],
-    },
+      rgbIndex: 1,
+    }
   }
 }

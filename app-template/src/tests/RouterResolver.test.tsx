@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { getRouteFromParams, generateSynapseObjectHelper } from '../RouteResolver'
 import routesConfig,
- { HOME_INDEX, ABOUT_INDEX, ORGANIZATION_INDEX } from '../example-configuration/routesConfig'
+ { HOME_INDEX, ABOUT_INDEX, ORGANIZATION_INDEX } from '../test-configuration/routesConfig'
 import { NestedRoute, SynapseConfig } from '../types/portal-config'
 import CardContainerLogic from 'synapse-react-client/dist/containers/CardContainerLogic'
 import { mount } from 'enzyme'
