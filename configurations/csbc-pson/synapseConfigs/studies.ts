@@ -1,10 +1,26 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from '../../types/portal-config'
 import loadingScreen from '../loadingScreen'
+import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 const unitDescription = 'studies'
 export const studiesSql = `SELECT * FROM syn18483791 WHERE ( ( "is.study" = 'TRUE' ) )`
 const sql = studiesSql
 const rgbIndex = 1
+
+export const studiessSchema: GenericCardSchema = {
+  type: SynapseConstants.STUDY,
+  title: 'name',
+  subTitle: 'centerName',
+  description: 'description',
+  secondaryLabels: {
+    0: { key: 'Theme' },
+    1: { key: 'tumorType', alias: 'Disease' },
+    2: { key: 'experimentalStrategy', alias: 'Assay' },
+    3: { key: 'consortium', alias: 'Program' },
+    4: { key: 'grantType', alias: 'Grant Type' },
+  },
+  link: 'id',
+}
 
 export const studies: HomeExploreConfig = {
   homePageSynapseObject: {
@@ -38,7 +54,8 @@ export const studies: HomeExploreConfig = {
       rgbIndex,
       unitDescription,
       cardConfiguration: {
-        type: SynapseConstants.CSBC_STUDY,
+        type: SynapseConstants.GENERIC_CARD,
+        genericCardSchema: studiessSchema
       },
       stackedBarChartConfiguration: {
         loadingScreen
@@ -50,13 +67,6 @@ export const studies: HomeExploreConfig = {
           facetName: 'grantType',
           facetAliases: {
             grantType: 'Grant Type',
-          }
-        },
-        {
-          sql,
-          facetName: 'centerName',
-          facetAliases: {
-            centerName: 'Grant',
           }
         },
         {
