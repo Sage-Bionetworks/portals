@@ -7,7 +7,7 @@ const sql = 'SELECT * FROM syn18488466'
 const unitDescription = 'Datasets'
 const rgbIndex = 0
 
-const datasetsSchema: GenericCardSchema = {
+export const datasetSchema: GenericCardSchema = {
   type: SynapseConstants.DATASET,
   title: 'name',
   subTitle: 'centerName',
@@ -56,7 +56,7 @@ export const datasets: HomeExploreConfig = {
       unitDescription,
       cardConfiguration: {
         type: SynapseConstants.GENERIC_CARD,
-        genericCardSchema: datasetsSchema
+        genericCardSchema: datasetSchema
       },
       stackedBarChartConfiguration: {
         loadingScreen

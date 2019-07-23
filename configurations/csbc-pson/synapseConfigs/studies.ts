@@ -7,7 +7,7 @@ export const studiesSql = `SELECT * FROM syn18483791 WHERE ( ( "is.study" = 'TRU
 const sql = studiesSql
 const rgbIndex = 1
 
-export const studiessSchema: GenericCardSchema = {
+export const studySchema: GenericCardSchema = {
   type: SynapseConstants.STUDY,
   title: 'name',
   subTitle: 'centerName',
@@ -55,7 +55,7 @@ export const studies: HomeExploreConfig = {
       unitDescription,
       cardConfiguration: {
         type: SynapseConstants.GENERIC_CARD,
-        genericCardSchema: studiessSchema
+        genericCardSchema: studySchema
       },
       stackedBarChartConfiguration: {
         loadingScreen

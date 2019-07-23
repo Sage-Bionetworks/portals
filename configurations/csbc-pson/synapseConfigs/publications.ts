@@ -8,7 +8,7 @@ const unitDescription = 'Publications'
 const rgbIndex = 1
 
 
-export const publicationsSchema: GenericCardSchema = {
+export const publicationSchema: GenericCardSchema = {
   type: 'Project',
   title: 'Title',
   subTitle: 'Authors',
@@ -73,7 +73,7 @@ export const publications: HomeExploreConfig = {
       unitDescription,
       cardConfiguration: {
         type: SynapseConstants.GENERIC_CARD,
-        genericCardSchema: publicationsSchema,
+        genericCardSchema: publicationSchema,
         secondaryLabelLimit: 5
       },
       stackedBarChartConfiguration: {
