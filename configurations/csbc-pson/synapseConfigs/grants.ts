@@ -1,10 +1,24 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from '../../types/portal-config'
 import loadingScreen from '../loadingScreen'
+import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 const sql = `SELECT * FROM syn10142562 WHERE ( "grantType" = 'U54' OR "grantType" = 'U01')`
 const unitDescription = 'grants'
-const synapseId = 'syn10142562'
 const rgbIndex = 3
+
+export const grantsSchema: GenericCardSchema = {
+  type: 'Project',
+  title: 'name',
+  subTitle: 'Institutions',
+  description: 'abstract',
+  secondaryLabels: {
+    0: { key: 'Key Investigators', alias: 'Investigators' },
+    1: { key: 'grantNumber', alias: 'Grant' },
+    2: { key: 'consortium', alias: 'Program' },
+    3: { key: 'grantType', alias: 'Grant Type' },
+  },
+  link: 'id',
+}
 
 export const grants: HomeExploreConfig = {
   homePageSynapseObject: {
@@ -38,7 +52,9 @@ export const grants: HomeExploreConfig = {
       rgbIndex,
       unitDescription,
       cardConfiguration: {
-        type: SynapseConstants.CSBC_PROJECT,
+        type: SynapseConstants.GENERIC_CARD,
+        genericCardSchema: grantsSchema,
+        secondaryLabelLimit: 4
       },
       stackedBarChartConfiguration: {
         loadingScreen

@@ -1,10 +1,44 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from '../../types/portal-config'
 import loadingScreen from '../loadingScreen'
+import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 export const publicationSql = 'SELECT * FROM syn10923842'
 const sql = publicationSql
 const unitDescription = 'Publications'
 const rgbIndex = 1
+
+
+export const publicationsSchema: GenericCardSchema = {
+  type: 'Project',
+  title: 'Title',
+  subTitle: 'Authors',
+  description: 'abstract',
+  secondaryLabels: {
+    0: { key: 'Journal'},
+    1: { key: 'Publication Year', alias: 'Year' },
+    2: { key: 'Theme' },
+    3: { key: 'diseaseType', alias: 'Disease' },
+    4: { key: 'tissue_or_organ', alias: 'Tissue' },
+    5: { key: 'experimentalStrategy', alias: 'Assay' },
+    6: { key: 'Keywords'},
+    7: { key: 'DOI', alias: 'DOI' },
+    8: { key: 'Grant'},
+    9: { key: 'Consortium', alias: 'Program' },
+    10: { key: 'grantType', alias: 'Grant Type' },
+    11: { key: 'datasets', alias: 'Datasets' },
+    12: { key: 'studies', alias: 'Studies' },
+  },
+  link: 'PubMed',
+}
+
+const facetAliases = {
+  Consortium: 'Program',
+  grantType: 'Grant Type',
+  diseaseType: 'Disease',
+  experimentalStrategy: 'Assay',
+  'Publication Year': 'Year',
+  'tissue_or_organ': 'Tissue',
+}
 
 export const publications: HomeExploreConfig = {
   homePageSynapseObject: {
@@ -38,7 +72,9 @@ export const publications: HomeExploreConfig = {
       rgbIndex,
       unitDescription,
       cardConfiguration: {
-        type: SynapseConstants.CSBC_PUBLICATION,
+        type: SynapseConstants.GENERIC_CARD,
+        genericCardSchema: publicationsSchema,
+        secondaryLabelLimit: 5
       },
       stackedBarChartConfiguration: {
         loadingScreen
@@ -47,28 +83,13 @@ export const publications: HomeExploreConfig = {
       menuConfig: [
         {
           sql,
-          facetName: 'Publication Year',
-        },
-        {
-          sql,
+          facetAliases,
           facetName: 'Consortium',
-          facetAliases: {
-            Consortium: 'Program',
-          },
         },
         {
           sql,
-          facetName: 'grantType',
-          facetAliases: {
-            grantType: 'Grant Type',
-          },
-        },
-        {
-          sql,
-          facetName: 'diseaseType',
-          facetAliases: {
-            diseaseType: 'Disease',
-          },
+          facetAliases,
+          facetName: 'Publication Year',
         },
         {
           sql,
@@ -76,11 +97,24 @@ export const publications: HomeExploreConfig = {
         },
         {
           sql,
-          facetName: 'experimentalStrategy',
-          facetAliases: {
-            experimentalStrategy: 'Assay',
-          },
+          facetAliases,
+          facetName: 'diseaseType',
         },
+        {
+          sql,
+          facetAliases,
+          facetName: 'experimentalStrategy',
+        },
+        {
+          sql,
+          facetAliases,
+          facetName: 'tissue_or_organ',
+        },
+        {
+          sql,
+          facetAliases,
+          facetName: 'grantType',
+        }
       ],
     }
   }
