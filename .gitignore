@@ -3,3 +3,4 @@ build/
 app-template/src/config/**
 *.css
 .DS_Store
+.vscode/

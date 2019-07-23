@@ -27,12 +27,12 @@ export class Navbar extends React.Component<{}, NavbarState> {
       numNestedRoutes,
       token: undefined,
       userprofile: undefined,
-      showLoginDialog: false
+      showLoginDialog: false,
+      usermenu: false
     }
     for (let i = 0; i < numNestedRoutes; i += 1) {
       state[`dropdown${i}`] = false
     }
-    state['usermenu'] = false
     this.state = state
   }
 
@@ -55,7 +55,7 @@ export class Navbar extends React.Component<{}, NavbarState> {
     // special case.  if -1 then we want to close all dropdown menus (including the usermenu)
     if (index === -1) {
       this.setState({
-        ['usermenu']: false,
+        usermenu: false,
         hasDropdownOpen: false,
       })
     }
@@ -63,8 +63,8 @@ export class Navbar extends React.Component<{}, NavbarState> {
 
   toggleUserMenu = () => (_event: any) => {
     this.setState({
-      hasDropdownOpen: !this.state['usermenu'],
-      ['usermenu']: !this.state['usermenu']
+      hasDropdownOpen: !this.state.usermenu,
+      usermenu: !this.state.usermenu
     })
   }
 
@@ -118,12 +118,12 @@ export class Navbar extends React.Component<{}, NavbarState> {
     const toggleOff = this.toggleDropdown(-1)
     let currentNestedRouteCount = 0
     const { name, icon } = logoHeaderConfig
-    const logo = name ? name : <img className="nav-logo" src={icon} />
+    const logo = name ? name : <img alt="navigation logo" className="nav-logo" src={icon} />
     const hostname = window.location.hostname.toLowerCase()
     // for now, we only support login in the dev environment (localstorage) or from a .synapse.org subdomain (http-only secure cookie)
     const isSynapseSubdomainOrLocal = hostname.includes('.synapse.org') || hostname.includes('127.0.0.1') || hostname.includes('localhost')
     const { userprofile } = this.state
-    const isUserMenuOpen = this.state['usermenu']
+    const isUserMenuOpen = this.state.usermenu
     const toggleUserMenu = this.toggleUserMenu()
     return (
       <React.Fragment>

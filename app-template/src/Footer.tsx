@@ -6,15 +6,15 @@ import logoFooterConfig from './config/logoFooterConfig'
 export const Footer:React.SFC<{}> = () => {
   const goToTop = (_event:any) => { window.scroll({ top: 0, behavior: 'smooth' }) }
   const { name, icon } = logoFooterConfig
-  const logo = name ? name : <img className="nav-logo" src={icon} />
+  const logo = name ? name : <img alt="footer logo" className="nav-logo" src={icon} />
   return (
     <footer id="footer" className="center-content">
       <div id="portal-title-footer">
         <Link onClick={goToTop} to="/" id="footer-link"> {logo} </Link>
       </div>
       <div id="portal-contact-footer" className="center-content">
-        <a target="_blank" href={footerConfig.termsOfService} className="footer-link"> Terms of Service </a>
-        <a href={footerConfig.contactUs} className="footer-link"> Contact Us </a>
+        <a rel="noopener noreferrer" target="_blank" href={footerConfig.termsOfService} className="footer-link"> Terms of Service </a>
+        <a rel="noopener noreferrer" href={footerConfig.contactUs} className="footer-link"> Contact Us </a>
         {footerConfig.forum && <a href={footerConfig.forum} className="footer-link"> Forum </a>}
       </div>
     </footer>

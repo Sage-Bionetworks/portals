@@ -41,7 +41,7 @@ routes[EXPLORE_INDEX] = {
       synapseConfigArray: [publications.explorePageSynapseObject]
     }
   ],
-},
+}
 
 routes[ORGANIZATION_INDEX] = {
   name: 'Organizations',
@@ -85,7 +85,7 @@ routes[ORGANIZATION_INDEX] = {
       ]
     }
   ],
-},
+}
 
 routes[HOME_INDEX] = {
   name: 'Home',
