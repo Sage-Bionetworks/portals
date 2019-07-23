@@ -1,10 +1,27 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from '../../types/portal-config'
 import loadingScreen from '../loadingScreen'
-export const datasetsSql = `SELECT * FROM syn18488466 WHERE ( ( "featured" = 'TRUE' ) )`
+import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
+export const datasetsSql = `SELECT * FROM syn18488466 WHERE ( ( "is.dataset" = 'TRUE' ) )`
 const sql = 'SELECT * FROM syn18488466'
-const unitDescription = 'Datasetsz'
+const unitDescription = 'Datasets'
 const rgbIndex = 0
+
+export const datasetSchema: GenericCardSchema = {
+  type: SynapseConstants.DATASET,
+  title: 'name',
+  subTitle: 'centerName',
+  description: 'summary',
+  secondaryLabels: {
+    0: { key: 'Theme' },
+    1: { key: 'tumorType', alias: 'Disease' },
+    2: { key: 'experimentalStrategy', alias: 'Assay' },
+    3: { key: 'species', alias: 'Species' },
+    4: { key: 'consortium', alias: 'Program' },
+    5: { key: 'grantType', alias: 'Grant Type' },
+  },
+  link: 'id',
+}
 
 export const datasets: HomeExploreConfig = {
   homePageSynapseObject: {
@@ -38,7 +55,8 @@ export const datasets: HomeExploreConfig = {
       rgbIndex,
       unitDescription,
       cardConfiguration: {
-        type: SynapseConstants.CSBC_DATASET,
+        type: SynapseConstants.GENERIC_CARD,
+        genericCardSchema: datasetSchema
       },
       stackedBarChartConfiguration: {
         loadingScreen
@@ -65,9 +83,9 @@ export const datasets: HomeExploreConfig = {
         },
         {
           sql,
-          facetName: 'platform',
+          facetName: 'consortium',
           facetAliases: {
-            platform: 'Platform'
+            consortium: 'Program'
           }
         },
         {
@@ -75,6 +93,13 @@ export const datasets: HomeExploreConfig = {
           facetName: 'tumorType',
           facetAliases: {
             tumorType: 'Disease Type'
+          }
+        },
+        {
+          sql,
+          facetName: 'grantType',
+          facetAliases: {
+            grantType: 'Grant Type'
           }
         }
       ],

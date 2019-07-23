@@ -1,9 +1,9 @@
 import { GenericRoute } from '../types/portal-config'
 import { publications, files, datasets, grants, studies } from './synapseConfigs'
 import { SynapseConstants } from 'synapse-react-client'
-import { studiesSql } from './synapseConfigs/studies'
-import { publicationSql } from './synapseConfigs/publications'
-import { datasetsSql } from './synapseConfigs/datasets'
+import { studiesSql, studySchema } from './synapseConfigs/studies'
+import { publicationSql, publicationSchema } from './synapseConfigs/publications'
+import { datasetsSql, datasetSchema } from './synapseConfigs/datasets'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
 import loadingScreen from './loadingScreen'
 
@@ -43,7 +43,8 @@ const routes: GenericRoute [] = [
           loadingScreen,
           sql: studiesSql,
           limit: homeLimit,
-          type: SynapseConstants.CSBC_STUDY,
+          type: SynapseConstants.GENERIC_CARD,
+          genericCardSchema: studySchema
         }
       },
       {
@@ -54,7 +55,8 @@ const routes: GenericRoute [] = [
           loadingScreen,
           sql: publicationSql,
           limit: homeLimit,
-          type: SynapseConstants.CSBC_PUBLICATION
+          type: SynapseConstants.GENERIC_CARD,
+          genericCardSchema: publicationSchema
         },
       },
       {
@@ -65,7 +67,8 @@ const routes: GenericRoute [] = [
           loadingScreen,
           sql: datasetsSql,
           limit: homeLimit,
-          type: SynapseConstants.CSBC_DATASET
+          type: SynapseConstants.GENERIC_CARD,
+          genericCardSchema: datasetSchema
         },
       },
     ]

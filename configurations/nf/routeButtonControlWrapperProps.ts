@@ -10,12 +10,14 @@ const routeButtonControlProps: SynapseConfig = {
       '#58A058',
       '#407BA0',
       '#5BB0B5',
+      '#3C4A63',
     ],
     customRoutes: [
       'Studies',
       'Datasets',
       'Files',
       'Publications',
+      'Tools',
     ]
   }
 }

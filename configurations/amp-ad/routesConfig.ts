@@ -1,10 +1,9 @@
 import { GenericRoute } from '../types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
-import { projects, studies, data, people, programs, publications } from './synapseConfigs'
+import { projects, studies, data, people, programs, publications, tools } from './synapseConfigs'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
 import { ampAd, move2Ad, modelAd, resilienceAd } from './synapseConfigs/programs/'
 import { studyCardProps } from './synapseConfigs/studies'
-// @ts-ignore
 import iconAgoraSvg from './style/icon-agora.svg'
 
 const routes: GenericRoute [] = [
@@ -201,7 +200,21 @@ const routes: GenericRoute [] = [
             }
           }
         ]
-      }
+      },
+      {
+        name: 'Tools',
+        isNested: false,
+        to: '/Explore/Tools',
+        synapseConfigArray: [
+          {
+            ...routeButtonControlWrapperProps,
+            props: {
+              ...routeButtonControlWrapperProps.props,
+              synapseConfig: tools
+            }
+          }
+        ]
+      },
     ]
   },
   {

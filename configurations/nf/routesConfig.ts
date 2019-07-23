@@ -10,6 +10,7 @@ import { ntap } from './synapseConfigs/organizationConfigs/ntap'
 import { dhartSpore } from './synapseConfigs/organizationConfigs/dhart-spore'
 import { ctf } from './synapseConfigs/organizationConfigs/ctf'
 import { buttonColors } from './synapseConfigs/commonProps'
+import { toolsSql } from './synapseConfigs/tools'
 const limit = 3
 
 const routes: GenericRoute [] = [
@@ -75,8 +76,8 @@ const routes: GenericRoute [] = [
         props: {
           limit,
           loadingScreen,
-          sql: tools.sql,
-          type: tools.type
+          type: SynapseConstants.TOOL,
+          sql: toolsSql
         }
       },
       {
@@ -187,7 +188,21 @@ const routes: GenericRoute [] = [
             }
           }
         ]
-      }
+      },
+      {
+        name: 'Tools',
+        isNested: false,
+        to: '/Explore/Tools',
+        synapseConfigArray: [
+          {
+            ...routeButtonControlWrapperProps,
+            props: {
+              ...routeButtonControlWrapperProps.props,
+              synapseConfig: tools
+            }
+          }
+        ]
+      },
     ]
   },
   {
