@@ -58,11 +58,6 @@ const tools: SynapseConfig = {
           },
           {
             sql: computationalSql,
-            facetName: 'type',
-            facetAliases
-          },
-          {
-            sql: computationalSql,
             facetName: 'subtype',
             facetAliases
           },
@@ -99,11 +94,6 @@ const tools: SynapseConfig = {
           },
           {
             sql: experimentalSql,
-            facetName: 'type',
-            facetAliases
-          },
-          {
-            sql: experimentalSql,
             facetName: 'subtype',
             facetAliases
           },
@@ -136,11 +126,6 @@ const tools: SynapseConfig = {
           {
             sql: clinicalSql,
             facetName: 'fundingAgency',
-            facetAliases
-          },
-          {
-            sql: clinicalSql,
-            facetName: 'type',
             facetAliases
           },
           {

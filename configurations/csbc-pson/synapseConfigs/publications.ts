@@ -9,7 +9,7 @@ const rgbIndex = 1
 
 
 export const publicationSchema: GenericCardSchema = {
-  type: 'Project',
+  type: SynapseConstants.PUBLICATION,
   title: 'Title',
   subTitle: 'Authors',
   description: 'abstract',

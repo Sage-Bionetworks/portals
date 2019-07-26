@@ -1,6 +1,6 @@
 import { GenericRoute } from '../types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
-import { publications, data } from './exploreHomeConfiguration'
+import { publications, studies } from './exploreHomeConfiguration'
 
 // Constants used for testing
 export const ABOUT_INDEX =  3
@@ -32,7 +32,7 @@ routes[EXPLORE_INDEX] = {
       name: 'Data',
       isNested: false,
       to: '/Explore/Data',
-      synapseConfigArray: [data.explorePageSynapseObject]
+      synapseConfigArray: [studies.explorePageSynapseObject]
     },
     {
       name: 'Publications',
@@ -64,7 +64,10 @@ routes[ORGANIZATION_INDEX] = {
           title: 'Cards',
           name: 'CardContainerLogic',
           props: {
-            type: SynapseConstants.CSBC_DATASET,
+            type: SynapseConstants.GENERIC_CARD,
+            genericCardSchema: {
+              title: 'name',
+            },
             sql: `SELECT * FROM syn18488466 WHERE ( ( "featured" = 'TRUE' ) )`
           }
         }
@@ -97,7 +100,7 @@ routes[HOME_INDEX] = {
       name: 'StatefulButtonControlWrapper',
       props: {
         configs: [
-          data.homePageSynapseObject.props,
+          studies.homePageSynapseObject.props,
           publications.homePageSynapseObject.props
         ],
         colors: [
@@ -112,7 +115,10 @@ routes[HOME_INDEX] = {
       link: '/Explore/Data',
       props: {
         sql: 'SELECT * FROM syn9630847',
-        type: SynapseConstants.CSBC_DATASET,
+        type: SynapseConstants.GENERIC_CARD,
+        genericCardSchema: {
+          title: 'name',
+        },
         limit: 3
       },
     },
