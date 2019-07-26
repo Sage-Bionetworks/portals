@@ -74,22 +74,7 @@ const tools: SynapseConfig = {
           },
           {
             sql: computationalSql,
-            facetName: 'modelSystemName',
-            facetAliases
-          },
-          {
-            sql: computationalSql,
-            facetName: 'modelType',
-            facetAliases
-          },
-          {
-            sql: computationalSql,
             facetName: 'program',
-            facetAliases
-          },
-          {
-            sql: computationalSql,
-            facetName: 'reagentType',
             facetAliases
           },
           {
@@ -120,11 +105,6 @@ const tools: SynapseConfig = {
           },
           {
             sql: experimentalSql,
-            facetName: 'modelSystemName',
-            facetAliases
-          },
-          {
-            sql: experimentalSql,
             facetName: 'modelType',
             facetAliases
           },
@@ -136,11 +116,6 @@ const tools: SynapseConfig = {
           {
             sql: experimentalSql,
             facetName: 'reagentType',
-            facetAliases
-          },
-          {
-            sql: experimentalSql,
-            facetName: 'softwareType',
             facetAliases
           },
         ]

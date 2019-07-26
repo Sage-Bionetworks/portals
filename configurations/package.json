@@ -6,8 +6,6 @@
   "author": "Michael Lee <michael.leem42@gmail.com>",
   "devDependencies": {
     "synapse-react-client": "1.12.27",
-    "tslint-config-airbnb": "^5.11.1",
-    "tslint-react": "^3.6.0",
     "tslint": "5.16.0",
     "typescript": "3.4.5"
   },
