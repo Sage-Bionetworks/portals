@@ -6,7 +6,7 @@ import { SynapseConstants } from "synapse-react-client"
 const computationalSchema: GenericCardSchema = {
   type: 'TOOL',
   title: 'name',
-  subTitle: 'reagantType',
+  subTitle: 'softwareType',
   description: 'summary',
   icon: 'toolType',
   secondaryLabels: {
@@ -21,7 +21,7 @@ const computationalSchema: GenericCardSchema = {
 const experimentalSchema: GenericCardSchema = {
   type: 'TOOL',
   title: 'name',
-  subTitle: 'reagantType',
+  subTitle: 'reagentType',
   description: 'summary',
   icon: 'toolType',
   secondaryLabels: {
