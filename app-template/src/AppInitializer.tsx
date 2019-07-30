@@ -27,7 +27,7 @@ class AppInitializer extends React.Component<RouteComponentProps & ReactCookiePr
     }
     // we return the chained promises so that any caught error is propogated to the last catch statement
     SynapseClient.getSessionTokenFromCookie().then(
-      (sessionToken: string) => {
+      (sessionToken) => {
         if (sessionToken) {
           return SynapseClient.putRefreshSessionToken(sessionToken).then(
             // backend doesn't return a response for this call, its empty

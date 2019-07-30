@@ -2,8 +2,10 @@ import { GenericRoute } from '../types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
 import { projects, studies, data, people, programs, publications, tools } from './synapseConfigs'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
-import { ampAd, move2Ad, modelAd, resilienceAd } from './synapseConfigs/programs/'
 import { studyCardProps } from './synapseConfigs/studies'
+import { projectCardProps } from './synapseConfigs/projects'
+import { iconHeaderOptions } from './synapseConfigs/programs/iconOptions'
+import loadingScreen from './loadingScreen'
 import iconAgoraSvg from './style/icon-agora.svg'
 
 const routes: GenericRoute [] = [
@@ -31,12 +33,8 @@ const routes: GenericRoute [] = [
         }
       },
       {
-        name: 'CardContainerLogic',
+        ...programs,
         title: 'PROGRAMS',
-        props: {
-          sql: 'SELECT * FROM syn17024173',
-          type: SynapseConstants.AMP_CONSORTIUM
-        }
       },
       {
         name: 'Markdown',
@@ -54,7 +52,7 @@ const routes: GenericRoute [] = [
     routes: [
       {
         name: 'Programs',
-        isNested: true,
+        isNested: false,
         to: '/Explore/Programs',
         synapseConfigArray: [
           {
@@ -65,32 +63,35 @@ const routes: GenericRoute [] = [
             }
           }
         ],
-        routes: [
-          {
-            name: 'AMP-AD',
-            isNested: false,
-            to: '/Explore/Programs/AMP-AD',
-            synapseConfigArray: ampAd
-          },
-          {
-            name: 'M2OVE-AD',
-            isNested: false,
-            to: '/Explore/Programs/M2OVE-AD',
-            synapseConfigArray: move2Ad
-          },
-          {
-            name: 'MODEL-AD',
-            isNested: false,
-            to: '/Explore/Programs/MODEL-AD',
-            synapseConfigArray: modelAd
-          },
-          {
-            name: 'Resilience-AD',
-            isNested: false,
-            to: '/Explore/Programs/Resilience-AD',
-            synapseConfigArray: resilienceAd
-          },
-        ]
+        programmaticRouteConfig: [{
+          name: 'CardContainerLogic',
+          isOutsideContainer: true,
+          props: {
+            iconOptions: iconHeaderOptions,
+            loadingScreen,
+            sql: 'SELECT  * FROM syn17024173',
+            isHeader: true,
+            type: SynapseConstants.GENERIC_CARD,
+            genericCardSchema: {
+              type: 'Program',
+              title: 'Full Name',
+              subTitle: 'Short Description',
+              icon: 'Program',
+              description: 'Long Description',
+            },
+            backgroundColor: '#5960a5'
+          }
+        },
+        {
+          name: 'CardContainerLogic',
+          title: 'Explore Projects',
+          props: {
+            loadingScreen,
+            ...projectCardProps,
+            sql: `SELECT  * FROM syn17024229`,
+          }
+        }
+      ],
       },
       {
         name: 'Projects',

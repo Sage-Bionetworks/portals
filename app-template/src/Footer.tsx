@@ -10,12 +10,13 @@ export const Footer:React.SFC<{}> = () => {
   return (
     <footer id="footer" className="center-content">
       <div id="portal-title-footer">
-        <Link onClick={goToTop} to="/" id="footer-link"> {logo} </Link>
+        <Link onClick={goToTop} to="/" id="footer-item"> {logo} </Link>
       </div>
       <div id="portal-contact-footer" className="center-content">
-        <a rel="noopener noreferrer" target="_blank" href={footerConfig.termsOfService} className="footer-link"> Terms of Service </a>
-        <a rel="noopener noreferrer" href={footerConfig.contactUs} className="footer-link"> Contact Us </a>
-        {footerConfig.forum && <a href={footerConfig.forum} className="footer-link"> Forum </a>}
+        <a rel="noopener noreferrer" target="_blank" href={footerConfig.termsOfService} className="footer-item"> Terms of Service </a>
+        <a rel="noopener noreferrer" href={footerConfig.contactUs} className="footer-item"> Contact Us </a>
+        {footerConfig.forum && <a href={footerConfig.forum} className="footer-item"> Forum </a>}
+        <button className="footer-item" id="pendo-help-us-improve"> Help Us Improve </button>
       </div>
     </footer>
   )
