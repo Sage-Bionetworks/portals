@@ -28,7 +28,8 @@ const routes: GenericRoute [] = [
             { name: 'Studies', synapseConfigArray: [studies.homePageSynapseObject] },
             { name: 'Datasets', synapseConfigArray: [datasets.homePageSynapseObject] },
             { name: 'Files', synapseConfigArray: [files.homePageSynapseObject] },
-            { name: 'Publications', synapseConfigArray: [publications.homePageSynapseObject] }
+            { name: 'Publications', synapseConfigArray: [publications.homePageSynapseObject] },
+            { name: 'Tools', synapseConfigArray: [tools.homePageSynapseObject] },
           ]
         }
       },
@@ -198,7 +199,7 @@ const routes: GenericRoute [] = [
             ...routeButtonControlWrapperProps,
             props: {
               ...routeButtonControlWrapperProps.props,
-              synapseConfig: tools
+              synapseConfig: tools.explorePageSynapseObject
             }
           }
         ]

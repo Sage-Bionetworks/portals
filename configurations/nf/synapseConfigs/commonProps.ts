@@ -4,6 +4,7 @@ export const buttonColors = {
     '#58A058',
     '#407BA0',
     '#5BB0B5',
+    '#3C4A63',
   ],
 }
 
@@ -28,4 +29,5 @@ export const facetAliases = {
   nf2Genotype: 'NF2 Genotype',
   consortium: 'Consortium',
   name: 'File Name',
+  type: 'Type',
 }
