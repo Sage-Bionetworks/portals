@@ -1,12 +1,24 @@
 import { SynapseConfig } from '../../types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
+import { iconOptions } from './programs/iconOptions'
 
 const programs: SynapseConfig = {
   name: 'CardContainerLogic',
   title: 'Displaying Programs',
   props: {
+    iconOptions,
     sql: 'SELECT * FROM syn17024173',
-    type: SynapseConstants.AMP_CONSORTIUM
+    type: SynapseConstants.GENERIC_CARD,
+    genericCardSchema: {
+      type: 'Program',
+      title: 'Full Name',
+      subTitle: 'Short Description',
+      icon: 'Program',
+    },
+    internalLinkConfiguration: {
+      baseURL: 'Explore/Programs',
+      columnValues: ['Program']
+    }
   },
 }
 

@@ -2,8 +2,9 @@ import { GenericRoute } from '../types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
 import { projects, studies, data, people, programs, publications, tools } from './synapseConfigs'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
-import { ampAd, move2Ad, modelAd, resilienceAd } from './synapseConfigs/programs/'
 import { studyCardProps } from './synapseConfigs/studies'
+import { iconOptions } from './synapseConfigs/programs/iconOptions'
+import loadingScreen from './loadingScreen'
 import iconAgoraSvg from './style/icon-agora.svg'
 
 const routes: GenericRoute [] = [
@@ -54,7 +55,7 @@ const routes: GenericRoute [] = [
     routes: [
       {
         name: 'Programs',
-        isNested: true,
+        isNested: false,
         to: '/Explore/Programs',
         synapseConfigArray: [
           {
@@ -65,32 +66,57 @@ const routes: GenericRoute [] = [
             }
           }
         ],
-        routes: [
-          {
-            name: 'AMP-AD',
-            isNested: false,
-            to: '/Explore/Programs/AMP-AD',
-            synapseConfigArray: ampAd
-          },
-          {
-            name: 'M2OVE-AD',
-            isNested: false,
-            to: '/Explore/Programs/M2OVE-AD',
-            synapseConfigArray: move2Ad
-          },
-          {
-            name: 'MODEL-AD',
-            isNested: false,
-            to: '/Explore/Programs/MODEL-AD',
-            synapseConfigArray: modelAd
-          },
-          {
-            name: 'Resilience-AD',
-            isNested: false,
-            to: '/Explore/Programs/Resilience-AD',
-            synapseConfigArray: resilienceAd
-          },
-        ]
+        programmaticRouteConfig: [{
+          name: 'CardContainerLogic',
+          isOutsideContainer: true,
+          props: {
+            iconOptions,
+            loadingScreen,
+            sql: 'SELECT  * FROM syn17024173',
+            isHeader: true,
+            type: SynapseConstants.GENERIC_CARD,
+            genericCardSchema: {
+              type: 'Project',
+              title: 'Name',
+              subTitle: 'Key Investigators',
+              icon: 'Program',
+              description: 'Abstract',
+              secondaryLabels: {
+                0: { key: 'Grant Number', alias: 'GRANT' },
+                1: { key: 'Key Data Contributors', alias: 'KEY DATA CONTRIBUTORS' },
+                2: { key: 'Institutions', alias: 'INSTITUTIONS' },
+                3: { key: 'Program', alias: 'PROGRAM' },
+              },
+              backgroundColor: '#5960a5'
+            }
+          }
+        }],
+        // routes: [
+        //   {
+        //     name: 'AMP-AD',
+        //     isNested: false,
+        //     to: '/Explore/Programs/AMP-AD',
+        //     synapseConfigArray: ampAde
+        //   },
+        //   {
+        //     name: 'M2OVE-AD',
+        //     isNested: false,
+        //     to: '/Explore/Programs/M2OVE-AD',
+        //     synapseConfigArray: move2Ad
+        //   },
+        //   {
+        //     name: 'MODEL-AD',
+        //     isNested: false,
+        //     to: '/Explore/Programs/MODEL-AD',
+        //     synapseConfigArray: modelAd
+        //   },
+        //   {
+        //     name: 'Resilience-AD',
+        //     isNested: false,
+        //     to: '/Explore/Programs/Resilience-AD',
+        //     synapseConfigArray: resilienceAd
+        //   },
+        // ]
       },
       {
         name: 'Projects',
