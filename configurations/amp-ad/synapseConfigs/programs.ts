@@ -18,7 +18,7 @@ const programs: SynapseConfig = {
     internalLinkConfiguration: {
       baseURL: 'Explore/Programs',
       columnValues: ['Program']
-    }
+    }  
   },
 }
 

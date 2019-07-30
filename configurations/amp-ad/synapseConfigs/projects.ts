@@ -21,6 +21,7 @@ export const projectCardProps = {
       3: { key: 'Grant Number', alias:  'Grant' },
     }
   },
+  secondaryLabelLimit: 4,
   internalLinkConfiguration: {
     baseURL: 'Explore/Projects',
     columnValues: ['Grant Number']
