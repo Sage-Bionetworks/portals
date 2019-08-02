@@ -4,7 +4,7 @@ import { SynapseConstants } from "synapse-react-client"
 import { HomeExploreConfig } from "types/portal-util-types"
 export const toolsSql = 'SELECT * FROM syn16859448'
 
-const toolsSchema: GenericCardSchema = {
+export const toolsSchema: GenericCardSchema = {
   type: 'TOOL',
   title: 'name',
   subTitle: 'contact',

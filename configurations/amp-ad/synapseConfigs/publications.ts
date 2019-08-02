@@ -16,7 +16,7 @@ export const publicationCardProps = {
     link: 'doi',
     secondaryLabels: {
       0: { key: 'year', alias: 'Year' },
-      1: { key: 'Key Data Contributors', alias:  'Key Contributors' },
+      1: { key: 'journal', alias: 'Journal' },
       2: { key: 'consortium', alias: 'Program' },
       3: { key: 'long_amp_ad_grants', alias:  'Grant' },
       4: { key: 'doi', alias:  'DOI' },
