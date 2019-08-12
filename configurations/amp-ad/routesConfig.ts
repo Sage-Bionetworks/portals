@@ -219,22 +219,6 @@ const routes: GenericRoute [] = [
     ]
   },
   {
-    name: 'ResearchTools',
-    displayName: 'Research Tools',
-    to: '/ResearchTools',
-    isNested: false,
-    synapseConfigArray: [
-      {
-        name: 'Markdown',
-        title: 'Research Tools',
-        props: {
-          ownerId:'syn2580853',
-          wikiId:'409845'
-        }
-      }
-    ]
-  },
-  {
     name: 'DataAccess',
     displayName: 'Data Access',
     isNested: true,
