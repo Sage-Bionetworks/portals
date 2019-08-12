@@ -1,1 +1,1 @@
-export S3_STAGING_BUCKET_LOCATION=s3://staging.ampadportal.org
+export S3_STAGING_BUCKET_LOCATION=s3://staging.adknowledgeportal.synapse.org
