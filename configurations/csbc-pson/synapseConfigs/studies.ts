@@ -61,20 +61,20 @@ export const studies: HomeExploreConfig = {
         loadingScreen
       },
       name: 'Studies',
+      facetAliases: {
+        grantType: 'Grant Type',
+        consortium: 'Program',
+        experimentalStrategy: 'Assay',
+        tumorType: 'Disease Type',
+      },
       menuConfig: [
         {
           sql,
-          facetName: 'grantType',
-          facetAliases: {
-            grantType: 'Grant Type',
-          }
+          facetName: 'grantType'
         },
         {
           sql,
-          facetName: 'consortium',
-          facetAliases: {
-            consortium: 'Program',
-          }
+          facetName: 'consortium'
         },
         {
           sql,
@@ -82,17 +82,11 @@ export const studies: HomeExploreConfig = {
         },
         {
           sql,
-          facetName: 'experimentalStrategy',
-          facetAliases: {
-            experimentalStrategy: 'Assay',
-          }
+          facetName: 'experimentalStrategy'
         },
         {
           sql,
-          facetName: 'tumorType',
-          facetAliases: {
-            tumorType: 'Disease Type',
-          }
+          facetName: 'tumorType'
         },
       ],
     }

@@ -66,36 +66,31 @@ const publications: HomeExploreConfig = {
       },
       name: 'Publications',
       cardConfiguration: publicationsCardConfiguration,
+      facetAliases,
       menuConfig: [
         {
           sql,
-          facetAliases,
-          facetName: 'fundingAgency',
+          facetName: 'fundingAgency'
         },
         {
           sql,
-          facetAliases,
-          facetName: 'journal',
+          facetName: 'journal'
         },
         {
           sql,
-          facetAliases,
-          facetName: 'year',
+          facetName: 'year'
         },
         {
           sql,
-          facetAliases,
-          facetName: 'studyName',
+          facetName: 'studyName'
         },
         {
           sql,
-          facetAliases,
-          facetName: 'diseaseFocus',
+          facetName: 'diseaseFocus'
         },
         {
           sql,
-          facetAliases,
-          facetName: 'manifestation',
+          facetName: 'manifestation'
         },
       ]
     }

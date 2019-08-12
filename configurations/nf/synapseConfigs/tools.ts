@@ -73,31 +73,27 @@ const tools: HomeExploreConfig = {
             genericCardSchema: toolsSchema,
             loadingScreen
           },
+          facetAliases,
           menuConfig: [
             {
               sql: computationalSql,
-              facetName: 'studyName',
-              facetAliases
+              facetName: 'studyName'
             },
             {
               sql: computationalSql,
-              facetName: 'fundingAgency',
-              facetAliases
+              facetName: 'fundingAgency'
             },
             {
               sql: computationalSql,
-              facetName: 'subtype',
-              facetAliases
+              facetName: 'subtype'
             },
             {
               sql: computationalSql,
-              facetName: 'diseaseFocus',
-              facetAliases
+              facetName: 'diseaseFocus'
             },
             {
               sql: computationalSql,
-              facetName: 'manifestation',
-              facetAliases
+              facetName: 'manifestation'
             },
           ]
         },
@@ -109,31 +105,27 @@ const tools: HomeExploreConfig = {
             genericCardSchema: toolsSchema,
             loadingScreen
           },
+          facetAliases,
           menuConfig: [
             {
               sql: experimentalSql,
-              facetName: 'studyName',
-              facetAliases
+              facetName: 'studyName'
             },
             {
               sql: experimentalSql,
-              facetName: 'fundingAgency',
-              facetAliases
+              facetName: 'fundingAgency'
             },
             {
               sql: experimentalSql,
-              facetName: 'subtype',
-              facetAliases
+              facetName: 'subtype'
             },
             {
               sql: experimentalSql,
-              facetName: 'diseaseFocus',
-              facetAliases
+              facetName: 'diseaseFocus'
             },
             {
               sql: experimentalSql,
-              facetName: 'manifestation',
-              facetAliases
+              facetName: 'manifestation'
             },
           ]
         },
@@ -148,28 +140,23 @@ const tools: HomeExploreConfig = {
           menuConfig: [
             {
               sql: clinicalSql,
-              facetName: 'studyName',
-              facetAliases
+              facetName: 'studyName'
             },
             {
               sql: clinicalSql,
-              facetName: 'fundingAgency',
-              facetAliases
+              facetName: 'fundingAgency'
             },
             {
               sql: clinicalSql,
-              facetName: 'subtype',
-              facetAliases
+              facetName: 'subtype'
             },
             {
               sql: clinicalSql,
-              facetName: 'diseaseFocus',
-              facetAliases
+              facetName: 'diseaseFocus'
             },
             {
               sql: clinicalSql,
-              facetName: 'manifestation',
-              facetAliases
+              facetName: 'manifestation'
             },
           ]
         },

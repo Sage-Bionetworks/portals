@@ -79,36 +79,31 @@ const studies: HomeExploreConfig = {
           columnValues: ['studyId']
         },
       },
+      facetAliases,
       menuConfig: [
         {
           sql,
-          facetAliases,
           facetName: 'studyStatus',
         },
         {
           sql,
-          facetAliases,
           facetName: 'dataStatus'
         },
         {
           sql,
-          facetAliases,
           facetName: 'institutions'
         },
         {
           sql,
-          facetAliases,
           facetName: 'fundingAgency'
         },
         {
           sql,
-          facetAliases,
           facetName: 'manifestation'
         },
         {
           sql,
-          facetAliases,
-          facetName: 'diseaseFocus',
+          facetName: 'diseaseFocus'
         },
       ]
     }

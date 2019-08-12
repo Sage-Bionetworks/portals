@@ -36,27 +36,23 @@ const publications: SynapseConfig = {
     name: 'Publications',
     isConsistent: true,
     cardConfiguration: publicationCardProps,
+    facetAliases: {
+      consortium: 'Program',
+      year: 'Year',
+      long_amp_ad_grants: 'Grant'
+    },
     menuConfig: [
       {
         sql,
         facetName: 'consortium',
-        facetAliases: {
-          consortium: 'Program'
-        }
       },
       {
         sql,
         facetName: 'year',
-        facetAliases: {
-          year: 'Year'
-        }
       },
       {
         sql,
         facetName: 'long_amp_ad_grants',
-        facetAliases: {
-          long_amp_ad_grants: 'Grant'
-        }
       },
     ],
   }

@@ -47,21 +47,19 @@ const datasets: HomeExploreConfig = {
         type,
       },
       name: 'Datasets',
+      facetAliases,
       menuConfig: [
         {
           sql,
-          facetAliases,
-          facetName: 'diseaseFocus',
+          facetName: 'diseaseFocus'
         },
         {
           sql,
-          facetAliases,
-          facetName: 'tumorType',
+          facetName: 'tumorType'
         },
         {
           sql,
-          facetAliases,
-          facetName: 'fundingAgency',
+          facetName: 'fundingAgency'
         },
       ]
     }

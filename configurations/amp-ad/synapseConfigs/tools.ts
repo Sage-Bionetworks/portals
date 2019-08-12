@@ -52,6 +52,7 @@ const tools: SynapseConfig = {
   name: 'QueryWrapperMenu',
   props: {
     rgbIndex: 6,
+    facetAliases,
     accordionConfig: [
       {
         name: 'Computational',
@@ -65,22 +66,18 @@ const tools: SynapseConfig = {
           {
             sql: computationalSql,
             facetName: 'diagnosis',
-            facetAliases
           },
           {
             sql: computationalSql,
-            facetName: 'grant',
-            facetAliases
+            facetName: 'grant'
           },
           {
             sql: computationalSql,
-            facetName: 'program',
-            facetAliases
+            facetName: 'program'
           },
           {
             sql: computationalSql,
-            facetName: 'softwareType',
-            facetAliases
+            facetName: 'softwareType'
           },
         ]
       },
@@ -95,28 +92,23 @@ const tools: SynapseConfig = {
         menuConfig: [
           {
             sql: experimentalSql,
-            facetName: 'diagnosis',
-            facetAliases
+            facetName: 'diagnosis'
           },
           {
             sql: experimentalSql,
-            facetName: 'grant',
-            facetAliases
+            facetName: 'grant'
           },
           {
             sql: experimentalSql,
-            facetName: 'modelType',
-            facetAliases
+            facetName: 'modelType'
           },
           {
             sql: experimentalSql,
-            facetName: 'program',
-            facetAliases
+            facetName: 'program'
           },
           {
             sql: experimentalSql,
-            facetName: 'reagentType',
-            facetAliases
+            facetName: 'reagentType'
           },
         ]
       },

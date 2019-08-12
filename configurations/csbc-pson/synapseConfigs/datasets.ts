@@ -62,13 +62,17 @@ export const datasets: HomeExploreConfig = {
         loadingScreen
       },
       name: 'Datasets',
+      facetAliases: {
+        species: 'Species',
+        experimentalStrategy: 'Assay',
+        consortium: 'Program',
+        tumorType: 'Disease Type',
+        grantType: 'Grant Type'
+      },
       menuConfig: [
         {
           sql,
           facetName: 'species',
-          facetAliases: {
-            species: 'Species',
-          }
         },
         {
           sql,
@@ -77,30 +81,18 @@ export const datasets: HomeExploreConfig = {
         {
           sql,
           facetName: 'experimentalStrategy',
-          facetAliases: {
-            experimentalStrategy: 'Assay'
-          }
         },
         {
           sql,
           facetName: 'consortium',
-          facetAliases: {
-            consortium: 'Program'
-          }
         },
         {
           sql,
           facetName: 'tumorType',
-          facetAliases: {
-            tumorType: 'Disease Type'
-          }
         },
         {
           sql,
           facetName: 'grantType',
-          facetAliases: {
-            grantType: 'Grant Type'
-          }
         }
       ],
     }
