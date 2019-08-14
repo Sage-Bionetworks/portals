@@ -64,16 +64,15 @@ const tools: HomeExploreConfig = {
     name: 'QueryWrapperMenu',
     props: {
       rgbIndex,
+      facetAliases,
       accordionConfig: [
         {
           name: 'Computational',
-          unitDescription: 'tools from Computational',
           cardConfiguration: {
             type: SynapseConstants.GENERIC_CARD,
             genericCardSchema: toolsSchema,
             loadingScreen
           },
-          facetAliases,
           menuConfig: [
             {
               sql: computationalSql,
@@ -99,13 +98,11 @@ const tools: HomeExploreConfig = {
         },
         {
           name: 'Experimental',
-          unitDescription: 'tools from Experimental',
           cardConfiguration: {
             type: SynapseConstants.GENERIC_CARD,
             genericCardSchema: toolsSchema,
             loadingScreen
           },
-          facetAliases,
           menuConfig: [
             {
               sql: experimentalSql,
@@ -131,7 +128,6 @@ const tools: HomeExploreConfig = {
         },
         {
           name: 'Clinical',
-          unitDescription: 'tools from Clinical',
           cardConfiguration: {
             type: SynapseConstants.GENERIC_CARD,
             genericCardSchema: toolsSchema,

@@ -56,7 +56,6 @@ const tools: SynapseConfig = {
     accordionConfig: [
       {
         name: 'Computational',
-        unitDescription: 'tools from Computational',
         cardConfiguration: {
           type: SynapseConstants.GENERIC_CARD,
           genericCardSchema: computationalSchema,
@@ -83,7 +82,6 @@ const tools: SynapseConfig = {
       },
       {
         name: 'Experimental',
-        unitDescription: 'tools from Experimental',
         cardConfiguration: {
           type: SynapseConstants.GENERIC_CARD,
           genericCardSchema: experimentalSchema,
