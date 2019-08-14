@@ -1,4 +1,3 @@
-
 import { HomeExploreConfig } from '../../types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
 import loadingScreen from '../loadingScreen'
@@ -69,6 +68,9 @@ const studies: HomeExploreConfig = {
       cardConfiguration: {
         ...studyCardProps
       },
+      facetAliases: {
+        Consortium: 'Program',
+      },
       menuConfig: [
         {
           sql,
@@ -81,9 +83,6 @@ const studies: HomeExploreConfig = {
         {
           sql,
           facetName: 'Consortium',
-          facetAliases: {
-            Consortium: 'Program',
-          },
         }
       ]
     }

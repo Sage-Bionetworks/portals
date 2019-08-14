@@ -47,6 +47,14 @@ const data: HomeExploreConfig = {
         synapseId,
         visibleColumnCount: 4,
       },
+      facetAliases: {
+        study: 'Study',
+        species: 'Species',
+        organ: 'Organ',
+        dataType: 'Data Type',
+        assay: 'Assay',
+        diagnosis: 'Diagnosis',
+      },
       menuConfig: [
         {
           sql: 'SELECT study, dataType, assay, id AS file_id, consortium as program, grant, species, organ, tissue, cellType, fileFormat, specimenID FROM syn11346063',

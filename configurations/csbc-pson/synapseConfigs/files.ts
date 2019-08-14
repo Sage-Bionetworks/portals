@@ -62,60 +62,50 @@ export const files: HomeExploreConfig = {
         loadingScreen
       },
       name: 'Files',
+      facetAliases,
       menuConfig: [
         {
           sql,
-          facetAliases,
           facetName: 'grantType',
         },
         {
           sql,
-          facetAliases,
           facetName: 'centerName',
         },
         {
           sql,
-          facetAliases,
           facetName: 'consortium',
         },
         {
           sql,
-          facetAliases,
           facetName: 'species',
         },
         {
           sql,
-          facetAliases,
           facetName: 'Theme'
         },
         {
           sql,
-          facetAliases,
           facetName: 'fileFormat',
         },
         {
           sql,
-          facetAliases,
           facetName: 'experimentalStrategy',
         },
         {
           sql,
-          facetAliases,
           facetName: 'platform',
         },
         {
           sql,
-          facetAliases,
           facetName: 'tumorType',
         },
         {
           sql,
-          facetAliases,
           facetName: 'sex',
         },
         {
           sql,
-          facetAliases,
           facetName: 'tissue',
         },
       ]

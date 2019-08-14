@@ -80,15 +80,14 @@ export const publications: HomeExploreConfig = {
         loadingScreen
       },
       name: 'Publications',
+      facetAliases,
       menuConfig: [
         {
           sql,
-          facetAliases,
           facetName: 'Consortium',
         },
         {
           sql,
-          facetAliases,
           facetName: 'Publication Year',
         },
         {
@@ -97,22 +96,18 @@ export const publications: HomeExploreConfig = {
         },
         {
           sql,
-          facetAliases,
           facetName: 'diseaseType',
         },
         {
           sql,
-          facetAliases,
           facetName: 'experimentalStrategy',
         },
         {
           sql,
-          facetAliases,
           facetName: 'tissue_or_organ',
         },
         {
           sql,
-          facetAliases,
           facetName: 'grantType',
         }
       ],

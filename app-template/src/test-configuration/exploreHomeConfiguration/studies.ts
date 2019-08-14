@@ -58,20 +58,18 @@ export const studies: HomeExploreConfig = {
         genericCardSchema: studySchema
       },
       name: 'Data',
+      facetAliases: {
+        grantType: 'Grant Type',
+        consortium: 'Program',
+      },
       menuConfig: [
         {
           sql,
           facetName: 'grantType',
-          facetAliases: {
-            grantType: 'Grant Type',
-          }
         },
         {
           sql,
           facetName: 'consortium',
-          facetAliases: {
-            consortium: 'Program',
-          }
         }
       ],
     },

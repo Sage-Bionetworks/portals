@@ -4,7 +4,7 @@ import { SynapseConstants } from "synapse-react-client"
 import { HomeExploreConfig } from "types/portal-util-types"
 export const toolsSql = 'SELECT * FROM syn16859448'
 
-const toolsSchema: GenericCardSchema = {
+export const toolsSchema: GenericCardSchema = {
   type: 'TOOL',
   title: 'name',
   subTitle: 'contact',
@@ -64,10 +64,10 @@ const tools: HomeExploreConfig = {
     name: 'QueryWrapperMenu',
     props: {
       rgbIndex,
+      facetAliases,
       accordionConfig: [
         {
           name: 'Computational',
-          unitDescription: 'tools from Computational',
           cardConfiguration: {
             type: SynapseConstants.GENERIC_CARD,
             genericCardSchema: toolsSchema,
@@ -76,34 +76,28 @@ const tools: HomeExploreConfig = {
           menuConfig: [
             {
               sql: computationalSql,
-              facetName: 'studyName',
-              facetAliases
+              facetName: 'studyName'
             },
             {
               sql: computationalSql,
-              facetName: 'fundingAgency',
-              facetAliases
+              facetName: 'fundingAgency'
             },
             {
               sql: computationalSql,
-              facetName: 'subtype',
-              facetAliases
+              facetName: 'subtype'
             },
             {
               sql: computationalSql,
-              facetName: 'diseaseFocus',
-              facetAliases
+              facetName: 'diseaseFocus'
             },
             {
               sql: computationalSql,
-              facetName: 'manifestation',
-              facetAliases
+              facetName: 'manifestation'
             },
           ]
         },
         {
           name: 'Experimental',
-          unitDescription: 'tools from Experimental',
           cardConfiguration: {
             type: SynapseConstants.GENERIC_CARD,
             genericCardSchema: toolsSchema,
@@ -112,34 +106,28 @@ const tools: HomeExploreConfig = {
           menuConfig: [
             {
               sql: experimentalSql,
-              facetName: 'studyName',
-              facetAliases
+              facetName: 'studyName'
             },
             {
               sql: experimentalSql,
-              facetName: 'fundingAgency',
-              facetAliases
+              facetName: 'fundingAgency'
             },
             {
               sql: experimentalSql,
-              facetName: 'subtype',
-              facetAliases
+              facetName: 'subtype'
             },
             {
               sql: experimentalSql,
-              facetName: 'diseaseFocus',
-              facetAliases
+              facetName: 'diseaseFocus'
             },
             {
               sql: experimentalSql,
-              facetName: 'manifestation',
-              facetAliases
+              facetName: 'manifestation'
             },
           ]
         },
         {
           name: 'Clinical',
-          unitDescription: 'tools from Clinical',
           cardConfiguration: {
             type: SynapseConstants.GENERIC_CARD,
             genericCardSchema: toolsSchema,
@@ -148,28 +136,23 @@ const tools: HomeExploreConfig = {
           menuConfig: [
             {
               sql: clinicalSql,
-              facetName: 'studyName',
-              facetAliases
+              facetName: 'studyName'
             },
             {
               sql: clinicalSql,
-              facetName: 'fundingAgency',
-              facetAliases
+              facetName: 'fundingAgency'
             },
             {
               sql: clinicalSql,
-              facetName: 'subtype',
-              facetAliases
+              facetName: 'subtype'
             },
             {
               sql: clinicalSql,
-              facetName: 'diseaseFocus',
-              facetAliases
+              facetName: 'diseaseFocus'
             },
             {
               sql: clinicalSql,
-              facetName: 'manifestation',
-              facetAliases
+              facetName: 'manifestation'
             },
           ]
         },

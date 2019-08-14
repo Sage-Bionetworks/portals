@@ -60,20 +60,18 @@ export const grants: HomeExploreConfig = {
         loadingScreen
       },
       name: 'Grants',
+      facetAliases: {
+        consortium: 'Program',
+        grantType: 'Grant Type',
+      },
       menuConfig: [
         {
           sql,
           facetName: 'consortium',
-          facetAliases: {
-            consortium: 'Program',
-          }
         },
         {
           sql,
           facetName: 'grantType',
-          facetAliases: {
-            grantType: 'Grant Type',
-          }
         }
       ],
     }

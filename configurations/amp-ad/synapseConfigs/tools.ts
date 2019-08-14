@@ -52,10 +52,10 @@ const tools: SynapseConfig = {
   name: 'QueryWrapperMenu',
   props: {
     rgbIndex: 6,
+    facetAliases,
     accordionConfig: [
       {
         name: 'Computational',
-        unitDescription: 'tools from Computational',
         cardConfiguration: {
           type: SynapseConstants.GENERIC_CARD,
           genericCardSchema: computationalSchema,
@@ -65,28 +65,23 @@ const tools: SynapseConfig = {
           {
             sql: computationalSql,
             facetName: 'diagnosis',
-            facetAliases
           },
           {
             sql: computationalSql,
-            facetName: 'grant',
-            facetAliases
+            facetName: 'grant'
           },
           {
             sql: computationalSql,
-            facetName: 'program',
-            facetAliases
+            facetName: 'program'
           },
           {
             sql: computationalSql,
-            facetName: 'softwareType',
-            facetAliases
+            facetName: 'softwareType'
           },
         ]
       },
       {
         name: 'Experimental',
-        unitDescription: 'tools from Experimental',
         cardConfiguration: {
           type: SynapseConstants.GENERIC_CARD,
           genericCardSchema: experimentalSchema,
@@ -95,28 +90,23 @@ const tools: SynapseConfig = {
         menuConfig: [
           {
             sql: experimentalSql,
-            facetName: 'diagnosis',
-            facetAliases
+            facetName: 'diagnosis'
           },
           {
             sql: experimentalSql,
-            facetName: 'grant',
-            facetAliases
+            facetName: 'grant'
           },
           {
             sql: experimentalSql,
-            facetName: 'modelType',
-            facetAliases
+            facetName: 'modelType'
           },
           {
             sql: experimentalSql,
-            facetName: 'program',
-            facetAliases
+            facetName: 'program'
           },
           {
             sql: experimentalSql,
-            facetName: 'reagentType',
-            facetAliases
+            facetName: 'reagentType'
           },
         ]
       },

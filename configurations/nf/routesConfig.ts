@@ -10,7 +10,7 @@ import { ntap } from './synapseConfigs/organizationConfigs/ntap'
 import { dhartSpore } from './synapseConfigs/organizationConfigs/dhart-spore'
 import { ctf } from './synapseConfigs/organizationConfigs/ctf'
 import { buttonColors } from './synapseConfigs/commonProps'
-import { toolsSql } from './synapseConfigs/tools'
+import { toolsSql, toolsSchema } from './synapseConfigs/tools'
 const limit = 3
 
 const routes: GenericRoute [] = [
@@ -77,7 +77,8 @@ const routes: GenericRoute [] = [
         props: {
           limit,
           loadingScreen,
-          type: SynapseConstants.TOOL,
+          type: SynapseConstants.GENERIC_CARD,
+          genericCardSchema: toolsSchema,
           sql: toolsSql
         }
       },
