@@ -16,9 +16,8 @@ export const projectCardProps = {
     description: 'Abstract',
     secondaryLabels: {
       0: { key: 'Institutions' },
-      1: { key: 'Key Data Contributors', alias:  'Key Contributors' },
-      2: { key: 'Program' },
-      3: { key: 'Grant Number', alias:  'Grant' },
+      1: { key: 'Key Data Contributors'},
+      2: { key: 'Program' }
     }
   },
   secondaryLabelLimit: 4,
@@ -58,6 +57,38 @@ const projects: HomeExploreConfig = {
       stackedBarChartConfiguration: {
         loadingScreen,
       },
+      searchConfiguration: {
+        searchable: [
+          {
+            columnName: 'Name',
+            hintText: 'immunity'
+          },
+          {
+            columnName: 'Grant Number',
+            hintText: 'U01AG046139'
+          },
+          {
+            columnName: 'Program',
+            hintText: 'MODEL-AD'
+          },
+          {
+            columnName: 'Key Investigators',
+            hintText: 'LastName'
+          },
+          {
+            columnName: 'Key Data Contributors',
+            hintText: 'LastName'
+          },
+          {
+            columnName: 'Institutions',
+            hintText: 'Sage Bionetworks'
+          },
+          {
+            columnName: 'Abstract',
+            hintText: 'targets'
+          },
+        ]
+      },
       name: 'Projects',
       isConsistent: true,
       unitDescription: 'Projects',
@@ -66,6 +97,9 @@ const projects: HomeExploreConfig = {
         {
           sql,
           facet,
+        },
+        {
+          sql,
         },
       ],
     }

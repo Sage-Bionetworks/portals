@@ -25,6 +25,17 @@ export const publicationCardProps = {
   },
 }
 
+const facetAliases = {
+  authors: 'Authors',
+  title: 'Title',
+  year:'Year',
+  journal:'Journal',
+  consortium:'Program',
+  long_amp_ad_grants: 'Grant',
+  doi: 'DOI',
+  pubmed_id:'Pubmed ID'
+}
+
 const publications: SynapseConfig = {
   name: 'QueryWrapperMenu',
   props: {
@@ -35,12 +46,40 @@ const publications: SynapseConfig = {
     },
     name: 'Publications',
     isConsistent: true,
-    cardConfiguration: publicationCardProps,
-    facetAliases: {
-      consortium: 'Program',
-      year: 'Year',
-      long_amp_ad_grants: 'Grant'
+    facetAliases,
+    searchConfiguration: {
+      searchable: [
+        {
+        columnName: 'authors',
+        hintText: 'LastName'
+        },
+        {
+        columnName: 'consortium',
+        hintText: 'AMP-AD'
+        },
+        {
+        columnName: 'doi',
+        hintText: '10.1186/s13024-017-0219-3'
+        },
+        {
+        columnName: 'journal',
+        hintText: 'Alzheimers Dement'
+        },
+        {
+        columnName: 'title',
+        hintText: 'network'
+        },
+        {
+        columnName: 'year',
+        hintText: '2018'
+        },
+        {
+        columnName: 'long_amp_ad_grants',
+        hintText: 'U01AG046161'
+        },
+      ]
     },
+    cardConfiguration: publicationCardProps,
     menuConfig: [
       {
         sql,
@@ -53,6 +92,9 @@ const publications: SynapseConfig = {
       {
         sql,
         facet: 'long_amp_ad_grants',
+      },
+      {
+        sql,
       },
     ],
   }

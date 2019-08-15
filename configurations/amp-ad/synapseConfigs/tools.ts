@@ -42,12 +42,58 @@ const facetAliases = {
   modelType: 'Model Type',
   program: 'Program',
   reagentType: 'Reagent Type',
-  softwareType: 'Software Type'
+  softwareType: 'Software Type',
+  contributor: 'Contributor',
+  displayName: 'Display Name',
+  summary: 'Summary'
 }
 
 const computationalSql = "SELECT * FROM syn20337467 WHERE toolType = 'computational'"
 const experimentalSql = "SELECT * FROM syn20337467 WHERE toolType = 'experimental'"
-
+const searchConfiguration = {
+  searchable: [
+    {
+      columnName: 'contributor',
+      hintText: 'LastName'
+    },
+    {
+      columnName: 'diagnosis',
+      hintText: 'LOAD'
+    },
+    {
+      columnName: 'displayName',
+      hintText: 'APOE4'
+    },
+    {
+      columnName: 'grant',
+      hintText: 'U01AG046139'
+    },
+    {
+      columnName: 'modelSystemName',
+      hintText: 'APP'
+    },
+    {
+      columnName: 'modelType',
+      hintText: 'Trem2'
+    },
+    {
+      columnName: 'program',
+      hintText: 'MODEL-AD'
+    },
+    {
+      columnName: 'reagentType',
+      hintText: 'Mouse'
+    },
+    {
+      columnName: 'softwareType',
+      hintText: 'web application'
+    },
+    {
+      columnName: 'summary',
+      hintText: 'network'
+    },
+  ]
+}
 const tools: SynapseConfig = {
   name: 'QueryWrapperMenu',
   props: {
@@ -61,6 +107,7 @@ const tools: SynapseConfig = {
           genericCardSchema: computationalSchema,
           loadingScreen
         },
+        searchConfiguration,
         menuConfig: [
           {
             sql: computationalSql,
@@ -78,6 +125,9 @@ const tools: SynapseConfig = {
             sql: computationalSql,
             facet: 'softwareType'
           },
+          {
+            sql: computationalSql,
+          },
         ]
       },
       {
@@ -87,6 +137,7 @@ const tools: SynapseConfig = {
           genericCardSchema: experimentalSchema,
           loadingScreen
         },
+        searchConfiguration,
         menuConfig: [
           {
             sql: experimentalSql,
@@ -107,6 +158,9 @@ const tools: SynapseConfig = {
           {
             sql: experimentalSql,
             facet: 'reagentType'
+          },
+          {
+            sql: experimentalSql,
           },
         ]
       },
