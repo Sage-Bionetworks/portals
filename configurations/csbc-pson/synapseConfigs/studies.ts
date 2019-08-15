@@ -67,7 +67,7 @@ export const studies: HomeExploreConfig = {
         experimentalStrategy: 'Assay',
         tumorType: 'Disease Type',
       },
-      searchableConfiguration: {
+      searchConfiguration: {
         searchable: [
           {
             columnName: 'name',

@@ -64,7 +64,7 @@ export const grants: HomeExploreConfig = {
         consortium: 'Program',
         grantType: 'Grant Type',
       },
-      searchableConfiguration: {
+      searchConfiguration: {
         searchable: [
           {
             columnName: 'name',

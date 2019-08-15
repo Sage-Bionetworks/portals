@@ -69,7 +69,7 @@ export const datasets: HomeExploreConfig = {
         tumorType: 'Disease Type',
         grantType: 'Grant Type'
       },
-      searchableConfiguration: {
+      searchConfiguration: {
         searchable: [
           {
             columnName: 'name',

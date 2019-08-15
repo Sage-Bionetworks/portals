@@ -79,7 +79,7 @@ export const publications: HomeExploreConfig = {
       stackedBarChartConfiguration: {
         loadingScreen
       },
-      searchableConfiguration: {
+      searchConfiguration: {
         searchable: [
           {
             columnName: 'Authors',
