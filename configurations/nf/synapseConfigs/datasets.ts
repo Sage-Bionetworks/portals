@@ -48,6 +48,34 @@ const datasets: HomeExploreConfig = {
       },
       name: 'Datasets',
       facetAliases,
+      searchableConfiguration: {
+        searchable: [
+          {
+            columnName: 'datasetName',
+            hintText: ''
+          },
+          {
+            columnName: 'summary',
+            hintText: ''
+          },
+          {
+            columnName: 'studyName',
+            hintText: ''
+          },
+          {
+            columnName: 'diseaseFocus',
+            hintText: ''
+          },
+          {
+            columnName: 'manifestation',
+            hintText: ''
+          },
+          {
+            columnName: 'fundingAgency',
+            hintText: ''
+          },
+        ]
+      },
       menuConfig: [
         {
           sql,
@@ -60,6 +88,9 @@ const datasets: HomeExploreConfig = {
         {
           sql,
           facet: 'fundingAgency'
+        },
+        {
+          sql,
         },
       ]
     }

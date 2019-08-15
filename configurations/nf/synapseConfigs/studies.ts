@@ -79,6 +79,42 @@ const studies: HomeExploreConfig = {
           columnValues: ['studyId']
         },
       },
+      searchableConfiguration: {
+        searchable: [
+          {
+            columnName: 'studyName',
+            hintText: ''
+          },
+          {
+            columnName: 'summary',
+            hintText: ''
+          },
+          {
+            columnName: 'studyLeads',
+            hintText: ''
+          },
+          {
+            columnName: 'studyStatus',
+            hintText: 'dataStatus'
+          },
+          {
+            columnName: 'institutions',
+            hintText: ''
+          },
+          {
+            columnName: 'diseaseFocus',
+            hintText: ''
+          },
+          {
+            columnName: 'manifestation',
+            hintText: ''
+          },
+          {
+            columnName: 'fundingAgency',
+            hintText: ''
+          },
+        ]
+      },
       facetAliases,
       menuConfig: [
         {
@@ -104,6 +140,9 @@ const studies: HomeExploreConfig = {
         {
           sql,
           facet: 'diseaseFocus'
+        },
+        {
+          sql,
         },
       ]
     }

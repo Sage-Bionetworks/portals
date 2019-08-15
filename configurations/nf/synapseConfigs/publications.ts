@@ -67,6 +67,47 @@ const publications: HomeExploreConfig = {
       name: 'Publications',
       cardConfiguration: publicationsCardConfiguration,
       facetAliases,
+      facet: 'fundingAgency',
+      searchableConfiguration: {
+        searchable: [
+          {
+            columnName: 'author',
+            hintText: ''
+          },
+          {
+            columnName: 'title',
+            hintText: ''
+          },
+          {
+            columnName: 'journal',
+            hintText: ''
+          },
+          {
+            columnName: 'pmid',
+            hintText: ''
+          },
+          {
+            columnName: 'year',
+            hintText: ''
+          },
+          {
+            columnName: 'fundingAgency',
+            hintText: ''
+          },
+          {
+            columnName: 'studyName',
+            hintText: ''
+          },
+          {
+            columnName: 'diseaseFocus',
+            hintText: ''
+          },
+          {
+            columnName: 'manifestation',
+            hintText: ''
+          },
+        ]
+      },
       menuConfig: [
         {
           sql,

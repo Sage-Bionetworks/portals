@@ -28,6 +28,48 @@ const facetAliases = {
   diseaseFocus: 'Disease Focus',
   manifestation: 'Manifestation'
 }
+
+const searchableConfiguration = {
+  searchable: [
+    {
+      columnName: 'name',
+      hintText: ''
+    },
+    {
+      columnName: 'summary',
+      hintText: ''
+    },
+    {
+      columnName: 'studyName',
+      hintText: ''
+    },
+    {
+      columnName: 'fundingAgency',
+      hintText: ''
+    },
+    {
+      columnName: 'contact',
+      hintText: ''
+    },
+    {
+      columnName: 'type',
+      hintText: ''
+    },
+    {
+      columnName: 'subtype',
+      hintText: ''
+    },
+    {
+      columnName: 'diseaseFocus',
+      hintText: ''
+    },
+    {
+      columnName: 'manifestation',
+      hintText: ''
+    },
+  ]
+}
+
 const computationalSql = "SELECT * FROM syn16859448 WHERE type = 'computational'"
 const experimentalSql = "SELECT * FROM syn16859448 WHERE type = 'experimental'"
 const clinicalSql = "SELECT * FROM syn16859448 WHERE type = 'clinical'"
@@ -73,6 +115,7 @@ const tools: HomeExploreConfig = {
             genericCardSchema: toolsSchema,
             loadingScreen
           },
+          searchableConfiguration,
           menuConfig: [
             {
               sql: computationalSql,
@@ -103,6 +146,7 @@ const tools: HomeExploreConfig = {
             genericCardSchema: toolsSchema,
             loadingScreen
           },
+          searchableConfiguration,
           menuConfig: [
             {
               sql: experimentalSql,
