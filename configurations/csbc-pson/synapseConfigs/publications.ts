@@ -47,7 +47,7 @@ export const publications: HomeExploreConfig = {
       rgbIndex,
       unitDescription,
       loadingScreen,
-      facetName: 'Consortium',
+      facet: 'Consortium',
       facetAliases: {
         Consortium: 'Program',
       },
@@ -84,31 +84,31 @@ export const publications: HomeExploreConfig = {
       menuConfig: [
         {
           sql,
-          facetName: 'Consortium',
+          facet: 'Consortium',
         },
         {
           sql,
-          facetName: 'Publication Year',
+          facet: 'Publication Year',
         },
         {
           sql,
-          facetName: 'Theme',
+          facet: 'Theme',
         },
         {
           sql,
-          facetName: 'diseaseType',
+          facet: 'diseaseType',
         },
         {
           sql,
-          facetName: 'experimentalStrategy',
+          facet: 'experimentalStrategy',
         },
         {
           sql,
-          facetName: 'tissue_or_organ',
+          facet: 'tissue_or_organ',
         },
         {
           sql,
-          facetName: 'grantType',
+          facet: 'grantType',
         }
       ],
     }

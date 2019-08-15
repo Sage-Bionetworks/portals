@@ -27,7 +27,7 @@ export const grants: HomeExploreConfig = {
       unitDescription,
       loadingScreen,
       rgbIndex: 3,
-      facetName: 'grantType',
+      facet: 'grantType',
       facetAliases: {
         grantType: 'Grant Type',
       },
@@ -67,11 +67,11 @@ export const grants: HomeExploreConfig = {
       menuConfig: [
         {
           sql,
-          facetName: 'consortium',
+          facet: 'consortium',
         },
         {
           sql,
-          facetName: 'grantType',
+          facet: 'grantType',
         }
       ],
     }

@@ -54,7 +54,7 @@ const tools: HomeExploreConfig = {
           offset: 0,
         },
       },
-      facetName: 'type',
+      facet: 'type',
       facetAliases: {
         type: 'Type'
       }
@@ -76,23 +76,23 @@ const tools: HomeExploreConfig = {
           menuConfig: [
             {
               sql: computationalSql,
-              facetName: 'studyName'
+              facet: 'studyName'
             },
             {
               sql: computationalSql,
-              facetName: 'fundingAgency'
+              facet: 'fundingAgency'
             },
             {
               sql: computationalSql,
-              facetName: 'subtype'
+              facet: 'subtype'
             },
             {
               sql: computationalSql,
-              facetName: 'diseaseFocus'
+              facet: 'diseaseFocus'
             },
             {
               sql: computationalSql,
-              facetName: 'manifestation'
+              facet: 'manifestation'
             },
           ]
         },
@@ -106,23 +106,23 @@ const tools: HomeExploreConfig = {
           menuConfig: [
             {
               sql: experimentalSql,
-              facetName: 'studyName'
+              facet: 'studyName'
             },
             {
               sql: experimentalSql,
-              facetName: 'fundingAgency'
+              facet: 'fundingAgency'
             },
             {
               sql: experimentalSql,
-              facetName: 'subtype'
+              facet: 'subtype'
             },
             {
               sql: experimentalSql,
-              facetName: 'diseaseFocus'
+              facet: 'diseaseFocus'
             },
             {
               sql: experimentalSql,
-              facetName: 'manifestation'
+              facet: 'manifestation'
             },
           ]
         },
@@ -136,23 +136,23 @@ const tools: HomeExploreConfig = {
           menuConfig: [
             {
               sql: clinicalSql,
-              facetName: 'studyName'
+              facet: 'studyName'
             },
             {
               sql: clinicalSql,
-              facetName: 'fundingAgency'
+              facet: 'fundingAgency'
             },
             {
               sql: clinicalSql,
-              facetName: 'subtype'
+              facet: 'subtype'
             },
             {
               sql: clinicalSql,
-              facetName: 'diseaseFocus'
+              facet: 'diseaseFocus'
             },
             {
               sql: clinicalSql,
-              facetName: 'manifestation'
+              facet: 'manifestation'
             },
           ]
         },

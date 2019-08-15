@@ -30,7 +30,7 @@ export const datasets: HomeExploreConfig = {
       unitDescription,
       loadingScreen,
       rgbIndex: 0,
-      facetName: 'tumorType',
+      facet: 'tumorType',
       link: 'Explore/Datasets',
       linkText: 'Explore Datasets',
       initQueryRequest : {
@@ -72,27 +72,27 @@ export const datasets: HomeExploreConfig = {
       menuConfig: [
         {
           sql,
-          facetName: 'species',
+          facet: 'species',
         },
         {
           sql,
-          facetName: 'Theme'
+          facet: 'Theme'
         },
         {
           sql,
-          facetName: 'experimentalStrategy',
+          facet: 'experimentalStrategy',
         },
         {
           sql,
-          facetName: 'consortium',
+          facet: 'consortium',
         },
         {
           sql,
-          facetName: 'tumorType',
+          facet: 'tumorType',
         },
         {
           sql,
-          facetName: 'grantType',
+          facet: 'grantType',
         }
       ],
     }

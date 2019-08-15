@@ -15,7 +15,7 @@ const people: HomeExploreConfig = {
       loadingScreen,
       link: 'Explore/People',
       linkText: 'Explore People',
-      facetName: 'Program',
+      facet: 'Program',
       initQueryRequest : {
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
         partMask: SynapseConstants.BUNDLE_MASK_QUERY_FACETS
@@ -45,15 +45,15 @@ const people: HomeExploreConfig = {
       menuConfig: [
         {
           sql,
-          facetName: 'Program'
+          facet: 'Program'
         },
         {
           sql,
-          facetName: 'Grant Number'
+          facet: 'Grant Number'
         },
         {
           sql,
-          facetName: 'institution',
+          facet: 'institution',
           facetDisplayValue: 'Institution',
         },
       ]

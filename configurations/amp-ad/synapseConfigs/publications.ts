@@ -44,15 +44,15 @@ const publications: SynapseConfig = {
     menuConfig: [
       {
         sql,
-        facetName: 'consortium',
+        facet: 'consortium',
       },
       {
         sql,
-        facetName: 'year',
+        facet: 'year',
       },
       {
         sql,
-        facetName: 'long_amp_ad_grants',
+        facet: 'long_amp_ad_grants',
       },
     ],
   }

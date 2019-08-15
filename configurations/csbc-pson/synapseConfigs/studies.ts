@@ -29,7 +29,7 @@ export const studies: HomeExploreConfig = {
       rgbIndex,
       unitDescription,
       loadingScreen,
-      facetName: 'grantType',
+      facet: 'grantType',
       facetAliases: {
         grantType: 'Grant Type',
       },
@@ -70,23 +70,23 @@ export const studies: HomeExploreConfig = {
       menuConfig: [
         {
           sql,
-          facetName: 'grantType'
+          facet: 'grantType'
         },
         {
           sql,
-          facetName: 'consortium'
+          facet: 'consortium'
         },
         {
           sql,
-          facetName: 'Theme'
+          facet: 'Theme'
         },
         {
           sql,
-          facetName: 'experimentalStrategy'
+          facet: 'experimentalStrategy'
         },
         {
           sql,
-          facetName: 'tumorType'
+          facet: 'tumorType'
         },
       ],
     }

@@ -19,7 +19,7 @@ const datasets: HomeExploreConfig = {
       loadingScreen,
       link: 'Explore/Datasets',
       linkText: 'Explore Datasets',
-      facetName: 'diseaseFocus',
+      facet: 'diseaseFocus',
       initQueryRequest: {
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
         partMask:
@@ -51,15 +51,15 @@ const datasets: HomeExploreConfig = {
       menuConfig: [
         {
           sql,
-          facetName: 'diseaseFocus'
+          facet: 'diseaseFocus'
         },
         {
           sql,
-          facetName: 'tumorType'
+          facet: 'tumorType'
         },
         {
           sql,
-          facetName: 'fundingAgency'
+          facet: 'fundingAgency'
         },
       ]
     }

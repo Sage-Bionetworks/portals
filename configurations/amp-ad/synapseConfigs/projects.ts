@@ -5,7 +5,7 @@ import loadingScreen from '../loadingScreen'
 const unitDescription = 'Projects'
 const rgbIndex = 4
 const sql = 'SELECT * FROM syn17024229'
-const facetName = 'Program'
+const facet = 'Program'
 
 export const projectCardProps = {
   type: SynapseConstants.GENERIC_CARD,
@@ -34,7 +34,7 @@ const projects: HomeExploreConfig = {
     props: {
       unitDescription,
       rgbIndex,
-      facetName,
+      facet,
       loadingScreen,
       link: 'Explore/Projects',
       linkText: 'Explore Projects',
@@ -65,7 +65,7 @@ const projects: HomeExploreConfig = {
       menuConfig: [
         {
           sql,
-          facetName,
+          facet,
         },
       ],
     }

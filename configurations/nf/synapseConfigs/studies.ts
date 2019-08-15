@@ -47,7 +47,7 @@ const studies: HomeExploreConfig = {
       loadingScreen,
       link: 'Explore/Studies',
       linkText: 'Explore Studies',
-      facetName: 'diseaseFocus',
+      facet: 'diseaseFocus',
       initQueryRequest: {
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
         partMask:
@@ -83,27 +83,27 @@ const studies: HomeExploreConfig = {
       menuConfig: [
         {
           sql,
-          facetName: 'studyStatus',
+          facet: 'studyStatus',
         },
         {
           sql,
-          facetName: 'dataStatus'
+          facet: 'dataStatus'
         },
         {
           sql,
-          facetName: 'institutions'
+          facet: 'institutions'
         },
         {
           sql,
-          facetName: 'fundingAgency'
+          facet: 'fundingAgency'
         },
         {
           sql,
-          facetName: 'manifestation'
+          facet: 'manifestation'
         },
         {
           sql,
-          facetName: 'diseaseFocus'
+          facet: 'diseaseFocus'
         },
       ]
     }

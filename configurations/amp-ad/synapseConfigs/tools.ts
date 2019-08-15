@@ -64,19 +64,19 @@ const tools: SynapseConfig = {
         menuConfig: [
           {
             sql: computationalSql,
-            facetName: 'diagnosis',
+            facet: 'diagnosis',
           },
           {
             sql: computationalSql,
-            facetName: 'grant'
+            facet: 'grant'
           },
           {
             sql: computationalSql,
-            facetName: 'program'
+            facet: 'program'
           },
           {
             sql: computationalSql,
-            facetName: 'softwareType'
+            facet: 'softwareType'
           },
         ]
       },
@@ -90,23 +90,23 @@ const tools: SynapseConfig = {
         menuConfig: [
           {
             sql: experimentalSql,
-            facetName: 'diagnosis'
+            facet: 'diagnosis'
           },
           {
             sql: experimentalSql,
-            facetName: 'grant'
+            facet: 'grant'
           },
           {
             sql: experimentalSql,
-            facetName: 'modelType'
+            facet: 'modelType'
           },
           {
             sql: experimentalSql,
-            facetName: 'program'
+            facet: 'program'
           },
           {
             sql: experimentalSql,
-            facetName: 'reagentType'
+            facet: 'reagentType'
           },
         ]
       },

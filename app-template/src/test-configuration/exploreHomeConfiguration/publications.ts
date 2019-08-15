@@ -6,7 +6,7 @@ import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericC
 const sql = 'SELECT * FROM syn10923842'
 const unitDescription = 'Publications'
 const rgbIndex = 0
-const facetName = 'Theme'
+const facet = 'Theme'
 const publicationSchema: GenericCardSchema = {
   type: 'Project',
   title: 'Title',
@@ -22,7 +22,7 @@ export const publications: HomeExploreConfig = {
     name: 'QueryWrapperFlattened',
     props: {
       rgbIndex,
-      facetName,
+      facet,
       unitDescription,
       initQueryRequest : {
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
@@ -52,12 +52,12 @@ export const publications: HomeExploreConfig = {
       menuConfig: [
         {
           sql,
-          facetName: 'Theme',
+          facet: 'Theme',
           
         },
         {
           sql,
-          facetName: 'diseaseType',
+          facet: 'diseaseType',
         },
       ],
       rgbIndex: 1,

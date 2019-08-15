@@ -50,7 +50,7 @@ const publications: HomeExploreConfig = {
           offset: 0,
         },
       },
-      facetName: 'diseaseFocus',
+      facet: 'diseaseFocus',
       facetAliases: {
         diseaseFocus: 'Disease Focus',
       },
@@ -70,27 +70,27 @@ const publications: HomeExploreConfig = {
       menuConfig: [
         {
           sql,
-          facetName: 'fundingAgency'
+          facet: 'fundingAgency'
         },
         {
           sql,
-          facetName: 'journal'
+          facet: 'journal'
         },
         {
           sql,
-          facetName: 'year'
+          facet: 'year'
         },
         {
           sql,
-          facetName: 'studyName'
+          facet: 'studyName'
         },
         {
           sql,
-          facetName: 'diseaseFocus'
+          facet: 'diseaseFocus'
         },
         {
           sql,
-          facetName: 'manifestation'
+          facet: 'manifestation'
         },
       ]
     }
