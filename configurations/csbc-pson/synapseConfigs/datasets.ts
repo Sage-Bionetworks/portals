@@ -67,7 +67,10 @@ export const datasets: HomeExploreConfig = {
         experimentalStrategy: 'Assay',
         consortium: 'Program',
         tumorType: 'Disease Type',
-        grantType: 'Grant Type'
+        grantType: 'Grant Type',
+        name: 'Name',
+        centerName: 'Center Name',
+        summary: 'Summary'
       },
       searchConfiguration: {
         searchable: [

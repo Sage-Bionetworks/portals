@@ -63,6 +63,9 @@ export const grants: HomeExploreConfig = {
       facetAliases: {
         consortium: 'Program',
         grantType: 'Grant Type',
+        name: 'Name',
+        grantNumber: 'Grant Number',
+        abstract: 'Abstract'
       },
       searchConfiguration: {
         searchable: [

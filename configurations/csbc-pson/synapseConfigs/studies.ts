@@ -66,6 +66,9 @@ export const studies: HomeExploreConfig = {
         consortium: 'Program',
         experimentalStrategy: 'Assay',
         tumorType: 'Disease Type',
+        name: 'Name',
+        centerName: 'Center Name',
+        description: 'Description',
       },
       searchConfiguration: {
         searchable: [

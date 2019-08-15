@@ -2,6 +2,8 @@ import { GenericCardSchema } from "synapse-react-client/dist/containers/GenericC
 import loadingScreen from '../loadingScreen'
 import { SynapseConstants } from "synapse-react-client"
 import { HomeExploreConfig } from "types/portal-util-types"
+import { facetAliases } from './commonProps'
+
 export const toolsSql = 'SELECT * FROM syn16859448'
 
 export const toolsSchema: GenericCardSchema = {
@@ -18,15 +20,6 @@ export const toolsSchema: GenericCardSchema = {
     4: { key: 'studyName', alias: 'Study Name' },
   },
   link: 'link',
-}
-
-const facetAliases = {
-  studyName: 'Study Name',
-  fundingAgency: 'Funding Agency',
-  type: 'Type',
-  subtype: 'Sub Type',
-  diseaseFocus: 'Disease Focus',
-  manifestation: 'Manifestation'
 }
 
 const searchConfiguration = {
@@ -97,9 +90,7 @@ const tools: HomeExploreConfig = {
         },
       },
       facet: 'type',
-      facetAliases: {
-        type: 'Type'
-      }
+      facetAliases
     }
   },
   explorePageSynapseObject: {
