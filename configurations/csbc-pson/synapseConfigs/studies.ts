@@ -67,6 +67,42 @@ export const studies: HomeExploreConfig = {
         experimentalStrategy: 'Assay',
         tumorType: 'Disease Type',
       },
+      searchableConfiguration: {
+        searchable: [
+          {
+            columnName: 'name',
+            hintText: '',
+          },
+          {
+            columnName: 'centerName',
+            hintText: '',
+          },
+          {
+            columnName: 'description',
+            hintText: '',
+          },
+          {
+            columnName: 'Theme',
+            hintText: '',
+          },
+          {
+            columnName: 'tumorType',
+            hintText: '',
+          },
+          {
+            columnName: 'experimentalStrategy',
+            hintText: '',
+          },
+          {
+            columnName: 'consortium',
+            hintText: ''
+          },
+          {
+            columnName: 'grantType',
+            hintText: ''
+          },
+        ]
+      },
       menuConfig: [
         {
           sql,
@@ -87,6 +123,9 @@ export const studies: HomeExploreConfig = {
         {
           sql,
           facet: 'tumorType'
+        },
+        {
+          sql,
         },
       ],
     }

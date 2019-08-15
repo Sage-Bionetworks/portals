@@ -79,7 +79,7 @@ const studies: HomeExploreConfig = {
           columnValues: ['studyId']
         },
       },
-      searchableConfiguration: {
+      searchConfiguration: {
         searchable: [
           {
             columnName: 'studyName',

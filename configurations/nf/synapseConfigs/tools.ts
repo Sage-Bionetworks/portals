@@ -29,7 +29,7 @@ const facetAliases = {
   manifestation: 'Manifestation'
 }
 
-const searchableConfiguration = {
+const searchConfiguration = {
   searchable: [
     {
       columnName: 'name',
@@ -115,7 +115,7 @@ const tools: HomeExploreConfig = {
             genericCardSchema: toolsSchema,
             loadingScreen
           },
-          searchableConfiguration,
+          searchConfiguration,
           menuConfig: [
             {
               sql: computationalSql,
@@ -136,6 +136,9 @@ const tools: HomeExploreConfig = {
             {
               sql: computationalSql,
               facet: 'manifestation'
+            },
+            {
+              sql: computationalSql,
             },
           ]
         },
@@ -146,7 +149,7 @@ const tools: HomeExploreConfig = {
             genericCardSchema: toolsSchema,
             loadingScreen
           },
-          searchableConfiguration,
+          searchConfiguration,
           menuConfig: [
             {
               sql: experimentalSql,
@@ -167,6 +170,9 @@ const tools: HomeExploreConfig = {
             {
               sql: experimentalSql,
               facet: 'manifestation'
+            },
+            {
+              sql: experimentalSql,
             },
           ]
         },
@@ -177,6 +183,7 @@ const tools: HomeExploreConfig = {
             genericCardSchema: toolsSchema,
             loadingScreen
           },
+          searchConfiguration,
           menuConfig: [
             {
               sql: clinicalSql,
@@ -197,6 +204,9 @@ const tools: HomeExploreConfig = {
             {
               sql: clinicalSql,
               facet: 'manifestation'
+            },
+            {
+              sql: clinicalSql,
             },
           ]
         },

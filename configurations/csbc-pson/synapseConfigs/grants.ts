@@ -64,6 +64,38 @@ export const grants: HomeExploreConfig = {
         consortium: 'Program',
         grantType: 'Grant Type',
       },
+      searchableConfiguration: {
+        searchable: [
+          {
+            columnName: 'name',
+            hintText: 'immunity'
+          },
+          {
+            columnName: 'grantNumber',
+            hintText: 'CA202123'
+          },
+          {
+            columnName: 'consortium',
+            hintText: 'PS-ON'
+          },
+          {
+            columnName: 'Key Investigators',
+            hintText: 'LastName'
+          },
+          {
+            columnName: 'Institutions',
+            hintText: 'Vanderbilt'
+          },
+          {
+            columnName: 'abstract',
+            hintText: 'metastasis'
+          },
+          {
+            columnName: 'grantType',
+            hintText: 'U54'
+          },
+        ]
+      },
       menuConfig: [
         {
           sql,
@@ -72,6 +104,9 @@ export const grants: HomeExploreConfig = {
         {
           sql,
           facet: 'grantType',
+        },
+        {
+          sql,
         }
       ],
     }

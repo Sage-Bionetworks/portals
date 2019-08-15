@@ -68,7 +68,7 @@ const publications: HomeExploreConfig = {
       cardConfiguration: publicationsCardConfiguration,
       facetAliases,
       facet: 'fundingAgency',
-      searchableConfiguration: {
+      searchConfiguration: {
         searchable: [
           {
             columnName: 'author',
@@ -132,6 +132,9 @@ const publications: HomeExploreConfig = {
         {
           sql,
           facet: 'manifestation'
+        },
+        {
+          sql,
         },
       ]
     }

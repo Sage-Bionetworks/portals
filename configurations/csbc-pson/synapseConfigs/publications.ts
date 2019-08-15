@@ -79,6 +79,62 @@ export const publications: HomeExploreConfig = {
       stackedBarChartConfiguration: {
         loadingScreen
       },
+      searchableConfiguration: {
+        searchable: [
+          {
+            columnName: 'Authors',
+            hintText: 'LastName'
+          },
+          {
+            columnName: 'Consortium',
+            hintText: 'PS-ON'
+          },
+          {
+            columnName: 'DOI',
+            hintText: '10.1158/2159-8290.CD-17-0222'
+          },
+          {
+            columnName: 'Journal',
+            hintText: 'Nucleic Acids Res'
+          },
+          {
+            columnName: 'Title',
+            hintText: 'methylation'
+          },
+          {
+            columnName: 'Publication Year',
+            hintText: '2018'
+          },
+          {
+            columnName: 'Grant',
+            hintText: 'CA217297'
+          },
+          {
+            columnName: 'Keywords',
+            hintText: 'scRNA-seq'
+          },
+          {
+            columnName: 'Theme',
+            hintText: 'tumor-immune'
+          },
+          {
+            columnName: 'diseaseType',
+            hintText: 'Skin Cutaneous Melanoma'
+          },
+          {
+            columnName: 'experimentalStrategy',
+            hintText: 'RNA-seq'
+          },
+          {
+            columnName: 'tissue_or_organ',
+            hintText: 'Prostate gland'
+          },
+          {
+            columnName: 'grantType',
+            hintText: 'U01'
+          },
+        ]
+      },
       name: 'Publications',
       facetAliases,
       menuConfig: [
@@ -109,6 +165,9 @@ export const publications: HomeExploreConfig = {
         {
           sql,
           facet: 'grantType',
+        },
+        {
+          sql,
         }
       ],
     }

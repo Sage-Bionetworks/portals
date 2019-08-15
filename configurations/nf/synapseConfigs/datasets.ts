@@ -48,7 +48,7 @@ const datasets: HomeExploreConfig = {
       },
       name: 'Datasets',
       facetAliases,
-      searchableConfiguration: {
+      searchConfiguration: {
         searchable: [
           {
             columnName: 'datasetName',

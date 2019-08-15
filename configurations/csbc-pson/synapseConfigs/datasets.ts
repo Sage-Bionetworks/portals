@@ -69,6 +69,46 @@ export const datasets: HomeExploreConfig = {
         tumorType: 'Disease Type',
         grantType: 'Grant Type'
       },
+      searchableConfiguration: {
+        searchable: [
+          {
+            columnName: 'name',
+            hintText: '',
+          },
+          {
+            columnName: 'centerName',
+            hintText: '',
+          },
+          {
+            columnName: 'summary',
+            hintText: '',
+          },
+          {
+            columnName: 'Theme',
+            hintText: '',
+          },
+          {
+            columnName: 'tumorType',
+            hintText: '',
+          },
+          {
+            columnName: 'experimentalStrategy',
+            hintText: '',
+          },
+          {
+            columnName: 'species',
+            hintText: '',
+          },
+          {
+            columnName: 'consortium',
+            hintText: ''
+          },
+          {
+            columnName: 'grantType',
+            hintText: ''
+          },
+        ]
+      },
       menuConfig: [
         {
           sql,
@@ -93,6 +133,9 @@ export const datasets: HomeExploreConfig = {
         {
           sql,
           facet: 'grantType',
+        },
+        {
+          sql,
         }
       ],
     }
