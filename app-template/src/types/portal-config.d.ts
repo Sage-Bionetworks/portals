@@ -60,6 +60,11 @@ type Metatdata = {
   isOutsideContainer?: booleam
 }
 
+type NewsFeedMenu = {
+  name: 'NewsFeedMenu',
+  props: NewsFeedMenuProps
+}
+
 export type SynapseConfig = (
     StatefulButtonControl
   | RouteButtonControl
@@ -70,6 +75,7 @@ export type SynapseConfig = (
   | QueryWrapperMenu
   | UserCard 
   | Markdown 
+  | NewsFeedMenu 
 ) & Metatdata
 export type SynapseConfigArray = SynapseConfig []
 
