@@ -10,6 +10,15 @@ $primary-action-color: #4d5491;
   color: $primary-action-color !important;
 }
 
+.SRC-primary-background-color-border-left {
+  border-left-color: $primary-action-color !important;
+}
+.SRC-mailchimpSubscribeContainer {
+  button {
+    background-color: $primary-action-color !important;
+  }
+}
+
 footer {
   img.nav-logo {
     width: 250px;
