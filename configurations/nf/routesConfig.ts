@@ -1,6 +1,6 @@
 import { GenericRoute } from '../types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
-import { datasets, files, studies, publications, tools, funders, news } from './synapseConfigs'
+import { datasets, files, studies, publications, tools, funders } from './synapseConfigs'
 import { studiesSql, studiesCardConfiguration } from './synapseConfigs/studies'
 import { datasetsSql } from './synapseConfigs/datasets'
 import { publicationsSql, publicationsCardConfiguration } from './synapseConfigs/publications'
@@ -227,16 +227,7 @@ const routes: GenericRoute [] = [
         }
       }
     ]
-  },
-  {
-    name: 'News',
-    to: '/News',
-    isNested: false,
-    synapseConfigArray: [
-      news
-    ]
   }
-
 ]
 
 export default routes

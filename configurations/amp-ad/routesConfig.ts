@@ -1,6 +1,6 @@
 import { GenericRoute } from '../types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
-import { projects, studies, data, people, programs, publications, tools } from './synapseConfigs'
+import { projects, studies, data, people, programs, publications, tools, news } from './synapseConfigs'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
 import { studyCardProps } from './synapseConfigs/studies'
 import { projectCardProps } from './synapseConfigs/projects'
@@ -287,6 +287,14 @@ const routes: GenericRoute [] = [
           ownerId:'syn12666371'
         }
       }
+    ]
+  },
+  {
+    name: 'News',
+    to: '/News',
+    isNested: false,
+    synapseConfigArray: [
+      news
     ]
   },
   {
