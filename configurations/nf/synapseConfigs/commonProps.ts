@@ -40,4 +40,5 @@ export const facetAliases = {
   consortium: 'Consortium',
   name: 'File Name',
   type: 'Type',
+  accessType: 'Access Type'
 }
