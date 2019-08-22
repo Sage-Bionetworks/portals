@@ -2,6 +2,7 @@ import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from '../../types/portal-config'
 import loadingScreen from '../loadingScreen'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
+import { facetAliases } from './commonProps'
 export const datasetsSql = `SELECT * FROM syn18488466 WHERE ( ( "is.dataset" = 'TRUE' ) )`
 const sql = 'SELECT * FROM syn18488466'
 const unitDescription = 'Datasets'
@@ -12,14 +13,14 @@ export const datasetSchema: GenericCardSchema = {
   title: 'name',
   subTitle: 'centerName',
   description: 'summary',
-  secondaryLabels: {
-    0: { key: 'Theme' },
-    1: { key: 'tumorType', alias: 'Disease' },
-    2: { key: 'experimentalStrategy', alias: 'Assay' },
-    3: { key: 'species', alias: 'Species' },
-    4: { key: 'consortium', alias: 'Program' },
-    5: { key: 'grantType', alias: 'Grant Type' },
-  },
+  secondaryLabels: [
+    'Theme',
+    'tumorType',
+    'experimentalStrategy',
+    'species',
+    'consortium',
+    'grantType'
+  ],
   link: 'id',
 }
 
@@ -44,9 +45,7 @@ export const datasets: HomeExploreConfig = {
           offset: 0,
         }
       },
-      facetAliases: {
-        tumorType: 'Disease Type',
-      },
+      facetAliases,
     }
   },
   explorePageSynapseObject: {
@@ -62,16 +61,7 @@ export const datasets: HomeExploreConfig = {
         loadingScreen
       },
       name: 'Datasets',
-      facetAliases: {
-        species: 'Species',
-        experimentalStrategy: 'Assay',
-        consortium: 'Program',
-        tumorType: 'Disease Type',
-        grantType: 'Grant Type',
-        name: 'Name',
-        centerName: 'Center Name',
-        summary: 'Summary'
-      },
+      facetAliases,
       searchConfiguration: {
         searchable: [
           {

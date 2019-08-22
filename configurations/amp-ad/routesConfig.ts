@@ -111,12 +111,12 @@ const routes: GenericRoute [] = [
                 subTitle: 'Key Investigators',
                 icon: 'icon',
                 description: 'Abstract',
-                secondaryLabels: {
-                  0: { key: 'Grant Number', alias: 'GRANT' },
-                  1: { key: 'Key Data Contributors', alias: 'KEY DATA CONTRIBUTORS' },
-                  2: { key: 'Institutions', alias: 'INSTITUTIONS' },
-                  3: { key: 'Program', alias: 'PROGRAM' },
-                }
+                secondaryLabels: [
+                  'Grant Number',
+                  'Key Data Contributors',
+                  'Institutions',
+                  'Program',
+                ]
               },
               secondaryLabelLimit: 4,
               backgroundColor: '#DE9A1F'

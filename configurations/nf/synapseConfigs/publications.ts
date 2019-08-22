@@ -16,17 +16,17 @@ export const publicationsCardConfiguration = {
     type: SynapseConstants.PUBLICATION,
     subTitle: 'author',
     link: 'doi',
-    secondaryLabels: {
-      0: { key: 'journal', alias: 'Journal' },
-      1: { key: 'year', alias: 'Year' },
-      2: { key: 'studyName', alias: 'Study Name' },
-      3: { key: 'diseaseFocus', alias: 'Disease Focus' },
-      4: { key: 'manifestation', alias: 'Manifestation' },
-      5: { key: 'fundingAgency', alias: 'Funding Agency' },
-      6: { key: 'pmid', alias: 'PubMed ID' },
-      7: { key: 'doi', alias: 'DOI' },
+    secondaryLabels: [
+      'journal',
+      'year',
+      'studyName',
+      'diseaseFocus',
+      'manifestation',
+      'fundingAgency',
+      'pmid',
+      'doi'
+      ]
     }
-  }
 }
 
 const publications: HomeExploreConfig = {

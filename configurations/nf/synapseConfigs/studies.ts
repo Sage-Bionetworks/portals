@@ -22,14 +22,14 @@ export const studiesCardConfiguration: CommonCardProps = {
     description: 'summary',
     subTitle: 'studyLeads',
     icon: 'studyStatus',
-    secondaryLabels: {
-      0: { key: 'dataStatus', alias: 'Data Status' },
-      1: { key: 'diseaseFocus', alias: 'Disease Focus' },
-      2: { key: 'manifestation', alias: 'Manifestation' },
-      3: { key: 'fundingAgency', alias: 'Funding Agency' },
-      4: { key: 'institutions', alias: 'Institutions' },
-      5: { key: 'studyStatus', alias: 'Study Status' },
-    },
+    secondaryLabels: [
+      'dataStatus',
+      'diseaseFocus',
+      'manifestation',
+      'fundingAgency',
+      'institutions',
+      'studyStatus',
+    ],
   },
   iconOptions: {
     Active: studyActiveSvg,

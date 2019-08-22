@@ -2,6 +2,7 @@ import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from '../../types/portal-config'
 import loadingScreen from '../loadingScreen'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
+import { facetAliases } from './commonProps'
 export const publicationSql = 'SELECT * FROM syn10923842'
 const sql = publicationSql
 const unitDescription = 'Publications'
@@ -13,31 +14,22 @@ export const publicationSchema: GenericCardSchema = {
   title: 'Title',
   subTitle: 'Authors',
   description: 'abstract',
-  secondaryLabels: {
-    0: { key: 'Journal'},
-    1: { key: 'Publication Year', alias: 'Year' },
-    2: { key: 'Theme' },
-    3: { key: 'diseaseType', alias: 'Disease' },
-    4: { key: 'tissue_or_organ', alias: 'Tissue' },
-    5: { key: 'experimentalStrategy', alias: 'Assay' },
-    6: { key: 'Keywords'},
-    7: { key: 'DOI', alias: 'DOI' },
-    8: { key: 'Grant'},
-    9: { key: 'Consortium', alias: 'Program' },
-    10: { key: 'grantType', alias: 'Grant Type' },
-    11: { key: 'datasets', alias: 'Datasets' },
-    12: { key: 'studies', alias: 'Studies' },
-  },
+  secondaryLabels: [
+    'Journal',
+    'Publication Year',
+    'Theme',
+    'diseaseType',
+    'tissue_or_organ',
+    'experimentalStrategy',
+    'Keywords',
+    'DOI',
+    'Grant',
+    'Consortium',
+    'grantType',
+    'datasets',
+    'studies',
+  ],
   link: 'PubMed',
-}
-
-const facetAliases = {
-  Consortium: 'Program',
-  grantType: 'Grant Type',
-  diseaseType: 'Disease',
-  experimentalStrategy: 'Assay',
-  'Publication Year': 'Year',
-  'tissue_or_organ': 'Tissue',
 }
 
 export const publications: HomeExploreConfig = {

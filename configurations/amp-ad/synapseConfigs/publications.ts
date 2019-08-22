@@ -14,14 +14,14 @@ export const publicationCardProps = {
     title: 'title',
     subTitle: 'authors',
     link: 'doi',
-    secondaryLabels: {
-      0: { key: 'year', alias: 'Year' },
-      1: { key: 'journal', alias: 'Journal' },
-      2: { key: 'consortium', alias: 'Program' },
-      3: { key: 'long_amp_ad_grants', alias:  'Grant' },
-      4: { key: 'doi', alias:  'DOI' },
-      5: { key: 'pubmed_id', alias: 'Pubmed ID' }
-    }
+    secondaryLabels: [
+      'year',
+      'journal',
+      'consortium',
+      'long_amp_ad_grants',
+      'doi',
+      'pubmed_id'
+    ]
   },
 }
 

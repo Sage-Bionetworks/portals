@@ -9,7 +9,7 @@ import loadingScreen from './loadingScreen'
 import { ntap } from './synapseConfigs/organizationConfigs/ntap'
 import { dhartSpore } from './synapseConfigs/organizationConfigs/dhart-spore'
 import { ctf } from './synapseConfigs/organizationConfigs/ctf'
-import { buttonColors } from './synapseConfigs/commonProps'
+import { buttonColors, facetAliases } from './synapseConfigs/commonProps'
 import { toolsSql, toolsSchema } from './synapseConfigs/tools'
 
 const limit = 3
@@ -40,6 +40,7 @@ const routes: GenericRoute [] = [
         props: {
           limit,
           loadingScreen,
+          facetAliases,
           sql: studiesSql,
           ...studiesCardConfiguration,
           title: 'NEW STUDIES',
@@ -56,6 +57,7 @@ const routes: GenericRoute [] = [
         props: {
           limit,
           loadingScreen,
+          facetAliases,
           sql: publicationsSql,
           ...publicationsCardConfiguration
         }
@@ -67,6 +69,7 @@ const routes: GenericRoute [] = [
         props: {
           limit,
           loadingScreen,
+          facetAliases,
           sql: datasetsSql,
           type: SynapseConstants.DATASET
         }
@@ -78,6 +81,7 @@ const routes: GenericRoute [] = [
         props: {
           limit,
           loadingScreen,
+          facetAliases,
           type: SynapseConstants.GENERIC_CARD,
           genericCardSchema: toolsSchema,
           sql: toolsSql
@@ -89,6 +93,7 @@ const routes: GenericRoute [] = [
         props: {
           limit,
           loadingScreen,
+          facetAliases,
           sql: funders.sql,
           type: funders.type
         }

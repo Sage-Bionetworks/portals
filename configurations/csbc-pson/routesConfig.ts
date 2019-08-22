@@ -2,6 +2,7 @@ import { GenericRoute } from '../types/portal-config'
 import { publications, files, datasets, grants, studies } from './synapseConfigs'
 import { SynapseConstants } from 'synapse-react-client'
 import { studiesSql, studySchema } from './synapseConfigs/studies'
+import { facetAliases } from './synapseConfigs/commonProps'
 import { publicationSql, publicationSchema } from './synapseConfigs/publications'
 import { datasetsSql, datasetSchema } from './synapseConfigs/datasets'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
@@ -41,6 +42,7 @@ const routes: GenericRoute [] = [
         link: 'Explore/Studies',
         props: {
           loadingScreen,
+          facetAliases,
           sql: studiesSql,
           limit: homeLimit,
           type: SynapseConstants.GENERIC_CARD,
@@ -53,6 +55,7 @@ const routes: GenericRoute [] = [
         link: 'Explore/Publications',
         props: {
           loadingScreen,
+          facetAliases,
           sql: publicationSql,
           limit: homeLimit,
           type: SynapseConstants.GENERIC_CARD,
@@ -65,6 +68,7 @@ const routes: GenericRoute [] = [
         link: 'Explore/Datasets',
         props: {
           loadingScreen,
+          facetAliases,
           sql: datasetsSql,
           limit: homeLimit,
           type: SynapseConstants.GENERIC_CARD,
