@@ -10,7 +10,7 @@ export const Footer:React.SFC<{}> = () => {
   return (
     <footer id="footer" className="center-content">
       <div id="portal-title-footer">
-        <Link onClick={goToTop} to="/" id="footer-item"> {logo} </Link>
+        <Link onClick={goToTop} to="/" id="footer-logo-link"> {logo} </Link>
       </div>
       <div id="portal-contact-footer" className="center-content">
         <a rel="noopener noreferrer" target="_blank" href={footerConfig.termsOfService} className="footer-item"> Terms of Service </a>

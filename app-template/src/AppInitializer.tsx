@@ -122,7 +122,7 @@ class AppInitializer extends React.Component<RouteComponentProps & ReactCookiePr
       color = window.getComputedStyle(footerElement, null).getPropertyValue('color')
       background = window.getComputedStyle(footerElement, null).getPropertyValue('background-color')
     }
-    const footerLinkImgElement = document.querySelector('#footer-link img')
+    const footerLinkImgElement = document.querySelector('#footer-logo-link img')
     if (footerLinkImgElement) {
       let imageSrc = footerLinkImgElement.getAttribute('src')
       if (imageSrc) {
@@ -132,7 +132,7 @@ class AppInitializer extends React.Component<RouteComponentProps & ReactCookiePr
         icon = imageSrc
       }
     }
-    const footerLinkElement = document.querySelector('#footer-link')
+    const footerLinkElement = document.querySelector('#footer-logo-link')
     if (footerLinkElement && footerLinkElement.textContent) {
       name = footerLinkElement.textContent
     }
@@ -157,6 +157,7 @@ class AppInitializer extends React.Component<RouteComponentProps & ReactCookiePr
         expires: expireDate
       }
     )
+
   }
 }
 
