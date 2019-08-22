@@ -8,7 +8,7 @@ const sql = 'SELECT * FROM syn17083367'
 const facet = 'Species'
 
 export const studyCardProps =  {
-  sql: 'SELECT * FROM syn17083367',
+  sql,
   type: SynapseConstants.GENERIC_CARD,
   genericCardSchema: {
     type: SynapseConstants.STUDY,
