@@ -32,9 +32,7 @@ const files: HomeExploreConfig = {
         }
       },
       facet: 'assay',
-      facetAliases: {
-        assay: 'Assay',
-      },
+      facetAliases,
     }
   },
   explorePageSynapseObject: {

@@ -1,6 +1,7 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from '../../types/portal-config'
 import loadingScreen from '../loadingScreen'
+import { facetAliases } from './commonProps'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 const unitDescription = 'studies'
 export const studiesSql = `SELECT * FROM syn18483791 WHERE ( ( "is.study" = 'TRUE' ) )`
@@ -30,9 +31,7 @@ export const studies: HomeExploreConfig = {
       unitDescription,
       loadingScreen,
       facet: 'grantType',
-      facetAliases: {
-        grantType: 'Grant Type',
-      },
+      facetAliases,
       link: 'Explore/Studies',
       linkText: 'Explore Studies',
       initQueryRequest : {
@@ -61,15 +60,7 @@ export const studies: HomeExploreConfig = {
         loadingScreen
       },
       name: 'Studies',
-      facetAliases: {
-        grantType: 'Grant Type',
-        consortium: 'Program',
-        experimentalStrategy: 'Assay',
-        tumorType: 'Disease Type',
-        name: 'Name',
-        centerName: 'Center Name',
-        description: 'Description',
-      },
+      facetAliases,
       searchConfiguration: {
         searchable: [
           {

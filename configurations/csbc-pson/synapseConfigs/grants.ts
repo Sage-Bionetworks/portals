@@ -1,6 +1,7 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from '../../types/portal-config'
 import loadingScreen from '../loadingScreen'
+import { facetAliases } from './commonProps'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 const sql = `SELECT * FROM syn10142562 WHERE ( "grantType" = 'U54' OR "grantType" = 'U01')`
 const unitDescription = 'grants'
@@ -12,7 +13,7 @@ export const grantsSchema: GenericCardSchema = {
   subTitle: 'Institutions',
   description: 'abstract',
   secondaryLabels: [
-    'Key Investigators',
+    'keyInvestigators',
     'grantNumber', 
     'consortium', 
     'grantType',
@@ -28,9 +29,7 @@ export const grants: HomeExploreConfig = {
       loadingScreen,
       rgbIndex: 3,
       facet: 'grantType',
-      facetAliases: {
-        grantType: 'Grant Type',
-      },
+      facetAliases,
       link: 'Explore/Grants',
       linkText: 'Explore Grants',
       initQueryRequest : {
@@ -60,13 +59,7 @@ export const grants: HomeExploreConfig = {
         loadingScreen
       },
       name: 'Grants',
-      facetAliases: {
-        consortium: 'Program',
-        grantType: 'Grant Type',
-        name: 'Name',
-        grantNumber: 'Grant Number',
-        abstract: 'Abstract'
-      },
+      facetAliases,
       searchConfiguration: {
         searchable: [
           {
@@ -82,7 +75,7 @@ export const grants: HomeExploreConfig = {
             hintText: 'PS-ON'
           },
           {
-            columnName: 'Key Investigators',
+            columnName: 'keyInvestigators',
             hintText: 'LastName'
           },
           {

@@ -2,6 +2,7 @@ import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from '../../types/portal-config'
 import loadingScreen from '../loadingScreen'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
+import { facetAliases } from './commonProps'
 export const publicationSql = 'SELECT * FROM syn10923842'
 const sql = publicationSql
 const unitDescription = 'Publications'
@@ -15,7 +16,7 @@ export const publicationSchema: GenericCardSchema = {
   description: 'abstract',
   secondaryLabels: [
     'Journal',
-    'Publication' ,
+    'Publication Year',
     'Theme',
     'diseaseType',
     'tissue_or_organ',
@@ -29,15 +30,6 @@ export const publicationSchema: GenericCardSchema = {
     'studies',
   ],
   link: 'PubMed',
-}
-
-const facetAliases = {
-  Consortium: 'Program',
-  grantType: 'Grant Type',
-  diseaseType: 'Disease',
-  experimentalStrategy: 'Assay',
-  'Publication Year': 'Year',
-  'tissue_or_organ': 'Tissue',
 }
 
 export const publications: HomeExploreConfig = {
