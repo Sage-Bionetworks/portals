@@ -9,12 +9,12 @@ const computationalSchema: GenericCardSchema = {
   subTitle: 'softwareType',
   description: 'summary',
   icon: 'toolType',
-  secondaryLabels: {
-    0: { key: 'contributor', alias: 'Contributor' },
-    1: { key: 'program', alias: 'Program' },
-    2: { key: 'grant', alias: 'Grant' },
-    3: { key: 'documentation', alias: 'Documentation' }
-  },
+  secondaryLabels: [
+    'contributor',
+    'program',
+    'grant',
+    'documentation'
+  ],
   link: 'url',
 }
 
@@ -24,14 +24,14 @@ const experimentalSchema: GenericCardSchema = {
   subTitle: 'reagentType',
   description: 'summary',
   icon: 'toolType',
-  secondaryLabels: {
-    0: { key: 'contributor', alias: 'Contributor' },
-    1: { key: 'diagnosis', alias: 'Diagnosis' },
-    2: { key: 'modelType', alias: 'Model Type' },
-    3: { key: 'modelSystemName', alias: 'Model Name' },
-    4: { key: 'grant', alias: 'Grant' },
-    5: { key: 'program', alias: 'Program' },
-  },
+  secondaryLabels: [
+    'contributor',
+    'diagnosis',
+    'modelType',
+    'modelSystemName',
+    'grant',
+    'program',
+  ],
   link: 'url',
 }
 

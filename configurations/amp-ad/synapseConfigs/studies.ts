@@ -18,17 +18,17 @@ export const studyCardProps =  {
     icon: 'Access_Type',
     link: 'Study',
     description: 'Study_Description',
-    secondaryLabels: {
-      0: { key: 'DataType_All', alias: 'Data Types' },
-      1: { key: 'Diagnosis_or_Model_System', alias: 'Diagnosis' },
-      2: { key: 'Number_Of_Individuals', alias: 'Individuals' },
-      3: { key: 'Sample_Type', alias: 'Tissue' },
-      4: { key: 'Species' },
-      5: { key: 'Cohort_Type', alias: 'Cohort Type' },
-      6: { key: 'Study_Status', alias: 'Study Status' },
-      7: { key: 'Consortium', alias: 'Program' },
-      8: { key: 'Grant' }
-    }
+    secondaryLabels: [
+      'DataType_All',
+      'Diagnosis_or_Model_System',
+      'Number_Of_Individuals',
+      'Sample_Type',
+      'Species',
+      'Cohort_Type',
+      'Study_Status',
+      'Consortium',
+      'Grant'
+    ]
   }
 }
 

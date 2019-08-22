@@ -12,14 +12,14 @@ export const datasetSchema: GenericCardSchema = {
   title: 'name',
   subTitle: 'centerName',
   description: 'summary',
-  secondaryLabels: {
-    0: { key: 'Theme' },
-    1: { key: 'tumorType', alias: 'Disease' },
-    2: { key: 'experimentalStrategy', alias: 'Assay' },
-    3: { key: 'species', alias: 'Species' },
-    4: { key: 'consortium', alias: 'Program' },
-    5: { key: 'grantType', alias: 'Grant Type' },
-  },
+  secondaryLabels: [
+    'Theme',
+    'tumorType',
+    'experimentalStrategy',
+    'species',
+    'consortium',
+    'grantType'
+  ],
   link: 'id',
 }
 

@@ -12,13 +12,13 @@ export const studySchema: GenericCardSchema = {
   title: 'name',
   subTitle: 'centerName',
   description: 'description',
-  secondaryLabels: {
-    0: { key: 'Theme' },
-    1: { key: 'tumorType', alias: 'Disease' },
-    2: { key: 'experimentalStrategy', alias: 'Assay' },
-    3: { key: 'consortium', alias: 'Program' },
-    4: { key: 'grantType', alias: 'Grant Type' },
-  },
+  secondaryLabels: [
+    'Theme',
+    'tumorType',
+    'experimentalStrategy',
+    'consortium',
+    'grantType',
+  ],
   link: 'id',
 }
 

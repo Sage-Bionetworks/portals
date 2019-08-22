@@ -12,13 +12,13 @@ export const toolsSchema: GenericCardSchema = {
   subTitle: 'contact',
   description: 'summary',
   icon: 'type',
-  secondaryLabels: {
-    0: { key: 'subtype', alias: 'Sub Type' },
-    1: { key: 'diseaseFocus', alias: 'Disease Focus' },
-    2: { key: 'manifestation', alias: 'Manifestation' },
-    3: { key: 'fundingAgency', alias: 'Funding Agency' },
-    4: { key: 'studyName', alias: 'Study Name' },
-  },
+  secondaryLabels: [
+    'subtype',
+    'diseaseFocus',
+    'manifestation',
+    'fundingAgency',
+    'studyName'
+  ],
   link: 'link',
 }
 

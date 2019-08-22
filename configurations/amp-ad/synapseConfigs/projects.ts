@@ -14,11 +14,11 @@ export const projectCardProps = {
     title: 'Name',
     subTitle: 'Key Investigators',
     description: 'Abstract',
-    secondaryLabels: {
-      0: { key: 'Institutions' },
-      1: { key: 'Key Data Contributors'},
-      2: { key: 'Program' }
-    }
+    secondaryLabels: [
+      'Institutions',
+      'Key Data Contributors',
+      'Program' 
+    ],
   },
   secondaryLabelLimit: 4,
   internalLinkConfiguration: {

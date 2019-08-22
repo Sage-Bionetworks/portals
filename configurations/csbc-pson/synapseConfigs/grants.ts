@@ -11,12 +11,12 @@ export const grantsSchema: GenericCardSchema = {
   title: 'name',
   subTitle: 'Institutions',
   description: 'abstract',
-  secondaryLabels: {
-    0: { key: 'Key Investigators', alias: 'Investigators' },
-    1: { key: 'grantNumber', alias: 'Grant' },
-    2: { key: 'consortium', alias: 'Program' },
-    3: { key: 'grantType', alias: 'Grant Type' },
-  },
+  secondaryLabels: [
+    'Key Investigators',
+    'grantNumber', 
+    'consortium', 
+    'grantType',
+  ],
   link: 'id',
 }
 

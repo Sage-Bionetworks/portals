@@ -12,9 +12,9 @@ const publicationSchema: GenericCardSchema = {
   title: 'Title',
   subTitle: 'Authors',
   description: 'abstract',
-  secondaryLabels: {
-    0: { key: 'Journal'},
-  },
+  secondaryLabels: [
+    'Journal'
+  ],
   link: 'PubMed',
 }
 export const publications: HomeExploreConfig = {
