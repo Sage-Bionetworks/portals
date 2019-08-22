@@ -1,10 +1,3 @@
-body {
-  font-family: 'Lato', sans-serif;
-  button:focus {
-    // bootstrap override
-    outline: none;
-  }
-}
 
 .nav-logo {
   height: 50px;
@@ -46,6 +39,13 @@ $header-height : 75px;
 $banner-height: 47px;
 @import "config/style/overides";
 
+body {
+  font-family: 'Lato', sans-serif;
+  button:focus {
+    // bootstrap override
+    outline: $primary-action-color;
+  }
+}
 
 .SRC-primary-background-color {
   background-color: $primary-action-color !important;
@@ -62,9 +62,46 @@ $banner-height: 47px;
   }
 }
 
+:focus {
+  outline-color: $primary-action-color !important;
+}
+
 .SRC-primary-background-color-hover.SRC-nested-color:hover * {
   background-color: $primary-action-color !important;
   color: white !important;
+}
+
+.indeterminate-checkbox input[type="checkbox"] + label::before, .indeterminate-checkbox input[type="checkbox"] + span::before {
+  content: "–";
+  color: $primary-action-color !important;
+  font-size: 14px;
+  margin-left: -17px;
+  top: 1px;
+  position: relative;
+  margin-right: 8px;
+  font-weight: bolder;
+}
+input[type="checkbox"]:checked + label::before, input[type="checkbox"]:checked + span::before {
+  content: "✓";
+  color: $primary-action-color !important;
+  font-size: 14px;
+  margin-left: -19px;
+  top: 1px;
+  position: relative;
+  margin-right: 8px;
+  font-weight: bolder;
+}
+.radio input[type="radio"]:checked + label::before, .radio input[type="radio"]:checked + span::before,
+.radio-inline input[type="radio"]:checked + label::before, .radio-inline input[type="radio"]:checked + span::before {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-left: -18px;
+  margin-right: 8px;
+  background: $primary-action-color !important;
 }
 
 .nav + .spacer {

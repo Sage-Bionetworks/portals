@@ -50,7 +50,7 @@ const publications: HomeExploreConfig = {
           offset: 0,
         },
       },
-      facetName: 'diseaseFocus',
+      facet: 'diseaseFocus',
       facetAliases: {
         diseaseFocus: 'Disease Focus',
       },
@@ -67,30 +67,74 @@ const publications: HomeExploreConfig = {
       name: 'Publications',
       cardConfiguration: publicationsCardConfiguration,
       facetAliases,
+      facet: 'fundingAgency',
+      searchConfiguration: {
+        searchable: [
+          {
+            columnName: 'author',
+            hintText: 'Weimer'
+          },
+          {
+            columnName: 'title',
+            hintText: 'Schwann'
+          },
+          {
+            columnName: 'journal',
+            hintText: 'neuro'
+          },
+          {
+            columnName: 'pmid',
+            hintText: '29055717'
+          },
+          {
+            columnName: 'year',
+            hintText: '2018'
+          },
+          {
+            columnName: 'fundingAgency',
+            hintText: 'NTAP'
+          },
+          {
+            columnName: 'studyName',
+            hintText: 'Plexiform'
+          },
+          {
+            columnName: 'diseaseFocus',
+            hintText: 'Neurofibromatosis 2'
+          },
+          {
+            columnName: 'manifestation',
+            hintText: 'MPNST'
+          },
+        ]
+      },
       menuConfig: [
         {
           sql,
-          facetName: 'fundingAgency'
+          facet: 'fundingAgency'
         },
         {
           sql,
-          facetName: 'journal'
+          facet: 'journal'
         },
         {
           sql,
-          facetName: 'year'
+          facet: 'year'
         },
         {
           sql,
-          facetName: 'studyName'
+          facet: 'studyName'
         },
         {
           sql,
-          facetName: 'diseaseFocus'
+          facet: 'diseaseFocus'
         },
         {
           sql,
-          facetName: 'manifestation'
+          facet: 'manifestation'
+        },
+        {
+          sql,
         },
       ]
     }

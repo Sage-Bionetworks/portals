@@ -19,7 +19,7 @@ const datasets: HomeExploreConfig = {
       loadingScreen,
       link: 'Explore/Datasets',
       linkText: 'Explore Datasets',
-      facetName: 'diseaseFocus',
+      facet: 'diseaseFocus',
       initQueryRequest: {
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
         partMask:
@@ -48,18 +48,49 @@ const datasets: HomeExploreConfig = {
       },
       name: 'Datasets',
       facetAliases,
+      searchConfiguration: {
+        searchable: [
+          {
+            columnName: 'datasetName',
+            hintText: 'Drug Screening'
+          },
+          {
+            columnName: 'summary',
+            hintText: 'single-agent'
+          },
+          {
+            columnName: 'studyName',
+            hintText: 'Synodos NF2'
+          },
+          {
+            columnName: 'diseaseFocus',
+            hintText: 'Neurofibromatosis 1'
+          },
+          {
+            columnName: 'manifestation',
+            hintText: 'Plexiform Neurofibroma'
+          },
+          {
+            columnName: 'fundingAgency',
+            hintText: 'CTF'
+          },
+        ]
+      },
       menuConfig: [
         {
           sql,
-          facetName: 'diseaseFocus'
+          facet: 'diseaseFocus'
         },
         {
           sql,
-          facetName: 'tumorType'
+          facet: 'tumorType'
         },
         {
           sql,
-          facetName: 'fundingAgency'
+          facet: 'fundingAgency'
+        },
+        {
+          sql,
         },
       ]
     }

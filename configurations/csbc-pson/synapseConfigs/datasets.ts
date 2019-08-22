@@ -30,7 +30,7 @@ export const datasets: HomeExploreConfig = {
       unitDescription,
       loadingScreen,
       rgbIndex: 0,
-      facetName: 'tumorType',
+      facet: 'tumorType',
       link: 'Explore/Datasets',
       linkText: 'Explore Datasets',
       initQueryRequest : {
@@ -67,32 +67,78 @@ export const datasets: HomeExploreConfig = {
         experimentalStrategy: 'Assay',
         consortium: 'Program',
         tumorType: 'Disease Type',
-        grantType: 'Grant Type'
+        grantType: 'Grant Type',
+        name: 'Name',
+        centerName: 'Center Name',
+        summary: 'Summary'
+      },
+      searchConfiguration: {
+        searchable: [
+          {
+            columnName: 'name',
+            hintText: 'migration',
+          },
+          {
+            columnName: 'centerName',
+            hintText: 'immunology',
+          },
+          {
+            columnName: 'summary',
+            hintText: 'spatiotemporal',
+          },
+          {
+            columnName: 'Theme',
+            hintText: 'tumor-immune',
+          },
+          {
+            columnName: 'tumorType',
+            hintText: 'Skin Cutaneous Melanoma',
+          },
+          {
+            columnName: 'experimentalStrategy',
+            hintText: 'RNA-seq',
+          },
+          {
+            columnName: 'species',
+            hintText: 'Human',
+          },
+          {
+            columnName: 'consortium',
+            hintText: 'PS-ON'
+          },
+          {
+            columnName: 'grantType',
+            hintText: 'U01'
+          },
+        ]
       },
       menuConfig: [
         {
           sql,
-          facetName: 'species',
+          facet: 'species',
         },
         {
           sql,
-          facetName: 'Theme'
+          facet: 'Theme'
         },
         {
           sql,
-          facetName: 'experimentalStrategy',
+          facet: 'experimentalStrategy',
         },
         {
           sql,
-          facetName: 'consortium',
+          facet: 'consortium',
         },
         {
           sql,
-          facetName: 'tumorType',
+          facet: 'tumorType',
         },
         {
           sql,
-          facetName: 'grantType',
+          facet: 'grantType',
+        },
+        {
+          sql,
         }
       ],
     }

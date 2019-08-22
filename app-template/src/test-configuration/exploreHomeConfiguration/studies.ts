@@ -7,7 +7,7 @@ const sql = 'SELECT * FROM syn18483791'
 const unitDescription = 'studies'
 
 const rgbIndex = 0
-const facetName = 'tumorType'
+const facet = 'tumorType'
 
 
 const studySchema: GenericCardSchema = {
@@ -30,7 +30,7 @@ export const studies: HomeExploreConfig = {
     name: 'QueryWrapperFlattened',
     props: {
       rgbIndex,
-      facetName,
+      facet,
       unitDescription,
       initQueryRequest : {
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
@@ -65,11 +65,11 @@ export const studies: HomeExploreConfig = {
       menuConfig: [
         {
           sql,
-          facetName: 'grantType',
+          facet: 'grantType',
         },
         {
           sql,
-          facetName: 'consortium',
+          facet: 'consortium',
         }
       ],
     },

@@ -27,7 +27,7 @@ export const grants: HomeExploreConfig = {
       unitDescription,
       loadingScreen,
       rgbIndex: 3,
-      facetName: 'grantType',
+      facet: 'grantType',
       facetAliases: {
         grantType: 'Grant Type',
       },
@@ -63,15 +63,53 @@ export const grants: HomeExploreConfig = {
       facetAliases: {
         consortium: 'Program',
         grantType: 'Grant Type',
+        name: 'Name',
+        grantNumber: 'Grant Number',
+        abstract: 'Abstract'
+      },
+      searchConfiguration: {
+        searchable: [
+          {
+            columnName: 'name',
+            hintText: 'immunity'
+          },
+          {
+            columnName: 'grantNumber',
+            hintText: 'CA202123'
+          },
+          {
+            columnName: 'consortium',
+            hintText: 'PS-ON'
+          },
+          {
+            columnName: 'Key Investigators',
+            hintText: 'LastName'
+          },
+          {
+            columnName: 'Institutions',
+            hintText: 'Vanderbilt'
+          },
+          {
+            columnName: 'abstract',
+            hintText: 'metastasis'
+          },
+          {
+            columnName: 'grantType',
+            hintText: 'U54'
+          },
+        ]
       },
       menuConfig: [
         {
           sql,
-          facetName: 'consortium',
+          facet: 'consortium',
         },
         {
           sql,
-          facetName: 'grantType',
+          facet: 'grantType',
+        },
+        {
+          sql,
         }
       ],
     }

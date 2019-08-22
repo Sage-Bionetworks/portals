@@ -2,6 +2,8 @@ import { GenericCardSchema } from "synapse-react-client/dist/containers/GenericC
 import loadingScreen from '../loadingScreen'
 import { SynapseConstants } from "synapse-react-client"
 import { HomeExploreConfig } from "types/portal-util-types"
+import { facetAliases } from './commonProps'
+
 export const toolsSql = 'SELECT * FROM syn16859448'
 
 export const toolsSchema: GenericCardSchema = {
@@ -20,14 +22,47 @@ export const toolsSchema: GenericCardSchema = {
   link: 'link',
 }
 
-const facetAliases = {
-  studyName: 'Study Name',
-  fundingAgency: 'Funding Agency',
-  type: 'Type',
-  subtype: 'Sub Type',
-  diseaseFocus: 'Disease Focus',
-  manifestation: 'Manifestation'
+const searchConfiguration = {
+  searchable: [
+    {
+      columnName: 'name',
+      hintText: 'Browser'
+    },
+    {
+      columnName: 'summary',
+      hintText: 'prediction'
+    },
+    {
+      columnName: 'studyName',
+      hintText: 'Nerve Sheath'
+    },
+    {
+      columnName: 'fundingAgency',
+      hintText: 'NTAP'
+    },
+    {
+      columnName: 'contact',
+      hintText: 'Serra'
+    },
+    {
+      columnName: 'type',
+      hintText: 'Computational'
+    },
+    {
+      columnName: 'subtype',
+      hintText: 'animal model'
+    },
+    {
+      columnName: 'diseaseFocus',
+      hintText: 'Neurofibromatosis 2'
+    },
+    {
+      columnName: 'manifestation',
+      hintText: 'MPNST'
+    },
+  ]
 }
+
 const computationalSql = "SELECT * FROM syn16859448 WHERE type = 'computational'"
 const experimentalSql = "SELECT * FROM syn16859448 WHERE type = 'experimental'"
 const clinicalSql = "SELECT * FROM syn16859448 WHERE type = 'clinical'"
@@ -54,10 +89,8 @@ const tools: HomeExploreConfig = {
           offset: 0,
         },
       },
-      facetName: 'type',
-      facetAliases: {
-        type: 'Type'
-      }
+      facet: 'type',
+      facetAliases
     }
   },
   explorePageSynapseObject: {
@@ -73,26 +106,30 @@ const tools: HomeExploreConfig = {
             genericCardSchema: toolsSchema,
             loadingScreen
           },
+          searchConfiguration,
           menuConfig: [
             {
               sql: computationalSql,
-              facetName: 'studyName'
+              facet: 'studyName'
             },
             {
               sql: computationalSql,
-              facetName: 'fundingAgency'
+              facet: 'fundingAgency'
             },
             {
               sql: computationalSql,
-              facetName: 'subtype'
+              facet: 'subtype'
             },
             {
               sql: computationalSql,
-              facetName: 'diseaseFocus'
+              facet: 'diseaseFocus'
             },
             {
               sql: computationalSql,
-              facetName: 'manifestation'
+              facet: 'manifestation'
+            },
+            {
+              sql: computationalSql,
             },
           ]
         },
@@ -103,26 +140,30 @@ const tools: HomeExploreConfig = {
             genericCardSchema: toolsSchema,
             loadingScreen
           },
+          searchConfiguration,
           menuConfig: [
             {
               sql: experimentalSql,
-              facetName: 'studyName'
+              facet: 'studyName'
             },
             {
               sql: experimentalSql,
-              facetName: 'fundingAgency'
+              facet: 'fundingAgency'
             },
             {
               sql: experimentalSql,
-              facetName: 'subtype'
+              facet: 'subtype'
             },
             {
               sql: experimentalSql,
-              facetName: 'diseaseFocus'
+              facet: 'diseaseFocus'
             },
             {
               sql: experimentalSql,
-              facetName: 'manifestation'
+              facet: 'manifestation'
+            },
+            {
+              sql: experimentalSql,
             },
           ]
         },
@@ -133,26 +174,30 @@ const tools: HomeExploreConfig = {
             genericCardSchema: toolsSchema,
             loadingScreen
           },
+          searchConfiguration,
           menuConfig: [
             {
               sql: clinicalSql,
-              facetName: 'studyName'
+              facet: 'studyName'
             },
             {
               sql: clinicalSql,
-              facetName: 'fundingAgency'
+              facet: 'fundingAgency'
             },
             {
               sql: clinicalSql,
-              facetName: 'subtype'
+              facet: 'subtype'
             },
             {
               sql: clinicalSql,
-              facetName: 'diseaseFocus'
+              facet: 'diseaseFocus'
             },
             {
               sql: clinicalSql,
-              facetName: 'manifestation'
+              facet: 'manifestation'
+            },
+            {
+              sql: clinicalSql,
             },
           ]
         },

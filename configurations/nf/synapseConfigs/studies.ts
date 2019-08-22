@@ -47,7 +47,7 @@ const studies: HomeExploreConfig = {
       loadingScreen,
       link: 'Explore/Studies',
       linkText: 'Explore Studies',
-      facetName: 'diseaseFocus',
+      facet: 'diseaseFocus',
       initQueryRequest: {
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
         partMask:
@@ -79,31 +79,74 @@ const studies: HomeExploreConfig = {
           columnValues: ['studyId']
         },
       },
+      searchConfiguration: {
+        searchable: [
+          {
+            columnName: 'studyName',
+            hintText: 'Synodos NF2'
+          },
+          {
+            columnName: 'summary',
+            hintText: 'nonsurgical therapy'
+          },
+          {
+            columnName: 'studyLeads',
+            hintText: 'Schwann cell'
+          },
+          {
+            columnName: 'studyStatus',
+            hintText: 'Active'
+          },
+          {
+            columnName: 'dataStatus',
+            hintText: 'Under Embargo'
+          },
+          {
+            columnName: 'institutions',
+            hintText: 'Massachusetts General Hospital'
+          },
+          {
+            columnName: 'diseaseFocus',
+            hintText: 'Neurofibromatosis 2'
+          },
+          {
+            columnName: 'manifestation',
+            hintText: 'Schwannoma'
+          },
+          {
+            columnName: 'fundingAgency',
+            hintText: 'NTAP'
+          },
+        ]
+      },
       facetAliases,
       menuConfig: [
         {
           sql,
-          facetName: 'studyStatus',
+          facet: 'studyStatus',
         },
         {
           sql,
-          facetName: 'dataStatus'
+          facet: 'dataStatus'
         },
         {
           sql,
-          facetName: 'institutions'
+          facet: 'institutions'
         },
         {
           sql,
-          facetName: 'fundingAgency'
+          facet: 'fundingAgency'
         },
         {
           sql,
-          facetName: 'manifestation'
+          facet: 'manifestation'
         },
         {
           sql,
-          facetName: 'diseaseFocus'
+          facet: 'diseaseFocus'
+        },
+        {
+          sql,
         },
       ]
     }

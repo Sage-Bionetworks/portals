@@ -25,7 +25,7 @@ export const generateOrgConfig: ReturnSynapseConfigArray = (org, type, sqlOnly =
           facetAliases,
           unitDescription: 'Studies',
           rgbIndex: 5,
-          facetName: 'diseaseFocus',
+          facet: 'diseaseFocus',
           initQueryRequest: {
             concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
             partMask:
@@ -47,7 +47,7 @@ export const generateOrgConfig: ReturnSynapseConfigArray = (org, type, sqlOnly =
           loadingScreen,
           sql: studiesSql,
           ...studiesCardConfiguration,
-          filter: 'diseaseFocus',
+          facet: 'diseaseFocus',
         },
         title: 'Funded Studies'
       }
@@ -64,7 +64,7 @@ export const generateOrgConfig: ReturnSynapseConfigArray = (org, type, sqlOnly =
           facetAliases,
           unitDescription: 'Studies',
           rgbIndex: 8,
-          facetName: 'diseaseFocus',
+          facet: 'diseaseFocus',
           initQueryRequest: {
             concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
             partMask:
@@ -86,7 +86,7 @@ export const generateOrgConfig: ReturnSynapseConfigArray = (org, type, sqlOnly =
           loadingScreen,
           sql: datasetsSql,
           type: SynapseConstants.DATASET,
-          filter: 'diseaseFocus',
+          facet: 'diseaseFocus',
         },
         title: 'NEW DATASETS'
       }
@@ -105,7 +105,7 @@ export const generateOrgConfig: ReturnSynapseConfigArray = (org, type, sqlOnly =
           title: 'Files',
           synapseId: 'syn16858331',
           rgbIndex: 1,
-          facetName: 'assay',
+          facet: 'assay',
           initQueryRequest: {
             concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
             partMask:
@@ -133,7 +133,7 @@ export const generateOrgConfig: ReturnSynapseConfigArray = (org, type, sqlOnly =
         facetAliases,
         unitDescription: 'Publications',
         rgbIndex: 0,
-        facetName: 'diseaseFocus',
+        facet: 'diseaseFocus',
         initQueryRequest: {
           concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
           partMask:
@@ -155,7 +155,7 @@ export const generateOrgConfig: ReturnSynapseConfigArray = (org, type, sqlOnly =
         loadingScreen,
         sql: publicationsSql,
         ...publicationsCardConfiguration,
-        filter: 'diseaseFocus',
+        facet: 'diseaseFocus',
       },
       title: 'NEW PUBLICATIONS'
     }

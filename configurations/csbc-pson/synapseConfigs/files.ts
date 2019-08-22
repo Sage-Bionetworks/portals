@@ -21,14 +21,14 @@ const facetAliases = {
 const rgbIndex = 6
 const unitDescription = 'files'
 const synapseId  = 'syn9630847'
-const facetName = 'grantType'
+const facet = 'grantType'
 
 export const files: HomeExploreConfig = {
   homePageSynapseObject: {
     name: 'QueryWrapperFlattened',
     props: {
       rgbIndex,
-      facetName,
+      facet,
       unitDescription,
       loadingScreen,
       facetAliases: {
@@ -66,47 +66,47 @@ export const files: HomeExploreConfig = {
       menuConfig: [
         {
           sql,
-          facetName: 'grantType',
+          facet: 'grantType',
         },
         {
           sql,
-          facetName: 'centerName',
+          facet: 'centerName',
         },
         {
           sql,
-          facetName: 'consortium',
+          facet: 'consortium',
         },
         {
           sql,
-          facetName: 'species',
+          facet: 'species',
         },
         {
           sql,
-          facetName: 'Theme'
+          facet: 'Theme'
         },
         {
           sql,
-          facetName: 'fileFormat',
+          facet: 'fileFormat',
         },
         {
           sql,
-          facetName: 'experimentalStrategy',
+          facet: 'experimentalStrategy',
         },
         {
           sql,
-          facetName: 'platform',
+          facet: 'platform',
         },
         {
           sql,
-          facetName: 'tumorType',
+          facet: 'tumorType',
         },
         {
           sql,
-          facetName: 'sex',
+          facet: 'sex',
         },
         {
           sql,
-          facetName: 'tissue',
+          facet: 'tissue',
         },
       ]
     }

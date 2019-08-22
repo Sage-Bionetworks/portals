@@ -47,7 +47,7 @@ export const publications: HomeExploreConfig = {
       rgbIndex,
       unitDescription,
       loadingScreen,
-      facetName: 'Consortium',
+      facet: 'Consortium',
       facetAliases: {
         Consortium: 'Program',
       },
@@ -79,36 +79,95 @@ export const publications: HomeExploreConfig = {
       stackedBarChartConfiguration: {
         loadingScreen
       },
+      searchConfiguration: {
+        searchable: [
+          {
+            columnName: 'Authors',
+            hintText: 'LastName'
+          },
+          {
+            columnName: 'Consortium',
+            hintText: 'PS-ON'
+          },
+          {
+            columnName: 'DOI',
+            hintText: '10.1158/2159-8290.CD-17-0222'
+          },
+          {
+            columnName: 'Journal',
+            hintText: 'Nucleic Acids Res'
+          },
+          {
+            columnName: 'Title',
+            hintText: 'methylation'
+          },
+          {
+            columnName: 'Publication Year',
+            hintText: '2018'
+          },
+          {
+            columnName: 'Grant',
+            hintText: 'CA217297'
+          },
+          {
+            columnName: 'Keywords',
+            hintText: 'scRNA-seq'
+          },
+          {
+            columnName: 'Theme',
+            hintText: 'tumor-immune'
+          },
+          {
+            columnName: 'diseaseType',
+            hintText: 'Skin Cutaneous Melanoma'
+          },
+          {
+            columnName: 'experimentalStrategy',
+            hintText: 'RNA-seq'
+          },
+          {
+            columnName: 'tissue_or_organ',
+            hintText: 'Prostate gland'
+          },
+          {
+            columnName: 'grantType',
+            hintText: 'U01'
+          },
+        ]
+      },
       name: 'Publications',
       facetAliases,
       menuConfig: [
         {
           sql,
-          facetName: 'Consortium',
+          facet: 'Consortium',
         },
         {
           sql,
-          facetName: 'Publication Year',
+          facet: 'Publication Year',
         },
         {
           sql,
-          facetName: 'Theme',
+          facet: 'Theme',
         },
         {
           sql,
-          facetName: 'diseaseType',
+          facet: 'diseaseType',
         },
         {
           sql,
-          facetName: 'experimentalStrategy',
+          facet: 'experimentalStrategy',
         },
         {
           sql,
-          facetName: 'tissue_or_organ',
+          facet: 'tissue_or_organ',
         },
         {
           sql,
-          facetName: 'grantType',
+          facet: 'grantType',
+        },
+        {
+          sql,
         }
       ],
     }

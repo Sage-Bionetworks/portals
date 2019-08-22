@@ -29,7 +29,7 @@ export const studies: HomeExploreConfig = {
       rgbIndex,
       unitDescription,
       loadingScreen,
-      facetName: 'grantType',
+      facet: 'grantType',
       facetAliases: {
         grantType: 'Grant Type',
       },
@@ -66,27 +66,69 @@ export const studies: HomeExploreConfig = {
         consortium: 'Program',
         experimentalStrategy: 'Assay',
         tumorType: 'Disease Type',
+        name: 'Name',
+        centerName: 'Center Name',
+        description: 'Description',
+      },
+      searchConfiguration: {
+        searchable: [
+          {
+            columnName: 'name',
+            hintText: '',
+          },
+          {
+            columnName: 'centerName',
+            hintText: '',
+          },
+          {
+            columnName: 'description',
+            hintText: '',
+          },
+          {
+            columnName: 'Theme',
+            hintText: '',
+          },
+          {
+            columnName: 'tumorType',
+            hintText: '',
+          },
+          {
+            columnName: 'experimentalStrategy',
+            hintText: '',
+          },
+          {
+            columnName: 'consortium',
+            hintText: ''
+          },
+          {
+            columnName: 'grantType',
+            hintText: ''
+          },
+        ]
       },
       menuConfig: [
         {
           sql,
-          facetName: 'grantType'
+          facet: 'grantType'
         },
         {
           sql,
-          facetName: 'consortium'
+          facet: 'consortium'
         },
         {
           sql,
-          facetName: 'Theme'
+          facet: 'Theme'
         },
         {
           sql,
-          facetName: 'experimentalStrategy'
+          facet: 'experimentalStrategy'
         },
         {
           sql,
-          facetName: 'tumorType'
+          facet: 'tumorType'
+        },
+        {
+          sql,
         },
       ],
     }

@@ -10,6 +10,16 @@ export const buttonColors = {
 
 export const facetAliases = {
   studyName: 'Study Name',
+  contact: 'Contact',
+  subtype: 'Subtype',
+  studyStatus: 'Study Status',
+  institutions: 'Institutions',
+  datasetName: 'Dataset Name',
+  author: 'Author',
+  title: 'Title',
+  summary: 'Summary',
+  studyLeads: 'Study Leads',
+  pmid: 'PubMed Id',
   dataStatus: 'Data Status',
   fundingAgency: 'Funding Agency',
   manifestation: 'Manifestation',
@@ -30,4 +40,5 @@ export const facetAliases = {
   consortium: 'Consortium',
   name: 'File Name',
   type: 'Type',
+  accessType: 'Access Type'
 }

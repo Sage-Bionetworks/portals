@@ -5,10 +5,10 @@ import loadingScreen from '../loadingScreen'
 const unitDescription = 'studies'
 const rgbIndex = 0
 const sql = 'SELECT * FROM syn17083367'
-const facetName = 'Species'
+const facet = 'Species'
 
 export const studyCardProps =  {
-  sql: 'SELECT * FROM syn17083367',
+  sql,
   type: SynapseConstants.GENERIC_CARD,
   genericCardSchema: {
     type: SynapseConstants.STUDY,
@@ -32,6 +32,14 @@ export const studyCardProps =  {
   }
 }
 
+const facetAliases = {
+  Consortium: 'Program',
+  DataType_All: 'Data Types',
+  Diagnosis_or_Model_System: 'Diagnosis',
+  Number_of_Individuals: 'Individuals',
+  Sample_Type: 'Tissue'
+}
+
 const studies: HomeExploreConfig = {
   homePageSynapseObject: {
     name: 'QueryWrapperFlattened',
@@ -39,7 +47,7 @@ const studies: HomeExploreConfig = {
       unitDescription,
       rgbIndex,
       loadingScreen,
-      facetName,
+      facet,
       link: 'Explore/Studies',
       linkText: 'Explore Studies',
       initQueryRequest : {
@@ -60,6 +68,7 @@ const studies: HomeExploreConfig = {
     props: {
       rgbIndex,
       unitDescription,
+      facetAliases,
       stackedBarChartConfiguration: {
         loadingScreen,
       },
@@ -68,21 +77,58 @@ const studies: HomeExploreConfig = {
       cardConfiguration: {
         ...studyCardProps
       },
-      facetAliases: {
-        Consortium: 'Program',
+      searchConfiguration: {
+        searchable: [
+          {
+            columnName: 'Consortium',
+            hintText: 'AMP-AD'
+          },
+          {
+            columnName: 'Data_Contributor',
+            hintText: 'LastName'
+          },
+          {
+            columnName: 'DataType_All',
+            hintText: 'Gene Expression'
+          },
+          {
+            columnName: 'Diagnosis_or_Model_System',
+            hintText: 'LOAD'
+          },
+          {
+            columnName: 'Grant',
+            hintText: 'U01AG046139'
+          },
+          {
+            columnName: 'Sample_Type',
+            hintText: 'Temporal Cortex'
+          },
+          {
+            columnName: 'Species',
+            hintText: 'Drosophila'
+          },
+          {
+            columnName: 'Study_Description',
+            hintText: 'RNAseq'
+          },
+          {
+            columnName: 'Study_Name',
+            hintText: 'Mayo'
+          },
+        ]
       },
       menuConfig: [
         {
           sql,
-          facetName,
+          facet,
         },
         {
           sql,
-          facetName: 'Grant'
+          facet: 'Grant'
         },
         {
           sql,
-          facetName: 'Consortium',
+          facet: 'Consortium',
         }
       ]
     }
