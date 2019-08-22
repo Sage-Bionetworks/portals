@@ -72,39 +72,39 @@ const publications: HomeExploreConfig = {
         searchable: [
           {
             columnName: 'author',
-            hintText: ''
+            hintText: 'Weimer'
           },
           {
             columnName: 'title',
-            hintText: ''
+            hintText: 'Schwann'
           },
           {
             columnName: 'journal',
-            hintText: ''
+            hintText: 'neuro'
           },
           {
             columnName: 'pmid',
-            hintText: ''
+            hintText: '29055717'
           },
           {
             columnName: 'year',
-            hintText: ''
+            hintText: '2018'
           },
           {
             columnName: 'fundingAgency',
-            hintText: ''
+            hintText: 'NTAP'
           },
           {
             columnName: 'studyName',
-            hintText: ''
+            hintText: 'Plexiform'
           },
           {
             columnName: 'diseaseFocus',
-            hintText: ''
+            hintText: 'Neurofibromatosis 2'
           },
           {
             columnName: 'manifestation',
-            hintText: ''
+            hintText: 'MPNST'
           },
         ]
       },

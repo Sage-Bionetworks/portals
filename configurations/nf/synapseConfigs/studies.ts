@@ -83,35 +83,39 @@ const studies: HomeExploreConfig = {
         searchable: [
           {
             columnName: 'studyName',
-            hintText: ''
+            hintText: 'Synodos NF2'
           },
           {
             columnName: 'summary',
-            hintText: ''
+            hintText: 'nonsurgical therapy'
           },
           {
             columnName: 'studyLeads',
-            hintText: ''
+            hintText: 'Schwann cell'
           },
           {
             columnName: 'studyStatus',
-            hintText: 'dataStatus'
+            hintText: 'Active'
+          },
+          {
+            columnName: 'dataStatus',
+            hintText: 'Under Embargo'
           },
           {
             columnName: 'institutions',
-            hintText: ''
+            hintText: 'Massachusetts General Hospital'
           },
           {
             columnName: 'diseaseFocus',
-            hintText: ''
+            hintText: 'Neurofibromatosis 2'
           },
           {
             columnName: 'manifestation',
-            hintText: ''
+            hintText: 'Schwannoma'
           },
           {
             columnName: 'fundingAgency',
-            hintText: ''
+            hintText: 'NTAP'
           },
         ]
       },

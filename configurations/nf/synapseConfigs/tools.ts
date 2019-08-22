@@ -26,39 +26,39 @@ const searchConfiguration = {
   searchable: [
     {
       columnName: 'name',
-      hintText: ''
+      hintText: 'Browser'
     },
     {
       columnName: 'summary',
-      hintText: ''
+      hintText: 'prediction'
     },
     {
       columnName: 'studyName',
-      hintText: ''
+      hintText: 'Nerve Sheath'
     },
     {
       columnName: 'fundingAgency',
-      hintText: ''
+      hintText: 'NTAP'
     },
     {
       columnName: 'contact',
-      hintText: ''
+      hintText: 'Serra'
     },
     {
       columnName: 'type',
-      hintText: ''
+      hintText: 'Computational'
     },
     {
       columnName: 'subtype',
-      hintText: ''
+      hintText: 'animal model'
     },
     {
       columnName: 'diseaseFocus',
-      hintText: ''
+      hintText: 'Neurofibromatosis 2'
     },
     {
       columnName: 'manifestation',
-      hintText: ''
+      hintText: 'MPNST'
     },
   ]
 }

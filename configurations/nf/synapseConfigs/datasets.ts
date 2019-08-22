@@ -52,27 +52,27 @@ const datasets: HomeExploreConfig = {
         searchable: [
           {
             columnName: 'datasetName',
-            hintText: ''
+            hintText: 'Drug Screening'
           },
           {
             columnName: 'summary',
-            hintText: ''
+            hintText: 'single-agent'
           },
           {
             columnName: 'studyName',
-            hintText: ''
+            hintText: 'Synodos NF2'
           },
           {
             columnName: 'diseaseFocus',
-            hintText: ''
+            hintText: 'Neurofibromatosis 1'
           },
           {
             columnName: 'manifestation',
-            hintText: ''
+            hintText: 'Plexiform Neurofibroma'
           },
           {
             columnName: 'fundingAgency',
-            hintText: ''
+            hintText: 'CTF'
           },
         ]
       },

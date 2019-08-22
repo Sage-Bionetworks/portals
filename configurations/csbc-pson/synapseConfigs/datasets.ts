@@ -76,39 +76,39 @@ export const datasets: HomeExploreConfig = {
         searchable: [
           {
             columnName: 'name',
-            hintText: '',
+            hintText: 'migration',
           },
           {
             columnName: 'centerName',
-            hintText: '',
+            hintText: 'immunology',
           },
           {
             columnName: 'summary',
-            hintText: '',
+            hintText: 'spatiotemporal',
           },
           {
             columnName: 'Theme',
-            hintText: '',
+            hintText: 'tumor-immune',
           },
           {
             columnName: 'tumorType',
-            hintText: '',
+            hintText: 'Skin Cutaneous Melanoma',
           },
           {
             columnName: 'experimentalStrategy',
-            hintText: '',
+            hintText: 'RNA-seq',
           },
           {
             columnName: 'species',
-            hintText: '',
+            hintText: 'Human',
           },
           {
             columnName: 'consortium',
-            hintText: ''
+            hintText: 'PS-ON'
           },
           {
             columnName: 'grantType',
-            hintText: ''
+            hintText: 'U01'
           },
         ]
       },
