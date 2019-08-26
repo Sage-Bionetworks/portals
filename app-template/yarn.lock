@@ -8361,7 +8361,7 @@ react-is@^16.6.3, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4, react-is
   version "16.8.6"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.6.tgz#5bbc1e2d29141c9fbdfed456343fe2bc430a6a16"
 
-react-jsonschema-form@^1.6.1:
+react-jsonschema-form@^1.7.0:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/react-jsonschema-form/-/react-jsonschema-form-1.7.0.tgz#c2779886c56c4bab25d54e2dec76d24b384d2d73"
   dependencies:
@@ -9659,9 +9659,9 @@ symbol-tree@^3.2.2:
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.4.tgz#430637d248ba77e078883951fb9aa0eed7c63fa2"
 
-synapse-react-client@1.12.34:
-  version "1.12.34"
-  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-1.12.34.tgz#3e76251c68fe25269cb3c3d1f497549e304b21b7"
+synapse-react-client@1.12.35:
+  version "1.12.35"
+  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-1.12.35.tgz#e4998eb88bb267dda9ba83dda65f0c88a34bc0d5"
   dependencies:
     "@fortawesome/fontawesome-svg-core" "^1.2.4"
     "@fortawesome/free-solid-svg-icons" "^5.3.1"
@@ -9703,7 +9703,7 @@ synapse-react-client@1.12.34:
     react latest
     react-app-polyfill "^1.0.1"
     react-dom latest
-    react-jsonschema-form "^1.6.1"
+    react-jsonschema-form "^1.7.0"
     react-mailchimp-subscribe "^2.1.0"
     react-measure "^2.1.2"
     react-plotly.js "^2.3.0"
