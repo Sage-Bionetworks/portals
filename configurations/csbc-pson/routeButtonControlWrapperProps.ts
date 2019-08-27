@@ -12,6 +12,7 @@ const routeButtonControlTemplate: SynapseConfig = {
       '#7798AC',
       '#77BBBF',
       '#5E697D',
+      '#58A158',
     ],
     customRoutes: [
       'Grants',
@@ -19,6 +20,7 @@ const routeButtonControlTemplate: SynapseConfig = {
       'Studies',
       'Datasets',
       'Files',
+      'Tools',
     ]
   }
 }

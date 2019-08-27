@@ -1,5 +1,5 @@
 import { GenericRoute } from '../types/portal-config'
-import { publications, files, datasets, grants, studies } from './synapseConfigs'
+import { publications, files, datasets, grants, studies, tools } from './synapseConfigs'
 import { SynapseConstants } from 'synapse-react-client'
 import { studiesSql, studySchema } from './synapseConfigs/studies'
 import { facetAliases } from './synapseConfigs/commonProps'
@@ -7,6 +7,7 @@ import { publicationSql, publicationSchema } from './synapseConfigs/publications
 import { datasetsSql, datasetSchema } from './synapseConfigs/datasets'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
 import loadingScreen from './loadingScreen'
+import { toolsSchema, toolsSql } from './synapseConfigs/tools'
 
 const homeLimit = 3
 
@@ -26,6 +27,7 @@ const routes: GenericRoute [] = [
             '#7798AC',
             '#77BBBF',
             '#5E697D',
+            '#58A158',
           ],
           configs: [
             { name: 'Grants', synapseConfigArray: [grants.homePageSynapseObject] },
@@ -33,6 +35,7 @@ const routes: GenericRoute [] = [
             { name: 'Studies', synapseConfigArray: [studies.homePageSynapseObject] },
             { name: 'Datasets', synapseConfigArray: [datasets.homePageSynapseObject] },
             { name: 'Files', synapseConfigArray: [files.homePageSynapseObject] },
+            { name: 'Tools', synapseConfigArray: [tools.homePageSynapseObject] },
           ]
         }
       },
@@ -73,6 +76,19 @@ const routes: GenericRoute [] = [
           limit: homeLimit,
           type: SynapseConstants.GENERIC_CARD,
           genericCardSchema: datasetSchema
+        },
+      },
+      {
+        name: 'CardContainerLogic',
+        title: 'EXPLORE TOOLS',
+        link: 'Explore/Tools',
+        props: {
+          loadingScreen,
+          facetAliases,
+          sql: toolsSql,
+          limit: homeLimit,
+          type: SynapseConstants.GENERIC_CARD,
+          genericCardSchema: toolsSchema
         },
       },
     ]
@@ -147,6 +163,20 @@ const routes: GenericRoute [] = [
             props: {
               ...routeButtonControlWrapperProps.props,
               synapseConfig: files.explorePageSynapseObject
+            }
+          }
+        ],
+      },
+      {
+        name: 'Tools',
+        to: '/Explore/Tools',
+        isNested: false,
+        synapseConfigArray: [
+          {
+            ...routeButtonControlWrapperProps,
+            props: {
+              ...routeButtonControlWrapperProps.props,
+              synapseConfig: tools.explorePageSynapseObject
             }
           }
         ],
