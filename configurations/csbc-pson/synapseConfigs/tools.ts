@@ -6,7 +6,7 @@ import { facetAliases } from './commonProps'
 export const toolsSql = 'SELECT * FROM syn9898965'
 const sql= toolsSql
 const unitDescription = 'Tools'
-const rgbIndex = 8
+const rgbIndex = 6
 
 
 export const toolsSchema: GenericCardSchema = {
