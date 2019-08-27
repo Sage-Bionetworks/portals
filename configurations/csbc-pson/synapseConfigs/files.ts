@@ -18,7 +18,7 @@ const facetAliases = {
   name: 'File Name'
 }
 
-const rgbIndex = 6
+const rgbIndex = 8
 const unitDescription = 'files'
 const synapseId  = 'syn9630847'
 const facet = 'grantType'
