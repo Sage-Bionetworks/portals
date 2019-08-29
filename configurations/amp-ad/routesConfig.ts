@@ -311,7 +311,7 @@ const routes: GenericRoute [] = [
     isNested: false,
     to: 'https://agora.ampadportal.org/genes',
     synapseConfigArray: []
-  }
+  },
 ]
 
 export default routes
