@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { mount } from 'enzyme'
+import { shallow } from 'enzyme'
 import { ButtonControl, ButtonControlProps } from '../ButtonControl'
 
 describe('ButtonControl works', () => {
@@ -19,7 +19,7 @@ describe('ButtonControl works', () => {
     isSelected: jest.fn()
   }
   it('renders the routes and colors correctly', () => {
-    const el = mount(<ButtonControl {...props} />)
+    const el = shallow(<ButtonControl {...props} />)
     const buttons = el.find('button')
     expect(buttons).toHaveLength(2)
     // test that the first button has the right background and text set
