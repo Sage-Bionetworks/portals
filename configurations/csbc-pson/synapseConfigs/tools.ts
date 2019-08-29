@@ -11,7 +11,7 @@ const rgbIndex = 6
 
 export const toolsSchema: GenericCardSchema = {
   type: SynapseConstants.TOOL,
-  title: 'name',
+  title: 'toolName',
   secondaryLabels: [
     'inputDataType',
     'outputDataType',

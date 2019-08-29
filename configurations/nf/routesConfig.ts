@@ -149,6 +149,7 @@ const routes: GenericRoute [] = [
             name: 'CardContainerLogic',
             props: {
               title: 'Datasets',
+              sqlOperator: '=',
               type: SynapseConstants.DATASET,
               sql: datasetsSql
             }

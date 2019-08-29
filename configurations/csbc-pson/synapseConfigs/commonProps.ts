@@ -20,7 +20,7 @@ export const facetAliases = {
   platform: 'Platform',
   sex: 'Gender',
   tissue: 'Tissue',
-  inputDataType: 'Input Data Type',
-  outputDataType: 'Output Data Type',
+  inputDataType: 'Input Data',
+  outputDataType: 'Output Data',
   softwareLanguage: 'Language',
 }
