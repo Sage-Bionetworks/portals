@@ -10052,6 +10052,7 @@ symbol-tree@^3.2.2:
 synapse-react-client@1.12.40:
   version "1.12.40"
   resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-1.12.40.tgz#62aef3b60960eab1d00bc331795600aef719444c"
+  integrity sha512-1RIB1Mh+VttHs/uSiT7APQ4UD5J+i+RFJd3+TITLwvssV/qAVPfZn1lNsMFEPiWoPCHbgorQUEjo3Tb1lrCyCQ==
   dependencies:
     "@fortawesome/fontawesome-svg-core" "^1.2.4"
     "@fortawesome/free-solid-svg-icons" "^5.3.1"
