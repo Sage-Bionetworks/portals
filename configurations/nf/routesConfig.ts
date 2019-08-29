@@ -1,7 +1,7 @@
 import { GenericRoute } from '../types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
 import { datasets, files, studies, publications, tools, funders } from './synapseConfigs'
-import { studiesSql, studiesCardConfiguration } from './synapseConfigs/studies'
+import { studiesSql, studiesCardConfiguration, studyHeaderIconOptions } from './synapseConfigs/studies'
 import { datasetsSql } from './synapseConfigs/datasets'
 import { publicationsSql, publicationsCardConfiguration } from './synapseConfigs/publications'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
@@ -126,11 +126,11 @@ const routes: GenericRoute [] = [
               sqlOperator: '=',
               isHeader: true,
               backgroundColor: '#119488',
-              ...studiesCardConfiguration,
               genericCardSchema: {
                 link: 'studyId',
                 ...studiesCardConfiguration.genericCardSchema
               },
+              iconOptions: studyHeaderIconOptions,
               secondaryLabelLimit: Infinity,
               sql: 'SELECT * FROM syn16787123'
             }

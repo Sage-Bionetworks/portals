@@ -6,6 +6,8 @@ import loadingScreen from '../loadingScreen'
 import studyActiveSvg from '../style/study-active.svg'
 // @ts-ignore
 import studyCompleteSvg from '../style/study-complete.svg'
+// @ts-ignore
+import studyCompleteHeaderSvg from '../style/study-completed-header.svg'
 import { CommonCardProps } from 'synapse-react-client/dist/containers/CardContainerLogic'
 
 const sql = 'SELECT * FROM syn16787123'
@@ -13,6 +15,11 @@ export const studiesSql = sql
 const type = SynapseConstants.GENERIC_CARD
 const unitDescription = 'Studies'
 const rgbIndex = 5
+
+export const studyHeaderIconOptions = {
+  Active: studyActiveSvg,
+  Completed: studyCompleteHeaderSvg
+}
 
 export const studiesCardConfiguration: CommonCardProps = {
   type,
