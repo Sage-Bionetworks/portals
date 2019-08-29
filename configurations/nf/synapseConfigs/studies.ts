@@ -81,7 +81,7 @@ const studies: HomeExploreConfig = {
       name: 'Studies',
       cardConfiguration: {
         ...studiesCardConfiguration,
-        internalLinkConfiguration: {
+        titleLinkConfiguration: {
           baseURL: 'Explore/Studies',
           columnValues: ['studyId']
         },

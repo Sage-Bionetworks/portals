@@ -44,7 +44,7 @@ const routes: GenericRoute [] = [
           sql: studiesSql,
           ...studiesCardConfiguration,
           title: 'NEW STUDIES',
-          internalLinkConfiguration: {
+          titleLinkConfiguration: {
             baseURL: 'Explore/Studies',
             columnValues: ['studyId']
           },

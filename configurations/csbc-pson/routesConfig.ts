@@ -8,6 +8,7 @@ import { datasetsSql, datasetSchema } from './synapseConfigs/datasets'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
 import loadingScreen from './loadingScreen'
 import { toolsSchema, toolsSql } from './synapseConfigs/tools'
+import { filesSql } from './synapseConfigs/files';
 
 const homeLimit = 3
 
@@ -152,6 +153,45 @@ const routes: GenericRoute [] = [
             }
           }
         ],
+        programmaticRouteConfig: [
+          {
+            name: 'CardContainerLogic',
+            isOutsideContainer: true,
+            props: {
+              type: SynapseConstants.GENERIC_CARD,
+              isHeader: true,
+              backgroundColor: '#119488',
+              genericCardSchema: datasetSchema,
+              secondaryLabelLimit: Infinity,
+              sql: datasetsSql
+            }
+          },
+          {
+            name: 'QueryWrapperFlattened',
+            props: {
+              initQueryRequest: {
+                partMask: SynapseConstants.BUNDLE_MASK_QUERY_FACETS
+                | SynapseConstants.BUNDLE_MASK_QUERY_COUNT
+                | SynapseConstants.BUNDLE_MASK_QUERY_SELECT_COLUMNS
+                | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS
+                ,
+                concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
+                query: {
+                  sql: filesSql,
+                  selectedFacets: [],
+                  isConsistent: false,
+                  limit: 25,
+                  offset: 0
+                }
+              },
+              rgbIndex: 3,
+              facet: 'consortium',
+              unitDescription: 'Datasets',
+              synapseId: 'syn18488466',
+              title: 'Datasets'
+            }
+          },
+        ]
       },
       {
         name: 'Files',
