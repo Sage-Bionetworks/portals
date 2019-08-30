@@ -9,7 +9,7 @@ const sql = studiesSql
 const rgbIndex = 1
 
 export const studySchema: GenericCardSchema = {
-  type: SynapseConstants.STUDY,
+  type: 'study',
   title: 'name',
   subTitle: 'centerName',
   description: 'description',

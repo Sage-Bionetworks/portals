@@ -9,7 +9,8 @@ import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
 import loadingScreen from './loadingScreen'
 import { toolsSchema, toolsSql } from './synapseConfigs/tools'
 import { filesSql } from './synapseConfigs/files';
-
+import DatasetSvg from "./style/Dataset.svg"
+import StudySvg from "./style/Study.svg"
 const homeLimit = 3
 
 const routes: GenericRoute [] = [
@@ -146,15 +147,20 @@ const routes: GenericRoute [] = [
             props: {
               type: SynapseConstants.GENERIC_CARD,
               isHeader: true,
-              backgroundColor: '#119488',
+              backgroundColor: '#407ba0',
               genericCardSchema: studySchema,
               loadingScreen,
+              facetAliases,
+              iconOptions: {
+                study: StudySvg
+              },
               secondaryLabelLimit: Infinity,
               sql: studiesSql
             }
           },
           {
             name: 'QueryWrapperFlattened',
+            title: 'Data',
             props: {
               initQueryRequest: {
                 partMask: SynapseConstants.BUNDLE_MASK_QUERY_FACETS
@@ -162,6 +168,7 @@ const routes: GenericRoute [] = [
                 | SynapseConstants.BUNDLE_MASK_QUERY_SELECT_COLUMNS
                 | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS
                 ,
+                isConsistent: false,
                 concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
                 query: {
                   sql: filesSql,
@@ -172,11 +179,12 @@ const routes: GenericRoute [] = [
                 }
               },
               loadingScreen,
-              rgbIndex: 3,
+              facetAliases,
+              rgbIndex: 1,
               facet: 'consortium',
-              unitDescription: 'grantType',
+              unitDescription: 'Files',
               synapseId: 'syn18483791',
-              title: 'Studies'
+              title: 'Study Files'
             }
           },
         ]
@@ -201,11 +209,15 @@ const routes: GenericRoute [] = [
             props: {
               type: SynapseConstants.GENERIC_CARD,
               isHeader: true,
-              backgroundColor: '#119488',
+              backgroundColor: '#5bb0b5',
               genericCardSchema: datasetSchema,
               secondaryLabelLimit: Infinity,
               sql: datasetsSql,
               loadingScreen,
+              facetAliases,
+              iconOptions: {
+                dataset: DatasetSvg
+              },
               labelInternalLinkConfig: [
                 {
                   baseURL: 'Explore/Studies',
@@ -217,6 +229,7 @@ const routes: GenericRoute [] = [
           },
           {
             name: 'QueryWrapperFlattened',
+            title: 'Data',
             props: {
               initQueryRequest: {
                 partMask: SynapseConstants.BUNDLE_MASK_QUERY_FACETS
@@ -234,11 +247,11 @@ const routes: GenericRoute [] = [
                 }
               },
               loadingScreen,
-              rgbIndex: 3,
+              facetAliases,
+              rgbIndex: 0,
               facet: 'consortium',
-              unitDescription: 'Datasets',
               synapseId: 'syn18488466',
-              title: 'Datasets'
+              title: 'Dataset Files'
             }
           },
         ]
