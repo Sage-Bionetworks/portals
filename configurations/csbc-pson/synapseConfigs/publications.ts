@@ -67,11 +67,18 @@ export const publications: HomeExploreConfig = {
         type: SynapseConstants.GENERIC_CARD,
         genericCardSchema: publicationSchema,
         secondaryLabelLimit: 5,
-        labelInternalLinkConfig: {
-          baseURL: 'Explore/Datasets',
-          queryColumnNames: ['datasets'],
-          matchColumnNames: ['datasets']
-        }
+        labelInternalLinkConfig: [
+          {
+            baseURL: 'Explore/Datasets',
+            queryColumnNames: ['datasets'],
+            matchColumnName: 'datasets'
+          },
+          {
+            baseURL: 'Explore/Studies',
+            queryColumnNames: ['studies'],
+            matchColumnName: 'studies'
+          },
+        ]
       },
       stackedBarChartConfiguration: {
         loadingScreen

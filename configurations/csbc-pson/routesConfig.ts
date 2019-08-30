@@ -139,6 +139,47 @@ const routes: GenericRoute [] = [
             }
           }
         ],
+        programmaticRouteConfig: [
+          {
+            name: 'CardContainerLogic',
+            isOutsideContainer: true,
+            props: {
+              type: SynapseConstants.GENERIC_CARD,
+              isHeader: true,
+              backgroundColor: '#119488',
+              genericCardSchema: studySchema,
+              loadingScreen,
+              secondaryLabelLimit: Infinity,
+              sql: studiesSql
+            }
+          },
+          {
+            name: 'QueryWrapperFlattened',
+            props: {
+              initQueryRequest: {
+                partMask: SynapseConstants.BUNDLE_MASK_QUERY_FACETS
+                | SynapseConstants.BUNDLE_MASK_QUERY_COUNT
+                | SynapseConstants.BUNDLE_MASK_QUERY_SELECT_COLUMNS
+                | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS
+                ,
+                concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
+                query: {
+                  sql: filesSql,
+                  selectedFacets: [],
+                  isConsistent: false,
+                  limit: 25,
+                  offset: 0
+                }
+              },
+              loadingScreen,
+              rgbIndex: 3,
+              facet: 'consortium',
+              unitDescription: 'grantType',
+              synapseId: 'syn18483791',
+              title: 'Studies'
+            }
+          },
+        ]
       },
       {
         name: 'Datasets',
@@ -163,7 +204,15 @@ const routes: GenericRoute [] = [
               backgroundColor: '#119488',
               genericCardSchema: datasetSchema,
               secondaryLabelLimit: Infinity,
-              sql: datasetsSql
+              sql: datasetsSql,
+              loadingScreen,
+              labelInternalLinkConfig: [
+                {
+                  baseURL: 'Explore/Studies',
+                  queryColumnNames: ['studies'],
+                  matchColumnName: 'studies'
+                },
+              ]
             }
           },
           {
@@ -184,6 +233,7 @@ const routes: GenericRoute [] = [
                   offset: 0
                 }
               },
+              loadingScreen,
               rgbIndex: 3,
               facet: 'consortium',
               unitDescription: 'Datasets',
