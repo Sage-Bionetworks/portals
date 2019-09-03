@@ -218,7 +218,7 @@ const routes: GenericRoute [] = [
               iconOptions: {
                 dataset: DatasetSvg
               },
-              labelInternalLinkConfig: [
+              labelLinkConfig: [
                 {
                   baseURL: 'Explore/Studies',
                   queryColumnNames: ['studies'],

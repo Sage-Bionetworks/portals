@@ -67,7 +67,7 @@ export const publications: HomeExploreConfig = {
         type: SynapseConstants.GENERIC_CARD,
         genericCardSchema: publicationSchema,
         secondaryLabelLimit: 5,
-        labelInternalLinkConfig: [
+        labelLinkConfig: [
           {
             baseURL: 'Explore/Datasets',
             queryColumnNames: ['datasets'],
