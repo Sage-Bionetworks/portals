@@ -3,6 +3,7 @@ import { withRouter, RouteComponentProps } from 'react-router-dom'
 import docTitleConfig from './config/docTitleConfig'
 import { SynapseClient } from 'synapse-react-client'
 import { withCookies, ReactCookieProps } from 'react-cookie'
+import { DOWNLOAD_FILES_MENU_TEXT }  from 'synapse-react-client/dist/containers/SynapseTable';
 export type AppInitializerToken = {
   token: string
 }
@@ -108,8 +109,9 @@ class AppInitializer extends React.Component<RouteComponentProps & ReactCookiePr
     let isInvokingDownloadTable: boolean = false
     if (ev.target instanceof HTMLAnchorElement) {
       const anchorElement = ev.target as HTMLAnchorElement
-      isInvokingDownloadTable = anchorElement.text.toUpperCase() === 'DOWNLOAD FILES'
+      isInvokingDownloadTable = anchorElement.text === DOWNLOAD_FILES_MENU_TEXT
     }
+    debugger
     let color = 'white'
     let background = '#4db7ad'
     let name = ''
