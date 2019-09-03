@@ -4,14 +4,17 @@ import loadingScreen from '../config/loadingScreen'
 import { QueryWrapperProps } from 'synapse-react-client/dist/containers/QueryWrapper'
 import { StackedBarChartProps } from 'synapse-react-client/dist/containers/StackedBarChart'
 import { SynapseTableProps } from 'synapse-react-client/dist/containers/SynapseTable'
-import { insertConditionsFromSearchParams } from 'synapse-react-client/dist/utils/modules/sqlFunctions'
+import { insertConditionsFromSearchParams, SQLOperator } from 'synapse-react-client/dist/utils/modules/sqlFunctions'
 
 type SearchParams = {
   searchParams?: {
     facetValue: string
   }
 }
-export type QueryWrapperFlattenedProps = QueryWrapperProps & Partial<StackedBarChartProps> & Partial<SynapseTableProps> & SearchParams
+type Operator = {
+  sqlOperator: SQLOperator
+}
+export type QueryWrapperFlattenedProps = QueryWrapperProps & Partial<StackedBarChartProps> & Partial<SynapseTableProps> & SearchParams & Operator
 
 const QueryWrapperFlattened: React.FunctionComponent<QueryWrapperFlattenedProps> = (props) => {
   const {
@@ -21,18 +24,19 @@ const QueryWrapperFlattened: React.FunctionComponent<QueryWrapperFlattenedProps>
     synapseId,
     searchParams,
     initQueryRequest,
-    facet
+    sqlOperator,
+    ...rest
   } = props
   if (searchParams) {
     let sqlUsed = initQueryRequest.query.sql
     if (searchParams) {
-      sqlUsed = insertConditionsFromSearchParams(searchParams, initQueryRequest.query.sql, '=')
+      sqlUsed = insertConditionsFromSearchParams(searchParams, initQueryRequest.query.sql, sqlOperator)
     }
     initQueryRequest.query.sql = sqlUsed
   }
   return (
     <SynapseComponents.QueryWrapper
-      {...props}
+      {...rest}
       initQueryRequest={initQueryRequest}
     >
       {
@@ -51,6 +55,7 @@ const QueryWrapperFlattened: React.FunctionComponent<QueryWrapperFlattenedProps>
       {
         synapseId && title ?
         <SynapseComponents.SynapseTable
+          loadingScreen={loadingScreen}
           synapseId={synapseId}
           title={title}
         />
