@@ -81,9 +81,9 @@ const studies: HomeExploreConfig = {
       name: 'Studies',
       cardConfiguration: {
         ...studiesCardConfiguration,
-        titleLinkConfiguration: {
+        titleLinkConfig: {
           baseURL: 'Explore/Studies',
-          columnValues: ['studyId']
+          URLColumnNames: ['studyId']
         },
       },
       searchConfiguration: {

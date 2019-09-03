@@ -221,7 +221,7 @@ const routes: GenericRoute [] = [
               labelLinkConfig: [
                 {
                   baseURL: 'Explore/Studies',
-                  queryColumnNames: ['studies'],
+                  URLColumnNames: ['studies'],
                   matchColumnName: 'studies'
                 },
               ]
