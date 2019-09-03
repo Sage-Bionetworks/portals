@@ -105,13 +105,10 @@ class AppInitializer extends React.Component<RouteComponentProps & ReactCookiePr
     if (!this.props || !this.props.cookies) {
       return
     }
-    let href: string | null = null
+    let isInvokingDownloadTable: boolean = false
     if (ev.target instanceof HTMLAnchorElement) {
       const anchorElement = ev.target as HTMLAnchorElement
-      href = anchorElement.getAttribute('href')
-    }
-    if (!href || !href.includes('.synapse.org')) {
-      return
+      isInvokingDownloadTable = anchorElement.text.toUpperCase() === 'DOWNLOAD FILES'
     }
     let color = 'white'
     let background = '#4db7ad'
@@ -137,6 +134,7 @@ class AppInitializer extends React.Component<RouteComponentProps & ReactCookiePr
       name = footerLinkElement.textContent
     }
     const cookieValue = {
+      isInvokingDownloadTable,
       foregroundColor: color,
       backgroundColor: background,
       callbackUrl: window.location.href,
