@@ -2,13 +2,9 @@ import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from '../../types/portal-config'
 import { facetAliases } from './commonProps'
 import loadingScreen from '../loadingScreen'
-// @ts-ignore
 import studyActiveSvg from '../style/study-active.svg'
-// @ts-ignore
 import studyCompleteSvg from '../style/study-complete.svg'
-// @ts-ignore
 import studyCompleteHeaderSvg from '../style/study-completed-header.svg'
-// @ts-ignore
 import studyActiveHeaderSvg from '../style/study-active-header.svg'
 import { CommonCardProps } from 'synapse-react-client/dist/containers/CardContainerLogic'
 
