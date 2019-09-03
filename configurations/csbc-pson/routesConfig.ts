@@ -8,7 +8,7 @@ import { datasetsSql, datasetSchema } from './synapseConfigs/datasets'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
 import loadingScreen from './loadingScreen'
 import { toolsSchema, toolsSql } from './synapseConfigs/tools'
-import { filesSql } from './synapseConfigs/files';
+import { filesSql } from './synapseConfigs/files'
 import DatasetSvg from "./style/Dataset.svg"
 import StudySvg from "./style/Study.svg"
 const homeLimit = 3
@@ -168,16 +168,16 @@ const routes: GenericRoute [] = [
                 | SynapseConstants.BUNDLE_MASK_QUERY_SELECT_COLUMNS
                 | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS
                 ,
-                isConsistent: false,
                 concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
                 query: {
                   sql: filesSql,
                   selectedFacets: [],
-                  isConsistent: false,
+                  isConsistent: true,
                   limit: 25,
                   offset: 0
                 }
               },
+              sqlOperator: '=',
               loadingScreen,
               facetAliases,
               rgbIndex: 1,
@@ -241,7 +241,7 @@ const routes: GenericRoute [] = [
                 query: {
                   sql: filesSql,
                   selectedFacets: [],
-                  isConsistent: false,
+                  isConsistent: true,
                   limit: 25,
                   offset: 0
                 }
@@ -250,6 +250,7 @@ const routes: GenericRoute [] = [
               facetAliases,
               rgbIndex: 0,
               facet: 'consortium',
+              unitDescription: 'Files',
               synapseId: 'syn18488466',
               title: 'Dataset Files'
             }
