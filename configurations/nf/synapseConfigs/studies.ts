@@ -8,6 +8,8 @@ import studyActiveSvg from '../style/study-active.svg'
 import studyCompleteSvg from '../style/study-complete.svg'
 // @ts-ignore
 import studyCompleteHeaderSvg from '../style/study-completed-header.svg'
+// @ts-ignore
+import studyActiveHeaderSvg from '../style/study-active-header.svg'
 import { CommonCardProps } from 'synapse-react-client/dist/containers/CardContainerLogic'
 
 const sql = 'SELECT * FROM syn16787123'
@@ -17,7 +19,7 @@ const unitDescription = 'Studies'
 const rgbIndex = 5
 
 export const studyHeaderIconOptions = {
-  Active: studyActiveSvg,
+  Active: studyActiveHeaderSvg,
   Completed: studyCompleteHeaderSvg
 }
 
