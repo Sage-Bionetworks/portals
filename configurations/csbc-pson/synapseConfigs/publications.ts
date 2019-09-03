@@ -70,12 +70,12 @@ export const publications: HomeExploreConfig = {
         labelLinkConfig: [
           {
             baseURL: 'Explore/Datasets',
-            queryColumnNames: ['datasets'],
+            URLColumnNames: ['datasets'],
             matchColumnName: 'datasets'
           },
           {
             baseURL: 'Explore/Studies',
-            queryColumnNames: ['studies'],
+            URLColumnNames: ['studies'],
             matchColumnName: 'studies'
           },
         ]
