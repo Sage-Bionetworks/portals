@@ -3,6 +3,7 @@ import { withRouter, RouteComponentProps } from 'react-router-dom'
 import docTitleConfig from './config/docTitleConfig'
 import { SynapseClient } from 'synapse-react-client'
 import { withCookies, ReactCookieProps } from 'react-cookie'
+import { DOWNLOAD_FILES_MENU_TEXT }  from 'synapse-react-client/dist/containers/SynapseTable';
 export type AppInitializerToken = {
   token: string
 }
@@ -105,13 +106,10 @@ class AppInitializer extends React.Component<RouteComponentProps & ReactCookiePr
     if (!this.props || !this.props.cookies) {
       return
     }
-    let href: string | null = null
+    let isInvokingDownloadTable: boolean = false
     if (ev.target instanceof HTMLAnchorElement) {
       const anchorElement = ev.target as HTMLAnchorElement
-      href = anchorElement.getAttribute('href')
-    }
-    if (!href || !href.includes('.synapse.org')) {
-      return
+      isInvokingDownloadTable = anchorElement.text === DOWNLOAD_FILES_MENU_TEXT
     }
     let color = 'white'
     let background = '#4db7ad'
@@ -137,6 +135,7 @@ class AppInitializer extends React.Component<RouteComponentProps & ReactCookiePr
       name = footerLinkElement.textContent
     }
     const cookieValue = {
+      isInvokingDownloadTable,
       foregroundColor: color,
       backgroundColor: background,
       callbackUrl: window.location.href,

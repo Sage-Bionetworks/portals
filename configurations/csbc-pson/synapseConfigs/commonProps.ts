@@ -23,4 +23,5 @@ export const facetAliases = {
   inputDataType: 'Input Data',
   outputDataType: 'Output Data',
   softwareLanguage: 'Language',
+  toolName: 'Name'
 }
