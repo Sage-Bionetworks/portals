@@ -258,7 +258,7 @@ const routes: GenericRoute [] = [
       },
       {
         name: 'AcknowledgementStatements',
-        displayName: 'Acknowleding Data Use',
+        displayName: 'Acknowledging Data Use',
         isNested: false,
         to: '/DataAccess/AcknowledgementStatements',
         synapseConfigArray: [
