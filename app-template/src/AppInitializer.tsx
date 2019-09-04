@@ -111,7 +111,6 @@ class AppInitializer extends React.Component<RouteComponentProps & ReactCookiePr
       const anchorElement = ev.target as HTMLAnchorElement
       isInvokingDownloadTable = anchorElement.text === DOWNLOAD_FILES_MENU_TEXT
     }
-    debugger
     let color = 'white'
     let background = '#4db7ad'
     let name = ''
