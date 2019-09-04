@@ -62,7 +62,7 @@ export const tools: HomeExploreConfig = {
       searchConfiguration: {
         searchable: [
           {
-            columnName: 'name',
+            columnName: 'toolName',
             hintText: 'track'
           },
           {
