@@ -21,9 +21,9 @@ const news: SynapseConfig = {
           feedName:'Newsletter',
           feedDescription:'The AMP-AD Knowledge Portal sends a quarterly newsletter to interested members of the scientific community, delivering consolidated information and updates related to the Portal.',
           feedUrl:'https://portalnews.wpengine.com/?feed=rss2&cat=5',
-          defaultItemsToShow:3,
-          mailChimpListName:'Quarterly AMP-AD Knowledge Portal Newsletter',
-          mailChimpUrl:'https://sagebase.us7.list-manage.com/subscribe/post?u=b146de537186191a9d2110f3a&amp;id=96b614587a'
+          defaultItemsToShow:3
+          // mailChimpListName:'Quarterly AMP-AD Knowledge Portal Newsletter',
+          // mailChimpUrl:'https://sagebase.us7.list-manage.com/subscribe/post?u=b146de537186191a9d2110f3a&amp;id=96b614587a'
         },
       ]
     }

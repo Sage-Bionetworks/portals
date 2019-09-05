@@ -298,7 +298,7 @@ const routes: GenericRoute [] = [
         name: 'Markdown',
         title: 'News',
         props: {
-          markdown:'The latest from the AMP-AD Community, including the latest data releases, updates such as events and stories, and links to the quartlery newsletter\n---------'
+          markdown:'The latest from the AMP-AD Community, including the latest data releases, updates such as events and stories, and links to the quarterly newsletter\n---------'
         }
       },
       news
