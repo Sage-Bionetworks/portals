@@ -696,11 +696,7 @@
     core-js "^2.6.5"
     regenerator-runtime "^0.13.2"
 
-<<<<<<< HEAD
-"@babel/runtime@7.5.5", "@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.2.0", "@babel/runtime@^7.3.4", "@babel/runtime@^7.4.2", "@babel/runtime@^7.4.3", "@babel/runtime@^7.4.5", "@babel/runtime@^7.5.5":
-=======
 "@babel/runtime@7.5.5", "@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.2.0", "@babel/runtime@^7.3.4", "@babel/runtime@^7.4.2", "@babel/runtime@^7.4.5", "@babel/runtime@^7.5.5":
->>>>>>> 39e3a538fabc34f17d758dd755fc2e2f35f83609
   version "7.5.5"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.5.5.tgz#74fba56d35efbeca444091c7850ccd494fd2f132"
   dependencies:
@@ -10219,16 +10215,10 @@ symbol-tree@^3.2.2:
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.4.tgz#430637d248ba77e078883951fb9aa0eed7c63fa2"
 
-<<<<<<< HEAD
 synapse-react-client@1.12.43:
   version "1.12.43"
   resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-1.12.43.tgz#750e617dc5f7ebd172f4bbf9d8eabeadc1493320"
   integrity sha512-WXFlyEnWt5WKjeZFYtZTkAvVY4svbnPhMKX99DLzhSfRqnUTuhHquPs4agkuxhRWefBd+mXXOVDm3AlVHX8WCw==
-=======
-synapse-react-client@1.12.42:
-  version "1.12.42"
-  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-1.12.42.tgz#98f6d65c33b24e71f503239df6e3cbec488c8a05"
->>>>>>> 39e3a538fabc34f17d758dd755fc2e2f35f83609
   dependencies:
     "@fortawesome/fontawesome-svg-core" "^1.2.4"
     "@fortawesome/free-solid-svg-icons" "^5.3.1"
