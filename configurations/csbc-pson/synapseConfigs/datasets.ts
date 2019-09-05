@@ -15,6 +15,7 @@ export const datasetSchema: GenericCardSchema = {
   description: 'summary',
   secondaryLabels: [
     'Theme',
+    'studies',
     'tumorType',
     'experimentalStrategy',
     'species',

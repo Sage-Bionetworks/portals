@@ -8,7 +8,9 @@ import { datasetsSql, datasetSchema } from './synapseConfigs/datasets'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
 import loadingScreen from './loadingScreen'
 import { toolsSchema, toolsSql } from './synapseConfigs/tools'
-
+import { filesSql } from './synapseConfigs/files'
+import DatasetSvg from "./style/Dataset.svg"
+import StudySvg from "./style/Study.svg"
 const homeLimit = 3
 
 const routes: GenericRoute [] = [
@@ -138,6 +140,53 @@ const routes: GenericRoute [] = [
             }
           }
         ],
+        programmaticRouteConfig: [
+          {
+            name: 'CardContainerLogic',
+            isOutsideContainer: true,
+            props: {
+              type: SynapseConstants.GENERIC_CARD,
+              isHeader: true,
+              backgroundColor: '#407ba0',
+              genericCardSchema: studySchema,
+              loadingScreen,
+              facetAliases,
+              iconOptions: {
+                study: StudySvg
+              },
+              secondaryLabelLimit: Infinity,
+              sql: studiesSql
+            }
+          },
+          {
+            name: 'QueryWrapperFlattened',
+            title: 'Data',
+            props: {
+              initQueryRequest: {
+                partMask: SynapseConstants.BUNDLE_MASK_QUERY_FACETS
+                | SynapseConstants.BUNDLE_MASK_QUERY_COUNT
+                | SynapseConstants.BUNDLE_MASK_QUERY_SELECT_COLUMNS
+                | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS
+                ,
+                concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
+                query: {
+                  sql: filesSql,
+                  selectedFacets: [],
+                  isConsistent: true,
+                  limit: 25,
+                  offset: 0
+                }
+              },
+              loadingScreen,
+              facetAliases,
+              rgbIndex: 1,
+              facet: 'consortium',
+              unitDescription: 'Files',
+              synapseId: 'syn18483791',
+              title: 'Study Files'
+            }
+          },
+        ]
       },
       {
         name: 'Datasets',
@@ -152,6 +201,60 @@ const routes: GenericRoute [] = [
             }
           }
         ],
+        programmaticRouteConfig: [
+          {
+            name: 'CardContainerLogic',
+            isOutsideContainer: true,
+            props: {
+              type: SynapseConstants.GENERIC_CARD,
+              isHeader: true,
+              backgroundColor: '#5bb0b5',
+              genericCardSchema: datasetSchema,
+              secondaryLabelLimit: Infinity,
+              sql: datasetsSql,
+              loadingScreen,
+              facetAliases,
+              iconOptions: {
+                dataset: DatasetSvg
+              },
+              labelLinkConfig: [
+                {
+                  baseURL: 'Explore/Studies',
+                  URLColumnNames: ['studies'],
+                  matchColumnName: 'studies'
+                },
+              ]
+            }
+          },
+          {
+            name: 'QueryWrapperFlattened',
+            title: 'Data',
+            props: {
+              initQueryRequest: {
+                partMask: SynapseConstants.BUNDLE_MASK_QUERY_FACETS
+                | SynapseConstants.BUNDLE_MASK_QUERY_COUNT
+                | SynapseConstants.BUNDLE_MASK_QUERY_SELECT_COLUMNS
+                | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS
+                ,
+                concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
+                query: {
+                  sql: filesSql,
+                  selectedFacets: [],
+                  isConsistent: true,
+                  limit: 25,
+                  offset: 0
+                }
+              },
+              loadingScreen,
+              facetAliases,
+              rgbIndex: 0,
+              facet: 'consortium',
+              unitDescription: 'Files',
+              synapseId: 'syn18488466',
+              title: 'Dataset Files'
+            }
+          },
+        ]
       },
       {
         name: 'Files',
