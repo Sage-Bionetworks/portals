@@ -177,7 +177,6 @@ const routes: GenericRoute [] = [
                   offset: 0
                 }
               },
-              sqlOperator: '=',
               loadingScreen,
               facetAliases,
               rgbIndex: 1,
