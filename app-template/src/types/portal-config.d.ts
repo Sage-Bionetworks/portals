@@ -2,6 +2,8 @@
 
 import { StatefulButtonControlProps } from '../portal-components/StatefulButtonControlWrapper'
 import { RouteButtonControlProps } from '../portal-components/RouteButtonControlWrapper'
+import { GenerareComponentsFromRowProps } from '../portal-components/GenerareComponentsFromRow'
+import { GenerateComponentsFromRow } from 'portal-components/GenerateComponentsFromRow';
 
 // For styling the header on the home page -- the main title and the summary text
 export type HomePageHeaderConfig = {
@@ -54,6 +56,11 @@ type RouteButtonControl = {
   props: RouteButtonControlProps
 }
 
+type GenerateComponentsFromRow = {
+  name: 'GenerareComponentsFromRow',
+  props: GenerateComponentsFromRowProps
+}
+
 type Metatdata = {
   title?: string
   link?: string
@@ -75,6 +82,7 @@ export type SynapseConfig = (
   | QueryWrapperMenu
   | UserCard 
   | Markdown 
+  | GenerateComponentsFromRow
   | NewsFeedMenu 
 ) & Metatdata
 export type SynapseConfigArray = SynapseConfig []

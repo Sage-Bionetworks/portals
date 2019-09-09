@@ -4,7 +4,8 @@ import loadingScreen from '../loadingScreen'
 
 const unitDescription = 'studies'
 const rgbIndex = 0
-const sql = 'SELECT * FROM syn17083367'
+export const studiesSql = 'SELECT * FROM syn17083367'
+const sql = studiesSql
 const facet = 'Species'
 
 export const studyCardProps =  {
