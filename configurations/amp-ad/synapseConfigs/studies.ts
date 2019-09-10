@@ -136,4 +136,53 @@ const studies: HomeExploreConfig = {
   }
 }
 
+export const studiesProgrammaticRouteConfig = [
+  {
+    name: 'CardContainerLogic',
+    isOutsideContainer: true,
+    props: {
+      isHeader: true,
+      ...studyCardProps,
+      secondaryLabelLimit: Infinity,
+      backgroundColor: '#DE9A1F'
+    }
+  },
+  {
+    name: 'GenerateComponentsFromRow',
+    isOutsideContainer: false,
+    props: {
+      sql: studiesSql,
+      synapseConfigArray: [
+        {
+          name: 'Markdown',
+          columnName: 'Study',
+          title: 'Study Description',
+          props: {
+            renderTitle: true
+          }
+        },
+        {
+          name: 'Markdown',
+          columnName: 'Methods',
+          title: 'Assays',
+          props: {
+            renderTitle: true
+          }
+        },
+        {
+          name: 'Markdown',
+          // https://www.synapse.org/#!Synapse:syn12666371/wiki/595380
+          title: 'Data Access',
+          injectProps: false,
+          props: {
+            renderTitle: true,
+            ownerId: 'syn12666371',
+            wikiId: '595380'
+          }
+        }
+      ]
+    }
+  }
+]
+
 export default studies

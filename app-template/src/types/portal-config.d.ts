@@ -57,7 +57,7 @@ type RouteButtonControl = {
 }
 
 type GenerateComponentsFromRow = {
-  name: 'GenerareComponentsFromRow',
+  name: 'GenerateComponentsFromRow',
   props: GenerateComponentsFromRowProps
 }
 

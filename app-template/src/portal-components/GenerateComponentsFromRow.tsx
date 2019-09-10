@@ -5,6 +5,7 @@ import { QueryBundleRequest } from 'synapse-react-client/dist/utils/jsonResponse
 import { SynapseConfig } from 'types/portal-config'
 import { insertConditionsFromSearchParams } from 'synapse-react-client/dist/utils/modules/sqlFunctions'
 import { Dictionary } from 'lodash'
+import './GenerateComponentsFromRow.scss'
 import { generateSynapseObject } from 'RouteResolver'
 import loadingScreen from 'test-configuration/loadingScreen'
 import { ReferenceList } from 'synapse-react-client/dist/utils/jsonResponses/ReferenceList'
@@ -21,7 +22,7 @@ type RowToPropTransform = {
 export type RowSynapseConfig = SynapseConfig & RowToPropTransform
 
 export type GenerateComponentsFromRowProps = {
-  searchParams: Dictionary<string>
+  searchParams?: Dictionary<string>
   sql: string
   token?: string
   synapseConfigArray: RowSynapseConfig []
@@ -53,7 +54,7 @@ export default class GenerateComponentsFromRow extends React.Component<GenerateC
     const {
       sql,
       token,
-      searchParams,
+      searchParams = {},
       synapseConfigArray
     } = this.props
     const sqlUsed = insertConditionsFromSearchParams(searchParams, sql)
@@ -122,11 +123,11 @@ export default class GenerateComponentsFromRow extends React.Component<GenerateC
       isLoading
     } = this.state
     return (
-      <div>
-        <div>
+      <div className="GenerateComponentsFromRow">
+        <div className="col-xs-2">
           {this.renderMenu()}
         </div>
-        <div ref={this.ref}>
+        <div className="col-xs-10" ref={this.ref}>
           {isLoading && loadingScreen}
           {!isLoading && this.renderSynapseConfigArray()}
         </div>
@@ -170,8 +171,12 @@ export default class GenerateComponentsFromRow extends React.Component<GenerateC
     return synapseConfigArray.map(
       (el, index) => {
         const id = COMPONENT_ID_PREFIX + index
+        const { injectProps = true } = el
         const key = JSON.stringify(el.props)
-        if (el.injectProps) {
+        console.log('el = ', el)
+        console.log('injectProps = ', el)
+        if (!injectProps) {
+          console.log('line 178')
           return (
             <div onClick={() => this.handleMenuClick(index)} className="menu-row-item" id={id} key={key}>
               {generateSynapseObject(el)}
@@ -180,6 +185,9 @@ export default class GenerateComponentsFromRow extends React.Component<GenerateC
         }
         const columnNameRowIndex = mapColumnHeaderToRowIndex[el.columnName]
         let rawValue: string = row[columnNameRowIndex]
+        if (!rawValue) {
+          return <></>
+        }
         const split = rawValue.split(',')
         const props = el.props
         return (
