@@ -9,10 +9,6 @@ const injectPropsIntoConfig = (value: string, name: string, props: any)  => {
     const markdownProps = internalProps as MarkdownSynapseProps
     markdownProps.ownerId = value
   } else if (name === 'QueryWrapperFlattened') {
-    const queryWrapperFlattenedProps = props as QueryWrapperFlattenedProps
-    const sql = queryWrapperFlattenedProps.initQueryRequest.query.sql
-    // TODO
-    // props.initQueryRequest.query.sql = insertConditionsFromSearchParams({}, sql)
   }
   return internalProps
 

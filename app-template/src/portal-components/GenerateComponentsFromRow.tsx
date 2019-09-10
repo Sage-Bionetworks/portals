@@ -25,6 +25,7 @@ export type GenerateComponentsFromRowProps = {
   searchParams?: Dictionary<string>
   sql: string
   token?: string
+  tableSqlKeys?: string []
   synapseConfigArray: RowSynapseConfig []
 }
 
@@ -124,7 +125,7 @@ export default class GenerateComponentsFromRow extends React.Component<GenerateC
     } = this.state
     return (
       <div className="GenerateComponentsFromRow">
-        <div className="col-xs-2">
+        <div style={{marginTop: 40}} className="col-xs-2">
           {this.renderMenu()}
         </div>
         <div className="col-xs-10" ref={this.ref}>
@@ -149,9 +150,9 @@ export default class GenerateComponentsFromRow extends React.Component<GenerateC
     return synapseConfigArray.map(
       (el, index) => {
         return (
-          <div key={el.columnName} onClick={() => this.handleMenuClick(index)} className="menu-row-item">
+          <button key={el.columnName} onClick={() => this.handleMenuClick(index)} className="menu-row-button SRC-primary-background-color-hover">
             {el.title}
-          </div>
+          </button>
         )
       }
     )
@@ -169,14 +170,11 @@ export default class GenerateComponentsFromRow extends React.Component<GenerateC
       }
     )
     return synapseConfigArray.map(
-      (el, index) => {
+      (el: RowSynapseConfig, index) => {
         const id = COMPONENT_ID_PREFIX + index
         const { injectProps = true } = el
         const key = JSON.stringify(el.props)
-        console.log('el = ', el)
-        console.log('injectProps = ', el)
         if (!injectProps) {
-          console.log('line 178')
           return (
             <div onClick={() => this.handleMenuClick(index)} className="menu-row-item" id={id} key={key}>
               {generateSynapseObject(el)}
@@ -199,7 +197,15 @@ export default class GenerateComponentsFromRow extends React.Component<GenerateC
                   const entity = entityHeaders!.results.find(el => el.id === value)!
                   value = entity.name
                 }
-                const injectedProps = injectPropsIntoConfig(value, el.name, props)
+                const searchParams: Dictionary<string> = {}
+                if (el.tableSqlKeys) {
+                  el.tableSqlKeys.forEach(
+                    (key: string) => {
+                      searchParams[key] = value
+                    }
+                  )
+                }
+                const injectedProps = injectPropsIntoConfig(value, el.name, {...props, ...searchParams})
                 return generateSynapseObject({ ...el, props: { ...props, ...injectedProps}})
               })
             }

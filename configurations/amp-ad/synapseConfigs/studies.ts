@@ -163,23 +163,65 @@ export const studiesProgrammaticRouteConfig = [
         },
         {
           name: 'Markdown',
-          columnName: 'Methods',
-          title: 'Assays',
-          props: {
-            renderTitle: true
-          }
-        },
-        {
-          name: 'Markdown',
           // https://www.synapse.org/#!Synapse:syn12666371/wiki/595380
-          title: 'Data Access',
+          title: 'Access Requirements',
           injectProps: false,
           props: {
             renderTitle: true,
             ownerId: 'syn12666371',
             wikiId: '595380'
           }
-        }
+        },
+        {
+          name: 'Markdown',
+          columnName: 'Methods',
+          title: 'Methods',
+          props: {
+            renderTitle: true
+          }
+        },
+        {
+          name: 'QueryWrapperFlattened',
+          title: 'Metadata',
+          columnName: 'Study',
+          resolveSynId: true,
+          tableSqlKeys: ['Study'],
+          props: {
+            initQueryRequest: {
+              partMask: SynapseConstants.BUNDLE_MASK_QUERY_FACETS
+              | SynapseConstants.BUNDLE_MASK_QUERY_COUNT
+              | SynapseConstants.BUNDLE_MASK_QUERY_SELECT_COLUMNS
+              | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS
+              ,
+              concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
+              query: {
+                sql: `SELECT id as "File Name", dataType as "Data Type" FROM syn11346063 WHERE ( "dataSubtype" = 'metadata' )`,
+                selectedFacets: [],
+                isConsistent: true,
+                limit: 25,
+                offset: 0
+              }
+            },
+            loadingScreen,
+            facetAliases,
+            rgbIndex: 1,
+            facet: 'consortium',
+            unitDescription: 'Metadata Files',
+            synapseId: 'syn18483791',
+            title: 'Metadata'
+          }
+        },
+        {
+          name: 'Markdown',
+          // https://www.synapse.org/#!Synapse:syn12666371/wiki/595381
+          title: 'Data Updates',
+          injectProps: false,
+          props: {
+            renderTitle: true,
+            ownerId: 'syn12666371',
+            wikiId: '595381'
+          }
+        },
       ]
     }
   }
