@@ -125,10 +125,10 @@ export default class GenerateComponentsFromRow extends React.Component<GenerateC
     } = this.state
     return (
       <div className="GenerateComponentsFromRow">
-        <div style={{marginTop: 40}} className="col-xs-2">
+        <div style={{marginTop: 40}} className="button-container">
           {this.renderMenu()}
         </div>
-        <div className="col-xs-10" ref={this.ref}>
+        <div className="component-container" ref={this.ref}>
           {isLoading && loadingScreen}
           {!isLoading && this.renderSynapseConfigArray()}
         </div>
@@ -147,10 +147,23 @@ export default class GenerateComponentsFromRow extends React.Component<GenerateC
 
   renderMenu = () => {
     const { synapseConfigArray } = this.props
+    const { queryResultBundle } = this.state
+    const mapColumnHeaderToRowIndex: Dictionary<number> = {}
+    if (queryResultBundle) {
+      queryResultBundle.queryResult.queryResults.headers.forEach(
+        (el, index) => {
+          mapColumnHeaderToRowIndex[el.name] = index
+        }
+      )
+    }
     return synapseConfigArray.map(
-      (el, index) => {
+      (el: RowSynapseConfig, index) => {
+        const style: React.CSSProperties = {}
+        if (queryResultBundle && !mapColumnHeaderToRowIndex[el.columnName] && el.injectProps !== false) {
+          style.backgroundColor = '#BBBBBC'
+        }
         return (
-          <button key={el.columnName} onClick={() => this.handleMenuClick(index)} className="menu-row-button SRC-primary-background-color-hover">
+          <button style={style} key={el.columnName} onClick={() => this.handleMenuClick(index)} className="menu-row-button SRC-primary-background-color-hover">
             {el.title}
           </button>
         )
@@ -176,7 +189,7 @@ export default class GenerateComponentsFromRow extends React.Component<GenerateC
         const key = JSON.stringify(el.props)
         if (!injectProps) {
           return (
-            <div onClick={() => this.handleMenuClick(index)} className="menu-row-item" id={id} key={key}>
+            <div className="menu-row-item" id={id} key={key}>
               {generateSynapseObject(el)}
             </div>
           )
@@ -206,7 +219,7 @@ export default class GenerateComponentsFromRow extends React.Component<GenerateC
                   )
                 }
                 const injectedProps = injectPropsIntoConfig(value, el.name, {...props, ...searchParams})
-                return generateSynapseObject({ ...el, props: { ...props, ...injectedProps}})
+                return generateSynapseObject({ ...el, props: injectedProps }, searchParams )
               })
             }
           </div>

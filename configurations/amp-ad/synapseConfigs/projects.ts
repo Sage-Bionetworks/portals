@@ -22,7 +22,7 @@ export const projectCardProps = {
     ],
   },
   secondaryLabelLimit: 4,
-  cardLink: {
+  titleLinkConfig: {
     baseURL: 'Explore/Projects',
     URLColumnNames: ['Grant Number']
   }

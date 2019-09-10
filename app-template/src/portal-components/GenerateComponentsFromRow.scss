@@ -1,8 +1,18 @@
 .GenerateComponentsFromRow {
+  display: flex;
   .menu-row-button  {
     background: rgba(60, 74, 99, 0.1);
     height: 40px;
     width: 180px;
+    text-align: left;
+    padding-left: 20px;
     color: #515359;
+    border: 1px solid rgba(26, 28, 41, 0.1);
+  }
+  .button-container {
+    flex: 2;
+  }
+  .component-container {
+    flex: 6;
   }
 }

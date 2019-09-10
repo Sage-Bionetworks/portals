@@ -1,21 +1,24 @@
 import { HomeExploreConfig } from '../../types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
 import loadingScreen from '../loadingScreen'
+import { CommonCardProps } from 'synapse-react-client/dist/containers/CardContainerLogic';
 const unitDescription = 'studies'
 const rgbIndex = 0
 export const studiesSql = 'SELECT * FROM syn17083367'
 const sql = studiesSql
 const facet = 'Species'
-export const studyCardProps =  {
-  sql,
+export const studyCardProps: CommonCardProps =  {
   type: SynapseConstants.GENERIC_CARD,
+  secondaryLabelLimit: 4,
+  titleLinkConfig: {
+    baseURL: 'Explore/Studies',
+    URLColumnNames: ['Study']
+  },
   genericCardSchema: {
     type: SynapseConstants.STUDY,
-    secondaryLabelLimit: 4,
     title: 'Study_Name',
     subTitle: 'Data_Contributor',
     icon: 'Access_Type',
-    link: 'Study',
     description: 'Study_Description',
     secondaryLabels: [
       'DataType_All',
@@ -28,7 +31,7 @@ export const studyCardProps =  {
       'Consortium',
       'Grant'
     ]
-  }
+  },
 }
 const facetAliases = {
   Consortium: 'Program',
@@ -71,9 +74,7 @@ const studies: HomeExploreConfig = {
       },
       name: 'Studies',
       isConsistent: true,
-      cardConfiguration: {
-        ...studyCardProps
-      },
+      cardConfiguration: studyCardProps,
       searchConfiguration: {
         searchable: [
           {
@@ -138,6 +139,7 @@ export const studiesProgrammaticRouteConfig = [
     props: {
       isHeader: true,
       ...studyCardProps,
+      sql,
       secondaryLabelLimit: Infinity,
       backgroundColor: '#DE9A1F'
     }
@@ -179,8 +181,8 @@ export const studiesProgrammaticRouteConfig = [
           name: 'QueryWrapperFlattened',
           title: 'Metadata',
           columnName: 'Study',
-          injectProps: false,
-          tableSqlKeys: ['Study'],
+          resolveSynId: true,
+          tableSqlKeys: ['study'],
           props: {
             initQueryRequest: {
               partMask: SynapseConstants.BUNDLE_MASK_QUERY_FACETS
@@ -190,7 +192,7 @@ export const studiesProgrammaticRouteConfig = [
               ,
               concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
               query: {
-                sql: `SELECT id as "File Name", dataType as "Data Type" FROM syn11346063 WHERE ( "dataSubtype" = 'metadata' )`,
+                sql: "SELECT id, dataType FROM syn11346063 WHERE `dataSubtype` = 'metadata'",
                 isConsistent: true,
                 limit: 25,
               }
@@ -198,10 +200,38 @@ export const studiesProgrammaticRouteConfig = [
             loadingScreen,
             facetAliases,
             rgbIndex: 1,
-            facet: 'Consortium',
             unitDescription: 'Metadata Files',
             synapseId: 'syn11346063',
             title: 'Metadata'
+          }
+        },
+        {
+          name: 'QueryWrapperFlattened',
+          title: 'Data',
+          columnName: 'Study',
+          resolveSynId: true,
+          tableSqlKeys: ['study'],
+          props: {
+            initQueryRequest: {
+              partMask: SynapseConstants.BUNDLE_MASK_QUERY_FACETS
+              | SynapseConstants.BUNDLE_MASK_QUERY_COUNT
+              | SynapseConstants.BUNDLE_MASK_QUERY_SELECT_COLUMNS
+              | SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS
+              | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS
+              ,
+              concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
+              query: {
+                sql: "SELECT dataType, assay, fileFormat, count(id) AS Files FROM syn11346063 GROUP BY 1,2,3 ORDER BY 4 DESC",
+                isConsistent: true,
+                limit: 25,
+              }
+            },
+            loadingScreen,
+            facetAliases,
+            rgbIndex: 1,
+            unitDescription: 'Data Files',
+            synapseId: 'syn11346063',
+            title: 'Data'
           }
         },
         {

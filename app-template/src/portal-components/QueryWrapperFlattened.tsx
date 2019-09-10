@@ -27,6 +27,7 @@ const QueryWrapperFlattened: React.FunctionComponent<QueryWrapperFlattenedProps>
     sqlOperator,
     ...rest
   } = props
+  console.log('searchParams = ', searchParams)
   if (searchParams) {
     let sqlUsed = initQueryRequest.query.sql
     if (searchParams) {

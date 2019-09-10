@@ -15,7 +15,7 @@ const programs: SynapseConfig = {
       subTitle: 'Short Description',
       icon: 'Program',
     },
-    cardLink: {
+    titleLinkConfig: {
       baseURL: 'Explore/Programs',
       URLColumnNames: ['Program']
     }  
