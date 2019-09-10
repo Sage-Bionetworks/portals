@@ -34,6 +34,7 @@ const QueryWrapperFlattened: React.FunctionComponent<QueryWrapperFlattenedProps>
     }
     initQueryRequest.query.sql = sqlUsed
   }
+  console.log('line 37')
   return (
     <SynapseComponents.QueryWrapper
       {...rest}

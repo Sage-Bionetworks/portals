@@ -1,13 +1,11 @@
 import { HomeExploreConfig } from '../../types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
 import loadingScreen from '../loadingScreen'
-
 const unitDescription = 'studies'
 const rgbIndex = 0
 export const studiesSql = 'SELECT * FROM syn17083367'
 const sql = studiesSql
 const facet = 'Species'
-
 export const studyCardProps =  {
   sql,
   type: SynapseConstants.GENERIC_CARD,
@@ -32,7 +30,6 @@ export const studyCardProps =  {
     ]
   }
 }
-
 const facetAliases = {
   Consortium: 'Program',
   DataType_All: 'Data Types',
@@ -40,7 +37,6 @@ const facetAliases = {
   Number_of_Individuals: 'Individuals',
   Sample_Type: 'Tissue'
 }
-
 const studies: HomeExploreConfig = {
   homePageSynapseObject: {
     name: 'QueryWrapperFlattened',
@@ -135,7 +131,6 @@ const studies: HomeExploreConfig = {
     }
   }
 }
-
 export const studiesProgrammaticRouteConfig = [
   {
     name: 'CardContainerLogic',
@@ -184,7 +179,7 @@ export const studiesProgrammaticRouteConfig = [
           name: 'QueryWrapperFlattened',
           title: 'Metadata',
           columnName: 'Study',
-          resolveSynId: true,
+          injectProps: false,
           tableSqlKeys: ['Study'],
           props: {
             initQueryRequest: {
@@ -196,18 +191,16 @@ export const studiesProgrammaticRouteConfig = [
               concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
               query: {
                 sql: `SELECT id as "File Name", dataType as "Data Type" FROM syn11346063 WHERE ( "dataSubtype" = 'metadata' )`,
-                selectedFacets: [],
                 isConsistent: true,
                 limit: 25,
-                offset: 0
               }
             },
             loadingScreen,
             facetAliases,
             rgbIndex: 1,
-            facet: 'consortium',
+            facet: 'Consortium',
             unitDescription: 'Metadata Files',
-            synapseId: 'syn18483791',
+            synapseId: 'syn11346063',
             title: 'Metadata'
           }
         },
@@ -226,5 +219,4 @@ export const studiesProgrammaticRouteConfig = [
     }
   }
 ]
-
 export default studies
