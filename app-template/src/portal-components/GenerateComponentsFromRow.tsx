@@ -149,21 +149,26 @@ export default class GenerateComponentsFromRow extends React.Component<GenerateC
     const { synapseConfigArray } = this.props
     const { queryResultBundle } = this.state
     const mapColumnHeaderToRowIndex: Dictionary<number> = {}
+    let row: string [] = []
     if (queryResultBundle) {
       queryResultBundle.queryResult.queryResults.headers.forEach(
         (el, index) => {
           mapColumnHeaderToRowIndex[el.name] = index
         }
       )
+      row = queryResultBundle.queryResult.queryResults.rows[0].values
     }
     return synapseConfigArray.map(
       (el: RowSynapseConfig, index) => {
         const style: React.CSSProperties = {}
-        if (queryResultBundle && !mapColumnHeaderToRowIndex[el.columnName] && el.injectProps !== false) {
+        const isDisabled = queryResultBundle && row[mapColumnHeaderToRowIndex[el.columnName]] === null && el.injectProps !== false
+        if (isDisabled) {
           style.backgroundColor = '#BBBBBC'
+          style.cursor = 'not-allowed'
         }
+        const className = `menu-row-button ${isDisabled ?  "" : "SRC-primary-background-color-hover"}`
         return (
-          <button style={style} key={el.columnName} onClick={() => this.handleMenuClick(index)} className="menu-row-button SRC-primary-background-color-hover">
+          <button style={style} key={el.columnName} onClick={isDisabled ? undefined : () => this.handleMenuClick(index)} className={className}>
             {el.title}
           </button>
         )
