@@ -53,8 +53,16 @@ class AppInitializer extends React.Component<RouteComponentProps & ReactCookiePr
 
   // initialize pendo with the user's email and unique id, if user is anonymous then default values
   // for id and email are 'VISITOR_UNIQUE_ID' and 'n/a'respectively
-  initializePendo(id = 'VISITOR_UNIQUE_ID', email = 'n/a') {
+  initializePendo(id = '', email = 'n/a') {
     pendo.initialize({
+      sanitizeUrl: function (url:string) {
+        // NOTE: use pendo.normalizedUrl in the js console to see what url we send to Pendo for the page that you're on!
+        if(url.endsWith('#/')) {
+          url += 'Home'; // special case, ability to target home page (empty route)
+        }
+        return url.replace('#/', '');
+      },
+
       visitor: {
         id,
         email
