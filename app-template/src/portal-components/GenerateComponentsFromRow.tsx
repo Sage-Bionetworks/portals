@@ -215,11 +215,12 @@ export default class GenerateComponentsFromRow extends React.Component<GenerateC
                   const entity = entityHeaders!.results.find(el => el.id === value)!
                   value = entity.name
                 }
-                const searchParams: Dictionary<string> = {}
+                let searchParams: Dictionary<string> | undefined = undefined
                 if (el.tableSqlKeys) {
+                  searchParams = {}
                   el.tableSqlKeys.forEach(
                     (key: string) => {
-                      searchParams[key] = value
+                      searchParams![key] = value
                     }
                   )
                 }
