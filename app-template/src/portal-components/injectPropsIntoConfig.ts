@@ -3,7 +3,7 @@ import { MarkdownSynapseProps } from "synapse-react-client/dist/containers/Markd
 import { SynapseConfig } from "types/portal-config"
 
 type SynapseConfigName = SynapseConfig['name']
-const injectPropsIntoConfig = <T>(value: string, name: SynapseConfigName, props: any): T  => {
+const injectPropsIntoConfig = (value: string, name: SynapseConfigName, props: any): any  => {
   const internalProps = cloneDeep(props)
   if (name === 'Markdown') {
     const markdownProps = internalProps as MarkdownSynapseProps

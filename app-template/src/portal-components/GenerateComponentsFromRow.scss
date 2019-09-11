@@ -10,9 +10,39 @@
     border: 1px solid rgba(26, 28, 41, 0.1);
   }
   .button-container {
-    flex: 2;
+    flex: 1;
   }
   .component-container {
-    flex: 6;
+    flex: 4;
+  }
+  hr {
+    margin: 0px;
+  }
+  h2 {
+    padding-top: 0px;
+  }
+  div.SRC-overflowAuto {
+    min-height: 150px !important;
+  }
+  .first-title {
+    margin-top: 40px;
+  }
+  // stack menu and components, expand menu buttons full screen
+  @media screen and (max-height: 729px) {
+    flex-direction: column;
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      & > {
+        flex: 1;
+      }
+    }
+    .component-container {
+      flex: 1;
+    }
+    .menu-row-button {
+      width: auto;
+      text-align: center;
+    }
   }
 }

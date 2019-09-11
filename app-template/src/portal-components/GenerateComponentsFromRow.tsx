@@ -2,32 +2,17 @@ import * as React from 'react'
 import { QueryResultBundle } from 'synapse-react-client/dist/utils/jsonResponses/Table/QueryResultBundle'
 import { SynapseClient, SynapseConstants } from 'synapse-react-client'
 import { QueryBundleRequest } from 'synapse-react-client/dist/utils/jsonResponses/Table/QueryBundleRequest'
-import { SynapseConfig } from 'types/portal-config'
+import { SynapseConfig } from '../types/portal-config'
+import { GenerateComponentsFromRowProps, RowSynapseConfig } from '../types/portal-util-types'
 import { insertConditionsFromSearchParams } from 'synapse-react-client/dist/utils/modules/sqlFunctions'
 import { Dictionary } from 'lodash'
-import './GenerateComponentsFromRow.scss'
 import { generateSynapseObject } from 'RouteResolver'
 import loadingScreen from 'test-configuration/loadingScreen'
 import { ReferenceList } from 'synapse-react-client/dist/utils/jsonResponses/ReferenceList'
 import { EntityHeader } from 'synapse-react-client/dist/utils/jsonResponses/EntityHeader'
 import { PaginatedResults } from 'synapse-react-client/dist/utils/jsonResponses/PaginatedResults'
 import injectPropsIntoConfig from './injectPropsIntoConfig'
-
-type RowToPropTransform = {
-  injectProps?: boolean // if true then no need to grab data
-  resolveSynId?: boolean
-  columnName: string
-}
-
-export type RowSynapseConfig = SynapseConfig & RowToPropTransform
-
-export type GenerateComponentsFromRowProps = {
-  searchParams?: Dictionary<string>
-  sql: string
-  token?: string
-  tableSqlKeys?: string []
-  synapseConfigArray: RowSynapseConfig []
-}
+import './GenerateComponentsFromRow.scss'
 
 type State = {
   queryResultBundle: QueryResultBundle | undefined
@@ -83,7 +68,7 @@ export default class GenerateComponentsFromRow extends React.Component<GenerateC
         const references: ReferenceList = []
         synapseConfigArray.forEach(
           el => {
-            if (el.resolveSynId) {
+            if (el.resolveSynId && el.columnName) {
               const index = mapColumnHeaderToRowIndex[el.columnName]
               const value = row[index]
               references.push(
@@ -161,7 +146,8 @@ export default class GenerateComponentsFromRow extends React.Component<GenerateC
     return synapseConfigArray.map(
       (el: RowSynapseConfig, index) => {
         const style: React.CSSProperties = {}
-        const isDisabled = queryResultBundle && row[mapColumnHeaderToRowIndex[el.columnName]] === null && el.injectProps !== false
+        const { columnName = '' } = el
+        const isDisabled = queryResultBundle && row[mapColumnHeaderToRowIndex[columnName]] === null && el.injectProps !== false
         if (isDisabled) {
           style.backgroundColor = '#BBBBBC'
           style.cursor = 'not-allowed'
@@ -188,18 +174,26 @@ export default class GenerateComponentsFromRow extends React.Component<GenerateC
       }
     )
     return synapseConfigArray.map(
-      (el: RowSynapseConfig, index) => {
+      (el, index) => {
         const id = COMPONENT_ID_PREFIX + index
-        const { injectProps = true } = el
+        const { injectProps = true, columnName = '' } = el
         const key = JSON.stringify(el.props)
+        const isFirstClass = index === 0 ? 'first-title': ''
+        const title = (
+          <>
+            <h2 className={isFirstClass}> {el.title}</h2>
+            <hr/>
+          </>
+        )
         if (!injectProps) {
           return (
             <div className="menu-row-item" id={id} key={key}>
+              {title}
               {generateSynapseObject(el)}
             </div>
           )
         }
-        const columnNameRowIndex = mapColumnHeaderToRowIndex[el.columnName]
+        const columnNameRowIndex = mapColumnHeaderToRowIndex[columnName]
         let rawValue: string = row[columnNameRowIndex]
         if (!rawValue) {
           return <></>
@@ -208,6 +202,7 @@ export default class GenerateComponentsFromRow extends React.Component<GenerateC
         const props = el.props
         return (
           <div id={id} key={key}>
+            {title}
             {
               split.map(splitString => {
                 let value = splitString
@@ -225,7 +220,8 @@ export default class GenerateComponentsFromRow extends React.Component<GenerateC
                   )
                 }
                 const injectedProps = injectPropsIntoConfig(value, el.name, {...props, ...searchParams})
-                return generateSynapseObject({ ...el, props: injectedProps }, searchParams )
+                const synapseConfigWithInjectedProps: SynapseConfig = { ...el, props: injectedProps }
+                return generateSynapseObject(synapseConfigWithInjectedProps, searchParams )
               })
             }
           </div>

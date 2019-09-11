@@ -1,4 +1,5 @@
 import { SynapseConfig } from './portal-config'
+import { RowSynapseConfig } from '../portal-components/GenerateComponentsFromRow'
 
 /* 
   These are types that come up frequently between portals but are an
@@ -14,4 +15,27 @@ declare type HomeExploreConfig = {
 declare module "*.svg" {
   const content: string;
   export default content;
+}
+
+// The props for GenerateComponentsFromRowProps are kept here so that 
+// the configuration files can import the type
+
+type ResolveSynId = {
+  title?: boolean
+  value?: boolean
+}
+
+type RowToPropTransform = {
+  injectProps?: boolean // if true then no need to grab data
+  resolveSynId?: ResolveSynId
+  tableSqlKeys?: string []
+  columnName?: string
+}
+
+export type RowSynapseConfig = SynapseConfig & RowToPropTransform
+export declare type GenerateComponentsFromRowProps = {
+  searchParams?: Dictionary<string>
+  sql: string
+  token?: string
+  synapseConfigArray: RowSynapseConfig []
 }
