@@ -160,14 +160,17 @@ export const studiesGenerateComponentsFromRowProps: GenerateComponentsFromRowPro
       name: 'Markdown',
       columnName: 'Methods',
       title: 'Methods',
-      props: {}
+      props: {},
+      resolveSynId: {
+        title: true
+      }
     },
     {
       name: 'QueryWrapperFlattened',
-      title: 'Metadata',
+      title: 'Study Metadata',
       columnName: 'Study',
       resolveSynId: {
-
+        value: true,
       },
       tableSqlKeys: ['study'],
       props: {
@@ -182,19 +185,20 @@ export const studiesGenerateComponentsFromRowProps: GenerateComponentsFromRowPro
             sql: "SELECT id, dataType FROM syn11346063 WHERE `dataSubtype` = 'metadata'",
             isConsistent: true,
             limit: 25,
+            offset: 0
           }
         },
         loadingScreen,
         facetAliases,
         rgbIndex: 1,
-        unitDescription: 'Metadata Files',
+        unitDescription: 'Files',
         synapseId: 'syn11346063',
-        title: 'Metadata'
+        title: 'Metadata Files'
       }
     },
     {
       name: 'QueryWrapperFlattened',
-      title: 'Data',
+      title: 'Study Data',
       columnName: 'Study',
       resolveSynId: {
         value: true
@@ -213,14 +217,14 @@ export const studiesGenerateComponentsFromRowProps: GenerateComponentsFromRowPro
             sql: "SELECT dataType, assay, fileFormat, count(id) AS Files FROM syn11346063 GROUP BY 1,2,3 ORDER BY 4 DESC",
             isConsistent: true,
             limit: 25,
+            offset: 0
           }
         },
         loadingScreen,
         facetAliases,
         rgbIndex: 1,
-        unitDescription: 'Data Files',
         synapseId: 'syn11346063',
-        title: 'Data'
+        title: 'Data Files'
       }
     },
     {

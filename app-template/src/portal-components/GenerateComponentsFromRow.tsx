@@ -67,13 +67,19 @@ export default class GenerateComponentsFromRow extends React.Component<GenerateC
         )
         const references: ReferenceList = []
         synapseConfigArray.forEach(
-          el => {
+          (el: RowSynapseConfig) => {
             if (el.resolveSynId && el.columnName) {
               const index = mapColumnHeaderToRowIndex[el.columnName]
-              const value = row[index]
-              references.push(
-                {
-                  targetId: value
+              const value: string = row[index]
+              value.split(',').forEach(
+                val => {
+                  if (!references.find(el => el.targetId === val)) {
+                    references.push(
+                      {
+                        targetId: val
+                      }
+                    )
+                  }
                 }
               )
             }
@@ -99,11 +105,6 @@ export default class GenerateComponentsFromRow extends React.Component<GenerateC
     )
   }
 
-  componentDidUpdate() {
-    // TODO: Implement this method
-  }
-
-
   render () {
     const {
       isLoading
@@ -125,8 +126,8 @@ export default class GenerateComponentsFromRow extends React.Component<GenerateC
     const wrapper = this.ref.current!.querySelector<HTMLDivElement>(`#src-component-${index}`)
     wrapper!.scrollIntoView({
       behavior: 'smooth',
-      block: 'center',
-      inline: 'center'
+      block: 'start',
+      inline: 'start'
     })
   }
 
@@ -154,7 +155,7 @@ export default class GenerateComponentsFromRow extends React.Component<GenerateC
         }
         const className = `menu-row-button ${isDisabled ?  "" : "SRC-primary-background-color-hover"}`
         return (
-          <button style={style} key={el.columnName} onClick={isDisabled ? undefined : () => this.handleMenuClick(index)} className={className}>
+          <button style={style} key={JSON.stringify(el)} onClick={isDisabled ? undefined : () => this.handleMenuClick(index)} className={className}>
             {el.title}
           </button>
         )
@@ -174,21 +175,18 @@ export default class GenerateComponentsFromRow extends React.Component<GenerateC
       }
     )
     return synapseConfigArray.map(
-      (el, index) => {
+      (el: RowSynapseConfig, index) => {
         const id = COMPONENT_ID_PREFIX + index
-        const { injectProps = true, columnName = '' } = el
-        const key = JSON.stringify(el.props)
+        const { injectProps = true, columnName = '', resolveSynId } = el
+        const key = JSON.stringify(el)
         const isFirstClass = index === 0 ? 'first-title': ''
-        const title = (
-          <>
-            <h2 className={isFirstClass}> {el.title}</h2>
-            <hr/>
-          </>
-        )
         if (!injectProps) {
           return (
             <div className="menu-row-item" id={id} key={key}>
-              {title}
+              <>
+                <h2 className={isFirstClass}> {el.title}</h2>
+                <hr/>
+              </>
               {generateSynapseObject(el)}
             </div>
           )
@@ -202,13 +200,25 @@ export default class GenerateComponentsFromRow extends React.Component<GenerateC
         const props = el.props
         return (
           <div id={id} key={key}>
-            {title}
+            {!(resolveSynId && resolveSynId.title) && 
+              <>
+                <h2 className={isFirstClass}> {el.title}</h2>
+                <hr/>
+              </>
+            }
             {
               split.map(splitString => {
                 let value = splitString
-                if (el.resolveSynId) {
-                  const entity = entityHeaders!.results.find(el => el.id === value)!
-                  value = entity.name
+                let entityTitle = ''
+                if (resolveSynId) {
+                  const entity = entityHeaders!.results.find(el => el.id === value.trim())
+                  const name = entity && entity.name || ''
+                  if (resolveSynId.title) {
+                    entityTitle = name
+                  }
+                  if (resolveSynId.value) {
+                    value = name
+                  }
                 }
                 let searchParams: Dictionary<string> | undefined = undefined
                 if (el.tableSqlKeys) {
@@ -221,6 +231,14 @@ export default class GenerateComponentsFromRow extends React.Component<GenerateC
                 }
                 const injectedProps = injectPropsIntoConfig(value, el.name, {...props, ...searchParams})
                 const synapseConfigWithInjectedProps: SynapseConfig = { ...el, props: injectedProps }
+                if (el.resolveSynId && entityTitle) {
+                  return (
+                    <React.Fragment key={splitString}>
+                      {entityTitle && <><h2> {el.title} : {entityTitle}</h2><hr/></>}
+                      {generateSynapseObject(synapseConfigWithInjectedProps, searchParams )}
+                    </React.Fragment>
+                  )
+                }
                 return generateSynapseObject(synapseConfigWithInjectedProps, searchParams )
               })
             }
