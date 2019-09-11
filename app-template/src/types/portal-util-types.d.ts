@@ -26,7 +26,7 @@ type ResolveSynId = {
 }
 
 type RowToPropTransform = {
-  injectProps?: boolean // if true then no need to grab data
+  standalone?: boolean // if true then dont inject props
   resolveSynId?: ResolveSynId
   tableSqlKeys?: string []
   columnName?: string

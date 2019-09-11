@@ -148,7 +148,7 @@ export default class GenerateComponentsFromRow extends React.Component<GenerateC
       (el: RowSynapseConfig, index) => {
         const style: React.CSSProperties = {}
         const { columnName = '' } = el
-        const isDisabled = queryResultBundle && row[mapColumnHeaderToRowIndex[columnName]] === null && el.injectProps !== false
+        const isDisabled = queryResultBundle && row[mapColumnHeaderToRowIndex[columnName]] === null && !el.standalone
         if (isDisabled) {
           style.backgroundColor = '#BBBBBC'
           style.cursor = 'not-allowed'
@@ -177,16 +177,14 @@ export default class GenerateComponentsFromRow extends React.Component<GenerateC
     return synapseConfigArray.map(
       (el: RowSynapseConfig, index) => {
         const id = COMPONENT_ID_PREFIX + index
-        const { injectProps = true, columnName = '', resolveSynId } = el
+        const { standalone, columnName = '', resolveSynId } = el
         const key = JSON.stringify(el)
         const isFirstClass = index === 0 ? 'first-title': ''
-        if (!injectProps) {
+        if (standalone) {
           return (
             <div className="menu-row-item" id={id} key={key}>
-              <>
-                <h2 className={isFirstClass}> {el.title}</h2>
-                <hr/>
-              </>
+              <h2 className={isFirstClass}> {el.title}</h2>
+              <hr/>
               {generateSynapseObject(el)}
             </div>
           )
@@ -194,12 +192,14 @@ export default class GenerateComponentsFromRow extends React.Component<GenerateC
         const columnNameRowIndex = mapColumnHeaderToRowIndex[columnName]
         let rawValue: string = row[columnNameRowIndex]
         if (!rawValue) {
+          console.error('No value mapped for ', columnName)
           return <></>
         }
         const split = rawValue.split(',')
         const props = el.props
         return (
           <div id={id} key={key}>
+            {/* only show the title if the component didn't specify the title to be shown from a syn-id */}
             {!(resolveSynId && resolveSynId.title) && 
               <>
                 <h2 className={isFirstClass}> {el.title}</h2>
@@ -234,8 +234,8 @@ export default class GenerateComponentsFromRow extends React.Component<GenerateC
                 if (el.resolveSynId && entityTitle) {
                   return (
                     <React.Fragment key={splitString}>
-                      {entityTitle && <><h2> {el.title} : {entityTitle}</h2><hr/></>}
-                      {generateSynapseObject(synapseConfigWithInjectedProps, searchParams )}
+                      {entityTitle && <><h2> {el.title} : {entityTitle} </h2><hr/></>}
+                      {generateSynapseObject(synapseConfigWithInjectedProps, searchParams)}
                     </React.Fragment>
                   )
                 }

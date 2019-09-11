@@ -180,7 +180,7 @@ describe('GenerateComponentsFromRowProps works', () => {
       },
       sql: 'SELECT * FROM syn',
       synapseConfigArray: [
-        {...markdownSynapseConfig, injectProps: false},
+        {...markdownSynapseConfig, standalone: false},
       ]
     }
     const wrapper = await mount(<GenerateComponentsFromRow {...propsWithInjectFalse} />)

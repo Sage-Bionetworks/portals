@@ -150,7 +150,7 @@ export const studiesGenerateComponentsFromRowProps: GenerateComponentsFromRowPro
       name: 'Markdown',
       // https://www.synapse.org/#!Synapse:syn12666371/wiki/595380
       title: 'Access Requirements',
-      injectProps: false,
+      standalone: true,
       props: {
         ownerId: 'syn12666371',
         wikiId: '595380'
@@ -231,7 +231,7 @@ export const studiesGenerateComponentsFromRowProps: GenerateComponentsFromRowPro
       name: 'Markdown',
       // https://www.synapse.org/#!Synapse:syn12666371/wiki/595381
       title: 'Data Updates',
-      injectProps: false,
+      standalone: true,
       props: {
         ownerId: 'syn12666371',
         wikiId: '595381'
