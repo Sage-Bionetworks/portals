@@ -6,6 +6,7 @@ import { QueryResultBundle } from 'synapse-react-client/dist/utils/jsonResponses
 import MarkdownSynapse from 'synapse-react-client/dist/containers/MarkdownSynapse'
 import QueryWrapperFlattened from 'portal-components/QueryWrapperFlattened'
 import { EntityHeader } from 'synapse-react-client/dist/utils/jsonResponses/EntityHeader';
+import { PaginatedResults } from 'synapse-react-client/dist/utils/jsonResponses/PaginatedResults';
 const injectPropsIntoConfig = require('portal-components/injectPropsIntoConfig')
 
 describe('GenerateComponentsFromRowProps works', () => {
@@ -49,11 +50,14 @@ describe('GenerateComponentsFromRowProps works', () => {
         partMask: 0,
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
         query: {
-          sql: 'SELECT * FROM syn ',
+          sql: 'SELECT * FROM syn11346063',
           limit: 25,
           offset: 0
         }
-      }
+      },
+      synapseId: 'syn',
+      unitDescription: '',
+      title: 'title'
     }
   }
   // ---- TABLE COMPONENT PROPS END ----
@@ -62,6 +66,7 @@ describe('GenerateComponentsFromRowProps works', () => {
   const mockDataResponse: QueryResultBundle = {
     concreteType: 'org.sagebionetworks.repo.model.table.QueryResultBundle',
     selectColumns: [],
+    queryCount: 3,
     queryResult: {
       concreteType: '',
       queryResults: {
@@ -102,20 +107,25 @@ describe('GenerateComponentsFromRowProps works', () => {
   // @ts-ignore
   SynapseClient.getQueryTableResults = jest.fn(() => Promise.resolve(mockDataResponse))
   const MOCK_HEADER_NAME = 'MOCK_HEADER_NAME'
-  const mockEntityHeaderResponse: EntityHeader = {
-    name: MOCK_HEADER_NAME,
-    id: '',
-    type: '',
-    versionLabel: '',
-    versionNumber: 1,
-    benefactorId: 1,
-    createdBy: '',
-    createdOn: '',
-    modifiedBy: '',
-    modifiedOn: ''
+  const mockEntityHeaderResponse: PaginatedResults<EntityHeader> = {
+    results: [
+      {
+        name: MOCK_HEADER_NAME,
+        id: TABLE_ROW_TEST_VALUE,
+        type: '',
+        versionLabel: '',
+        versionNumber: 1,
+        benefactorId: 1,
+        createdBy: '',
+        createdOn: '',
+        modifiedBy: '',
+        modifiedOn: ''
+      }
+    ],
+    totalNumberOfResults: 1
   }
   // @ts-ignore
-  SynapseClient.getEntityHeader = jest.fn(() => Promise.resolve({ results: mockEntityHeaderResponse }))
+  SynapseClient.getEntityHeader = jest.fn(() => Promise.resolve(mockEntityHeaderResponse))
   // ---- COMPONENT PROPS DATA END ----
 
   const spyOnInject = jest.spyOn(injectPropsIntoConfig, 'default')
@@ -201,23 +211,19 @@ describe('GenerateComponentsFromRowProps works', () => {
 
   it('renders a component whos value is a synId that needs to be resolved', async () => {
     const key = 'KEY'
-    const propsWithInjectFalse : GenerateComponentsFromRowProps = {
-      searchParams: {
-        study: 'syn'
-      },
-      sql: 'SELECT * FROM syn',
-      synapseConfigArray: [
-        {...tableSynapseConfig, resolveSynId: true, tableSqlKeys: [key]}
-      ]
-    }
-    const wrapper = await mount(<GenerateComponentsFromRow {...propsWithInjectFalse} />)
+    props.synapseConfigArray = [
+      {...tableSynapseConfig, resolveSynId: true, tableSqlKeys: [key]}
+    ]
+    const wrapper = await mount(<GenerateComponentsFromRow {...props} />)
     // https://github.com/airbnb/enzyme/issues/1233#issuecomment-343449560
-    wrapper.update()
+    await wrapper.update()
+    await wrapper.update()
     expect(wrapper.find(QueryWrapperFlattened)).toHaveLength(1)
     const searchParms = {
       [key]: MOCK_HEADER_NAME
     }
     const withSearchParams = {...tableSynapseConfig.props, ...searchParms}
+    expect(spyOnInject).toHaveBeenCalled()
     expect(spyOnInject).toHaveBeenCalledWith(MOCK_HEADER_NAME, 'QueryWrapperFlattened', withSearchParams)
   })
 
