@@ -195,7 +195,7 @@ export default class GenerateComponentsFromRow extends React.Component<GenerateC
 
   private renderSynapseObjectFromData(el: RowSynapseConfig): React.ReactNode {
     const { queryResultBundle, entityHeaders } = this.state
-    const { columnName = '', resolveSynId } = el
+    const { columnName = '', resolveSynId, props } = el
     const row = queryResultBundle!.queryResult.queryResults.rows[0].values
     // map column name to index
     const mapColumnHeaderToRowIndex: Dictionary<number> = {}
@@ -211,14 +211,17 @@ export default class GenerateComponentsFromRow extends React.Component<GenerateC
       return <></>
     }
     const split = rawValue.split(',')
-    const props = el.props
     return split.map(splitString => {
       let value = splitString;
       let entityTitle = ''
       if (resolveSynId) {
         // use entity name as either title or value according to resolveSynId
-        const entity = entityHeaders!.results.find(el => el.id === value.trim())
+        const entity = entityHeaders && entityHeaders.results.find(el => el.id === value.trim())
         const name = entity && entity.name || ''
+        if (!name) {
+          console.error('No value mapped for ', columnName)
+          return <></>
+        }
         if (resolveSynId.title) {
           entityTitle = name
         }
