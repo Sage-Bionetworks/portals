@@ -1,12 +1,13 @@
 import * as React from 'react'
 import { mount } from 'enzyme'
-import GenerateComponentsFromRow, { GenerateComponentsFromRowProps, RowSynapseConfig } from '../../portal-components/GenerateComponentsFromRow'
+import GenerateComponentsFromRow from '../../portal-components/GenerateComponentsFromRow'
 import { SynapseClient } from 'synapse-react-client'
 import { QueryResultBundle } from 'synapse-react-client/dist/utils/jsonResponses/Table/QueryResultBundle'
 import MarkdownSynapse from 'synapse-react-client/dist/containers/MarkdownSynapse'
 import QueryWrapperFlattened from 'portal-components/QueryWrapperFlattened'
-import { EntityHeader } from 'synapse-react-client/dist/utils/jsonResponses/EntityHeader';
-import { PaginatedResults } from 'synapse-react-client/dist/utils/jsonResponses/PaginatedResults';
+import { EntityHeader } from 'synapse-react-client/dist/utils/jsonResponses/EntityHeader'
+import { PaginatedResults } from 'synapse-react-client/dist/utils/jsonResponses/PaginatedResults'
+import { RowSynapseConfig, GenerateComponentsFromRowProps } from 'types/portal-util-types'
 const injectPropsIntoConfig = require('portal-components/injectPropsIntoConfig')
 
 describe('GenerateComponentsFromRowProps works', () => {
@@ -45,6 +46,7 @@ describe('GenerateComponentsFromRowProps works', () => {
   const tableSynapseConfig: RowSynapseConfig = {
     name: 'QueryWrapperFlattened',
     columnName: TABLE_COL_TEST_NAME,
+    title: 'title',
     props: {
       initQueryRequest: {
         partMask: 0,
@@ -180,7 +182,7 @@ describe('GenerateComponentsFromRowProps works', () => {
       },
       sql: 'SELECT * FROM syn',
       synapseConfigArray: [
-        {...markdownSynapseConfig, standalone: false},
+        {...markdownSynapseConfig, standalone: true},
       ]
     }
     const wrapper = await mount(<GenerateComponentsFromRow {...propsWithInjectFalse} />)
@@ -209,10 +211,10 @@ describe('GenerateComponentsFromRowProps works', () => {
     expect(spyOnInject).toHaveBeenNthCalledWith(3, val3, 'Markdown', multiValueMarkdownSynapseConfig.props)
   })
 
-  it('renders a component whos value is a synId that needs to be resolved', async () => {
+  it('renders a component whos value is a synId that needs to be resolved as a value', async () => {
     const key = 'KEY'
     props.synapseConfigArray = [
-      {...tableSynapseConfig, resolveSynId: true, tableSqlKeys: [key]}
+      {...tableSynapseConfig, resolveSynId: { value: true }, tableSqlKeys: [key]}
     ]
     const wrapper = await mount(<GenerateComponentsFromRow {...props} />)
     // https://github.com/airbnb/enzyme/issues/1233#issuecomment-343449560
@@ -225,6 +227,18 @@ describe('GenerateComponentsFromRowProps works', () => {
     const withSearchParams = {...tableSynapseConfig.props, ...searchParms}
     expect(spyOnInject).toHaveBeenCalled()
     expect(spyOnInject).toHaveBeenCalledWith(MOCK_HEADER_NAME, 'QueryWrapperFlattened', withSearchParams)
+  })
+
+  it('renders a component whos value is a synId that needs to be resolved as a title', async () => {
+    const key = 'KEY'
+    props.synapseConfigArray = [
+      {...tableSynapseConfig, resolveSynId: { title: true }, tableSqlKeys: [key]}
+    ]
+    const wrapper = await mount(<GenerateComponentsFromRow {...props} />)
+    // https://github.com/airbnb/enzyme/issues/1233#issuecomment-343449560
+    await wrapper.update()
+    await wrapper.update()
+    expect(wrapper.find('h2').text().trim()).toEqual(`${tableSynapseConfig.title} : ${MOCK_HEADER_NAME}`)
   })
 
 })
