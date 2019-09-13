@@ -10,8 +10,16 @@ import { PaginatedResults } from 'synapse-react-client/dist/utils/jsonResponses/
 import { RowSynapseConfig, GenerateComponentsFromRowProps } from 'types/portal-util-types'
 const injectPropsIntoConfig = require('portal-components/injectPropsIntoConfig')
 
-describe('GenerateComponentsFromRowProps works', () => {
+const createMountedComponent = async (props: GenerateComponentsFromRowProps) => {
+  const wrapper = await mount<GenerateComponentsFromRow>(
+    <GenerateComponentsFromRow
+    {...props}
+    />
+  )
+  return wrapper
+}
 
+describe('GenerateComponentsFromRowProps works', () => {
   // ---- MARKDOWN COMPONENT PROPS SETUP ----
   const MARKDOWN_COL_TEST_NAME = 'MARKDOWN_COL_TEST_NAME'
   const MARKDOWN_ROW_TEST_VALUE = 'syn123'
@@ -30,7 +38,7 @@ describe('GenerateComponentsFromRowProps works', () => {
   const val2 = 'syn345'
   const val3 = 'syn456'
   const MARKDOWN_COL_MULTI_VALUE_TEST_NAME = `MARKDOWN_COL_MULTI_VALUE_TEST_NAME`
-  const MARKDOWN_COL_MULTI_VALUE_TEST_VALUE = `${val1},${val2},${val3}`
+  const MARKDOWN_COL_MULTI_VALUE_TEST_VALUE = `${val1} ,   ${val2} ,   ${val3}`
   const multiValueMarkdownSynapseConfig: RowSynapseConfig = {
     name: 'Markdown',
     columnName: MARKDOWN_COL_MULTI_VALUE_TEST_NAME,
@@ -147,7 +155,7 @@ describe('GenerateComponentsFromRowProps works', () => {
     props.synapseConfigArray = [
       markdownSynapseConfig,
     ]
-    const wrapper = mount(<GenerateComponentsFromRow {...props} />)
+    const wrapper = createMountedComponent(props)
     expect(wrapper).toBeDefined()
   })
 
@@ -155,9 +163,8 @@ describe('GenerateComponentsFromRowProps works', () => {
     props.synapseConfigArray = [
       markdownSynapseConfig,
     ]
-    const wrapper = await mount(<GenerateComponentsFromRow {...props} />)
-    // https://github.com/airbnb/enzyme/issues/1233#issuecomment-343449560
-    wrapper.update()
+    const wrapper = await createMountedComponent(props)
+    await wrapper.update()
     expect(wrapper.find(MarkdownSynapse)).toHaveLength(1)
     expect(spyOnInject).toHaveBeenCalled()
     expect(spyOnInject).toHaveBeenCalledWith(MARKDOWN_ROW_TEST_VALUE, 'Markdown', markdownSynapseConfig.props)
@@ -167,16 +174,15 @@ describe('GenerateComponentsFromRowProps works', () => {
     props.synapseConfigArray = [
       tableSynapseConfig,
     ]
-    const wrapper = await mount(<GenerateComponentsFromRow {...props} />)
-    // https://github.com/airbnb/enzyme/issues/1233#issuecomment-343449560
-    wrapper.update()
+    const wrapper = await createMountedComponent(props)
+    await wrapper.update()
     expect(wrapper.find(QueryWrapperFlattened)).toHaveLength(1)
     expect(spyOnInject).toHaveBeenCalled()
     expect(spyOnInject).toHaveBeenCalledWith(TABLE_ROW_TEST_VALUE, 'QueryWrapperFlattened', tableSynapseConfig.props)
   })
 
   it('renders a component with its props already set', async () => {
-    const propsWithInjectFalse : GenerateComponentsFromRowProps = {
+    const standaloneProps : GenerateComponentsFromRowProps = {
       searchParams: {
         study: 'syn'
       },
@@ -185,15 +191,14 @@ describe('GenerateComponentsFromRowProps works', () => {
         {...markdownSynapseConfig, standalone: true},
       ]
     }
-    const wrapper = await mount(<GenerateComponentsFromRow {...propsWithInjectFalse} />)
-    // https://github.com/airbnb/enzyme/issues/1233#issuecomment-343449560
-    wrapper.update()
+    const wrapper = await createMountedComponent(standaloneProps)
+    await wrapper.update()
     expect(wrapper.find(MarkdownSynapse)).toHaveLength(1)
     expect(spyOnInject).not.toHaveBeenCalled()
   })
 
   it('renders a component with a value that is comma delimited', async () => {
-    const propsWithInjectFalse : GenerateComponentsFromRowProps = {
+    const multivalueProps : GenerateComponentsFromRowProps = {
       searchParams: {
         study: 'syn'
       },
@@ -202,9 +207,8 @@ describe('GenerateComponentsFromRowProps works', () => {
         multiValueMarkdownSynapseConfig
       ]
     }
-    const wrapper = await mount(<GenerateComponentsFromRow {...propsWithInjectFalse} />)
-    // https://github.com/airbnb/enzyme/issues/1233#issuecomment-343449560
-    wrapper.update()
+    const wrapper = await createMountedComponent(multivalueProps)
+    await wrapper.update()
     expect(wrapper.find(MarkdownSynapse)).toHaveLength(3)
     expect(spyOnInject).toHaveBeenNthCalledWith(1, val1, 'Markdown', multiValueMarkdownSynapseConfig.props)
     expect(spyOnInject).toHaveBeenNthCalledWith(2, val2, 'Markdown', multiValueMarkdownSynapseConfig.props)
@@ -216,9 +220,7 @@ describe('GenerateComponentsFromRowProps works', () => {
     props.synapseConfigArray = [
       {...tableSynapseConfig, resolveSynId: { value: true }, tableSqlKeys: [key]}
     ]
-    const wrapper = await mount(<GenerateComponentsFromRow {...props} />)
-    // https://github.com/airbnb/enzyme/issues/1233#issuecomment-343449560
-    await wrapper.update()
+    const wrapper = await createMountedComponent(props)
     await wrapper.update()
     expect(wrapper.find(QueryWrapperFlattened)).toHaveLength(1)
     const searchParms = {
@@ -234,11 +236,9 @@ describe('GenerateComponentsFromRowProps works', () => {
     props.synapseConfigArray = [
       {...tableSynapseConfig, resolveSynId: { title: true }, tableSqlKeys: [key]}
     ]
-    const wrapper = await mount(<GenerateComponentsFromRow {...props} />)
-    // https://github.com/airbnb/enzyme/issues/1233#issuecomment-343449560
+    const wrapper = await createMountedComponent(props)
     await wrapper.update()
-    await wrapper.update()
-    expect(wrapper.find('h2').text().trim()).toEqual(`${tableSynapseConfig.title} : ${MOCK_HEADER_NAME}`)
+    expect(wrapper.find('h2').text().trim()).toEqual(`${tableSynapseConfig.title}: ${MOCK_HEADER_NAME}`)
   })
 
 })

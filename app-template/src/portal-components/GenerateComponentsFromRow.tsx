@@ -152,7 +152,7 @@ export default class GenerateComponentsFromRow extends React.Component<GenerateC
       (el: RowSynapseConfig, index) => {
         const style: React.CSSProperties = {}
         const { columnName = '' } = el
-        const isDisabled = queryResultBundle && row[mapColumnHeaderToRowIndex[columnName]] === null && !el.standalone
+        const isDisabled = queryResultBundle && !row[mapColumnHeaderToRowIndex[columnName]] && !el.standalone
         if (isDisabled) {
           style.backgroundColor = '#BBBBBC'
           style.cursor = 'not-allowed'
@@ -212,7 +212,7 @@ export default class GenerateComponentsFromRow extends React.Component<GenerateC
     }
     const split = rawValue.split(',')
     return split.map(splitString => {
-      let value = splitString;
+      let value = splitString.trim()
       let entityTitle = ''
       if (resolveSynId) {
         // use entity name as either title or value according to resolveSynId
