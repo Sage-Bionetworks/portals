@@ -4,7 +4,8 @@ import loadingScreen from '../loadingScreen'
 
 const unitDescription = 'Projects'
 const rgbIndex = 4
-const sql = 'SELECT * FROM syn17024229'
+export const projectsSql = 'SELECT * FROM syn17024229'
+const sql = projectsSql
 const facet = 'Program'
 
 export const projectCardProps = {
@@ -21,7 +22,7 @@ export const projectCardProps = {
     ],
   },
   secondaryLabelLimit: 4,
-  cardLink: {
+  titleLinkConfig: {
     baseURL: 'Explore/Projects',
     URLColumnNames: ['Grant Number']
   }

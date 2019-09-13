@@ -54,6 +54,11 @@ type RouteButtonControl = {
   props: RouteButtonControlProps
 }
 
+type GenerateComponentsFromRow = {
+  name: 'GenerateComponentsFromRow',
+  props: GenerateComponentsFromRowProps
+}
+
 type Metatdata = {
   title?: string
   link?: string
@@ -75,6 +80,7 @@ export type SynapseConfig = (
   | QueryWrapperMenu
   | UserCard 
   | Markdown 
+  | GenerateComponentsFromRow
   | NewsFeedMenu 
 ) & Metatdata
 export type SynapseConfigArray = SynapseConfig []

@@ -2,8 +2,8 @@ import { GenericRoute } from '../types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
 import { projects, studies, data, people, programs, publications, tools, news } from './synapseConfigs'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
-import { studyCardProps } from './synapseConfigs/studies'
-import { projectCardProps } from './synapseConfigs/projects'
+import { studyCardProps, studiesProgrammaticRouteConfig } from './synapseConfigs/studies'
+import { projectCardProps, projectsSql } from './synapseConfigs/projects'
 import { iconHeaderOptions } from './synapseConfigs/programs/iconOptions'
 import loadingScreen from './loadingScreen'
 import iconAgoraSvg from './style/icon-agora.svg'
@@ -88,7 +88,7 @@ const routes: GenericRoute [] = [
           props: {
             loadingScreen,
             ...projectCardProps,
-            sql: `SELECT  * FROM syn17024229`,
+            sql: projectsSql,
           }
         }
       ],
@@ -102,7 +102,7 @@ const routes: GenericRoute [] = [
             name: 'CardContainerLogic',
             isOutsideContainer: true,
             props: {
-              sql: 'SELECT * FROM syn17024229',
+              sql: projectsSql,
               isHeader: true,
               type: SynapseConstants.GENERIC_CARD,
               genericCardSchema: {
@@ -157,8 +157,9 @@ const routes: GenericRoute [] = [
               ...routeButtonControlWrapperProps.props,
               synapseConfig: studies.explorePageSynapseObject
             }
-          }
-        ]
+          },
+        ],
+        programmaticRouteConfig: studiesProgrammaticRouteConfig
       },
       {
         name: 'Data',
