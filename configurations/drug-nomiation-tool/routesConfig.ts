@@ -18,8 +18,15 @@ const routes: GenericRoute [] = [
   },
   // TODO: Put in drug nomination tool below
   {
-    name: 'Tools',
-    to: '/Tools',
+    name: 'Apply',
+    to: '/Apply',
+    isNested: false,
+    synapseConfigArray: []
+  },
+  // TODO: Put in drug nomination tool below
+  {
+    name: 'Help',
+    to: '/Help',
     isNested: false,
     synapseConfigArray: []
   },

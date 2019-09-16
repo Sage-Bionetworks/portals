@@ -118,7 +118,9 @@ export class Navbar extends React.Component<{}, NavbarState> {
     const toggleOff = this.toggleDropdown(-1)
     let currentNestedRouteCount = 0
     const { name, icon } = logoHeaderConfig
-    const logo = name ? name : <img alt="navigation logo" className="nav-logo" src={icon} />
+    let logo: JSX.Element | string = <></>
+    const imageElement = icon ? <img alt="navigation logo" className="nav-logo" src={icon} />: <></>
+    const nameElement = name ? <span style={{marginLeft: 10}}>{name}</span>: <></>
     const hostname = window.location.hostname.toLowerCase()
     // for now, we only support login in the dev environment (localstorage) or from a .synapse.org subdomain (http-only secure cookie)
     const isSynapseSubdomainOrLocal = hostname.includes('.synapse.org') || hostname.includes('127.0.0.1') || hostname.includes('localhost')
@@ -134,7 +136,7 @@ export class Navbar extends React.Component<{}, NavbarState> {
             <span onClick={toggleOff} className="menu-wall hand-cursor"/>
           }
           <div className="center-content nav-logo-container">
-            <Link onClick={goToTop} to="/" id="home-link"> {logo} </Link>
+            <Link onClick={goToTop} style={{display: 'flex', alignItems: 'center'}} to="/" id="home-link"> {imageElement} {nameElement} </Link>
           </div>
           <div className="nav-link-container">
             {
