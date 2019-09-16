@@ -69,7 +69,8 @@ class AppInitializer extends React.Component<RouteComponentProps & ReactCookiePr
       },
       account: {
         id: docTitleConfig.name
-      }
+      },
+      excludeAllText: true // Do not send DOM element text to Pendo
     })
   }
 
