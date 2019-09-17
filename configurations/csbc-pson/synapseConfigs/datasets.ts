@@ -10,10 +10,11 @@ const rgbIndex = 0
 
 export const datasetSchema: GenericCardSchema = {
   type: SynapseConstants.DATASET,
-  title: 'name',
+  title: 'portalDisplayName',
   subTitle: 'centerName',
   description: 'summary',
   secondaryLabels: [
+    'PubMed',
     'Theme',
     'studies',
     'tumorType',

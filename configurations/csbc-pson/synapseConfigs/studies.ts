@@ -10,10 +10,11 @@ const rgbIndex = 1
 
 export const studySchema: GenericCardSchema = {
   type: 'study',
-  title: 'name',
+  title: 'portalDisplayName',
   subTitle: 'centerName',
   description: 'description',
   secondaryLabels: [
+    'PubMed',
     'Theme',
     'tumorType',
     'experimentalStrategy',

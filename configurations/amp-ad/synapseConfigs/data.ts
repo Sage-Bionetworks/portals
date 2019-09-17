@@ -48,48 +48,43 @@ const data: HomeExploreConfig = {
         visibleColumnCount: 4,
       },
       facetAliases: {
-        study: 'Study',
+        study: "Study",
         species: 'Species',
         organ: 'Organ',
         dataType: 'Data Type',
         assay: 'Assay',
         diagnosis: 'Diagnosis',
+        consortium: 'Program',
       },
       menuConfig: [
         {
-          sql: 'SELECT study, dataType, assay, id AS file_id, consortium as program, grant, species, organ, tissue, cellType, fileFormat, specimenID FROM syn11346063',
+          sql: 'SELECT study as "Study", dataType as "Data Type", assay as "Assay", id AS file_id, consortium as "Program", grant as "Grant", species as "Species", organ AS "Organ", tissue, cellType, fileFormat, specimenID FROM syn11346063',
           facet: 'study',
-          facetDisplayValue: 'Study',
         },
         {
           sql:
-            'SELECT species, dataType, id as file_id, consortium as program, grant, study, organ, tissue, cellType, assay, fileFormat, specimenID FROM syn11346063',
+            'SELECT species as "Species", dataType as "Data Type", id as file_id, consortium as "Program", grant as "Grant", study as "Study", organ AS "Organ", tissue, cellType, assay as "Assay", fileFormat, specimenID FROM syn11346063',
           facet: 'species',
-          facetDisplayValue: 'Species',
         },
         {
           sql:
-            'SELECT organ, tissue, dataType, assay, id AS file_id, consortium as program, grant, study, species, cellType, specimenID FROM syn11346063',
+            'SELECT organ AS "Organ", tissue, dataType as "Data Type", assay as "Assay", id AS file_id, consortium as "Program", grant as "Grant", study as "Study", species as "Species", cellType, specimenID FROM syn11346063',
           facet: 'organ',
-          facetDisplayValue: 'Organ',
         },
         {
           sql:
-            'SELECT dataType, assay, study, id AS file_id, consortium as program, grant, species, organ, tissue, cellType, fileFormat, specimenID FROM syn11346063',
+            'SELECT dataType as "Data Type", assay as "Assay", study as "Study", id AS file_id, consortium as "Program", grant as "Grant", species as "Species", organ AS "Organ", tissue, cellType, fileFormat, specimenID FROM syn11346063',
           facet: 'dataType',
-          facetDisplayValue: 'Data Type',
         },
         {
           sql:
-            'SELECT assay, fileFormat, id AS file_id, consortium as program, grant, study, species, organ, tissue, cellType, dataType, specimenID FROM syn11346063',
+            'SELECT assay as "Assay", fileFormat, id AS file_id, consortium as "Program", grant as "Grant", study as "Study", species as "Species", organ AS "Organ", tissue, cellType, dataType as "Data Type", specimenID FROM syn11346063',
           facet: 'assay',
-          facetDisplayValue: 'Assay',
         },
         {
           sql:
-            'SELECT diagnosis, sex, dataType, assay, id as file_id, consortium as program, grant, study, species, organ, tissue, cellType, fileFormat, specimenID, anonymized_individualID FROM syn17024112',
+            'SELECT diagnosis AS "Diagnosis", sex, dataType as "Data Type", assay as "Assay", id as file_id, consortium as "Program", grant as "Grant", study as "Study", species as "Species", organ AS "Organ", tissue, cellType, fileFormat, specimenID, anonymized_individualID FROM syn17024112',
           facet: 'diagnosis',
-          facetDisplayValue: 'Diagnosis',
         }
       ]
     }
