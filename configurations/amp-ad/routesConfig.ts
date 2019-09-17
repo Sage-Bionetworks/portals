@@ -4,6 +4,7 @@ import { projects, studies, data, people, programs, publications, tools, news } 
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
 import { studyCardProps, studiesProgrammaticRouteConfig } from './synapseConfigs/studies'
 import { projectCardProps, projectsSql } from './synapseConfigs/projects'
+import { analysis } from './synapseConfigs/analysis'
 import { iconHeaderOptions } from './synapseConfigs/programs/iconOptions'
 import loadingScreen from './loadingScreen'
 import iconAgoraSvg from './style/icon-agora.svg'
@@ -22,13 +23,15 @@ const routes: GenericRoute [] = [
             { name: 'Projects', synapseConfigArray: [projects.homePageSynapseObject] },
             { name: 'Studies', synapseConfigArray: [studies.homePageSynapseObject] },
             { name: 'Data', synapseConfigArray: [data.homePageSynapseObject] },
-            { name: 'People', synapseConfigArray: [people.homePageSynapseObject] }
+            { name: 'People', synapseConfigArray: [people.homePageSynapseObject] },
+            { name: 'Analysis', synapseConfigArray: [analysis] }
           ],
           colors: [
             '#E5AE4C',
             '#5BB0B5',
             '#5171C0',
             '#D4689A',
+            '#407BA0'
           ]
         }
       },
@@ -213,6 +216,20 @@ const routes: GenericRoute [] = [
             props: {
               ...routeButtonControlWrapperProps.props,
               synapseConfig: tools
+            }
+          }
+        ]
+      },
+      {
+        name: 'Analysis',
+        isNested: false,
+        to: '/Explore/Analysis',
+        synapseConfigArray: [
+          {
+            ...routeButtonControlWrapperProps,
+            props: {
+              ...routeButtonControlWrapperProps.props,
+              synapseConfig: analysis
             }
           }
         ]
