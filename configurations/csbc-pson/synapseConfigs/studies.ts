@@ -55,7 +55,8 @@ export const studies: HomeExploreConfig = {
       unitDescription,
       cardConfiguration: {
         type: SynapseConstants.GENERIC_CARD,
-        genericCardSchema: studySchema
+        genericCardSchema: studySchema,
+        secondaryLabelLimit: 4,
       },
       stackedBarChartConfiguration: {
         loadingScreen

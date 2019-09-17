@@ -57,7 +57,8 @@ export const datasets: HomeExploreConfig = {
       unitDescription,
       cardConfiguration: {
         type: SynapseConstants.GENERIC_CARD,
-        genericCardSchema: datasetSchema
+        genericCardSchema: datasetSchema,
+        secondaryLabelLimit: 4,
       },
       stackedBarChartConfiguration: {
         loadingScreen
