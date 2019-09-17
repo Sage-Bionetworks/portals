@@ -10,10 +10,11 @@ const rgbIndex = 1
 
 export const studySchema: GenericCardSchema = {
   type: 'study',
-  title: 'name',
+  title: 'portalDisplayName',
   subTitle: 'centerName',
   description: 'description',
   secondaryLabels: [
+    'PubMed',
     'Theme',
     'tumorType',
     'experimentalStrategy',
@@ -54,7 +55,8 @@ export const studies: HomeExploreConfig = {
       unitDescription,
       cardConfiguration: {
         type: SynapseConstants.GENERIC_CARD,
-        genericCardSchema: studySchema
+        genericCardSchema: studySchema,
+        secondaryLabelLimit: 4,
       },
       stackedBarChartConfiguration: {
         loadingScreen

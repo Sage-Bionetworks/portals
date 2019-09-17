@@ -10,10 +10,11 @@ const rgbIndex = 0
 
 export const datasetSchema: GenericCardSchema = {
   type: SynapseConstants.DATASET,
-  title: 'name',
+  title: 'portalDisplayName',
   subTitle: 'centerName',
   description: 'summary',
   secondaryLabels: [
+    'PubMed',
     'Theme',
     'studies',
     'tumorType',
@@ -56,7 +57,8 @@ export const datasets: HomeExploreConfig = {
       unitDescription,
       cardConfiguration: {
         type: SynapseConstants.GENERIC_CARD,
-        genericCardSchema: datasetSchema
+        genericCardSchema: datasetSchema,
+        secondaryLabelLimit: 4,
       },
       stackedBarChartConfiguration: {
         loadingScreen
