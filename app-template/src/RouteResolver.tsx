@@ -8,7 +8,7 @@ import StatefulButtonControlWrapper from './portal-components/StatefulButtonCont
 import RouteButtonControlWrapper from './portal-components/RouteButtonControlWrapper'
 import QueryWrapperFlattened from './portal-components/QueryWrapperFlattened'
 import Layout from './portal-components/Layout'
-import GenerateComponentsFromRow from 'portal-components/GenerateComponentsFromRow';
+import GenerateComponentsFromRow from 'portal-components/GenerateComponentsFromRow'
 
 // https://basarat.gitbooks.io/typescript/docs/types/never.html
 function fail(message: string): never { throw new Error(message) }
@@ -51,7 +51,9 @@ export const generateSynapseObjectHelper = (synapseConfig: SynapseConfig) => {
   if (!SynapseComponent) {
     throw Error(`No synapse object could be mapped for ${synapseConfig.name}`)
   }
-  return <SynapseComponent {...synapseConfig.props} />
+  const component = <SynapseComponent {...synapseConfig.props} />
+  console.log('synapseConfig = ', synapseConfig)
+  return synapseConfig.style ? <div style={synapseConfig.style}> {component} </div>: <> {component} </>
 }
 
 export const generateSynapseObject = (synapseConfig: SynapseConfig, searchParams?: any) => {

@@ -23,14 +23,18 @@ const routes: GenericRoute [] = [
             { name: 'Projects', synapseConfigArray: [projects.homePageSynapseObject] },
             { name: 'Studies', synapseConfigArray: [studies.homePageSynapseObject] },
             { name: 'Data', synapseConfigArray: [data.homePageSynapseObject] },
+            { name: 'Publications', synapseConfigArray: [publications.homePageSynapseObject] },
             { name: 'People', synapseConfigArray: [people.homePageSynapseObject] },
+            { name: 'Tools', synapseConfigArray: [tools.homePageSynapseObject] },
             { name: 'Analysis', synapseConfigArray: [analysis] }
           ],
           colors: [
             '#E5AE4C',
             '#5BB0B5',
             '#5171C0',
+            '#0f9488',
             '#D4689A',
+            '#3c4a63',
             '#407BA0'
           ]
         }

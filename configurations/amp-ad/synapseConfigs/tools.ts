@@ -2,6 +2,7 @@ import { SynapseConfig } from '../../types/portal-config'
 import { GenericCardSchema } from "synapse-react-client/dist/containers/GenericCard"
 import loadingScreen from '../loadingScreen'
 import { SynapseConstants } from "synapse-react-client"
+import { HomeExploreConfig } from 'types/portal-util-types'
 
 const computationalSchema: GenericCardSchema = {
   type: 'TOOL',
@@ -94,77 +95,104 @@ const searchConfiguration = {
     },
   ]
 }
-const tools: SynapseConfig = {
-  name: 'QueryWrapperMenu',
-  props: {
-    rgbIndex: 6,
-    facetAliases,
-    accordionConfig: [
-      {
-        name: 'Computational',
-        cardConfiguration: {
-          type: SynapseConstants.GENERIC_CARD,
-          genericCardSchema: computationalSchema,
-          loadingScreen
+const rgbIndex = 6
+const unitDescription = 'Tools'
+
+const tools: HomeExploreConfig = {
+  homePageSynapseObject: {
+    name: 'QueryWrapperFlattened',
+    props: {
+      unitDescription,
+      rgbIndex,
+      loadingScreen,
+      link: 'Explore/Tools',
+      linkText: 'Explore Tools',
+      facet: 'toolType',
+      initQueryRequest : {
+        concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
+        partMask: SynapseConstants.BUNDLE_MASK_QUERY_FACETS
+          | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
+        query: {
+          sql: 'SELECT * FROM syn20337467',
+          isConsistent: true,
+          limit: 25,
+          offset: 0,
+        }
+      }
+    }
+  },
+  explorePageSynapseObject: {
+    name: 'QueryWrapperMenu',
+    props: {
+      rgbIndex: 6,
+      facetAliases,
+      accordionConfig: [
+        {
+          name: 'Computational',
+          cardConfiguration: {
+            type: SynapseConstants.GENERIC_CARD,
+            genericCardSchema: computationalSchema,
+            loadingScreen
+          },
+          searchConfiguration,
+          menuConfig: [
+            {
+              sql: computationalSql,
+              facet: 'diagnosis',
+            },
+            {
+              sql: computationalSql,
+              facet: 'grant'
+            },
+            {
+              sql: computationalSql,
+              facet: 'program'
+            },
+            {
+              sql: computationalSql,
+              facet: 'softwareType'
+            },
+            {
+              sql: computationalSql,
+            },
+          ]
         },
-        searchConfiguration,
-        menuConfig: [
-          {
-            sql: computationalSql,
-            facet: 'diagnosis',
+        {
+          name: 'Experimental',
+          cardConfiguration: {
+            type: SynapseConstants.GENERIC_CARD,
+            genericCardSchema: experimentalSchema,
+            loadingScreen
           },
-          {
-            sql: computationalSql,
-            facet: 'grant'
-          },
-          {
-            sql: computationalSql,
-            facet: 'program'
-          },
-          {
-            sql: computationalSql,
-            facet: 'softwareType'
-          },
-          {
-            sql: computationalSql,
-          },
-        ]
-      },
-      {
-        name: 'Experimental',
-        cardConfiguration: {
-          type: SynapseConstants.GENERIC_CARD,
-          genericCardSchema: experimentalSchema,
-          loadingScreen
+          searchConfiguration,
+          menuConfig: [
+            {
+              sql: experimentalSql,
+              facet: 'diagnosis'
+            },
+            {
+              sql: experimentalSql,
+              facet: 'grant'
+            },
+            {
+              sql: experimentalSql,
+              facet: 'modelType'
+            },
+            {
+              sql: experimentalSql,
+              facet: 'program'
+            },
+            {
+              sql: experimentalSql,
+              facet: 'reagentType'
+            },
+            {
+              sql: experimentalSql,
+            },
+          ]
         },
-        searchConfiguration,
-        menuConfig: [
-          {
-            sql: experimentalSql,
-            facet: 'diagnosis'
-          },
-          {
-            sql: experimentalSql,
-            facet: 'grant'
-          },
-          {
-            sql: experimentalSql,
-            facet: 'modelType'
-          },
-          {
-            sql: experimentalSql,
-            facet: 'program'
-          },
-          {
-            sql: experimentalSql,
-            facet: 'reagentType'
-          },
-          {
-            sql: experimentalSql,
-          },
-        ]
-      },
-    ]
+      ]
+    }
   }
 }
 

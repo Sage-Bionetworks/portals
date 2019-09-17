@@ -62,6 +62,7 @@ type GenerateComponentsFromRow = {
 type Metatdata = {
   title?: string
   link?: string
+  style?: React.CSSProperties
   isOutsideContainer?: booleam
 }
 

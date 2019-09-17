@@ -1,4 +1,4 @@
-import { SynapseConfig } from '../../types/portal-config'
+import { SynapseConfig, HomeExploreConfig } from '../../types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
 import loadingScreen from '../loadingScreen'
 
@@ -36,67 +36,91 @@ const facetAliases = {
   pubmed_id:'Pubmed ID'
 }
 
-const publications: SynapseConfig = {
-  name: 'QueryWrapperMenu',
-  props: {
-    rgbIndex,
-    unitDescription,
-    stackedBarChartConfiguration: {
+const publications: HomeExploreConfig = {
+  homePageSynapseObject: {
+    name: 'QueryWrapperFlattened',
+    props: {
+      unitDescription,
+      rgbIndex,
       loadingScreen,
-    },
-    name: 'Publications',
-    isConsistent: true,
-    facetAliases,
-    searchConfiguration: {
-      searchable: [
-        {
-        columnName: 'authors',
-        hintText: 'LastName'
-        },
-        {
-        columnName: 'consortium',
-        hintText: 'AMP-AD'
-        },
-        {
-        columnName: 'doi',
-        hintText: '10.1186/s13024-017-0219-3'
-        },
-        {
-        columnName: 'journal',
-        hintText: 'Alzheimers Dement'
-        },
-        {
-        columnName: 'title',
-        hintText: 'network'
-        },
-        {
-        columnName: 'year',
-        hintText: '2018'
-        },
-        {
-        columnName: 'long_amp_ad_grants',
-        hintText: 'U01AG046161'
-        },
-      ]
-    },
-    cardConfiguration: publicationCardProps,
-    menuConfig: [
-      {
-        sql,
-        facet: 'consortium',
+      link: 'Explore/Publications',
+      linkText: 'Explore Publications',
+      facet: 'consortium',
+      initQueryRequest : {
+        concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
+        partMask: SynapseConstants.BUNDLE_MASK_QUERY_FACETS
+          | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
+        query: {
+          sql,
+          isConsistent: true,
+          limit: 25,
+          offset: 0,
+        }
+      }
+    }
+  },
+  explorePageSynapseObject: {
+    name: 'QueryWrapperMenu',
+    props: {
+      rgbIndex,
+      unitDescription,
+      stackedBarChartConfiguration: {
+        loadingScreen,
       },
-      {
-        sql,
-        facet: 'year',
+      name: 'Publications',
+      isConsistent: true,
+      facetAliases,
+      searchConfiguration: {
+        searchable: [
+          {
+            columnName: 'authors',
+            hintText: 'LastName'
+          },
+          {
+            columnName: 'consortium',
+            hintText: 'AMP-AD'
+          },
+          {
+            columnName: 'doi',
+            hintText: '10.1186/s13024-017-0219-3'
+          },
+          {
+            columnName: 'journal',
+            hintText: 'Alzheimers Dement'
+          },
+          {
+            columnName: 'title',
+            hintText: 'network'
+          },
+          {
+            columnName: 'year',
+            hintText: '2018'
+          },
+          {
+            columnName: 'long_amp_ad_grants',
+            hintText: 'U01AG046161'
+          },
+        ]
       },
-      {
-        sql,
-        facet: 'long_amp_ad_grants',
-      },
-      {
-        sql,
-      },
-    ],
+      cardConfiguration: publicationCardProps,
+      menuConfig: [
+        {
+          sql,
+          facet: 'consortium',
+        },
+        {
+          sql,
+          facet: 'year',
+        },
+        {
+          sql,
+          facet: 'long_amp_ad_grants',
+        },
+        {
+          sql,
+        },
+      ],
+    }
   }
 }
 
