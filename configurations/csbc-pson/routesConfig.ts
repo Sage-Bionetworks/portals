@@ -51,6 +51,7 @@ const routes: GenericRoute [] = [
           sql: studiesSql,
           limit: homeLimit,
           type: SynapseConstants.GENERIC_CARD,
+          secondaryLabelLimit: 4,
           genericCardSchema: studySchema
         }
       },
@@ -75,6 +76,7 @@ const routes: GenericRoute [] = [
           loadingScreen,
           facetAliases,
           sql: datasetsSql,
+          secondaryLabelLimit: 4,
           limit: homeLimit,
           type: SynapseConstants.GENERIC_CARD,
           genericCardSchema: datasetSchema
