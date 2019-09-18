@@ -228,7 +228,7 @@ const routes: GenericRoute [] = [
         ]
       },
       {
-        name: 'results',
+        name: 'Results',
         isNested: false,
         to: '/Explore/results',
         synapseConfigArray: [
