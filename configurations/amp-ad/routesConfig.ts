@@ -7,7 +7,6 @@ import { projectCardProps, projectsSql } from './synapseConfigs/projects'
 import { results } from './synapseConfigs/results'
 import { iconHeaderOptions } from './synapseConfigs/programs/iconOptions'
 import loadingScreen from './loadingScreen'
-import iconAgoraSvg from './style/icon-agora.svg'
 
 const routes: GenericRoute [] = [
   {
@@ -26,7 +25,7 @@ const routes: GenericRoute [] = [
             { name: 'Publications', synapseConfigArray: [publications.homePageSynapseObject] },
             { name: 'People', synapseConfigArray: [people.homePageSynapseObject] },
             { name: 'Tools', synapseConfigArray: [tools.homePageSynapseObject] },
-            { name: 'Analysis', synapseConfigArray: [results] }
+            { name: 'Results', synapseConfigArray: [results] }
           ],
           colors: [
             '#E5AE4C',
@@ -325,15 +324,7 @@ const routes: GenericRoute [] = [
       },
       news
     ]
-  },
-  {
-    name: 'ExploreResults',
-    displayName: 'Explore Results',
-    icon: iconAgoraSvg,
-    isNested: false,
-    to: 'https://agora.ampadportal.org/genes',
-    synapseConfigArray: []
-  },
+  }
 ]
 
 export default routes
