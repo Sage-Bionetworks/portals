@@ -23,7 +23,7 @@ const routeButtonControlWrapper: SynapseConfig = {
       'Publications',
       'People',
       'Tools',
-      'Analysis'
+      'Results'
     ]
   },
 }

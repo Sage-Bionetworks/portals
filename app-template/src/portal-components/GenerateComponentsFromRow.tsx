@@ -179,7 +179,7 @@ export default class GenerateComponentsFromRow extends React.Component<GenerateC
         const id = COMPONENT_ID_PREFIX + index
         const { standalone, resolveSynId } = el
         const key = JSON.stringify(el)
-        const isFirstClass = index === 0 ? 'h2 first-title': 'h2'
+        const isFirstClass = index === 0 ? 'first-title': ''
         // don't show this title if component is rendering entity names adjacet to the title
         const title = !(resolveSynId && resolveSynId.title) && (
           <>
