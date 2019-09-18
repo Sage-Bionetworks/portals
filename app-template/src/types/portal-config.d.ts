@@ -116,7 +116,7 @@ export type GenericRoute = NestedRoute | BaseRoute
 
 // Footer - start
 export type FooterConfig = {
-  contactUs: string
+  contactUs?: string
   termsOfService: string
   forum?: string
 }
