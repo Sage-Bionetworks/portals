@@ -108,6 +108,9 @@ const tools: HomeExploreConfig = {
       link: 'Explore/Tools',
       linkText: 'Explore Tools',
       facet: 'toolType',
+      facetAliases: {
+        toolType: 'Tool Type'
+      },
       initQueryRequest : {
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
         partMask: SynapseConstants.BUNDLE_MASK_QUERY_FACETS

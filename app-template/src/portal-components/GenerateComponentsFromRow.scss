@@ -9,9 +9,25 @@ $marginTop: 40px;
     text-align: left;
     padding-left: 20px;
     color: #515359;
-    border: 1px solid rgba(26, 28, 41, 0.1);
+    border: 1px solid rgba(26,28,41,.1);
+    border-top: none;
+  }
+  .menu-row-button:nth-child(1)  {
+    border-top: 1px solid rgba(26,28,41,.1)
+  }
+  .menu-row-button:nth-child(1)  {
+    background: rgba(60, 74, 99, 0.1);
+    height: 40px;
+    width: 180px;
+    text-align: left;
+    padding-left: 20px;
+    color: #515359;
   }
   .button-container {
+    top: 100px;
+    height: fit-content;
+    margin-right: 30px;
+    position: sticky;
     flex: 1;
     margin-top: $marginTop;
   }
