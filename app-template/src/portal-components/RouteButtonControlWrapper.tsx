@@ -46,4 +46,5 @@ const RouteButtonControl:React.FunctionComponent<Props> = ({ location, synapseCo
   )
 }
 
+// @ts-ignore
 export default withRouter(RouteButtonControl)
