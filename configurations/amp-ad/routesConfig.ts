@@ -139,7 +139,11 @@ const routes: GenericRoute [] = [
           {
             name: 'CardContainerLogic',
             title: 'STUDIES',
-            props: {...studyCardProps, sql: studiesSql}
+            props: {
+              ...studyCardProps, 
+              loadingScreen,
+              sql: studiesSql
+            }
           },
         ],
         synapseConfigArray: [
