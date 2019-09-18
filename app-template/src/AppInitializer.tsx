@@ -169,4 +169,4 @@ class AppInitializer extends React.Component<RouteComponentProps & ReactCookiePr
   }
 }
 
-export default withCookies(withRouter(AppInitializer))
+export default withRouter(withCookies(AppInitializer))

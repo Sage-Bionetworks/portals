@@ -2,11 +2,11 @@ import { GenericRoute } from '../types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
 import { projects, studies, data, people, programs, publications, tools, news } from './synapseConfigs'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
-import { studyCardProps, studiesProgrammaticRouteConfig } from './synapseConfigs/studies'
+import { studyCardProps, studiesProgrammaticRouteConfig, studiesSql } from './synapseConfigs/studies'
 import { projectCardProps, projectsSql } from './synapseConfigs/projects'
+import { results } from './synapseConfigs/results'
 import { iconHeaderOptions } from './synapseConfigs/programs/iconOptions'
 import loadingScreen from './loadingScreen'
-import iconAgoraSvg from './style/icon-agora.svg'
 
 const routes: GenericRoute [] = [
   {
@@ -22,13 +22,19 @@ const routes: GenericRoute [] = [
             { name: 'Projects', synapseConfigArray: [projects.homePageSynapseObject] },
             { name: 'Studies', synapseConfigArray: [studies.homePageSynapseObject] },
             { name: 'Data', synapseConfigArray: [data.homePageSynapseObject] },
-            { name: 'People', synapseConfigArray: [people.homePageSynapseObject] }
+            { name: 'Publications', synapseConfigArray: [publications.homePageSynapseObject] },
+            { name: 'People', synapseConfigArray: [people.homePageSynapseObject] },
+            { name: 'Tools', synapseConfigArray: [tools.homePageSynapseObject] },
+            { name: 'Results', synapseConfigArray: [results] }
           ],
           colors: [
             '#E5AE4C',
             '#5BB0B5',
             '#5171C0',
+            '#0f9488',
             '#D4689A',
+            '#3c4a63',
+            '#407BA0'
           ]
         }
       },
@@ -133,7 +139,11 @@ const routes: GenericRoute [] = [
           {
             name: 'CardContainerLogic',
             title: 'STUDIES',
-            props: studyCardProps
+            props: {
+              ...studyCardProps, 
+              loadingScreen,
+              sql: studiesSql
+            }
           },
         ],
         synapseConfigArray: [
@@ -213,6 +223,20 @@ const routes: GenericRoute [] = [
             props: {
               ...routeButtonControlWrapperProps.props,
               synapseConfig: tools
+            }
+          }
+        ]
+      },
+      {
+        name: 'Results',
+        isNested: false,
+        to: '/Explore/results',
+        synapseConfigArray: [
+          {
+            ...routeButtonControlWrapperProps,
+            props: {
+              ...routeButtonControlWrapperProps.props,
+              synapseConfig: results
             }
           }
         ]
@@ -304,15 +328,7 @@ const routes: GenericRoute [] = [
       },
       news
     ]
-  },
-  {
-    name: 'ExploreResults',
-    displayName: 'Explore Results',
-    icon: iconAgoraSvg,
-    isNested: false,
-    to: 'https://agora.ampadportal.org/genes',
-    synapseConfigArray: []
-  },
+  }
 ]
 
 export default routes

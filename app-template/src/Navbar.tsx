@@ -231,6 +231,7 @@ export class Navbar extends React.Component<{}, NavbarState> {
                           Settings
                         </a>
                         <a
+                          // @ts-ignore
                           onClick={signOut}
                           className="dropdown-item SRC-primary-background-color-hover SRC-nested-color center-content border-bottom-1"
                         >

@@ -108,10 +108,15 @@ export default class GenerateComponentsFromRow extends React.Component<GenerateC
   handleMenuClick = (index: number) => {
     const wrapper = this.ref.current && this.ref.current.querySelector<HTMLDivElement>(`#${COMPONENT_ID_PREFIX}${index}`)
     if (wrapper) {
-      wrapper!.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-        inline: 'start'
+      // https://stackoverflow.com/a/49924496
+      const offset = 85;
+      const bodyRect = document.body.getBoundingClientRect().top
+      const elementRect = wrapper.getBoundingClientRect().top
+      const elementPosition = elementRect - bodyRect
+      const offsetPosition = elementPosition - offset
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
       })
     } else {
       console.error('Could not scroll to element with index ', index)
@@ -154,7 +159,7 @@ export default class GenerateComponentsFromRow extends React.Component<GenerateC
         const { columnName = '' } = el
         const isDisabled = queryResultBundle && !row[mapColumnHeaderToRowIndex[columnName]] && !el.standalone
         if (isDisabled) {
-          style.backgroundColor = '#BBBBBC'
+          style.color = '#BBBBBC'
           style.cursor = 'not-allowed'
         }
         const className = `menu-row-button ${isDisabled ?  "" : "SRC-primary-background-color-hover"}`

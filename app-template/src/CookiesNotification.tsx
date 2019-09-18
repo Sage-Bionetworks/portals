@@ -53,4 +53,4 @@ class CookiesNotification extends React.Component<Props, CookiesNotificationToke
   }
 }
 
-export default withCookies(withRouter(CookiesNotification))
+export default withRouter(withCookies(CookiesNotification))
