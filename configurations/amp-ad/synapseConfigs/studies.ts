@@ -248,6 +248,7 @@ export const studiesProgrammaticRouteConfig: SynapseConfig [] = [
       isHeader: true,
       ...studyCardProps,
       sql,
+      facetAliases,
       secondaryLabelLimit: Infinity,
       backgroundColor: '#5bb0b5',
       iconOptions: {

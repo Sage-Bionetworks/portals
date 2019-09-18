@@ -1,7 +1,7 @@
 import { SynapseConfig } from '../../types/portal-config'
 import loadingScreen from '../loadingScreen'
 
-export const analysis: SynapseConfig = {
+export const results: SynapseConfig = {
   name: 'Markdown',
   // https://www.synapse.org/#!Synapse:syn12666371/wiki/595383
   props: {
