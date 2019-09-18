@@ -2,7 +2,7 @@ import { GenericRoute } from '../types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
 import { projects, studies, data, people, programs, publications, tools, news } from './synapseConfigs'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
-import { studyCardProps, studiesProgrammaticRouteConfig } from './synapseConfigs/studies'
+import { studyCardProps, studiesProgrammaticRouteConfig, studiesSql } from './synapseConfigs/studies'
 import { projectCardProps, projectsSql } from './synapseConfigs/projects'
 import { results } from './synapseConfigs/results'
 import { iconHeaderOptions } from './synapseConfigs/programs/iconOptions'
@@ -139,7 +139,7 @@ const routes: GenericRoute [] = [
           {
             name: 'CardContainerLogic',
             title: 'STUDIES',
-            props: studyCardProps
+            props: {...studyCardProps, sql: studiesSql}
           },
         ],
         synapseConfigArray: [
