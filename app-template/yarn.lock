@@ -2545,6 +2545,10 @@ braces@^3.0.2:
   dependencies:
     fill-range "^7.0.1"
 
+brackets2dots@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/brackets2dots/-/brackets2dots-1.1.0.tgz#3f3d40375fc660ce0fd004fa27d67b34f9469ac3"
+
 brcast@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/brcast/-/brcast-3.0.1.tgz#6256a8349b20de9eed44257a9b24d71493cd48dd"
@@ -2987,6 +2991,10 @@ clone-deep@^4.0.1:
     is-plain-object "^2.0.4"
     kind-of "^6.0.2"
     shallow-clone "^3.0.0"
+
+clone@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/clone/-/clone-2.1.2.tgz#1b7f4b9f591f1e8f83670401600345a02887435f"
 
 co@^4.6.0:
   version "4.6.0"
@@ -3487,6 +3495,16 @@ currently-unhandled@^0.4.1:
   dependencies:
     array-find-index "^1.0.1"
 
+curriable@^1.1.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/curriable/-/curriable-1.3.0.tgz#cb054bc7bbc1f440cbc613527b8a05b57e19e1ab"
+
+curry2@^1.0.0:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/curry2/-/curry2-1.0.3.tgz#38191d55f1060bfea47ca08009385bb878f6612f"
+  dependencies:
+    fast-bind "^1.0.0"
+
 cyclist@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/cyclist/-/cyclist-1.0.1.tgz#596e9698fd0c80e12038c2b82d6eb1b35b6224d9"
@@ -3524,7 +3542,7 @@ debounce@^1.1.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/debounce/-/debounce-1.2.0.tgz#44a540abc0ea9943018dc0eaa95cce87f65cd131"
 
-debug@2.6.9, debug@^2.1.3, debug@^2.2.0, debug@^2.3.3, debug@^2.6.0, debug@^2.6.8, debug@^2.6.9:
+debug@2.6.9, debug@^2.1.3, debug@^2.2.0, debug@^2.3.3, debug@^2.5.2, debug@^2.6.0, debug@^2.6.8, debug@^2.6.9:
   version "2.6.9"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.9.tgz#5d128515df134ff327e90a4c93f4e077a536341f"
   dependencies:
@@ -3811,6 +3829,10 @@ dotenv-expand@4.2.0:
 dotenv@6.2.0:
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-6.2.0.tgz#941c0410535d942c8becf28d3f357dbd9d476064"
+
+dotsplit.js@^1.0.3:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/dotsplit.js/-/dotsplit.js-1.1.0.tgz#25a239eabe922a91ffa5d2a172d6c9fb82451e02"
 
 duplexer@^0.1.1:
   version "0.1.1"
@@ -4480,6 +4502,10 @@ extsprintf@^1.2.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/extsprintf/-/extsprintf-1.4.0.tgz#e2689f8f356fad62cca65a3a91c5df5f9551692f"
 
+fast-bind@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/fast-bind/-/fast-bind-1.0.0.tgz#7fa9652cb3325f5cd1e252d6cb4f160de1a76e75"
+
 fast-deep-equal@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/fast-deep-equal/-/fast-deep-equal-2.0.1.tgz#7b05218ddf9667bf7f370bf7fdb2cb15fdd0aa49"
@@ -4502,6 +4528,10 @@ fast-json-stable-stringify@^2.0.0:
 fast-levenshtein@~2.0.4:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz#3d8a5c66883a16a30ca8643e851f19baa7797917"
+
+fast-stringify@^1.1.1:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/fast-stringify/-/fast-stringify-1.1.2.tgz#f109b792d54343aec271b47882598d279402401d"
 
 faye-websocket@^0.10.0:
   version "0.10.0"
@@ -5069,6 +5099,14 @@ hash-base@^3.0.0:
   dependencies:
     inherits "^2.0.1"
     safe-buffer "^5.0.1"
+
+hash-it@^4.0.4:
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/hash-it/-/hash-it-4.0.4.tgz#43f47227128fa05f446a6748fe192a6a347f2974"
+  dependencies:
+    curriable "^1.1.0"
+    fast-stringify "^1.1.1"
+    json-prune "^1.1.0"
 
 hash.js@^1.0.0, hash.js@^1.0.3:
   version "1.1.7"
@@ -6297,6 +6335,20 @@ json-parse-better-errors@^1.0.1, json-parse-better-errors@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/json-parse-better-errors/-/json-parse-better-errors-1.0.2.tgz#bb867cfb3450e69107c131d1c514bab3dc8bcaa9"
 
+json-prune@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/json-prune/-/json-prune-1.1.0.tgz#23e2fad108932b255050e3f1a70500c2b4aa30c7"
+
+json-rules-engine@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/json-rules-engine/-/json-rules-engine-4.0.0.tgz#4671f98a58baf75fea77ec9371b147aaa6842821"
+  dependencies:
+    clone "^2.1.2"
+    events "^3.0.0"
+    hash-it "^4.0.4"
+    lodash.isobjectlike "^4.0.0"
+    selectn "^1.1.2"
+
 json-schema-traverse@^0.4.1:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/json-schema-traverse/-/json-schema-traverse-0.4.1.tgz#69f6a87d9513ab8bb8fe63bdb0979c448e684660"
@@ -6581,6 +6633,10 @@ lodash.flattendeep@^4.4.0:
 lodash.isequal@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.isequal/-/lodash.isequal-4.5.0.tgz#415c4478f2bcc30120c22ce10ed3226f7d3e18e0"
+
+lodash.isobjectlike@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/lodash.isobjectlike/-/lodash.isobjectlike-4.0.0.tgz#742c5fc65add27924d3d24191681aa9a17b2b60d"
 
 lodash.isplainobject@^4.0.6:
   version "4.0.6"
@@ -9642,6 +9698,15 @@ select-hose@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/select-hose/-/select-hose-2.0.0.tgz#625d8658f865af43ec962bfc376a37359a4994ca"
 
+selectn@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/selectn/-/selectn-1.1.2.tgz#fc8acd91df3f45acb01891c6773ae529851d6b17"
+  dependencies:
+    brackets2dots "^1.1.0"
+    curry2 "^1.0.0"
+    debug "^2.5.2"
+    dotsplit.js "^1.0.3"
+
 selfsigned@^1.9.1:
   version "1.10.6"
   resolved "https://registry.yarnpkg.com/selfsigned/-/selfsigned-1.10.6.tgz#7b3cd37ed9c2034261a173af1a1aae27d8169b67"
@@ -10297,9 +10362,9 @@ symbol-tree@^3.2.2:
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.4.tgz#430637d248ba77e078883951fb9aa0eed7c63fa2"
 
-synapse-react-client@1.12.49:
-  version "1.12.49"
-  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-1.12.49.tgz#d9d979e3c6d1441854ef36caf59d3696fc5f7113"
+synapse-react-client@1.12.51:
+  version "1.12.51"
+  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-1.12.51.tgz#d6c2bfe8c19e17d2dc3b647e9e695b1228b9cf69"
   dependencies:
     "@fortawesome/fontawesome-svg-core" "^1.2.4"
     "@fortawesome/free-solid-svg-icons" "^5.3.1"
@@ -10321,6 +10386,7 @@ synapse-react-client@1.12.49:
     browser-md5-file "^1.1.1"
     gh-pages "^2.0.0"
     i "^0.3.6"
+    json-rules-engine "^4.0.0"
     katex "^0.10.0-rc.1"
     lodash.clonedeep "^4.5.0"
     markdown-it "^8.4.2"
