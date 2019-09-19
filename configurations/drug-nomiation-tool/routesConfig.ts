@@ -21,7 +21,37 @@ const routes: GenericRoute [] = [
     name: 'Apply',
     to: '/Apply',
     isNested: false,
-    synapseConfigArray: []
+    synapseConfigArray: [
+      {
+        name: 'Markdown',
+        title: 'The PTC Compound Submission Tool',
+        props: {
+          ownerId: 'syn20717442',
+          wikiId: '595813'
+        }
+      },
+      {
+        name: 'UserFileGrid',
+        props: {
+          pathpart: "#/Apply",
+          parentContainerId: "syn20673186"
+        }
+      },
+    ],
+    programmaticRouteConfig: [
+      {
+        name: 'DrugUploadTool',
+        props: {
+          pathpart: "#/Apply",
+          parentContainerId: "syn20673186",
+          formSchemaEntityId:"syn20680102",
+          fileNamePath:"welcome.submission_name",
+          formUiSchemaEntityId:"syn20693568",
+          formNavSchemaEntityId:"syn20680027",
+          formTitle:"Your Submission",
+        }
+      },
+    ]
   },
   {
     name: 'Help',

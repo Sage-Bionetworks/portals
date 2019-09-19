@@ -9095,6 +9095,12 @@ react-spinners@^0.6.1:
   dependencies:
     "@emotion/core" "^10.0.15"
 
+react-switch@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/react-switch/-/react-switch-5.0.1.tgz#449277f4c3aed5286fffd0f50d5cbc2a23330406"
+  dependencies:
+    prop-types "^15.6.2"
+
 react-test-renderer@^16.0.0-0, react-test-renderer@^16.4.2:
   version "16.9.0"
   resolved "https://registry.yarnpkg.com/react-test-renderer/-/react-test-renderer-16.9.0.tgz#7ed657a374af47af88f66f33a3ef99c9610c8ae9"
@@ -10362,10 +10368,9 @@ symbol-tree@^3.2.2:
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.4.tgz#430637d248ba77e078883951fb9aa0eed7c63fa2"
 
-synapse-react-client@1.12.52:
-  version "1.12.52"
-  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-1.12.52.tgz#007737a0559a466121ff34c5c84603c863a720c4"
-  integrity sha512-wBFlEO0CM/OZ/ZHxAwh8+5qZTb+SZ4ZXX+TyeCelRA1O7PIM/Qdmi97KWpkY3DsJJyOIHS6ET0NZJjNswU7n7A==
+synapse-react-client@1.12.54:
+  version "1.12.54"
+  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-1.12.54.tgz#3215e937b666e1c3a9dfb86b2a5a47cf5455373c"
   dependencies:
     "@fortawesome/fontawesome-svg-core" "^1.2.4"
     "@fortawesome/free-solid-svg-icons" "^5.3.1"
@@ -10417,6 +10422,7 @@ synapse-react-client@1.12.52:
     react-plotly.js "^2.3.0"
     react-router-dom "5.0.1"
     react-scripts "^3.0.1"
+    react-switch "^5.0.1"
     react-test-renderer "^16.4.2"
     react-tooltip "^3.9.2"
     react-transition-group "2.6.0"

@@ -71,6 +71,16 @@ type NewsFeedMenu = {
   props: NewsFeedMenuProps
 }
 
+type DrugUploadTool = {
+  name: 'DrugUploadTool',
+  props: DrugUploadToolProps
+}
+
+type UserFileGridForm = {
+  name: 'UserFileGrid',
+  props: UserFileGridProps
+}
+
 export type SynapseConfig = (
     StatefulButtonControl
   | RouteButtonControl
@@ -83,6 +93,8 @@ export type SynapseConfig = (
   | Markdown 
   | GenerateComponentsFromRow
   | NewsFeedMenu 
+  | DrugUploadTool 
+  | UserFileGridForm 
 ) & Metatdata
 export type SynapseConfigArray = SynapseConfig []
 
