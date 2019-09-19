@@ -25,18 +25,21 @@
     padding: 0;
   }
   
-  a {
+  a, details > summary {
     font-weight: 700;
     color: $primary-action-color;
   }
 
   // PORTALS-700
   details > summary {
-    color: $primary-action-color !important;
     list-style: none;
     cursor: pointer;
     display: inline;
     margin-left: 2px;
+    border-bottom: 1px solid transparent;
+  }
+  details > summary:hover {
+    border-bottom: 1px solid $primary-action-color;
   }
   details > summary::-webkit-details-marker {
     display:none;
