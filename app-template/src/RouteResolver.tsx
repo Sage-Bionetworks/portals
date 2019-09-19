@@ -80,13 +80,11 @@ const RouteResolver: React.FunctionComponent<RouteComponentProps> = ({ location 
     searchParamsProps = {}
     // https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams -- needs polyfill for ie11
     const searchParams = new URLSearchParams(search)
-    const iter = searchParams.entries()
-    let result = iter.next()
-    while (!result.done) {
-      const [key, value] = result.value
-      searchParamsProps[key] = value
-      result = iter.next()
-    }
+    searchParams.forEach(
+      (value, key) => {
+        searchParamsProps[key] = value  
+      }
+    )
   }
   let synapseConfigArray: SynapseConfig [] = route.synapseConfigArray!
   const { programmaticRouteConfig } = route
