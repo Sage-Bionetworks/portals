@@ -78,7 +78,7 @@ type DrugUploadTool = {
 
 type UserFileGridForm = {
   name: 'UserFileGrid',
-  props: UserGFileGridProps
+  props: UserFileGridProps
 }
 
 export type SynapseConfig = (
