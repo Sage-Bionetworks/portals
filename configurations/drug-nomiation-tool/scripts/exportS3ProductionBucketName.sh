@@ -1,2 +1,1 @@
-# TODO
-export S3_PRODUCTION_BUCK_LOCATION=
+export S3_PRODUCTION_BUCK_LOCATION=s3://alzdrugtool.synapse.org
