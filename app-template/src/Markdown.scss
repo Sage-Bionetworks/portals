@@ -29,4 +29,19 @@
     font-weight: 700;
     color: $primary-action-color;
   }
+
+  // PORTALS-700
+  details > summary {
+    color: $primary-action-color !important;
+    list-style: none;
+    cursor: pointer;
+    display: inline;
+    margin-left: 2px;
+  }
+  details > summary::-webkit-details-marker {
+    display:none;
+  }
+  details[open] > summary {
+    display: none;
+  }
 }
