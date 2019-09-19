@@ -23,9 +23,17 @@ const routes: GenericRoute [] = [
     isNested: false,
     synapseConfigArray: [
       {
+        name: 'Markdown',
+        title: 'The PTC Compound Submission Tool',
+        props: {
+          ownerId: 'syn20717442',
+          wikiId: '595813'
+        }
+      },
+      {
         name: 'UserFileGrid',
         props: {
-          pathpart: "Apply",
+          pathpart: "#/Apply",
           parentContainerId: "syn20673186"
         }
       },
@@ -34,7 +42,7 @@ const routes: GenericRoute [] = [
       {
         name: 'DrugUploadTool',
         props: {
-          pathpart: "/Apply",
+          pathpart: "#/Apply",
           parentContainerId: "syn20673186",
           formSchemaEntityId:"syn20680102",
           fileNamePath:"welcome.submission_name",
