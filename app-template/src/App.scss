@@ -118,6 +118,10 @@ body {
   }
 }
 
+.nav-button-item {
+  font-size: 16px;
+}
+
 // if banner exists then make sure the nav sits right below it bet setting its top to the height of 
 // the banner above it
 #banner + .nav {
@@ -296,7 +300,6 @@ a.dropdown-item:hover {
   background-repeat: no-repeat;
   background-size: cover;
   height: fit-content;
-  padding: 40px;
 }
 
 .header-text {
@@ -304,12 +307,12 @@ a.dropdown-item:hover {
     font-weight: bold;
   }
   height: fit-content;
-  padding: 30px;
   color: white;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
-  width: -webkit-fill-available;
-  width: 100%;
+  padding: 30px;
+  margin-top: 30px;
+  margin-bottom: 30px;
   p {
     font-size: 16px;
   }
@@ -325,22 +328,26 @@ a.dropdown-item:hover {
 
 .explore-buttons {
   margin-top: 30px;
-  margin-bottom: 32px;
+  margin-bottom: 7px;
   text-transform: uppercase;
   display: flex;
   align-content: center;
-  justify-content: center;
+  justify-content: space-between;
   button {
     text-transform: uppercase;
     border-radius: 6px;
-    flex-basis: 18%;
+    letter-spacing: 0.4px; /* make buttons more readable */
+    flex-basis: 22%; /* make buttons wider on home page */
     margin: 0px 16px;
     border: none;
     position: relative;
     height: 50px;
     color: white;
-    &:nth-child(1) {
+    &:first-child {
       margin-left: 0px;
+    }
+    &:last-child {
+      margin-right: 0px;
     }
     // caret dropdown
     &.active-button::after {
@@ -368,9 +375,9 @@ a.dropdown-item:hover {
 // title
 .title {
   text-transform: uppercase;
-  font-weight: bold;
+  font-weight: 700;
   font-size: 21px;
-  margin: 20px 0px;
+  margin: 49px 0 14px 0;
 }
 // end title
 // home page utils

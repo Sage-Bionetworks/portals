@@ -1,6 +1,15 @@
 $marginTop: 40px;
 
 .GenerateComponentsFromRow {
+  // keeps h2 in markdown and in this component the same
+  .h2, h2 {
+    font-size: 21px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #515359;
+    margin-top: 42px;
+  }
+
   display: flex;
   .menu-row-button  {
     background: rgba(60, 74, 99, 0.1);

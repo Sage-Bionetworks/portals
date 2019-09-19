@@ -230,7 +230,7 @@ const routes: GenericRoute [] = [
       {
         name: 'Results',
         isNested: false,
-        to: '/Explore/results',
+        to: '/Explore/Results',
         synapseConfigArray: [
           {
             ...routeButtonControlWrapperProps,

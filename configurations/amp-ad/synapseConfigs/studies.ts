@@ -174,6 +174,7 @@ export const studiesGenerateComponentsFromRowProps: GenerateComponentsFromRowPro
       },
       tableSqlKeys: ['study'],
       props: {
+        sqlOperator: '=',
         initQueryRequest: {
           partMask: SynapseConstants.BUNDLE_MASK_QUERY_FACETS
           | SynapseConstants.BUNDLE_MASK_QUERY_COUNT
@@ -205,6 +206,7 @@ export const studiesGenerateComponentsFromRowProps: GenerateComponentsFromRowPro
       },
       tableSqlKeys: ['study'],
       props: {
+        sqlOperator: '=',
         initQueryRequest: {
           partMask: SynapseConstants.BUNDLE_MASK_QUERY_FACETS
           | SynapseConstants.BUNDLE_MASK_QUERY_COUNT
