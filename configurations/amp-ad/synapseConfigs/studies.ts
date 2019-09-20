@@ -194,7 +194,7 @@ export const studiesGenerateComponentsFromRowProps: GenerateComponentsFromRowPro
         },
         loadingScreen,
         facetAliases,
-        rgbIndex: 1,
+        rgbIndex,
         unitDescription: 'Files',
         synapseId: 'syn11346063',
         title: 'Metadata Files'
@@ -227,7 +227,7 @@ export const studiesGenerateComponentsFromRowProps: GenerateComponentsFromRowPro
         },
         loadingScreen,
         facetAliases,
-        rgbIndex: 1,
+        rgbIndex,
         synapseId: 'syn11346063',
         title: 'Data Files'
       }

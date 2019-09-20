@@ -474,14 +474,6 @@ div.SRC-marginBottomTen {
   }
 }
 
-// workaround for bootstrap 3.3 having no x-lg class
-@media (min-width: 1440px) {
-  .row {
-    max-width: 1440px;
-    margin: auto;
-  }
-}
-
 .queryCountHeader {
   margin-top: 15px;
   margin-bottom: -15px;
