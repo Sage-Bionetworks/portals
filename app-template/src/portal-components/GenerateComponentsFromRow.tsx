@@ -109,7 +109,7 @@ export default class GenerateComponentsFromRow extends React.Component<GenerateC
     const wrapper = this.ref.current && this.ref.current.querySelector<HTMLDivElement>(`#${COMPONENT_ID_PREFIX}${index}`)
     if (wrapper) {
       // https://stackoverflow.com/a/49924496
-      const offset = 85;
+      const offset = 85
       const bodyRect = document.body.getBoundingClientRect().top
       const elementRect = wrapper.getBoundingClientRect().top
       const elementPosition = elementRect - bodyRect

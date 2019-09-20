@@ -118,7 +118,6 @@ export class Navbar extends React.Component<{}, NavbarState> {
     const toggleOff = this.toggleDropdown(-1)
     let currentNestedRouteCount = 0
     const { name, icon } = logoHeaderConfig
-    let logo: JSX.Element | string = <></>
     const imageElement = icon ? <img alt="navigation logo" className="nav-logo" src={icon} />: <></>
     const nameElement = name ? <span style={{marginLeft: 10}}>{name}</span>: <></>
     const hostname = window.location.hostname.toLowerCase()
@@ -270,7 +269,7 @@ export class Navbar extends React.Component<{}, NavbarState> {
                                     return (<Link
                                       key={route.name}
                                       onClick={toggleDropdown}
-                                      className="dropdown-item SRC-primary-background-color-hover SRC-nested-color center-content"
+                                      className="nav-button-item dropdown-item SRC-primary-background-color-hover SRC-nested-color center-content"
                                       to={route.to!}
                                     >
                                       {routeDisplayName}

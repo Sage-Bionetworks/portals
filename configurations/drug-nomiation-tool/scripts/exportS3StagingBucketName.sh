@@ -1,2 +1,1 @@
-# TODO
-export S3_STAGING_BUCKET_LOCATION=
+export S3_STAGING_BUCKET_LOCATION=s3://staging.alzdrugtool.synapse.org

@@ -194,7 +194,7 @@ const routes: GenericRoute [] = [
             ...routeButtonControlWrapperProps,
             props: {
               ...routeButtonControlWrapperProps.props,
-              synapseConfig: publications
+              synapseConfig: publications.explorePageSynapseObject
             }
           }
         ]
@@ -222,7 +222,7 @@ const routes: GenericRoute [] = [
             ...routeButtonControlWrapperProps,
             props: {
               ...routeButtonControlWrapperProps.props,
-              synapseConfig: tools
+              synapseConfig: tools.explorePageSynapseObject
             }
           }
         ]
@@ -230,7 +230,7 @@ const routes: GenericRoute [] = [
       {
         name: 'Results',
         isNested: false,
-        to: '/Explore/results',
+        to: '/Explore/Results',
         synapseConfigArray: [
           {
             ...routeButtonControlWrapperProps,
