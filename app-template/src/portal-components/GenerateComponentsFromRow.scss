@@ -55,22 +55,4 @@ $marginTop: 40px;
   .first-title {
     margin-top: $marginTop;
   }
-  // stack menu and components, expand menu buttons full screen
-  @media screen and (max-height: 729px) {
-    flex-direction: column;
-    .button-container {
-      display: flex;
-      flex-direction: column;
-      & > {
-        flex: 1;
-      }
-    }
-    .component-container {
-      flex: 1;
-    }
-    .menu-row-button {
-      width: auto;
-      text-align: center;
-    }
-  }
 }
