@@ -9,7 +9,7 @@ const routeButtonControlWrapper: SynapseConfig = {
       '#6c5c97',
       '#E5AE4C',
       '#5BB0B5',
-      '#5171C0',
+      '#407BA0',
       '#0f9488',
       '#D4689A',
       '#3C4A63',

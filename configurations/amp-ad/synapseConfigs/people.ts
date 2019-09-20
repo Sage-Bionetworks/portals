@@ -42,6 +42,9 @@ const people: HomeExploreConfig = {
       cardConfiguration: {
         type: SynapseConstants.MEDIUM_USER_CARD,
       },
+      facetAliases: {
+        institution: 'Institution'
+      },
       menuConfig: [
         {
           sql,
@@ -54,7 +57,6 @@ const people: HomeExploreConfig = {
         {
           sql,
           facet: 'institution',
-          facetDisplayValue: 'Institution',
         },
       ]
     }

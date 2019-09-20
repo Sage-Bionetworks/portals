@@ -39,6 +39,9 @@ export const studyCardProps: CommonCardProps =  {
 const facetAliases = {
   Consortium: 'Program',
   DataType_All: 'Data Types',
+  Data_Contributor: 'Data Contributor',
+  Study_Description: 'Study Description',
+  Study_Name: 'Study Name',
   Diagnosis_or_Model_System: 'Diagnosis',
   Number_of_Individuals: 'Individuals',
   Sample_Type: 'Tissue'
