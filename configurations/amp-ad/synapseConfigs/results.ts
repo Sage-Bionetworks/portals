@@ -11,6 +11,6 @@ export const results: SynapseConfig = {
   },
   style: {
     border: '1px solid #C4C4C4',
-    marginTop: 5
+    marginTop: 30
   }
 }
