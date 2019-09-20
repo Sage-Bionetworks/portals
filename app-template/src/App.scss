@@ -328,7 +328,7 @@ a.dropdown-item:hover {
 
 .explore-buttons {
   margin-top: 30px;
-  margin-bottom: 7px;
+  margin-bottom: 30px;
   text-transform: uppercase;
   display: flex;
   align-content: center;
@@ -338,7 +338,7 @@ a.dropdown-item:hover {
     border-radius: 6px;
     letter-spacing: 0.4px; /* make buttons more readable */
     flex-basis: 22%; /* make buttons wider on home page */
-    margin: 0px 16px;
+    margin: 0px 8px;
     border: none;
     position: relative;
     height: 50px;
