@@ -8,7 +8,6 @@ const routes: GenericRoute [] = [
     synapseConfigArray: [
       {
         name: 'Markdown',
-        title: 'Title',
         props: {
           ownerId: 'syn20717442',
           wikiId: '595390'
@@ -84,8 +83,23 @@ const routes: GenericRoute [] = [
           }
         }]
       },
-    ]
+    ],
   },
+  {
+    name: 'Terms',
+    to: '/Terms',
+    isNested: false,
+    hideRouteFromNavbar: true,
+    synapseConfigArray: [
+      {
+        name : 'Markdown',
+        props: {
+          ownerId: 'syn20717442',
+          wikiId: '596040'
+        }
+      }
+    ]
+  }
 ]
 
 export default routes
