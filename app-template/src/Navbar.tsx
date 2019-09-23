@@ -229,14 +229,14 @@ export class Navbar extends React.Component<{}, NavbarState> {
                         >
                           Settings
                         </a>
-                        <a
+                        <button
                           // @ts-ignore
-                          onClick={signOut}
+                          onClick={() => signOut()}
                           role="button"
                           className="dropdown-item SRC-primary-background-color-hover SRC-nested-color center-content border-bottom-1 hand-cursor"
                         >
                           Sign Out
-                        </a>
+                        </button>
                       </div>
                     }
                     </div>
