@@ -186,7 +186,7 @@ export const studiesGenerateComponentsFromRowProps: GenerateComponentsFromRowPro
           ,
           concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
           query: {
-            sql: "SELECT id, dataType FROM syn11346063 WHERE `dataSubtype` = 'metadata'",
+            sql: "SELECT id, metadataType, dataType, assay FROM syn11346063 WHERE `dataSubtype` = 'metadata'",
             isConsistent: true,
             limit: 25,
             offset: 0
