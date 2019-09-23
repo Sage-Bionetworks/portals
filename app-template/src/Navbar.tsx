@@ -232,7 +232,8 @@ export class Navbar extends React.Component<{}, NavbarState> {
                         <a
                           // @ts-ignore
                           onClick={signOut}
-                          className="dropdown-item SRC-primary-background-color-hover SRC-nested-color center-content border-bottom-1"
+                          role="button"
+                          className="dropdown-item SRC-primary-background-color-hover SRC-nested-color center-content border-bottom-1 hand-cursor"
                         >
                           Sign Out
                         </a>
@@ -246,6 +247,9 @@ export class Navbar extends React.Component<{}, NavbarState> {
                 (el) => {
                   const displayName = el.displayName ? el.displayName : el.name
                   const icon = <img style={{ padding: '0px 4px' }} src={el.icon}/>
+                  if (el.hideRouteFromNavbar) {
+                    return false
+                  }
                   if (el.isNested) {
                     // handle the case when the menu has sub options
                     const plainRoutes = el.routes as GenericRoute []
