@@ -13,7 +13,7 @@ export const Footer:React.SFC<{}> = () => {
         <Link onClick={goToTop} to="/" id="footer-logo-link"> {logo} </Link>
       </div>
       <div id="portal-contact-footer" className="center-content">
-        <a rel="noopener noreferrer" target="_blank" href={footerConfig.termsOfService} className="footer-item"> Terms of Service </a>
+        <a rel="noopener noreferrer" target={footerConfig.termsOfService.charAt(0) === '/' ? "_self" : "_blank"} href={footerConfig.termsOfService} className="footer-item"> Terms of Service </a>
         {footerConfig.contactUs && <a rel="noopener noreferrer" href={footerConfig.contactUs} className="footer-item"> Contact Us </a>}
         {footerConfig.forum && <a href={footerConfig.forum} className="footer-item"> Forum </a>}
         <button className="footer-item" id="pendo-help-us-improve"> Help Us Improve </button>
