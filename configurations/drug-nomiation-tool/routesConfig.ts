@@ -99,7 +99,23 @@ const routes: GenericRoute [] = [
         }
       }
     ]
-  }
+  },
+  // https://www.synapse.org/#!Synapse:syn20717442/wiki/596047
+  {
+    name: 'Contact Us',
+    to: '/Contact Us',
+    isNested: false,
+    hideRouteFromNavbar: true,
+    synapseConfigArray: [
+      {
+        name : 'Markdown',
+        props: {
+          ownerId: 'syn20717442',
+          wikiId: '596047'
+        }
+      }
+    ]
+  },
 ]
 
 export default routes

@@ -386,27 +386,6 @@ a.dropdown-item:hover {
   padding: 20px 0px;
 }
 
-.viewAll {
-  z-index: 5;
-  margin-right: 15px;
-  border-radius: 24px;
-  background-color: #DFDFDF;
-  color: black;
-  width: 130px;
-  height: 40px;
-  position: absolute;
-  right: 0;
-  text-align: center;
-  justify-content: center;
-  &:hover {
-    @extend %hoverFade;
-    background-color: $primary-action-color;
-    color: white;
-    text-decoration: none;
-    @extend %defaultBoxShadow;
-  }
-}
-
 .bar-loader {
   display: flex;
   justify-content: center;
@@ -415,16 +394,6 @@ a.dropdown-item:hover {
 }
 
 // end home page utils
-
-// override src view more
-
-.SRC-viewMoreButton {
-  border-width: 0px;
-  &:hover {
-    @extend %hoverFade;
-    @extend %defaultBoxShadow;
-  }
-}
 
 // override synapse table label, TODO: add specific class that can get targeted instead
 div.SRC-marginBottomTen {

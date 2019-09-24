@@ -11,7 +11,8 @@ export type AppInitializerToken = {
 declare var pendo: any
 export const TokenContext = React.createContext('')
 
-class AppInitializer extends React.Component<RouteComponentProps & ReactCookieProps, AppInitializerToken> {
+type Props = RouteComponentProps & ReactCookieProps
+class AppInitializer extends React.Component<Props, AppInitializerToken> {
 
   constructor(props: any) {
     super(props)
@@ -78,7 +79,7 @@ class AppInitializer extends React.Component<RouteComponentProps & ReactCookiePr
     window.removeEventListener('click', this.updateSynapseCallbackCookie)
   }
 
-  componentDidUpdate(prevProps: any) {
+  componentDidUpdate(prevProps: Props) {
     // https://github.com/ReactTraining/react-router/blob/master/packages/react-router-dom/docs/guides/scroll-restoration.md
     if (this.props.location !== prevProps.location) {
       // scroll to the top
