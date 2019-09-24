@@ -1,7 +1,13 @@
 @import "config/style/overides";
 
-// Ljubo edits to Markdown
+// TODO: This styling should eventually be part of the standard markdown rendering across the portals and synapse.org
+// Its starting to diverge from synapse.org markdown styling, since there has been a lot of wikis made specifically
+// for the synapse.org styling I'm keeping this seperate so the new properties can be easily tracked and tied to 
+// specific JIRA issues.
+
 .markdown {
+  color: #515359 !important;
+  
   .h2, h2 {
     font-size: 21px;
     text-transform: uppercase;
@@ -26,7 +32,8 @@
     padding: 0;
   }
   
-  a, details > summary {
+  // only select anchors without SRC-primary-button class
+  a:not(.SRC-primary-button), details > summary {
     font-weight: 700;
     color: $primary-action-color;
   }
@@ -59,4 +66,34 @@
 			visibility: visible;
 		}
 	}
+}
+
+// PORTALS-679
+.markdown p {
+  margin: 0;
+  padding-bottom: 12px;
+  font-size: 15px;
+  line-height: 23px;
+}
+
+.markdown p a {
+  color: #4d5491; /* action color */
+  font-weight: 700;
+}
+
+.markdown h4 {
+  padding: 7px 0 14px 0;
+  margin: 0;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 120%;
+}
+.markdown h5 {
+  padding: 0;
+  margin: 0;
+  color: #ABABAC; /* deemphasized color */
+}
+
+.title + .markdown {
+  margin-top: 42px;
 }
