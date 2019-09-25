@@ -129,6 +129,7 @@ const tools: HomeExploreConfig = {
     props: {
       rgbIndex: 6,
       facetAliases,
+      name: 'Tools',
       accordionConfig: [
         {
           name: 'Computational',
