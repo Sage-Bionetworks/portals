@@ -45,6 +45,7 @@ const routes: GenericRoute [] = [
       {
         name: 'Markdown',
         title: "WHAT'S NEW",
+        className: 'whats-new',
         props: {
           ownerId:'syn12666371',
           wikiId:'582408'

@@ -97,3 +97,22 @@
 .title + .markdown {
   margin-top: 42px;
 }
+
+
+// 
+/* Makes table layout better overall*/
+.markdowntable td, .markdowntable th {
+  padding: 10px;
+}
+
+/* fixes visual hierarchy overall, particularly on About page */
+.markdown h4 {
+  font-size: 16px;
+}
+
+/* If we can scope this to just News page it would be ideal, but not required for now*/
+.whats-new {
+  .markdown p + h5 {
+    margin-top: 21px;
+  }
+}

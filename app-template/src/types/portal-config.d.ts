@@ -63,7 +63,8 @@ type Metatdata = {
   title?: string
   link?: string
   style?: React.CSSProperties
-  isOutsideContainer?: booleam
+  isOutsideContainer?: boolean
+  className?: string
 }
 
 type NewsFeedMenu = {

@@ -52,7 +52,15 @@ export const generateSynapseObjectHelper = (synapseConfig: SynapseConfig) => {
     throw Error(`No synapse object could be mapped for ${synapseConfig.name}`)
   }
   const component = <SynapseComponent {...synapseConfig.props} />
-  return synapseConfig.style ? <div style={synapseConfig.style}> {component} </div>: <> {component} </>
+  const {
+    style,
+    className
+  } = synapseConfig
+  if (style || className) {
+    return <div className={className} style={style}> {component} </div>
+  } else {
+    return component
+  }
 }
 
 export const generateSynapseObject = (synapseConfig: SynapseConfig, searchParams?: any) => {
