@@ -43,14 +43,16 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
                 this.initializePendo(userProfile.ownerId, `${userProfile.userName}@synapse.org`)
               })
             }
-          )
+          ).catch(err => {
+            console.log('err on putRefreshSessionToken = ', err)
+            SynapseClient.signOut()
+          })
         }
       }).catch((_err) => {
         console.log('no token from cookie could be fetched ', _err)
         this.initializePendo()
         // Clear their session token since its stale, components below can then safely check if the user is signed
         // by checking if token is defined or not
-        SynapseClient.signOut()
       })
     // Technically, the AppInitializer is only mounted once during the portal app lifecycle.
     // But it's best practice to clean up the global listener on component unmount.
