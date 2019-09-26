@@ -131,7 +131,6 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
             }
           })
         }
-        {this.props.children}
       </TokenContext.Provider>
     )
   }
