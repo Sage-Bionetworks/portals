@@ -100,13 +100,8 @@ const RouteResolver: React.FunctionComponent<RouteComponentProps> = ({ location 
   if (search && programmaticRouteConfig) {
     synapseConfigArray = programmaticRouteConfig
   }
-  let newTitle: string
-  if (route.name === 'Home') {
-    newTitle = docTitleConfig.name
-  } else {
-    newTitle = route.displayName ? route.displayName : route.name
-  }
-    
+  const pageName: string = route.displayName ? route.displayName : route.name
+  const newTitle: string = `${docTitleConfig.name} - ${pageName}`
   if (document.title !== newTitle) {
     document.title = newTitle
   }
