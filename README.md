@@ -2,7 +2,7 @@
 
 app-template/ is the main react app template that reads a standard configuration file.
 
-configurations/ is a directory of configurations for portal development.
+configurations/ is a directory of configurations for portal development. See configurations/README.md on local developement.
 
 # Build Process
 ./run.sh

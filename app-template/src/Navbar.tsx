@@ -16,11 +16,15 @@ export type NavbarState = {
   [index:string]: any,
   token: string | undefined,
   userprofile: UserProfile | undefined,
-  showLoginDialog: boolean,
+}
+export type InternalNavbarProps = {
+  showLoginDialog: boolean
+  onSignIn: Function
+  handleCloseLoginDialog: Function
 }
 export class Navbar extends React.Component<{}, NavbarState> {
 
-  constructor(props: any) {
+  constructor(props: InternalNavbarProps) {
     super(props)
     const numNestedRoutes = routesConfig.filter(el => el.isNested).length
     const state: NavbarState = {
@@ -67,19 +71,7 @@ export class Navbar extends React.Component<{}, NavbarState> {
       usermenu: !this.state.usermenu
     })
   }
-
-  onSignIn = (_event: any) => {
-    this.setState({
-      showLoginDialog: true
-    })
-  }
-
-  handleCloseLoginDialog = () => {
-    this.setState({
-      showLoginDialog: false
-    })
-  }
-
+  
   // given the hash, decide if the link should have a bottom border
   getBorder = (name: string) => {
     if (name === '') {
@@ -115,6 +107,11 @@ export class Navbar extends React.Component<{}, NavbarState> {
   render() {
     const goToTop = (_event:any) => { window.scroll({ top: 0 }) }
     const { hasDropdownOpen } = this.state
+    const {
+      onSignIn,
+      handleCloseLoginDialog,
+      showLoginDialog
+    } = this.props as InternalNavbarProps
     const toggleOff = this.toggleDropdown(-1)
     let currentNestedRouteCount = 0
     const { name, icon } = logoHeaderConfig
@@ -145,11 +142,15 @@ export class Navbar extends React.Component<{}, NavbarState> {
                   <button
                     id="signin-button"
                     className="SRC-primary-text-color-background"
-                    onClick={this.onSignIn}
+                    // @ts-ignore
+                    onClick={onSignIn}
                   >
                     SIGN&nbsp;IN
                   </button>
-                  <Dialog onClose={this.handleCloseLoginDialog} open={this.state.showLoginDialog}>
+                  <Dialog 
+                    // @ts-ignore
+                    onClose={handleCloseLoginDialog}
+                    open={showLoginDialog}>
                     <SynapseComponents.Login
                         token={this.state.token}
                         theme={'light'}

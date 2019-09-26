@@ -1,23 +1,25 @@
 import * as React from 'react'
 import { withRouter, RouteComponentProps } from 'react-router-dom'
 import docTitleConfig from './config/docTitleConfig'
-import { SynapseClient } from 'synapse-react-client'
+import { SynapseClient, SynapseConstants } from 'synapse-react-client'
 import { withCookies, ReactCookieProps } from 'react-cookie'
 import { DOWNLOAD_FILES_MENU_TEXT }  from 'synapse-react-client/dist/containers/SynapseTable';
-export type AppInitializerToken = {
+export type AppInitializerState = {
   token: string
+  showLoginDialog: boolean
 }
 // pendo's declaration should be picked up by node_modules/@types/pendo-io-browser but is not
 declare var pendo: any
 export const TokenContext = React.createContext('')
 
 type Props = RouteComponentProps & ReactCookieProps
-class AppInitializer extends React.Component<Props, AppInitializerToken> {
+class AppInitializer extends React.Component<Props, AppInitializerState> {
 
-  constructor(props: any) {
+  constructor(props: Props) {
     super(props)
     this.state = {
-      token: ''
+      token: '',
+      showLoginDialog: false
     }
     this.initializePendo = this.initializePendo.bind(this)
     this.updateSynapseCallbackCookie = this.updateSynapseCallbackCookie.bind(this)
@@ -46,6 +48,9 @@ class AppInitializer extends React.Component<Props, AppInitializerToken> {
       }).catch((_err) => {
         console.log('no token from cookie could be fetched ', _err)
         this.initializePendo()
+        // Clear their session token since its stale, components below can then safely check if the user is signed
+        // by checking if token is defined or not
+        SynapseClient.signOut()
       })
     // Technically, the AppInitializer is only mounted once during the portal app lifecycle.
     // But it's best practice to clean up the global listener on component unmount.
@@ -80,6 +85,18 @@ class AppInitializer extends React.Component<Props, AppInitializerToken> {
   componentWillUnmount() {
     window.removeEventListener('click', this.updateSynapseCallbackCookie)
   }
+  
+  onSignIn = (_event: any) => {
+    this.setState({
+      showLoginDialog: true
+    })
+  }
+
+  handleCloseLoginDialog = () => {
+    this.setState({
+      showLoginDialog: false
+    })
+  }
 
   componentDidUpdate(prevProps: Props) {
     // https://github.com/ReactTraining/react-router/blob/master/packages/react-router-dom/docs/guides/scroll-restoration.md
@@ -102,7 +119,20 @@ class AppInitializer extends React.Component<Props, AppInitializerToken> {
   render() {
     return (
       <TokenContext.Provider value={this.state.token}>
-        {this.props.children}
+        {
+          React.Children.map(this.props.children, (child: any) => {
+            if (!child) {
+              return false
+            } else {
+              const props = {
+                showLoginDialog: this.state.showLoginDialog,
+                show: this.onSignIn,
+                handleCloseLoginDialog: this.handleCloseLoginDialog
+              }
+              return React.cloneElement(child, props)
+            }
+          })
+        }
       </TokenContext.Provider>
     )
   }
@@ -122,6 +152,12 @@ class AppInitializer extends React.Component<Props, AppInitializerToken> {
     if (ev.target instanceof HTMLAnchorElement) {
       const anchorElement = ev.target as HTMLAnchorElement
       isInvokingDownloadTable = anchorElement.text === DOWNLOAD_FILES_MENU_TEXT
+    }
+    if (ev.target instanceof HTMLButtonElement) {
+      const buttonElement = ev.target as HTMLButtonElement
+      if (buttonElement.classList.contains(SynapseConstants.SRC_SIGN_IN_CLASS)) {
+        this.setState({ showLoginDialog: true })
+      }
     }
     let color = 'white'
     let background = '#4db7ad'
