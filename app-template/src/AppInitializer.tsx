@@ -50,7 +50,7 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
             }
           ).catch(err => {
             console.log('err on putRefreshSessionToken = ', err)
-            // SynapseClient.signOut()
+            SynapseClient.signOut()
           })
         }
       }).catch((_err) => {
@@ -94,7 +94,6 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
   }
   
   onSignIn = (_event: any) => {
-    console.log('onsign called')
     this.setState({
       showLoginDialog: true
     })
