@@ -13,6 +13,13 @@ declare var pendo: any
 export const TokenContext = React.createContext('')
 
 type Props = RouteComponentProps & ReactCookieProps
+
+export type SignInProps = {
+  showLoginDialog: boolean
+  onSignIn: Function
+  handleCloseLoginDialog: Function
+}
+
 class AppInitializer extends React.Component<Props, AppInitializerState> {
 
   constructor(props: Props) {
@@ -43,7 +50,7 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
             }
           ).catch(err => {
             console.log('err on putRefreshSessionToken = ', err)
-            SynapseClient.signOut()
+            // SynapseClient.signOut()
           })
         }
       }).catch((_err) => {
@@ -87,6 +94,7 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
   }
   
   onSignIn = (_event: any) => {
+    console.log('onsign called')
     this.setState({
       showLoginDialog: true
     })
@@ -124,9 +132,9 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
             if (!child) {
               return false
             } else {
-              const props = {
+              const props: SignInProps = {
                 showLoginDialog: this.state.showLoginDialog,
-                show: this.onSignIn,
+                onSignIn: this.onSignIn,
                 handleCloseLoginDialog: this.handleCloseLoginDialog
               }
               return React.cloneElement(child, props)

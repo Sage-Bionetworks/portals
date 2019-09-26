@@ -6,7 +6,7 @@ import logoHeaderConfig from './config/logoHeaderConfig'
 import Dialog from '@material-ui/core/Dialog'
 import { SynapseComponents, SynapseClient, SynapseConstants } from 'synapse-react-client'
 import UserCard from 'synapse-react-client/dist/containers/UserCard'
-import * as AppInitializer from './AppInitializer'
+import { TokenContext, SignInProps } from './AppInitializer'
 import SvgIcon from '@material-ui/core/SvgIcon'
 import { signOut } from 'synapse-react-client/dist/utils/SynapseClient'
 import { UserProfile } from 'synapse-react-client/dist/utils/jsonResponses/UserProfile'
@@ -17,14 +17,10 @@ export type NavbarState = {
   token: string | undefined,
   userprofile: UserProfile | undefined,
 }
-export type InternalNavbarProps = {
-  showLoginDialog: boolean
-  onSignIn: Function
-  handleCloseLoginDialog: Function
-}
+
 export class Navbar extends React.Component<{}, NavbarState> {
 
-  constructor(props: InternalNavbarProps) {
+  constructor(props: SignInProps) {
     super(props)
     const numNestedRoutes = routesConfig.filter(el => el.isNested).length
     const state: NavbarState = {
@@ -111,7 +107,7 @@ export class Navbar extends React.Component<{}, NavbarState> {
       onSignIn,
       handleCloseLoginDialog,
       showLoginDialog
-    } = this.props as InternalNavbarProps
+    } = this.props as SignInProps
     const toggleOff = this.toggleDropdown(-1)
     let currentNestedRouteCount = 0
     const { name, icon } = logoHeaderConfig
@@ -304,4 +300,4 @@ export class Navbar extends React.Component<{}, NavbarState> {
     )
   }
 }
-Navbar.contextType = AppInitializer.TokenContext
+Navbar.contextType = TokenContext
