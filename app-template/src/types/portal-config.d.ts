@@ -139,6 +139,7 @@ export type FooterConfig = {
 // DocTitleConfig - start
 export type DocTitleConfig = {
   name: string
+  description: string
 }
 // DocTitleConfig - end
 
