@@ -9,6 +9,7 @@ import RouteButtonControlWrapper from './portal-components/RouteButtonControlWra
 import QueryWrapperFlattened from './portal-components/QueryWrapperFlattened'
 import Layout from './portal-components/Layout'
 import GenerateComponentsFromRow from 'portal-components/GenerateComponentsFromRow'
+import docTitleConfig from './config/docTitleConfig'
 
 // https://basarat.gitbooks.io/typescript/docs/types/never.html
 function fail(message: string): never { throw new Error(message) }
@@ -99,6 +100,12 @@ const RouteResolver: React.FunctionComponent<RouteComponentProps> = ({ location 
   if (search && programmaticRouteConfig) {
     synapseConfigArray = programmaticRouteConfig
   }
+  const pageName: string = route.displayName ? route.displayName : route.name
+  const newTitle: string = `${docTitleConfig.name} - ${pageName}`
+  if (document.title !== newTitle) {
+    document.title = newTitle
+  }
+
   return (
     <React.Fragment>
       {synapseConfigArray!.map(

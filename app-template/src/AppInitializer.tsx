@@ -27,6 +27,8 @@ class AppInitializer extends React.Component<Props, AppInitializerToken> {
     if (document.title !== docTitleConfig.name) {
       document.title = docTitleConfig.name
     }
+    document.querySelector('meta[name="description"]')!.setAttribute("content", docTitleConfig.description)
+
     // we return the chained promises so that any caught error is propogated to the last catch statement
     SynapseClient.getSessionTokenFromCookie().then(
       (sessionToken) => {
