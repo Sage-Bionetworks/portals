@@ -19,7 +19,7 @@ export const publicationSchema: GenericCardSchema = {
     'Publication Year',
     'Theme',
     'diseaseType',
-    'tissue_or_organ',
+    'tissue_or_organ.sv',
     'experimentalStrategy',
     'Keywords',
     'DOI',
@@ -130,7 +130,7 @@ export const publications: HomeExploreConfig = {
             hintText: 'RNA-seq'
           },
           {
-            columnName: 'tissue_or_organ',
+            columnName: 'tissue_or_organ.sv',
             hintText: 'Prostate gland'
           },
           {
@@ -164,7 +164,7 @@ export const publications: HomeExploreConfig = {
         },
         {
           sql,
-          facet: 'tissue_or_organ',
+          facet: 'tissue_or_organ.sv',
         },
         {
           sql,
