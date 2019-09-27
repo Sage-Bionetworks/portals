@@ -43,7 +43,7 @@ test-configuration/
 </pre>
 
 # Build Process
-The application will build assuming that its configuration lies in example-configuration/
+The application will build assuming that its configuration lies in config/
 
 ## Available Scripts
 
