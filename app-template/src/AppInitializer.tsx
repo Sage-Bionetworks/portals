@@ -13,6 +13,13 @@ declare var pendo: any
 export const TokenContext = React.createContext('')
 
 type Props = RouteComponentProps & ReactCookieProps
+
+export type SignInProps = {
+  showLoginDialog: boolean
+  onSignIn: Function
+  handleCloseLoginDialog: Function
+}
+
 class AppInitializer extends React.Component<Props, AppInitializerState> {
 
   constructor(props: Props) {
@@ -126,9 +133,9 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
             if (!child) {
               return false
             } else {
-              const props = {
+              const props: SignInProps = {
                 showLoginDialog: this.state.showLoginDialog,
-                show: this.onSignIn,
+                onSignIn: this.onSignIn,
                 handleCloseLoginDialog: this.handleCloseLoginDialog
               }
               return React.cloneElement(child, props)
