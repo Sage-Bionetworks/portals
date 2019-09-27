@@ -14,6 +14,7 @@ export const studySchema: GenericCardSchema = {
   subTitle: 'centerName',
   description: 'description',
   secondaryLabels: [
+    'Title',
     'PubMed',
     'Theme',
     'tumorType',
@@ -57,6 +58,13 @@ export const studies: HomeExploreConfig = {
         type: SynapseConstants.GENERIC_CARD,
         genericCardSchema: studySchema,
         secondaryLabelLimit: 4,
+        labelLinkConfig: [
+          {
+            baseURL: 'Explore/Publications',
+            URLColumnNames: ['Title'],
+            matchColumnName: 'Title'
+          },
+        ],
       },
       stackedBarChartConfiguration: {
         loadingScreen

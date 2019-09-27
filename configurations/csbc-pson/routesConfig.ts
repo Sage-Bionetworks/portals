@@ -128,6 +128,34 @@ const routes: GenericRoute [] = [
             }
           }
         ],
+        programmaticRouteConfig: [
+          {
+            name: 'CardContainerLogic',
+            isOutsideContainer: true,
+            props: {
+              type: SynapseConstants.GENERIC_CARD,
+              isHeader: true,
+              backgroundColor: '#407ba0',
+              genericCardSchema: publicationSchema,
+              loadingScreen,
+              facetAliases,
+              labelLinkConfig: [
+                {
+                  baseURL: 'Explore/Datasets',
+                  URLColumnNames: ['datasets'],
+                  matchColumnName: 'datasets'
+                },
+                {
+                  baseURL: 'Explore/Studies',
+                  URLColumnNames: ['studies'],
+                  matchColumnName: 'studies'
+                },
+              ],
+              secondaryLabelLimit: Infinity,
+              sql: publicationSql
+            }
+          },
+        ]
       },
       {
         name: 'Studies',

@@ -1,8 +1,8 @@
 # A single codebase for portal development.
 
-app-template/ is the main react app template that reads a standard configuration file.
+app-template/ is the main react app template that reads a standard configuration file. See app_template/README.md for details.
 
-configurations/ is a directory of configurations for portal development. See configurations/README.md on local developement.
+configurations/ is a directory of configurations for each portal. See configurations/README.md on local developement.
 
 # Build Process
 ./run.sh

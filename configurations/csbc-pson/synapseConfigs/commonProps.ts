@@ -1,10 +1,11 @@
 export const facetAliases = {
   grantType: 'Grant Type',
   consortium: 'Program',
-  'tissue_or_organ': 'Tissue',
+  'tissue_or_organ.sv': 'Tissue',
   experimentalStrategy: 'Assay',
   tumorType: 'Disease',
   name: 'Name',
+  Title: 'Publication',
   keyInvestigators: 'Key Investigators',
   centerName: 'Center Name',
   description: 'Description',
