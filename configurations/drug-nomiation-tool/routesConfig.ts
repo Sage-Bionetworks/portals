@@ -36,7 +36,7 @@ const routes: GenericRoute [] = [
           parentContainerId: "syn20673186",
           itemNoun: 'Compound',
           // TODO: Fill out with production formGroupId
-          formGroupId: ''
+          formGroupId: '9'
         }
       },
     ],
