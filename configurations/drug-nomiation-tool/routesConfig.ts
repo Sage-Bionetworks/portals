@@ -34,9 +34,8 @@ const routes: GenericRoute [] = [
         props: {
           pathpart: "#/Apply",
           parentContainerId: "syn20673186",
-          itemNoun: 'Compound',
-          // TODO: Fill out with production formGroupId
-          formGroupId: '9'
+          formGroupId:"9",
+          itemNoun:"Compound",
         }
       },
     ],
@@ -47,10 +46,11 @@ const routes: GenericRoute [] = [
           pathpart: "#/Apply",
           parentContainerId: "syn20673186",
           formSchemaEntityId:"syn20680102",
-          fileNamePath:"welcome.submission_name",
+          fileNamePath:"naming.compound_name",
           formUiSchemaEntityId:"syn20693568",
           formNavSchemaEntityId:"syn20680027",
           formTitle:"Your Submission",
+          formClass:"drug-upload-tool"
         }
       },
     ]
