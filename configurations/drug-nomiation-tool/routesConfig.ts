@@ -33,7 +33,10 @@ const routes: GenericRoute [] = [
         name: 'UserFileGrid',
         props: {
           pathpart: "#/Apply",
-          parentContainerId: "syn20673186"
+          parentContainerId: "syn20673186",
+          itemNoun: 'Compound',
+          // TODO: Fill out with production formGroupId
+          formGroupId: '9'
         }
       },
     ],
