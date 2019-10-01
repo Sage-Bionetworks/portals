@@ -9189,7 +9189,7 @@ symbol-tree@^3.2.2:
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.4.tgz#430637d248ba77e078883951fb9aa0eed7c63fa2"
 
-synapse-react-client@1.12.59:
+synapse-react-client@1.12.62:
   version "1.12.59"
   resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-1.12.59.tgz#778f2b39e07f0834990f975cec4a5d1bf2aa5ff4"
   integrity sha512-A3LXqgoJHTTXZhLhAq6xVagV3MB+6uDxtzySI+ZU7dDRqetn8v85IuZaMnnUzIExsQekGynOyz92bMS+Hw3Erg==
