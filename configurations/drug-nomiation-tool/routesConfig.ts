@@ -33,7 +33,6 @@ const routes: GenericRoute [] = [
         name: 'UserFileGrid',
         props: {
           pathpart: "#/Apply",
-          parentContainerId: "syn20673186",
           formGroupId:"9",
           itemNoun:"Compound",
         }
@@ -44,7 +43,6 @@ const routes: GenericRoute [] = [
         name: 'DrugUploadTool',
         props: {
           pathpart: "#/Apply",
-          parentContainerId: "syn20673186",
           formSchemaEntityId:"syn20680102",
           fileNamePath:"naming.compound_name",
           formUiSchemaEntityId:"syn20693568",
