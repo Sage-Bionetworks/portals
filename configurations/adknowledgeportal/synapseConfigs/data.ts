@@ -56,6 +56,7 @@ const data: HomeExploreConfig = {
         diagnosis: 'Diagnosis',
         consortium: 'Program',
         individuals: 'Individuals',
+        sex: 'Sex'
       },
       menuConfig: [
         {
