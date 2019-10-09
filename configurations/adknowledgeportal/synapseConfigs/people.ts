@@ -22,7 +22,7 @@ const people: HomeExploreConfig = {
           | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
         query: {
           sql,
-          isConsistent: true,
+          isConsistent: false,
           limit: 25,
           offset: 0,
         }
@@ -38,7 +38,7 @@ const people: HomeExploreConfig = {
         loadingScreen,
       },
       name: 'People',
-      isConsistent: true,
+      isConsistent: false,
       cardConfiguration: {
         type: SynapseConstants.MEDIUM_USER_CARD,
       },
