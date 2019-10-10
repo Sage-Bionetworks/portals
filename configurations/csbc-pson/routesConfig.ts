@@ -202,7 +202,7 @@ const routes: GenericRoute [] = [
                 query: {
                   sql: filesSql,
                   selectedFacets: [],
-                  isConsistent: true,
+                  isConsistent: false,
                   limit: 25,
                   offset: 0
                 }
@@ -270,7 +270,7 @@ const routes: GenericRoute [] = [
                 query: {
                   sql: filesSql,
                   selectedFacets: [],
-                  isConsistent: true,
+                  isConsistent: false,
                   limit: 25,
                   offset: 0
                 }

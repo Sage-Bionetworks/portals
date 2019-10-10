@@ -55,7 +55,7 @@ const publications: HomeExploreConfig = {
           | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
         query: {
           sql,
-          isConsistent: true,
+          isConsistent: false,
           limit: 25,
           offset: 0,
         }
@@ -71,7 +71,7 @@ const publications: HomeExploreConfig = {
         loadingScreen,
       },
       name: 'Publications',
-      isConsistent: true,
+      isConsistent: false,
       facetAliases,
       searchConfiguration: {
         searchable: [

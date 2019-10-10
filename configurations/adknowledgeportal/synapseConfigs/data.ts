@@ -25,7 +25,7 @@ const data: HomeExploreConfig = {
           | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
         query: {
           sql,
-          isConsistent: true,
+          isConsistent: false,
           limit: 25,
           offset: 0,
         }
@@ -40,7 +40,7 @@ const data: HomeExploreConfig = {
       stackedBarChartConfiguration: {
         loadingScreen,
       },
-      isConsistent: true,
+      isConsistent: false,
       name: 'Data',
       tableConfiguration: {
         title,

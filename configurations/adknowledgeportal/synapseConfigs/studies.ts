@@ -62,7 +62,7 @@ const studies: HomeExploreConfig = {
           | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
         query: {
           sql,
-          isConsistent: true,
+          isConsistent: false,
           limit: 25,
           offset: 0,
         }
@@ -79,7 +79,7 @@ const studies: HomeExploreConfig = {
         loadingScreen,
       },
       name: 'Studies',
-      isConsistent: true,
+      isConsistent: false,
       cardConfiguration: studyCardProps,
       searchConfiguration: {
         searchable: [
@@ -187,7 +187,7 @@ export const studiesGenerateComponentsFromRowProps: GenerateComponentsFromRowPro
           concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
           query: {
             sql: "SELECT id, metadataType, dataType, assay FROM syn11346063 WHERE `dataSubtype` = 'metadata'",
-            isConsistent: true,
+            isConsistent: false,
             limit: 25,
             offset: 0
           }
@@ -222,7 +222,7 @@ export const studiesGenerateComponentsFromRowProps: GenerateComponentsFromRowPro
             // (dataSubtype is NULL OR dataSubtype <> 'metadata') is a workaround the <> operator since its not null safe by default
             // so we have to explicity check that a value is NULL. The <=> operand checks not equal and is null safe.
             sql: "SELECT dataType, assay, fileFormat, count(id) AS Files FROM syn11346063 where dataSubtype is NULL OR dataSubtype <> 'metadata' GROUP BY 1,2,3 ORDER BY 4 DESC",
-            isConsistent: true,
+            isConsistent: false,
             limit: 25,
             offset: 0
           }
