@@ -1464,8 +1464,8 @@
     "@types/react-router" "*"
 
 "@types/react-router@*":
-  version "5.1.1"
-  resolved "https://registry.yarnpkg.com/@types/react-router/-/react-router-5.1.1.tgz#e0b827556abc70da3473d05daf074c839d6852aa"
+  version "5.1.2"
+  resolved "https://registry.yarnpkg.com/@types/react-router/-/react-router-5.1.2.tgz#41e5e6aa333a7b9a2bfdac753c04e1ca4b3e0d21"
   dependencies:
     "@types/history" "*"
     "@types/react" "*"
@@ -1483,8 +1483,8 @@
     "@types/react" "*"
 
 "@types/react@*", "@types/react@^16.8.23":
-  version "16.9.5"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.9.5.tgz#079dabd918b19b32118c25fd00a786bb6d0d5e51"
+  version "16.9.6"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.9.6.tgz#40722a2ef9f67b054c15b0a0b0d7f09409176134"
   dependencies:
     "@types/prop-types" "*"
     csstype "^2.2.0"
@@ -10395,9 +10395,9 @@ symbol-tree@^3.2.2:
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.4.tgz#430637d248ba77e078883951fb9aa0eed7c63fa2"
 
-synapse-react-client@1.12.67:
-  version "1.12.67"
-  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-1.12.67.tgz#c56f8a64fa2f71d3c9c636e5c46788cebd343f9b"
+synapse-react-client@1.12.68:
+  version "1.12.68"
+  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-1.12.68.tgz#803c6cf75fbfa7299d52287ddb1b12ca8c693d1e"
   dependencies:
     "@fortawesome/fontawesome-svg-core" "^1.2.4"
     "@fortawesome/free-solid-svg-icons" "^5.3.1"
