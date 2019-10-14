@@ -130,6 +130,8 @@ const routes: GenericRoute [] = [
                 link: 'studyId',
                 ...studiesCardConfiguration.genericCardSchema
               },
+              loadingScreen,
+              facetAliases,
               iconOptions: studyHeaderIconOptions,
               secondaryLabelLimit: Infinity,
               sql: 'SELECT * FROM syn16787123'
@@ -140,6 +142,7 @@ const routes: GenericRoute [] = [
             props: {
               title: 'Publications',
               type: SynapseConstants.GENERIC_CARD,
+              loadingScreen,
               sqlOperator: '=',
               ...publicationsCardConfiguration,
               sql: 'SELECT * FROM syn16857542'
@@ -150,6 +153,7 @@ const routes: GenericRoute [] = [
             props: {
               title: 'Datasets',
               sqlOperator: '=',
+              loadingScreen,
               type: SynapseConstants.DATASET,
               sql: datasetsSql
             }
