@@ -3,6 +3,6 @@ import dscLogoSvg from './style/dsc-logo.svg'
 
 const logoHeader: LogoConfig = {
   icon: dscLogoSvg,
-  name: 'DSC Compound Submission Tool'
+  name: 'STOP-AD Compound Submission Portal'
 }
 export default logoHeader
