@@ -35,6 +35,7 @@ const routes: GenericRoute [] = [
           pathpart: "#/Apply",
           formGroupId:"9",
           itemNoun:"Compound",
+          formClass:"drug-upload-tool"
         }
       },
     ],
