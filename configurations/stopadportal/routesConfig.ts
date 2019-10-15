@@ -23,7 +23,6 @@ const routes: GenericRoute [] = [
     synapseConfigArray: [
       {
         name: 'Markdown',
-        title: 'The PTC Compound Submission Tool',
         props: {
           ownerId: 'syn20717442',
           wikiId: '595813'
