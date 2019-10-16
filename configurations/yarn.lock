@@ -5541,6 +5541,15 @@ json-rules-engine@^4.0.0:
     lodash.isobjectlike "^4.0.0"
     selectn "^1.1.2"
 
+json-schema-ref-parser@^7.1.1:
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/json-schema-ref-parser/-/json-schema-ref-parser-7.1.1.tgz#16896f5af14560233e24bd0c6ed581f6a94fb315"
+  integrity sha512-5DGfOTuTAMFzjNw56kwEQ9YqjCvRPHRbEmPkPSNPuK4DR4TmLQrZ1k0UdO8EJ9DKjOPqtyBjtlSnvzAC6kwUsg==
+  dependencies:
+    call-me-maybe "^1.0.1"
+    js-yaml "^3.13.1"
+    ono "^5.0.1"
+
 json-schema-traverse@^0.4.1:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/json-schema-traverse/-/json-schema-traverse-0.4.1.tgz#69f6a87d9513ab8bb8fe63bdb0979c448e684660"
@@ -6628,6 +6637,11 @@ onetime@^2.0.0:
   resolved "https://registry.yarnpkg.com/onetime/-/onetime-2.0.1.tgz#067428230fd67443b2794b22bba528b6867962d4"
   dependencies:
     mimic-fn "^1.0.0"
+
+ono@^5.0.1:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/ono/-/ono-5.1.0.tgz#8cafa7e56afa2211ad63dd2eb798427e64f1a070"
+  integrity sha512-GgqRIUWErLX4l9Up0khRtbrlH8Fyj59A0nKv8V6pWEto38aUgnOGOOF7UmgFFLzFnDSc8REzaTXOc0hqEe7yIw==
 
 open@^6.3.0:
   version "6.4.0"
@@ -9189,10 +9203,10 @@ symbol-tree@^3.2.2:
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.4.tgz#430637d248ba77e078883951fb9aa0eed7c63fa2"
 
-synapse-react-client@1.12.68:
-  version "1.12.68"
-  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-1.12.68.tgz#803c6cf75fbfa7299d52287ddb1b12ca8c693d1e"
-  integrity sha512-oqK6ayGL87RrVgGyyOz2ldjs1pNC3d+2tQFE+LUR9XoxS+8h4X1ibO9fLewShe5HXO5mW+QxoJvfdTXZN/0u2Q==
+synapse-react-client@1.12.69:
+  version "1.12.69"
+  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-1.12.69.tgz#e153f20c05b9c0b379459ad05cc53ab61608c3e7"
+  integrity sha512-YZgu31Xb3ucZ0FzWY9QD8u8zGVdj7+xL0bWWr4tb0rB94Br5JVn0acmGnpaqyFRuocki1RArP6mRLZYzeH47iw==
   dependencies:
     "@fortawesome/fontawesome-svg-core" "^1.2.4"
     "@fortawesome/free-solid-svg-icons" "^5.3.1"
@@ -9215,6 +9229,7 @@ synapse-react-client@1.12.68:
     gh-pages "^2.0.0"
     i "^0.3.6"
     json-rules-engine "^4.0.0"
+    json-schema-ref-parser "^7.1.1"
     katex "^0.10.0-rc.1"
     lodash.clonedeep "^4.5.0"
     markdown-it "^8.4.2"
