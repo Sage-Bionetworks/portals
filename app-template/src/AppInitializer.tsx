@@ -200,8 +200,8 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
       portalName: name
     }
     const expireDate = new Date()
-    // expire after 20 minutes
-    expireDate.setTime(Date.now() + 1000 * 60 * 20)
+    // expire after 10 seconds
+    expireDate.setTime(Date.now() + 1000 * 10)
     const domainValue = window.location.hostname.toLowerCase().includes('.synapse.org') ? '.synapse.org' : undefined
     // Cookies provider exists above AppInitializer so the cookies prop will exist
     this.props.cookies.set(
