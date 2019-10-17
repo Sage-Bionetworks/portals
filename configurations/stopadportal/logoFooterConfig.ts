@@ -1,6 +1,7 @@
 import { LogoConfig } from '../types/portal-config'
+import footerSvg from './style/footer.svg'
 
 const logo: LogoConfig = {
-  name: 'MODEL-AD PTC Screening Tool'
+  icon: footerSvg
 }
 export default logo
