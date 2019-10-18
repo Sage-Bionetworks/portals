@@ -1,8 +1,8 @@
 import { LogoConfig } from '../types/portal-config'
-import dscLogoSvg from './style/dsc-logo.svg'
+import stopAdLogo from './style/stop-ad-logo.svg'
 
 const logoHeader: LogoConfig = {
-  icon: dscLogoSvg,
+  icon: stopAdLogo,
   name: 'STOP-AD Compound Submission Portal'
 }
 export default logoHeader
