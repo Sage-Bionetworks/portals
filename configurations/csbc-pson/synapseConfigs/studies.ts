@@ -19,6 +19,7 @@ export const studySchema: GenericCardSchema = {
     'Theme',
     'tumorType',
     'experimentalStrategy',
+    'datasets',
     'consortium',
     'grantType',
   ],
@@ -63,6 +64,11 @@ export const studies: HomeExploreConfig = {
             baseURL: 'Explore/Publications',
             URLColumnNames: ['Title'],
             matchColumnName: 'Title'
+          },
+          {
+            baseURL: 'Explore/Datasets',
+            URLColumnNames: ['datasets'],
+            matchColumnName: 'datasets'
           },
         ],
       },

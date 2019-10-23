@@ -8,6 +8,7 @@ export const facetAliases = {
   Title: 'Publication',
   keyInvestigators: 'Key Investigators',
   centerName: 'Center Name',
+  studies: 'Studies',
   description: 'Description',
   Consortium: 'Program',
   diseaseType: 'Disease',
