@@ -57,7 +57,7 @@ export class Navbar extends React.Component<{}, NavbarState> {
           token: newToken
         })
       }).catch((_err) => {
-        console.log('user profile could not be fetched ', _err)
+        console.error('user profile could not be fetched ', _err)
       })
     }
   }
@@ -191,7 +191,7 @@ export class Navbar extends React.Component<{}, NavbarState> {
                     const plainRoutes = el.routes as GenericRoute []
                     return (
                       <Dropdown className={this.getBorder(el.name)}>
-                        <Dropdown.Toggle variant="light" id={displayName} className="center-content nav-button-container nav-button hand-cursor"> 
+                        <Dropdown.Toggle variant="light" id={displayName} className="center-content nav-button-container nav-button"> 
                           {displayName} 
                         </Dropdown.Toggle>
                         <Dropdown.Menu className="portal-nav-menu">

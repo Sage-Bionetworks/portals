@@ -106,10 +106,6 @@ body {
   }
 }
 
-.nav-button-item {
-  font-size: 16px;
-}
-
 // if banner exists then make sure the nav sits right below it bet setting its top to the height of 
 // the banner above it
 #banner + .nav {
@@ -156,13 +152,12 @@ body {
   justify-content: center;
   color: #404B63;
   text-decoration: none;
-  padding: 0px 20px;
-  margin: 0px 5px;
+  padding: 0px 25px !important;
+  margin: 0px !important;
   min-width: 100px;
   white-space: nowrap;
   @extend %fillerBorder;
 }
-
 
 %bottomBorderNav {
   @extend %borderStyle;
@@ -170,10 +165,6 @@ body {
 }
 .nav-button-container:hover {
   @extend %hoverFade;
-  @extend %bottomBorderNav;
-}
-
-.dropdown.nav-button-container.bottom-border {
   @extend %bottomBorderNav;
 }
 
@@ -198,6 +189,7 @@ body {
   display: flex;
   align-items: center;
 }
+
 .portal-nav-menu {
   padding-top: 0px;
   padding-bottom: 0px;
@@ -211,6 +203,18 @@ body {
   border-bottom: solid 1px !important;
   border-bottom-color:#e5e5e5 !important;
 }
+
+.show #user-menu-button, #user-menu-button:hover {
+  background: unset !important;
+  color: $primary-action-color;
+  @extend %bottomBorderNav;
+}
+
+.user-menu-dropdown {
+  left: -81px;
+}
+
+// end nav
 
 // footer
 #portal-title-footer {
@@ -231,10 +235,6 @@ body {
 .footer-item {
   padding: 0px 30px;
   text-transform: uppercase;
-}
-
-.hand-cursor {
-  cursor: pointer;
 }
 
 #footer {
@@ -399,17 +399,6 @@ div.SRC-marginBottomTen {
   .SRC-userCard {
     width: 28px;
   }
-}
-
-.show #user-menu-button, #user-menu-button:hover {
-  background: unset !important;
-  color: $primary-action-color;
-  @extend %bottomBorderNav;
-}
-
-
-.user-menu-dropdown {
-  left: -81px;
 }
 
 .cookiesBanner {
