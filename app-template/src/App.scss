@@ -13,17 +13,6 @@
   padding-bottom: 60px; /* height of your footer */
 }
 
-.menu-wall {
-  position: absolute;
-  height: 100vh;
-  width: 100vw;
-  z-index: 900;
-  left: 0;
-  top: 0;
-  background: transparent;
-  border: none;
-}
-
 .uppercase {
   text-transform: uppercase;
 }
@@ -69,7 +58,6 @@ body {
   box-shadow: 3px 3px 5px 0 rgba(0,0,0,.5);
 }
 // end utilities
-
 
 %center {
   display: flex;
@@ -175,6 +163,7 @@ body {
   @extend %fillerBorder;
 }
 
+
 %bottomBorderNav {
   @extend %borderStyle;
   border-bottom-color:$primary-action-color;
@@ -188,6 +177,13 @@ body {
   @extend %bottomBorderNav;
 }
 
+// override src behavior
+.show button.dropdown-toggle.nav-button, button.dropdown-toggle.nav-button:hover {
+  background: unset !important;
+  color: $primary-action-color;
+  @extend %bottomBorderNav;
+}
+
 #home-link {
   font-weight: bold;
   font-size: 25px;
@@ -195,41 +191,26 @@ body {
   margin-left: 15px;
 }
 
-// bootstrap override
-.open > a {
-  color: $primary-action-color !important;
-  background-color: white !important;
-  &:focus {
-    border-color: unset !important;
-  }
-  &:hover {
-    border-color: unset !important;
-  }
-}
-
-.dropdown-item {
+%nav-dropdown-item {
   color: #515359;
-  padding-left: 20px;
   height: 50px;
   width: 230px;
+  display: flex;
+  align-items: center;
+}
+.portal-nav-menu {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  .dropdown-item {
+    font-size: 16px;
+    @extend %nav-dropdown-item;
+  }
 }
 
 .border-bottom-1 {
-  border-bottom: solid 1px;
-  border-bottom-color:#e5e5e5;
+  border-bottom: solid 1px !important;
+  border-bottom-color:#e5e5e5 !important;
 }
-
-a.dropdown-item:hover {
-  color: white;
-}
-
-// bootstrap override
-.dropdown-menu {
-  margin: 0px;
-  border-radius: 0%;
-  padding: 0px;
-}
-// end nav
 
 // footer
 #portal-title-footer {
@@ -407,11 +388,25 @@ div.SRC-marginBottomTen {
 }
 
 #user-menu-button {
+  display: flex;
+  align-content: center;
   height: 72px;
+  &:active {
+    box-shadow: none;
+  }
+  outline: none;
+  @extend %fillerBorder;
   .SRC-userCard {
     width: 28px;
   }
 }
+
+.show #user-menu-button, #user-menu-button:hover {
+  background: unset !important;
+  color: $primary-action-color;
+  @extend %bottomBorderNav;
+}
+
 
 .user-menu-dropdown {
   left: -81px;
