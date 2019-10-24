@@ -26,10 +26,6 @@ export const publicationCardProps = {
 }
 
 const facetAliases = {
-  authors: 'Authors',
-  title: 'Title',
-  year:'Year',
-  journal:'Journal',
   consortium:'Program',
   long_amp_ad_grants: 'Grant',
   doi: 'DOI',

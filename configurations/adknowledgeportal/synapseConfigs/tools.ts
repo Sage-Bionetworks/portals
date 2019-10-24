@@ -37,15 +37,7 @@ const experimentalSchema: GenericCardSchema = {
 }
 
 const facetAliases = {
-  diagnosis: 'Diagnosis',
-  grant: 'Grant',
   modelSystemName: 'Model Name',
-  modelType: 'Model Type',
-  program: 'Program',
-  reagentType: 'Reagent Type',
-  softwareType: 'Software Type',
-  contributor: 'Contributor',
-  displayName: 'Display Name',
   summary: 'Summary'
 }
 

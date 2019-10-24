@@ -3,8 +3,8 @@ import { HomeExploreConfig } from '../../types/portal-config'
 import loadingScreen from '../loadingScreen'
 
 // The sql-parser used in SRC doesn't support aliasing with a space, so only pascal casing is allowed
-export const filesSql =  'SELECT grantType AS `GrantType`, centerName AS `Grant`, consortium AS `Program`, species AS `Species`, fileFormat AS `DataFormat`, experimentalStrategy AS `Assay`, platform AS `Platform`, tumorType AS `DiseaseType`, sex AS `Gender`, tissue AS `Tissue`, name as `FileName`  FROM syn9630847'
-const  sql = 'SELECT grantType AS `Grant Type`, centerName AS `Grant`, consortium AS `Program`, species AS `Species`, fileFormat AS `Data Format`, experimentalStrategy AS `Assay`, platform AS `Platform`, tumorType AS `Disease Type`, sex AS `Gender`, tissue AS `Tissue`, name as `File Name`  FROM syn9630847'
+export const filesSql =  'SELECT grantType, centerName, consortium, species, fileFormat, experimentalStrategy, platform, tumorType, sex, tissue, name FROM syn9630847'
+const  sql = 'SELECT grantType, centerName, consortium, species, fileFormat, experimentalStrategy, platform, tumorType, sex, tissue, name FROM syn9630847'
 
 const facetAliases = {
   grantType: 'Grant Type',

@@ -51,9 +51,6 @@ const publications: HomeExploreConfig = {
         },
       },
       facet: 'diseaseFocus',
-      facetAliases: {
-        diseaseFocus: 'Disease Focus',
-      },
     }
   },
   explorePageSynapseObject: {

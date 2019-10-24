@@ -59,7 +59,6 @@ export const studies: HomeExploreConfig = {
       },
       name: 'Data',
       facetAliases: {
-        grantType: 'Grant Type',
         consortium: 'Program',
       },
       menuConfig: [
