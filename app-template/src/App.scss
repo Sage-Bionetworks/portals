@@ -1,4 +1,4 @@
-@import "config/style/overides";
+@import 'config/style/overides';
 @import 'node_modules/synapse-react-client/dist/template_style/Index.scss';
 
 .nav-logo {
@@ -25,7 +25,7 @@
   display: flex;
   align-items: center;
 }
-$header-height : 75px;
+$header-height: 75px;
 $banner-height: 47px;
 
 body {
@@ -55,7 +55,7 @@ body {
 }
 
 %defaultBoxShadow {
-  box-shadow: 3px 3px 5px 0 rgba(0,0,0,.5);
+  box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.5);
 }
 // end utilities
 
@@ -106,7 +106,7 @@ body {
   }
 }
 
-// if banner exists then make sure the nav sits right below it bet setting its top to the height of 
+// if banner exists then make sure the nav sits right below it bet setting its top to the height of
 // the banner above it
 #banner + .nav {
   top: $banner-height;
@@ -114,13 +114,13 @@ body {
 
 .nav {
   padding-bottom: 3px;
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,.5);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
   min-height: $header-height;
   height: $header-height;
   position: fixed;
   width: 100%;
   z-index: 6;
-  background: rgba(256,256,256,0.9);
+  background: rgba(256, 256, 256, 0.9);
   // background: white;
   height: 67px;
   a:hover {
@@ -138,7 +138,7 @@ body {
 
 %fillerBorder {
   @extend %borderStyle;
-  border-bottom-color:transparent;
+  border-bottom-color: transparent;
 }
 
 .nav-button {
@@ -150,7 +150,7 @@ body {
   font-size: 16px;
   text-align: center;
   justify-content: center;
-  color: #404B63;
+  color: #404b63;
   text-decoration: none;
   padding: 0px 25px !important;
   margin: 0px !important;
@@ -161,7 +161,7 @@ body {
 
 %bottomBorderNav {
   @extend %borderStyle;
-  border-bottom-color:$primary-action-color;
+  border-bottom-color: $primary-action-color;
 }
 .nav-button-container:hover {
   @extend %hoverFade;
@@ -169,7 +169,8 @@ body {
 }
 
 // override src behavior
-.show button.dropdown-toggle.nav-button, button.dropdown-toggle.nav-button:hover {
+.show button.dropdown-toggle.nav-button,
+button.dropdown-toggle.nav-button:hover {
   background: unset !important;
   color: $primary-action-color;
   @extend %bottomBorderNav;
@@ -201,17 +202,14 @@ body {
 
 .border-bottom-1 {
   border-bottom: solid 1px !important;
-  border-bottom-color:#e5e5e5 !important;
+  border-bottom-color: #e5e5e5 !important;
 }
 
-.show #user-menu-button, #user-menu-button:hover {
+.show #user-menu-button,
+#user-menu-button:hover {
   background: unset !important;
   color: $primary-action-color;
   @extend %bottomBorderNav;
-}
-
-.user-menu-dropdown {
-  left: -81px;
 }
 
 // end nav
@@ -238,7 +236,7 @@ body {
 }
 
 #footer {
-  background-image: getFooter("config/style/");
+  background-image: getFooter('config/style/');
   background-repeat: no-repeat;
   background-size: cover;
   color: white;
@@ -277,7 +275,7 @@ body {
 
 // header
 #header {
-  background-image: getHeader("config/style");
+  background-image: getHeader('config/style');
   background-repeat: no-repeat;
   background-size: cover;
   height: fit-content;
@@ -305,7 +303,7 @@ body {
   font-weight: bold;
   margin-bottom: 10px;
 }
-// ExploreButtons 
+// ExploreButtons
 
 .explore-buttons {
   margin-top: 30px;
@@ -381,7 +379,7 @@ div.SRC-marginBottomTen {
   p {
     margin-top: 15px;
   }
-} 
+}
 
 #exploreCount {
   padding-top: 20px;
