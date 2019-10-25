@@ -19,7 +19,7 @@ import { UserProfile } from 'synapse-react-client/dist/utils/jsonResponses/UserP
 export type NavbarState = {
   showLoginDialog: boolean
   token: string | undefined
-  userprofile: UserProfile | undefined
+  userProfile: UserProfile | undefined
 }
 
 type SynapseSettingLink = {
@@ -29,7 +29,7 @@ type SynapseSettingLink = {
 }
 
 export class Navbar extends React.Component<{}, NavbarState> {
-  synapseSettingLinks: SynapseSettingLink[] = [
+  synapseQuickLinks: SynapseSettingLink[] = [
     {
       text: 'Profile',
     },
@@ -61,7 +61,7 @@ export class Navbar extends React.Component<{}, NavbarState> {
     super(props)
     const state: NavbarState = {
       token: undefined,
-      userprofile: undefined,
+      userProfile: undefined,
       showLoginDialog: false,
     }
     this.state = state
@@ -86,15 +86,15 @@ export class Navbar extends React.Component<{}, NavbarState> {
     const newToken = this.context
     if (
       newToken &&
-      (!this.state.userprofile || this.state.token !== newToken)
+      (!this.state.userProfile || this.state.token !== newToken)
     ) {
       SynapseClient.getUserProfile(newToken)
-        .then((profile: any) => {
-          if (profile.profilePicureFileHandleId) {
-            profile.clientPreSignedURL = `https://www.synapse.org/Portal/filehandleassociation?associatedObjectId=${profile.ownerId}&associatedObjectType=UserProfileAttachment&fileHandleId=${profile.profilePicureFileHandleId}`
+        .then(userProfile => {
+          if (userProfile.profilePicureFileHandleId) {
+            userProfile.clientPreSignedURL = `https://www.synapse.org/Portal/filehandleassociation?associatedObjectId=${userProfile.ownerId}&associatedObjectType=UserProfileAttachment&fileHandleId=${userProfile.profilePicureFileHandleId}`
           }
           this.setState({
-            userprofile: profile,
+            userProfile,
             token: newToken,
           })
         })
@@ -127,7 +127,7 @@ export class Navbar extends React.Component<{}, NavbarState> {
       hostname.includes('.synapse.org') ||
       hostname.includes('127.0.0.1') ||
       hostname.includes('localhost')
-    const { userprofile } = this.state
+    const { userProfile } = this.state
     return (
       <React.Fragment>
         <nav className="flex-display nav">
@@ -143,7 +143,7 @@ export class Navbar extends React.Component<{}, NavbarState> {
             </Link>
           </div>
           <div className="nav-link-container">
-            {!userprofile && isSynapseSubdomainOrLocal && (
+            {!userProfile && isSynapseSubdomainOrLocal && (
               <div className="center-content nav-button">
                 <button
                   id="signin-button"
@@ -166,13 +166,13 @@ export class Navbar extends React.Component<{}, NavbarState> {
                 </Dialog>
               </div>
             )}
-            {userprofile && (
+            {userProfile && (
               <Dropdown>
                 <Dropdown.Toggle variant="light" id="user-menu-button">
                   <UserCard
-                    userProfile={userprofile}
+                    userProfile={userProfile}
                     size={SynapseConstants.SMALL_USER_CARD}
-                    preSignedURL={userprofile.clientPreSignedURL}
+                    preSignedURL={userProfile.clientPreSignedURL}
                     hideText={true}
                     link="javascript:void(0)"
                   />
@@ -185,9 +185,9 @@ export class Navbar extends React.Component<{}, NavbarState> {
                 </Dropdown.Toggle>
                 <Dropdown.Menu className="user-menu-dropdown portal-nav-menu">
                   <Dropdown.Item className="SRC-primary-background-color-hover SRC-nested-color center-content border-bottom-1">
-                    Signed in as&nbsp;<strong>{userprofile.userName}</strong>
+                    Signed in as&nbsp;<strong>{userProfile.userName}</strong>
                   </Dropdown.Item>
-                  {this.synapseSettingLinks.map(el => {
+                  {this.synapseQuickLinks.map(el => {
                     const borderBottomClass = el.hasBorder
                       ? 'border-bottom-1'
                       : ''
@@ -196,7 +196,7 @@ export class Navbar extends React.Component<{}, NavbarState> {
                         key={el.text}
                         className={`SRC-primary-background-color-hover SRC-nested-color center-content ${borderBottomClass}`}
                         href={`https://www.synapse.org/#!Profile:${
-                          userprofile.ownerId
+                          userProfile.ownerId
                         }${el.settingSubPath ? `/${el.settingSubPath}` : ''}`}
                       >
                         {el.text}
