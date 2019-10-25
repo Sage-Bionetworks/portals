@@ -37,15 +37,7 @@ const experimentalSchema: GenericCardSchema = {
 }
 
 const facetAliases = {
-  diagnosis: 'Diagnosis',
-  grant: 'Grant',
   modelSystemName: 'Model Name',
-  modelType: 'Model Type',
-  program: 'Program',
-  reagentType: 'Reagent Type',
-  softwareType: 'Software Type',
-  contributor: 'Contributor',
-  displayName: 'Display Name',
   summary: 'Summary'
 }
 
@@ -142,11 +134,11 @@ const tools: HomeExploreConfig = {
           menuConfig: [
             {
               sql: computationalSql,
-              facet: 'diagnosis',
+              facet: 'softwareType'
             },
             {
               sql: computationalSql,
-              facet: 'grant'
+              facet: 'diagnosis',
             },
             {
               sql: computationalSql,
@@ -154,7 +146,7 @@ const tools: HomeExploreConfig = {
             },
             {
               sql: computationalSql,
-              facet: 'softwareType'
+              facet: 'grant'
             },
             {
               sql: computationalSql,
@@ -172,11 +164,7 @@ const tools: HomeExploreConfig = {
           menuConfig: [
             {
               sql: experimentalSql,
-              facet: 'diagnosis'
-            },
-            {
-              sql: experimentalSql,
-              facet: 'grant'
+              facet: 'reagentType'
             },
             {
               sql: experimentalSql,
@@ -184,11 +172,15 @@ const tools: HomeExploreConfig = {
             },
             {
               sql: experimentalSql,
+              facet: 'diagnosis'
+            },
+            {
+              sql: experimentalSql,
               facet: 'program'
             },
             {
               sql: experimentalSql,
-              facet: 'reagentType'
+              facet: 'grant'
             },
             {
               sql: experimentalSql,

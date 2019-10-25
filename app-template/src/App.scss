@@ -1,4 +1,4 @@
-@import "config/style/overides";
+@import 'config/style/overides';
 @import 'node_modules/synapse-react-client/dist/template_style/Index.scss';
 
 .nav-logo {
@@ -13,17 +13,6 @@
   padding-bottom: 60px; /* height of your footer */
 }
 
-.menu-wall {
-  position: absolute;
-  height: 100vh;
-  width: 100vw;
-  z-index: 900;
-  left: 0;
-  top: 0;
-  background: transparent;
-  border: none;
-}
-
 .uppercase {
   text-transform: uppercase;
 }
@@ -36,7 +25,7 @@
   display: flex;
   align-items: center;
 }
-$header-height : 75px;
+$header-height: 75px;
 $banner-height: 47px;
 
 body {
@@ -66,10 +55,9 @@ body {
 }
 
 %defaultBoxShadow {
-  box-shadow: 3px 3px 5px 0 rgba(0,0,0,.5);
+  box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.5);
 }
 // end utilities
-
 
 %center {
   display: flex;
@@ -118,11 +106,7 @@ body {
   }
 }
 
-.nav-button-item {
-  font-size: 16px;
-}
-
-// if banner exists then make sure the nav sits right below it bet setting its top to the height of 
+// if banner exists then make sure the nav sits right below it bet setting its top to the height of
 // the banner above it
 #banner + .nav {
   top: $banner-height;
@@ -130,13 +114,13 @@ body {
 
 .nav {
   padding-bottom: 3px;
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,.5);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
   min-height: $header-height;
   height: $header-height;
   position: fixed;
   width: 100%;
   z-index: 6;
-  background: rgba(256,256,256,0.9);
+  background: rgba(256, 256, 256, 0.9);
   // background: white;
   height: 67px;
   a:hover {
@@ -154,7 +138,7 @@ body {
 
 %fillerBorder {
   @extend %borderStyle;
-  border-bottom-color:transparent;
+  border-bottom-color: transparent;
 }
 
 .nav-button {
@@ -166,10 +150,10 @@ body {
   font-size: 16px;
   text-align: center;
   justify-content: center;
-  color: #404B63;
+  color: #404b63;
   text-decoration: none;
-  padding: 0px 20px;
-  margin: 0px 5px;
+  padding: 0px 25px !important;
+  margin: 0px !important;
   min-width: 100px;
   white-space: nowrap;
   @extend %fillerBorder;
@@ -177,14 +161,18 @@ body {
 
 %bottomBorderNav {
   @extend %borderStyle;
-  border-bottom-color:$primary-action-color;
+  border-bottom-color: $primary-action-color;
 }
 .nav-button-container:hover {
   @extend %hoverFade;
   @extend %bottomBorderNav;
 }
 
-.dropdown.nav-button-container.bottom-border {
+// override src behavior
+.show button.dropdown-toggle.nav-button,
+button.dropdown-toggle.nav-button:hover {
+  background: unset !important;
+  color: $primary-action-color;
   @extend %bottomBorderNav;
 }
 
@@ -195,40 +183,35 @@ body {
   margin-left: 15px;
 }
 
-// bootstrap override
-.open > a {
-  color: $primary-action-color !important;
-  background-color: white !important;
-  &:focus {
-    border-color: unset !important;
-  }
-  &:hover {
-    border-color: unset !important;
-  }
-}
-
-.dropdown-item {
+%nav-dropdown-item {
   color: #515359;
-  padding-left: 20px;
   height: 50px;
   width: 230px;
+  display: flex;
+  align-items: center;
+}
+
+.portal-nav-menu {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  .dropdown-item {
+    font-size: 16px;
+    @extend %nav-dropdown-item;
+  }
 }
 
 .border-bottom-1 {
-  border-bottom: solid 1px;
-  border-bottom-color:#e5e5e5;
+  border-bottom: solid 1px !important;
+  border-bottom-color: #e5e5e5 !important;
 }
 
-a.dropdown-item:hover {
-  color: white;
+.show #user-menu-button,
+#user-menu-button:hover {
+  background: unset !important;
+  color: $primary-action-color;
+  @extend %bottomBorderNav;
 }
 
-// bootstrap override
-.dropdown-menu {
-  margin: 0px;
-  border-radius: 0%;
-  padding: 0px;
-}
 // end nav
 
 // footer
@@ -252,12 +235,8 @@ a.dropdown-item:hover {
   text-transform: uppercase;
 }
 
-.hand-cursor {
-  cursor: pointer;
-}
-
 #footer {
-  background-image: getFooter("config/style/");
+  background-image: getFooter('config/style/');
   background-repeat: no-repeat;
   background-size: cover;
   color: white;
@@ -296,7 +275,7 @@ a.dropdown-item:hover {
 
 // header
 #header {
-  background-image: getHeader("config/style");
+  background-image: getHeader('config/style');
   background-repeat: no-repeat;
   background-size: cover;
   height: fit-content;
@@ -324,7 +303,7 @@ a.dropdown-item:hover {
   font-weight: bold;
   margin-bottom: 10px;
 }
-// ExploreButtons 
+// ExploreButtons
 
 .explore-buttons {
   margin-top: 30px;
@@ -400,21 +379,24 @@ div.SRC-marginBottomTen {
   p {
     margin-top: 15px;
   }
-} 
+}
 
 #exploreCount {
   padding-top: 20px;
 }
 
 #user-menu-button {
+  display: flex;
+  align-content: center;
   height: 72px;
+  &:active {
+    box-shadow: none;
+  }
+  outline: none;
+  @extend %fillerBorder;
   .SRC-userCard {
     width: 28px;
   }
-}
-
-.user-menu-dropdown {
-  left: -81px;
 }
 
 .cookiesBanner {

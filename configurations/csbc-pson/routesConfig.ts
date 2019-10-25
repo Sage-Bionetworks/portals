@@ -184,6 +184,18 @@ const routes: GenericRoute [] = [
               iconOptions: {
                 study: StudySvg
               },
+              labelLinkConfig: [
+                {
+                  baseURL: 'Explore/Publications',
+                  URLColumnNames: ['Title'],
+                  matchColumnName: 'Title'
+                },
+                {
+                  baseURL: 'Explore/Datasets',
+                  URLColumnNames: ['datasets'],
+                  matchColumnName: 'datasets',
+                },
+              ],
               secondaryLabelLimit: Infinity,
               sql: studiesSql
             }
@@ -239,6 +251,7 @@ const routes: GenericRoute [] = [
               type: SynapseConstants.GENERIC_CARD,
               isHeader: true,
               backgroundColor: '#5bb0b5',
+              sqlOperator: '=',
               genericCardSchema: datasetSchema,
               secondaryLabelLimit: Infinity,
               sql: datasetsSql,
@@ -276,6 +289,7 @@ const routes: GenericRoute [] = [
                 }
               },
               loadingScreen,
+              sqlOperator: '=',
               facetAliases,
               rgbIndex: 0,
               facet: 'consortium',
