@@ -1,19 +1,28 @@
 import { GenericRoute } from '../types/portal-config'
-import { publications, files, datasets, grants, studies, tools } from './synapseConfigs'
+import {
+  publications,
+  files,
+  datasets,
+  grants,
+  studies,
+  tools,
+} from './synapseConfigs'
 import { SynapseConstants } from 'synapse-react-client'
 import { studiesSql, studySchema } from './synapseConfigs/studies'
 import { facetAliases } from './synapseConfigs/commonProps'
-import { publicationSql, publicationSchema } from './synapseConfigs/publications'
+import {
+  publicationSql,
+  publicationSchema,
+} from './synapseConfigs/publications'
 import { datasetsSql, datasetSchema } from './synapseConfigs/datasets'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
 import loadingScreen from './loadingScreen'
 import { toolsSchema, toolsSql } from './synapseConfigs/tools'
 import { filesSql } from './synapseConfigs/files'
-import DatasetSvg from "./style/Dataset.svg"
-import StudySvg from "./style/Study.svg"
+import DatasetSvg from './style/Dataset.svg'
 const homeLimit = 3
 
-const routes: GenericRoute [] = [
+const routes: GenericRoute[] = [
   {
     name: 'Home',
     to: '/',
@@ -32,14 +41,32 @@ const routes: GenericRoute [] = [
             '#3C4A63',
           ],
           configs: [
-            { name: 'Grants', synapseConfigArray: [grants.homePageSynapseObject] },
-            { name: 'Publications', synapseConfigArray: [publications.homePageSynapseObject] },
-            { name: 'Studies', synapseConfigArray: [studies.homePageSynapseObject] },
-            { name: 'Datasets', synapseConfigArray: [datasets.homePageSynapseObject] },
-            { name: 'Files', synapseConfigArray: [files.homePageSynapseObject] },
-            { name: 'Tools', synapseConfigArray: [tools.homePageSynapseObject] },
-          ]
-        }
+            {
+              name: 'Grants',
+              synapseConfigArray: [grants.homePageSynapseObject],
+            },
+            {
+              name: 'Publications',
+              synapseConfigArray: [publications.homePageSynapseObject],
+            },
+            {
+              name: 'Studies',
+              synapseConfigArray: [studies.homePageSynapseObject],
+            },
+            {
+              name: 'Datasets',
+              synapseConfigArray: [datasets.homePageSynapseObject],
+            },
+            {
+              name: 'Files',
+              synapseConfigArray: [files.homePageSynapseObject],
+            },
+            {
+              name: 'Tools',
+              synapseConfigArray: [tools.homePageSynapseObject],
+            },
+          ],
+        },
       },
       {
         name: 'CardContainerLogic',
@@ -52,8 +79,8 @@ const routes: GenericRoute [] = [
           limit: homeLimit,
           type: SynapseConstants.GENERIC_CARD,
           secondaryLabelLimit: 4,
-          genericCardSchema: studySchema
-        }
+          genericCardSchema: studySchema,
+        },
       },
       {
         name: 'CardContainerLogic',
@@ -65,7 +92,7 @@ const routes: GenericRoute [] = [
           sql: publicationSql,
           limit: homeLimit,
           type: SynapseConstants.GENERIC_CARD,
-          genericCardSchema: publicationSchema
+          genericCardSchema: publicationSchema,
         },
       },
       {
@@ -79,7 +106,7 @@ const routes: GenericRoute [] = [
           secondaryLabelLimit: 4,
           limit: homeLimit,
           type: SynapseConstants.GENERIC_CARD,
-          genericCardSchema: datasetSchema
+          genericCardSchema: datasetSchema,
         },
       },
       {
@@ -92,10 +119,10 @@ const routes: GenericRoute [] = [
           sql: toolsSql,
           limit: homeLimit,
           type: SynapseConstants.GENERIC_CARD,
-          genericCardSchema: toolsSchema
+          genericCardSchema: toolsSchema,
         },
       },
-    ]
+    ],
   },
   {
     name: 'Explore',
@@ -110,9 +137,9 @@ const routes: GenericRoute [] = [
             ...routeButtonControlWrapperProps,
             props: {
               ...routeButtonControlWrapperProps.props,
-              synapseConfig: grants.explorePageSynapseObject
-            }
-          }
+              synapseConfig: grants.explorePageSynapseObject,
+            },
+          },
         ],
       },
       {
@@ -124,9 +151,9 @@ const routes: GenericRoute [] = [
             ...routeButtonControlWrapperProps,
             props: {
               ...routeButtonControlWrapperProps.props,
-              synapseConfig: publications.explorePageSynapseObject
-            }
-          }
+              synapseConfig: publications.explorePageSynapseObject,
+            },
+          },
         ],
         programmaticRouteConfig: [
           {
@@ -143,19 +170,19 @@ const routes: GenericRoute [] = [
                 {
                   baseURL: 'Explore/Datasets',
                   URLColumnNames: ['datasets'],
-                  matchColumnName: 'datasets'
+                  matchColumnName: 'datasets',
                 },
                 {
                   baseURL: 'Explore/Studies',
                   URLColumnNames: ['studies'],
-                  matchColumnName: 'studies'
+                  matchColumnName: 'studies',
                 },
               ],
               secondaryLabelLimit: Infinity,
-              sql: publicationSql
-            }
+              sql: publicationSql,
+            },
           },
-        ]
+        ],
       },
       {
         name: 'Studies',
@@ -166,9 +193,9 @@ const routes: GenericRoute [] = [
             ...routeButtonControlWrapperProps,
             props: {
               ...routeButtonControlWrapperProps.props,
-              synapseConfig: studies.explorePageSynapseObject
-            }
-          }
+              synapseConfig: studies.explorePageSynapseObject,
+            },
+          },
         ],
         programmaticRouteConfig: [
           {
@@ -181,14 +208,11 @@ const routes: GenericRoute [] = [
               genericCardSchema: studySchema,
               loadingScreen,
               facetAliases,
-              iconOptions: {
-                study: StudySvg
-              },
               labelLinkConfig: [
                 {
                   baseURL: 'Explore/Publications',
                   URLColumnNames: ['Title'],
-                  matchColumnName: 'Title'
+                  matchColumnName: 'Title',
                 },
                 {
                   baseURL: 'Explore/Datasets',
@@ -197,27 +221,28 @@ const routes: GenericRoute [] = [
                 },
               ],
               secondaryLabelLimit: Infinity,
-              sql: studiesSql
-            }
+              sql: studiesSql,
+            },
           },
           {
             name: 'QueryWrapperFlattened',
             title: 'Data',
             props: {
               initQueryRequest: {
-                partMask: SynapseConstants.BUNDLE_MASK_QUERY_FACETS
-                | SynapseConstants.BUNDLE_MASK_QUERY_COUNT
-                | SynapseConstants.BUNDLE_MASK_QUERY_SELECT_COLUMNS
-                | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS
-                ,
-                concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
+                partMask:
+                  SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
+                  SynapseConstants.BUNDLE_MASK_QUERY_COUNT |
+                  SynapseConstants.BUNDLE_MASK_QUERY_SELECT_COLUMNS |
+                  SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
+                concreteType:
+                  'org.sagebionetworks.repo.model.table.QueryBundleRequest',
                 query: {
                   sql: filesSql,
                   selectedFacets: [],
                   isConsistent: false,
                   limit: 25,
-                  offset: 0
-                }
+                  offset: 0,
+                },
               },
               loadingScreen,
               facetAliases,
@@ -225,10 +250,10 @@ const routes: GenericRoute [] = [
               facet: 'consortium',
               unitDescription: 'Files',
               synapseId: 'syn18483791',
-              title: 'Study Files'
-            }
+              title: 'Study Files',
+            },
           },
-        ]
+        ],
       },
       {
         name: 'Datasets',
@@ -239,9 +264,9 @@ const routes: GenericRoute [] = [
             ...routeButtonControlWrapperProps,
             props: {
               ...routeButtonControlWrapperProps.props,
-              synapseConfig: datasets.explorePageSynapseObject
-            }
-          }
+              synapseConfig: datasets.explorePageSynapseObject,
+            },
+          },
         ],
         programmaticRouteConfig: [
           {
@@ -258,35 +283,36 @@ const routes: GenericRoute [] = [
               loadingScreen,
               facetAliases,
               iconOptions: {
-                dataset: DatasetSvg
+                dataset: DatasetSvg,
               },
               labelLinkConfig: [
                 {
                   baseURL: 'Explore/Studies',
                   URLColumnNames: ['studies'],
-                  matchColumnName: 'studies'
+                  matchColumnName: 'studies',
                 },
-              ]
-            }
+              ],
+            },
           },
           {
             name: 'QueryWrapperFlattened',
             title: 'Data',
             props: {
               initQueryRequest: {
-                partMask: SynapseConstants.BUNDLE_MASK_QUERY_FACETS
-                | SynapseConstants.BUNDLE_MASK_QUERY_COUNT
-                | SynapseConstants.BUNDLE_MASK_QUERY_SELECT_COLUMNS
-                | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS
-                ,
-                concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
+                partMask:
+                  SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
+                  SynapseConstants.BUNDLE_MASK_QUERY_COUNT |
+                  SynapseConstants.BUNDLE_MASK_QUERY_SELECT_COLUMNS |
+                  SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
+                concreteType:
+                  'org.sagebionetworks.repo.model.table.QueryBundleRequest',
                 query: {
                   sql: filesSql,
                   selectedFacets: [],
                   isConsistent: false,
                   limit: 25,
-                  offset: 0
-                }
+                  offset: 0,
+                },
               },
               loadingScreen,
               sqlOperator: '=',
@@ -295,10 +321,10 @@ const routes: GenericRoute [] = [
               facet: 'consortium',
               unitDescription: 'Files',
               synapseId: 'syn18488466',
-              title: 'Dataset Files'
-            }
+              title: 'Dataset Files',
+            },
           },
-        ]
+        ],
       },
       {
         name: 'Files',
@@ -309,9 +335,9 @@ const routes: GenericRoute [] = [
             ...routeButtonControlWrapperProps,
             props: {
               ...routeButtonControlWrapperProps.props,
-              synapseConfig: files.explorePageSynapseObject
-            }
-          }
+              synapseConfig: files.explorePageSynapseObject,
+            },
+          },
         ],
       },
       {
@@ -323,12 +349,12 @@ const routes: GenericRoute [] = [
             ...routeButtonControlWrapperProps,
             props: {
               ...routeButtonControlWrapperProps.props,
-              synapseConfig: tools.explorePageSynapseObject
-            }
-          }
+              synapseConfig: tools.explorePageSynapseObject,
+            },
+          },
         ],
-      }
-    ]
+      },
+    ],
   },
   {
     name: 'About',
@@ -339,11 +365,11 @@ const routes: GenericRoute [] = [
         name: 'Markdown',
         props: {
           ownerId: 'syn7080714',
-          wikiId: '470467'
-        }
-      }
-    ]
-  }
+          wikiId: '470467',
+        },
+      },
+    ],
+  },
 ]
 
 export default routes

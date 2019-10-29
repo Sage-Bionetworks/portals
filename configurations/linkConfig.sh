@@ -42,4 +42,6 @@ ln -s ../../app-template/src/config/* .
 # start the project
 
 cd ../../app-template/src
+# Fixes node binding error when switching between packages and forgetting to run this command...
+npm rebuild node-sass
 yarn && yarn start

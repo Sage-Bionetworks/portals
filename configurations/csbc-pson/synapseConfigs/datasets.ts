@@ -2,7 +2,7 @@ import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from '../../types/portal-config'
 import loadingScreen from '../loadingScreen'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
-import { facetAliases } from './commonProps'
+import { facetAliases } from './commonProps'
 export const datasetsSql = `SELECT * FROM syn18488466 WHERE ( ( "is.dataset" = 'TRUE' ) )`
 const sql = datasetsSql
 const unitDescription = 'Datasets'
@@ -21,7 +21,7 @@ export const datasetSchema: GenericCardSchema = {
     'experimentalStrategy',
     'species',
     'consortium',
-    'grantType'
+    'grantType',
   ],
   link: 'id',
 }
@@ -36,19 +36,20 @@ export const datasets: HomeExploreConfig = {
       facet: 'tumorType',
       link: 'Explore/Datasets',
       linkText: 'Explore Datasets',
-      initQueryRequest : {
+      initQueryRequest: {
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-        partMask: SynapseConstants.BUNDLE_MASK_QUERY_FACETS
-          | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
+        partMask:
+          SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
+          SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
         query: {
           sql,
           isConsistent: false,
           limit: 25,
           offset: 0,
-        }
+        },
       },
       facetAliases,
-    }
+    },
   },
   explorePageSynapseObject: {
     name: 'QueryWrapperMenu',
@@ -63,12 +64,12 @@ export const datasets: HomeExploreConfig = {
           {
             baseURL: 'Explore/Publications',
             URLColumnNames: ['Title'],
-            matchColumnName: 'Title'
+            matchColumnName: 'Title',
           },
         ],
       },
       stackedBarChartConfiguration: {
-        loadingScreen
+        loadingScreen,
       },
       name: 'Datasets',
       facetAliases,
@@ -104,13 +105,13 @@ export const datasets: HomeExploreConfig = {
           },
           {
             columnName: 'consortium',
-            hintText: 'PS-ON'
+            hintText: 'PS-ON',
           },
           {
             columnName: 'grantType',
-            hintText: 'U01'
+            hintText: 'U01',
           },
-        ]
+        ],
       },
       menuConfig: [
         {
@@ -119,7 +120,7 @@ export const datasets: HomeExploreConfig = {
         },
         {
           sql,
-          facet: 'Theme'
+          facet: 'Theme',
         },
         {
           sql,
@@ -139,8 +140,8 @@ export const datasets: HomeExploreConfig = {
         },
         {
           sql,
-        }
+        },
       ],
-    }
-  }
+    },
+  },
 }

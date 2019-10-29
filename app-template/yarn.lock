@@ -10407,9 +10407,9 @@ symbol-tree@^3.2.2:
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.4.tgz#430637d248ba77e078883951fb9aa0eed7c63fa2"
 
-synapse-react-client@1.12.73:
-  version "1.12.73"
-  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-1.12.73.tgz#ed96185d3bdac1773aa7490921e0868d7ac6b164"
+synapse-react-client@1.12.74:
+  version "1.12.74"
+  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-1.12.74.tgz#ed2264eea15ec4bf2c4000f0692e4e8de4e8f360"
   dependencies:
     "@fortawesome/fontawesome-svg-core" "^1.2.4"
     "@fortawesome/free-solid-svg-icons" "^5.3.1"
