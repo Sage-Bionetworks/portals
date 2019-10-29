@@ -1,50 +1,74 @@
-import { GenericRoute } from '../types/portal-config'
-import { publications, files, datasets, grants, studies, tools } from './synapseConfigs'
-import { SynapseConstants } from 'synapse-react-client'
-import { studiesSql, studySchema } from './synapseConfigs/studies'
-import { facetAliases } from './synapseConfigs/commonProps'
-import { publicationSql, publicationSchema } from './synapseConfigs/publications'
-import { datasetsSql, datasetSchema } from './synapseConfigs/datasets'
-import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
-import loadingScreen from './loadingScreen'
-import { toolsSchema, toolsSql } from './synapseConfigs/tools'
-import { filesSql } from './synapseConfigs/files'
-import DatasetSvg from "./style/Dataset.svg"
-import StudySvg from "./style/Study.svg"
-const homeLimit = 3
+import { GenericRoute } from "../types/portal-config";
+import {
+  publications,
+  files,
+  datasets,
+  grants,
+  studies,
+  tools
+} from "./synapseConfigs";
+import { SynapseConstants } from "synapse-react-client";
+import { studiesSql, studySchema } from "./synapseConfigs/studies";
+import { facetAliases } from "./synapseConfigs/commonProps";
+import {
+  publicationSql,
+  publicationSchema
+} from "./synapseConfigs/publications";
+import { datasetsSql, datasetSchema } from "./synapseConfigs/datasets";
+import routeButtonControlWrapperProps from "./routeButtonControlWrapperProps";
+import loadingScreen from "./loadingScreen";
+import { toolsSchema, toolsSql } from "./synapseConfigs/tools";
+import { filesSql } from "./synapseConfigs/files";
+import DatasetSvg from "./style/Dataset.svg";
+const homeLimit = 3;
 
-const routes: GenericRoute [] = [
+const routes: GenericRoute[] = [
   {
-    name: 'Home',
-    to: '/',
+    name: "Home",
+    to: "/",
     isNested: false,
     synapseConfigArray: [
       {
-        name: 'StatefulButtonControlWrapper',
-        title: 'EXPLORE PORTAL',
+        name: "StatefulButtonControlWrapper",
+        title: "EXPLORE PORTAL",
         props: {
           colors: [
-            '#47337D',
-            '#407BA0',
-            '#7798AC',
-            '#77BBBF',
-            '#58A158',
-            '#3C4A63',
+            "#47337D",
+            "#407BA0",
+            "#7798AC",
+            "#77BBBF",
+            "#58A158",
+            "#3C4A63"
           ],
           configs: [
-            { name: 'Grants', synapseConfigArray: [grants.homePageSynapseObject] },
-            { name: 'Publications', synapseConfigArray: [publications.homePageSynapseObject] },
-            { name: 'Studies', synapseConfigArray: [studies.homePageSynapseObject] },
-            { name: 'Datasets', synapseConfigArray: [datasets.homePageSynapseObject] },
-            { name: 'Files', synapseConfigArray: [files.homePageSynapseObject] },
-            { name: 'Tools', synapseConfigArray: [tools.homePageSynapseObject] },
+            {
+              name: "Grants",
+              synapseConfigArray: [grants.homePageSynapseObject]
+            },
+            {
+              name: "Publications",
+              synapseConfigArray: [publications.homePageSynapseObject]
+            },
+            {
+              name: "Studies",
+              synapseConfigArray: [studies.homePageSynapseObject]
+            },
+            {
+              name: "Datasets",
+              synapseConfigArray: [datasets.homePageSynapseObject]
+            },
+            {
+              name: "Files",
+              synapseConfigArray: [files.homePageSynapseObject]
+            },
+            { name: "Tools", synapseConfigArray: [tools.homePageSynapseObject] }
           ]
         }
       },
       {
-        name: 'CardContainerLogic',
-        title: 'EXPLORE STUDIES',
-        link: 'Explore/Studies',
+        name: "CardContainerLogic",
+        title: "EXPLORE STUDIES",
+        link: "Explore/Studies",
         props: {
           loadingScreen,
           facetAliases,
@@ -56,9 +80,9 @@ const routes: GenericRoute [] = [
         }
       },
       {
-        name: 'CardContainerLogic',
-        title: 'EXPLORE PUBLICATIONS',
-        link: 'Explore/Publications',
+        name: "CardContainerLogic",
+        title: "EXPLORE PUBLICATIONS",
+        link: "Explore/Publications",
         props: {
           loadingScreen,
           facetAliases,
@@ -66,12 +90,12 @@ const routes: GenericRoute [] = [
           limit: homeLimit,
           type: SynapseConstants.GENERIC_CARD,
           genericCardSchema: publicationSchema
-        },
+        }
       },
       {
-        name: 'CardContainerLogic',
-        title: 'EXPLORE DATASETS',
-        link: 'Explore/Datasets',
+        name: "CardContainerLogic",
+        title: "EXPLORE DATASETS",
+        link: "Explore/Datasets",
         props: {
           loadingScreen,
           facetAliases,
@@ -80,12 +104,12 @@ const routes: GenericRoute [] = [
           limit: homeLimit,
           type: SynapseConstants.GENERIC_CARD,
           genericCardSchema: datasetSchema
-        },
+        }
       },
       {
-        name: 'CardContainerLogic',
-        title: 'EXPLORE TOOLS',
-        link: 'Explore/Tools',
+        name: "CardContainerLogic",
+        title: "EXPLORE TOOLS",
+        link: "Explore/Tools",
         props: {
           loadingScreen,
           facetAliases,
@@ -93,17 +117,17 @@ const routes: GenericRoute [] = [
           limit: homeLimit,
           type: SynapseConstants.GENERIC_CARD,
           genericCardSchema: toolsSchema
-        },
-      },
+        }
+      }
     ]
   },
   {
-    name: 'Explore',
+    name: "Explore",
     isNested: true,
     routes: [
       {
-        name: 'Grants',
-        to: '/Explore/Grants',
+        name: "Grants",
+        to: "/Explore/Grants",
         isNested: false,
         synapseConfigArray: [
           {
@@ -113,11 +137,11 @@ const routes: GenericRoute [] = [
               synapseConfig: grants.explorePageSynapseObject
             }
           }
-        ],
+        ]
       },
       {
-        name: 'Publications',
-        to: '/Explore/Publications',
+        name: "Publications",
+        to: "/Explore/Publications",
         isNested: false,
         synapseConfigArray: [
           {
@@ -130,36 +154,36 @@ const routes: GenericRoute [] = [
         ],
         programmaticRouteConfig: [
           {
-            name: 'CardContainerLogic',
+            name: "CardContainerLogic",
             isOutsideContainer: true,
             props: {
               type: SynapseConstants.GENERIC_CARD,
               isHeader: true,
-              backgroundColor: '#407ba0',
+              backgroundColor: "#407ba0",
               genericCardSchema: publicationSchema,
               loadingScreen,
               facetAliases,
               labelLinkConfig: [
                 {
-                  baseURL: 'Explore/Datasets',
-                  URLColumnNames: ['datasets'],
-                  matchColumnName: 'datasets'
+                  baseURL: "Explore/Datasets",
+                  URLColumnNames: ["datasets"],
+                  matchColumnName: "datasets"
                 },
                 {
-                  baseURL: 'Explore/Studies',
-                  URLColumnNames: ['studies'],
-                  matchColumnName: 'studies'
-                },
+                  baseURL: "Explore/Studies",
+                  URLColumnNames: ["studies"],
+                  matchColumnName: "studies"
+                }
               ],
               secondaryLabelLimit: Infinity,
               sql: publicationSql
             }
-          },
+          }
         ]
       },
       {
-        name: 'Studies',
-        to: '/Explore/Studies',
+        name: "Studies",
+        to: "/Explore/Studies",
         isNested: false,
         synapseConfigArray: [
           {
@@ -172,45 +196,43 @@ const routes: GenericRoute [] = [
         ],
         programmaticRouteConfig: [
           {
-            name: 'CardContainerLogic',
+            name: "CardContainerLogic",
             isOutsideContainer: true,
             props: {
               type: SynapseConstants.GENERIC_CARD,
               isHeader: true,
-              backgroundColor: '#407ba0',
+              backgroundColor: "#407ba0",
               genericCardSchema: studySchema,
               loadingScreen,
               facetAliases,
-              iconOptions: {
-                study: StudySvg
-              },
               labelLinkConfig: [
                 {
-                  baseURL: 'Explore/Publications',
-                  URLColumnNames: ['Title'],
-                  matchColumnName: 'Title'
+                  baseURL: "Explore/Publications",
+                  URLColumnNames: ["Title"],
+                  matchColumnName: "Title"
                 },
                 {
-                  baseURL: 'Explore/Datasets',
-                  URLColumnNames: ['datasets'],
-                  matchColumnName: 'datasets',
-                },
+                  baseURL: "Explore/Datasets",
+                  URLColumnNames: ["datasets"],
+                  matchColumnName: "datasets"
+                }
               ],
               secondaryLabelLimit: Infinity,
               sql: studiesSql
             }
           },
           {
-            name: 'QueryWrapperFlattened',
-            title: 'Data',
+            name: "QueryWrapperFlattened",
+            title: "Data",
             props: {
               initQueryRequest: {
-                partMask: SynapseConstants.BUNDLE_MASK_QUERY_FACETS
-                | SynapseConstants.BUNDLE_MASK_QUERY_COUNT
-                | SynapseConstants.BUNDLE_MASK_QUERY_SELECT_COLUMNS
-                | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS
-                ,
-                concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
+                partMask:
+                  SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
+                  SynapseConstants.BUNDLE_MASK_QUERY_COUNT |
+                  SynapseConstants.BUNDLE_MASK_QUERY_SELECT_COLUMNS |
+                  SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
+                concreteType:
+                  "org.sagebionetworks.repo.model.table.QueryBundleRequest",
                 query: {
                   sql: filesSql,
                   selectedFacets: [],
@@ -222,17 +244,17 @@ const routes: GenericRoute [] = [
               loadingScreen,
               facetAliases,
               rgbIndex: 1,
-              facet: 'consortium',
-              unitDescription: 'Files',
-              synapseId: 'syn18483791',
-              title: 'Study Files'
+              facet: "consortium",
+              unitDescription: "Files",
+              synapseId: "syn18483791",
+              title: "Study Files"
             }
-          },
+          }
         ]
       },
       {
-        name: 'Datasets',
-        to: '/Explore/Datasets',
+        name: "Datasets",
+        to: "/Explore/Datasets",
         isNested: false,
         synapseConfigArray: [
           {
@@ -245,13 +267,12 @@ const routes: GenericRoute [] = [
         ],
         programmaticRouteConfig: [
           {
-            name: 'CardContainerLogic',
+            name: "CardContainerLogic",
             isOutsideContainer: true,
             props: {
               type: SynapseConstants.GENERIC_CARD,
               isHeader: true,
-              backgroundColor: '#5bb0b5',
-              sqlOperator: '=',
+              backgroundColor: "#5bb0b5",
               genericCardSchema: datasetSchema,
               secondaryLabelLimit: Infinity,
               sql: datasetsSql,
@@ -262,24 +283,25 @@ const routes: GenericRoute [] = [
               },
               labelLinkConfig: [
                 {
-                  baseURL: 'Explore/Studies',
-                  URLColumnNames: ['studies'],
-                  matchColumnName: 'studies'
-                },
+                  baseURL: "Explore/Studies",
+                  URLColumnNames: ["studies"],
+                  matchColumnName: "studies"
+                }
               ]
             }
           },
           {
-            name: 'QueryWrapperFlattened',
-            title: 'Data',
+            name: "QueryWrapperFlattened",
+            title: "Data",
             props: {
               initQueryRequest: {
-                partMask: SynapseConstants.BUNDLE_MASK_QUERY_FACETS
-                | SynapseConstants.BUNDLE_MASK_QUERY_COUNT
-                | SynapseConstants.BUNDLE_MASK_QUERY_SELECT_COLUMNS
-                | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS
-                ,
-                concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
+                partMask:
+                  SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
+                  SynapseConstants.BUNDLE_MASK_QUERY_COUNT |
+                  SynapseConstants.BUNDLE_MASK_QUERY_SELECT_COLUMNS |
+                  SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
+                concreteType:
+                  "org.sagebionetworks.repo.model.table.QueryBundleRequest",
                 query: {
                   sql: filesSql,
                   selectedFacets: [],
@@ -289,20 +311,20 @@ const routes: GenericRoute [] = [
                 }
               },
               loadingScreen,
-              sqlOperator: '=',
+              sqlOperator: "=",
               facetAliases,
               rgbIndex: 0,
-              facet: 'consortium',
-              unitDescription: 'Files',
-              synapseId: 'syn18488466',
-              title: 'Dataset Files'
+              facet: "consortium",
+              unitDescription: "Files",
+              synapseId: "syn18488466",
+              title: "Dataset Files"
             }
-          },
+          }
         ]
       },
       {
-        name: 'Files',
-        to: '/Explore/Files',
+        name: "Files",
+        to: "/Explore/Files",
         isNested: false,
         synapseConfigArray: [
           {
@@ -312,11 +334,11 @@ const routes: GenericRoute [] = [
               synapseConfig: files.explorePageSynapseObject
             }
           }
-        ],
+        ]
       },
       {
-        name: 'Tools',
-        to: '/Explore/Tools',
+        name: "Tools",
+        to: "/Explore/Tools",
         isNested: false,
         synapseConfigArray: [
           {
@@ -326,24 +348,24 @@ const routes: GenericRoute [] = [
               synapseConfig: tools.explorePageSynapseObject
             }
           }
-        ],
+        ]
       }
     ]
   },
   {
-    name: 'About',
-    to: '/About',
+    name: "About",
+    to: "/About",
     isNested: false,
     synapseConfigArray: [
       {
-        name: 'Markdown',
+        name: "Markdown",
         props: {
-          ownerId: 'syn7080714',
-          wikiId: '470467'
+          ownerId: "syn7080714",
+          wikiId: "470467"
         }
       }
     ]
   }
-]
+];
 
-export default routes
+export default routes;

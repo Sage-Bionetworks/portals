@@ -172,7 +172,7 @@ body {
 .show button.dropdown-toggle.nav-button,
 button.dropdown-toggle.nav-button:hover {
   background: unset !important;
-  color: $primary-action-color;
+  color: unset;
   @extend %bottomBorderNav;
 }
 
