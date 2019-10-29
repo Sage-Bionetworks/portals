@@ -273,6 +273,7 @@ const routes: GenericRoute[] = [
               type: SynapseConstants.GENERIC_CARD,
               isHeader: true,
               backgroundColor: "#5bb0b5",
+              sqlOperator: "=",
               genericCardSchema: datasetSchema,
               secondaryLabelLimit: Infinity,
               sql: datasetsSql,
