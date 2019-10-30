@@ -11,8 +11,8 @@ type StatefulButtonControlConfigs = {
 }
 
 export type StatefulButtonControlWrapperProps = {
-  configs: StatefulButtonControlConfigs []
-  colors: string []
+  configs: StatefulButtonControlConfigs[]
+  colors: string[]
 }
 
 export type ButtonControlState = {
@@ -26,12 +26,14 @@ export type ButtonControlState = {
  * @class StatefulButtonControl
  * @extends {React.Component<Props, ButtonControlState>}
  */
-class StatefulButtonControl extends React.Component<StatefulButtonControlWrapperProps, ButtonControlState> {
-
+class StatefulButtonControl extends React.Component<
+  StatefulButtonControlWrapperProps,
+  ButtonControlState
+> {
   constructor(props: StatefulButtonControlWrapperProps) {
     super(props)
     this.state = {
-      index: 0
+      index: 0,
     }
   }
 
@@ -41,15 +43,12 @@ class StatefulButtonControl extends React.Component<StatefulButtonControlWrapper
   */
   public handleChange = (_val: string, index: number) => {
     this.setState({
-      index
+      index,
     })
   }
 
   render() {
-    const {
-      configs,
-      colors,
-    } = this.props
+    const { configs, colors } = this.props
     const { name, synapseConfigArray, sql } = configs[this.state.index]
     const buttonControlProps: ButtonControlProps = {
       colors,
@@ -59,22 +58,23 @@ class StatefulButtonControl extends React.Component<StatefulButtonControlWrapper
     }
     return (
       <React.Fragment>
-        <ButtonControl
-          {...buttonControlProps}
-        />
-        {(name && sql) && <h3 className="SRC-boldText queryCountHeader"> <QueryCount name={name} sql={sql}/> </h3>}
-        {
-          synapseConfigArray.map(
-            (config) => {
-              return (
-                <React.Fragment key={JSON.stringify(config.props)}>
-                  {config.title &&  <h2 className="title statefulButtonTitle"> {config.title} </h2>}
-                  {generateSynapseObject(config)}
-                </React.Fragment>
-              )
-            }
+        <ButtonControl {...buttonControlProps} />
+        {name && sql && (
+          <h3 className="SRC-boldText queryCountHeader">
+            {' '}
+            <QueryCount name={name} sql={sql} />{' '}
+          </h3>
+        )}
+        {synapseConfigArray.map(config => {
+          return (
+            <React.Fragment key={JSON.stringify(config.props)}>
+              {config.title && (
+                <h2 className="title statefulButtonTitle"> {config.title} </h2>
+              )}
+              {generateSynapseObject(config)}
+            </React.Fragment>
           )
-        }
+        })}
       </React.Fragment>
     )
   }

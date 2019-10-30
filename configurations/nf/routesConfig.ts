@@ -1,9 +1,23 @@
 import { GenericRoute } from '../types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
-import { datasets, files, studies, publications, tools, funders } from './synapseConfigs'
-import { studiesSql, studiesCardConfiguration, studyHeaderIconOptions } from './synapseConfigs/studies'
+import {
+  datasets,
+  files,
+  studies,
+  publications,
+  tools,
+  funders,
+} from './synapseConfigs'
+import {
+  studiesSql,
+  studiesCardConfiguration,
+  studyHeaderIconOptions,
+} from './synapseConfigs/studies'
 import { datasetsSql } from './synapseConfigs/datasets'
-import { publicationsSql, publicationsCardConfiguration } from './synapseConfigs/publications'
+import {
+  publicationsSql,
+  publicationsCardConfiguration,
+} from './synapseConfigs/publications'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
 import loadingScreen from './loadingScreen'
 import { ntap } from './synapseConfigs/organizationConfigs/ntap'
@@ -14,7 +28,7 @@ import { toolsSql, toolsSchema } from './synapseConfigs/tools'
 
 const limit = 3
 
-const routes: GenericRoute [] = [
+const routes: GenericRoute[] = [
   {
     name: 'Home',
     to: '/',
@@ -23,16 +37,32 @@ const routes: GenericRoute [] = [
       {
         name: 'StatefulButtonControlWrapper',
         title: 'EXPLORE PORTAL',
+        containerClassName: 'home-explore-container'',
         props: {
           ...buttonColors,
           configs: [
-            { name: 'Studies', synapseConfigArray: [studies.homePageSynapseObject] },
-            { name: 'Datasets', synapseConfigArray: [datasets.homePageSynapseObject] },
-            { name: 'Files', synapseConfigArray: [files.homePageSynapseObject] },
-            { name: 'Publications', synapseConfigArray: [publications.homePageSynapseObject] },
-            { name: 'Tools', synapseConfigArray: [tools.homePageSynapseObject] }
-          ]
-        }
+            {
+              name: 'Studies',
+              synapseConfigArray: [studies.homePageSynapseObject],
+            },
+            {
+              name: 'Datasets',
+              synapseConfigArray: [datasets.homePageSynapseObject],
+            },
+            {
+              name: 'Files',
+              synapseConfigArray: [files.homePageSynapseObject],
+            },
+            {
+              name: 'Publications',
+              synapseConfigArray: [publications.homePageSynapseObject],
+            },
+            {
+              name: 'Tools',
+              synapseConfigArray: [tools.homePageSynapseObject],
+            },
+          ],
+        },
       },
       {
         name: 'CardContainerLogic',
@@ -46,9 +76,9 @@ const routes: GenericRoute [] = [
           title: 'NEW STUDIES',
           titleLinkConfig: {
             baseURL: 'Explore/Studies',
-            URLColumnNames: ['studyId']
+            URLColumnNames: ['studyId'],
           },
-        }
+        },
       },
       {
         name: 'CardContainerLogic',
@@ -59,8 +89,8 @@ const routes: GenericRoute [] = [
           loadingScreen,
           facetAliases,
           sql: publicationsSql,
-          ...publicationsCardConfiguration
-        }
+          ...publicationsCardConfiguration,
+        },
       },
       {
         name: 'CardContainerLogic',
@@ -71,8 +101,8 @@ const routes: GenericRoute [] = [
           loadingScreen,
           facetAliases,
           sql: datasetsSql,
-          type: SynapseConstants.DATASET
-        }
+          type: SynapseConstants.DATASET,
+        },
       },
       {
         name: 'CardContainerLogic',
@@ -84,8 +114,8 @@ const routes: GenericRoute [] = [
           facetAliases,
           type: SynapseConstants.GENERIC_CARD,
           genericCardSchema: toolsSchema,
-          sql: toolsSql
-        }
+          sql: toolsSql,
+        },
       },
       {
         name: 'CardContainerLogic',
@@ -95,10 +125,10 @@ const routes: GenericRoute [] = [
           loadingScreen,
           facetAliases,
           sql: funders.sql,
-          type: funders.type
-        }
-      }
-    ]
+          type: funders.type,
+        },
+      },
+    ],
   },
   {
     name: 'Explore',
@@ -113,9 +143,9 @@ const routes: GenericRoute [] = [
             ...routeButtonControlWrapperProps,
             props: {
               ...routeButtonControlWrapperProps.props,
-              synapseConfig: studies.explorePageSynapseObject
-            }
-          }
+              synapseConfig: studies.explorePageSynapseObject,
+            },
+          },
         ],
         programmaticRouteConfig: [
           {
@@ -128,14 +158,14 @@ const routes: GenericRoute [] = [
               backgroundColor: '#119488',
               genericCardSchema: {
                 link: 'studyId',
-                ...studiesCardConfiguration.genericCardSchema
+                ...studiesCardConfiguration.genericCardSchema,
               },
               loadingScreen,
               facetAliases,
               iconOptions: studyHeaderIconOptions,
               secondaryLabelLimit: Infinity,
-              sql: 'SELECT * FROM syn16787123'
-            }
+              sql: 'SELECT * FROM syn16787123',
+            },
           },
           {
             name: 'CardContainerLogic',
@@ -145,8 +175,8 @@ const routes: GenericRoute [] = [
               loadingScreen,
               sqlOperator: '=',
               ...publicationsCardConfiguration,
-              sql: 'SELECT * FROM syn16857542'
-            }
+              sql: 'SELECT * FROM syn16857542',
+            },
           },
           {
             name: 'CardContainerLogic',
@@ -155,10 +185,10 @@ const routes: GenericRoute [] = [
               sqlOperator: '=',
               loadingScreen,
               type: SynapseConstants.DATASET,
-              sql: datasetsSql
-            }
-          }
-        ]
+              sql: datasetsSql,
+            },
+          },
+        ],
       },
       {
         name: 'Datasets',
@@ -169,10 +199,10 @@ const routes: GenericRoute [] = [
             ...routeButtonControlWrapperProps,
             props: {
               ...routeButtonControlWrapperProps.props,
-              synapseConfig: datasets.explorePageSynapseObject
-            }
-          }
-        ]
+              synapseConfig: datasets.explorePageSynapseObject,
+            },
+          },
+        ],
       },
       {
         name: 'Files',
@@ -183,10 +213,10 @@ const routes: GenericRoute [] = [
             ...routeButtonControlWrapperProps,
             props: {
               ...routeButtonControlWrapperProps.props,
-              synapseConfig: files.explorePageSynapseObject
-            }
-          }
-        ]
+              synapseConfig: files.explorePageSynapseObject,
+            },
+          },
+        ],
       },
       {
         name: 'Publications',
@@ -197,10 +227,10 @@ const routes: GenericRoute [] = [
             ...routeButtonControlWrapperProps,
             props: {
               ...routeButtonControlWrapperProps.props,
-              synapseConfig: publications.explorePageSynapseObject
-            }
-          }
-        ]
+              synapseConfig: publications.explorePageSynapseObject,
+            },
+          },
+        ],
       },
       {
         name: 'Tools',
@@ -211,17 +241,17 @@ const routes: GenericRoute [] = [
             ...routeButtonControlWrapperProps,
             props: {
               ...routeButtonControlWrapperProps.props,
-              synapseConfig: tools.explorePageSynapseObject
-            }
-          }
-        ]
+              synapseConfig: tools.explorePageSynapseObject,
+            },
+          },
+        ],
       },
-    ]
+    ],
   },
   {
     name: 'Organizations',
     isNested: true,
-    routes: [ctf, ntap, dhartSpore]
+    routes: [ctf, ntap, dhartSpore],
   },
   {
     name: 'About',
@@ -232,12 +262,12 @@ const routes: GenericRoute [] = [
         name: 'Markdown',
         title: 'About',
         props: {
-          ownerId:'syn5702691',
-          wikiId:'583906'
-        }
-      }
-    ]
-  }
+          ownerId: 'syn5702691',
+          wikiId: '583906',
+        },
+      },
+    ],
+  },
 ]
 
 export default routes
