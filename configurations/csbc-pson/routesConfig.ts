@@ -291,6 +291,11 @@ const routes: GenericRoute[] = [
                   URLColumnNames: ['studies'],
                   matchColumnName: 'studies',
                 },
+                {
+                  baseURL: 'Explore/Publications',
+                  URLColumnNames: ['Title'],
+                  matchColumnName: 'Title',
+                },
               ],
             },
           },

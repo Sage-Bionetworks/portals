@@ -14,6 +14,7 @@ export const datasetSchema: GenericCardSchema = {
   subTitle: 'centerName',
   description: 'summary',
   secondaryLabels: [
+    'Title',
     'PubMed',
     'Theme',
     'studies',
@@ -65,6 +66,11 @@ export const datasets: HomeExploreConfig = {
             baseURL: 'Explore/Publications',
             URLColumnNames: ['Title'],
             matchColumnName: 'Title',
+          },
+          {
+            baseURL: 'Explore/Studies',
+            URLColumnNames: ['studies'],
+            matchColumnName: 'studies',
           },
         ],
       },
