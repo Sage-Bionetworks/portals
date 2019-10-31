@@ -23,7 +23,7 @@ const modelAd: SynapseConfigArray = [
       type: SynapseConstants.GENERIC_CARD,
       backgroundColor: '#5960a5',
       isHeader: true,
-    }
+    },
   },
   {
     name: 'CardContainerLogic',
@@ -31,10 +31,10 @@ const modelAd: SynapseConfigArray = [
     props: {
       loadingScreen,
       secondaryLabelLimit: 4,
-      sql:  `SELECT * FROM syn17024229 WHERE ( ( "Program" = 'MODEL-AD' ) )`,
-      ...projectCardProps
-    }
-  }
+      sql: `SELECT * FROM syn17024229 WHERE ( ( "Program" = 'MODEL-AD' ) )`,
+      ...projectCardProps,
+    },
+  },
 ]
 
 export default modelAd

@@ -17,8 +17,8 @@ const programs: SynapseConfig = {
     },
     titleLinkConfig: {
       baseURL: 'Explore/Programs',
-      URLColumnNames: ['Program']
-    }  
+      URLColumnNames: ['Program'],
+    },
   },
 }
 

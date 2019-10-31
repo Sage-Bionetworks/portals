@@ -3,25 +3,27 @@ import { SynapseConstants } from 'synapse-react-client'
 import { publications, studies } from './exploreHomeConfiguration'
 
 // Constants used for testing
-export const ABOUT_INDEX =  3
+export const ABOUT_INDEX = 3
 export const EXPLORE_INDEX = 1
 export const ORGANIZATION_INDEX = 2
 export const HOME_INDEX = 0
 
-const routes: GenericRoute [] = []
+const routes: GenericRoute[] = []
 
 routes[ABOUT_INDEX] = {
   isNested: false,
   name: 'About',
   to: '/About',
-  synapseConfigArray: [{
-    title: 'About',
-    name: 'Markdown',
-    props: {
-      ownerId: 'syn7080714',
-      wikiId: '470467'
-    }
-  }]
+  synapseConfigArray: [
+    {
+      title: 'About',
+      name: 'Markdown',
+      props: {
+        ownerId: 'syn7080714',
+        wikiId: '470467',
+      },
+    },
+  ],
 }
 
 routes[EXPLORE_INDEX] = {
@@ -32,14 +34,14 @@ routes[EXPLORE_INDEX] = {
       name: 'Data',
       isNested: false,
       to: '/Explore/Data',
-      synapseConfigArray: [studies.explorePageSynapseObject]
+      synapseConfigArray: [studies.explorePageSynapseObject],
     },
     {
       name: 'Publications',
       isNested: false,
       to: '/Explore/Publications',
-      synapseConfigArray: [publications.explorePageSynapseObject]
-    }
+      synapseConfigArray: [publications.explorePageSynapseObject],
+    },
   ],
 }
 
@@ -57,8 +59,8 @@ routes[ORGANIZATION_INDEX] = {
           name: 'Markdown',
           props: {
             ownerId: 'syn18421331',
-            wikiId: '590615'
-          }
+            wikiId: '590615',
+          },
         },
         {
           title: 'Cards',
@@ -68,25 +70,27 @@ routes[ORGANIZATION_INDEX] = {
             genericCardSchema: {
               title: 'name',
             },
-            sql: `SELECT * FROM syn18488466 WHERE ( ( "featured" = 'TRUE' ) )`
-          }
-        }
+            sql: `SELECT * FROM syn18488466 WHERE ( ( "featured" = 'TRUE' ) )`,
+          },
+        },
       ],
       routes: [
         {
           name: 'Subcontent',
           isNested: false,
           to: '/Organizations/Content/Subcontent',
-          synapseConfigArray: [{
-            name: 'Markdown',
-            props: {
-              ownerId: 'syn18421331',
-              wikiId: '590615'
-            }
-          }],
-        }
-      ]
-    }
+          synapseConfigArray: [
+            {
+              name: 'Markdown',
+              props: {
+                ownerId: 'syn18421331',
+                wikiId: '590615',
+              },
+            },
+          ],
+        },
+      ],
+    },
   ],
 }
 
@@ -101,12 +105,9 @@ routes[HOME_INDEX] = {
       props: {
         configs: [
           studies.homePageSynapseObject.props,
-          publications.homePageSynapseObject.props
+          publications.homePageSynapseObject.props,
         ],
-        colors: [
-          'green',
-          'blue'
-        ]
+        colors: ['green', 'blue'],
       },
     },
     {
@@ -119,7 +120,7 @@ routes[HOME_INDEX] = {
         genericCardSchema: {
           title: 'name',
         },
-        limit: 3
+        limit: 3,
       },
     },
     {
@@ -128,9 +129,9 @@ routes[HOME_INDEX] = {
       props: {
         ownerId: 'syn7080714',
         wikiId: '470467',
-      }
-    }
-  ]
+      },
+    },
+  ],
 }
 
 export default routes

@@ -16,7 +16,7 @@ const rgbIndex = 5
 
 export const studyHeaderIconOptions = {
   Active: studyActiveHeaderSvg,
-  Completed: studyCompleteHeaderSvg
+  Completed: studyCompleteHeaderSvg,
 }
 
 export const studiesCardConfiguration: CommonCardProps = {
@@ -38,8 +38,8 @@ export const studiesCardConfiguration: CommonCardProps = {
   },
   iconOptions: {
     Active: studyActiveSvg,
-    Completed: studyCompleteSvg
-  }
+    Completed: studyCompleteSvg,
+  },
 }
 
 const studies: HomeExploreConfig = {
@@ -56,17 +56,17 @@ const studies: HomeExploreConfig = {
       initQueryRequest: {
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
         partMask:
-            SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS
-            | SynapseConstants.BUNDLE_MASK_QUERY_FACETS
-            | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
+          SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS |
+          SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
+          SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
         query: {
           sql,
           isConsistent: false,
           limit: 25,
-          offset: 0
-        }
-      }
-    }
+          offset: 0,
+        },
+      },
+    },
   },
   explorePageSynapseObject: {
     name: 'QueryWrapperMenu',
@@ -81,48 +81,48 @@ const studies: HomeExploreConfig = {
         ...studiesCardConfiguration,
         titleLinkConfig: {
           baseURL: 'Explore/Studies',
-          URLColumnNames: ['studyId']
+          URLColumnNames: ['studyId'],
         },
       },
       searchConfiguration: {
         searchable: [
           {
             columnName: 'studyName',
-            hintText: 'Synodos NF2'
+            hintText: 'Synodos NF2',
           },
           {
             columnName: 'summary',
-            hintText: 'nonsurgical therapy'
+            hintText: 'nonsurgical therapy',
           },
           {
             columnName: 'studyLeads',
-            hintText: 'Schwann cell'
+            hintText: 'Schwann cell',
           },
           {
             columnName: 'studyStatus',
-            hintText: 'Active'
+            hintText: 'Active',
           },
           {
             columnName: 'dataStatus',
-            hintText: 'Under Embargo'
+            hintText: 'Under Embargo',
           },
           {
             columnName: 'institutions',
-            hintText: 'Massachusetts General Hospital'
+            hintText: 'Massachusetts General Hospital',
           },
           {
             columnName: 'diseaseFocus',
-            hintText: 'Neurofibromatosis 2'
+            hintText: 'Neurofibromatosis 2',
           },
           {
             columnName: 'manifestation',
-            hintText: 'Schwannoma'
+            hintText: 'Schwannoma',
           },
           {
             columnName: 'fundingAgency',
-            hintText: 'NTAP'
+            hintText: 'NTAP',
           },
-        ]
+        ],
       },
       facetAliases,
       menuConfig: [
@@ -132,30 +132,30 @@ const studies: HomeExploreConfig = {
         },
         {
           sql,
-          facet: 'dataStatus'
+          facet: 'dataStatus',
         },
         {
           sql,
-          facet: 'institutions'
+          facet: 'institutions',
         },
         {
           sql,
-          facet: 'fundingAgency'
+          facet: 'fundingAgency',
         },
         {
           sql,
-          facet: 'manifestation'
+          facet: 'manifestation',
         },
         {
           sql,
-          facet: 'diseaseFocus'
+          facet: 'diseaseFocus',
         },
         {
           sql,
         },
-      ]
-    }
-  }
+      ],
+    },
+  },
 }
 
 export default studies

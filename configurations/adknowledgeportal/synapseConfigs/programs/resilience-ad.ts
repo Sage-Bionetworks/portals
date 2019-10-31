@@ -23,7 +23,7 @@ const resilienceAd: SynapseConfigArray = [
       type: SynapseConstants.GENERIC_CARD,
       backgroundColor: '#5960a5',
       isHeader: true,
-    }
+    },
   },
   {
     name: 'CardContainerLogic',
@@ -32,9 +32,9 @@ const resilienceAd: SynapseConfigArray = [
       loadingScreen,
       sql: `SELECT * FROM syn17024229 WHERE ( ( "Program" = 'Resilience-AD' ) )`,
       ...projectCardProps,
-      secondaryLabelLimit: 4
-    }
-  }
+      secondaryLabelLimit: 4,
+    },
+  },
 ]
 
 export default resilienceAd

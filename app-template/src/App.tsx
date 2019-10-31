@@ -4,7 +4,7 @@ import './App.scss'
 import './Markdown.scss'
 import { Footer } from './Footer'
 import AppInitializer from './AppInitializer'
-import { Navbar } from './Navbar'
+import { Navbar } from './Navbar'
 import BetaBanner from './BetaBanner'
 import CookiesNotification from './CookiesNotification'
 import { CookiesProvider } from 'react-cookie'
@@ -18,23 +18,23 @@ const App: React.SFC = () => {
     <CookiesProvider>
       <HashRouter>
         <AppInitializer>
-          <BetaBanner/>
-          <Navbar/>
+          <BetaBanner />
+          <Navbar />
           <CookiesNotification />
           <main className="main">
             {/* all the content below */}
-            <React.Suspense fallback={<div/>}>
+            <React.Suspense fallback={<div />}>
               <Switch>
                 {/* exact takes precendence over RouteResolver */}
-                <Route exact={true} path="/" component={Home}/>
+                <Route exact={true} path="/" component={Home} />
                 {/* all other routes handled programatically */}
-                <Route path="/" component={RouteResolver}/>
+                <Route path="/" component={RouteResolver} />
               </Switch>
             </React.Suspense>
           </main>
-          <Footer/>
+          <Footer />
         </AppInitializer>
-      </HashRouter >
+      </HashRouter>
     </CookiesProvider>
   )
 }

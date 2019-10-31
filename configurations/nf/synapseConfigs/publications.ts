@@ -24,9 +24,9 @@ export const publicationsCardConfiguration = {
       'manifestation',
       'fundingAgency',
       'pmid',
-      'doi'
-      ]
-    }
+      'doi',
+    ],
+  },
 }
 
 const publications: HomeExploreConfig = {
@@ -40,9 +40,9 @@ const publications: HomeExploreConfig = {
       initQueryRequest: {
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
         partMask:
-            SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS
-            | SynapseConstants.BUNDLE_MASK_QUERY_FACETS
-            | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
+          SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS |
+          SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
+          SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
         query: {
           sql,
           isConsistent: false,
@@ -51,7 +51,7 @@ const publications: HomeExploreConfig = {
         },
       },
       facet: 'diseaseFocus',
-    }
+    },
   },
   explorePageSynapseObject: {
     name: 'QueryWrapperMenu',
@@ -69,73 +69,73 @@ const publications: HomeExploreConfig = {
         searchable: [
           {
             columnName: 'author',
-            hintText: 'Weimer'
+            hintText: 'Weimer',
           },
           {
             columnName: 'title',
-            hintText: 'Schwann'
+            hintText: 'Schwann',
           },
           {
             columnName: 'journal',
-            hintText: 'neuro'
+            hintText: 'neuro',
           },
           {
             columnName: 'pmid',
-            hintText: '29055717'
+            hintText: '29055717',
           },
           {
             columnName: 'year',
-            hintText: '2018'
+            hintText: '2018',
           },
           {
             columnName: 'fundingAgency',
-            hintText: 'NTAP'
+            hintText: 'NTAP',
           },
           {
             columnName: 'studyName',
-            hintText: 'Plexiform'
+            hintText: 'Plexiform',
           },
           {
             columnName: 'diseaseFocus',
-            hintText: 'Neurofibromatosis 2'
+            hintText: 'Neurofibromatosis 2',
           },
           {
             columnName: 'manifestation',
-            hintText: 'MPNST'
+            hintText: 'MPNST',
           },
-        ]
+        ],
       },
       menuConfig: [
         {
           sql,
-          facet: 'fundingAgency'
+          facet: 'fundingAgency',
         },
         {
           sql,
-          facet: 'journal'
+          facet: 'journal',
         },
         {
           sql,
-          facet: 'year'
+          facet: 'year',
         },
         {
           sql,
-          facet: 'studyName'
+          facet: 'studyName',
         },
         {
           sql,
-          facet: 'diseaseFocus'
+          facet: 'diseaseFocus',
         },
         {
           sql,
-          facet: 'manifestation'
+          facet: 'manifestation',
         },
         {
           sql,
         },
-      ]
-    }
-  }
+      ],
+    },
+  },
 }
 
 export default publications

@@ -14,9 +14,9 @@ export const dhartSpore: BaseRoute = {
       props: {
         limit: 1,
         sql: "SELECT * FROM syn16858699 WHERE abbreviation = 'DHART SPORE'",
-        type: SynapseConstants.FUNDER
+        type: SynapseConstants.FUNDER,
       },
-      title: 'THE DEVELOPMENTAL AND HYPERACTIVE RAS TUMOR SPORE'
+      title: 'THE DEVELOPMENTAL AND HYPERACTIVE RAS TUMOR SPORE',
     },
     {
       name: 'StatefulButtonControlWrapper',
@@ -26,15 +26,15 @@ export const dhartSpore: BaseRoute = {
           {
             name: 'Studies',
             synapseConfigArray: generateOrgConfig('NIH-NCI', 'Studies'),
-            sql: generateOrgConfig('NIH-NCI', 'Studies', true)
+            sql: generateOrgConfig('NIH-NCI', 'Studies', true),
           },
           {
             name: 'Files',
             synapseConfigArray: generateOrgConfig('NIH-NCI', 'Files'),
-            sql: generateOrgConfig('NIH-NCI', 'Files', true)
+            sql: generateOrgConfig('NIH-NCI', 'Files', true),
           },
-        ]
-      }
+        ],
+      },
     },
-  ]
+  ],
 }

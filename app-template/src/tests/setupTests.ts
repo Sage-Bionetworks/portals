@@ -1,5 +1,5 @@
 import 'isomorphic-fetch' // polyfill for fetch
-import 'raf/polyfill'     // polyfill for requestAnimationFrame
+import 'raf/polyfill' // polyfill for requestAnimationFrame
 import { configure } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 
@@ -25,4 +25,6 @@ configure({ adapter: new Adapter() })
 // which requires a browser env and doesn't provide support for headless
 // js testing, so we shim the function below.
 // View - https://github.com/mapbox/mapbox-gl-js/issues/3436
-window.URL.createObjectURL = function () { return '' }
+window.URL.createObjectURL = function() {
+  return ''
+}

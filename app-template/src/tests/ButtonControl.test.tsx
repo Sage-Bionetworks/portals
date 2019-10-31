@@ -3,20 +3,13 @@ import { shallow } from 'enzyme'
 import { ButtonControl, ButtonControlProps } from '../ButtonControl'
 
 describe('ButtonControl works', () => {
-
-  const colors = [
-    'red',
-    'blue'
-  ]
-  const customRoutes = [
-    'route1',
-    'route2'
-  ]
+  const colors = ['red', 'blue']
+  const customRoutes = ['route1', 'route2']
   const props: ButtonControlProps = {
     colors,
     customRoutes,
     handleChanges: jest.fn(),
-    isSelected: jest.fn()
+    isSelected: jest.fn(),
   }
   it('renders the routes and colors correctly', () => {
     const el = shallow(<ButtonControl {...props} />)

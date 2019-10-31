@@ -9,7 +9,6 @@ const unitDescription = 'studies'
 const rgbIndex = 0
 const facet = 'tumorType'
 
-
 const studySchema: GenericCardSchema = {
   type: SynapseConstants.STUDY,
   title: 'name',
@@ -32,18 +31,19 @@ export const studies: HomeExploreConfig = {
       rgbIndex,
       facet,
       unitDescription,
-      initQueryRequest : {
+      initQueryRequest: {
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-        partMask: SynapseConstants.BUNDLE_MASK_QUERY_FACETS
-          | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
+        partMask:
+          SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
+          SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
         query: {
           sql,
           isConsistent: false,
           limit: 25,
           offset: 0,
-        }
+        },
       },
-    }
+    },
   },
   explorePageSynapseObject: {
     name: 'QueryWrapperMenu',
@@ -55,7 +55,7 @@ export const studies: HomeExploreConfig = {
       },
       cardConfiguration: {
         type: SynapseConstants.GENERIC_CARD,
-        genericCardSchema: studySchema
+        genericCardSchema: studySchema,
       },
       name: 'Data',
       facetAliases: {
@@ -69,8 +69,8 @@ export const studies: HomeExploreConfig = {
         {
           sql,
           facet: 'consortium',
-        }
+        },
       ],
     },
-  }
+  },
 }

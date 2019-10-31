@@ -8,15 +8,11 @@ export const Header: React.SFC<{}> = () => {
       <div className="row">
         <div className="col-md-offset-1 col-md-10">
           <div className="header-text">
-            <h2>
-              {title}
-            </h2>
-            <p className="normal-weight">
-            {summary}
-            </p>
+            <h2>{title}</h2>
+            <p className="normal-weight">{summary}</p>
           </div>
         </div>
       </div>
-  </header>
+    </header>
   )
 }

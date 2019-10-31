@@ -12,9 +12,7 @@ const publicationSchema: GenericCardSchema = {
   title: 'Title',
   subTitle: 'Authors',
   description: 'abstract',
-  secondaryLabels: [
-    'Journal'
-  ],
+  secondaryLabels: ['Journal'],
   link: 'PubMed',
 }
 export const publications: HomeExploreConfig = {
@@ -24,18 +22,19 @@ export const publications: HomeExploreConfig = {
       rgbIndex,
       facet,
       unitDescription,
-      initQueryRequest : {
+      initQueryRequest: {
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-        partMask: SynapseConstants.BUNDLE_MASK_QUERY_FACETS
-          | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
+        partMask:
+          SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
+          SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
         query: {
           sql,
           isConsistent: false,
           limit: 25,
           offset: 0,
-        }
+        },
       },
-    }
+    },
   },
   explorePageSynapseObject: {
     name: 'QueryWrapperMenu',
@@ -47,13 +46,12 @@ export const publications: HomeExploreConfig = {
       name: 'Publications',
       cardConfiguration: {
         type: SynapseConstants.GENERIC_CARD,
-        genericCardConfiguration: publicationSchema
+        genericCardConfiguration: publicationSchema,
       },
       menuConfig: [
         {
           sql,
           facet: 'Theme',
-          
         },
         {
           sql,
@@ -61,6 +59,6 @@ export const publications: HomeExploreConfig = {
         },
       ],
       rgbIndex: 1,
-    }
-  }
+    },
+  },
 }

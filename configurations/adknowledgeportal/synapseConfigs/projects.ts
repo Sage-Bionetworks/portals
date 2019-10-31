@@ -15,17 +15,13 @@ export const projectCardProps = {
     title: 'Name',
     subTitle: 'Key Investigators',
     description: 'Abstract',
-    secondaryLabels: [
-      'Institutions',
-      'Key Data Contributors',
-      'Program' 
-    ],
+    secondaryLabels: ['Institutions', 'Key Data Contributors', 'Program'],
   },
   secondaryLabelLimit: 4,
   titleLinkConfig: {
     baseURL: 'Explore/Projects',
-    URLColumnNames: ['Grant Number']
-  }
+    URLColumnNames: ['Grant Number'],
+  },
 }
 
 const projects: HomeExploreConfig = {
@@ -38,18 +34,19 @@ const projects: HomeExploreConfig = {
       loadingScreen,
       link: 'Explore/Projects',
       linkText: 'Explore Projects',
-      initQueryRequest : {
+      initQueryRequest: {
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-        partMask: SynapseConstants.BUNDLE_MASK_QUERY_FACETS
-          | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
+        partMask:
+          SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
+          SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
         query: {
           sql,
           isConsistent: false,
           limit: 25,
           offset: 0,
-        }
-      }
-    }
+        },
+      },
+    },
   },
   explorePageSynapseObject: {
     name: 'QueryWrapperMenu',
@@ -62,33 +59,33 @@ const projects: HomeExploreConfig = {
         searchable: [
           {
             columnName: 'Name',
-            hintText: 'immunity'
+            hintText: 'immunity',
           },
           {
             columnName: 'Grant Number',
-            hintText: 'U01AG046139'
+            hintText: 'U01AG046139',
           },
           {
             columnName: 'Program',
-            hintText: 'MODEL-AD'
+            hintText: 'MODEL-AD',
           },
           {
             columnName: 'Key Investigators',
-            hintText: 'LastName'
+            hintText: 'LastName',
           },
           {
             columnName: 'Key Data Contributors',
-            hintText: 'LastName'
+            hintText: 'LastName',
           },
           {
             columnName: 'Institutions',
-            hintText: 'Sage Bionetworks'
+            hintText: 'Sage Bionetworks',
           },
           {
             columnName: 'Abstract',
-            hintText: 'targets'
+            hintText: 'targets',
           },
-        ]
+        ],
       },
       name: 'Projects',
       isConsistent: false,
@@ -103,8 +100,8 @@ const projects: HomeExploreConfig = {
           sql,
         },
       ],
-    }
-  }
+    },
+  },
 }
 
 export default projects

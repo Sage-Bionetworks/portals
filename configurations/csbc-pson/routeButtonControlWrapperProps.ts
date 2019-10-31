@@ -6,14 +6,7 @@ const routeButtonControlTemplate: SynapseConfig = {
   props: {
     // this has to get overriden,
     synapseConfig: {} as SynapseConfig,
-    colors: [
-      '#47337D',
-      '#407BA0',
-      '#7798AC',
-      '#77BBBF',
-      '#58A158',
-      '#3C4A63',
-    ],
+    colors: ['#47337D', '#407BA0', '#7798AC', '#77BBBF', '#58A158', '#3C4A63'],
     customRoutes: [
       'Grants',
       'Publications',
@@ -21,8 +14,8 @@ const routeButtonControlTemplate: SynapseConfig = {
       'Datasets',
       'Files',
       'Tools',
-    ]
-  }
+    ],
+  },
 }
 
 export default routeButtonControlTemplate

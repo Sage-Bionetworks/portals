@@ -6,7 +6,8 @@ const homePageHeader: HomePageHeaderConfig = {
   of tumor biology, treatment options, and patient outcome. The CSBC / PS-ON Data Portal highlights ongoing
   research efforts in these richly interdisciplinary fields, including the data generated and methods
   developed in the addresssing fundamental questions in cancer research.`,
-  title: 'Cancer Systems Biology Consortium and Physical Sciences in Oncology Network'
+  title:
+    'Cancer Systems Biology Consortium and Physical Sciences in Oncology Network',
 }
 
 export default homePageHeader

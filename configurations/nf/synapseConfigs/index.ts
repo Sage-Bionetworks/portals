@@ -5,11 +5,4 @@ import studies from './studies'
 import tools from './tools'
 import funders from './funders'
 
-export {
-  studies,
-  datasets,
-  files,
-  publications,
-  tools,
-  funders,
-}
+export { studies, datasets, files, publications, tools, funders }

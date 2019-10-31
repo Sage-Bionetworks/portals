@@ -10,12 +10,12 @@ const rgbIndex = 0
 export const studiesSql = 'SELECT * FROM syn17083367'
 const sql = studiesSql
 const facet = 'Species'
-export const studyCardProps: CommonCardProps =  {
+export const studyCardProps: CommonCardProps = {
   type: SynapseConstants.GENERIC_CARD,
   secondaryLabelLimit: 4,
   titleLinkConfig: {
     baseURL: 'Explore/Studies',
-    URLColumnNames: ['Study']
+    URLColumnNames: ['Study'],
   },
   genericCardSchema: {
     type: SynapseConstants.STUDY,
@@ -32,8 +32,8 @@ export const studyCardProps: CommonCardProps =  {
       'Cohort_Type',
       'Study_Status',
       'Consortium',
-      'Grant'
-    ]
+      'Grant',
+    ],
   },
 }
 const facetAliases = {
@@ -44,7 +44,7 @@ const facetAliases = {
   Study_Name: 'Study Name',
   Diagnosis_or_Model_System: 'Diagnosis',
   Number_of_Individuals: 'Individuals',
-  Sample_Type: 'Tissue'
+  Sample_Type: 'Tissue',
 }
 const studies: HomeExploreConfig = {
   homePageSynapseObject: {
@@ -56,18 +56,19 @@ const studies: HomeExploreConfig = {
       facet,
       link: 'Explore/Studies',
       linkText: 'Explore Studies',
-      initQueryRequest : {
+      initQueryRequest: {
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-        partMask: SynapseConstants.BUNDLE_MASK_QUERY_FACETS
-          | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
+        partMask:
+          SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
+          SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
         query: {
           sql,
           isConsistent: false,
           limit: 25,
           offset: 0,
-        }
-      }
-    }
+        },
+      },
+    },
   },
   explorePageSynapseObject: {
     name: 'QueryWrapperMenu',
@@ -85,41 +86,41 @@ const studies: HomeExploreConfig = {
         searchable: [
           {
             columnName: 'Consortium',
-            hintText: 'AMP-AD'
+            hintText: 'AMP-AD',
           },
           {
             columnName: 'Data_Contributor',
-            hintText: 'LastName'
+            hintText: 'LastName',
           },
           {
             columnName: 'DataType_All',
-            hintText: 'Gene Expression'
+            hintText: 'Gene Expression',
           },
           {
             columnName: 'Diagnosis_or_Model_System',
-            hintText: 'LOAD'
+            hintText: 'LOAD',
           },
           {
             columnName: 'Grant',
-            hintText: 'U01AG046139'
+            hintText: 'U01AG046139',
           },
           {
             columnName: 'Sample_Type',
-            hintText: 'Temporal Cortex'
+            hintText: 'Temporal Cortex',
           },
           {
             columnName: 'Species',
-            hintText: 'Drosophila'
+            hintText: 'Drosophila',
           },
           {
             columnName: 'Study_Description',
-            hintText: 'RNAseq'
+            hintText: 'RNAseq',
           },
           {
             columnName: 'Study_Name',
-            hintText: 'Mayo'
+            hintText: 'Mayo',
           },
-        ]
+        ],
       },
       menuConfig: [
         {
@@ -128,17 +129,16 @@ const studies: HomeExploreConfig = {
         },
         {
           sql,
-          facet: 'Grant'
+          facet: 'Grant',
         },
         {
           sql,
           facet: 'Consortium',
-        }
-      ]
-    }
-  }
+        },
+      ],
+    },
+  },
 }
-
 
 export const studiesGenerateComponentsFromRowProps: GenerateComponentsFromRowProps = {
   sql: studiesSql,
@@ -147,7 +147,7 @@ export const studiesGenerateComponentsFromRowProps: GenerateComponentsFromRowPro
       name: 'Markdown',
       columnName: 'Study',
       title: 'Study Description',
-      props: {}
+      props: {},
     },
     {
       name: 'Markdown',
@@ -156,8 +156,8 @@ export const studiesGenerateComponentsFromRowProps: GenerateComponentsFromRowPro
       standalone: true,
       props: {
         ownerId: 'syn12666371',
-        wikiId: '595380'
-      }
+        wikiId: '595380',
+      },
     },
     {
       name: 'Markdown',
@@ -165,8 +165,8 @@ export const studiesGenerateComponentsFromRowProps: GenerateComponentsFromRowPro
       title: 'Methods',
       props: {},
       resolveSynId: {
-        title: true
-      }
+        title: true,
+      },
     },
     {
       name: 'QueryWrapperFlattened',
@@ -179,60 +179,64 @@ export const studiesGenerateComponentsFromRowProps: GenerateComponentsFromRowPro
       props: {
         sqlOperator: '=',
         initQueryRequest: {
-          partMask: SynapseConstants.BUNDLE_MASK_QUERY_FACETS
-          | SynapseConstants.BUNDLE_MASK_QUERY_COUNT
-          | SynapseConstants.BUNDLE_MASK_QUERY_SELECT_COLUMNS
-          | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS
-          ,
-          concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
+          partMask:
+            SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
+            SynapseConstants.BUNDLE_MASK_QUERY_COUNT |
+            SynapseConstants.BUNDLE_MASK_QUERY_SELECT_COLUMNS |
+            SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
+          concreteType:
+            'org.sagebionetworks.repo.model.table.QueryBundleRequest',
           query: {
-            sql: "SELECT id, metadataType, dataType, assay FROM syn11346063 WHERE `dataSubtype` = 'metadata'",
+            sql:
+              "SELECT id, metadataType, dataType, assay FROM syn11346063 WHERE `dataSubtype` = 'metadata'",
             isConsistent: false,
             limit: 25,
-            offset: 0
-          }
+            offset: 0,
+          },
         },
         loadingScreen,
         facetAliases,
         rgbIndex,
         unitDescription: 'Files',
         synapseId: 'syn11346063',
-        title: 'Metadata Files'
-      }
+        title: 'Metadata Files',
+      },
     },
     {
       name: 'QueryWrapperFlattened',
       title: 'Study Data',
       columnName: 'Study',
       resolveSynId: {
-        value: true
+        value: true,
       },
       tableSqlKeys: ['study'],
       props: {
         sqlOperator: '=',
         initQueryRequest: {
-          partMask: SynapseConstants.BUNDLE_MASK_QUERY_FACETS
-          | SynapseConstants.BUNDLE_MASK_QUERY_COUNT
-          | SynapseConstants.BUNDLE_MASK_QUERY_SELECT_COLUMNS
-          | SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS
-          | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS
-          ,
-          concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
+          partMask:
+            SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
+            SynapseConstants.BUNDLE_MASK_QUERY_COUNT |
+            SynapseConstants.BUNDLE_MASK_QUERY_SELECT_COLUMNS |
+            SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS |
+            SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
+          concreteType:
+            'org.sagebionetworks.repo.model.table.QueryBundleRequest',
           query: {
             // (dataSubtype is NULL OR dataSubtype <> 'metadata') is a workaround the <> operator since its not null safe by default
             // so we have to explicity check that a value is NULL. The <=> operand checks not equal and is null safe.
-            sql: "SELECT dataType, assay, fileFormat, count(id) AS Files FROM syn11346063 where dataSubtype is NULL OR dataSubtype <> 'metadata' GROUP BY 1,2,3 ORDER BY 4 DESC",
+            sql:
+              "SELECT dataType, assay, fileFormat, count(id) AS Files FROM syn11346063 where dataSubtype is NULL OR dataSubtype <> 'metadata' GROUP BY 1,2,3 ORDER BY 4 DESC",
             isConsistent: false,
             limit: 25,
-            offset: 0
-          }
+            offset: 0,
+          },
         },
         loadingScreen,
         facetAliases,
         rgbIndex,
         synapseId: 'syn11346063',
-        title: 'Data Files'
-      }
+        title: 'Data Files',
+      },
     },
     {
       name: 'Markdown',
@@ -241,13 +245,13 @@ export const studiesGenerateComponentsFromRowProps: GenerateComponentsFromRowPro
       standalone: true,
       props: {
         ownerId: 'syn12666371',
-        wikiId: '595381'
-      }
+        wikiId: '595381',
+      },
     },
-  ]
+  ],
 }
 
-export const studiesProgrammaticRouteConfig: SynapseConfig [] = [
+export const studiesProgrammaticRouteConfig: SynapseConfig[] = [
   {
     name: 'CardContainerLogic',
     isOutsideContainer: true,
@@ -259,14 +263,14 @@ export const studiesProgrammaticRouteConfig: SynapseConfig [] = [
       secondaryLabelLimit: Infinity,
       backgroundColor: '#5bb0b5',
       iconOptions: {
-        study: studyHeaderSvg
-      }
-    }
+        study: studyHeaderSvg,
+      },
+    },
   },
   {
     name: 'GenerateComponentsFromRow',
     isOutsideContainer: false,
-    props: studiesGenerateComponentsFromRowProps
-  }
+    props: studiesGenerateComponentsFromRowProps,
+  },
 ]
 export default studies

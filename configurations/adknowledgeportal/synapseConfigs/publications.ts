@@ -1,4 +1,4 @@
-import { SynapseConfig, HomeExploreConfig } from '../../types/portal-config'
+import { HomeExploreConfig } from '../../types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
 import loadingScreen from '../loadingScreen'
 
@@ -20,16 +20,16 @@ export const publicationCardProps = {
       'consortium',
       'long_amp_ad_grants',
       'doi',
-      'pubmed_id'
-    ]
+      'pubmed_id',
+    ],
   },
 }
 
 const facetAliases = {
-  consortium:'Program',
+  consortium: 'Program',
   long_amp_ad_grants: 'Grant',
   doi: 'DOI',
-  pubmed_id:'Pubmed ID'
+  pubmed_id: 'Pubmed ID',
 }
 
 const publications: HomeExploreConfig = {
@@ -43,20 +43,21 @@ const publications: HomeExploreConfig = {
       linkText: 'Explore Publications',
       facet: 'consortium',
       facetAliases: {
-        consortium: 'Program'
+        consortium: 'Program',
       },
-      initQueryRequest : {
+      initQueryRequest: {
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-        partMask: SynapseConstants.BUNDLE_MASK_QUERY_FACETS
-          | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
+        partMask:
+          SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
+          SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
         query: {
           sql,
           isConsistent: false,
           limit: 25,
           offset: 0,
-        }
-      }
-    }
+        },
+      },
+    },
   },
   explorePageSynapseObject: {
     name: 'QueryWrapperMenu',
@@ -73,33 +74,33 @@ const publications: HomeExploreConfig = {
         searchable: [
           {
             columnName: 'authors',
-            hintText: 'LastName'
+            hintText: 'LastName',
           },
           {
             columnName: 'consortium',
-            hintText: 'AMP-AD'
+            hintText: 'AMP-AD',
           },
           {
             columnName: 'doi',
-            hintText: '10.1186/s13024-017-0219-3'
+            hintText: '10.1186/s13024-017-0219-3',
           },
           {
             columnName: 'journal',
-            hintText: 'Alzheimers Dement'
+            hintText: 'Alzheimers Dement',
           },
           {
             columnName: 'title',
-            hintText: 'network'
+            hintText: 'network',
           },
           {
             columnName: 'year',
-            hintText: '2018'
+            hintText: '2018',
           },
           {
             columnName: 'long_amp_ad_grants',
-            hintText: 'U01AG046161'
+            hintText: 'U01AG046161',
           },
-        ]
+        ],
       },
       cardConfiguration: publicationCardProps,
       menuConfig: [
@@ -119,8 +120,8 @@ const publications: HomeExploreConfig = {
           sql,
         },
       ],
-    }
-  }
+    },
+  },
 }
 
 export default publications

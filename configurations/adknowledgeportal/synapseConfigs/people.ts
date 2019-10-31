@@ -16,18 +16,19 @@ const people: HomeExploreConfig = {
       link: 'Explore/People',
       linkText: 'Explore People',
       facet: 'Program',
-      initQueryRequest : {
+      initQueryRequest: {
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-        partMask: SynapseConstants.BUNDLE_MASK_QUERY_FACETS
-          | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
+        partMask:
+          SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
+          SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
         query: {
           sql,
           isConsistent: false,
           limit: 25,
           offset: 0,
-        }
-      }
-    }
+        },
+      },
+    },
   },
   explorePageSynapseObject: {
     name: 'QueryWrapperMenu',
@@ -45,19 +46,19 @@ const people: HomeExploreConfig = {
       menuConfig: [
         {
           sql,
-          facet: 'Program'
+          facet: 'Program',
         },
         {
           sql,
-          facet: 'Grant Number'
+          facet: 'Grant Number',
         },
         {
           sql,
           facet: 'institution',
         },
-      ]
-    }
-  }
+      ],
+    },
+  },
 }
 
 export default people

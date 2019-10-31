@@ -23,7 +23,7 @@ const move2Ad: SynapseConfigArray = [
       type: SynapseConstants.GENERIC_CARD,
       backgroundColor: '#5960a5',
       isHeader: true,
-    }
+    },
   },
   {
     name: 'CardContainerLogic',
@@ -33,8 +33,8 @@ const move2Ad: SynapseConfigArray = [
       secondaryLabelLimit: 4,
       sql: `SELECT * FROM syn17024229 WHERE ( ( "Program" = 'M2OVE-AD' ) )`,
       ...projectCardProps,
-    }
-  }
+    },
+  },
 ]
 
 export default move2Ad

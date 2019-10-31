@@ -1,7 +1,7 @@
 import { SynapseConfig } from '../../types/portal-config'
-import { GenericCardSchema } from "synapse-react-client/dist/containers/GenericCard"
+import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import loadingScreen from '../loadingScreen'
-import { SynapseConstants } from "synapse-react-client"
+import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from 'types/portal-util-types'
 
 const computationalSchema: GenericCardSchema = {
@@ -10,12 +10,7 @@ const computationalSchema: GenericCardSchema = {
   subTitle: 'softwareType',
   description: 'summary',
   icon: 'toolType',
-  secondaryLabels: [
-    'contributor',
-    'program',
-    'grant',
-    'documentation'
-  ],
+  secondaryLabels: ['contributor', 'program', 'grant', 'documentation'],
   link: 'url',
 }
 
@@ -38,54 +33,56 @@ const experimentalSchema: GenericCardSchema = {
 
 const facetAliases = {
   modelSystemName: 'Model Name',
-  summary: 'Summary'
+  summary: 'Summary',
 }
 
-const computationalSql = "SELECT * FROM syn20337467 WHERE toolType = 'computational'"
-const experimentalSql = "SELECT * FROM syn20337467 WHERE toolType = 'experimental'"
+const computationalSql =
+  "SELECT * FROM syn20337467 WHERE toolType = 'computational'"
+const experimentalSql =
+  "SELECT * FROM syn20337467 WHERE toolType = 'experimental'"
 const searchConfiguration = {
   searchable: [
     {
       columnName: 'contributor',
-      hintText: 'LastName'
+      hintText: 'LastName',
     },
     {
       columnName: 'diagnosis',
-      hintText: 'LOAD'
+      hintText: 'LOAD',
     },
     {
       columnName: 'displayName',
-      hintText: 'APOE4'
+      hintText: 'APOE4',
     },
     {
       columnName: 'grant',
-      hintText: 'U01AG046139'
+      hintText: 'U01AG046139',
     },
     {
       columnName: 'modelSystemName',
-      hintText: 'APP'
+      hintText: 'APP',
     },
     {
       columnName: 'modelType',
-      hintText: 'Trem2'
+      hintText: 'Trem2',
     },
     {
       columnName: 'program',
-      hintText: 'MODEL-AD'
+      hintText: 'MODEL-AD',
     },
     {
       columnName: 'reagentType',
-      hintText: 'Mouse'
+      hintText: 'Mouse',
     },
     {
       columnName: 'softwareType',
-      hintText: 'web application'
+      hintText: 'web application',
     },
     {
       columnName: 'summary',
-      hintText: 'network'
+      hintText: 'network',
     },
-  ]
+  ],
 }
 const rgbIndex = 6
 const unitDescription = 'Tools'
@@ -101,20 +98,21 @@ const tools: HomeExploreConfig = {
       linkText: 'Explore Tools',
       facet: 'toolType',
       facetAliases: {
-        toolType: 'Tool Type'
+        toolType: 'Tool Type',
       },
-      initQueryRequest : {
+      initQueryRequest: {
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-        partMask: SynapseConstants.BUNDLE_MASK_QUERY_FACETS
-          | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
+        partMask:
+          SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
+          SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
         query: {
           sql: 'SELECT * FROM syn20337467',
           isConsistent: false,
           limit: 25,
           offset: 0,
-        }
-      }
-    }
+        },
+      },
+    },
   },
   explorePageSynapseObject: {
     name: 'QueryWrapperMenu',
@@ -128,13 +126,13 @@ const tools: HomeExploreConfig = {
           cardConfiguration: {
             type: SynapseConstants.GENERIC_CARD,
             genericCardSchema: computationalSchema,
-            loadingScreen
+            loadingScreen,
           },
           searchConfiguration,
           menuConfig: [
             {
               sql: computationalSql,
-              facet: 'softwareType'
+              facet: 'softwareType',
             },
             {
               sql: computationalSql,
@@ -142,54 +140,54 @@ const tools: HomeExploreConfig = {
             },
             {
               sql: computationalSql,
-              facet: 'program'
+              facet: 'program',
             },
             {
               sql: computationalSql,
-              facet: 'grant'
+              facet: 'grant',
             },
             {
               sql: computationalSql,
             },
-          ]
+          ],
         },
         {
           name: 'Experimental',
           cardConfiguration: {
             type: SynapseConstants.GENERIC_CARD,
             genericCardSchema: experimentalSchema,
-            loadingScreen
+            loadingScreen,
           },
           searchConfiguration,
           menuConfig: [
             {
               sql: experimentalSql,
-              facet: 'reagentType'
+              facet: 'reagentType',
             },
             {
               sql: experimentalSql,
-              facet: 'modelType'
+              facet: 'modelType',
             },
             {
               sql: experimentalSql,
-              facet: 'diagnosis'
+              facet: 'diagnosis',
             },
             {
               sql: experimentalSql,
-              facet: 'program'
+              facet: 'program',
             },
             {
               sql: experimentalSql,
-              facet: 'grant'
+              facet: 'grant',
             },
             {
               sql: experimentalSql,
             },
-          ]
+          ],
         },
-      ]
-    }
-  }
+      ],
+    },
+  },
 }
 
 export default tools

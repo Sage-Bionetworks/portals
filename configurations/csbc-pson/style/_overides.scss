@@ -1,8 +1,8 @@
+$primary-text-color: #407ba0;
+$primary-action-color: #47337d;
 
-$primary-text-color: #407BA0;
-$primary-action-color: #47337D;
-
-#header, #footer {
+#header,
+#footer {
   background-blend-mode: multiply;
   background-color: $primary-text-color;
 }
@@ -15,9 +15,9 @@ $primary-action-color: #47337D;
 
 // Since scss breaks if a file is missing in a local url link these functinons must get manually overwitten
 @function getHeader($path) {
-  @return url($path + "/dna_header.svg");
+  @return url($path+'/dna_header.svg');
 }
 
 @function getFooter($path) {
-  @return url($path + "/dna.svg");
+  @return url($path+'/dna.svg');
 }

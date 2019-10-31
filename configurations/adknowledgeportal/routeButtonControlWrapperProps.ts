@@ -13,7 +13,7 @@ const routeButtonControlWrapper: SynapseConfig = {
       '#0f9488',
       '#D4689A',
       '#3C4A63',
-      '#407BA0'
+      '#407BA0',
     ],
     customRoutes: [
       'Programs',
@@ -23,8 +23,8 @@ const routeButtonControlWrapper: SynapseConfig = {
       'Publications',
       'People',
       'Tools',
-      'Results'
-    ]
+      'Results',
+    ],
   },
 }
 
