@@ -31,6 +31,7 @@ const routes: GenericRoute[] = [
       {
         name: 'StatefulButtonControlWrapper',
         title: 'EXPLORE PORTAL',
+        containerClassName: 'home-explore-container',
         props: {
           colors: [
             '#47337D',

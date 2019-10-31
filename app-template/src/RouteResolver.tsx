@@ -12,12 +12,14 @@ import GenerateComponentsFromRow from 'portal-components/GenerateComponentsFromR
 import docTitleConfig from './config/docTitleConfig'
 
 // https://basarat.gitbooks.io/typescript/docs/types/never.html
-function fail(message: string): never { throw new Error(message) }
+function fail(message: string): never {
+  throw new Error(message)
+}
 
 export const getRouteFromParams = (pathname: string) => {
   // e.g. pathname = /Explore/Programs
   // special case the home page path
-  const pathWithName = pathname === '/' ? '/Home' :  pathname
+  const pathWithName = pathname === '/' ? '/Home' : pathname
   // e.g. split = '', 'Explore', 'Programs
   const split = pathWithName.split('/')
   let route = routesConfig.find(el => split[1] === el.name)!
@@ -53,34 +55,42 @@ export const generateSynapseObjectHelper = (synapseConfig: SynapseConfig) => {
     throw Error(`No synapse object could be mapped for ${synapseConfig.name}`)
   }
   const component = <SynapseComponent {...synapseConfig.props} />
-  const {
-    style,
-    className
-  } = synapseConfig
+  const { style, className } = synapseConfig
   if (style || className) {
-    return <div className={className} style={style}> {component} </div>
+    return (
+      <div className={className} style={style}>
+        {' '}
+        {component}{' '}
+      </div>
+    )
   } else {
     return component
   }
 }
 
-export const generateSynapseObject = (synapseConfig: SynapseConfig, searchParams?: any) => {
+export const generateSynapseObject = (
+  synapseConfig: SynapseConfig,
+  searchParams?: any,
+) => {
   // return the synapse object but with token/search params injected into its props from the context created in AppInitializer
   const { props, ...rest } = synapseConfig
   return (
     <TokenContext.Consumer>
-      {
-        (value: string) => {
-          const propsWithSearchAndToken = { ...props, searchParams, token: value }
-          const synapseObjectWithTokenAndSearch = { props: propsWithSearchAndToken, ...rest }
-          return generateSynapseObjectHelper(synapseObjectWithTokenAndSearch)
+      {(value: string) => {
+        const propsWithSearchAndToken = { ...props, searchParams, token: value }
+        const synapseObjectWithTokenAndSearch = {
+          props: propsWithSearchAndToken,
+          ...rest,
         }
-      }
+        return generateSynapseObjectHelper(synapseObjectWithTokenAndSearch)
+      }}
     </TokenContext.Consumer>
   )
 }
 
-const RouteResolver: React.FunctionComponent<RouteComponentProps> = ({ location }) => {
+const RouteResolver: React.FunctionComponent<RouteComponentProps> = ({
+  location,
+}) => {
   // Map this to route in configuration files
   const { pathname, search } = location
   const route = getRouteFromParams(pathname)
@@ -89,13 +99,11 @@ const RouteResolver: React.FunctionComponent<RouteComponentProps> = ({ location 
     searchParamsProps = {}
     // https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams -- needs polyfill for ie11
     const searchParams = new URLSearchParams(search)
-    searchParams.forEach(
-      (value, key) => {
-        searchParamsProps[key] = value  
-      }
-    )
+    searchParams.forEach((value, key) => {
+      searchParamsProps[key] = value
+    })
   }
-  let synapseConfigArray: SynapseConfig [] = route.synapseConfigArray!
+  let synapseConfigArray: SynapseConfig[] = route.synapseConfigArray!
   const { programmaticRouteConfig } = route
   if (search && programmaticRouteConfig) {
     synapseConfigArray = programmaticRouteConfig
@@ -108,27 +116,25 @@ const RouteResolver: React.FunctionComponent<RouteComponentProps> = ({ location 
 
   return (
     <React.Fragment>
-      {synapseConfigArray!.map(
-        (el) => {
-          return (
-            <React.Fragment key={JSON.stringify(el.props)}>
-              {
-                el.isOutsideContainer ?
-                  <div>
-                    {el.title &&  <h2 className="title"> {el.title} </h2>}
-                    {generateSynapseObject(el, searchParamsProps)}
-                  </div>
-                  :
-                  <Layout>
-                    {/* re-think how this renders! remove specific styling */}
-                    {el.title &&  <h2 className="title"> {el.title} </h2>}
-                    {generateSynapseObject(el, searchParamsProps)}
-                  </Layout>
-              }
-            </React.Fragment>
-          )
-        }
-      )}
+      {synapseConfigArray!.map((el: SynapseConfig) => {
+        const { containerClassName } = el
+        return (
+          <React.Fragment key={JSON.stringify(el.props)}>
+            {el.isOutsideContainer ? (
+              <div className={containerClassName}>
+                {el.title && <h2 className="title"> {el.title} </h2>}
+                {generateSynapseObject(el, searchParamsProps)}
+              </div>
+            ) : (
+              <Layout containerClassName={containerClassName}>
+                {/* re-think how this renders! remove specific styling */}
+                {el.title && <h2 className="title"> {el.title} </h2>}
+                {generateSynapseObject(el, searchParamsProps)}
+              </Layout>
+            )}
+          </React.Fragment>
+        )
+      })}
     </React.Fragment>
   )
 }

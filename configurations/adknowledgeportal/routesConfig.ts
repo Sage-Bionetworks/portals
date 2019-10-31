@@ -1,14 +1,27 @@
 import { GenericRoute } from '../types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
-import { projects, studies, data, people, programs, publications, tools, news } from './synapseConfigs'
+import {
+  projects,
+  studies,
+  data,
+  people,
+  programs,
+  publications,
+  tools,
+  news,
+} from './synapseConfigs'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
-import { studyCardProps, studiesProgrammaticRouteConfig, studiesSql } from './synapseConfigs/studies'
+import {
+  studyCardProps,
+  studiesProgrammaticRouteConfig,
+  studiesSql,
+} from './synapseConfigs/studies'
 import { projectCardProps, projectsSql } from './synapseConfigs/projects'
 import { results } from './synapseConfigs/results'
 import { iconHeaderOptions } from './synapseConfigs/programs/iconOptions'
 import loadingScreen from './loadingScreen'
 
-const routes: GenericRoute [] = [
+const routes: GenericRoute[] = [
   {
     name: 'Home',
     to: '/',
@@ -17,15 +30,31 @@ const routes: GenericRoute [] = [
       {
         name: 'StatefulButtonControlWrapper',
         title: 'EXPLORE CONTENT',
+        containerClassName: 'home-explore-container',
         props: {
           configs: [
-            { name: 'Projects', synapseConfigArray: [projects.homePageSynapseObject] },
-            { name: 'Studies', synapseConfigArray: [studies.homePageSynapseObject] },
+            {
+              name: 'Projects',
+              synapseConfigArray: [projects.homePageSynapseObject],
+            },
+            {
+              name: 'Studies',
+              synapseConfigArray: [studies.homePageSynapseObject],
+            },
             { name: 'Data', synapseConfigArray: [data.homePageSynapseObject] },
-            { name: 'Publications', synapseConfigArray: [publications.homePageSynapseObject] },
-            { name: 'People', synapseConfigArray: [people.homePageSynapseObject] },
-            { name: 'Tools', synapseConfigArray: [tools.homePageSynapseObject] },
-            { name: 'Results', synapseConfigArray: [results] }
+            {
+              name: 'Publications',
+              synapseConfigArray: [publications.homePageSynapseObject],
+            },
+            {
+              name: 'People',
+              synapseConfigArray: [people.homePageSynapseObject],
+            },
+            {
+              name: 'Tools',
+              synapseConfigArray: [tools.homePageSynapseObject],
+            },
+            { name: 'Results', synapseConfigArray: [results] },
           ],
           colors: [
             '#E5AE4C',
@@ -34,9 +63,9 @@ const routes: GenericRoute [] = [
             '#0f9488',
             '#D4689A',
             '#3c4a63',
-            '#407BA0'
-          ]
-        }
+            '#407BA0',
+          ],
+        },
       },
       {
         ...programs,
@@ -47,10 +76,10 @@ const routes: GenericRoute [] = [
         title: "WHAT'S NEW",
         className: 'whats-new',
         props: {
-          ownerId:'syn12666371',
-          wikiId:'582408'
-        }
-      }
+          ownerId: 'syn12666371',
+          wikiId: '582408',
+        },
+      },
     ],
   },
   {
@@ -66,39 +95,40 @@ const routes: GenericRoute [] = [
             ...routeButtonControlWrapperProps,
             props: {
               ...routeButtonControlWrapperProps.props,
-              synapseConfig: programs
-            }
-          }
-        ],
-        programmaticRouteConfig: [{
-          name: 'CardContainerLogic',
-          isOutsideContainer: true,
-          props: {
-            iconOptions: iconHeaderOptions,
-            loadingScreen,
-            sql: 'SELECT  * FROM syn17024173',
-            isHeader: true,
-            type: SynapseConstants.GENERIC_CARD,
-            genericCardSchema: {
-              type: 'Program',
-              title: 'Full Name',
-              subTitle: 'Short Description',
-              icon: 'Program',
-              description: 'Long Description',
+              synapseConfig: programs,
             },
-            backgroundColor: '#5960a5'
-          }
-        },
-        {
-          name: 'CardContainerLogic',
-          title: 'Explore Projects',
-          props: {
-            loadingScreen,
-            ...projectCardProps,
-            sql: projectsSql,
-          }
-        }
-      ],
+          },
+        ],
+        programmaticRouteConfig: [
+          {
+            name: 'CardContainerLogic',
+            isOutsideContainer: true,
+            props: {
+              iconOptions: iconHeaderOptions,
+              loadingScreen,
+              sql: 'SELECT  * FROM syn17024173',
+              isHeader: true,
+              type: SynapseConstants.GENERIC_CARD,
+              genericCardSchema: {
+                type: 'Program',
+                title: 'Full Name',
+                subTitle: 'Short Description',
+                icon: 'Program',
+                description: 'Long Description',
+              },
+              backgroundColor: '#5960a5',
+            },
+          },
+          {
+            name: 'CardContainerLogic',
+            title: 'Explore Projects',
+            props: {
+              loadingScreen,
+              ...projectCardProps,
+              sql: projectsSql,
+            },
+          },
+        ],
       },
       {
         name: 'Projects',
@@ -123,28 +153,29 @@ const routes: GenericRoute [] = [
                   'Key Data Contributors',
                   'Institutions',
                   'Program',
-                ]
+                ],
               },
               secondaryLabelLimit: 4,
-              backgroundColor: '#DE9A1F'
-            }
+              backgroundColor: '#DE9A1F',
+            },
           },
           {
             name: 'CardContainerLogic',
             props: {
               title: 'PEOPLE',
-              sql: 'SELECT ownerID as ownerId, firstName, lastName, institution FROM syn13897207',
-              type: SynapseConstants.MEDIUM_USER_CARD
-            }
+              sql:
+                'SELECT ownerID as ownerId, firstName, lastName, institution FROM syn13897207',
+              type: SynapseConstants.MEDIUM_USER_CARD,
+            },
           },
           {
             name: 'CardContainerLogic',
             title: 'STUDIES',
             props: {
-              ...studyCardProps, 
+              ...studyCardProps,
               loadingScreen,
-              sql: studiesSql
-            }
+              sql: studiesSql,
+            },
           },
         ],
         synapseConfigArray: [
@@ -152,10 +183,10 @@ const routes: GenericRoute [] = [
             ...routeButtonControlWrapperProps,
             props: {
               ...routeButtonControlWrapperProps.props,
-              synapseConfig: projects.explorePageSynapseObject
-            }
-          }
-        ]
+              synapseConfig: projects.explorePageSynapseObject,
+            },
+          },
+        ],
       },
       {
         name: 'Studies',
@@ -166,11 +197,11 @@ const routes: GenericRoute [] = [
             ...routeButtonControlWrapperProps,
             props: {
               ...routeButtonControlWrapperProps.props,
-              synapseConfig: studies.explorePageSynapseObject
-            }
+              synapseConfig: studies.explorePageSynapseObject,
+            },
           },
         ],
-        programmaticRouteConfig: studiesProgrammaticRouteConfig
+        programmaticRouteConfig: studiesProgrammaticRouteConfig,
       },
       {
         name: 'Data',
@@ -181,10 +212,10 @@ const routes: GenericRoute [] = [
             ...routeButtonControlWrapperProps,
             props: {
               ...routeButtonControlWrapperProps.props,
-              synapseConfig: data.explorePageSynapseObject
-            }
-          }
-        ]
+              synapseConfig: data.explorePageSynapseObject,
+            },
+          },
+        ],
       },
       {
         name: 'Publications',
@@ -195,10 +226,10 @@ const routes: GenericRoute [] = [
             ...routeButtonControlWrapperProps,
             props: {
               ...routeButtonControlWrapperProps.props,
-              synapseConfig: publications.explorePageSynapseObject
-            }
-          }
-        ]
+              synapseConfig: publications.explorePageSynapseObject,
+            },
+          },
+        ],
       },
       {
         name: 'People',
@@ -209,10 +240,10 @@ const routes: GenericRoute [] = [
             ...routeButtonControlWrapperProps,
             props: {
               ...routeButtonControlWrapperProps.props,
-              synapseConfig: people.explorePageSynapseObject
-            }
-          }
-        ]
+              synapseConfig: people.explorePageSynapseObject,
+            },
+          },
+        ],
       },
       {
         name: 'Tools',
@@ -223,10 +254,10 @@ const routes: GenericRoute [] = [
             ...routeButtonControlWrapperProps,
             props: {
               ...routeButtonControlWrapperProps.props,
-              synapseConfig: tools.explorePageSynapseObject
-            }
-          }
-        ]
+              synapseConfig: tools.explorePageSynapseObject,
+            },
+          },
+        ],
       },
       {
         name: 'Results',
@@ -237,12 +268,12 @@ const routes: GenericRoute [] = [
             ...routeButtonControlWrapperProps,
             props: {
               ...routeButtonControlWrapperProps.props,
-              synapseConfig: results
-            }
-          }
-        ]
+              synapseConfig: results,
+            },
+          },
+        ],
       },
-    ]
+    ],
   },
   {
     name: 'DataAccess',
@@ -260,9 +291,9 @@ const routes: GenericRoute [] = [
             title: 'GETTING ACCESS TO DATA',
             props: {
               ownerId: 'syn12666371',
-              wikiId: '585317'
-            }
-          }
+              wikiId: '585317',
+            },
+          },
         ],
       },
       {
@@ -277,10 +308,10 @@ const routes: GenericRoute [] = [
             title: 'Data Use Certificates',
             props: {
               ownerId: 'syn12666371',
-              wikiId: '585318'
-            }
-          }
-        ]
+              wikiId: '585318',
+            },
+          },
+        ],
       },
       {
         name: 'AcknowledgementStatements',
@@ -293,12 +324,12 @@ const routes: GenericRoute [] = [
             title: 'ACKNOWLEDGEMENT STATEMENTS',
             props: {
               ownerId: 'syn2580853',
-              wikiId: '584597'
-            }
-          }
-        ]
+              wikiId: '584597',
+            },
+          },
+        ],
       },
-    ]
+    ],
   },
   {
     name: 'About',
@@ -309,11 +340,11 @@ const routes: GenericRoute [] = [
         name: 'Markdown',
         title: 'About',
         props: {
-          wikiId:'581939',
-          ownerId:'syn12666371'
-        }
-      }
-    ]
+          wikiId: '581939',
+          ownerId: 'syn12666371',
+        },
+      },
+    ],
   },
   {
     name: 'News',
@@ -324,12 +355,13 @@ const routes: GenericRoute [] = [
         name: 'Markdown',
         title: 'News',
         props: {
-          markdown:'The latest from the AMP-AD Community, including the latest data releases, updates such as events and stories, and links to the quarterly newsletter\n---------'
-        }
+          markdown:
+            'The latest from the AMP-AD Community, including the latest data releases, updates such as events and stories, and links to the quarterly newsletter\n---------',
+        },
       },
-      news
-    ]
-  }
+      news,
+    ],
+  },
 ]
 
 export default routes

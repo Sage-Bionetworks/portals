@@ -16,88 +16,93 @@ declare type CardContainerLogic = {
 }
 
 type QueryWrapper = {
-  name: 'QueryWrapper',
+  name: 'QueryWrapper'
   props: QueryWrapperProps
 }
 
 // This should likely be placed in SRC
 type QueryWrapperFlattened = {
-  name: 'QueryWrapperFlattened',
-  props: QueryWrapperProps & Partial<StackedBarChartProps> & Partial<SynapseTableProps>
+  name: 'QueryWrapperFlattened'
+  props: QueryWrapperProps &
+    Partial<StackedBarChartProps> &
+    Partial<SynapseTableProps>
 }
 
 declare type StackedBarChart = {
-  name: 'StackedBarChart',
+  name: 'StackedBarChart'
   props: StackedBarChartProps
 }
 type QueryWrapperMenu = {
-  name: 'QueryWrapperMenu',
+  name: 'QueryWrapperMenu'
   props: QueryWrapperMenuProps
 }
 
 type UserCard = {
-  name: 'UserCard',
+  name: 'UserCard'
   props: UserCardProps
 }
 type Markdown = {
-  name: 'Markdown',
+  name: 'Markdown'
   props: MarkdownProps
 }
 
 type StatefulButtonControl = {
-  name: 'StatefulButtonControlWrapper',
+  name: 'StatefulButtonControlWrapper'
   props: StatefulButtonControlProps
 }
 
 type RouteButtonControl = {
-  name: 'RouteButtonControlWrapper',
+  name: 'RouteButtonControlWrapper'
   props: RouteButtonControlProps
 }
 
 type GenerateComponentsFromRow = {
-  name: 'GenerateComponentsFromRow',
+  name: 'GenerateComponentsFromRow'
   props: GenerateComponentsFromRowProps
 }
 
-type Metatdata = {
+type Metadata = {
   title?: string
   link?: string
   style?: React.CSSProperties
   isOutsideContainer?: boolean
+  // applied to the inner most container of the object
   className?: string
+  // applied to outer most container of the object
+  containerClassName?: string
 }
 
 type NewsFeedMenu = {
-  name: 'NewsFeedMenu',
+  name: 'NewsFeedMenu'
   props: NewsFeedMenuProps
 }
 
 type DrugUploadTool = {
-  name: 'DrugUploadTool',
+  name: 'DrugUploadTool'
   props: DrugUploadToolProps
 }
 
 type UserFileGridForm = {
-  name: 'UserFileGrid',
+  name: 'UserFileGrid'
   props: UserFileGridProps
 }
 
 export type SynapseConfig = (
-    StatefulButtonControl
+  | StatefulButtonControl
   | RouteButtonControl
   | CardContainerLogic
   | StackedBarChart
   | QueryWrapper
   | QueryWrapperFlattened
   | QueryWrapperMenu
-  | UserCard 
-  | Markdown 
+  | UserCard
+  | Markdown
   | GenerateComponentsFromRow
-  | NewsFeedMenu 
-  | DrugUploadTool 
-  | UserFileGridForm 
-) & Metatdata
-export type SynapseConfigArray = SynapseConfig []
+  | NewsFeedMenu
+  | DrugUploadTool
+  | UserFileGridForm) &
+  Metadata
+export type SynapseConfigArray = SynapseConfig[]
 
 // utility for inside the explore page
 export type HomeExploreConfig = {
@@ -145,8 +150,8 @@ export type DocTitleConfig = {
 
 // LogoConfig
 export type LogoConfig = {
-  name?: string  // plain text
-  icon?: string  // svg
+  name?: string // plain text
+  icon?: string // svg
 }
 // LogoConfig end
 
