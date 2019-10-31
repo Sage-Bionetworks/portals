@@ -2,7 +2,7 @@ import * as React from 'react'
 
 const Layout = ({
   children,
-  containerClassName,
+  containerClassName = '',
 }: {
   children: any
   containerClassName?: string
