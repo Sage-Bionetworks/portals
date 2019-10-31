@@ -9,4 +9,13 @@ import news from './news'
 
 export { projects, studies, data, people, programs, publications, tools, news }
 
-export default { projects, studies, data, people, programs, publications, tools, news }
+export default {
+  projects,
+  studies,
+  data,
+  people,
+  programs,
+  publications,
+  tools,
+  news,
+}

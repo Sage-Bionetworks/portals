@@ -6,9 +6,9 @@ import { generateSynapseObject } from '../RouteResolver'
 
 export type RouteButtonControlWrapperProps = {
   synapseConfig: SynapseConfig
-  colors: string []
+  colors: string[]
   // we have to pass in all the custom routes because unlike the home page the explore buttons configs aren't held in state
-  customRoutes: string []
+  customRoutes: string[]
   searchParams?: any
 }
 
@@ -25,23 +25,27 @@ type Props = RouteComponentProps & RouteButtonControlWrapperProps
  * @param {*} { location, SynapseConfig, colors, history, customRoutes }
  * @returns
  */
-const RouteButtonControl:React.FunctionComponent<Props> = ({ location, synapseConfig, colors, history, customRoutes, searchParams }) => {
+const RouteButtonControl: React.FunctionComponent<Props> = ({
+  location,
+  synapseConfig,
+  colors,
+  history,
+  customRoutes,
+  searchParams,
+}) => {
   const pathname = location.pathname
   const subPath = pathname.substring('/Explore/'.length)
   const buttonControlProps: ButtonControlProps = {
     colors,
     customRoutes,
-    handleChanges: (val: string, _index: number) => history.push(`/Explore/${val}`),
+    handleChanges: (val: string, _index: number) =>
+      history.push(`/Explore/${val}`),
     isSelected: (name: string) => name === subPath,
   }
   return (
     <React.Fragment>
-      <ButtonControl
-        {...buttonControlProps}
-      />
-      {
-        generateSynapseObject(synapseConfig, searchParams)
-      }
+      <ButtonControl {...buttonControlProps} />
+      {generateSynapseObject(synapseConfig, searchParams)}
     </React.Fragment>
   )
 }

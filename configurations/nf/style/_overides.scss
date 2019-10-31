@@ -1,13 +1,13 @@
-
-$primary-text-color:#c94281;
+$primary-text-color: #c94281;
 $primary-action-color: #c94281;
 
 // Since scss breaks if a file is missing in a local url link these functinons must get manually overwitten
 @function getHeader($path) {
-  @return url("config/style/molecule-back.svg");
+  @return url('config/style/molecule-back.svg');
 }
 
-#header, #footer {
+#header,
+#footer {
   background-color: #109488;
   background-blend-mode: multiply;
 }

@@ -7,7 +7,7 @@ const Home: React.SFC = () => {
   return (
     <div>
       <Header />
-      <RouteResolver/>
+      <RouteResolver />
     </div>
   )
 }

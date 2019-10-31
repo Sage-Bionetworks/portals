@@ -12,12 +12,12 @@ declare type HomeExploreConfig = {
   explorePageSynapseObject: SynapseConfig
 }
 
-declare module "*.svg" {
-  const content: string;
-  export default content;
+declare module '*.svg' {
+  const content: string
+  export default content
 }
 
-// The props for GenerateComponentsFromRowProps are kept here so that 
+// The props for GenerateComponentsFromRowProps are kept here so that
 // the configuration files can import the type
 
 type ResolveSynId = {
@@ -28,7 +28,7 @@ type ResolveSynId = {
 type RowToPropTransform = {
   standalone?: boolean // if true then dont inject props
   resolveSynId?: ResolveSynId
-  tableSqlKeys?: string []
+  tableSqlKeys?: string[]
   columnName?: string
 }
 
@@ -37,5 +37,5 @@ export declare type GenerateComponentsFromRowProps = {
   searchParams?: Dictionary<string>
   sql: string
   token?: string
-  synapseConfigArray: RowSynapseConfig []
+  synapseConfigArray: RowSynapseConfig[]
 }

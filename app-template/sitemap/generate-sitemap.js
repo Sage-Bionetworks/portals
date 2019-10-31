@@ -6,29 +6,32 @@ fs.readFile('src/config/routesConfig.ts', (err, data) => {
   let routesConfigContent = data.toString()
   const args = process.argv.slice(2)
   if (!args[0]) {
-    return console.error('Usage: node generate-sitemap.js [portal-name]\n Note: sitemap.xml assumes portal is hosted on [portal-name].synapse.org')
+    return console.error(
+      'Usage: node generate-sitemap.js [portal-name]\n Note: sitemap.xml assumes portal is hosted on [portal-name].synapse.org',
+    )
   }
 
   const baseUrl = `https://${args[0]}.synapse.org/`
   const now = new Date().toISOString()
-  let fileContent = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+  let fileContent =
+    '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
   var regex = /to[:]\s*\'(.*)\'/g
-  var m;
+  var m
 
   do {
-      m = regex.exec(routesConfigContent)
-      if (m) {
-        // assuming hash router
-        let path = `#${m[1]}`
-        fileContent += `\t<url>\n\t\t<loc>${baseUrl}${path}</loc>\n\t\t<lastmod>${now}</lastmod>\n\t</url>\n`
-      }
+    m = regex.exec(routesConfigContent)
+    if (m) {
+      // assuming hash router
+      let path = `#${m[1]}`
+      fileContent += `\t<url>\n\t\t<loc>${baseUrl}${path}</loc>\n\t\t<lastmod>${now}</lastmod>\n\t</url>\n`
+    }
   } while (m)
   fileContent += '</urlset>'
-  fs.writeFile('build/sitemap.xml', fileContent, (err) => {
+  fs.writeFile('build/sitemap.xml', fileContent, err => {
     if (err) {
       console.error(err)
       throw err
     }
     console.log('Generated build/sitemap.xml')
   })
-});
+})

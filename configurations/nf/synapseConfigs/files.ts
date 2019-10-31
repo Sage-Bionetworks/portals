@@ -21,19 +21,20 @@ const files: HomeExploreConfig = {
       initQueryRequest: {
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
         partMask:
-          SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS
-          | SynapseConstants.BUNDLE_MASK_QUERY_FACETS
-          | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
+          SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS |
+          SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
+          SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
         query: {
           isConsistent: false,
           limit: 25,
           offset: 0,
-          sql: "SELECT * FROM syn16858331 WHERE resourceType = 'experimentalData'",
-        }
+          sql:
+            "SELECT * FROM syn16858331 WHERE resourceType = 'experimentalData'",
+        },
       },
       facet: 'assay',
       facetAliases,
-    }
+    },
   },
   explorePageSynapseObject: {
     name: 'QueryWrapperMenu',
@@ -61,25 +62,25 @@ const files: HomeExploreConfig = {
           sql: `
             SELECT id AS "File ID", dataType AS "Data Type", assay AS "Assay", diagnosis AS "Diagnosis", tumorType AS "Tumor Type", species AS "Species", individualID AS "Individual ID", fileFormat AS "File Format", dataSubtype AS "Data Subtype", nf1Genotype AS "NF1 Genotype", nf2Genotype AS "NF2 Genotype", studyName AS "Study Name", fundingAgency AS "Funding Agency", consortium AS "Consortium", name AS "File Name", accessType AS "Access Type", accessTeam as "Access Team"  FROM syn16858331 where resourceType = 'experimentalData'
           `,
-          facet: 'dataType'
+          facet: 'dataType',
         },
         {
           sql: `
             SELECT id AS "File ID", tumorType AS "Tumor Type", diagnosis AS "Diagnosis", species AS "Species", individualID AS "Individual ID", nf1Genotype AS "NF1 Genotype", nf2Genotype AS "NF2 Genotype", dataType AS "Data Type", assay AS "Assay", fileFormat AS "File Format", dataSubtype AS "Data Subtype", studyName AS "Study Name", fundingAgency AS "Funding Agency", consortium AS "Consortium", name AS "File Name", accessType AS "Access Type", accessTeam as "Access Team"  FROM syn16858331 where resourceType = 'experimentalData'
           `,
-          facet: 'tumorType'
+          facet: 'tumorType',
         },
         {
           sql: `
             SELECT id AS "File ID", fileFormat AS "File Format", dataType AS "Data Type", assay AS "Assay", diagnosis AS "Diagnosis", tumorType AS "Tumor Type", species AS "Species", individualID AS "Individual ID", dataSubtype AS "Data Subtype", nf1Genotype AS "NF1 Genotype", nf2Genotype AS "NF2 Genotype", studyName AS "Study Name", fundingAgency AS "Funding Agency", consortium AS "Consortium", name AS "File Name", accessType AS "Access Type", accessTeam as "Access Team"  FROM syn16858331 where resourceType = 'experimentalData'
           `,
-          facet: 'fileFormat'
+          facet: 'fileFormat',
         },
         {
           sql: `
             SELECT id AS "File ID", fundingAgency AS "Funding Agency", studyName AS "Study Name", consortium AS "Consortium", dataType AS "Data Type", assay AS "Assay", diagnosis AS "Diagnosis", tumorType AS "Tumor Type", species AS "Species", fileFormat AS "File Format", individualID AS "Individual ID", dataSubtype AS "Data Subtype", nf1Genotype AS "NF1 Genotype", nf2Genotype AS "NF2 Genotype", name AS "File Name", accessType AS "Access Type", accessTeam as "Access Team"  FROM syn16858331 where resourceType = 'experimentalData'
           `,
-          facet: 'fundingAgency'
+          facet: 'fundingAgency',
         },
         {
           sql: `
@@ -103,23 +104,23 @@ const files: HomeExploreConfig = {
           sql: `
             SELECT id AS "File ID", isCellLine AS "Is Cell Line", species AS "Species", diagnosis AS "Diagnosis", tumorType AS "Tumor Type", individualID AS "Individual ID", nf1Genotype AS "NF1 Genotype", nf2Genotype AS "NF2 Genotype", dataType AS "Data Type", assay AS "Assay", fileFormat AS "File Format", dataSubtype AS "Data Subtype", studyName AS "Study Name", fundingAgency AS "Funding Agency", consortium AS "Consortium", name AS "File Name" FROM syn16858331 where resourceType = 'experimentalData'
           `,
-          facet: 'isCellLine'
+          facet: 'isCellLine',
         },
         {
           sql: `
             SELECT id AS "File ID",isMultiSpecimen AS "Is Multi-specimen", species AS "Species", diagnosis AS "Diagnosis", tumorType AS "Tumor Type", individualID AS "Individual ID", nf1Genotype AS "NF1 Genotype", nf2Genotype AS "NF2 Genotype", dataType AS "Data Type", assay AS "Assay", fileFormat AS "File Format", dataSubtype AS "Data Subtype", studyName AS "Study Name", fundingAgency AS "Funding Agency", consortium AS "Consortium", name AS "File Name" FROM syn16858331 where resourceType = 'experimentalData'
           `,
-          facet: 'isMultiSpecimen'
+          facet: 'isMultiSpecimen',
         },
         {
           sql: `
             SELECT id AS "File ID", accessType AS "Access Type", accessTeam as "Access Team", dataType AS "Data Type", assay AS "Assay", diagnosis AS "Diagnosis", tumorType AS "Tumor Type", species AS "Species", individualID AS "Individual ID", fileFormat AS "File Format", dataSubtype AS "Data Subtype", nf1Genotype AS "NF1 Genotype", nf2Genotype AS "NF2 Genotype", fundingAgency AS "Funding Agency", consortium AS "Consortium", name AS "File Name" FROM syn16858331 where resourceType = 'experimentalData'
           `,
-          facet: 'accessType'
+          facet: 'accessType',
         },
-      ]
-    }
-  }
+      ],
+    },
+  },
 }
 
 export default files

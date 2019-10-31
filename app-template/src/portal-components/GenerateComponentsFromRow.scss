@@ -2,7 +2,8 @@ $marginTop: 40px;
 
 .GenerateComponentsFromRow {
   // keeps h2 in markdown and in this component the same
-  .h2, h2 {
+  .h2,
+  h2 {
     font-size: 21px;
     text-transform: uppercase;
     font-weight: 700;
@@ -11,20 +12,20 @@ $marginTop: 40px;
   }
 
   display: flex;
-  .menu-row-button  {
+  .menu-row-button {
     background: rgba(60, 74, 99, 0.1);
     height: 40px;
     width: 180px;
     text-align: left;
     padding-left: 20px;
     color: #515359;
-    border: 1px solid rgba(26,28,41,.1);
+    border: 1px solid rgba(26, 28, 41, 0.1);
     border-top: none;
   }
-  .menu-row-button:nth-child(1)  {
-    border-top: 1px solid rgba(26,28,41,.1)
+  .menu-row-button:nth-child(1) {
+    border-top: 1px solid rgba(26, 28, 41, 0.1);
   }
-  .menu-row-button:nth-child(1)  {
+  .menu-row-button:nth-child(1) {
     background: rgba(60, 74, 99, 0.1);
     height: 40px;
     width: 180px;

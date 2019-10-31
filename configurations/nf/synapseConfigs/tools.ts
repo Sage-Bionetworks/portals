@@ -1,7 +1,7 @@
-import { GenericCardSchema } from "synapse-react-client/dist/containers/GenericCard"
+import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import loadingScreen from '../loadingScreen'
-import { SynapseConstants } from "synapse-react-client"
-import { HomeExploreConfig } from "types/portal-util-types"
+import { SynapseConstants } from 'synapse-react-client'
+import { HomeExploreConfig } from 'types/portal-util-types'
 import { facetAliases } from './commonProps'
 
 export const toolsSql = 'SELECT * FROM syn16859448'
@@ -17,7 +17,7 @@ export const toolsSchema: GenericCardSchema = {
     'diseaseFocus',
     'manifestation',
     'fundingAgency',
-    'studyName'
+    'studyName',
   ],
   link: 'link',
 }
@@ -26,44 +26,45 @@ const searchConfiguration = {
   searchable: [
     {
       columnName: 'name',
-      hintText: 'Browser'
+      hintText: 'Browser',
     },
     {
       columnName: 'summary',
-      hintText: 'prediction'
+      hintText: 'prediction',
     },
     {
       columnName: 'studyName',
-      hintText: 'Nerve Sheath'
+      hintText: 'Nerve Sheath',
     },
     {
       columnName: 'fundingAgency',
-      hintText: 'NTAP'
+      hintText: 'NTAP',
     },
     {
       columnName: 'contact',
-      hintText: 'Serra'
+      hintText: 'Serra',
     },
     {
       columnName: 'type',
-      hintText: 'Computational'
+      hintText: 'Computational',
     },
     {
       columnName: 'subtype',
-      hintText: 'animal model'
+      hintText: 'animal model',
     },
     {
       columnName: 'diseaseFocus',
-      hintText: 'Neurofibromatosis 2'
+      hintText: 'Neurofibromatosis 2',
     },
     {
       columnName: 'manifestation',
-      hintText: 'MPNST'
+      hintText: 'MPNST',
     },
-  ]
+  ],
 }
 
-const computationalSql = "SELECT * FROM syn16859448 WHERE type = 'computational'"
+const computationalSql =
+  "SELECT * FROM syn16859448 WHERE type = 'computational'"
 const experimentalSql = "SELECT * FROM syn16859448 WHERE type = 'experimental'"
 const clinicalSql = "SELECT * FROM syn16859448 WHERE type = 'clinical'"
 const rgbIndex = 6
@@ -79,19 +80,19 @@ const tools: HomeExploreConfig = {
       initQueryRequest: {
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
         partMask:
-            SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS
-            | SynapseConstants.BUNDLE_MASK_QUERY_FACETS
-            | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
+          SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS |
+          SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
+          SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
         query: {
-          sql: "SELECT * FROM syn16859448",
+          sql: 'SELECT * FROM syn16859448',
           isConsistent: false,
           limit: 25,
           offset: 0,
         },
       },
       facet: 'type',
-      facetAliases
-    }
+      facetAliases,
+    },
   },
   explorePageSynapseObject: {
     name: 'QueryWrapperMenu',
@@ -105,106 +106,106 @@ const tools: HomeExploreConfig = {
           cardConfiguration: {
             type: SynapseConstants.GENERIC_CARD,
             genericCardSchema: toolsSchema,
-            loadingScreen
+            loadingScreen,
           },
           searchConfiguration,
           menuConfig: [
             {
               sql: computationalSql,
-              facet: 'studyName'
+              facet: 'studyName',
             },
             {
               sql: computationalSql,
-              facet: 'fundingAgency'
+              facet: 'fundingAgency',
             },
             {
               sql: computationalSql,
-              facet: 'subtype'
+              facet: 'subtype',
             },
             {
               sql: computationalSql,
-              facet: 'diseaseFocus'
+              facet: 'diseaseFocus',
             },
             {
               sql: computationalSql,
-              facet: 'manifestation'
+              facet: 'manifestation',
             },
             {
               sql: computationalSql,
             },
-          ]
+          ],
         },
         {
           name: 'Experimental',
           cardConfiguration: {
             type: SynapseConstants.GENERIC_CARD,
             genericCardSchema: toolsSchema,
-            loadingScreen
+            loadingScreen,
           },
           searchConfiguration,
           menuConfig: [
             {
               sql: experimentalSql,
-              facet: 'studyName'
+              facet: 'studyName',
             },
             {
               sql: experimentalSql,
-              facet: 'fundingAgency'
+              facet: 'fundingAgency',
             },
             {
               sql: experimentalSql,
-              facet: 'subtype'
+              facet: 'subtype',
             },
             {
               sql: experimentalSql,
-              facet: 'diseaseFocus'
+              facet: 'diseaseFocus',
             },
             {
               sql: experimentalSql,
-              facet: 'manifestation'
+              facet: 'manifestation',
             },
             {
               sql: experimentalSql,
             },
-          ]
+          ],
         },
         {
           name: 'Clinical',
           cardConfiguration: {
             type: SynapseConstants.GENERIC_CARD,
             genericCardSchema: toolsSchema,
-            loadingScreen
+            loadingScreen,
           },
           searchConfiguration,
           menuConfig: [
             {
               sql: clinicalSql,
-              facet: 'studyName'
+              facet: 'studyName',
             },
             {
               sql: clinicalSql,
-              facet: 'fundingAgency'
+              facet: 'fundingAgency',
             },
             {
               sql: clinicalSql,
-              facet: 'subtype'
+              facet: 'subtype',
             },
             {
               sql: clinicalSql,
-              facet: 'diseaseFocus'
+              facet: 'diseaseFocus',
             },
             {
               sql: clinicalSql,
-              facet: 'manifestation'
+              facet: 'manifestation',
             },
             {
               sql: clinicalSql,
             },
-          ]
+          ],
         },
-      ]
-    }
-  }
+      ],
+    },
+  },
 }
 
 export default tools

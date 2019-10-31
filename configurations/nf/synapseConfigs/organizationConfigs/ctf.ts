@@ -15,9 +15,9 @@ export const ctf: BaseRoute = {
       props: {
         limit: 1,
         sql: "SELECT * FROM syn16858699 WHERE abbreviation = 'CTF'",
-        type: SynapseConstants.FUNDER
+        type: SynapseConstants.FUNDER,
       },
-      title: "Children's Tumor Foundation"
+      title: "Children's Tumor Foundation",
     },
     {
       name: 'StatefulButtonControlWrapper',
@@ -27,7 +27,7 @@ export const ctf: BaseRoute = {
           {
             name: 'Studies',
             sql: generateOrgConfig(org, 'Studies', true),
-            synapseConfigArray: generateOrgConfig(org, 'Studies', false)
+            synapseConfigArray: generateOrgConfig(org, 'Studies', false),
           },
           {
             name: 'Datasets',
@@ -37,15 +37,15 @@ export const ctf: BaseRoute = {
           {
             name: 'Files',
             sql: generateOrgConfig(org, 'Files', true),
-            synapseConfigArray: generateOrgConfig(org, 'Files', false)
+            synapseConfigArray: generateOrgConfig(org, 'Files', false),
           },
           {
             name: 'Publications',
             sql: generateOrgConfig(org, 'Publications', true),
-            synapseConfigArray: generateOrgConfig(org, 'Publications', false)
-          }
-        ]
-      }
+            synapseConfigArray: generateOrgConfig(org, 'Publications', false),
+          },
+        ],
+      },
     },
-  ]
+  ],
 }

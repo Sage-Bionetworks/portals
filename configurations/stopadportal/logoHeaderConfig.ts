@@ -3,6 +3,6 @@ import stopAdLogo from './style/stop-ad-logo.svg'
 
 const logoHeader: LogoConfig = {
   icon: stopAdLogo,
-  name: 'STOP-AD Compound Submission Portal'
+  name: 'STOP-AD Compound Submission Portal',
 }
 export default logoHeader

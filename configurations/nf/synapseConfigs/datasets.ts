@@ -23,17 +23,17 @@ const datasets: HomeExploreConfig = {
       initQueryRequest: {
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
         partMask:
-          SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS
-          | SynapseConstants.BUNDLE_MASK_QUERY_FACETS
-          | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
+          SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS |
+          SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
+          SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
         query: {
           sql,
           isConsistent: false,
           limit: 25,
           offset: 0,
         },
-      }
-    }
+      },
+    },
   },
   explorePageSynapseObject: {
     name: 'QueryWrapperMenu',
@@ -52,49 +52,49 @@ const datasets: HomeExploreConfig = {
         searchable: [
           {
             columnName: 'datasetName',
-            hintText: 'Drug Screening'
+            hintText: 'Drug Screening',
           },
           {
             columnName: 'summary',
-            hintText: 'single-agent'
+            hintText: 'single-agent',
           },
           {
             columnName: 'studyName',
-            hintText: 'Synodos NF2'
+            hintText: 'Synodos NF2',
           },
           {
             columnName: 'diseaseFocus',
-            hintText: 'Neurofibromatosis 1'
+            hintText: 'Neurofibromatosis 1',
           },
           {
             columnName: 'manifestation',
-            hintText: 'Plexiform Neurofibroma'
+            hintText: 'Plexiform Neurofibroma',
           },
           {
             columnName: 'fundingAgency',
-            hintText: 'CTF'
+            hintText: 'CTF',
           },
-        ]
+        ],
       },
       menuConfig: [
         {
           sql,
-          facet: 'diseaseFocus'
+          facet: 'diseaseFocus',
         },
         {
           sql,
-          facet: 'tumorType'
+          facet: 'tumorType',
         },
         {
           sql,
-          facet: 'fundingAgency'
+          facet: 'fundingAgency',
         },
         {
           sql,
         },
-      ]
-    }
-  }
+      ],
+    },
+  },
 }
 
 export default datasets

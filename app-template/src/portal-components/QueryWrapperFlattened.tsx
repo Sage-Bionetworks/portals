@@ -4,7 +4,10 @@ import loadingScreen from '../config/loadingScreen'
 import { QueryWrapperProps } from 'synapse-react-client/dist/containers/QueryWrapper'
 import { StackedBarChartProps } from 'synapse-react-client/dist/containers/StackedBarChart'
 import { SynapseTableProps } from 'synapse-react-client/dist/containers/SynapseTable'
-import { insertConditionsFromSearchParams, SQLOperator } from 'synapse-react-client/dist/utils/modules/sqlFunctions'
+import {
+  insertConditionsFromSearchParams,
+  SQLOperator,
+} from 'synapse-react-client/dist/utils/modules/sqlFunctions'
 
 type SearchParams = {
   searchParams?: {
@@ -14,9 +17,15 @@ type SearchParams = {
 type Operator = {
   sqlOperator: SQLOperator
 }
-export type QueryWrapperFlattenedProps = QueryWrapperProps & Partial<StackedBarChartProps> & Partial<SynapseTableProps> & SearchParams & Operator
+export type QueryWrapperFlattenedProps = QueryWrapperProps &
+  Partial<StackedBarChartProps> &
+  Partial<SynapseTableProps> &
+  SearchParams &
+  Operator
 
-const QueryWrapperFlattened: React.FunctionComponent<QueryWrapperFlattenedProps> = (props) => {
+const QueryWrapperFlattened: React.FunctionComponent<
+  QueryWrapperFlattenedProps
+> = props => {
   const {
     link,
     linkText,
@@ -30,7 +39,11 @@ const QueryWrapperFlattened: React.FunctionComponent<QueryWrapperFlattenedProps>
   if (searchParams) {
     let sqlUsed = initQueryRequest.query.sql
     if (searchParams) {
-      sqlUsed = insertConditionsFromSearchParams(searchParams, initQueryRequest.query.sql, sqlOperator)
+      sqlUsed = insertConditionsFromSearchParams(
+        searchParams,
+        initQueryRequest.query.sql,
+        sqlOperator,
+      )
     }
     initQueryRequest.query.sql = sqlUsed
   }
@@ -39,29 +52,24 @@ const QueryWrapperFlattened: React.FunctionComponent<QueryWrapperFlattenedProps>
       {...rest}
       initQueryRequest={initQueryRequest}
     >
-      {
-        link
-        &&
-        linkText
-        ?
+      {link && linkText ? (
         <SynapseComponents.StackedBarChart
           loadingScreen={loadingScreen}
           link={link}
           linkText={linkText}
         />
-        :
-        <React.Fragment/>
-      }
-      {
-        synapseId && title ?
+      ) : (
+        <React.Fragment />
+      )}
+      {synapseId && title ? (
         <SynapseComponents.SynapseTable
           loadingScreen={loadingScreen}
           synapseId={synapseId}
           title={title}
         />
-        :
-        <React.Fragment/>
-      }
+      ) : (
+        <React.Fragment />
+      )}
     </SynapseComponents.QueryWrapper>
   )
 }

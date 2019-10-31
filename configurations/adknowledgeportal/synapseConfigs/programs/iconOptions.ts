@@ -10,12 +10,12 @@ export const iconOptions = {
   'AMP-AD': circleSvg,
   'M2OVE-AD': brainSvg,
   'MODEL-AD': mouseSvg,
-  'Resilience-AD': resilienceadSvg
+  'Resilience-AD': resilienceadSvg,
 }
 
 export const iconHeaderOptions = {
   'AMP-AD': circleSvgHeader,
   'M2OVE-AD': brainSvgHeader,
   'MODEL-AD': mouseSvgHeader,
-  'Resilience-AD': resilienceadSvgHeader
+  'Resilience-AD': resilienceadSvgHeader,
 }
