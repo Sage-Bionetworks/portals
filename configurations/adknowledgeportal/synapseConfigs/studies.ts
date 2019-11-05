@@ -226,7 +226,7 @@ export const studiesGenerateComponentsFromRowProps: GenerateComponentsFromRowPro
             // (dataSubtype is NULL OR dataSubtype <> 'metadata') is a workaround the <> operator since its not null safe by default
             // so we have to explicity check that a value is NULL. The <=> operand checks not equal and is null safe.
             sql:
-              "SELECT dataType, assay, fileFormat, count(id) AS Files FROM syn11346063 where dataSubtype is NULL OR dataSubtype <> 'metadata' GROUP BY 1,2,3 ORDER BY 4 DESC",
+              "SELECT dataType, assay, count(id) AS Files FROM syn11346063 where dataSubtype is NULL OR dataSubtype <> 'metadata' GROUP BY 1,2 ORDER BY 3 DESC",
             isConsistent: false,
             limit: 25,
             offset: 0,
