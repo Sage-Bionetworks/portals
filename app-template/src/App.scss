@@ -438,3 +438,17 @@ div.SRC-marginBottomTen {
 .statefulButtonTitle {
   margin-top: 15px;
 }
+
+@media print {
+  footer,
+  footer * {
+    display: none;
+  }
+  nav,
+  nav * {
+    display: none;
+  }
+  .spacer {
+    display: none;
+  }
+}

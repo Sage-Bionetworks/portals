@@ -75,6 +75,7 @@ const routes: GenericRoute[] = [
           ...studiesCardConfiguration,
           title: 'NEW STUDIES',
           titleLinkConfig: {
+            isMarkdown: false,
             baseURL: 'Explore/Studies',
             URLColumnNames: ['studyId'],
           },

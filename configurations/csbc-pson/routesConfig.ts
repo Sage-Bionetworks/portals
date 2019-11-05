@@ -167,13 +167,15 @@ const routes: GenericRoute[] = [
               genericCardSchema: publicationSchema,
               loadingScreen,
               facetAliases,
-              labelLinkConfig: [
+              labelLink: [
                 {
+                  isMarkdown: false,
                   baseURL: 'Explore/Datasets',
                   URLColumnNames: ['datasets'],
                   matchColumnName: 'datasets',
                 },
                 {
+                  isMarkdown: false,
                   baseURL: 'Explore/Studies',
                   URLColumnNames: ['studies'],
                   matchColumnName: 'studies',
@@ -209,13 +211,15 @@ const routes: GenericRoute[] = [
               genericCardSchema: studySchema,
               loadingScreen,
               facetAliases,
-              labelLinkConfig: [
+              labelLink: [
                 {
+                  isMarkdown: false,
                   baseURL: 'Explore/Publications',
                   URLColumnNames: ['Title'],
                   matchColumnName: 'Title',
                 },
                 {
+                  isMarkdown: false,
                   baseURL: 'Explore/Datasets',
                   URLColumnNames: ['datasets'],
                   matchColumnName: 'datasets',
@@ -286,13 +290,15 @@ const routes: GenericRoute[] = [
               iconOptions: {
                 dataset: DatasetSvg,
               },
-              labelLinkConfig: [
+              labelLink: [
                 {
+                  isMarkdown: false,
                   baseURL: 'Explore/Studies',
                   URLColumnNames: ['studies'],
                   matchColumnName: 'studies',
                 },
                 {
+                  isMarkdown: false,
                   baseURL: 'Explore/Publications',
                   URLColumnNames: ['Title'],
                   matchColumnName: 'Title',

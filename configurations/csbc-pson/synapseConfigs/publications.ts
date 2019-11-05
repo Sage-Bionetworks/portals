@@ -2,12 +2,11 @@ import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from '../../types/portal-config'
 import loadingScreen from '../loadingScreen'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
-import { facetAliases } from './commonProps'
+import { facetAliases } from './commonProps'
 export const publicationSql = 'SELECT * FROM syn10923842'
 const sql = publicationSql
 const unitDescription = 'Publications'
 const rgbIndex = 1
-
 
 export const publicationSchema: GenericCardSchema = {
   type: SynapseConstants.PUBLICATION,
@@ -45,18 +44,19 @@ export const publications: HomeExploreConfig = {
       },
       link: 'Explore/Publications',
       linkText: 'Explore Publications',
-      initQueryRequest : {
+      initQueryRequest: {
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-        partMask: SynapseConstants.BUNDLE_MASK_QUERY_FACETS
-          | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
+        partMask:
+          SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
+          SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
         query: {
           sql,
           isConsistent: false,
           limit: 25,
           offset: 0,
-        }
-      }
-    }
+        },
+      },
+    },
   },
   explorePageSynapseObject: {
     name: 'QueryWrapperMenu',
@@ -67,77 +67,79 @@ export const publications: HomeExploreConfig = {
         type: SynapseConstants.GENERIC_CARD,
         genericCardSchema: publicationSchema,
         secondaryLabelLimit: 5,
-        labelLinkConfig: [
+        labelLink: [
           {
+            isMarkdown: false,
             baseURL: 'Explore/Datasets',
             URLColumnNames: ['datasets'],
-            matchColumnName: 'datasets'
+            matchColumnName: 'datasets',
           },
           {
+            isMarkdown: false,
             baseURL: 'Explore/Studies',
             URLColumnNames: ['studies'],
-            matchColumnName: 'studies'
+            matchColumnName: 'studies',
           },
-        ]
+        ],
       },
       stackedBarChartConfiguration: {
-        loadingScreen
+        loadingScreen,
       },
       searchConfiguration: {
         searchable: [
           {
             columnName: 'Authors',
-            hintText: 'LastName'
+            hintText: 'LastName',
           },
           {
             columnName: 'Consortium',
-            hintText: 'PS-ON'
+            hintText: 'PS-ON',
           },
           {
             columnName: 'DOI',
-            hintText: '10.1158/2159-8290.CD-17-0222'
+            hintText: '10.1158/2159-8290.CD-17-0222',
           },
           {
             columnName: 'Journal',
-            hintText: 'Nucleic Acids Res'
+            hintText: 'Nucleic Acids Res',
           },
           {
             columnName: 'Title',
-            hintText: 'methylation'
+            hintText: 'methylation',
           },
           {
             columnName: 'Publication Year',
-            hintText: '2018'
+            hintText: '2018',
           },
           {
             columnName: 'Grant',
-            hintText: 'CA217297'
+            hintText: 'CA217297',
           },
           {
             columnName: 'Keywords',
-            hintText: 'scRNA-seq'
+            hintText: 'scRNA-seq',
           },
           {
             columnName: 'Theme',
-            hintText: 'tumor-immune'
+            hintText: 'tumor-immune',
           },
           {
             columnName: 'diseaseType',
-            hintText: 'Skin Cutaneous Melanoma'
+            hintText: 'Skin Cutaneous Melanoma',
           },
           {
             columnName: 'experimentalStrategy',
-            hintText: 'RNA-seq'
+            hintText: 'RNA-seq',
           },
           {
             columnName: 'tissue_or_organ.sv',
-            hintText: 'Prostate gland'
+            hintText: 'Prostate gland',
           },
           {
             columnName: 'grantType',
-            hintText: 'U01'
+            hintText: 'U01',
           },
-        ]
+        ],
       },
       name: 'Publications',
       facetAliases,
@@ -172,8 +174,8 @@ export const publications: HomeExploreConfig = {
         },
         {
           sql,
-        }
+        },
       ],
-    }
-  }
+    },
+  },
 }

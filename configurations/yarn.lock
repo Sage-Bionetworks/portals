@@ -1217,7 +1217,6 @@
 "@types/spark-md5@^3.0.1":
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/@types/spark-md5/-/spark-md5-3.0.1.tgz#351b383b32fa7a6a579b836ef8786293c4a7e73b"
-  integrity sha512-sjiWYRmuuFZMo/DdysQe/yX6x40Q0WZXsNgvbUIg7gUaQYNoXx4CqWq27rDikQyc+0JKkqsoNiIBAA0GUxbUXw==
 
 "@types/stack-utils@^1.0.1":
   version "1.0.1"
@@ -5544,7 +5543,6 @@ json-rules-engine@^4.0.0:
 json-schema-ref-parser@^7.1.1:
   version "7.1.1"
   resolved "https://registry.yarnpkg.com/json-schema-ref-parser/-/json-schema-ref-parser-7.1.1.tgz#16896f5af14560233e24bd0c6ed581f6a94fb315"
-  integrity sha512-5DGfOTuTAMFzjNw56kwEQ9YqjCvRPHRbEmPkPSNPuK4DR4TmLQrZ1k0UdO8EJ9DKjOPqtyBjtlSnvzAC6kwUsg==
   dependencies:
     call-me-maybe "^1.0.1"
     js-yaml "^3.13.1"
@@ -6641,7 +6639,6 @@ onetime@^2.0.0:
 ono@^5.0.1:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/ono/-/ono-5.1.0.tgz#8cafa7e56afa2211ad63dd2eb798427e64f1a070"
-  integrity sha512-GgqRIUWErLX4l9Up0khRtbrlH8Fyj59A0nKv8V6pWEto38aUgnOGOOF7UmgFFLzFnDSc8REzaTXOc0hqEe7yIw==
 
 open@^6.3.0:
   version "6.4.0"
@@ -8865,7 +8862,6 @@ sourcemap-codec@^1.4.3:
 spark-md5@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/spark-md5/-/spark-md5-3.0.0.tgz#3722227c54e2faf24b1dc6d933cc144e6f71bfef"
-  integrity sha1-NyIifFTi+vJLHcbZM8wUTm9xv+8=
 
 spdx-correct@^3.0.0:
   version "3.1.0"
@@ -9203,10 +9199,9 @@ symbol-tree@^3.2.2:
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.4.tgz#430637d248ba77e078883951fb9aa0eed7c63fa2"
 
-synapse-react-client@1.12.72:
-  version "1.12.72"
-  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-1.12.72.tgz#afc74f444f6e91ff998e61a01931faef06316897"
-  integrity sha512-VcPNuYpWwa1yI/Bfo1JEvkqsCQhpQauemtr5KdNwJH+Bm06x/cLaGV5xO2BK5gozCHelcrehJ8yLhDI1mgMe+g==
+synapse-react-client@1.12.76:
+  version "1.12.76"
+  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-1.12.76.tgz#9a4eb58f09521c3105b52387e6784a1bc19fc9a0"
   dependencies:
     "@fortawesome/fontawesome-svg-core" "^1.2.4"
     "@fortawesome/free-solid-svg-icons" "^5.3.1"
