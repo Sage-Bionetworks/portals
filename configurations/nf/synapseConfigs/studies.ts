@@ -6,7 +6,7 @@ import studyActiveSvg from '../style/study-active.svg'
 import studyCompleteSvg from '../style/study-complete.svg'
 import studyCompleteHeaderSvg from '../style/study-completed-header.svg'
 import studyActiveHeaderSvg from '../style/study-active-header.svg'
-import { CommonCardProps } from 'synapse-react-client/dist/containers/CardContainerLogic'
+import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 
 const sql = 'SELECT * FROM syn16787123'
 export const studiesSql = sql
@@ -19,7 +19,7 @@ export const studyHeaderIconOptions = {
   Completed: studyCompleteHeaderSvg,
 }
 
-export const studiesCardConfiguration: CommonCardProps = {
+export const studiesCardConfiguration: CardConfiguration = {
   type,
   genericCardSchema: {
     title: 'studyName',
@@ -80,6 +80,7 @@ const studies: HomeExploreConfig = {
       cardConfiguration: {
         ...studiesCardConfiguration,
         titleLinkConfig: {
+          isMarkdown: false,
           baseURL: 'Explore/Studies',
           URLColumnNames: ['studyId'],
         },

@@ -60,13 +60,15 @@ export const studies: HomeExploreConfig = {
         type: SynapseConstants.GENERIC_CARD,
         genericCardSchema: studySchema,
         secondaryLabelLimit: 4,
-        labelLinkConfig: [
+        labelLink: [
           {
+            isMarkdown: false,
             baseURL: 'Explore/Publications',
             URLColumnNames: ['Title'],
             matchColumnName: 'Title',
           },
           {
+            isMarkdown: false,
             baseURL: 'Explore/Datasets',
             URLColumnNames: ['datasets'],
             matchColumnName: 'datasets',

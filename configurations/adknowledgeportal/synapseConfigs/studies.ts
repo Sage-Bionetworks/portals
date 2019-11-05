@@ -2,7 +2,7 @@ import { HomeExploreConfig, SynapseConfig } from '../../types/portal-config'
 import { GenerateComponentsFromRowProps } from '../../types/portal-util-types'
 import { SynapseConstants } from 'synapse-react-client'
 import loadingScreen from '../loadingScreen'
-import { CommonCardProps } from 'synapse-react-client/dist/containers/CardContainerLogic'
+import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import studyHeaderSvg from '../style/study-header.svg'
 
 const unitDescription = 'studies'
@@ -10,10 +10,11 @@ const rgbIndex = 0
 export const studiesSql = 'SELECT * FROM syn17083367'
 const sql = studiesSql
 const facet = 'Species'
-export const studyCardProps: CommonCardProps = {
+export const studyCardProps: CardConfiguration = {
   type: SynapseConstants.GENERIC_CARD,
   secondaryLabelLimit: 4,
   titleLinkConfig: {
+    isMarkdown: false,
     baseURL: 'Explore/Studies',
     URLColumnNames: ['Study'],
   },
