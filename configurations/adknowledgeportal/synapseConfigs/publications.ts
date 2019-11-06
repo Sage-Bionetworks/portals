@@ -1,5 +1,6 @@
-import { HomeExploreConfig } from '../../types/portal-config'
+import { HomeExploreConfig, SynapseConfig } from '../../types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
+import { GenerateComponentsFromRowProps } from '../../types/portal-util-types'
 import loadingScreen from '../loadingScreen'
 
 const rgbIndex = 5
@@ -122,6 +123,25 @@ const publications: HomeExploreConfig = {
       ],
     },
   },
+}
+
+const publicationsFromRowProps: GenerateComponentsFromRowProps = {
+  sql,
+  synapseConfigArray: [
+    {
+      name: 'CardContainerLogic',
+      sql,
+      columnName: 'grantNumber',
+      tableSqlKeys: ['long_amp_ad_grants'],
+      title: 'Publications',
+      props: publicationCardProps,
+    },
+  ],
+}
+export const publicationProgrammatic: SynapseConfig = {
+  name: 'GenerateComponentsFromRow',
+  title: 'Publications',
+  props: publicationsFromRowProps,
 }
 
 export default publications

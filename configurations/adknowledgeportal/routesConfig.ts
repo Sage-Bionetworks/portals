@@ -20,6 +20,7 @@ import { projectCardProps, projectsSql } from './synapseConfigs/projects'
 import { results } from './synapseConfigs/results'
 import { iconHeaderOptions } from './synapseConfigs/programs/iconOptions'
 import loadingScreen from './loadingScreen'
+import { publicationProgrammatic } from './synapseConfigs/publications'
 
 const routes: GenericRoute[] = [
   {
@@ -177,6 +178,7 @@ const routes: GenericRoute[] = [
               sql: studiesSql,
             },
           },
+          publicationProgrammatic,
         ],
         synapseConfigArray: [
           {
