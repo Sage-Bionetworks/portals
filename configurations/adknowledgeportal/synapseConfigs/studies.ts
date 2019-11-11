@@ -249,6 +249,16 @@ export const studiesGenerateComponentsFromRowProps: GenerateComponentsFromRowPro
         wikiId: '595381',
       },
     },
+    {
+      name: 'CardContainerLogic',
+      columnName: 'Related_Studies',
+      title: 'Related Studies',
+      tableSqlKeys: ['Related_Studies'],
+      props: {
+        sql,
+        ...studyCardProps,
+      },
+    },
   ],
 }
 
