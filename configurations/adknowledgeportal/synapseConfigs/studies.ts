@@ -135,6 +135,10 @@ const studies: HomeExploreConfig = {
         {
           sql,
           facet: 'Consortium',
+          facetAliases: 'Program',
+        },
+        {
+          sql,
         },
       ],
     },
