@@ -2,6 +2,7 @@ import { HomeExploreConfig, SynapseConfig } from '../../types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
 import { GenerateComponentsFromRowProps } from '../../types/portal-util-types'
 import loadingScreen from '../loadingScreen'
+import { projectsSql } from './projects'
 
 const rgbIndex = 5
 const unitDescription = 'Publications'
@@ -126,21 +127,24 @@ const publications: HomeExploreConfig = {
 }
 
 const publicationsFromRowProps: GenerateComponentsFromRowProps = {
-  sql,
+  sql: projectsSql,
+  showMenu: false,
   synapseConfigArray: [
     {
       name: 'CardContainerLogic',
-      sql,
-      columnName: 'grantNumber',
-      tableSqlKeys: ['long_amp_ad_grants'],
+      columnName: 'Grant Number',
       title: 'Publications',
-      props: publicationCardProps,
+      showTitleSeperator: false,
+      tableSqlKeys: ['long_amp_ad_grants'],
+      props: {
+        sql,
+        ...publicationCardProps,
+      },
     },
   ],
 }
 export const publicationProgrammatic: SynapseConfig = {
   name: 'GenerateComponentsFromRow',
-  title: 'Publications',
   props: publicationsFromRowProps,
 }
 
