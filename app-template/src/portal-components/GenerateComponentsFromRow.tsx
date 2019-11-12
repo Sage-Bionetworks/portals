@@ -188,22 +188,18 @@ export default class GenerateComponentsFromRow extends React.Component<
       const id = COMPONENT_ID_PREFIX + index
       const { standalone, resolveSynId, showTitleSeperator = true } = el
       const key = JSON.stringify(el)
-      const isFirstClass = index === 0 ? 'first-title' : ''
+      const headerClassName =
+        index === 0 && showTitleSeperator ? 'first-title' : 'title'
       const hasTitleFromSynId = resolveSynId && resolveSynId.title
       // don't show this title if component is rendering entity names adjacet to the title
       let title: any = ''
       if (!hasTitleFromSynId) {
-        // only add title if they don't have the title from the synId
-        if (showTitleSeperator) {
-          title = (
-            <>
-              <h2 className={isFirstClass}> {el.title}</h2>
-              <hr />
-            </>
-          )
-        } else {
-          title = <h2 className="title"> {el.title} </h2>
-        }
+        title = (
+          <>
+            <h2 className={headerClassName}> {el.title}</h2>
+            {showTitleSeperator && <hr />}
+          </>
+        )
       }
       const component = standalone
         ? generateSynapseObject(el)
