@@ -121,15 +121,25 @@ export default class GenerateComponentsFromRow extends React.Component<
 
   render() {
     const { isLoading } = this.state
-    return (
-      <div className="GenerateComponentsFromRow">
-        <div className="button-container">{this.renderMenu()}</div>
-        <div className="component-container" ref={this.ref}>
-          {isLoading && loadingScreen}
-          {!isLoading && this.renderSynapseConfigArray()}
-        </div>
-      </div>
+    const { showMenu = true } = this.props
+    const synapseConfigContent = (
+      <>
+        {isLoading && loadingScreen}
+        {!isLoading && this.renderSynapseConfigArray()}
+      </>
     )
+    if (showMenu) {
+      return (
+        <div className="GenerateComponentsFromRow">
+          <div className="button-container">{this.renderMenu()}</div>
+          <div className="component-container" ref={this.ref}>
+            {synapseConfigContent}
+          </div>
+        </div>
+      )
+    } else {
+      return synapseConfigContent
+    }
   }
 
   renderMenu = () => {
@@ -176,16 +186,21 @@ export default class GenerateComponentsFromRow extends React.Component<
     const { synapseConfigArray } = this.props
     return synapseConfigArray.map((el: RowSynapseConfig, index) => {
       const id = COMPONENT_ID_PREFIX + index
-      const { standalone, resolveSynId } = el
+      const { standalone, resolveSynId, showTitleSeperator = true } = el
       const key = JSON.stringify(el)
-      const isFirstClass = index === 0 ? 'first-title' : ''
+      const headerClassName =
+        index === 0 && showTitleSeperator ? 'first-title' : 'title'
+      const hasTitleFromSynId = resolveSynId && resolveSynId.title
       // don't show this title if component is rendering entity names adjacet to the title
-      const title = !(resolveSynId && resolveSynId.title) && (
-        <>
-          <h2 className={isFirstClass}> {el.title}</h2>
-          <hr />
-        </>
-      )
+      let title: any = ''
+      if (!hasTitleFromSynId) {
+        title = (
+          <>
+            <h2 className={headerClassName}> {el.title}</h2>
+            {showTitleSeperator && <hr />}
+          </>
+        )
+      }
       const component = standalone
         ? generateSynapseObject(el)
         : this.renderSynapseObjectFromData(el)

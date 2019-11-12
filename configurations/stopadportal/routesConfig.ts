@@ -8,6 +8,7 @@ const routes: GenericRoute[] = [
     synapseConfigArray: [
       {
         name: 'Markdown',
+        containerClassName: 'stop-ad-home-page',
         props: {
           ownerId: 'syn20717442',
           wikiId: '595390',

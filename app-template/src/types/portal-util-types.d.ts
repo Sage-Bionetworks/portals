@@ -30,10 +30,12 @@ type RowToPropTransform = {
   resolveSynId?: ResolveSynId
   tableSqlKeys?: string[]
   columnName?: string
+  showTitleSeperator?: boolean
 }
 
 export type RowSynapseConfig = SynapseConfig & RowToPropTransform
 export declare type GenerateComponentsFromRowProps = {
+  showMenu?: boolean // default to true
   searchParams?: Dictionary<string>
   sql: string
   token?: string

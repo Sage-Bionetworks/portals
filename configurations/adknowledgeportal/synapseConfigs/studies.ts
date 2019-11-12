@@ -135,6 +135,10 @@ const studies: HomeExploreConfig = {
         {
           sql,
           facet: 'Consortium',
+          facetAliases: 'Program',
+        },
+        {
+          sql,
         },
       ],
     },
@@ -247,6 +251,16 @@ export const studiesGenerateComponentsFromRowProps: GenerateComponentsFromRowPro
       props: {
         ownerId: 'syn12666371',
         wikiId: '595381',
+      },
+    },
+    {
+      name: 'CardContainerLogic',
+      columnName: 'Related_Studies',
+      title: 'Related Studies',
+      tableSqlKeys: ['Related_Studies'],
+      props: {
+        sql,
+        ...studyCardProps,
       },
     },
   ],
