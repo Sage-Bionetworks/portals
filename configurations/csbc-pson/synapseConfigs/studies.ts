@@ -60,7 +60,7 @@ export const studies: HomeExploreConfig = {
         type: SynapseConstants.GENERIC_CARD,
         genericCardSchema: studySchema,
         secondaryLabelLimit: 4,
-        labelLink: [
+        labelConfig: [
           {
             isMarkdown: false,
             baseURL: 'Explore/Publications',
