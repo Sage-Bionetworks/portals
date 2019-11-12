@@ -1,6 +1,7 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from '../../types/portal-config'
 import { facetAliases } from './commonProps'
+import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import loadingScreen from '../loadingScreen'
 
 const sql = 'SELECT * FROM syn16857542'
@@ -9,8 +10,16 @@ const type = SynapseConstants.GENERIC_CARD
 const unitDescription = 'Publications'
 const rgbIndex = 0
 
-export const publicationsCardConfiguration = {
+export const publicationsCardConfiguration: CardConfiguration = {
   type,
+  labelConfig: [
+    {
+      isMarkdown: false,
+      baseURL: 'Explore/Studies',
+      URLColumnNames: ['studyName'],
+      matchColumnName: 'studyName',
+    },
+  ],
   genericCardSchema: {
     title: 'title',
     type: SynapseConstants.PUBLICATION,

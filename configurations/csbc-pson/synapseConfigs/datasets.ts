@@ -15,6 +15,7 @@ export const datasetSchema: GenericCardSchema = {
   description: 'summary',
   secondaryLabels: [
     'Title',
+    'overallDesign',
     'PubMed',
     'Theme',
     'studies',
@@ -61,7 +62,7 @@ export const datasets: HomeExploreConfig = {
         type: SynapseConstants.GENERIC_CARD,
         genericCardSchema: datasetSchema,
         secondaryLabelLimit: 4,
-        labelLink: [
+        labelConfig: [
           {
             isMarkdown: false,
             baseURL: 'Explore/Publications',

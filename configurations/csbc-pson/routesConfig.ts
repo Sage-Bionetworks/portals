@@ -167,7 +167,7 @@ const routes: GenericRoute[] = [
               genericCardSchema: publicationSchema,
               loadingScreen,
               facetAliases,
-              labelLink: [
+              labelConfig: [
                 {
                   isMarkdown: false,
                   baseURL: 'Explore/Datasets',
@@ -211,7 +211,7 @@ const routes: GenericRoute[] = [
               genericCardSchema: studySchema,
               loadingScreen,
               facetAliases,
-              labelLink: [
+              labelConfig: [
                 {
                   isMarkdown: false,
                   baseURL: 'Explore/Publications',
@@ -290,7 +290,7 @@ const routes: GenericRoute[] = [
               iconOptions: {
                 dataset: DatasetSvg,
               },
-              labelLink: [
+              labelConfig: [
                 {
                   isMarkdown: false,
                   baseURL: 'Explore/Studies',
