@@ -147,6 +147,7 @@ const studies: HomeExploreConfig = {
 
 export const studiesGenerateComponentsFromRowProps: GenerateComponentsFromRowProps = {
   sql: studiesSql,
+  sqlOperator: '=',
   synapseConfigArray: [
     {
       name: 'Markdown',
@@ -257,8 +258,9 @@ export const studiesGenerateComponentsFromRowProps: GenerateComponentsFromRowPro
       name: 'CardContainerLogic',
       columnName: 'Related_Studies',
       title: 'Related Studies',
-      tableSqlKeys: ['Related_Studies'],
+      tableSqlKeys: ['Study'],
       props: {
+        sqlOperator: '=',
         sql,
         ...studyCardProps,
       },

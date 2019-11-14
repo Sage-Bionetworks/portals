@@ -1,5 +1,6 @@
 import { SynapseConfig } from './portal-config'
 import { RowSynapseConfig } from '../portal-components/GenerateComponentsFromRow'
+import { SQLOperator } from 'synapse-react-client/dist/utils/modules/sqlFunctions'
 
 /* 
   These are types that come up frequently between portals but are an
@@ -40,4 +41,5 @@ export declare type GenerateComponentsFromRowProps = {
   sql: string
   token?: string
   synapseConfigArray: RowSynapseConfig[]
+  sqlOperator?: SQLOperator
 }
