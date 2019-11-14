@@ -42,8 +42,18 @@ export default class GenerateComponentsFromRow extends React.Component<
   }
 
   componentDidMount() {
-    const { sql, token, searchParams = {}, synapseConfigArray } = this.props
-    const sqlUsed = insertConditionsFromSearchParams(searchParams, sql)
+    const {
+      sql,
+      token,
+      searchParams = {},
+      synapseConfigArray,
+      sqlOperator,
+    } = this.props
+    const sqlUsed = insertConditionsFromSearchParams(
+      searchParams,
+      sql,
+      sqlOperator,
+    )
     const queryBundleRequest: QueryBundleRequest = {
       concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
       partMask: SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,

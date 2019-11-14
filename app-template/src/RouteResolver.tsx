@@ -74,8 +74,9 @@ export const generateSynapseObject = (
 ) => {
   // return the synapse object but with token/search params injected into its props from the context created in AppInitializer
   const { props, ...rest } = synapseConfig
+  const key = JSON.stringify(props)
   return (
-    <TokenContext.Consumer>
+    <TokenContext.Consumer key={key}>
       {(value: string) => {
         const propsWithSearchAndToken = { ...props, searchParams, token: value }
         const synapseObjectWithTokenAndSearch = {
@@ -126,7 +127,10 @@ const RouteResolver: React.FunctionComponent<RouteComponentProps> = ({
                 {generateSynapseObject(el, searchParamsProps)}
               </div>
             ) : (
-              <Layout containerClassName={containerClassName}>
+              <Layout
+                key={JSON.stringify(el.props)}
+                containerClassName={containerClassName}
+              >
                 {/* re-think how this renders! remove specific styling */}
                 {el.title && <h2 className="title"> {el.title} </h2>}
                 {generateSynapseObject(el, searchParamsProps)}
