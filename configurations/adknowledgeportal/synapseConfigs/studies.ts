@@ -149,65 +149,65 @@ export const studiesGenerateComponentsFromRowProps: GenerateComponentsFromRowPro
   sql: studiesSql,
   sqlOperator: '=',
   synapseConfigArray: [
-    // {
-    //   name: 'Markdown',
-    //   columnName: 'Study',
-    //   title: 'Study Description',
-    //   props: {},
-    // },
-    // {
-    //   name: 'Markdown',
-    //   // https://www.synapse.org/#!Synapse:syn12666371/wiki/595380
-    //   title: 'Access Requirements',
-    //   standalone: true,
-    //   props: {
-    //     ownerId: 'syn12666371',
-    //     wikiId: '595380',
-    //   },
-    // },
-    // {
-    //   name: 'Markdown',
-    //   columnName: 'Methods',
-    //   title: 'Methods',
-    //   props: {},
-    //   resolveSynId: {
-    //     title: true,
-    //   },
-    // },
-    // {
-    //   name: 'QueryWrapperFlattened',
-    //   title: 'Study Metadata',
-    //   columnName: 'Study',
-    //   resolveSynId: {
-    //     value: true,
-    //   },
-    //   tableSqlKeys: ['study'],
-    //   props: {
-    //     sqlOperator: '=',
-    //     initQueryRequest: {
-    //       partMask:
-    //         SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
-    //         SynapseConstants.BUNDLE_MASK_QUERY_COUNT |
-    //         SynapseConstants.BUNDLE_MASK_QUERY_SELECT_COLUMNS |
-    //         SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
-    //       concreteType:
-    //         'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-    //       query: {
-    //         sql:
-    //           "SELECT id, metadataType, dataType, assay FROM syn11346063 WHERE `dataSubtype` = 'metadata'",
-    //         isConsistent: false,
-    //         limit: 25,
-    //         offset: 0,
-    //       },
-    //     },
-    //     loadingScreen,
-    //     facetAliases,
-    //     rgbIndex,
-    //     unitDescription: 'Files',
-    //     synapseId: 'syn11346063',
-    //     title: 'Metadata Files',
-    //   },
-    // },
+    {
+      name: 'Markdown',
+      columnName: 'Study',
+      title: 'Study Description',
+      props: {},
+    },
+    {
+      name: 'Markdown',
+      // https://www.synapse.org/#!Synapse:syn12666371/wiki/595380
+      title: 'Access Requirements',
+      standalone: true,
+      props: {
+        ownerId: 'syn12666371',
+        wikiId: '595380',
+      },
+    },
+    {
+      name: 'Markdown',
+      columnName: 'Methods',
+      title: 'Methods',
+      props: {},
+      resolveSynId: {
+        title: true,
+      },
+    },
+    {
+      name: 'QueryWrapperFlattened',
+      title: 'Study Metadata',
+      columnName: 'Study',
+      resolveSynId: {
+        value: true,
+      },
+      tableSqlKeys: ['study'],
+      props: {
+        sqlOperator: '=',
+        initQueryRequest: {
+          partMask:
+            SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
+            SynapseConstants.BUNDLE_MASK_QUERY_COUNT |
+            SynapseConstants.BUNDLE_MASK_QUERY_SELECT_COLUMNS |
+            SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
+          concreteType:
+            'org.sagebionetworks.repo.model.table.QueryBundleRequest',
+          query: {
+            sql:
+              "SELECT id, metadataType, dataType, assay FROM syn11346063 WHERE `dataSubtype` = 'metadata'",
+            isConsistent: false,
+            limit: 25,
+            offset: 0,
+          },
+        },
+        loadingScreen,
+        facetAliases,
+        rgbIndex,
+        unitDescription: 'Files',
+        synapseId: 'syn11346063',
+        title: 'Metadata Files',
+      },
+    },
     {
       name: 'QueryWrapperFlattened',
       title: 'Study Data',
@@ -244,27 +244,27 @@ export const studiesGenerateComponentsFromRowProps: GenerateComponentsFromRowPro
         title: 'Data Files',
       },
     },
-    // {
-    //   name: 'Markdown',
-    //   // https://www.synapse.org/#!Synapse:syn12666371/wiki/595381
-    //   title: 'Data Updates',
-    //   standalone: true,
-    //   props: {
-    //     ownerId: 'syn12666371',
-    //     wikiId: '595381',
-    //   },
-    // },
-    // {
-    //   name: 'CardContainerLogic',
-    //   columnName: 'Related_Studies',
-    //   title: 'Related Studies',
-    //   tableSqlKeys: ['Study'],
-    //   props: {
-    //     sqlOperator: '=',
-    //     sql,
-    //     ...studyCardProps,
-    //   },
-    // },
+    {
+      name: 'Markdown',
+      // https://www.synapse.org/#!Synapse:syn12666371/wiki/595381
+      title: 'Data Updates',
+      standalone: true,
+      props: {
+        ownerId: 'syn12666371',
+        wikiId: '595381',
+      },
+    },
+    {
+      name: 'CardContainerLogic',
+      columnName: 'Related_Studies',
+      title: 'Related Studies',
+      tableSqlKeys: ['Study'],
+      props: {
+        sqlOperator: '=',
+        sql,
+        ...studyCardProps,
+      },
+    },
   ],
 }
 
