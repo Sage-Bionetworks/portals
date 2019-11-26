@@ -46,6 +46,7 @@ const data: HomeExploreConfig = {
         title,
         synapseId,
         visibleColumnCount: 4,
+        showAccessColumn: true,
       },
       menuConfig: [
         {
