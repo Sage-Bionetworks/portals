@@ -216,7 +216,6 @@ export const studiesGenerateComponentsFromRowProps: GenerateComponentsFromRowPro
       },
       tableSqlKeys: ['study'],
       props: {
-        sqlOperator: '=',
         initQueryRequest: {
           partMask:
             SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
@@ -227,10 +226,8 @@ export const studiesGenerateComponentsFromRowProps: GenerateComponentsFromRowPro
           concreteType:
             'org.sagebionetworks.repo.model.table.QueryBundleRequest',
           query: {
-            // (dataSubtype is NULL OR dataSubtype <> 'metadata') is a workaround the <> operator since its not null safe by default
-            // so we have to explicity check that a value is NULL. The <=> operand checks not equal and is null safe.
             sql:
-              "SELECT `resourceType`,`dataType`, `assay`, COUNT(`id`) AS `Files` FROM syn11346063 WHERE ((`study` LIKE '%snRNAseqPFC_BA10%') AND `dataSubtype` <> 'metadata') GROUP BY 1, 2,3 ORDER BY 4 DESC",
+              "SELECT `resourceType`,`dataType`, `assay`, COUNT(`id`) AS `Files` FROM syn11346063 WHERE  (`dataSubtype` <> 'metadata') GROUP BY 1, 2,3 ORDER BY 4 DESC",
             isConsistent: true,
             limit: 25,
             offset: 0,
