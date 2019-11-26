@@ -77,12 +77,12 @@ const publications: HomeExploreConfig = {
       searchConfiguration: {
         searchable: [
           {
-            columnName: 'author',
-            hintText: 'Weimer',
-          },
-          {
             columnName: 'title',
             hintText: 'Schwann',
+          },
+          {
+            columnName: 'author',
+            hintText: 'Weimer',
           },
           {
             columnName: 'journal',

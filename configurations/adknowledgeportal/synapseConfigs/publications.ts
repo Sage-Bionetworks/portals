@@ -75,32 +75,32 @@ const publications: HomeExploreConfig = {
       searchConfiguration: {
         searchable: [
           {
-            columnName: 'authors',
-            hintText: 'LastName',
-          },
-          {
-            columnName: 'consortium',
-            hintText: 'AMP-AD',
-          },
-          {
-            columnName: 'doi',
-            hintText: '10.1186/s13024-017-0219-3',
+            columnName: 'title',
+            hintText: 'network',
           },
           {
             columnName: 'journal',
             hintText: 'Alzheimers Dement',
           },
           {
-            columnName: 'title',
-            hintText: 'network',
+            columnName: 'authors',
+            hintText: 'LastName',
           },
           {
             columnName: 'year',
             hintText: '2018',
           },
           {
+            columnName: 'doi',
+            hintText: '10.1186/s13024-017-0219-3',
+          },
+          {
             columnName: 'long_amp_ad_grants',
             hintText: 'U01AG046161',
+          },
+          {
+            columnName: 'consortium',
+            hintText: 'AMP-AD',
           },
         ],
       },

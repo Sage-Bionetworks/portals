@@ -86,12 +86,12 @@ const studies: HomeExploreConfig = {
       searchConfiguration: {
         searchable: [
           {
-            columnName: 'Consortium',
-            hintText: 'AMP-AD',
+            columnName: 'Study_Name',
+            hintText: 'Mayo',
           },
           {
-            columnName: 'Data_Contributor',
-            hintText: 'LastName',
+            columnName: 'Study_Description',
+            hintText: 'RNAseq',
           },
           {
             columnName: 'DataType_All',
@@ -102,8 +102,8 @@ const studies: HomeExploreConfig = {
             hintText: 'LOAD',
           },
           {
-            columnName: 'Grant',
-            hintText: 'U01AG046139',
+            columnName: 'Data_Contributor',
+            hintText: 'LastName',
           },
           {
             columnName: 'Sample_Type',
@@ -114,12 +114,12 @@ const studies: HomeExploreConfig = {
             hintText: 'Drosophila',
           },
           {
-            columnName: 'Study_Description',
-            hintText: 'RNAseq',
+            columnName: 'Grant',
+            hintText: 'U01AG046139',
           },
           {
-            columnName: 'Study_Name',
-            hintText: 'Mayo',
+            columnName: 'Consortium',
+            hintText: 'AMP-AD',
           },
         ],
       },

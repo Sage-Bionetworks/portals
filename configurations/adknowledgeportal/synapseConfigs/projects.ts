@@ -63,12 +63,8 @@ const projects: HomeExploreConfig = {
             hintText: 'immunity',
           },
           {
-            columnName: 'Grant Number',
-            hintText: 'U01AG046139',
-          },
-          {
-            columnName: 'Program',
-            hintText: 'MODEL-AD',
+            columnName: 'Abstract',
+            hintText: 'targets',
           },
           {
             columnName: 'Key Investigators',
@@ -83,8 +79,12 @@ const projects: HomeExploreConfig = {
             hintText: 'Sage Bionetworks',
           },
           {
-            columnName: 'Abstract',
-            hintText: 'targets',
+            columnName: 'Grant Number',
+            hintText: 'U01AG046139',
+          },
+          {
+            columnName: 'Program',
+            hintText: 'MODEL-AD',
           },
         ],
       },

@@ -43,6 +43,14 @@ const experimentalSql =
 const searchConfiguration = {
   searchable: [
     {
+      columnName: 'displayName',
+      hintText: 'APOE4',
+    },
+    {
+      columnName: 'summary',
+      hintText: 'network',
+    },
+    {
       columnName: 'contributor',
       hintText: 'LastName',
     },
@@ -51,12 +59,8 @@ const searchConfiguration = {
       hintText: 'LOAD',
     },
     {
-      columnName: 'displayName',
-      hintText: 'APOE4',
-    },
-    {
-      columnName: 'grant',
-      hintText: 'U01AG046139',
+      columnName: 'reagentType',
+      hintText: 'Mouse',
     },
     {
       columnName: 'modelSystemName',
@@ -67,20 +71,20 @@ const searchConfiguration = {
       hintText: 'Trem2',
     },
     {
-      columnName: 'program',
-      hintText: 'MODEL-AD',
-    },
-    {
-      columnName: 'reagentType',
-      hintText: 'Mouse',
-    },
-    {
       columnName: 'softwareType',
       hintText: 'web application',
     },
     {
-      columnName: 'summary',
-      hintText: 'network',
+      columnName: 'program',
+      hintText: 'MODEL-AD',
+    },
+    {
+      columnName: 'grant',
+      hintText: 'U01AG046139',
+    },
+    {
+      columnName: 'consortium',
+      hintText: 'AMP-AD',
     },
   ],
 }
