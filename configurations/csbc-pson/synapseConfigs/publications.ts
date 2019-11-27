@@ -39,9 +39,6 @@ export const publications: HomeExploreConfig = {
       unitDescription,
       loadingScreen,
       facet: 'Consortium',
-      facetAliases: {
-        Consortium: 'Program',
-      },
       link: 'Explore/Publications',
       linkText: 'Explore Publications',
       initQueryRequest: {
