@@ -88,52 +88,48 @@ export const publications: HomeExploreConfig = {
       searchConfiguration: {
         searchable: [
           {
-            columnName: 'Authors',
-            hintText: 'LastName',
-          },
-          {
-            columnName: 'Consortium',
-            hintText: 'PS-ON',
-          },
-          {
-            columnName: 'DOI',
-            hintText: '10.1158/2159-8290.CD-17-0222',
-          },
-          {
-            columnName: 'Journal',
-            hintText: 'Nucleic Acids Res',
-          },
-          {
             columnName: 'Title',
             hintText: 'methylation',
           },
           {
-            columnName: 'Publication Year',
-            hintText: '2018',
-          },
-          {
-            columnName: 'Grant',
-            hintText: 'CA217297',
+            columnName: 'Authors',
+            hintText: 'LastName',
           },
           {
             columnName: 'Keywords',
             hintText: 'scRNA-seq',
           },
           {
-            columnName: 'Theme',
-            hintText: 'tumor-immune',
+            columnName: 'Journal',
+            hintText: 'Nucleic Acids Res',
           },
           {
-            columnName: 'diseaseType',
-            hintText: 'Skin Cutaneous Melanoma',
+            columnName: 'DOI',
+            hintText: '10.1158/2159-8290.CD-17-0222',
+          },
+          {
+            columnName: 'Theme',
+            hintText: 'tumor-immune',
           },
           {
             columnName: 'experimentalStrategy',
             hintText: 'RNA-seq',
           },
           {
+            columnName: 'diseaseType',
+            hintText: 'Skin Cutaneous Melanoma',
+          },
+          {
             columnName: 'tissue_or_organ.sv',
             hintText: 'Prostate gland',
+          },
+          {
+            columnName: 'Publication Year',
+            hintText: '2018',
+          },
+          {
+            columnName: 'Consortium',
+            hintText: 'PS-ON',
           },
           {
             columnName: 'grantType',

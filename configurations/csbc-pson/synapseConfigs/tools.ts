@@ -2,12 +2,11 @@ import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from '../../types/portal-config'
 import loadingScreen from '../loadingScreen'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
-import { facetAliases } from './commonProps'
+import { facetAliases } from './commonProps'
 export const toolsSql = 'SELECT * FROM syn9898965'
-const sql= toolsSql
+const sql = toolsSql
 const unitDescription = 'Tools'
 const rgbIndex = 6
-
 
 export const toolsSchema: GenericCardSchema = {
   type: SynapseConstants.TOOL,
@@ -33,18 +32,19 @@ export const tools: HomeExploreConfig = {
       facetAliases,
       link: 'Explore/Tools',
       linkText: 'Explore Tools',
-      initQueryRequest : {
+      initQueryRequest: {
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-        partMask: SynapseConstants.BUNDLE_MASK_QUERY_FACETS
-          | SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
+        partMask:
+          SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
+          SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
         query: {
           sql,
           isConsistent: false,
           limit: 25,
           offset: 0,
-        }
-      }
-    }
+        },
+      },
+    },
   },
   explorePageSynapseObject: {
     name: 'QueryWrapperMenu',
@@ -54,34 +54,34 @@ export const tools: HomeExploreConfig = {
       cardConfiguration: {
         type: SynapseConstants.GENERIC_CARD,
         genericCardSchema: toolsSchema,
-        secondaryLabelLimit: 5
+        secondaryLabelLimit: 5,
       },
       stackedBarChartConfiguration: {
-        loadingScreen
+        loadingScreen,
       },
       searchConfiguration: {
         searchable: [
           {
             columnName: 'toolName',
-            hintText: 'track'
-          },
-          {
-            columnName: 'consortium',
-            hintText: 'PS-ON'
+            hintText: 'track',
           },
           {
             columnName: 'inputDataType',
-            hintText: 'image'
+            hintText: 'image',
           },
           {
             columnName: 'outputDataType',
-            hintText: 'network'
+            hintText: 'network',
           },
           {
             columnName: 'softwareLanguage',
-            hintText: 'python'
+            hintText: 'python',
           },
-        ]
+          {
+            columnName: 'consortium',
+            hintText: 'PS-ON',
+          },
+        ],
       },
       name: 'Tools',
       facetAliases,
@@ -106,6 +106,6 @@ export const tools: HomeExploreConfig = {
           sql,
         },
       ],
-    }
-  }
+    },
+  },
 }

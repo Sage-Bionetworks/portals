@@ -89,24 +89,24 @@ export const datasets: HomeExploreConfig = {
             hintText: 'migration',
           },
           {
-            columnName: 'centerName',
-            hintText: 'immunology',
-          },
-          {
             columnName: 'summary',
             hintText: 'spatiotemporal',
+          },
+          {
+            columnName: 'centerName',
+            hintText: 'immunology',
           },
           {
             columnName: 'Theme',
             hintText: 'tumor-immune',
           },
           {
-            columnName: 'tumorType',
-            hintText: 'Skin Cutaneous Melanoma',
-          },
-          {
             columnName: 'experimentalStrategy',
             hintText: 'RNA-seq',
+          },
+          {
+            columnName: 'tumorType',
+            hintText: 'Skin Cutaneous Melanoma',
           },
           {
             columnName: 'species',

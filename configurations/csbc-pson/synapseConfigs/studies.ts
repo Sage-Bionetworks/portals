@@ -87,11 +87,11 @@ export const studies: HomeExploreConfig = {
             hintText: '',
           },
           {
-            columnName: 'centerName',
+            columnName: 'description',
             hintText: '',
           },
           {
-            columnName: 'description',
+            columnName: 'centerName',
             hintText: '',
           },
           {
@@ -99,11 +99,11 @@ export const studies: HomeExploreConfig = {
             hintText: '',
           },
           {
-            columnName: 'tumorType',
+            columnName: 'experimentalStrategy',
             hintText: '',
           },
           {
-            columnName: 'experimentalStrategy',
+            columnName: 'tumorType',
             hintText: '',
           },
           {
