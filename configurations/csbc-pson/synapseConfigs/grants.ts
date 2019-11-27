@@ -3,12 +3,13 @@ import { HomeExploreConfig } from '../../types/portal-config'
 import loadingScreen from '../loadingScreen'
 import { facetAliases } from './commonProps'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
+import { Project } from 'synapse-react-client/dist/assets/themed_icons/Project'
 const sql = `SELECT * FROM syn10142562 WHERE ( "grantType" = 'U54' OR "grantType" = 'U01')`
 const unitDescription = 'grants'
 const rgbIndex = 3
 
 export const grantsSchema: GenericCardSchema = {
-  type: 'Project',
+  type: 'Grant',
   title: 'name',
   subTitle: 'Institutions',
   description: 'abstract',
@@ -55,6 +56,9 @@ export const grants: HomeExploreConfig = {
         type: SynapseConstants.GENERIC_CARD,
         genericCardSchema: grantsSchema,
         secondaryLabelLimit: 4,
+        iconOptions: {
+          Grant: Project,
+        },
       },
       stackedBarChartConfiguration: {
         loadingScreen,
