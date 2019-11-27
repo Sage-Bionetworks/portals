@@ -227,7 +227,7 @@ export const studiesGenerateComponentsFromRowProps: GenerateComponentsFromRowPro
             'org.sagebionetworks.repo.model.table.QueryBundleRequest',
           query: {
             sql:
-              "SELECT `resourceType`,`dataType`, `assay`, COUNT(`id`) AS `Files` FROM syn11346063 WHERE  (`dataSubtype` <> 'metadata') GROUP BY 1, 2,3 ORDER BY 4 DESC",
+              "SELECT `resourceType`,`dataType`, `assay`, COUNT(`id`) AS `Files` FROM syn11346063 WHERE  (`dataSubtype` <> 'metadata' OR `dataSubtype` IS NULL) GROUP BY 1, 2,3 ORDER BY 4 DESC",
             isConsistent: true,
             limit: 25,
             offset: 0,
