@@ -8,6 +8,7 @@ const sql =
 export const filesSql = sql
 
 const facetAliases = {
+  name: 'File Name',
   centerName: 'Grant',
   consortium: 'Program',
   fileFormat: 'Data Format',
