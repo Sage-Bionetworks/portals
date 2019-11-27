@@ -119,14 +119,6 @@ export const studies: HomeExploreConfig = {
       menuConfig: [
         {
           sql,
-          facet: 'grantType',
-        },
-        {
-          sql,
-          facet: 'consortium',
-        },
-        {
-          sql,
           facet: 'Theme',
         },
         {
@@ -136,6 +128,14 @@ export const studies: HomeExploreConfig = {
         {
           sql,
           facet: 'tumorType',
+        },
+        {
+          sql,
+          facet: 'consortium',
+        },
+        {
+          sql,
+          facet: 'grantType',
         },
         {
           sql,

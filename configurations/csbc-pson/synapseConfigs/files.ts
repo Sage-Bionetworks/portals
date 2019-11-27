@@ -66,27 +66,7 @@ export const files: HomeExploreConfig = {
       menuConfig: [
         {
           sql,
-          facet: 'grantType',
-        },
-        {
-          sql,
-          facet: 'centerName',
-        },
-        {
-          sql,
-          facet: 'consortium',
-        },
-        {
-          sql,
-          facet: 'species',
-        },
-        {
-          sql,
           facet: 'Theme',
-        },
-        {
-          sql,
-          facet: 'fileFormat',
         },
         {
           sql,
@@ -94,19 +74,35 @@ export const files: HomeExploreConfig = {
         },
         {
           sql,
-          facet: 'platform',
-        },
-        {
-          sql,
           facet: 'tumorType',
         },
         {
           sql,
-          facet: 'sex',
+          facet: 'species',
         },
         {
           sql,
           facet: 'tissue',
+        },
+        {
+          sql,
+          facet: 'platform',
+        },
+        {
+          sql,
+          facet: 'fileFormat',
+        },
+        {
+          sql,
+          facet: 'consortium',
+        },
+        {
+          sql,
+          facet: 'grantType',
+        },
+        {
+          sql,
+          facet: 'centerName',
         },
       ],
     },

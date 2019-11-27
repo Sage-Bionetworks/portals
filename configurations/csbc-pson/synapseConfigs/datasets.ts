@@ -125,10 +125,6 @@ export const datasets: HomeExploreConfig = {
       menuConfig: [
         {
           sql,
-          facet: 'species',
-        },
-        {
-          sql,
           facet: 'Theme',
         },
         {
@@ -137,11 +133,15 @@ export const datasets: HomeExploreConfig = {
         },
         {
           sql,
-          facet: 'consortium',
+          facet: 'tumorType',
         },
         {
           sql,
-          facet: 'tumorType',
+          facet: 'species',
+        },
+        {
+          sql,
+          facet: 'consortium',
         },
         {
           sql,

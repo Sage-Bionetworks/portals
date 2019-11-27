@@ -139,19 +139,7 @@ export const publications: HomeExploreConfig = {
       menuConfig: [
         {
           sql,
-          facet: 'Consortium',
-        },
-        {
-          sql,
-          facet: 'Publication Year',
-        },
-        {
-          sql,
           facet: 'Theme',
-        },
-        {
-          sql,
-          facet: 'diseaseType',
         },
         {
           sql,
@@ -159,7 +147,19 @@ export const publications: HomeExploreConfig = {
         },
         {
           sql,
+          facet: 'diseaseType',
+        },
+        {
+          sql,
           facet: 'tissue_or_organ.sv',
+        },
+        {
+          sql,
+          facet: 'Publication Year',
+        },
+        {
+          sql,
+          facet: 'Consortium',
         },
         {
           sql,

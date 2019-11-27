@@ -88,10 +88,6 @@ export const tools: HomeExploreConfig = {
       menuConfig: [
         {
           sql,
-          facet: 'consortium',
-        },
-        {
-          sql,
           facet: 'inputDataType',
         },
         {
@@ -101,6 +97,10 @@ export const tools: HomeExploreConfig = {
         {
           sql,
           facet: 'softwareLanguage',
+        },
+        {
+          sql,
+          facet: 'consortium',
         },
         {
           sql,
