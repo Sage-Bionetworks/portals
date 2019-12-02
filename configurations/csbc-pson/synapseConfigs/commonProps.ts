@@ -3,7 +3,7 @@ export const facetAliases = {
   experimentalStrategy: 'Assay',
   Title: 'Publication',
   Consortium: 'Program',
-  diseaseType: 'Disease',
+  diseaseType: 'Tumor Type',
   'Publication Year': 'Year',
   grantNumber: 'Grant',
   fileFormat: 'Data Format',

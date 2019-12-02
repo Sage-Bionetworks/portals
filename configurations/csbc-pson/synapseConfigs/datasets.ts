@@ -89,24 +89,24 @@ export const datasets: HomeExploreConfig = {
             hintText: 'migration',
           },
           {
-            columnName: 'centerName',
-            hintText: 'immunology',
-          },
-          {
             columnName: 'summary',
             hintText: 'spatiotemporal',
+          },
+          {
+            columnName: 'centerName',
+            hintText: 'immunology',
           },
           {
             columnName: 'Theme',
             hintText: 'tumor-immune',
           },
           {
-            columnName: 'tumorType',
-            hintText: 'Skin Cutaneous Melanoma',
-          },
-          {
             columnName: 'experimentalStrategy',
             hintText: 'RNA-seq',
+          },
+          {
+            columnName: 'tumorType',
+            hintText: 'Skin Cutaneous Melanoma',
           },
           {
             columnName: 'species',
@@ -125,10 +125,6 @@ export const datasets: HomeExploreConfig = {
       menuConfig: [
         {
           sql,
-          facet: 'species',
-        },
-        {
-          sql,
           facet: 'Theme',
         },
         {
@@ -137,11 +133,15 @@ export const datasets: HomeExploreConfig = {
         },
         {
           sql,
-          facet: 'consortium',
+          facet: 'tumorType',
         },
         {
           sql,
-          facet: 'tumorType',
+          facet: 'species',
+        },
+        {
+          sql,
+          facet: 'consortium',
         },
         {
           sql,

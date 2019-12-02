@@ -87,11 +87,11 @@ export const studies: HomeExploreConfig = {
             hintText: '',
           },
           {
-            columnName: 'centerName',
+            columnName: 'description',
             hintText: '',
           },
           {
-            columnName: 'description',
+            columnName: 'centerName',
             hintText: '',
           },
           {
@@ -99,11 +99,11 @@ export const studies: HomeExploreConfig = {
             hintText: '',
           },
           {
-            columnName: 'tumorType',
+            columnName: 'experimentalStrategy',
             hintText: '',
           },
           {
-            columnName: 'experimentalStrategy',
+            columnName: 'tumorType',
             hintText: '',
           },
           {
@@ -119,14 +119,6 @@ export const studies: HomeExploreConfig = {
       menuConfig: [
         {
           sql,
-          facet: 'grantType',
-        },
-        {
-          sql,
-          facet: 'consortium',
-        },
-        {
-          sql,
           facet: 'Theme',
         },
         {
@@ -136,6 +128,14 @@ export const studies: HomeExploreConfig = {
         {
           sql,
           facet: 'tumorType',
+        },
+        {
+          sql,
+          facet: 'consortium',
+        },
+        {
+          sql,
+          facet: 'grantType',
         },
         {
           sql,
