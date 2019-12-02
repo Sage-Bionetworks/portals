@@ -10,10 +10,8 @@ export const filesSql = sql
 const facetAliases = {
   name: 'File Name',
   centerName: 'Grant',
-  consortium: 'Program',
   fileFormat: 'Data Format',
   experimentalStrategy: 'Assay',
-  tumorType: 'Disease Type',
   sex: 'Gender',
 }
 
