@@ -4,7 +4,15 @@ app-template/ is the main react app template that reads a standard configuration
 
 configurations/ is a directory of configurations for each portal. See configurations/README.md on local developement.
 
-# Build Process
+The project is run from app-template/src using `yarn && yarn start`.
+
+To run a portal locally, use the linkConfig script, which copies configuration files for the portal that you specify
+(replace \<portal-name\> with one of the subfolder names, like `nf` or `adknowledgeportal`):
+```
+cd configurations
+./linkConfig.sh <portal-name>
+```
+# Build/Deploy Process
 ./run.sh
 
 Usage:
