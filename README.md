@@ -1,4 +1,8 @@
-# A single codebase for portal development.
+# A single codebase for Synapse portals
+### Example sites:
+- [AMP-AD Knowledge Portal](https://adknowledgeportal.synapse.org)
+- [NF Data Portal](https://nf.synapse.org)
+- [CSBC / PS-ON Data Portal](https://csbc-pson.synapse.org)
 
 app-template/ is the main react app template that reads a standard configuration file. See app_template/README.md for details.
 
