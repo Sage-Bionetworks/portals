@@ -25,7 +25,7 @@ const files: HomeExploreConfig = {
           SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
           SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
         query: {
-          isConsistent: false,
+          isConsistent: true,
           limit: 25,
           offset: 0,
           sql:

@@ -77,14 +77,14 @@ type NewsFeedMenu = {
   props: NewsFeedMenuProps
 }
 
-type DrugUploadTool = {
-  name: 'DrugUploadTool'
-  props: DrugUploadToolProps
+type SynapseForm = {
+  name: 'SynapseForm'
+  props: SynapseFormProps
 }
 
-type UserFileGridForm = {
-  name: 'UserFileGrid'
-  props: UserFileGridProps
+type SynapseFormSubmissionsGrid = {
+  name: 'SynapseFormSubmissionsGrid'
+  props: SynapseFormSubmissionsGridProps
 }
 
 export type SynapseConfig = (
@@ -99,8 +99,9 @@ export type SynapseConfig = (
   | Markdown
   | GenerateComponentsFromRow
   | NewsFeedMenu
-  | DrugUploadTool
-  | UserFileGridForm) &
+  | SynapseFormWrapper
+  | SynapseFormSubmissionsGrid
+) &
   Metadata
 export type SynapseConfigArray = SynapseConfig[]
 

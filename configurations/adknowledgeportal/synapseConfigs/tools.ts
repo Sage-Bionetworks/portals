@@ -111,7 +111,7 @@ const tools: HomeExploreConfig = {
           SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
         query: {
           sql: 'SELECT * FROM syn20337467',
-          isConsistent: false,
+          isConsistent: true,
           limit: 25,
           offset: 0,
         },

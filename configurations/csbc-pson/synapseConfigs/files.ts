@@ -40,7 +40,7 @@ export const files: HomeExploreConfig = {
           SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
         query: {
           sql,
-          isConsistent: false,
+          isConsistent: true,
           limit: 25,
           offset: 0,
         },
@@ -52,7 +52,7 @@ export const files: HomeExploreConfig = {
     props: {
       rgbIndex,
       unitDescription,
-      isConsistent: false,
+      isConsistent: true,
       tableConfiguration: {
         synapseId,
         title: 'Files',
