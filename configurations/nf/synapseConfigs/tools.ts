@@ -100,6 +100,7 @@ const tools: HomeExploreConfig = {
       rgbIndex,
       facetAliases,
       name: 'Tools',
+      globalQueryCountSql: 'SELECT * FROM syn16859448',
       accordionConfig: [
         {
           name: 'Computational',

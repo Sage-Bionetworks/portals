@@ -1,4 +1,3 @@
-import { SynapseConfig } from '../../types/portal-config'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import loadingScreen from '../loadingScreen'
 import { SynapseConstants } from 'synapse-react-client'
@@ -124,6 +123,7 @@ const tools: HomeExploreConfig = {
       rgbIndex: 6,
       facetAliases,
       name: 'Tools',
+      globalQueryCountSql: 'SELECT * FROM syn20337467',
       accordionConfig: [
         {
           name: 'Computational',
