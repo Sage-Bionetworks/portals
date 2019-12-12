@@ -3,7 +3,7 @@ import { withRouter, RouteComponentProps } from 'react-router-dom'
 import docTitleConfig from './config/docTitleConfig'
 import { SynapseClient, SynapseConstants } from 'synapse-react-client'
 import { withCookies, ReactCookieProps } from 'react-cookie'
-import { DOWNLOAD_FILES_MENU_TEXT } from 'synapse-react-client/dist/containers/SynapseTable'
+import { DOWNLOAD_FILES_MENU_TEXT } from 'synapse-react-client/dist/containers/table/SynapseTableConstants'
 export type AppInitializerState = {
   token: string
   showLoginDialog: boolean
