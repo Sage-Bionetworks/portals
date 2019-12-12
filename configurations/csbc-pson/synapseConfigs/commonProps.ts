@@ -2,7 +2,6 @@ export const facetAliases = {
   'tissue_or_organ.sv': 'Tissue',
   experimentalStrategy: 'Assay',
   Title: 'Publication',
-  Consortium: 'Program',
   diseaseType: 'Tumor Type',
   'Publication Year': 'Year',
   grantNumber: 'Grant',

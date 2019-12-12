@@ -85,7 +85,7 @@ const tools: HomeExploreConfig = {
           SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
         query: {
           sql: 'SELECT * FROM syn16859448',
-          isConsistent: false,
+          isConsistent: true,
           limit: 25,
           offset: 0,
         },
@@ -100,6 +100,7 @@ const tools: HomeExploreConfig = {
       rgbIndex,
       facetAliases,
       name: 'Tools',
+      globalQueryCountSql: 'SELECT * FROM syn16859448',
       accordionConfig: [
         {
           name: 'Computational',

@@ -30,7 +30,7 @@ const routes: GenericRoute[] = [
         },
       },
       {
-        name: 'UserFileGrid',
+        name: 'SynapseFormSubmissionsGrid',
         props: {
           pathpart: '#/Apply',
           formGroupId: '9',
@@ -41,7 +41,7 @@ const routes: GenericRoute[] = [
     ],
     programmaticRouteConfig: [
       {
-        name: 'DrugUploadTool',
+        name: 'SynapseFormWrapper',
         props: {
           pathpart: '#/Apply',
           formSchemaEntityId: 'syn20680102',

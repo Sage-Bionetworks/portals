@@ -38,7 +38,7 @@ export const studies: HomeExploreConfig = {
           SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
         query: {
           sql,
-          isConsistent: false,
+          isConsistent: true,
           limit: 25,
           offset: 0,
         },

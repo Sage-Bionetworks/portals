@@ -10,10 +10,8 @@ export const filesSql = sql
 const facetAliases = {
   name: 'File Name',
   centerName: 'Grant',
-  consortium: 'Program',
   fileFormat: 'Data Format',
   experimentalStrategy: 'Assay',
-  tumorType: 'Disease Type',
   sex: 'Gender',
 }
 
@@ -42,7 +40,7 @@ export const files: HomeExploreConfig = {
           SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
         query: {
           sql,
-          isConsistent: false,
+          isConsistent: true,
           limit: 25,
           offset: 0,
         },
@@ -54,7 +52,7 @@ export const files: HomeExploreConfig = {
     props: {
       rgbIndex,
       unitDescription,
-      isConsistent: false,
+      isConsistent: true,
       tableConfiguration: {
         synapseId,
         title: 'Files',

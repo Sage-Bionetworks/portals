@@ -3,7 +3,7 @@ import { SynapseComponents } from 'synapse-react-client'
 import loadingScreen from '../config/loadingScreen'
 import { QueryWrapperProps } from 'synapse-react-client/dist/containers/QueryWrapper'
 import { StackedBarChartProps } from 'synapse-react-client/dist/containers/StackedBarChart'
-import { SynapseTableProps } from 'synapse-react-client/dist/containers/SynapseTable'
+import { SynapseTableProps } from 'synapse-react-client/dist/containers/table/SynapseTable'
 import {
   insertConditionsFromSearchParams,
   SQLOperator,
@@ -23,9 +23,7 @@ export type QueryWrapperFlattenedProps = QueryWrapperProps &
   SearchParams &
   Operator
 
-const QueryWrapperFlattened: React.FunctionComponent<
-  QueryWrapperFlattenedProps
-> = props => {
+const QueryWrapperFlattened: React.FunctionComponent<QueryWrapperFlattenedProps> = props => {
   const {
     link,
     linkText,

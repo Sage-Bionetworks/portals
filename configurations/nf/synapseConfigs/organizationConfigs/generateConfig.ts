@@ -43,7 +43,7 @@ export const generateOrgConfig: ReturnSynapseConfigArray = (
               SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
             query: {
               sql: studiesSql,
-              isConsistent: false,
+              isConsistent: true,
               limit: 25,
               offset: 0,
             },
@@ -83,7 +83,7 @@ export const generateOrgConfig: ReturnSynapseConfigArray = (
               SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
             query: {
               sql: datasetsSql,
-              isConsistent: false,
+              isConsistent: true,
               limit: 25,
               offset: 0,
             },
@@ -125,7 +125,7 @@ export const generateOrgConfig: ReturnSynapseConfigArray = (
               SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
             query: {
               sql: filesSql,
-              isConsistent: false,
+              isConsistent: true,
               limit: 25,
               offset: 0,
             },
@@ -154,7 +154,7 @@ export const generateOrgConfig: ReturnSynapseConfigArray = (
             SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
           query: {
             sql: publicationsSql,
-            isConsistent: false,
+            isConsistent: true,
             limit: 25,
             offset: 0,
           },
