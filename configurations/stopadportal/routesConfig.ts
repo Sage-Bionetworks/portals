@@ -16,7 +16,6 @@ const routes: GenericRoute[] = [
       },
     ],
   },
-  // TODO: Put in drug nomination tool below
   {
     name: 'Apply',
     to: '/Apply',
