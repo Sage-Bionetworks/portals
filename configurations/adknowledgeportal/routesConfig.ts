@@ -61,9 +61,9 @@ const routes: GenericRoute[] = [
             '#E5AE4C',
             '#5BB0B5',
             '#407BA0',
-            '#0f9488',
+            '#0F9488',
             '#D4689A',
-            '#3c4a63',
+            '#3C4A63',
             '#407BA0',
           ],
         },
@@ -117,7 +117,7 @@ const routes: GenericRoute[] = [
                 icon: 'Program',
                 description: 'Long Description',
               },
-              backgroundColor: '#5960a5',
+              backgroundColor: '#5960A5',
             },
           },
           {
@@ -330,6 +330,52 @@ const routes: GenericRoute[] = [
             },
           },
         ],
+      },
+    ],
+  },
+  {
+    name: 'Contribute',
+    isNested: false,
+    to: '/Contribute',
+    synapseConfigArray: [
+      {
+        name: 'Markdown',
+        className: 'amp-project-component',
+        props: {
+          ownerId: 'syn12666371',
+          wikiId: '600033',
+        },
+      },
+      {
+        name: 'SynapseFormSubmissionsGrid',
+        props: {
+          pathpart: '#/Contribute',
+          formGroupId: '11',
+          itemNoun: 'contribution-request',
+          formClass: 'contribution-request',
+        },
+      },
+    ],
+    programmaticRouteConfig: [
+      {
+        name: 'Markdown',
+        props: {
+          ownerId: 'syn12666371',
+          wikiId: '600034',
+        },
+      },
+      {
+        name: 'SynapseFormWrapper',
+        props: {
+          pathpart: '#/Contribute',
+          formSchemaEntityId: 'syn20692910',
+          fileNamePath: 'study.submission_name',
+          formUiSchemaEntityId: 'syn20692911',
+          formNavSchemaEntityId: 'syn20968007',
+          isWizardMode: true,
+          formTitle: 'Your Contribution Request',
+          formClass: 'contribution-request',
+        },
       },
     ],
   },
