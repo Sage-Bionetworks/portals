@@ -358,6 +358,13 @@ const routes: GenericRoute[] = [
     ],
     programmaticRouteConfig: [
       {
+        name: 'Markdown',
+        props: {
+          ownerId: 'syn12666371',
+          wikiId: '600034',
+        },
+      },
+      {
         name: 'SynapseFormWrapper',
         props: {
           pathpart: '#/Contribute',
