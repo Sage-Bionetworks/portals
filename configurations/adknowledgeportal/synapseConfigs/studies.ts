@@ -13,11 +13,6 @@ const rgbIndex = 0
 export const studiesSql = 'SELECT * FROM syn17083367'
 const sql = studiesSql
 const facet = 'Species'
-const cardLink: CardLink = {
-  isMarkdown: false,
-  baseURL: 'Explore/Studies',
-  URLColumnNames: ['Study'],
-}
 export const studyCardProps: CardConfiguration = {
   type: SynapseConstants.GENERIC_CARD,
   secondaryLabelLimit: 4,
