@@ -1,6 +1,7 @@
 import { HomeExploreConfig } from '../../types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
 import loadingScreen from '../loadingScreen'
+import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 
 const unitDescription = 'Projects'
 const rgbIndex = 4
@@ -8,7 +9,7 @@ export const projectsSql = 'SELECT * FROM syn17024229'
 const sql = projectsSql
 const facet = 'Program'
 
-export const projectCardProps = {
+export const projectCardProps: CardConfiguration = {
   type: SynapseConstants.GENERIC_CARD,
   genericCardSchema: {
     type: 'Project',

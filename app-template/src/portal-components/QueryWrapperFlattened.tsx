@@ -15,7 +15,7 @@ type SearchParams = {
   }
 }
 type Operator = {
-  sqlOperator: SQLOperator
+  sqlOperator?: SQLOperator
 }
 export type QueryWrapperFlattenedProps = QueryWrapperProps &
   Partial<StackedBarChartProps> &

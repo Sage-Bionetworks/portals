@@ -16,6 +16,7 @@ const programs: SynapseConfig = {
       icon: 'Program',
     },
     titleLinkConfig: {
+      isMarkdown: false,
       baseURL: 'Explore/Programs',
       URLColumnNames: ['Program'],
     },

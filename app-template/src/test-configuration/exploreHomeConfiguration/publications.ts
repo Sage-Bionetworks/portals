@@ -46,7 +46,7 @@ export const publications: HomeExploreConfig = {
       name: 'Publications',
       cardConfiguration: {
         type: SynapseConstants.GENERIC_CARD,
-        genericCardConfiguration: publicationSchema,
+        genericCardSchema: publicationSchema,
       },
       menuConfig: [
         {

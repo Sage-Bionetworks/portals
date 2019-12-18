@@ -5,7 +5,7 @@
   "repository": "git@github.com:leem42/portals.git",
   "author": "Michael Lee <michael.leem42@gmail.com>",
   "devDependencies": {
-    "synapse-react-client": "1.12.84",
+    "synapse-react-client": "1.12.85",
     "typescript": "3.5.3"
   },
   "scripts": {
