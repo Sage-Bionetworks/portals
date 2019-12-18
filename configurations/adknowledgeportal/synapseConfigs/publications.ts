@@ -8,6 +8,7 @@ const rgbIndex = 5
 const unitDescription = 'Publications'
 
 const sql = 'SELECT * FROM syn20448807'
+const entityId = 'syn20448807'
 
 export const publicationCardProps = {
   type: SynapseConstants.GENERIC_CARD,
@@ -48,6 +49,7 @@ const publications: HomeExploreConfig = {
         consortium: 'Program',
       },
       initQueryRequest: {
+        entityId,
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
         partMask:
           SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
@@ -66,6 +68,7 @@ const publications: HomeExploreConfig = {
     props: {
       rgbIndex,
       unitDescription,
+      entityId,
       stackedBarChartConfiguration: {
         loadingScreen,
       },

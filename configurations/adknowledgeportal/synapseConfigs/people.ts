@@ -5,6 +5,7 @@ import loadingScreen from '../loadingScreen'
 const unitDescription = 'people'
 const rgbIndex = 2
 const sql = 'SELECT * FROM syn13897207'
+const entityId = 'syn13897207'
 
 const people: HomeExploreConfig = {
   homePageSynapseObject: {
@@ -17,6 +18,7 @@ const people: HomeExploreConfig = {
       linkText: 'Explore People',
       facet: 'Program',
       initQueryRequest: {
+        entityId,
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
         partMask:
           SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
@@ -35,6 +37,7 @@ const people: HomeExploreConfig = {
     props: {
       rgbIndex,
       unitDescription,
+      entityId,
       stackedBarChartConfiguration: {
         loadingScreen,
       },

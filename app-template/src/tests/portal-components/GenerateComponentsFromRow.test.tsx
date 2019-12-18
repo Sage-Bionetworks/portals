@@ -1,16 +1,18 @@
-import * as React from 'react'
 import { mount } from 'enzyme'
-import GenerateComponentsFromRow from '../../portal-components/GenerateComponentsFromRow'
-import { SynapseClient } from 'synapse-react-client'
-import { QueryResultBundle } from 'synapse-react-client/dist/utils/jsonResponses/Table/QueryResultBundle'
-import MarkdownSynapse from 'synapse-react-client/dist/containers/MarkdownSynapse'
 import QueryWrapperFlattened from 'portal-components/QueryWrapperFlattened'
-import { EntityHeader } from 'synapse-react-client/dist/utils/jsonResponses/EntityHeader'
-import { PaginatedResults } from 'synapse-react-client/dist/utils/jsonResponses/PaginatedResults'
+import * as React from 'react'
+import { SynapseClient } from 'synapse-react-client'
+import MarkdownSynapse from 'synapse-react-client/dist/containers/MarkdownSynapse'
 import {
-  RowSynapseConfig,
+  EntityHeader,
+  PaginatedResults,
+  QueryResultBundle,
+} from 'synapse-react-client/dist/utils/synapseTypes/'
+import {
   GenerateComponentsFromRowProps,
+  RowSynapseConfig,
 } from 'types/portal-util-types'
+import GenerateComponentsFromRow from '../../portal-components/GenerateComponentsFromRow'
 const injectPropsIntoConfig = require('portal-components/injectPropsIntoConfig')
 
 const createMountedComponent = async (
@@ -60,6 +62,7 @@ describe('GenerateComponentsFromRowProps works', () => {
     title: 'title',
     props: {
       initQueryRequest: {
+        entityId: 'syn11346063',
         partMask: 0,
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
         query: {

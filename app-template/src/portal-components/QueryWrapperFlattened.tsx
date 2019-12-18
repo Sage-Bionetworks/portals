@@ -14,7 +14,7 @@ type SearchParams = {
     facetValue: string
   }
 }
-type Operator = {
+export type Operator = {
   sqlOperator?: SQLOperator
 }
 export type QueryWrapperFlattenedProps = QueryWrapperProps &
@@ -28,7 +28,6 @@ const QueryWrapperFlattened: React.FunctionComponent<QueryWrapperFlattenedProps>
     link,
     linkText,
     title,
-    synapseId,
     searchParams,
     initQueryRequest,
     sqlOperator,
@@ -59,10 +58,9 @@ const QueryWrapperFlattened: React.FunctionComponent<QueryWrapperFlattenedProps>
       ) : (
         <React.Fragment />
       )}
-      {synapseId && title ? (
+      {title ? (
         <SynapseComponents.SynapseTable
           loadingScreen={loadingScreen}
-          synapseId={synapseId}
           title={title}
         />
       ) : (

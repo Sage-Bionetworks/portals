@@ -2,7 +2,10 @@ import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from '../../types/portal-config'
 import loadingScreen from '../loadingScreen'
 import { facetAliases } from './commonProps'
-import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
+import {
+  GenericCardSchema,
+  IconOptions,
+} from 'synapse-react-client/dist/containers/GenericCard'
 import { Project } from 'synapse-react-client/dist/assets/themed_icons/Project'
 const sql = `SELECT * FROM syn10142562 WHERE ( "grantType" = 'U54' OR "grantType" = 'U01')`
 const unitDescription = 'grants'
@@ -21,6 +24,13 @@ export const grantsSchema: GenericCardSchema = {
   ],
   link: 'id',
 }
+const entityId = 'syn10142562'
+const grantsEntityId = 'syn10142562'
+
+// TODO: Change iconOptions type to map () => string | JSX.Element and remove cast
+const iconOptions: IconOptions = {
+  Grant: (Project as unknown) as string,
+}
 
 export const grants: HomeExploreConfig = {
   homePageSynapseObject: {
@@ -35,6 +45,7 @@ export const grants: HomeExploreConfig = {
       linkText: 'Explore Grants',
       initQueryRequest: {
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
+        entityId,
         partMask:
           SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
           SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
@@ -56,14 +67,13 @@ export const grants: HomeExploreConfig = {
         type: SynapseConstants.GENERIC_CARD,
         genericCardSchema: grantsSchema,
         secondaryLabelLimit: 4,
-        iconOptions: {
-          Grant: Project,
-        },
+        iconOptions,
       },
       stackedBarChartConfiguration: {
         loadingScreen,
       },
       name: 'Grants',
+      entityId,
       facetAliases,
       searchConfiguration: {
         searchable: [

@@ -16,6 +16,7 @@ export const ctf: BaseRoute = {
         limit: 1,
         sql: "SELECT * FROM syn16858699 WHERE abbreviation = 'CTF'",
         type: SynapseConstants.FUNDER,
+        entityId: 'syn16858699',
       },
       title: "Children's Tumor Foundation",
     },

@@ -12,7 +12,12 @@ type ReturnSynapseConfigArray = (
   sqlOnly?: boolean,
 ) => SynapseConfigArray | string
 
-// This is a helper
+const studiesEntityId = 'syn16787123'
+const datasetsEntityId = 'syn16859580'
+const filesSqlEntityId = 'syn16858331'
+const publicationsEntityId = 'syn16857542'
+
+// Helper function to more easily generate configs for NF
 export const generateOrgConfig: ReturnSynapseConfigArray = (
   org,
   type,
@@ -35,6 +40,7 @@ export const generateOrgConfig: ReturnSynapseConfigArray = (
           rgbIndex: 5,
           facet: 'diseaseFocus',
           initQueryRequest: {
+            entityId: studiesEntityId,
             concreteType:
               'org.sagebionetworks.repo.model.table.QueryBundleRequest',
             partMask:
@@ -55,6 +61,7 @@ export const generateOrgConfig: ReturnSynapseConfigArray = (
         props: {
           loadingScreen,
           sql: studiesSql,
+          entityId: studiesEntityId,
           ...studiesCardConfiguration,
           facet: 'diseaseFocus',
         },
@@ -75,6 +82,7 @@ export const generateOrgConfig: ReturnSynapseConfigArray = (
           rgbIndex: 8,
           facet: 'diseaseFocus',
           initQueryRequest: {
+            entityId: datasetsEntityId,
             concreteType:
               'org.sagebionetworks.repo.model.table.QueryBundleRequest',
             partMask:
@@ -94,6 +102,7 @@ export const generateOrgConfig: ReturnSynapseConfigArray = (
         name: 'CardContainerLogic',
         props: {
           loadingScreen,
+          entityId: datasetsEntityId,
           sql: datasetsSql,
           type: SynapseConstants.DATASET,
           facet: 'diseaseFocus',
@@ -113,10 +122,10 @@ export const generateOrgConfig: ReturnSynapseConfigArray = (
           facetAliases,
           unitDescription: 'Files',
           title: 'Files',
-          synapseId: 'syn16858331',
           rgbIndex: 1,
           facet: 'assay',
           initQueryRequest: {
+            entityId: filesSqlEntityId,
             concreteType:
               'org.sagebionetworks.repo.model.table.QueryBundleRequest',
             partMask:
@@ -146,6 +155,7 @@ export const generateOrgConfig: ReturnSynapseConfigArray = (
         rgbIndex: 0,
         facet: 'diseaseFocus',
         initQueryRequest: {
+          entityId: publicationsEntityId,
           concreteType:
             'org.sagebionetworks.repo.model.table.QueryBundleRequest',
           partMask:
@@ -166,6 +176,7 @@ export const generateOrgConfig: ReturnSynapseConfigArray = (
       props: {
         loadingScreen,
         sql: publicationsSql,
+        entityId: publicationsEntityId,
         ...publicationsCardConfiguration,
         facet: 'diseaseFocus',
       },

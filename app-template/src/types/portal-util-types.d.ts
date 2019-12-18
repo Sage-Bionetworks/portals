@@ -8,11 +8,6 @@ import { SQLOperator } from 'synapse-react-client/dist/utils/modules/sqlFunction
   the portal.
 */
 
-type HomeExploreConfig = {
-  homePageSynapseObject: QueryWrapper
-  explorePageSynapseObject: SynapseConfig
-}
-
 module '*.svg' {
   const content: string
   export default content

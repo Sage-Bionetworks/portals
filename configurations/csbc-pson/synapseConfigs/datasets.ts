@@ -4,6 +4,7 @@ import loadingScreen from '../loadingScreen'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import { facetAliases } from './commonProps'
 export const datasetsSql = `SELECT * FROM syn18488466 WHERE ( ( "is.dataset" = 'TRUE' ) )`
+const entityId = 'syn18488466'
 const sql = datasetsSql
 const unitDescription = 'Datasets'
 const rgbIndex = 0
@@ -39,6 +40,7 @@ export const datasets: HomeExploreConfig = {
       link: 'Explore/Datasets',
       linkText: 'Explore Datasets',
       initQueryRequest: {
+        entityId,
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
         partMask:
           SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
@@ -58,21 +60,22 @@ export const datasets: HomeExploreConfig = {
     props: {
       rgbIndex,
       unitDescription,
+      entityId,
       cardConfiguration: {
         type: SynapseConstants.GENERIC_CARD,
         genericCardSchema: datasetSchema,
         secondaryLabelLimit: 4,
-        labelConfig: [
+        labelLinkConfig: [
           {
             isMarkdown: false,
             baseURL: 'Explore/Publications',
-            URLColumnNames: ['Title'],
+            URLColumnName: 'Title',
             matchColumnName: 'Title',
           },
           {
             isMarkdown: false,
             baseURL: 'Explore/Studies',
-            URLColumnNames: ['studies'],
+            URLColumnName: 'studies',
             matchColumnName: 'studies',
           },
         ],

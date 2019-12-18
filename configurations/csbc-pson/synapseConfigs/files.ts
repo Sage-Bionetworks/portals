@@ -4,7 +4,8 @@ import loadingScreen from '../loadingScreen'
 
 const sql =
   'SELECT name, Title, species, fileFormat, experimentalStrategy, tumorType, sex, tissue, centerName, grantType, consortium FROM syn9630847'
-
+export const filesEntityId = 'syn9630847'
+const entityId = filesEntityId
 export const filesSql = sql
 
 const facetAliases = {
@@ -34,6 +35,7 @@ export const files: HomeExploreConfig = {
       link: 'Explore/Files',
       linkText: 'Explore Files',
       initQueryRequest: {
+        entityId,
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
         partMask:
           SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
@@ -52,9 +54,9 @@ export const files: HomeExploreConfig = {
     props: {
       rgbIndex,
       unitDescription,
+      entityId,
       isConsistent: true,
       tableConfiguration: {
-        synapseId,
         title: 'Files',
       },
       stackedBarChartConfiguration: {

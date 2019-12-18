@@ -32,6 +32,7 @@ export const studies: HomeExploreConfig = {
       facet,
       unitDescription,
       initQueryRequest: {
+        entityId: 'syn18483791',
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
         partMask:
           SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
@@ -53,6 +54,7 @@ export const studies: HomeExploreConfig = {
       stackedBarChartConfiguration: {
         loadingScreen,
       },
+      entityId: 'syn18483791',
       cardConfiguration: {
         type: SynapseConstants.GENERIC_CARD,
         genericCardSchema: studySchema,
