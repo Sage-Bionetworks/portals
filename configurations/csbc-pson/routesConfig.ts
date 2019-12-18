@@ -75,6 +75,7 @@ const routes: GenericRoute[] = [
         link: 'Explore/Studies',
         props: {
           loadingScreen,
+          // @ts-ignore TODO: Remove after this prop is added to CardContainerLogic
           facetAliases,
           sql: studiesSql,
           limit: homeLimit,
@@ -210,6 +211,7 @@ const routes: GenericRoute[] = [
               backgroundColor: '#407ba0',
               genericCardSchema: studySchema,
               loadingScreen,
+              // @ts-ignore TODO: Remove after this prop is added to CardContainerLogic
               facetAliases,
               labelConfig: [
                 {

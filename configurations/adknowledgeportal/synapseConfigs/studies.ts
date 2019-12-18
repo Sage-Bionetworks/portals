@@ -2,7 +2,10 @@ import { HomeExploreConfig, SynapseConfig } from '../../types/portal-config'
 import { GenerateComponentsFromRowProps } from '../../types/portal-util-types'
 import { SynapseConstants } from 'synapse-react-client'
 import loadingScreen from '../loadingScreen'
-import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
+import {
+  CardConfiguration,
+  CardLink,
+} from 'synapse-react-client/dist/containers/CardContainerLogic'
 import studyHeaderSvg from '../style/study-header.svg'
 
 const unitDescription = 'studies'
@@ -135,7 +138,6 @@ const studies: HomeExploreConfig = {
         {
           sql,
           facet: 'Consortium',
-          facetAliases: 'Program',
         },
         {
           sql,

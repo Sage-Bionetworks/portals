@@ -42,7 +42,6 @@ const routes: GenericRoute[] = [
       {
         name: 'SynapseFormWrapper',
         props: {
-          pathpart: '#/Apply',
           formSchemaEntityId: 'syn20680102',
           fileNamePath: 'naming.compound_name',
           formUiSchemaEntityId: 'syn20693568',

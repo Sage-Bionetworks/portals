@@ -69,6 +69,7 @@ routes[ORGANIZATION_INDEX] = {
             type: SynapseConstants.GENERIC_CARD,
             genericCardSchema: {
               title: 'name',
+              type: SynapseConstants.PUBLICATION,
             },
             sql: `SELECT * FROM syn18488466 WHERE ( ( "featured" = 'TRUE' ) )`,
           },
@@ -119,6 +120,7 @@ routes[HOME_INDEX] = {
         type: SynapseConstants.GENERIC_CARD,
         genericCardSchema: {
           title: 'name',
+          type: SynapseConstants.PUBLICATION,
         },
         limit: 3,
       },

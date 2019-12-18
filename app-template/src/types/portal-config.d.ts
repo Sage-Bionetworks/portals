@@ -1,5 +1,13 @@
-/// <reference types="synapse-react-client" />
-
+import { CardContainerLogicProps } from 'synapse-react-client/dist/containers/CardContainerLogic'
+import { QueryWrapperProps } from 'synapse-react-client/dist/containers/QueryWrapper'
+import { StackedBarChartProps } from 'synapse-react-client/dist/containers/StackedBarChart'
+import { SynapseTableProps } from 'synapse-react-client/dist/containers/SynapseTable'
+import { QueryWrapperMenuProps } from 'synapse-react-client/dist/containers/QueryWrapperMenu'
+import { UserCardProps } from 'synapse-react-client/dist/containers/UserCard'
+import { MarkdownSynapseProps } from 'synapse-react-client/dist/containers/MarkdownSynapse'
+import { NewsFeedMenuProps } from 'synapse-react-client/dist/containers/NewsFeedMenu'
+import { SynapseFormSubmissionGridProps } from 'synapse-react-client/dist/containers/synapse_form_wrapper/SynapseFormSubmissionsGrid'
+import { SynapseFormWrapperProps } from 'synapse-react-client/dist/containers/synapse_form_wrapper/SynapseFormWrapper'
 import { StatefulButtonControlProps } from '../portal-components/StatefulButtonControlWrapper'
 import { RouteButtonControlProps } from '../portal-components/RouteButtonControlWrapper'
 
@@ -10,9 +18,9 @@ export type HomePageHeaderConfig = {
 }
 
 // Generic SynapseConfigArray Representation -- maps each component to its props
-declare type CardContainerLogic = {
-  name: 'CardContainerLogic'
+type CardContainerLogic = {
   props: CardContainerLogicProps
+  name: 'CardContainerLogic'
 }
 
 type QueryWrapper = {
@@ -28,7 +36,7 @@ type QueryWrapperFlattened = {
     Partial<SynapseTableProps>
 }
 
-declare type StackedBarChart = {
+type StackedBarChart = {
   name: 'StackedBarChart'
   props: StackedBarChartProps
 }
@@ -43,7 +51,7 @@ type UserCard = {
 }
 type Markdown = {
   name: 'Markdown'
-  props: MarkdownProps
+  props: MarkdownSynapseProps
 }
 
 type StatefulButtonControl = {
@@ -77,14 +85,14 @@ type NewsFeedMenu = {
   props: NewsFeedMenuProps
 }
 
-type SynapseForm = {
-  name: 'SynapseForm'
-  props: SynapseFormProps
+type SynapseFormWrapper = {
+  name: 'SynapseFormWrapper'
+  props: SynapseFormWrapperProps
 }
 
 type SynapseFormSubmissionsGrid = {
   name: 'SynapseFormSubmissionsGrid'
-  props: SynapseFormSubmissionsGridProps
+  props: SynapseFormSubmissionGridProps
 }
 
 export type SynapseConfig = (

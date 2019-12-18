@@ -8,12 +8,12 @@ import { SQLOperator } from 'synapse-react-client/dist/utils/modules/sqlFunction
   the portal.
 */
 
-declare type HomeExploreConfig = {
+type HomeExploreConfig = {
   homePageSynapseObject: QueryWrapper
   explorePageSynapseObject: SynapseConfig
 }
 
-declare module '*.svg' {
+module '*.svg' {
   const content: string
   export default content
 }
@@ -35,7 +35,7 @@ type RowToPropTransform = {
 }
 
 export type RowSynapseConfig = SynapseConfig & RowToPropTransform
-export declare type GenerateComponentsFromRowProps = {
+export type GenerateComponentsFromRowProps = {
   showMenu?: boolean // default to true
   searchParams?: Dictionary<string>
   sql: string
