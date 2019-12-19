@@ -12,7 +12,7 @@ import {
   studiesSql,
   studyHeaderIconOptions,
   studyCardConfiguration,
-  studyEntityId,
+  studiesEntityId,
 } from './synapseConfigs/studies'
 import { datasetsSql, datasetsEntityId } from './synapseConfigs/datasets'
 import {
@@ -74,7 +74,7 @@ const routes: GenericRoute[] = [
           limit,
           facetAliases,
           sql: studiesSql,
-          entityId: studyEntityId,
+          entityId: studiesEntityId,
           title: 'NEW STUDIES',
           ...studyCardConfiguration,
         },
@@ -155,7 +155,7 @@ const routes: GenericRoute[] = [
               sqlOperator: '=',
               isHeader: true,
               backgroundColor: '#119488',
-              entityId: studyEntityId,
+              entityId: studiesEntityId,
               ...studyCardConfiguration,
               facetAliases,
               iconOptions: studyHeaderIconOptions,

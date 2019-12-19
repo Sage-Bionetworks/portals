@@ -9,8 +9,8 @@ import studyActiveHeaderSvg from '../style/study-active-header.svg'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 
 const sql = 'SELECT * FROM syn16787123'
-export const studyEntityId = 'syn16787123'
-const entityId = studyEntityId
+export const studiesEntityId = 'syn16787123'
+const entityId = studiesEntityId
 export const studiesSql = sql
 const type = SynapseConstants.GENERIC_CARD
 const unitDescription = 'Studies'
