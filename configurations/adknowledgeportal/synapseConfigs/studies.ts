@@ -10,7 +10,7 @@ const rgbIndex = 0
 export const studiesSql = 'SELECT * FROM syn17083367'
 const sql = studiesSql
 const facet = 'Species'
-const studiesEntityId = 'syn17083367'
+export const studiesEntityId = 'syn17083367'
 const entityId = studiesEntityId
 export const studyCardConfiguration: CardConfiguration = {
   type: SynapseConstants.GENERIC_CARD,

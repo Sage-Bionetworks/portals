@@ -1,26 +1,15 @@
 import { SynapseConfigArray } from '../../../types/portal-config'
-import { SynapseConstants } from 'synapse-react-client'
-import loadingScreen from '../../loadingScreen'
-import { iconOptions } from './iconOptions'
-import { projectCardConfiguration } from '../projects'
+import { projectCardConfiguration, projectsEntityId } from '../projects'
+import programCardConfiguration from '../programs'
 
 const ampAd: SynapseConfigArray = [
   {
     name: 'CardContainerLogic',
     isOutsideContainer: true,
     props: {
-      loadingScreen,
-      iconOptions,
-      genericCardSchema: {
-        type: 'Program',
-        title: 'Full Name',
-        subTitle: 'Short Description',
-        description: 'Long Description',
-        icon: 'Program',
-      },
-      secondaryLabelLimit: 4,
+      ...programCardConfiguration,
       sql: `SELECT  * FROM syn17024173 WHERE ( ( "Program" = 'AMP-AD' ) )`,
-      type: SynapseConstants.GENERIC_CARD,
+      entityId: 'syn17024173',
       backgroundColor: '#5960a5',
       isHeader: true,
     },
@@ -29,9 +18,8 @@ const ampAd: SynapseConfigArray = [
     name: 'CardContainerLogic',
     title: 'Explore AMP-AD',
     props: {
-      loadingScreen,
       ...projectCardConfiguration,
-      secondaryLabelLimit: 4,
+      entityId: projectsEntityId,
       sql: `SELECT  * FROM syn17024229 WHERE ( ( "Program" = 'AMP-AD' ) )`,
     },
   },

@@ -26,7 +26,7 @@ import { iconHeaderOptions } from './synapseConfigs/programs/iconOptions'
 import loadingScreen from './loadingScreen'
 import { publicationProgrammatic } from './synapseConfigs/publications'
 import { programCardConfiguration } from './synapseConfigs/programs'
-import { studiesEntityId } from 'csbc-pson/synapseConfigs/studies'
+import { studiesEntityId } from './synapseConfigs/studies'
 
 const routes: GenericRoute[] = [
   {

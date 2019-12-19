@@ -1,26 +1,15 @@
 import { SynapseConfigArray } from '../../../types/portal-config'
-import { SynapseConstants } from 'synapse-react-client'
-import loadingScreen from '../../loadingScreen'
-import { iconOptions } from './iconOptions'
-import { projectCardConfiguration } from '../projects'
+import { projectCardConfiguration, projectsEntityId } from '../projects'
+import programCardConfiguration, { programEntityId } from '../programs'
 
 const move2Ad: SynapseConfigArray = [
   {
     name: 'CardContainerLogic',
     isOutsideContainer: true,
     props: {
-      loadingScreen,
-      iconOptions,
-      genericCardSchema: {
-        type: 'Program',
-        title: 'Full Name',
-        subTitle: 'Short Description',
-        description: 'Long Description',
-        icon: 'Program',
-      },
-      secondaryLabelLimit: 4,
+      ...programCardConfiguration,
       sql: `SELECT  * FROM syn17024173 WHERE ( ( "Program" = 'M2OVE-AD' ) )`,
-      type: SynapseConstants.GENERIC_CARD,
+      entityId: programEntityId,
       backgroundColor: '#5960a5',
       isHeader: true,
     },
@@ -29,10 +18,9 @@ const move2Ad: SynapseConfigArray = [
     name: 'CardContainerLogic',
     title: 'Explore MOVE2-AD',
     props: {
-      loadingScreen,
-      secondaryLabelLimit: 4,
       sql: `SELECT * FROM syn17024229 WHERE ( ( "Program" = 'M2OVE-AD' ) )`,
       ...projectCardConfiguration,
+      entityId: projectsEntityId,
     },
   },
 ]

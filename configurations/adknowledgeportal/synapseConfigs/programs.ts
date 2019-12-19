@@ -3,6 +3,8 @@ import { iconOptions } from './programs/iconOptions'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import loadingScreen from '../loadingScreen'
 
+export const programEntityId = 'syn17024173'
+
 export const programCardConfiguration: CardConfiguration = {
   iconOptions,
   type: SynapseConstants.GENERIC_CARD,
@@ -19,6 +21,7 @@ export const programCardConfiguration: CardConfiguration = {
     URLColumnName: 'Program',
     matchColumnName: 'Program',
   },
+  secondaryLabelLimit: 4,
 }
 
 export default programCardConfiguration
