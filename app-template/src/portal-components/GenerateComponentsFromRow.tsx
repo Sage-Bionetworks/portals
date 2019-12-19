@@ -1,21 +1,23 @@
+import { Dictionary } from 'lodash'
 import * as React from 'react'
-import { QueryResultBundle } from 'synapse-react-client/dist/utils/jsonResponses/Table/QueryResultBundle'
+import { generateSynapseObject } from 'RouteResolver'
 import { SynapseClient, SynapseConstants } from 'synapse-react-client'
-import { QueryBundleRequest } from 'synapse-react-client/dist/utils/jsonResponses/Table/QueryBundleRequest'
+import { insertConditionsFromSearchParams } from 'synapse-react-client/dist/utils/modules/sqlFunctions'
+import {
+  EntityHeader,
+  PaginatedResults,
+  QueryBundleRequest,
+  QueryResultBundle,
+  ReferenceList,
+} from 'synapse-react-client/dist/utils/synapseTypes/'
+import loadingScreen from 'test-configuration/loadingScreen'
 import { SynapseConfig } from '../types/portal-config'
 import {
   GenerateComponentsFromRowProps,
   RowSynapseConfig,
 } from '../types/portal-util-types'
-import { insertConditionsFromSearchParams } from 'synapse-react-client/dist/utils/modules/sqlFunctions'
-import { Dictionary } from 'lodash'
-import { generateSynapseObject } from 'RouteResolver'
-import loadingScreen from 'test-configuration/loadingScreen'
-import { ReferenceList } from 'synapse-react-client/dist/utils/jsonResponses/ReferenceList'
-import { EntityHeader } from 'synapse-react-client/dist/utils/jsonResponses/EntityHeader'
-import { PaginatedResults } from 'synapse-react-client/dist/utils/jsonResponses/PaginatedResults'
-import injectPropsIntoConfig from './injectPropsIntoConfig'
 import './GenerateComponentsFromRow.scss'
+import injectPropsIntoConfig from './injectPropsIntoConfig'
 
 type State = {
   queryResultBundle: QueryResultBundle | undefined
@@ -45,6 +47,7 @@ export default class GenerateComponentsFromRow extends React.Component<
     const {
       sql,
       token,
+      entityId,
       searchParams = {},
       synapseConfigArray,
       sqlOperator,
@@ -55,6 +58,7 @@ export default class GenerateComponentsFromRow extends React.Component<
       sqlOperator,
     )
     const queryBundleRequest: QueryBundleRequest = {
+      entityId,
       concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
       partMask: SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
       query: {

@@ -2,10 +2,7 @@ import { HomeExploreConfig, SynapseConfig } from '../../types/portal-config'
 import { GenerateComponentsFromRowProps } from '../../types/portal-util-types'
 import { SynapseConstants } from 'synapse-react-client'
 import loadingScreen from '../loadingScreen'
-import {
-  CardConfiguration,
-  CardLink,
-} from 'synapse-react-client/dist/containers/CardContainerLogic'
+import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import studyHeaderSvg from '../style/study-header.svg'
 
 const unitDescription = 'studies'
@@ -13,13 +10,17 @@ const rgbIndex = 0
 export const studiesSql = 'SELECT * FROM syn17083367'
 const sql = studiesSql
 const facet = 'Species'
-export const studyCardProps: CardConfiguration = {
+export const studiesEntityId = 'syn17083367'
+const entityId = studiesEntityId
+export const studyCardConfiguration: CardConfiguration = {
   type: SynapseConstants.GENERIC_CARD,
   secondaryLabelLimit: 4,
+  loadingScreen,
   titleLinkConfig: {
     isMarkdown: false,
     baseURL: 'Explore/Studies',
-    URLColumnNames: ['Study'],
+    URLColumnName: 'Study',
+    matchColumnName: 'Study',
   },
   genericCardSchema: {
     type: SynapseConstants.STUDY,
@@ -61,6 +62,7 @@ const studies: HomeExploreConfig = {
       link: 'Explore/Studies',
       linkText: 'Explore Studies',
       initQueryRequest: {
+        entityId,
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
         partMask:
           SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
@@ -83,9 +85,10 @@ const studies: HomeExploreConfig = {
       stackedBarChartConfiguration: {
         loadingScreen,
       },
+      entityId,
       name: 'Studies',
       isConsistent: true,
-      cardConfiguration: studyCardProps,
+      cardConfiguration: studyCardConfiguration,
       searchConfiguration: {
         searchable: [
           {
@@ -150,6 +153,7 @@ const studies: HomeExploreConfig = {
 export const studiesGenerateComponentsFromRowProps: GenerateComponentsFromRowProps = {
   sql: studiesSql,
   sqlOperator: '=',
+  entityId,
   synapseConfigArray: [
     {
       name: 'Markdown',
@@ -191,6 +195,7 @@ export const studiesGenerateComponentsFromRowProps: GenerateComponentsFromRowPro
             SynapseConstants.BUNDLE_MASK_QUERY_COUNT |
             SynapseConstants.BUNDLE_MASK_QUERY_SELECT_COLUMNS |
             SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
+          entityId,
           concreteType:
             'org.sagebionetworks.repo.model.table.QueryBundleRequest',
           query: {
@@ -227,6 +232,7 @@ export const studiesGenerateComponentsFromRowProps: GenerateComponentsFromRowPro
             SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
           concreteType:
             'org.sagebionetworks.repo.model.table.QueryBundleRequest',
+          entityId,
           query: {
             sql:
               "SELECT `resourceType`,`dataType`, `assay`, COUNT(`id`) AS `Files` FROM syn11346063 WHERE  (`dataSubtype` <> 'metadata' OR `dataSubtype` IS NULL) GROUP BY 1, 2,3 ORDER BY 4 DESC",
@@ -260,7 +266,7 @@ export const studiesGenerateComponentsFromRowProps: GenerateComponentsFromRowPro
       props: {
         sqlOperator: '=',
         sql,
-        ...studyCardProps,
+        ...studyCardConfiguration,
       },
     },
   ],
@@ -272,8 +278,9 @@ export const studiesProgrammaticRouteConfig: SynapseConfig[] = [
     isOutsideContainer: true,
     props: {
       isHeader: true,
-      ...studyCardProps,
+      ...studyCardConfiguration,
       sql,
+      entityId,
       facetAliases,
       secondaryLabelLimit: Infinity,
       backgroundColor: '#5bb0b5',

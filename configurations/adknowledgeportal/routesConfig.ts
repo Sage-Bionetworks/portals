@@ -12,15 +12,24 @@ import {
 } from './synapseConfigs'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
 import {
-  studyCardProps,
+  studyCardConfiguration,
   studiesProgrammaticRouteConfig,
   studiesSql,
 } from './synapseConfigs/studies'
-import { projectCardProps, projectsSql } from './synapseConfigs/projects'
+import {
+  projectCardConfiguration,
+  projectsSql,
+  projectsEntityId,
+} from './synapseConfigs/projects'
 import { results } from './synapseConfigs/results'
 import { iconHeaderOptions } from './synapseConfigs/programs/iconOptions'
 import loadingScreen from './loadingScreen'
 import { publicationProgrammatic } from './synapseConfigs/publications'
+import {
+  programCardConfiguration,
+  programEntityId,
+} from './synapseConfigs/programs'
+import { studiesEntityId } from './synapseConfigs/studies'
 
 const routes: GenericRoute[] = [
   {
@@ -69,8 +78,13 @@ const routes: GenericRoute[] = [
         },
       },
       {
-        ...programs,
+        name: 'CardContainerLogic',
         title: 'PROGRAMS',
+        props: {
+          ...programs,
+          sql: 'SELECT * FROM syn17024173',
+          entityId: 'syn17024173',
+        },
       },
       {
         name: 'Markdown',
@@ -96,7 +110,14 @@ const routes: GenericRoute[] = [
             ...routeButtonControlWrapperProps,
             props: {
               ...routeButtonControlWrapperProps.props,
-              synapseConfig: programs,
+              synapseConfig: {
+                name: 'CardContainerLogic',
+                props: {
+                  ...programs,
+                  sql: 'SELECT  * FROM syn17024173',
+                  entityId: programEntityId,
+                },
+              },
             },
           },
         ],
@@ -105,18 +126,16 @@ const routes: GenericRoute[] = [
             name: 'CardContainerLogic',
             isOutsideContainer: true,
             props: {
-              iconOptions: iconHeaderOptions,
               loadingScreen,
               sql: 'SELECT  * FROM syn17024173',
+              entityId: programEntityId,
               isHeader: true,
-              type: SynapseConstants.GENERIC_CARD,
+              ...programCardConfiguration,
               genericCardSchema: {
-                type: 'Program',
-                title: 'Full Name',
-                subTitle: 'Short Description',
-                icon: 'Program',
+                ...programCardConfiguration.genericCardSchema!,
                 description: 'Long Description',
               },
+              iconOptions: iconHeaderOptions,
               backgroundColor: '#5960A5',
             },
           },
@@ -124,9 +143,9 @@ const routes: GenericRoute[] = [
             name: 'CardContainerLogic',
             title: 'Explore Projects',
             props: {
-              loadingScreen,
-              ...projectCardProps,
+              ...projectCardConfiguration,
               sql: projectsSql,
+              entityId: projectsEntityId,
             },
           },
         ],
@@ -142,21 +161,8 @@ const routes: GenericRoute[] = [
             props: {
               sql: projectsSql,
               isHeader: true,
-              type: SynapseConstants.GENERIC_CARD,
-              genericCardSchema: {
-                type: 'Project',
-                title: 'Name',
-                subTitle: 'Key Investigators',
-                icon: 'icon',
-                description: 'Abstract',
-                secondaryLabels: [
-                  'Grant Number',
-                  'Key Data Contributors',
-                  'Institutions',
-                  'Program',
-                ],
-              },
-              secondaryLabelLimit: 4,
+              ...projectCardConfiguration,
+              entityId: projectsEntityId,
               backgroundColor: '#DE9A1F',
             },
           },
@@ -166,6 +172,7 @@ const routes: GenericRoute[] = [
               title: 'PEOPLE',
               sql:
                 'SELECT ownerID as ownerId, firstName, lastName, institution FROM syn13897207',
+              entityId: 'syn13897207',
               type: SynapseConstants.MEDIUM_USER_CARD,
             },
           },
@@ -173,8 +180,9 @@ const routes: GenericRoute[] = [
             name: 'CardContainerLogic',
             title: 'STUDIES',
             props: {
-              ...studyCardProps,
+              ...studyCardConfiguration,
               loadingScreen,
+              entityId: studiesEntityId,
               sql: studiesSql,
             },
           },

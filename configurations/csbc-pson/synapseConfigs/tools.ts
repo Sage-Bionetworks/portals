@@ -4,6 +4,8 @@ import loadingScreen from '../loadingScreen'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import { facetAliases } from './commonProps'
 export const toolsSql = 'SELECT * FROM syn9898965'
+export const toolsEntityId = 'syn9898965'
+const entityId = toolsEntityId
 const sql = toolsSql
 const unitDescription = 'Tools'
 const rgbIndex = 6
@@ -33,6 +35,7 @@ export const tools: HomeExploreConfig = {
       link: 'Explore/Tools',
       linkText: 'Explore Tools',
       initQueryRequest: {
+        entityId,
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
         partMask:
           SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
@@ -51,6 +54,7 @@ export const tools: HomeExploreConfig = {
     props: {
       rgbIndex,
       unitDescription,
+      entityId,
       cardConfiguration: {
         type: SynapseConstants.GENERIC_CARD,
         genericCardSchema: toolsSchema,

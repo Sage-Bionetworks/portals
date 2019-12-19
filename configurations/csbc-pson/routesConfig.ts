@@ -8,18 +8,27 @@ import {
   tools,
 } from './synapseConfigs'
 import { SynapseConstants } from 'synapse-react-client'
-import { studiesSql, studySchema } from './synapseConfigs/studies'
-import { facetAliases } from './synapseConfigs/commonProps'
 import {
-  publicationSql,
-  publicationSchema,
-} from './synapseConfigs/publications'
-import { datasetsSql, datasetSchema } from './synapseConfigs/datasets'
+  studiesSql,
+  studyCardConfiguration,
+  studiesEntityId,
+} from './synapseConfigs/studies'
+import { facetAliases } from './synapseConfigs/commonProps'
+import { publicationSql } from './synapseConfigs/publications'
+import {
+  datasetsSql,
+  datasetCardConfiguration,
+  datasetsEntityId,
+} from './synapseConfigs/datasets'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
 import loadingScreen from './loadingScreen'
-import { toolsSchema, toolsSql } from './synapseConfigs/tools'
-import { filesSql } from './synapseConfigs/files'
+import { toolsSchema, toolsSql, toolsEntityId } from './synapseConfigs/tools'
+import { filesSql, filesEntityId } from './synapseConfigs/files'
 import DatasetSvg from './style/Dataset.svg'
+import {
+  publicationsCardConfiguration,
+  publicationEntityId,
+} from './synapseConfigs/publications'
 const homeLimit = 3
 
 const routes: GenericRoute[] = [
@@ -75,13 +84,11 @@ const routes: GenericRoute[] = [
         link: 'Explore/Studies',
         props: {
           loadingScreen,
-          // @ts-ignore TODO: Remove after this prop is added to CardContainerLogic
           facetAliases,
+          entityId: studiesEntityId,
           sql: studiesSql,
+          ...studyCardConfiguration,
           limit: homeLimit,
-          type: SynapseConstants.GENERIC_CARD,
-          secondaryLabelLimit: 4,
-          genericCardSchema: studySchema,
         },
       },
       {
@@ -91,10 +98,10 @@ const routes: GenericRoute[] = [
         props: {
           loadingScreen,
           facetAliases,
+          entityId: publicationEntityId,
           sql: publicationSql,
+          ...publicationsCardConfiguration,
           limit: homeLimit,
-          type: SynapseConstants.GENERIC_CARD,
-          genericCardSchema: publicationSchema,
         },
       },
       {
@@ -105,10 +112,9 @@ const routes: GenericRoute[] = [
           loadingScreen,
           facetAliases,
           sql: datasetsSql,
-          secondaryLabelLimit: 4,
+          entityId: datasetsEntityId,
           limit: homeLimit,
-          type: SynapseConstants.GENERIC_CARD,
-          genericCardSchema: datasetSchema,
+          ...datasetCardConfiguration,
         },
       },
       {
@@ -118,6 +124,7 @@ const routes: GenericRoute[] = [
         props: {
           loadingScreen,
           facetAliases,
+          entityId: toolsEntityId,
           sql: toolsSql,
           limit: homeLimit,
           type: SynapseConstants.GENERIC_CARD,
@@ -165,23 +172,9 @@ const routes: GenericRoute[] = [
               type: SynapseConstants.GENERIC_CARD,
               isHeader: true,
               backgroundColor: '#407ba0',
-              genericCardSchema: publicationSchema,
-              loadingScreen,
+              entityId: publicationEntityId,
               facetAliases,
-              labelConfig: [
-                {
-                  isMarkdown: false,
-                  baseURL: 'Explore/Datasets',
-                  URLColumnNames: ['datasets'],
-                  matchColumnName: 'datasets',
-                },
-                {
-                  isMarkdown: false,
-                  baseURL: 'Explore/Studies',
-                  URLColumnNames: ['studies'],
-                  matchColumnName: 'studies',
-                },
-              ],
+              ...publicationsCardConfiguration,
               secondaryLabelLimit: Infinity,
               sql: publicationSql,
             },
@@ -206,27 +199,12 @@ const routes: GenericRoute[] = [
             name: 'CardContainerLogic',
             isOutsideContainer: true,
             props: {
-              type: SynapseConstants.GENERIC_CARD,
               isHeader: true,
               backgroundColor: '#407ba0',
-              genericCardSchema: studySchema,
+              entityId: studiesEntityId,
               loadingScreen,
-              // @ts-ignore TODO: Remove after this prop is added to CardContainerLogic
               facetAliases,
-              labelConfig: [
-                {
-                  isMarkdown: false,
-                  baseURL: 'Explore/Publications',
-                  URLColumnNames: ['Title'],
-                  matchColumnName: 'Title',
-                },
-                {
-                  isMarkdown: false,
-                  baseURL: 'Explore/Datasets',
-                  URLColumnNames: ['datasets'],
-                  matchColumnName: 'datasets',
-                },
-              ],
+              ...studyCardConfiguration,
               secondaryLabelLimit: Infinity,
               sql: studiesSql,
             },
@@ -241,6 +219,7 @@ const routes: GenericRoute[] = [
                   SynapseConstants.BUNDLE_MASK_QUERY_COUNT |
                   SynapseConstants.BUNDLE_MASK_QUERY_SELECT_COLUMNS |
                   SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
+                entityId: filesEntityId,
                 concreteType:
                   'org.sagebionetworks.repo.model.table.QueryBundleRequest',
                 query: {
@@ -256,7 +235,6 @@ const routes: GenericRoute[] = [
               rgbIndex: 1,
               facet: 'consortium',
               unitDescription: 'Files',
-              synapseId: 'syn18483791',
               title: 'Study Files',
             },
           },
@@ -280,32 +258,17 @@ const routes: GenericRoute[] = [
             name: 'CardContainerLogic',
             isOutsideContainer: true,
             props: {
-              type: SynapseConstants.GENERIC_CARD,
               isHeader: true,
               backgroundColor: '#5bb0b5',
               sqlOperator: '=',
-              genericCardSchema: datasetSchema,
+              ...datasetCardConfiguration,
               secondaryLabelLimit: Infinity,
+              entityId: datasetsEntityId,
               sql: datasetsSql,
-              loadingScreen,
               facetAliases,
               iconOptions: {
                 dataset: DatasetSvg,
               },
-              labelConfig: [
-                {
-                  isMarkdown: false,
-                  baseURL: 'Explore/Studies',
-                  URLColumnNames: ['studies'],
-                  matchColumnName: 'studies',
-                },
-                {
-                  isMarkdown: false,
-                  baseURL: 'Explore/Publications',
-                  URLColumnNames: ['Title'],
-                  matchColumnName: 'Title',
-                },
-              ],
             },
           },
           {
@@ -313,6 +276,7 @@ const routes: GenericRoute[] = [
             title: 'Data',
             props: {
               initQueryRequest: {
+                entityId: filesEntityId,
                 partMask:
                   SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
                   SynapseConstants.BUNDLE_MASK_QUERY_COUNT |
@@ -334,7 +298,6 @@ const routes: GenericRoute[] = [
               rgbIndex: 0,
               facet: 'consortium',
               unitDescription: 'Files',
-              synapseId: 'syn18488466',
               title: 'Dataset Files',
             },
           },

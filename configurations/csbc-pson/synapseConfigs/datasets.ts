@@ -3,7 +3,10 @@ import { HomeExploreConfig } from '../../types/portal-config'
 import loadingScreen from '../loadingScreen'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import { facetAliases } from './commonProps'
+import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 export const datasetsSql = `SELECT * FROM syn18488466 WHERE ( ( "is.dataset" = 'TRUE' ) )`
+export const datasetsEntityId = 'syn18488466'
+const entityId = datasetsEntityId
 const sql = datasetsSql
 const unitDescription = 'Datasets'
 const rgbIndex = 0
@@ -22,10 +25,40 @@ export const datasetSchema: GenericCardSchema = {
     'tumorType',
     'experimentalStrategy',
     'species',
+    'externalLink',
     'consortium',
     'grantType',
   ],
-  link: 'id',
+}
+
+export const datasetCardConfiguration: CardConfiguration = {
+  type: SynapseConstants.GENERIC_CARD,
+  genericCardSchema: datasetSchema,
+  secondaryLabelLimit: 4,
+  labelLinkConfig: [
+    {
+      isMarkdown: false,
+      baseURL: 'Explore/Publications',
+      URLColumnName: 'Title',
+      matchColumnName: 'Title',
+    },
+    {
+      isMarkdown: false,
+      baseURL: 'Explore/Studies',
+      URLColumnName: 'studies',
+      matchColumnName: 'studies',
+    },
+    {
+      isMarkdown: true,
+      matchColumnName: 'externalLink',
+    },
+  ],
+  titleLinkConfig: {
+    isMarkdown: false,
+    baseURL: 'Explore/Datasets',
+    URLColumnName: 'datasets',
+    matchColumnName: 'id',
+  },
 }
 
 export const datasets: HomeExploreConfig = {
@@ -39,6 +72,7 @@ export const datasets: HomeExploreConfig = {
       link: 'Explore/Datasets',
       linkText: 'Explore Datasets',
       initQueryRequest: {
+        entityId,
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
         partMask:
           SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
@@ -58,25 +92,8 @@ export const datasets: HomeExploreConfig = {
     props: {
       rgbIndex,
       unitDescription,
-      cardConfiguration: {
-        type: SynapseConstants.GENERIC_CARD,
-        genericCardSchema: datasetSchema,
-        secondaryLabelLimit: 4,
-        labelConfig: [
-          {
-            isMarkdown: false,
-            baseURL: 'Explore/Publications',
-            URLColumnNames: ['Title'],
-            matchColumnName: 'Title',
-          },
-          {
-            isMarkdown: false,
-            baseURL: 'Explore/Studies',
-            URLColumnNames: ['studies'],
-            matchColumnName: 'studies',
-          },
-        ],
-      },
+      entityId,
+      cardConfiguration: datasetCardConfiguration,
       stackedBarChartConfiguration: {
         loadingScreen,
       },

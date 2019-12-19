@@ -14,7 +14,7 @@ import UserCard from 'synapse-react-client/dist/containers/UserCard'
 import { TokenContext, SignInProps } from './AppInitializer'
 import SvgIcon from '@material-ui/core/SvgIcon'
 import { signOut } from 'synapse-react-client/dist/utils/SynapseClient'
-import { UserProfile } from 'synapse-react-client/dist/utils/jsonResponses/UserProfile'
+import { UserProfile } from 'synapse-react-client/dist/utils/synapseTypes/'
 
 export type NavbarState = {
   showLoginDialog: boolean

@@ -8,8 +8,10 @@ import { MarkdownSynapseProps } from 'synapse-react-client/dist/containers/Markd
 import { NewsFeedMenuProps } from 'synapse-react-client/dist/containers/NewsFeedMenu'
 import { SynapseFormSubmissionGridProps } from 'synapse-react-client/dist/containers/synapse_form_wrapper/SynapseFormSubmissionsGrid'
 import { SynapseFormWrapperProps } from 'synapse-react-client/dist/containers/synapse_form_wrapper/SynapseFormWrapper'
-import { StatefulButtonControlProps } from '../portal-components/StatefulButtonControlWrapper'
-import { RouteButtonControlProps } from '../portal-components/RouteButtonControlWrapper'
+import { StatefulButtonControlWrapperProps } from '../portal-components/StatefulButtonControlWrapper'
+import { RouteButtonControlWrapperProps } from '../portal-components/RouteButtonControlWrapper'
+import { GenerateComponentsFromRowProps } from '../types/portal-util-types'
+import { Operator } from '../portal-components/QueryWrapperFlattened'
 
 // For styling the header on the home page -- the main title and the summary text
 export type HomePageHeaderConfig = {
@@ -33,7 +35,8 @@ type QueryWrapperFlattened = {
   name: 'QueryWrapperFlattened'
   props: QueryWrapperProps &
     Partial<StackedBarChartProps> &
-    Partial<SynapseTableProps>
+    Partial<SynapseTableProps> &
+    Operator
 }
 
 type StackedBarChart = {
@@ -56,12 +59,12 @@ type Markdown = {
 
 type StatefulButtonControl = {
   name: 'StatefulButtonControlWrapper'
-  props: StatefulButtonControlProps
+  props: any
 }
 
 type RouteButtonControl = {
   name: 'RouteButtonControlWrapper'
-  props: RouteButtonControlProps
+  props: RouteButtonControlWrapperProps
 }
 
 type GenerateComponentsFromRow = {

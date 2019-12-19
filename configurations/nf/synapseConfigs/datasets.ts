@@ -4,6 +4,8 @@ import loadingScreen from '../loadingScreen'
 import { facetAliases } from './commonProps'
 
 const sql = 'SELECT * FROM syn16859580'
+export const datasetsEntityId = 'syn16859580'
+const entityId = datasetsEntityId
 export const datasetsSql = sql
 const type = 'dataset'
 const unitDescription = 'datasets'
@@ -21,6 +23,7 @@ const datasets: HomeExploreConfig = {
       linkText: 'Explore Datasets',
       facet: 'diseaseFocus',
       initQueryRequest: {
+        entityId,
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
         partMask:
           SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS |
@@ -47,6 +50,7 @@ const datasets: HomeExploreConfig = {
         type,
       },
       name: 'Datasets',
+      entityId,
       facetAliases,
       searchConfiguration: {
         searchable: [

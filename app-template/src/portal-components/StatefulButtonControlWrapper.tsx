@@ -8,6 +8,7 @@ type StatefulButtonControlConfigs = {
   synapseConfigArray: SynapseConfigArray
   name: string
   sql?: string
+  entityId?: string
 }
 
 export type StatefulButtonControlWrapperProps = {
@@ -49,7 +50,9 @@ class StatefulButtonControl extends React.Component<
 
   render() {
     const { configs, colors } = this.props
-    const { name, synapseConfigArray, sql } = configs[this.state.index]
+    const { name, synapseConfigArray, sql, entityId } = configs[
+      this.state.index
+    ]
     const buttonControlProps: ButtonControlProps = {
       colors,
       customRoutes: configs.map(el => el.name),
@@ -59,10 +62,9 @@ class StatefulButtonControl extends React.Component<
     return (
       <React.Fragment>
         <ButtonControl {...buttonControlProps} />
-        {name && sql && (
+        {name && sql && entityId && (
           <h3 className="SRC-boldText queryCountHeader">
-            {' '}
-            <QueryCount name={name} sql={sql} />{' '}
+            <QueryCount entityId={entityId} name={name} sql={sql} />{' '}
           </h3>
         )}
         {synapseConfigArray.map(config => {

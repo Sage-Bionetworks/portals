@@ -3,7 +3,10 @@ import { HomeExploreConfig } from '../../types/portal-config'
 import loadingScreen from '../loadingScreen'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import { facetAliases } from './commonProps'
+import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 export const publicationSql = 'SELECT * FROM syn10923842'
+export const publicationEntityId = 'syn10923842'
+const entityId = publicationEntityId
 const sql = publicationSql
 const unitDescription = 'Publications'
 const rgbIndex = 1
@@ -31,6 +34,26 @@ export const publicationSchema: GenericCardSchema = {
   link: 'PubMed',
 }
 
+export const publicationsCardConfiguration: CardConfiguration = {
+  type: SynapseConstants.GENERIC_CARD,
+  genericCardSchema: publicationSchema,
+  secondaryLabelLimit: 5,
+  labelLinkConfig: [
+    {
+      isMarkdown: false,
+      baseURL: 'Explore/Datasets',
+      URLColumnName: 'datasets',
+      matchColumnName: 'datasets',
+    },
+    {
+      isMarkdown: false,
+      baseURL: 'Explore/Studies',
+      URLColumnName: 'studies',
+      matchColumnName: 'studies',
+    },
+  ],
+}
+
 export const publications: HomeExploreConfig = {
   homePageSynapseObject: {
     name: 'QueryWrapperFlattened',
@@ -42,6 +65,7 @@ export const publications: HomeExploreConfig = {
       link: 'Explore/Publications',
       linkText: 'Explore Publications',
       initQueryRequest: {
+        entityId,
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
         partMask:
           SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
@@ -60,25 +84,8 @@ export const publications: HomeExploreConfig = {
     props: {
       rgbIndex,
       unitDescription,
-      cardConfiguration: {
-        type: SynapseConstants.GENERIC_CARD,
-        genericCardSchema: publicationSchema,
-        secondaryLabelLimit: 5,
-        labelConfig: [
-          {
-            isMarkdown: false,
-            baseURL: 'Explore/Datasets',
-            URLColumnNames: ['datasets'],
-            matchColumnName: 'datasets',
-          },
-          {
-            isMarkdown: false,
-            baseURL: 'Explore/Studies',
-            URLColumnNames: ['studies'],
-            matchColumnName: 'studies',
-          },
-        ],
-      },
+      entityId,
+      cardConfiguration: publicationsCardConfiguration,
       stackedBarChartConfiguration: {
         loadingScreen,
       },

@@ -5,7 +5,7 @@ import loadingScreen from '../loadingScreen'
 const unitDescription = 'data files'
 const rgbIndex = 1
 const sql = 'SELECT * FROM syn11346063'
-const synapseId = 'syn11346063'
+const entityId = 'syn11346063'
 const title = 'Data'
 
 const data: HomeExploreConfig = {
@@ -19,6 +19,7 @@ const data: HomeExploreConfig = {
       link: 'Explore/Data',
       linkText: 'Explore Data',
       initQueryRequest: {
+        entityId,
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
         partMask:
           SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
@@ -42,9 +43,9 @@ const data: HomeExploreConfig = {
       },
       isConsistent: true,
       name: 'Data',
+      entityId,
       tableConfiguration: {
         title,
-        synapseId,
         visibleColumnCount: 4,
         showAccessColumn: true,
       },

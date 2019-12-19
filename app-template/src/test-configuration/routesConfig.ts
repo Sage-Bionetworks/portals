@@ -71,6 +71,7 @@ routes[ORGANIZATION_INDEX] = {
               title: 'name',
               type: SynapseConstants.PUBLICATION,
             },
+            entityId: 'syn18488466',
             sql: `SELECT * FROM syn18488466 WHERE ( ( "featured" = 'TRUE' ) )`,
           },
         },
@@ -118,6 +119,7 @@ routes[HOME_INDEX] = {
       props: {
         sql: 'SELECT * FROM syn9630847',
         type: SynapseConstants.GENERIC_CARD,
+        entityId: 'syn9630847',
         genericCardSchema: {
           title: 'name',
           type: SynapseConstants.PUBLICATION,

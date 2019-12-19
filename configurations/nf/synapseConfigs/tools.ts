@@ -1,8 +1,9 @@
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import loadingScreen from '../loadingScreen'
 import { SynapseConstants } from 'synapse-react-client'
-import { HomeExploreConfig } from 'types/portal-util-types'
+import { HomeExploreConfig } from '../../types/portal-config'
 import { facetAliases } from './commonProps'
+import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 
 export const toolsSql = 'SELECT * FROM syn16859448'
 
@@ -20,6 +21,26 @@ export const toolsSchema: GenericCardSchema = {
     'studyName',
   ],
   link: 'link',
+}
+
+export const toolsCardConfiguration: CardConfiguration = {
+  type: SynapseConstants.GENERIC_CARD,
+  genericCardSchema: {
+    type: 'TOOL',
+    title: 'name',
+    subTitle: 'contact',
+    description: 'summary',
+    icon: 'type',
+    secondaryLabels: [
+      'subtype',
+      'diseaseFocus',
+      'manifestation',
+      'fundingAgency',
+      'studyName',
+    ],
+    link: 'link',
+  },
+  loadingScreen,
 }
 
 const searchConfiguration = {
@@ -68,6 +89,8 @@ const computationalSql =
 const experimentalSql = "SELECT * FROM syn16859448 WHERE type = 'experimental'"
 const clinicalSql = "SELECT * FROM syn16859448 WHERE type = 'clinical'"
 const rgbIndex = 6
+export const toolsEntityId = 'syn16859448'
+const entityId = toolsEntityId
 
 const tools: HomeExploreConfig = {
   homePageSynapseObject: {
@@ -78,6 +101,7 @@ const tools: HomeExploreConfig = {
       link: 'Explore/Tools',
       linkText: 'Explore Tools',
       initQueryRequest: {
+        entityId,
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
         partMask:
           SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS |
@@ -101,14 +125,11 @@ const tools: HomeExploreConfig = {
       facetAliases,
       name: 'Tools',
       globalQueryCountSql: 'SELECT * FROM syn16859448',
+      entityId,
       accordionConfig: [
         {
           name: 'Computational',
-          cardConfiguration: {
-            type: SynapseConstants.GENERIC_CARD,
-            genericCardSchema: toolsSchema,
-            loadingScreen,
-          },
+          cardConfiguration: toolsCardConfiguration,
           searchConfiguration,
           menuConfig: [
             {
@@ -138,11 +159,7 @@ const tools: HomeExploreConfig = {
         },
         {
           name: 'Experimental',
-          cardConfiguration: {
-            type: SynapseConstants.GENERIC_CARD,
-            genericCardSchema: toolsSchema,
-            loadingScreen,
-          },
+          cardConfiguration: toolsCardConfiguration,
           searchConfiguration,
           menuConfig: [
             {
@@ -172,11 +189,7 @@ const tools: HomeExploreConfig = {
         },
         {
           name: 'Clinical',
-          cardConfiguration: {
-            type: SynapseConstants.GENERIC_CARD,
-            genericCardSchema: toolsSchema,
-            loadingScreen,
-          },
+          cardConfiguration: toolsCardConfiguration,
           searchConfiguration,
           menuConfig: [
             {

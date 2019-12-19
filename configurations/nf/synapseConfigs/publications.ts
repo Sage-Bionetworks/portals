@@ -6,17 +6,19 @@ import loadingScreen from '../loadingScreen'
 
 const sql = 'SELECT * FROM syn16857542'
 export const publicationsSql = sql
+export const publicationsEntityId = 'syn16857542'
+export const entityId = publicationsEntityId
 const type = SynapseConstants.GENERIC_CARD
 const unitDescription = 'Publications'
 const rgbIndex = 0
 
 export const publicationsCardConfiguration: CardConfiguration = {
   type,
-  labelConfig: [
+  labelLinkConfig: [
     {
       isMarkdown: false,
       baseURL: 'Explore/Studies',
-      URLColumnNames: ['studyName'],
+      URLColumnName: 'studyName',
       matchColumnName: 'studyName',
     },
   ],
@@ -36,6 +38,7 @@ export const publicationsCardConfiguration: CardConfiguration = {
       'doi',
     ],
   },
+  loadingScreen,
 }
 
 const publications: HomeExploreConfig = {
@@ -47,6 +50,7 @@ const publications: HomeExploreConfig = {
       link: 'Explore/Publications',
       linkText: 'Explore Publications',
       initQueryRequest: {
+        entityId,
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
         partMask:
           SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS |
@@ -67,13 +71,13 @@ const publications: HomeExploreConfig = {
     props: {
       rgbIndex,
       unitDescription,
+      entityId,
       stackedBarChartConfiguration: {
         loadingScreen,
       },
       name: 'Publications',
       cardConfiguration: publicationsCardConfiguration,
       facetAliases,
-      facet: 'fundingAgency',
       searchConfiguration: {
         searchable: [
           {

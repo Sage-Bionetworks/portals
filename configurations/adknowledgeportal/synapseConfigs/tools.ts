@@ -1,7 +1,7 @@
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import loadingScreen from '../loadingScreen'
 import { SynapseConstants } from 'synapse-react-client'
-import { HomeExploreConfig } from 'types/portal-util-types'
+import { HomeExploreConfig } from '../../types/portal-config'
 
 const computationalSchema: GenericCardSchema = {
   type: 'TOOL',
@@ -35,6 +35,7 @@ const facetAliases = {
   summary: 'Summary',
 }
 
+const entityId = 'syn20337467'
 const computationalSql =
   "SELECT * FROM syn20337467 WHERE toolType = 'computational'"
 const experimentalSql =
@@ -104,6 +105,7 @@ const tools: HomeExploreConfig = {
         toolType: 'Tool Type',
       },
       initQueryRequest: {
+        entityId,
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
         partMask:
           SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
@@ -123,6 +125,7 @@ const tools: HomeExploreConfig = {
       rgbIndex: 6,
       facetAliases,
       name: 'Tools',
+      entityId,
       globalQueryCountSql: 'SELECT * FROM syn20337467',
       accordionConfig: [
         {

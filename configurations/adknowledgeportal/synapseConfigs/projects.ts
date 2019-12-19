@@ -6,23 +6,32 @@ import { CardConfiguration } from 'synapse-react-client/dist/containers/CardCont
 const unitDescription = 'Projects'
 const rgbIndex = 4
 export const projectsSql = 'SELECT * FROM syn17024229'
+export const projectsEntityId = 'syn17024229'
+const entityId = projectsEntityId
 const sql = projectsSql
 const facet = 'Program'
 
-export const projectCardProps: CardConfiguration = {
+export const projectCardConfiguration: CardConfiguration = {
   type: SynapseConstants.GENERIC_CARD,
+  loadingScreen,
   genericCardSchema: {
     type: 'Project',
     title: 'Name',
     subTitle: 'Key Investigators',
     description: 'Abstract',
-    secondaryLabels: ['Institutions', 'Key Data Contributors', 'Program'],
+    secondaryLabels: [
+      'Institutions',
+      'Key Data Contributors',
+      'Institutions',
+      'Program',
+    ],
   },
   secondaryLabelLimit: 4,
   titleLinkConfig: {
     isMarkdown: false,
     baseURL: 'Explore/Projects',
-    URLColumnNames: ['Grant Number'],
+    URLColumnName: 'Grant Number',
+    matchColumnName: 'Grant Number',
   },
 }
 
@@ -37,6 +46,7 @@ const projects: HomeExploreConfig = {
       link: 'Explore/Projects',
       linkText: 'Explore Projects',
       initQueryRequest: {
+        entityId,
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
         partMask:
           SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
@@ -57,6 +67,7 @@ const projects: HomeExploreConfig = {
       stackedBarChartConfiguration: {
         loadingScreen,
       },
+      entityId,
       searchConfiguration: {
         searchable: [
           {
@@ -92,7 +103,7 @@ const projects: HomeExploreConfig = {
       name: 'Projects',
       isConsistent: true,
       unitDescription: 'Projects',
-      cardConfiguration: projectCardProps,
+      cardConfiguration: projectCardConfiguration,
       menuConfig: [
         {
           sql,
