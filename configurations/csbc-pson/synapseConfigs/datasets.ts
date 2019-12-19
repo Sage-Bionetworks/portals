@@ -3,6 +3,7 @@ import { HomeExploreConfig } from '../../types/portal-config'
 import loadingScreen from '../loadingScreen'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import { facetAliases } from './commonProps'
+import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 export const datasetsSql = `SELECT * FROM syn18488466 WHERE ( ( "is.dataset" = 'TRUE' ) )`
 export const datasetsEntityId = 'syn18488466'
 const entityId = datasetsEntityId
@@ -24,10 +25,40 @@ export const datasetSchema: GenericCardSchema = {
     'tumorType',
     'experimentalStrategy',
     'species',
+    'externalLink',
     'consortium',
     'grantType',
   ],
-  link: 'id',
+}
+
+export const datasetCardConfiguration: CardConfiguration = {
+  type: SynapseConstants.GENERIC_CARD,
+  genericCardSchema: datasetSchema,
+  secondaryLabelLimit: 4,
+  labelLinkConfig: [
+    {
+      isMarkdown: false,
+      baseURL: 'Explore/Publications',
+      URLColumnName: 'Title',
+      matchColumnName: 'Title',
+    },
+    {
+      isMarkdown: false,
+      baseURL: 'Explore/Studies',
+      URLColumnName: 'studies',
+      matchColumnName: 'studies',
+    },
+    {
+      isMarkdown: true,
+      matchColumnName: 'externalLink',
+    },
+  ],
+  titleLinkConfig: {
+    isMarkdown: false,
+    baseURL: 'Explore/Datasets',
+    URLColumnName: 'datasets',
+    matchColumnName: 'id',
+  },
 }
 
 export const datasets: HomeExploreConfig = {
@@ -62,25 +93,7 @@ export const datasets: HomeExploreConfig = {
       rgbIndex,
       unitDescription,
       entityId,
-      cardConfiguration: {
-        type: SynapseConstants.GENERIC_CARD,
-        genericCardSchema: datasetSchema,
-        secondaryLabelLimit: 4,
-        labelLinkConfig: [
-          {
-            isMarkdown: false,
-            baseURL: 'Explore/Publications',
-            URLColumnName: 'Title',
-            matchColumnName: 'Title',
-          },
-          {
-            isMarkdown: false,
-            baseURL: 'Explore/Studies',
-            URLColumnName: 'studies',
-            matchColumnName: 'studies',
-          },
-        ],
-      },
+      cardConfiguration: datasetCardConfiguration,
       stackedBarChartConfiguration: {
         loadingScreen,
       },

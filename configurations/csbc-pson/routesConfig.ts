@@ -10,18 +10,14 @@ import {
 import { SynapseConstants } from 'synapse-react-client'
 import {
   studiesSql,
-  studySchema,
   studyCardConfiguration,
   studiesEntityId,
 } from './synapseConfigs/studies'
 import { facetAliases } from './synapseConfigs/commonProps'
-import {
-  publicationSql,
-  publicationSchema,
-} from './synapseConfigs/publications'
+import { publicationSql } from './synapseConfigs/publications'
 import {
   datasetsSql,
-  datasetSchema,
+  datasetCardConfiguration,
   datasetsEntityId,
 } from './synapseConfigs/datasets'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
@@ -117,10 +113,8 @@ const routes: GenericRoute[] = [
           facetAliases,
           sql: datasetsSql,
           entityId: datasetsEntityId,
-          secondaryLabelLimit: 4,
           limit: homeLimit,
-          type: SynapseConstants.GENERIC_CARD,
-          genericCardSchema: datasetSchema,
+          ...datasetCardConfiguration,
         },
       },
       {
@@ -179,23 +173,8 @@ const routes: GenericRoute[] = [
               isHeader: true,
               backgroundColor: '#407ba0',
               entityId: publicationEntityId,
-              genericCardSchema: publicationSchema,
-              loadingScreen,
               facetAliases,
-              labelLinkConfig: [
-                {
-                  isMarkdown: false,
-                  baseURL: 'Explore/Datasets',
-                  URLColumnName: 'datasets',
-                  matchColumnName: 'datasets',
-                },
-                {
-                  isMarkdown: false,
-                  baseURL: 'Explore/Studies',
-                  URLColumnName: 'studies',
-                  matchColumnName: 'studies',
-                },
-              ],
+              ...publicationsCardConfiguration,
               secondaryLabelLimit: Infinity,
               sql: publicationSql,
             },
@@ -279,33 +258,17 @@ const routes: GenericRoute[] = [
             name: 'CardContainerLogic',
             isOutsideContainer: true,
             props: {
-              type: SynapseConstants.GENERIC_CARD,
               isHeader: true,
               backgroundColor: '#5bb0b5',
               sqlOperator: '=',
-              genericCardSchema: datasetSchema,
+              ...datasetCardConfiguration,
               secondaryLabelLimit: Infinity,
               entityId: datasetsEntityId,
               sql: datasetsSql,
-              loadingScreen,
               facetAliases,
               iconOptions: {
                 dataset: DatasetSvg,
               },
-              labelLinkConfig: [
-                {
-                  isMarkdown: false,
-                  baseURL: 'Explore/Studies',
-                  URLColumnName: 'studies',
-                  matchColumnName: 'studies',
-                },
-                {
-                  isMarkdown: false,
-                  baseURL: 'Explore/Publications',
-                  URLColumnName: 'Title',
-                  matchColumnName: 'Title',
-                },
-              ],
             },
           },
           {
