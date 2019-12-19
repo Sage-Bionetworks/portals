@@ -25,7 +25,10 @@ import { results } from './synapseConfigs/results'
 import { iconHeaderOptions } from './synapseConfigs/programs/iconOptions'
 import loadingScreen from './loadingScreen'
 import { publicationProgrammatic } from './synapseConfigs/publications'
-import { programCardConfiguration } from './synapseConfigs/programs'
+import {
+  programCardConfiguration,
+  programEntityId,
+} from './synapseConfigs/programs'
 import { studiesEntityId } from './synapseConfigs/studies'
 
 const routes: GenericRoute[] = [
@@ -107,7 +110,14 @@ const routes: GenericRoute[] = [
             ...routeButtonControlWrapperProps,
             props: {
               ...routeButtonControlWrapperProps.props,
-              synapseConfig: programs,
+              synapseConfig: {
+                name: 'CardContainerLogic',
+                props: {
+                  ...programs,
+                  sql: 'SELECT  * FROM syn17024173',
+                  entityId: programEntityId,
+                },
+              },
             },
           },
         ],
@@ -116,12 +126,16 @@ const routes: GenericRoute[] = [
             name: 'CardContainerLogic',
             isOutsideContainer: true,
             props: {
-              iconOptions: iconHeaderOptions,
               loadingScreen,
               sql: 'SELECT  * FROM syn17024173',
-              entityId: 'syn17024173',
+              entityId: programEntityId,
               isHeader: true,
               ...programCardConfiguration,
+              genericCardSchema: {
+                ...programCardConfiguration.genericCardSchema!,
+                description: 'Long Description',
+              },
+              iconOptions: iconHeaderOptions,
               backgroundColor: '#5960A5',
             },
           },
