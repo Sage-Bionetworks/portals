@@ -10,13 +10,15 @@ import {
 } from './synapseConfigs'
 import {
   studiesSql,
-  studiesCardConfiguration,
   studyHeaderIconOptions,
+  studyCardConfiguration,
+  studyEntityId,
 } from './synapseConfigs/studies'
-import { datasetsSql } from './synapseConfigs/datasets'
+import { datasetsSql, datasetsEntityId } from './synapseConfigs/datasets'
 import {
   publicationsSql,
   publicationsCardConfiguration,
+  publicationsEntityId,
 } from './synapseConfigs/publications'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
 import loadingScreen from './loadingScreen'
@@ -24,7 +26,8 @@ import { ntap } from './synapseConfigs/organizationConfigs/ntap'
 import { dhartSpore } from './synapseConfigs/organizationConfigs/dhart-spore'
 import { ctf } from './synapseConfigs/organizationConfigs/ctf'
 import { buttonColors, facetAliases } from './synapseConfigs/commonProps'
-import { toolsSql, toolsSchema } from './synapseConfigs/tools'
+import { toolsSql, toolsCardConfiguration } from './synapseConfigs/tools'
+import { toolsEntityId } from './synapseConfigs/tools'
 
 const limit = 3
 
@@ -69,17 +72,11 @@ const routes: GenericRoute[] = [
         link: '/Explore/Studies',
         props: {
           limit,
-          loadingScreen,
-          // @ts-ignore TODO: Remove after this prop is added to CardContainerLogic
           facetAliases,
           sql: studiesSql,
-          ...studiesCardConfiguration,
+          entityId: studyEntityId,
           title: 'NEW STUDIES',
-          titleLinkConfig: {
-            isMarkdown: false,
-            baseURL: 'Explore/Studies',
-            URLColumnNames: ['studyId'],
-          },
+          ...studyCardConfiguration,
         },
       },
       {
@@ -88,8 +85,8 @@ const routes: GenericRoute[] = [
         link: '/Explore/Publications',
         props: {
           limit,
-          loadingScreen,
           facetAliases,
+          entityId: publicationsEntityId,
           sql: publicationsSql,
           ...publicationsCardConfiguration,
         },
@@ -100,8 +97,9 @@ const routes: GenericRoute[] = [
         link: '/Explore/Datasets',
         props: {
           limit,
-          loadingScreen,
           facetAliases,
+          loadingScreen,
+          entityId: publicationsEntityId,
           sql: datasetsSql,
           type: SynapseConstants.DATASET,
         },
@@ -112,10 +110,9 @@ const routes: GenericRoute[] = [
         link: '/Explore/Tools',
         props: {
           limit,
-          loadingScreen,
           facetAliases,
-          type: SynapseConstants.GENERIC_CARD,
-          genericCardSchema: toolsSchema,
+          entityId: toolsEntityId,
+          ...toolsCardConfiguration,
           sql: toolsSql,
         },
       },
@@ -126,6 +123,7 @@ const routes: GenericRoute[] = [
           limit,
           loadingScreen,
           facetAliases,
+          entityId: funders.entityId,
           sql: funders.sql,
           type: funders.type,
         },
@@ -154,16 +152,11 @@ const routes: GenericRoute[] = [
             name: 'CardContainerLogic',
             isOutsideContainer: true,
             props: {
-              type: SynapseConstants.GENERIC_CARD,
               sqlOperator: '=',
               isHeader: true,
               backgroundColor: '#119488',
-              genericCardSchema: {
-                link: 'studyId',
-                ...studiesCardConfiguration.genericCardSchema!,
-              },
-              loadingScreen,
-              // @ts-ignore TODO: Remove after this prop is added to CardContainerLogic
+              entityId: studyEntityId,
+              ...studyCardConfiguration,
               facetAliases,
               iconOptions: studyHeaderIconOptions,
               secondaryLabelLimit: Infinity,
@@ -174,8 +167,7 @@ const routes: GenericRoute[] = [
             name: 'CardContainerLogic',
             props: {
               title: 'Publications',
-              type: SynapseConstants.GENERIC_CARD,
-              loadingScreen,
+              entityId: publicationsEntityId,
               sqlOperator: '=',
               ...publicationsCardConfiguration,
               sql: 'SELECT * FROM syn16857542',
@@ -185,8 +177,8 @@ const routes: GenericRoute[] = [
             name: 'CardContainerLogic',
             props: {
               title: 'Datasets',
+              entityId: datasetsEntityId,
               sqlOperator: '=',
-              loadingScreen,
               type: SynapseConstants.DATASET,
               sql: datasetsSql,
             },

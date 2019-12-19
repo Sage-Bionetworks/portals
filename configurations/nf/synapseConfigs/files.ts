@@ -7,7 +7,8 @@ const rgbIndex = 1
 const unitDescription = 'Files'
 const title = 'Files'
 const visibleColumnCount = 7
-const synapseId = 'syn16858331'
+export const filesEntityId = 'syn16858331'
+const entityId = filesEntityId
 
 const files: HomeExploreConfig = {
   homePageSynapseObject: {
@@ -19,6 +20,7 @@ const files: HomeExploreConfig = {
       link: 'Explore/Files',
       linkText: 'Explore Files',
       initQueryRequest: {
+        entityId,
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
         partMask:
           SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS |
@@ -48,8 +50,8 @@ const files: HomeExploreConfig = {
       tableConfiguration: {
         title,
         visibleColumnCount,
-        synapseId,
       },
+      entityId,
       facetAliases,
       menuConfig: [
         {

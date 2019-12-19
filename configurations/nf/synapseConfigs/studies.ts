@@ -9,6 +9,8 @@ import studyActiveHeaderSvg from '../style/study-active-header.svg'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 
 const sql = 'SELECT * FROM syn16787123'
+export const studyEntityId = 'syn16787123'
+const entityId = studyEntityId
 export const studiesSql = sql
 const type = SynapseConstants.GENERIC_CARD
 const unitDescription = 'Studies'
@@ -19,7 +21,7 @@ export const studyHeaderIconOptions = {
   Completed: studyCompleteHeaderSvg,
 }
 
-export const studiesCardConfiguration: CardConfiguration = {
+export const studyCardConfiguration: CardConfiguration = {
   type,
   genericCardSchema: {
     title: 'studyName',
@@ -40,6 +42,13 @@ export const studiesCardConfiguration: CardConfiguration = {
     Active: studyActiveSvg,
     Completed: studyCompleteSvg,
   },
+  titleLinkConfig: {
+    isMarkdown: false,
+    baseURL: 'Explore/Studies',
+    URLColumnName: 'studyId',
+    matchColumnName: 'studyId',
+  },
+  loadingScreen,
 }
 
 const studies: HomeExploreConfig = {
@@ -54,6 +63,7 @@ const studies: HomeExploreConfig = {
       linkText: 'Explore Studies',
       facet: 'diseaseFocus',
       initQueryRequest: {
+        entityId,
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
         partMask:
           SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS |
@@ -76,15 +86,9 @@ const studies: HomeExploreConfig = {
       stackedBarChartConfiguration: {
         loadingScreen,
       },
+      entityId,
       name: 'Studies',
-      cardConfiguration: {
-        ...studiesCardConfiguration,
-        titleLinkConfig: {
-          isMarkdown: false,
-          baseURL: 'Explore/Studies',
-          URLColumnNames: ['studyId'],
-        },
-      },
+      cardConfiguration: studyCardConfiguration,
       searchConfiguration: {
         searchable: [
           {

@@ -6,8 +6,8 @@ import loadingScreen from '../loadingScreen'
 
 const sql = 'SELECT * FROM syn16857542'
 export const publicationsSql = sql
-export const publicatrionsEntityId = 'syn16857542'
-export const entityId = publicatrionsEntityId
+export const publicationsEntityId = 'syn16857542'
+export const entityId = publicationsEntityId
 const type = SynapseConstants.GENERIC_CARD
 const unitDescription = 'Publications'
 const rgbIndex = 0
@@ -38,6 +38,7 @@ export const publicationsCardConfiguration: CardConfiguration = {
       'doi',
     ],
   },
+  loadingScreen,
 }
 
 const publications: HomeExploreConfig = {
