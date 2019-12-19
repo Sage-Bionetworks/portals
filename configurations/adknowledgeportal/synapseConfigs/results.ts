@@ -1,5 +1,4 @@
 import { SynapseConfig } from '../../types/portal-config'
-import loadingScreen from '../loadingScreen'
 
 export const results: SynapseConfig = {
   name: 'Markdown',
@@ -7,7 +6,6 @@ export const results: SynapseConfig = {
   props: {
     ownerId: 'syn12666371',
     wikiId: '595383',
-    loadingScreen,
   },
   style: {
     border: '1px solid #C4C4C4',

@@ -2,7 +2,7 @@ import { SynapseConfigArray } from '../../../types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
 import loadingScreen from '../../loadingScreen'
 import { iconOptions } from './iconOptions'
-import { projectCardProps } from '../projects'
+import { projectCardConfiguration } from '../projects'
 
 const resilienceAd: SynapseConfigArray = [
   {
@@ -31,7 +31,7 @@ const resilienceAd: SynapseConfigArray = [
     props: {
       loadingScreen,
       sql: `SELECT * FROM syn17024229 WHERE ( ( "Program" = 'Resilience-AD' ) )`,
-      ...projectCardProps,
+      ...projectCardConfiguration,
       secondaryLabelLimit: 4,
     },
   },

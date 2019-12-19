@@ -8,7 +8,8 @@ const rgbIndex = 5
 const unitDescription = 'Publications'
 
 const sql = 'SELECT * FROM syn20448807'
-const entityId = 'syn20448807'
+export const publicationsEntityId = 'syn20448807'
+const entityId = publicationsEntityId
 
 export const publicationCardProps = {
   type: SynapseConstants.GENERIC_CARD,
@@ -132,6 +133,7 @@ const publications: HomeExploreConfig = {
 const publicationsFromRowProps: GenerateComponentsFromRowProps = {
   sql: projectsSql,
   showMenu: false,
+  entityId: 'syn17024229',
   synapseConfigArray: [
     {
       name: 'CardContainerLogic',

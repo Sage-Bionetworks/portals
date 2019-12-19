@@ -1,26 +1,24 @@
-import { SynapseConfig } from '../../types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
 import { iconOptions } from './programs/iconOptions'
+import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
+import loadingScreen from '../loadingScreen'
 
-const programs: SynapseConfig = {
-  name: 'CardContainerLogic',
-  title: 'Displaying Programs',
-  props: {
-    iconOptions,
-    sql: 'SELECT * FROM syn17024173',
-    type: SynapseConstants.GENERIC_CARD,
-    genericCardSchema: {
-      type: 'Program',
-      title: 'Full Name',
-      subTitle: 'Short Description',
-      icon: 'Program',
-    },
-    titleLinkConfig: {
-      isMarkdown: false,
-      baseURL: 'Explore/Programs',
-      URLColumnNames: ['Program'],
-    },
+export const programCardConfiguration: CardConfiguration = {
+  iconOptions,
+  type: SynapseConstants.GENERIC_CARD,
+  genericCardSchema: {
+    type: 'Program',
+    title: 'Full Name',
+    subTitle: 'Short Description',
+    icon: 'Program',
+  },
+  loadingScreen,
+  titleLinkConfig: {
+    isMarkdown: false,
+    baseURL: 'Explore/Programs',
+    URLColumnName: 'Program',
+    matchColumnName: 'Program',
   },
 }
 
-export default programs
+export default programCardConfiguration

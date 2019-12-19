@@ -2,7 +2,7 @@ import { SynapseConfigArray } from '../../../types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
 import loadingScreen from '../../loadingScreen'
 import { iconOptions } from './iconOptions'
-import { projectCardProps } from '../projects'
+import { projectCardConfiguration } from '../projects'
 
 const ampAd: SynapseConfigArray = [
   {
@@ -30,7 +30,7 @@ const ampAd: SynapseConfigArray = [
     title: 'Explore AMP-AD',
     props: {
       loadingScreen,
-      ...projectCardProps,
+      ...projectCardConfiguration,
       secondaryLabelLimit: 4,
       sql: `SELECT  * FROM syn17024229 WHERE ( ( "Program" = 'AMP-AD' ) )`,
     },

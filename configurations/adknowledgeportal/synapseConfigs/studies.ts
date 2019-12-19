@@ -10,10 +10,12 @@ const rgbIndex = 0
 export const studiesSql = 'SELECT * FROM syn17083367'
 const sql = studiesSql
 const facet = 'Species'
-const entityId = 'syn17083367'
-export const studyCardProps: CardConfiguration = {
+const studiesEntityId = 'syn17083367'
+const entityId = studiesEntityId
+export const studyCardConfiguration: CardConfiguration = {
   type: SynapseConstants.GENERIC_CARD,
   secondaryLabelLimit: 4,
+  loadingScreen,
   titleLinkConfig: {
     isMarkdown: false,
     baseURL: 'Explore/Studies',
@@ -86,7 +88,7 @@ const studies: HomeExploreConfig = {
       entityId,
       name: 'Studies',
       isConsistent: true,
-      cardConfiguration: studyCardProps,
+      cardConfiguration: studyCardConfiguration,
       searchConfiguration: {
         searchable: [
           {
@@ -151,6 +153,7 @@ const studies: HomeExploreConfig = {
 export const studiesGenerateComponentsFromRowProps: GenerateComponentsFromRowProps = {
   sql: studiesSql,
   sqlOperator: '=',
+  entityId,
   synapseConfigArray: [
     {
       name: 'Markdown',
@@ -263,7 +266,7 @@ export const studiesGenerateComponentsFromRowProps: GenerateComponentsFromRowPro
       props: {
         sqlOperator: '=',
         sql,
-        ...studyCardProps,
+        ...studyCardConfiguration,
       },
     },
   ],
@@ -275,7 +278,7 @@ export const studiesProgrammaticRouteConfig: SynapseConfig[] = [
     isOutsideContainer: true,
     props: {
       isHeader: true,
-      ...studyCardProps,
+      ...studyCardConfiguration,
       sql,
       entityId,
       facetAliases,
