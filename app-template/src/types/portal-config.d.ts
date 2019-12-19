@@ -59,7 +59,7 @@ type Markdown = {
 
 type StatefulButtonControl = {
   name: 'StatefulButtonControlWrapper'
-  props: StatefulButtonControlWrapperProps
+  props: any
 }
 
 type RouteButtonControl = {
@@ -115,6 +115,10 @@ export type SynapseConfig = (
 ) &
   Metadata
 export type SynapseConfigArray = SynapseConfig[]
+type P = SynapseConfig['props']
+const x: P = {
+  synapseConfig: [],
+}
 
 // utility for inside the explore page
 export type HomeExploreConfig = {

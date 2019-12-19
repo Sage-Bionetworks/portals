@@ -26,7 +26,6 @@ export const studySchema: GenericCardSchema = {
     'consortium',
     'grantType',
   ],
-  link: 'id',
 }
 
 export const studyCardConfiguration: CardConfiguration = {
@@ -47,6 +46,12 @@ export const studyCardConfiguration: CardConfiguration = {
       matchColumnName: 'datasets',
     },
   ],
+  titleLinkConfig: {
+    isMarkdown: false,
+    baseURL: 'Explore/Studies',
+    URLColumnName: 'studies',
+    matchColumnName: 'id',
+  },
 }
 
 export const studies: HomeExploreConfig = {

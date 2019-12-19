@@ -19,13 +19,20 @@ import {
   publicationSql,
   publicationSchema,
 } from './synapseConfigs/publications'
-import { datasetsSql, datasetSchema } from './synapseConfigs/datasets'
+import {
+  datasetsSql,
+  datasetSchema,
+  datasetsEntityId,
+} from './synapseConfigs/datasets'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
 import loadingScreen from './loadingScreen'
 import { toolsSchema, toolsSql, toolsEntityId } from './synapseConfigs/tools'
 import { filesSql, filesEntityId } from './synapseConfigs/files'
 import DatasetSvg from './style/Dataset.svg'
-import { publicationsCardConfiguration } from 'nf/synapseConfigs/publications'
+import {
+  publicationsCardConfiguration,
+  publicationEntityId,
+} from './synapseConfigs/publications'
 const homeLimit = 3
 
 const routes: GenericRoute[] = [
@@ -95,7 +102,7 @@ const routes: GenericRoute[] = [
         props: {
           loadingScreen,
           facetAliases,
-          entityId: publications.homePageSynapseObject.props.entityId,
+          entityId: publicationEntityId,
           sql: publicationSql,
           ...publicationsCardConfiguration,
           limit: homeLimit,
@@ -109,7 +116,7 @@ const routes: GenericRoute[] = [
           loadingScreen,
           facetAliases,
           sql: datasetsSql,
-          entityId: datasets.homePageSynapseObject.props.entityId,
+          entityId: datasetsEntityId,
           secondaryLabelLimit: 4,
           limit: homeLimit,
           type: SynapseConstants.GENERIC_CARD,
@@ -171,7 +178,7 @@ const routes: GenericRoute[] = [
               type: SynapseConstants.GENERIC_CARD,
               isHeader: true,
               backgroundColor: '#407ba0',
-              entityId: 'TODO',
+              entityId: publicationEntityId,
               genericCardSchema: publicationSchema,
               loadingScreen,
               facetAliases,
@@ -213,27 +220,12 @@ const routes: GenericRoute[] = [
             name: 'CardContainerLogic',
             isOutsideContainer: true,
             props: {
-              type: SynapseConstants.GENERIC_CARD,
               isHeader: true,
               backgroundColor: '#407ba0',
-              entityId: 'TODO',
-              genericCardSchema: studySchema,
+              entityId: studiesEntityId,
               loadingScreen,
               facetAliases,
-              labelLinkConfig: [
-                {
-                  isMarkdown: false,
-                  baseURL: 'Explore/Publications',
-                  URLColumnName: 'Title',
-                  matchColumnName: 'Title',
-                },
-                {
-                  isMarkdown: false,
-                  baseURL: 'Explore/Datasets',
-                  URLColumnName: 'datasets',
-                  matchColumnName: 'datasets',
-                },
-              ],
+              ...studyCardConfiguration,
               secondaryLabelLimit: Infinity,
               sql: studiesSql,
             },
@@ -293,7 +285,7 @@ const routes: GenericRoute[] = [
               sqlOperator: '=',
               genericCardSchema: datasetSchema,
               secondaryLabelLimit: Infinity,
-              entityId: 'TODO',
+              entityId: datasetsEntityId,
               sql: datasetsSql,
               loadingScreen,
               facetAliases,
@@ -321,7 +313,7 @@ const routes: GenericRoute[] = [
             title: 'Data',
             props: {
               initQueryRequest: {
-                entityId: 'TODO',
+                entityId: filesEntityId,
                 partMask:
                   SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
                   SynapseConstants.BUNDLE_MASK_QUERY_COUNT |

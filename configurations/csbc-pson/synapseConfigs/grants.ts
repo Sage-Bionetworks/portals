@@ -25,7 +25,6 @@ export const grantsSchema: GenericCardSchema = {
   link: 'id',
 }
 const entityId = 'syn10142562'
-const grantsEntityId = 'syn10142562'
 
 // TODO: Change iconOptions type to map () => string | JSX.Element and remove cast
 const iconOptions: IconOptions = {

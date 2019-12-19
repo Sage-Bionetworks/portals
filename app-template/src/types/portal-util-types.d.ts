@@ -34,6 +34,7 @@ export type GenerateComponentsFromRowProps = {
   showMenu?: boolean // default to true
   searchParams?: Dictionary<string>
   sql: string
+  entityId: string
   token?: string
   synapseConfigArray: RowSynapseConfig[]
   sqlOperator?: SQLOperator

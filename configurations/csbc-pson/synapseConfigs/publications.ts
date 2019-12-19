@@ -34,7 +34,7 @@ export const publicationSchema: GenericCardSchema = {
   link: 'PubMed',
 }
 
-const publicationsCardConfiguration: CardConfiguration = {
+export const publicationsCardConfiguration: CardConfiguration = {
   type: SynapseConstants.GENERIC_CARD,
   genericCardSchema: publicationSchema,
   secondaryLabelLimit: 5,

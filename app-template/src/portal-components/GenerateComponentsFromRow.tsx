@@ -47,6 +47,7 @@ export default class GenerateComponentsFromRow extends React.Component<
     const {
       sql,
       token,
+      entityId,
       searchParams = {},
       synapseConfigArray,
       sqlOperator,
@@ -57,6 +58,7 @@ export default class GenerateComponentsFromRow extends React.Component<
       sqlOperator,
     )
     const queryBundleRequest: QueryBundleRequest = {
+      entityId,
       concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
       partMask: SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
       query: {

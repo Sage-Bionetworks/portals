@@ -4,7 +4,8 @@ import loadingScreen from '../loadingScreen'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import { facetAliases } from './commonProps'
 export const datasetsSql = `SELECT * FROM syn18488466 WHERE ( ( "is.dataset" = 'TRUE' ) )`
-const entityId = 'syn18488466'
+export const datasetsEntityId = 'syn18488466'
+const entityId = datasetsEntityId
 const sql = datasetsSql
 const unitDescription = 'Datasets'
 const rgbIndex = 0
