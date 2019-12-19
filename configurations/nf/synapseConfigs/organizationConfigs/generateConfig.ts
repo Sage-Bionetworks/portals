@@ -1,7 +1,7 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { facetAliases } from '../commonProps'
 import { publicationsCardConfiguration } from '../publications'
-import { studiesCardConfiguration } from '../studies'
+import { studyCardConfiguration } from '../studies'
 import { SynapseConfigArray } from '../../../types/portal-config'
 import loadingScreen from '../../loadingScreen'
 
@@ -62,7 +62,7 @@ export const generateOrgConfig: ReturnSynapseConfigArray = (
           loadingScreen,
           sql: studiesSql,
           entityId: studiesEntityId,
-          ...studiesCardConfiguration,
+          ...studyCardConfiguration,
           facet: 'diseaseFocus',
         },
         title: 'Funded Studies',

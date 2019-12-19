@@ -15,6 +15,7 @@ export const dhartSpore: BaseRoute = {
         limit: 1,
         sql: "SELECT * FROM syn16858699 WHERE abbreviation = 'DHART SPORE'",
         type: SynapseConstants.FUNDER,
+        entityId: 'syn16858699',
       },
       title: 'THE DEVELOPMENTAL AND HYPERACTIVE RAS TUMOR SPORE',
     },

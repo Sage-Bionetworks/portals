@@ -15,6 +15,7 @@ export const ntap: BaseRoute = {
       props: {
         limit: 1,
         sql: "SELECT * FROM syn16858699 WHERE abbreviation = 'NTAP'",
+        entityId: 'syn16858699',
         type: SynapseConstants.FUNDER,
       },
       title: 'THE NEUROFIBROMATOSIS THERAPEUTIC ACCELERATION PROGRAM',
