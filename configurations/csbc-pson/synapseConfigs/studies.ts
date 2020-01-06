@@ -1,7 +1,7 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from '../../types/portal-config'
 import loadingScreen from '../loadingScreen'
-import { facetAliases } from './commonProps'
+import { facetAliases, detailPageLinks } from './commonProps'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 const unitDescription = 'studies'
@@ -23,6 +23,7 @@ export const studySchema: GenericCardSchema = {
     'tumorType',
     'experimentalStrategy',
     'datasets',
+    'centerName',
     'consortium',
     'grantType',
   ],
@@ -32,20 +33,7 @@ export const studyCardConfiguration: CardConfiguration = {
   type: SynapseConstants.GENERIC_CARD,
   genericCardSchema: studySchema,
   secondaryLabelLimit: 4,
-  labelLinkConfig: [
-    {
-      isMarkdown: false,
-      baseURL: 'Explore/Publications',
-      URLColumnName: 'Title',
-      matchColumnName: 'Title',
-    },
-    {
-      isMarkdown: false,
-      baseURL: 'Explore/Datasets',
-      URLColumnName: 'datasets',
-      matchColumnName: 'datasets',
-    },
-  ],
+  labelLinkConfig: detailPageLinks,
   titleLinkConfig: {
     isMarkdown: false,
     baseURL: 'Explore/Studies',

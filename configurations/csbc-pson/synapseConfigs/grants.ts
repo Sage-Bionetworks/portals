@@ -7,7 +7,11 @@ import {
   IconOptions,
 } from 'synapse-react-client/dist/containers/GenericCard'
 import { Project } from 'synapse-react-client/dist/assets/themed_icons/Project'
-const sql = `SELECT * FROM syn10142562 WHERE ( "grantType" = 'U54' OR "grantType" = 'U01')`
+import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
+export const grantsSql = `SELECT * FROM syn10142562 WHERE ( "grantType" = 'U54' OR "grantType" = 'U01' OR "grantType" = 'Contracts')`
+const sql = `SELECT * FROM syn10142562 WHERE ( "grantType" = 'U54' OR "grantType" = 'U01' OR "grantType" = 'Contracts')`
+export const grantsEntityId = 'syn10142562'
+const entityId = grantsEntityId
 const unitDescription = 'grants'
 const rgbIndex = 3
 
@@ -22,13 +26,24 @@ export const grantsSchema: GenericCardSchema = {
     'consortium',
     'grantType',
   ],
-  link: 'id',
 }
-const entityId = 'syn10142562'
 
 // TODO: Change iconOptions type to map () => string | JSX.Element and remove cast
 const iconOptions: IconOptions = {
   Grant: (Project as unknown) as string,
+}
+
+export const grantsCardConfiguration: CardConfiguration = {
+  genericCardSchema: grantsSchema,
+  titleLinkConfig: {
+    isMarkdown: false,
+    URLColumnName: 'id',
+    matchColumnName: 'id',
+    baseURL: 'Explore/Grants',
+  },
+  type: SynapseConstants.GENERIC_CARD,
+  secondaryLabelLimit: 4,
+  iconOptions,
 }
 
 export const grants: HomeExploreConfig = {
@@ -62,12 +77,7 @@ export const grants: HomeExploreConfig = {
     props: {
       rgbIndex,
       unitDescription,
-      cardConfiguration: {
-        type: SynapseConstants.GENERIC_CARD,
-        genericCardSchema: grantsSchema,
-        secondaryLabelLimit: 4,
-        iconOptions,
-      },
+      cardConfiguration: grantsCardConfiguration,
       stackedBarChartConfiguration: {
         loadingScreen,
       },

@@ -2,7 +2,7 @@ import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from '../../types/portal-config'
 import loadingScreen from '../loadingScreen'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
-import { facetAliases } from './commonProps'
+import { facetAliases, detailPageLinks } from './commonProps'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 export const publicationSql = 'SELECT * FROM syn10923842'
 export const publicationEntityId = 'syn10923842'
@@ -25,7 +25,7 @@ export const publicationSchema: GenericCardSchema = {
     'experimentalStrategy',
     'Keywords',
     'DOI',
-    'Grant',
+    'centerName',
     'Consortium',
     'grantType',
     'datasets',
@@ -37,21 +37,9 @@ export const publicationSchema: GenericCardSchema = {
 export const publicationsCardConfiguration: CardConfiguration = {
   type: SynapseConstants.GENERIC_CARD,
   genericCardSchema: publicationSchema,
+  loadingScreen,
   secondaryLabelLimit: 5,
-  labelLinkConfig: [
-    {
-      isMarkdown: false,
-      baseURL: 'Explore/Datasets',
-      URLColumnName: 'datasets',
-      matchColumnName: 'datasets',
-    },
-    {
-      isMarkdown: false,
-      baseURL: 'Explore/Studies',
-      URLColumnName: 'studies',
-      matchColumnName: 'studies',
-    },
-  ],
+  labelLinkConfig: detailPageLinks,
 }
 
 export const publications: HomeExploreConfig = {
