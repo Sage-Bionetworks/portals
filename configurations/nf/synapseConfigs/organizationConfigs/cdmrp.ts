@@ -1,17 +1,9 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { BaseRoute } from '../../../types/portal-config'
-import { buttonColors } from '../commonProps'
-import { generateOrgConfig } from './generateConfig'
-import { studiesEntityId } from '../studies'
-import { datasetsEntityId } from '../datasets'
-import { filesEntityId } from '../files'
-import { publicationsEntityId } from '../publications'
-
-const org = 'CDMRP'
 
 export const cdmrp: BaseRoute = {
-  name: 'CDMRP',
-  to: '/Organizations/CDMRP',
+  name: 'CDMRP-NFRP',
+  to: '/Organizations/CDMRP-NFRP',
   isNested: false,
   synapseConfigArray: [
     {
@@ -22,7 +14,7 @@ export const cdmrp: BaseRoute = {
         type: SynapseConstants.FUNDER,
         entityId: 'syn16858699',
       },
-      title: "CDMRP Neurofibromatosis Research Program",
-    }
+      title: 'CDMRP Neurofibromatosis Research Program',
+    },
   ],
 }
