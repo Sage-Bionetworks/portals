@@ -16,6 +16,9 @@ fi
 # remove ending slash if directory given had a slash
 folderNoSlash=${1%/}
 
+CONFIG_FOLDER=src/config
+ACTIVE_CONFIGURATION=src/configurations/$folderNoSlash
+
 # we want to always make sure that the linking is undone after this script so we capture
 # ctrl-c. This has removed various bugs when developing locally.
 # See here - https://unix.stackexchange.com/a/407249
@@ -30,13 +33,14 @@ function handleInt {
 # the contents back to the configuration
 
 # clear out config
-rm -rf ./src/config
-mkdir ./src/config
+rm -rf ./$CONFIG_FOLDER/*
+
 # copy over the contents
-cp -r configuration/$folderNoSlash/ ./src/config/
-rm  -rf $folderNoSlash/*
+cp -r ./$ACTIVE_CONFIGURATION/ ./$CONFIG_FOLDER/
+rm  -rf ./$ACTIVE_CONFIGURATION/*
 
 # symlink the current directory
+cd ./$ACTIVE_CONFIGURATION
 ln -s ./config/* .
 # start the project
 
