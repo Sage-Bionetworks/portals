@@ -1,0 +1,115 @@
+import { SynapseConstants } from 'synapse-react-client'
+import { HomeExploreConfig } from '../src/types/portal-config'
+import loadingScreen from '../loadingScreen'
+import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
+import { facetAliases } from './commonProps'
+export const toolsSql = 'SELECT * FROM syn9898965'
+export const toolsEntityId = 'syn9898965'
+const entityId = toolsEntityId
+const sql = toolsSql
+const unitDescription = 'Tools'
+const rgbIndex = 6
+
+export const toolsSchema: GenericCardSchema = {
+  type: SynapseConstants.TOOL,
+  title: 'toolName',
+  secondaryLabels: [
+    'inputDataType',
+    'outputDataType',
+    'softwareLanguage',
+    'study',
+    'consortium',
+  ],
+  link: 'id',
+}
+
+export const tools: HomeExploreConfig = {
+  homePageSynapseObject: {
+    name: 'QueryWrapperFlattened',
+    props: {
+      rgbIndex,
+      unitDescription,
+      loadingScreen,
+      facet: 'consortium',
+      facetAliases,
+      link: 'Explore/Tools',
+      linkText: 'Explore Tools',
+      initQueryRequest: {
+        entityId,
+        concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
+        partMask:
+          SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
+          SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
+        query: {
+          sql,
+          isConsistent: true,
+          limit: 25,
+          offset: 0,
+        },
+      },
+    },
+  },
+  explorePageSynapseObject: {
+    name: 'QueryWrapperMenu',
+    props: {
+      rgbIndex,
+      unitDescription,
+      entityId,
+      cardConfiguration: {
+        type: SynapseConstants.GENERIC_CARD,
+        genericCardSchema: toolsSchema,
+        secondaryLabelLimit: 5,
+      },
+      stackedBarChartConfiguration: {
+        loadingScreen,
+      },
+      searchConfiguration: {
+        searchable: [
+          {
+            columnName: 'toolName',
+            hintText: 'track',
+          },
+          {
+            columnName: 'inputDataType',
+            hintText: 'image',
+          },
+          {
+            columnName: 'outputDataType',
+            hintText: 'network',
+          },
+          {
+            columnName: 'softwareLanguage',
+            hintText: 'python',
+          },
+          {
+            columnName: 'consortium',
+            hintText: 'PS-ON',
+          },
+        ],
+      },
+      name: 'Tools',
+      facetAliases,
+      menuConfig: [
+        {
+          sql,
+          facet: 'inputDataType',
+        },
+        {
+          sql,
+          facet: 'outputDataType',
+        },
+        {
+          sql,
+          facet: 'softwareLanguage',
+        },
+        {
+          sql,
+          facet: 'consortium',
+        },
+        {
+          sql,
+        },
+      ],
+    },
+  },
+}
