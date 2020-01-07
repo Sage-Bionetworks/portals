@@ -23,38 +23,6 @@ export const cdmrp: BaseRoute = {
         entityId: 'syn16858699',
       },
       title: "CDMRP Neurofibromatosis Research Program",
-    },
-    {
-      name: 'StatefulButtonControlWrapper',
-      props: {
-        ...buttonColors,
-        configs: [
-          {
-            name: 'Studies',
-            sql: generateOrgConfig(org, 'Studies', true),
-            entityId: studiesEntityId,
-            synapseConfigArray: generateOrgConfig(org, 'Studies', false),
-          },
-          {
-            name: 'Datasets',
-            sql: generateOrgConfig(org, 'Dataset', true),
-            entityId: datasetsEntityId,
-            synapseConfigArray: generateOrgConfig(org, 'Dataset', false),
-          },
-          {
-            name: 'Files',
-            sql: generateOrgConfig(org, 'Files', true),
-            entityId: filesEntityId,
-            synapseConfigArray: generateOrgConfig(org, 'Files', false),
-          },
-          {
-            name: 'Publications',
-            sql: generateOrgConfig(org, 'Publications', true),
-            entityId: publicationsEntityId,
-            synapseConfigArray: generateOrgConfig(org, 'Publications', false),
-          },
-        ],
-      },
-    },
+    }
   ],
 }
