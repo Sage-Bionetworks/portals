@@ -25,6 +25,7 @@ import loadingScreen from './loadingScreen'
 import { ntap } from './synapseConfigs/organizationConfigs/ntap'
 import { dhartSpore } from './synapseConfigs/organizationConfigs/dhart-spore'
 import { ctf } from './synapseConfigs/organizationConfigs/ctf'
+import { cdmrp } from './synapseConfigs/organizationConfigs/cdmrp'
 import { buttonColors, facetAliases } from './synapseConfigs/commonProps'
 import { toolsSql, toolsCardConfiguration } from './synapseConfigs/tools'
 import { toolsEntityId } from './synapseConfigs/tools'
@@ -246,7 +247,7 @@ const routes: GenericRoute[] = [
   {
     name: 'Organizations',
     isNested: true,
-    routes: [ctf, ntap, dhartSpore],
+    routes: [ctf, ntap, dhartSpore, cdmrp],
   },
   {
     name: 'About',
