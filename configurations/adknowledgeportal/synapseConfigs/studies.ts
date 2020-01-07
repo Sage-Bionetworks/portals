@@ -282,6 +282,7 @@ export const studiesProgrammaticRouteConfig: SynapseConfig[] = [
       sql,
       entityId,
       facetAliases,
+      isAlignToLeftNav: true,
       secondaryLabelLimit: Infinity,
       backgroundColor: '#5bb0b5',
       iconOptions: {
