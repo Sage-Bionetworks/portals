@@ -1,5 +1,5 @@
 import { SynapseConstants } from 'synapse-react-client'
-import { BaseRoute } from '../../src/types/portal-config'
+import { BaseRoute } from 'src/types/portal-config'
 
 export const cdmrp: BaseRoute = {
   name: 'CDMRP-NFRP',

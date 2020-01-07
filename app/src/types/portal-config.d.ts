@@ -8,7 +8,6 @@ import { MarkdownSynapseProps } from 'synapse-react-client/dist/containers/Markd
 import { NewsFeedMenuProps } from 'synapse-react-client/dist/containers/NewsFeedMenu'
 import { SynapseFormSubmissionGridProps } from 'synapse-react-client/dist/containers/synapse_form_wrapper/SynapseFormSubmissionsGrid'
 import { SynapseFormWrapperProps } from 'synapse-react-client/dist/containers/synapse_form_wrapper/SynapseFormWrapper'
-import { StatefulButtonControlWrapperProps } from '../portal-components/StatefulButtonControlWrapper'
 import { RouteButtonControlWrapperProps } from '../portal-components/RouteButtonControlWrapper'
 import { GenerateComponentsFromRowProps } from './portal-util-types'
 import { Operator } from '../portal-components/QueryWrapperFlattened'
@@ -125,7 +124,7 @@ export type HomeExploreConfig = {
 export interface BaseRoute {
   name: string
   displayName?: string
-  isNested: false
+  isNested: boolean
   programmaticRouteConfig?: SynapseConfigArray
   hideRouteFromNavbar?: boolean
   to: string
@@ -137,8 +136,6 @@ export interface BaseRoute {
 export interface NestedRoute extends BaseRoute {
   isNested: true
   routes: Array<BaseRoute | NestedRoute>
-  synapseConfigArray?: SynapseConfigArray
-  to?: string
   icon?: string
 }
 

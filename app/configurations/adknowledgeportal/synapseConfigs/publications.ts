@@ -1,6 +1,6 @@
-import { HomeExploreConfig, SynapseConfig } from '../src/types/portal-config'
+import { HomeExploreConfig, SynapseConfig } from 'src/types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
-import { GenerateComponentsFromRowProps } from '../src/types/portal-util-types'
+import { GenerateComponentsFromRowProps } from 'src/types/portal-util-types'
 import loadingScreen from '../loadingScreen'
 import { projectsSql } from './projects'
 

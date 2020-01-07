@@ -1,5 +1,5 @@
 import { SynapseConstants } from 'synapse-react-client'
-import { BaseRoute } from '../../src/types/portal-config'
+import { BaseRoute } from 'src/types/portal-config'
 import { buttonColors } from '../commonProps'
 import { generateOrgConfig } from './generateConfig'
 import { studiesEntityId } from '../studies'

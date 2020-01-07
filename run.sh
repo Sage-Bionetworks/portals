@@ -16,8 +16,8 @@ if [[ -z $1 || -z $2 ]]; then
   "
   exit 1
 fi
-PORTAL_APP_TEMPLATE=app-template
-PORTAL_CONFIGURATIONS=configurations
+PORTAL_APP_TEMPLATE=app/src
+PORTAL_CONFIGURATIONS=app/configurations
 # copy over the directory
 cp -r $PORTAL_CONFIGURATIONS/$2/ $PORTAL_APP_TEMPLATE/src/config
 cd $PORTAL_APP_TEMPLATE

@@ -1,4 +1,4 @@
-import { HomeExploreConfig } from '../src/types/portal-config'
+import { HomeExploreConfig } from 'src/types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
 import loadingScreen from '../loadingScreen'
 

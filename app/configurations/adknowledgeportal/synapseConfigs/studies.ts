@@ -1,5 +1,5 @@
-import { HomeExploreConfig, SynapseConfig } from '../src/types/portal-config'
-import { GenerateComponentsFromRowProps } from '../src/types/portal-util-types'
+import { HomeExploreConfig, SynapseConfig } from 'src/types/portal-config'
+import { GenerateComponentsFromRowProps } from 'src/types/portal-util-types'
 import { SynapseConstants } from 'synapse-react-client'
 import loadingScreen from '../loadingScreen'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'

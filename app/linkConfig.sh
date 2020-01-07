@@ -31,17 +31,17 @@ function handleInt {
 # the contents back to the configuration
 
 # clear out config
-rm -rf ../app-template/src/config
-mkdir ../app-template/src/config
+rm -rf ./src/config
+mkdir ./src/config
 # copy over the contents
-cp -r $folderNoSlash/ ../app-template/src/config/
+cp -r $folderNoSlash/ ../src/config/
 rm  -rf $folderNoSlash/*
 cd $folderNoSlash
 # symlink the current directory
-ln -s ../../app-template/src/config/* .
+ln -s ../../src/config/* .
 # start the project
 
-cd ../../app-template/src
+cd ../../src
 # Fixes node binding error when switching between packages and forgetting to run this command...
 npm rebuild node-sass
 yarn && yarn start
