@@ -2,7 +2,7 @@ import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from '../../types/portal-config'
 import loadingScreen from '../loadingScreen'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
-import { facetAliases } from './commonProps'
+import { facetAliases, detailPageLinks } from './commonProps'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 export const datasetsSql = `SELECT * FROM syn18488466 WHERE ( ( "is.dataset" = 'TRUE' ) )`
 export const datasetsEntityId = 'syn18488466'
@@ -26,6 +26,7 @@ export const datasetSchema: GenericCardSchema = {
     'experimentalStrategy',
     'species',
     'externalLink',
+    'centerName',
     'consortium',
     'grantType',
   ],
@@ -36,18 +37,7 @@ export const datasetCardConfiguration: CardConfiguration = {
   genericCardSchema: datasetSchema,
   secondaryLabelLimit: 4,
   labelLinkConfig: [
-    {
-      isMarkdown: false,
-      baseURL: 'Explore/Publications',
-      URLColumnName: 'Title',
-      matchColumnName: 'Title',
-    },
-    {
-      isMarkdown: false,
-      baseURL: 'Explore/Studies',
-      URLColumnName: 'studies',
-      matchColumnName: 'studies',
-    },
+    ...detailPageLinks,
     {
       isMarkdown: true,
       matchColumnName: 'externalLink',

@@ -29,6 +29,11 @@ import {
   publicationsCardConfiguration,
   publicationEntityId,
 } from './synapseConfigs/publications'
+import {
+  grantsCardConfiguration,
+  grantsEntityId,
+  grantsSql,
+} from './synapseConfigs/grants'
 const homeLimit = 3
 
 const routes: GenericRoute[] = [
@@ -150,6 +155,66 @@ const routes: GenericRoute[] = [
             },
           },
         ],
+        programmaticRouteConfig: [
+          {
+            name: 'CardContainerLogic',
+            isOutsideContainer: true,
+            props: {
+              isHeader: true,
+              backgroundColor: '#407ba0',
+              entityId: grantsEntityId,
+              ...grantsCardConfiguration,
+              secondaryLabelLimit: Infinity,
+              sql: grantsSql,
+            },
+          },
+          {
+            name: 'GenerateComponentsFromRow',
+            props: {
+              sql: grantsSql,
+              sqlOperator: 'LIKE',
+              entityId: grantsEntityId,
+              synapseConfigArray: [
+                {
+                  name: 'CardContainerLogic',
+                  columnName: 'centerName',
+                  title: 'Related Publications',
+                  tableSqlKeys: ['centerName'],
+                  props: {
+                    sqlOperator: 'LIKE',
+                    sql: publicationSql,
+                    entityId: publicationEntityId,
+                    ...publicationsCardConfiguration,
+                  },
+                },
+                {
+                  name: 'CardContainerLogic',
+                  columnName: 'centerName',
+                  title: 'Related Studies',
+                  tableSqlKeys: ['centerName'],
+                  props: {
+                    sqlOperator: 'LIKE',
+                    sql: studiesSql,
+                    entityId: studiesEntityId,
+                    ...studyCardConfiguration,
+                  },
+                },
+                {
+                  name: 'CardContainerLogic',
+                  columnName: 'centerName',
+                  title: 'Related Datasets',
+                  tableSqlKeys: ['centerName'],
+                  props: {
+                    sqlOperator: 'LIKE',
+                    sql: datasetsSql,
+                    entityId: datasetsEntityId,
+                    ...datasetCardConfiguration,
+                  },
+                },
+              ],
+            },
+          },
+        ],
       },
       {
         name: 'Publications',
@@ -169,7 +234,6 @@ const routes: GenericRoute[] = [
             name: 'CardContainerLogic',
             isOutsideContainer: true,
             props: {
-              type: SynapseConstants.GENERIC_CARD,
               isHeader: true,
               backgroundColor: '#407ba0',
               entityId: publicationEntityId,
