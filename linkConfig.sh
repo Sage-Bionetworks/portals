@@ -21,7 +21,6 @@ folderNoSlash=${1%/}
 # See here - https://unix.stackexchange.com/a/407249
 trap handleInt SIGINT
 function handleInt {
-  cd ../../configurations
   ./undoLink.sh $folderNoSlash
   printf '\n'
   exit 0
@@ -34,14 +33,13 @@ function handleInt {
 rm -rf ./src/config
 mkdir ./src/config
 # copy over the contents
-cp -r $folderNoSlash/ ../src/config/
+cp -r configuration/$folderNoSlash/ ./src/config/
 rm  -rf $folderNoSlash/*
-cd $folderNoSlash
+
 # symlink the current directory
-ln -s ../../src/config/* .
+ln -s ./config/* .
 # start the project
 
-cd ../../src
 # Fixes node binding error when switching between packages and forgetting to run this command...
 npm rebuild node-sass
 yarn && yarn start

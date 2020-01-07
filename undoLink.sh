@@ -17,4 +17,4 @@ folderNoSlash=${1%/}
 rm -rf $folderNoSlash
 mkdir $folderNoSlash
 # copy over the contents from the symlink
-cp -r ../app-template/src/config/ $folderNoSlash/
+cp -r ./config/ $folderNoSlash/
