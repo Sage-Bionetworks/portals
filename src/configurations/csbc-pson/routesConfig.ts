@@ -1,4 +1,4 @@
-import { GenericRoute } from 'src/types/portal-config'
+import { GenericRoute } from 'types/portal-config'
 import {
   publications,
   files,

@@ -1,4 +1,4 @@
-import { DocTitleConfig } from 'src/types/portal-config'
+import { DocTitleConfig } from 'types/portal-config'
 
 const docTitleConfig: DocTitleConfig = {
   name: 'NF Data Portal',

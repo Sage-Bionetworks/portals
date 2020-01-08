@@ -1,4 +1,4 @@
-import { SynapseConfig } from 'src/types/portal-config'
+import { SynapseConfig } from 'types/portal-config'
 import { RouteButtonControlWrapperProps } from 'portal-components/RouteButtonControlWrapper'
 const routeButtonControlProps: RouteButtonControlWrapperProps = {
   // this has to get overriden,

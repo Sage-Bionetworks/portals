@@ -1,4 +1,4 @@
-import { SynapseConfig } from 'src/types/portal-config'
+import { SynapseConfig } from 'types/portal-config'
 
 const routeButtonControlProps: SynapseConfig = {
   name: 'RouteButtonControlWrapper',

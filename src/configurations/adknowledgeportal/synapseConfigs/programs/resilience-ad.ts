@@ -1,4 +1,4 @@
-import { SynapseConfigArray } from 'src/types/portal-config'
+import { SynapseConfigArray } from 'types/portal-config'
 import { projectCardConfiguration, projectsEntityId } from '../projects'
 import programCardConfiguration, { programEntityId } from '../programs'
 

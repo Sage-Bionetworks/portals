@@ -1,4 +1,4 @@
-import { BetaBanner } from 'src/types/portal-config'
+import { BetaBanner } from 'types/portal-config'
 
 const betaBanner: BetaBanner = {}
 

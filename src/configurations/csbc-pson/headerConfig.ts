@@ -1,4 +1,4 @@
-import { HomePageHeaderConfig } from 'src/types/portal-config'
+import { HomePageHeaderConfig } from 'types/portal-config'
 
 const homePageHeader: HomePageHeaderConfig = {
   summary: `The NIH National Cancer Institute-sponsored Cancer Systems Biology Consortium (CSBC) and Physical Sciences

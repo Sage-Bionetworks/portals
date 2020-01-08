@@ -11,10 +11,9 @@ fi
 # configuration to the react app, we copy over the configuration and symlink
 # the contents back to the configuration
 
-# remove ending slash if directory given had a slash
-folderNoSlash=${1%/}
+ACTIVE_CONFIGURATION=${1%/}
 # clear out config
-rm -rf $folderNoSlash
-mkdir $folderNoSlash
+rm -rf $ACTIVE_CONFIGURATION
+mkdir $ACTIVE_CONFIGURATION
 # copy over the contents from the symlink
-cp -r ./config/ $folderNoSlash/
+cp -r ./config/ $ACTIVE_CONFIGURATION/

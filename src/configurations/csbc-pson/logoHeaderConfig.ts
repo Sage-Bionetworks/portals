@@ -1,4 +1,4 @@
-import { LogoConfig } from 'src/types/portal-config'
+import { LogoConfig } from 'types/portal-config'
 
 const logoHeader: LogoConfig = {
   name: 'CSBC / PS-ON',

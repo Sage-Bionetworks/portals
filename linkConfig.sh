@@ -29,7 +29,7 @@ fi
 # See here - https://unix.stackexchange.com/a/407249
 trap handleInt SIGINT
 function handleInt {
-  ./undoLink.sh $folderNoSlash
+  ./undoLink.sh $ACTIVE_CONFIGURATION
   printf ‘\n’
   exit 0
 }
@@ -44,6 +44,7 @@ rm  -rf ./$ACTIVE_CONFIGURATION/*
 # symlink the current directory
 cd ./$ACTIVE_CONFIGURATION
 ln -s ./config/* .
+cd ../../
 # start the project
 # Fixes node binding error when switching between packages and forgetting to run this command...
 npm rebuild node-sass

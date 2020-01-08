@@ -124,13 +124,13 @@ export type HomeExploreConfig = {
 export interface BaseRoute {
   name: string
   displayName?: string
-  isNested: boolean
+  isNested: false
   programmaticRouteConfig?: SynapseConfigArray
   hideRouteFromNavbar?: boolean
-  to: string
+  to?: string
   link?: string
   icon?: string
-  synapseConfigArray: SynapseConfigArray
+  synapseConfigArray?: SynapseConfigArray
 }
 
 export interface NestedRoute extends BaseRoute {

@@ -1,4 +1,4 @@
-import { LogoConfig } from 'src/types/portal-config'
+import { LogoConfig } from 'types/portal-config'
 import stopAdLogo from './style/stop-ad-logo.svg'
 
 const logoHeader: LogoConfig = {

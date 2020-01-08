@@ -1,5 +1,5 @@
 import { SynapseConstants } from 'synapse-react-client'
-import { HomeExploreConfig } from 'src/types/portal-config'
+import { HomeExploreConfig } from 'types/portal-config'
 import { facetAliases } from './commonProps'
 import loadingScreen from '../loadingScreen'
 import studyActiveSvg from '../style/study-active.svg'

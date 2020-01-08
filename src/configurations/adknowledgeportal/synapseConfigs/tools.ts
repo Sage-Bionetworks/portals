@@ -1,7 +1,7 @@
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import loadingScreen from '../loadingScreen'
 import { SynapseConstants } from 'synapse-react-client'
-import { HomeExploreConfig } from 'src/types/portal-config'
+import { HomeExploreConfig } from 'types/portal-config'
 
 const computationalSchema: GenericCardSchema = {
   type: 'TOOL',
