@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { withRouter, RouteComponentProps } from 'react-router'
 import routesConfig from './config/routesConfig'
-import { SynapseConfig } from './types/portal-config'
+import { SynapseConfig } from '.types/portal-config'
 import { SynapseComponents } from 'synapse-react-client'
 import { TokenContext } from './AppInitializer'
 import StatefulButtonControlWrapper from './portal-components/StatefulButtonControlWrapper'
@@ -11,7 +11,7 @@ import Layout from './portal-components/Layout'
 import GenerateComponentsFromRow from 'portal-components/GenerateComponentsFromRow'
 import docTitleConfig from './config/docTitleConfig'
 
-// https://basarat.gitbooks.io/typescript/docs/types/never.html
+// https://basarat.gitbooks.io/typescript/docstypes/never.html
 function fail(message: string): never {
   throw new Error(message)
 }

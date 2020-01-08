@@ -8,7 +8,7 @@ import routesConfig, {
   ABOUT_INDEX,
   ORGANIZATION_INDEX,
 } from '../test-configuration/routesConfig'
-import { NestedRoute, SynapseConfig } from '../types/portal-config'
+import { NestedRoute, SynapseConfig } from 'types/portal-config'
 import CardContainerLogic from 'synapse-react-client/dist/containers/CardContainerLogic'
 import { mount } from 'enzyme'
 import StatefulButtonControlWrapper from '../portal-components/StatefulButtonControlWrapper'

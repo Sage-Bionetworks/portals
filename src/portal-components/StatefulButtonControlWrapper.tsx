@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { ButtonControl, ButtonControlProps } from '../ButtonControl'
-import { SynapseConfigArray } from '../types/portal-config'
+import { SynapseConfigArray } from 'types/portal-config'
 import { generateSynapseObject } from '../RouteResolver'
 import QueryCount from 'synapse-react-client/dist/containers/QueryCount'
 

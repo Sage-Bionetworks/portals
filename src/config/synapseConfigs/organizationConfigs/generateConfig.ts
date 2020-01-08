@@ -2,7 +2,7 @@ import { SynapseConstants } from 'synapse-react-client'
 import { facetAliases } from '../commonProps'
 import { publicationsCardConfiguration } from '../publications'
 import { studyCardConfiguration } from '../studies'
-import { SynapseConfigArray } from '../../../types/portal-config'
+import { SynapseConfigArray } from 'types/portal-config'
 import loadingScreen from '../../loadingScreen'
 
 type Key = 'Dataset' | 'Studies' | 'Publications' | 'Files'

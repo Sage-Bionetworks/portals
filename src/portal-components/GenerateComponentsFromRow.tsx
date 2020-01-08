@@ -11,11 +11,11 @@ import {
   ReferenceList,
 } from 'synapse-react-client/dist/utils/synapseTypes/'
 import loadingScreen from 'test-configuration/loadingScreen'
-import { SynapseConfig } from '../types/portal-config'
+import { SynapseConfig } from 'types/portal-config'
 import {
   GenerateComponentsFromRowProps,
   RowSynapseConfig,
-} from '../types/portal-util-types'
+} from 'types/portal-util-types'
 import './GenerateComponentsFromRow.scss'
 import injectPropsIntoConfig from './injectPropsIntoConfig'
 

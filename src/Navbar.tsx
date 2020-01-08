@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import * as React from 'react'
 import routesConfig from './config/routesConfig'
-import { GenericRoute } from './types/portal-config'
+import { GenericRoute } from '.types/portal-config'
 import logoHeaderConfig from './config/logoHeaderConfig'
 import Dialog from '@material-ui/core/Dialog'
 import Dropdown from 'react-bootstrap/Dropdown'

@@ -1,6 +1,6 @@
 import { SynapseConstants } from 'synapse-react-client'
 import loadingScreen from '../loadingScreen'
-import { HomeExploreConfig } from '../../types/portal-config'
+import { HomeExploreConfig } from 'types/portal-config'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 
 const sql = 'SELECT * FROM syn10923842'
