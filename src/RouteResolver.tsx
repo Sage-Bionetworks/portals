@@ -11,7 +11,7 @@ import Layout from './portal-components/Layout'
 import GenerateComponentsFromRow from 'portal-components/GenerateComponentsFromRow'
 import docTitleConfig from './config/docTitleConfig'
 
-// https://basarat.gitbooks.io/typescript/docstypes/never.html
+// https://basarat.gitbooks.io/typescript/docs/types/never.html
 function fail(message: string): never {
   throw new Error(message)
 }

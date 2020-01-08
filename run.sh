@@ -6,6 +6,7 @@
 #   Sync production with production:
 #     ./run.sh WARNING-push-production [portal-name]
 
+# Verify both arguments were specified
 if [[ -z $1 || -z $2 ]]; then
   echo "Error: Usage -
   Sync current with staging:
@@ -16,6 +17,8 @@ if [[ -z $1 || -z $2 ]]; then
   "
   exit 1
 fi
+
+# Verify first argument is either WARNING-push-production or push-staging
 if [ $1 != "WARNING-push-production" ] && [ $1 != "push-staging" ]; then
   echo "Error: Incorrect argument $1, should be either WARNING-push-production or push-staging
   Usage:
@@ -31,6 +34,7 @@ fi
 PORTAL_APP_TEMPLATE=src/config
 PORTAL_CONFIGURATION=src/configurations/$2/
 
+# Check that directory exists
 if [ ! -d $PORTAL_CONFIGURATION ]; then
   echo "Error: Folder $PORTAL_CONFIGURATION doesn't exit"
   exit 1
