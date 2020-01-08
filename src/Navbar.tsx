@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import * as React from 'react'
 import routesConfig from './config/routesConfig'
-import { GenericRoute } from '.types/portal-config'
+import { GenericRoute } from 'types/portal-config'
 import logoHeaderConfig from './config/logoHeaderConfig'
 import Dialog from '@material-ui/core/Dialog'
 import Dropdown from 'react-bootstrap/Dropdown'
@@ -138,8 +138,7 @@ export class Navbar extends React.Component<{}, NavbarState> {
               to="/"
               id="home-link"
             >
-              {' '}
-              {imageElement} {nameElement}{' '}
+              {imageElement} {nameElement}
             </Link>
           </div>
           <div className="nav-link-container">
@@ -259,7 +258,7 @@ export class Navbar extends React.Component<{}, NavbarState> {
                   )
                 }
                 // treat it as standard anchor tag
-                if (el.synapseConfigArray.length === 0) {
+                if (el.synapseConfigArray!.length === 0) {
                   return (
                     <a
                       key={el.name}
@@ -268,8 +267,7 @@ export class Navbar extends React.Component<{}, NavbarState> {
                       )}`}
                       href={el.to}
                     >
-                      {' '}
-                      {icon} {displayName}{' '}
+                      {icon} {displayName}
                     </a>
                   )
                 }
@@ -279,10 +277,9 @@ export class Navbar extends React.Component<{}, NavbarState> {
                     className={`center-content nav-button nav-button-container ${this.getBorder(
                       el.name,
                     )}`}
-                    to={el.to}
+                    to={el.to!}
                   >
-                    {' '}
-                    {displayName}{' '}
+                    {displayName}
                   </Link>
                 )
               })}

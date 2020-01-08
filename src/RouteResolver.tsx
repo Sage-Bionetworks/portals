@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { withRouter, RouteComponentProps } from 'react-router'
 import routesConfig from './config/routesConfig'
-import { SynapseConfig } from '.types/portal-config'
+import { SynapseConfig } from 'types/portal-config'
 import { SynapseComponents } from 'synapse-react-client'
 import { TokenContext } from './AppInitializer'
 import StatefulButtonControlWrapper from './portal-components/StatefulButtonControlWrapper'
