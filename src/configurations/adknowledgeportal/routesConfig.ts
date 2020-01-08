@@ -40,7 +40,6 @@ const routes: GenericRoute[] = [
       {
         name: 'StatefulButtonControlWrapper',
         title: 'EXPLORE CONTENT',
-        containerClassName: 'home-explore-container',
         props: {
           configs: [
             {

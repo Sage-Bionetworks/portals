@@ -9,7 +9,7 @@ import {
 import { Project } from 'synapse-react-client/dist/assets/themed_icons/Project'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 export const grantsSql = `SELECT * FROM syn10142562 WHERE ( "grantType" = 'U54' OR "grantType" = 'U01' OR "grantType" = 'Contracts')`
-const sql = `SELECT * FROM syn10142562 WHERE ( "grantType" = 'U54' OR "grantType" = 'U01' OR "grantType" = 'Contracts')`
+const sql = grantsSql
 export const grantsEntityId = 'syn10142562'
 const entityId = grantsEntityId
 const unitDescription = 'grants'
