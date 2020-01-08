@@ -12,8 +12,6 @@ fi
 # the contents back to the configuration
 
 ACTIVE_CONFIGURATION=${1%/}
-# clear out config
-rm -rf $ACTIVE_CONFIGURATION
 mkdir $ACTIVE_CONFIGURATION
 # copy over the contents from the symlink
-cp -r ./config/ $ACTIVE_CONFIGURATION/
+cp -r src/config/ $ACTIVE_CONFIGURATION/

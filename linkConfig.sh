@@ -24,6 +24,11 @@ if [ ! -d "$ACTIVE_CONFIGURATION" ]; then
   exit 1
 fi
 
+if [ ! -h "$ACTIVE_CONFIGURATION" ]; then
+  echo 'removing previous symlink'
+  ./undoLink.sh $ACTIVE_CONFIGURATION
+fi
+
 # we want to always make sure that the linking is undone after this script so we capture
 # ctrl-c. This has removed various bugs when developing locally.
 # See here - https://unix.stackexchange.com/a/407249
