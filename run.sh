@@ -16,8 +16,26 @@ if [[ -z $1 || -z $2 ]]; then
   "
   exit 1
 fi
+if [ $1 != "WARNING-push-production" ] && [ $1 != "push-staging" ]; then
+  echo "Error: Incorrect argument $1, should be either WARNING-push-production or push-staging
+  Usage:
+    Sync current with staging:
+      ./run.sh push-staging [portal-name]
+
+    Sync production with production:
+      ./run.sh WARNING-push-production [portal-name]
+    "
+  exit 1
+fi
+
 PORTAL_APP_TEMPLATE=src/config
 PORTAL_CONFIGURATION=src/configurations/$2/
+
+if [ ! -d $PORTAL_CONFIGURATION ]; then
+  echo "Error: Folder $PORTAL_CONFIGURATION doesn't exit"
+  exit 1
+fi
+
 # copy over the directory
 cp -r $PORTAL_CONFIGURATION $PORTAL_APP_TEMPLATE
 
