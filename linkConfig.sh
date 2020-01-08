@@ -22,9 +22,10 @@ ACTIVE_CONFIGURATION=src/configurations/$folderNoSlash
 # See here - https://unix.stackexchange.com/a/407249
 trap handleInt SIGINT
 function handleInt {
-  cp -r src/config/ $ACTIVE_CONFIGURATION/
-  rm -rf src/config/
-  printf ‘\n’
+  rm -rf $ACTIVE_CONFIGURATION/
+  cp -r $CONFIG_FOLDER/ $ACTIVE_CONFIGURATION/
+  rm -rf $CONFIG_FOLDER/
+  printf '\n'
   exit 0
 }
 
@@ -49,7 +50,7 @@ cp -r ./$ACTIVE_CONFIGURATION/ ./$CONFIG_FOLDER/
 rm  -rf ./$ACTIVE_CONFIGURATION/*
 # symlink the current directory
 cd ./$ACTIVE_CONFIGURATION
-ln -s ./config/* .
+ln -s ../../config/* .
 cd ../../../
 # start the project
 # Fixes node binding error when switching between packages and forgetting to run this command...
