@@ -1,7 +1,8 @@
 import { DocTitleConfig } from 'types/portal-config'
 
 const docTitleConfig: DocTitleConfig = {
-  name: 'TODO'
+  name: 'TODO',
+  description: 'TODO',
 }
 
 export default docTitleConfig

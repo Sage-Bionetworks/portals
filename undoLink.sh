@@ -7,11 +7,6 @@ if [[ -z $1 ]]; then
 fi
 
 
-# React applications can't resolve symlinks, so instead of symlinking the 
-# configuration to the react app, we copy over the configuration and symlink
-# the contents back to the configuration
-
-ACTIVE_CONFIGURATION=${1%/}
-mkdir $ACTIVE_CONFIGURATION
 # copy over the contents from the symlink
+rm -rf src/config
 cp -r src/config/ $ACTIVE_CONFIGURATION/

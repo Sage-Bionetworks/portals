@@ -17,6 +17,17 @@ folderNoSlash=${1%/}
 CONFIG_FOLDER=src/config
 ACTIVE_CONFIGURATION=src/configurations/$folderNoSlash
 
+# we want to always make sure that the linking is undone after this script so we capture
+# ctrl-c. This has removed various bugs when developing locally.
+# See here - https://unix.stackexchange.com/a/407249
+trap handleInt SIGINT
+function handleInt {
+  cp -r src/config/ $ACTIVE_CONFIGURATION/
+  rm -rf src/config/
+  printf ‘\n’
+  exit 0
+}
+
 if [ ! -d "$ACTIVE_CONFIGURATION" ]; then
   echo Directory $ACTIVE_CONFIGURATION does not exist.
   echo Available options are - 
@@ -24,20 +35,10 @@ if [ ! -d "$ACTIVE_CONFIGURATION" ]; then
   exit 1
 fi
 
-if [ ! -h "$ACTIVE_CONFIGURATION" ]; then
+if [ -h "$ACTIVE_CONFIGURATION" ]; then
   echo 'removing previous symlink'
-  ./undoLink.sh $ACTIVE_CONFIGURATION
+  handleInt
 fi
-
-# we want to always make sure that the linking is undone after this script so we capture
-# ctrl-c. This has removed various bugs when developing locally.
-# See here - https://unix.stackexchange.com/a/407249
-trap handleInt SIGINT
-function handleInt {
-  ./undoLink.sh $ACTIVE_CONFIGURATION
-  printf ‘\n’
-  exit 0
-}
 # React applications can’t resolve symlinks, so instead of symlinking the
 # configuration to the react app, we copy over the configuration and symlink
 # the contents back to the configuration
