@@ -7,7 +7,10 @@ if [[ -z $1 ]]; then
   echo Usage: ./run.sh [portal-folder-name] [optional-reset-flag]
   exit 1
 fi
-
+if [ ! -z $2 ] && [ "$2" != "-r" ]; then
+  echo Usage: ./run.sh [portal-folder-name] [-r to reset last link]
+  exit 1
+fi
 # remove ending slash if directory given had a slash
 folderNoSlash=${1%/}
 
@@ -19,7 +22,7 @@ ACTIVE_CONFIGURATION=src/configurations/$folderNoSlash
 # See here - https://unix.stackexchange.com/a/407249
 trap handleInt SIGINT
 function handleInt {
-  remove symlink
+  # remove symlink
   rm -rf $ACTIVE_CONFIGURATION/
   # copy back contents
   cp -r $CONFIG_FOLDER/ $ACTIVE_CONFIGURATION/
@@ -38,13 +41,13 @@ fi
 
 if [ -h "$ACTIVE_CONFIGURATION/routesConfig.ts" ]; then
   if [ ! -z $2 ]; then
-    echo 'Removing previous symlink since -a was provided'
+    echo 'Removing previous symlink since -r was provided'
     handleInt
   else
     echo "
     Something went wrong: Detected symlink in $ACTIVE_CONFIGURATION
     If you ran ./linkConfig $folderNoSlash last rerun this script like so -
-    $ ./linkConfig $folderNoSlash -a
+    $ ./linkConfig $folderNoSlash -r
     Then fix the error that caused yarn start to fail (most likely need to clean install node_modules).
 
     Otherwise to reset the configuration run
