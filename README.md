@@ -1,27 +1,32 @@
 # A single codebase for Synapse portals
+
 ### Example sites:
+
 - [AMP-AD Knowledge Portal](https://adknowledgeportal.synapse.org)
 - [NF Data Portal](https://nf.synapse.org)
 - [CSBC / PS-ON Data Portal](https://csbc-pson.synapse.org)
 
-app-template/ is the main react app template that reads a standard configuration file. See app_template/README.md for details.
+### Building a portal
 
-configurations/ is a directory of configurations for each portal. See configurations/README.md on local developement.
+- src/configurations is the folder of all existing portals
+- src/configuration/config-shell is a portal template that can be copied and filled out where the TODOs are written.
 
-The project is run from app-template/src using `yarn && yarn start`.
+### Running a portal locally
 
 To run a portal locally, use the linkConfig script, which copies configuration files for the portal that you specify
 (replace \<portal-name\> with one of the subfolder names, like `nf` or `adknowledgeportal`):
+
 ```
-cd configurations
 ./linkConfig.sh <portal-name>
 ```
+
 # Build/Deploy Process
-./run.sh
+
+The code thats run on jenkins is in `run.sh`
 
 Usage:
-  Sync current with staging:
-    ./run.sh push-staging [portal-name]
+Sync current with staging:
+`$ ./run.sh push-staging [portal-name]`
 
-  Sync production with production:
-    ./run.sh WARNING-push-production [portal-name]
+Sync production with production:
+`$ ./run.sh WARNING-push-production [portal-name]`
