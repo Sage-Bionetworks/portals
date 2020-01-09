@@ -8,6 +8,7 @@ const org = 'DHART-SPORE'
 
 export const dhartSpore: BaseRoute = {
   name: org,
+  displayName: 'NCI DHART SPORE',
   to: `/Organizations/${org}`,
   isNested: false,
   synapseConfigArray: [
