@@ -136,7 +136,6 @@ export interface BaseRoute {
 export interface NestedRoute extends BaseRoute {
   isNested: true
   routes: Array<BaseRoute | NestedRoute>
-  icon?: string
 }
 
 export type GenericRoute = NestedRoute | BaseRoute

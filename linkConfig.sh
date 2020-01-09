@@ -22,8 +22,8 @@ ACTIVE_CONFIGURATION=src/configurations/$folderNoSlash
 # we want to always make sure that the linking is undone after this script so we capture
 # ctrl-c. This has removed various bugs when developing locally.
 # See here - https://unix.stackexchange.com/a/407249
-trap handleInt SIGINT
-function handleInt {
+trap undoSymlink SIGINT
+function undoSymlink {
   # remove symlink
   rm -rf $ACTIVE_CONFIGURATION/
   # copy back contents
@@ -48,7 +48,7 @@ fi
 if [ -h "$ACTIVE_CONFIGURATION/routesConfig.ts" ]; then
   if [ ! -z $2 ]; then
     echo 'Removing previous symlink since -r was provided'
-    handleInt
+    undoSymlink
   else
     echo "
     Something went wrong: Detected symlink in $ACTIVE_CONFIGURATION
