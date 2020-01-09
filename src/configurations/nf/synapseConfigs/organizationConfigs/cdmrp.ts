@@ -3,6 +3,7 @@ import { BaseRoute } from 'types/portal-config'
 
 export const cdmrp: BaseRoute = {
   name: 'CDMRP-NFRP',
+  displayName: 'CDMRP NFRP',
   to: '/Organizations/CDMRP-NFRP',
   isNested: false,
   synapseConfigArray: [
