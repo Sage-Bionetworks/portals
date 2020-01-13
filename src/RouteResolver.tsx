@@ -59,8 +59,7 @@ export const generateSynapseObjectHelper = (synapseConfig: SynapseConfig) => {
   if (style || className) {
     return (
       <div className={className} style={style}>
-        {' '}
-        {component}{' '}
+        {component}
       </div>
     )
   } else {
