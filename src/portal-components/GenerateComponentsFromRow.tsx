@@ -84,7 +84,7 @@ export default class GenerateComponentsFromRow extends React.Component<
         if (el.resolveSynId && el.columnName) {
           const index = mapColumnHeaderToRowIndex[el.columnName]
           const value: string = row[index]
-          value.split(',').forEach(val => {
+          value?.split(',').forEach(val => {
             if (!references.find(el => el.targetId === val)) {
               references.push({
                 targetId: val,
