@@ -22,7 +22,11 @@ import {
 } from './synapseConfigs/datasets'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
 import loadingScreen from './loadingScreen'
-import { toolsSchema, toolsSql, toolsEntityId } from './synapseConfigs/tools'
+import {
+  toolsConfiguration,
+  toolsSql,
+  toolsEntityId,
+} from './synapseConfigs/tools'
 import { filesSql, filesEntityId } from './synapseConfigs/files'
 import DatasetSvg from './style/Dataset.svg'
 import {
@@ -131,8 +135,7 @@ const routes: GenericRoute[] = [
           entityId: toolsEntityId,
           sql: toolsSql,
           limit: homeLimit,
-          type: SynapseConstants.GENERIC_CARD,
-          genericCardSchema: toolsSchema,
+          ...toolsConfiguration,
         },
       },
     ],
