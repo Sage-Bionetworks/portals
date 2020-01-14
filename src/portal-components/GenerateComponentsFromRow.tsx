@@ -84,14 +84,13 @@ export default class GenerateComponentsFromRow extends React.Component<
         if (el.resolveSynId && el.columnName) {
           const index = mapColumnHeaderToRowIndex[el.columnName]
           const value: string = row[index]
-          value &&
-            value.split(',').forEach(val => {
-              if (!references.find(el => el.targetId === val)) {
-                references.push({
-                  targetId: val,
-                })
-              }
-            })
+          value?.split(',').forEach(val => {
+            if (!references.find(el => el.targetId === val)) {
+              references.push({
+                targetId: val,
+              })
+            }
+          })
         }
       })
       if (references.length === 0) {
@@ -112,11 +111,9 @@ export default class GenerateComponentsFromRow extends React.Component<
   }
 
   handleMenuClick = (index: number) => {
-    const wrapper =
-      this.ref.current &&
-      this.ref.current.querySelector<HTMLDivElement>(
-        `#${COMPONENT_ID_PREFIX}${index}`,
-      )
+    const wrapper = this.ref.current?.querySelector<HTMLDivElement>(
+      `#${COMPONENT_ID_PREFIX}${index}`,
+    )
     if (wrapper) {
       // https://stackoverflow.com/a/49924496
       const offset = 85

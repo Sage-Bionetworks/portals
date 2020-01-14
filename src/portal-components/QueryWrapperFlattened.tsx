@@ -8,6 +8,7 @@ import {
   insertConditionsFromSearchParams,
   SQLOperator,
 } from 'synapse-react-client/dist/utils/modules/sqlFunctions'
+import { cloneDeep } from 'lodash'
 
 type SearchParams = {
   searchParams?: {
@@ -33,21 +34,18 @@ const QueryWrapperFlattened: React.FunctionComponent<QueryWrapperFlattenedProps>
     sqlOperator,
     ...rest
   } = props
+  let derivedQueryRequestFromSearchParams = cloneDeep(initQueryRequest)
   if (searchParams) {
-    let sqlUsed = initQueryRequest.query.sql
-    if (searchParams) {
-      sqlUsed = insertConditionsFromSearchParams(
-        searchParams,
-        initQueryRequest.query.sql,
-        sqlOperator,
-      )
-    }
-    initQueryRequest.query.sql = sqlUsed
+    derivedQueryRequestFromSearchParams.query.sql = insertConditionsFromSearchParams(
+      searchParams,
+      derivedQueryRequestFromSearchParams.query.sql,
+      sqlOperator,
+    )
   }
   return (
     <SynapseComponents.QueryWrapper
       {...rest}
-      initQueryRequest={initQueryRequest}
+      initQueryRequest={derivedQueryRequestFromSearchParams}
     >
       {link && linkText ? (
         <SynapseComponents.StackedBarChart
