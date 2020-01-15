@@ -12,13 +12,13 @@ const rgbIndex = 6
 
 export const toolsConfiguration: CardConfiguration = {
   type: SynapseConstants.GENERIC_CARD,
-  secondaryLabelLimit: 5,
+  secondaryLabelLimit: 4,
   genericCardSchema: {
     type: SynapseConstants.TOOL,
     title: 'toolName',
+    description: 'description',
     secondaryLabels: [
-      'Description',
-      'PublicationTitle	',
+      'PublicationTitle',
       'projectId',
       'inputDataType',
       'outputDataType',
