@@ -24,6 +24,7 @@ export const toolsConfiguration: CardConfiguration = {
       'outputDataType',
       'softwareLanguage',
       'study',
+      'consortium',
     ],
     link: 'URL',
   },
