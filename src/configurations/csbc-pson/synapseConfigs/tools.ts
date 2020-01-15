@@ -1,26 +1,33 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from 'types/portal-config'
 import loadingScreen from '../loadingScreen'
-import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import { facetAliases } from './commonProps'
-export const toolsSql = 'SELECT * FROM syn9898965'
-export const toolsEntityId = 'syn9898965'
+import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
+export const toolsSql = 'SELECT * FROM syn21488853'
+export const toolsEntityId = 'syn21488853'
 const entityId = toolsEntityId
 const sql = toolsSql
 const unitDescription = 'Tools'
 const rgbIndex = 6
 
-export const toolsSchema: GenericCardSchema = {
-  type: SynapseConstants.TOOL,
-  title: 'toolName',
-  secondaryLabels: [
-    'inputDataType',
-    'outputDataType',
-    'softwareLanguage',
-    'study',
-    'consortium',
-  ],
-  link: 'id',
+export const toolsConfiguration: CardConfiguration = {
+  type: SynapseConstants.GENERIC_CARD,
+  secondaryLabelLimit: 5,
+  genericCardSchema: {
+    type: SynapseConstants.TOOL,
+    title: 'toolName',
+    secondaryLabels: [
+      'Description',
+      'PublicationTitle	',
+      'projectId',
+      'inputDataType',
+      'outputDataType',
+      'softwareLanguage',
+      'study',
+      'consortium',
+    ],
+    link: 'URL',
+  },
 }
 
 export const tools: HomeExploreConfig = {
@@ -55,11 +62,7 @@ export const tools: HomeExploreConfig = {
       rgbIndex,
       unitDescription,
       entityId,
-      cardConfiguration: {
-        type: SynapseConstants.GENERIC_CARD,
-        genericCardSchema: toolsSchema,
-        secondaryLabelLimit: 5,
-      },
+      cardConfiguration: toolsConfiguration,
       stackedBarChartConfiguration: {
         loadingScreen,
       },
@@ -84,6 +87,14 @@ export const tools: HomeExploreConfig = {
           {
             columnName: 'consortium',
             hintText: 'PS-ON',
+          },
+          {
+            columnName: 'Description',
+            hintText: 'module',
+          },
+          {
+            columnName: 'PublicationTitle',
+            hintText: 'modeling',
           },
         ],
       },
