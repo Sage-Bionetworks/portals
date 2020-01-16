@@ -5,6 +5,7 @@ export const facetAliases = {
   diseaseType: 'Tumor Type',
   'Publication Year': 'Year',
   grantNumber: 'Grant',
+  projectId: 'Grant',
   fileFormat: 'Data Format',
   sex: 'Gender',
   inputDataType: 'Input Data',
