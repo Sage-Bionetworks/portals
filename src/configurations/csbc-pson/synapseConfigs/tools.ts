@@ -28,6 +28,12 @@ export const toolsConfiguration: CardConfiguration = {
     ],
     link: 'URL',
   },
+  labelLinkConfig: [
+    {
+      isMarkdown: true,
+      matchColumnName: 'PublicationTitle',
+    },
+  ],
 }
 
 export const tools: HomeExploreConfig = {
