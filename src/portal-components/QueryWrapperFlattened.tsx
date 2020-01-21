@@ -4,11 +4,11 @@ import loadingScreen from '../config/loadingScreen'
 import { QueryWrapperProps } from 'synapse-react-client/dist/containers/QueryWrapper'
 import { StackedBarChartProps } from 'synapse-react-client/dist/containers/StackedBarChart'
 import { SynapseTableProps } from 'synapse-react-client/dist/containers/table/SynapseTable'
+import { cloneDeep } from 'lodash'
 import {
   insertConditionsFromSearchParams,
   SQLOperator,
-} from 'synapse-react-client/dist/utils/modules/sqlFunctions'
-import { cloneDeep } from 'lodash'
+} from 'synapse-react-client/dist/utils/functions/sqlFunctions'
 
 type SearchParams = {
   searchParams?: {
