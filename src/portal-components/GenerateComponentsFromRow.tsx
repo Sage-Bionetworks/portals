@@ -2,7 +2,7 @@ import { Dictionary } from 'lodash'
 import * as React from 'react'
 import { generateSynapseObject } from 'RouteResolver'
 import { SynapseClient, SynapseConstants } from 'synapse-react-client'
-import { insertConditionsFromSearchParams } from 'synapse-react-client/dist/utils/modules/sqlFunctions'
+import { insertConditionsFromSearchParams } from 'synapse-react-client/dist/utils/functions/sqlFunctions'
 import {
   EntityHeader,
   PaginatedResults,
