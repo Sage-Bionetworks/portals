@@ -4,10 +4,14 @@ import docTitleConfig from './config/docTitleConfig'
 import { SynapseClient, SynapseConstants } from 'synapse-react-client'
 import { withCookies, ReactCookieProps } from 'react-cookie'
 import { DOWNLOAD_FILES_MENU_TEXT } from 'synapse-react-client/dist/containers/table/SynapseTableConstants'
+import { UserProfile } from 'synapse-react-client/dist/utils/synapseTypes'
+
 export type AppInitializerState = {
   token: string
   showLoginDialog: boolean
+  userProfile: UserProfile | undefined
 }
+
 // pendo's declaration should be picked up by node_modules/@types/pendo-io-browser but is not
 declare var pendo: any
 export const TokenContext = React.createContext('')
@@ -15,16 +19,22 @@ export const TokenContext = React.createContext('')
 type Props = RouteComponentProps & ReactCookieProps
 
 export type SignInProps = {
+  userProfile: UserProfile | undefined
+  resetSession: Function
+  establishSession: Function
   showLoginDialog: boolean
   onSignIn: Function
   handleCloseLoginDialog: Function
 }
+
+const COOKIE_CONFIG_KEY = 'org.sagebionetworks.security.cookies.portal.config'
 
 class AppInitializer extends React.Component<Props, AppInitializerState> {
   constructor(props: Props) {
     super(props)
     this.state = {
       token: '',
+      userProfile: undefined,
       showLoginDialog: false,
     }
     this.initializePendo = this.initializePendo.bind(this)
@@ -33,16 +43,14 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
     )
   }
 
-  componentDidMount() {
-    if (document.title !== docTitleConfig.name) {
-      document.title = docTitleConfig.name
-    }
-    document
-      .querySelector('meta[name="description"]')!
-      .setAttribute('content', docTitleConfig.description)
+  resetSession = () => {
+    const { cookies } = this.props
+    SynapseClient.signOut(cookies, this.establishSession)
+  }
 
+  establishSession = () => {
     // we return the chained promises so that any caught error is propogated to the last catch statement
-    SynapseClient.getSessionTokenFromCookie()
+    SynapseClient.getSessionTokenFromCookie(this.props.cookies)
       .then(sessionToken => {
         if (sessionToken) {
           return SynapseClient.putRefreshSessionToken(sessionToken)
@@ -52,6 +60,12 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
                 this.setState({ token: sessionToken })
                 return SynapseClient.getUserProfile(sessionToken).then(
                   userProfile => {
+                    if (userProfile.profilePicureFileHandleId) {
+                      userProfile.clientPreSignedURL = `https://www.synapse.org/Portal/filehandleassociation?associatedObjectId=${userProfile.ownerId}&associatedObjectType=UserProfileAttachment&fileHandleId=${userProfile.profilePicureFileHandleId}`
+                    }
+                    this.setState({
+                      userProfile,
+                    })
                     this.initializePendo(
                       userProfile.ownerId,
                       `${userProfile.userName}@synapse.org`,
@@ -62,8 +76,14 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
             )
             .catch(err => {
               console.log('err on putRefreshSessionToken = ', err)
-              SynapseClient.signOut()
+              SynapseClient.signOut(this.props.cookies)
+              this.initializePendo()
             })
+        } else {
+          this.setState({
+            token: '',
+            userProfile: undefined,
+          })
         }
       })
       .catch(_err => {
@@ -72,6 +92,22 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
         // Clear their session token since its stale, components below can then safely check if the user is signed
         // by checking if token is defined or not
       })
+  }
+
+  componentDidMount() {
+    if (document.title !== docTitleConfig.name) {
+      document.title = docTitleConfig.name
+    }
+    document
+      .querySelector('meta[name="description"]')!
+      .setAttribute('content', docTitleConfig.description)
+
+    this.establishSession()
+    this.props.cookies!.addChangeListener(event => {
+      if (event.name === SynapseClient.SESSION_TOKEN_COOKIE_KEY) {
+        this.setState({ token: event.value })
+      }
+    })
     // Technically, the AppInitializer is only mounted once during the portal app lifecycle.
     // But it's best practice to clean up the global listener on component unmount.
     window.addEventListener('click', this.updateSynapseCallbackCookie)
@@ -145,7 +181,10 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
           } else {
             const props: SignInProps = {
               showLoginDialog: this.state.showLoginDialog,
+              establishSession: this.establishSession,
               onSignIn: this.onSignIn,
+              userProfile: this.state.userProfile,
+              resetSession: this.resetSession,
               handleCloseLoginDialog: this.handleCloseLoginDialog,
             }
             return React.cloneElement(child, props)
@@ -221,15 +260,11 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
       ? '.synapse.org'
       : undefined
     // Cookies provider exists above AppInitializer so the cookies prop will exist
-    this.props.cookies.set(
-      'org.sagebionetworks.security.cookies.portal.config',
-      JSON.stringify(cookieValue),
-      {
-        path: '/',
-        domain: domainValue,
-        expires: expireDate,
-      },
-    )
+    this.props.cookies.set(COOKIE_CONFIG_KEY, JSON.stringify(cookieValue), {
+      path: '/',
+      domain: domainValue,
+      maxAge: 10,
+    })
   }
 }
 

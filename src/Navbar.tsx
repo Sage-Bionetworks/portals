@@ -5,22 +5,11 @@ import { GenericRoute } from 'types/portal-config'
 import logoHeaderConfig from './config/logoHeaderConfig'
 import Dialog from '@material-ui/core/Dialog'
 import Dropdown from 'react-bootstrap/Dropdown'
-import {
-  SynapseComponents,
-  SynapseClient,
-  SynapseConstants,
-} from 'synapse-react-client'
+import { SynapseComponents, SynapseConstants } from 'synapse-react-client'
 import UserCard from 'synapse-react-client/dist/containers/UserCard'
 import { TokenContext, SignInProps } from './AppInitializer'
 import SvgIcon from '@material-ui/core/SvgIcon'
-import { signOut } from 'synapse-react-client/dist/utils/SynapseClient'
-import { UserProfile } from 'synapse-react-client/dist/utils/synapseTypes/'
-
-export type NavbarState = {
-  showLoginDialog: boolean
-  token: string | undefined
-  userProfile: UserProfile | undefined
-}
+import { ReactCookieProps, withCookies } from 'react-cookie'
 
 type SynapseSettingLink = {
   text: string
@@ -28,7 +17,7 @@ type SynapseSettingLink = {
   settingSubPath?: string
 }
 
-export class Navbar extends React.Component<{}, NavbarState> {
+class Navbar extends React.Component<{}, {}> {
   synapseQuickLinks: SynapseSettingLink[] = [
     {
       text: 'Profile',
@@ -57,16 +46,6 @@ export class Navbar extends React.Component<{}, NavbarState> {
     },
   ]
 
-  constructor(props: SignInProps) {
-    super(props)
-    const state: NavbarState = {
-      token: undefined,
-      userProfile: undefined,
-      showLoginDialog: false,
-    }
-    this.state = state
-  }
-
   // given the hash, decide if the link should have a bottom border
   getBorder = (name: string) => {
     if (name === '') {
@@ -76,41 +55,23 @@ export class Navbar extends React.Component<{}, NavbarState> {
     const hash = window.location.hash.substring(2)
     return hash.includes(name) ? 'bottom-border' : ''
   }
-  componentDidMount() {
-    this.getUserProfile()
-  }
-  componentDidUpdate() {
-    this.getUserProfile()
-  }
-  getUserProfile = () => {
-    const newToken = this.context
-    if (
-      newToken &&
-      (!this.state.userProfile || this.state.token !== newToken)
-    ) {
-      SynapseClient.getUserProfile(newToken)
-        .then(userProfile => {
-          if (userProfile.profilePicureFileHandleId) {
-            userProfile.clientPreSignedURL = `https://www.synapse.org/Portal/filehandleassociation?associatedObjectId=${userProfile.ownerId}&associatedObjectType=UserProfileAttachment&fileHandleId=${userProfile.profilePicureFileHandleId}`
-          }
-          this.setState({
-            userProfile,
-            token: newToken,
-          })
-        })
-        .catch(_err => {
-          console.error('user profile could not be fetched ', _err)
-        })
-    }
+
+  goToTop = (_event: any) => {
+    window.scroll({ top: 0 })
   }
 
   render() {
-    const goToTop = (_event: any) => {
-      window.scroll({ top: 0 })
-    }
-    const { onSignIn, handleCloseLoginDialog, showLoginDialog } = this
-      .props as SignInProps
+    const {
+      onSignIn,
+      handleCloseLoginDialog,
+      showLoginDialog,
+      cookies,
+      establishSession,
+      resetSession,
+      userProfile,
+    } = this.props as SignInProps & ReactCookieProps
     const { name, icon } = logoHeaderConfig
+    const token: string = this.context
     const imageElement = icon ? (
       <img alt="navigation logo" className="nav-logo" src={icon} />
     ) : (
@@ -127,13 +88,12 @@ export class Navbar extends React.Component<{}, NavbarState> {
       hostname.includes('.synapse.org') ||
       hostname.includes('127.0.0.1') ||
       hostname.includes('localhost')
-    const { userProfile } = this.state
     return (
       <React.Fragment>
         <nav className="flex-display nav">
           <div className="center-content nav-logo-container">
             <Link
-              onClick={goToTop}
+              onClick={this.goToTop}
               style={{ display: 'flex', alignItems: 'center' }}
               to="/"
               id="home-link"
@@ -158,7 +118,9 @@ export class Navbar extends React.Component<{}, NavbarState> {
                   open={showLoginDialog}
                 >
                   <SynapseComponents.Login
-                    token={this.state.token}
+                    cookies={cookies}
+                    sessionCallback={establishSession}
+                    token={token}
                     theme={'light'}
                     icon={true}
                   />
@@ -205,7 +167,7 @@ export class Navbar extends React.Component<{}, NavbarState> {
                   <Dropdown.Item
                     className="SRC-primary-background-color-hover SRC-nested-color center-content"
                     // @ts-ignore
-                    onClick={() => signOut()}
+                    onClick={resetSession}
                   >
                     Sign Out
                   </Dropdown.Item>
@@ -291,3 +253,4 @@ export class Navbar extends React.Component<{}, NavbarState> {
   }
 }
 Navbar.contextType = TokenContext
+export default withCookies(Navbar)
