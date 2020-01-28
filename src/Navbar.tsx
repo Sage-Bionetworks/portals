@@ -65,8 +65,7 @@ class Navbar extends React.Component<{}, {}> {
       onSignIn,
       handleCloseLoginDialog,
       showLoginDialog,
-      cookies,
-      establishSession,
+      getSession,
       resetSession,
       userProfile,
     } = this.props as SignInProps & ReactCookieProps
@@ -118,8 +117,7 @@ class Navbar extends React.Component<{}, {}> {
                   open={showLoginDialog}
                 >
                   <SynapseComponents.Login
-                    cookies={cookies}
-                    sessionCallback={establishSession}
+                    sessionCallback={() => getSession()}
                     token={token}
                     theme={'light'}
                     icon={true}
@@ -167,7 +165,7 @@ class Navbar extends React.Component<{}, {}> {
                   <Dropdown.Item
                     className="SRC-primary-background-color-hover SRC-nested-color center-content"
                     // @ts-ignore
-                    onClick={resetSession}
+                    onClick={() => resetSession()}
                   >
                     Sign Out
                   </Dropdown.Item>

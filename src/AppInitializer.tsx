@@ -21,7 +21,7 @@ type Props = RouteComponentProps & ReactCookieProps
 export type SignInProps = {
   userProfile: UserProfile | undefined
   resetSession: Function
-  establishSession: Function
+  getSession: Function
   showLoginDialog: boolean
   onSignIn: Function
   handleCloseLoginDialog: Function
@@ -44,13 +44,15 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
   }
 
   resetSession = () => {
-    const { cookies } = this.props
-    SynapseClient.signOut(cookies, this.establishSession)
+    SynapseClient.signOut(this.getSession)
+    this.setState({
+      showLoginDialog: false,
+    })
   }
 
-  establishSession = () => {
+  getSession = () => {
     // we return the chained promises so that any caught error is propogated to the last catch statement
-    SynapseClient.getSessionTokenFromCookie(this.props.cookies)
+    SynapseClient.getSessionTokenFromCookie()
       .then(sessionToken => {
         if (sessionToken) {
           return SynapseClient.putRefreshSessionToken(sessionToken)
@@ -76,7 +78,7 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
             )
             .catch(err => {
               console.log('err on putRefreshSessionToken = ', err)
-              SynapseClient.signOut(this.props.cookies)
+              SynapseClient.signOut()
               this.initializePendo()
             })
         } else {
@@ -102,12 +104,7 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
       .querySelector('meta[name="description"]')!
       .setAttribute('content', docTitleConfig.description)
 
-    this.establishSession()
-    this.props.cookies!.addChangeListener(event => {
-      if (event.name === SynapseClient.SESSION_TOKEN_COOKIE_KEY) {
-        this.setState({ token: event.value })
-      }
-    })
+    this.getSession()
     // Technically, the AppInitializer is only mounted once during the portal app lifecycle.
     // But it's best practice to clean up the global listener on component unmount.
     window.addEventListener('click', this.updateSynapseCallbackCookie)
@@ -142,7 +139,7 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
     window.removeEventListener('click', this.updateSynapseCallbackCookie)
   }
 
-  onSignIn = (_event: any) => {
+  onSignIn = () => {
     this.setState({
       showLoginDialog: true,
     })
@@ -181,7 +178,7 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
           } else {
             const props: SignInProps = {
               showLoginDialog: this.state.showLoginDialog,
-              establishSession: this.establishSession,
+              getSession: this.getSession,
               onSignIn: this.onSignIn,
               userProfile: this.state.userProfile,
               resetSession: this.resetSession,
