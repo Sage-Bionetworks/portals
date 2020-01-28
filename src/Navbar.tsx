@@ -9,7 +9,6 @@ import { SynapseComponents, SynapseConstants } from 'synapse-react-client'
 import UserCard from 'synapse-react-client/dist/containers/UserCard'
 import { TokenContext, SignInProps } from './AppInitializer'
 import SvgIcon from '@material-ui/core/SvgIcon'
-import { ReactCookieProps, withCookies } from 'react-cookie'
 
 type SynapseSettingLink = {
   text: string
@@ -17,7 +16,7 @@ type SynapseSettingLink = {
   settingSubPath?: string
 }
 
-class Navbar extends React.Component<{}, {}> {
+class Navbar extends React.Component {
   synapseQuickLinks: SynapseSettingLink[] = [
     {
       text: 'Profile',
@@ -68,7 +67,7 @@ class Navbar extends React.Component<{}, {}> {
       getSession,
       resetSession,
       userProfile,
-    } = this.props as SignInProps & ReactCookieProps
+    } = this.props as SignInProps
     const { name, icon } = logoHeaderConfig
     const token: string = this.context
     const imageElement = icon ? (
@@ -251,4 +250,4 @@ class Navbar extends React.Component<{}, {}> {
   }
 }
 Navbar.contextType = TokenContext
-export default withCookies(Navbar)
+export default Navbar
