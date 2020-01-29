@@ -2,6 +2,7 @@ import * as React from 'react'
 import { Link } from 'react-router-dom'
 import footerConfig from './config/footerConfig'
 import logoFooterConfig from './config/logoFooterConfig'
+import Versions from 'portal-components/Versions'
 
 export const Footer: React.SFC<{}> = () => {
   const goToTop = (_event: any) => {
@@ -22,6 +23,7 @@ export const Footer: React.SFC<{}> = () => {
         </Link>
       </div>
       <div id="portal-contact-footer" className="center-content">
+        <Versions />
         <a
           rel="noopener noreferrer"
           target={
