@@ -187,33 +187,52 @@ class Navbar extends React.Component {
                   // handle the case when the menu has sub options
                   const plainRoutes = el.routes as GenericRoute[]
                   return (
-                    <Dropdown className={this.getBorder(el.name)}>
-                      <Dropdown.Toggle
-                        variant="light"
-                        id={displayName}
-                        className="center-content nav-button-container nav-button"
-                      >
-                        {displayName}
-                      </Dropdown.Toggle>
-                      <Dropdown.Menu className="portal-nav-menu">
-                        {plainRoutes.map(route => {
-                          if (route.hideRouteFromNavbar) {
-                            return false
-                          }
-                          const routeDisplayName =
-                            route.displayName || route.name
-                          return (
-                            <Dropdown.Item
-                              key={route.name}
-                              className="SRC-primary-background-color-hover SRC-nested-color center-content"
-                              href={`#${route.to}`}
-                            >
-                              {routeDisplayName}
-                            </Dropdown.Item>
-                          )
-                        })}
-                      </Dropdown.Menu>
-                    </Dropdown>
+                    <>
+                      {plainRoutes.map(route => {
+                        // Add anchors to the DOM for a crawler to find.  This is an attempt to fix an issue where all routes are Excluded from the index.
+                        if (route.hideRouteFromNavbar) {
+                          return false
+                        }
+                        const routeDisplayName =
+                          route.displayName || route.name
+                        return (
+                          <a
+                            key={`${route.name}-seo-anchor`}
+                            className="hide"
+                            href={`#${route.to}`}
+                          >
+                            {routeDisplayName}
+                          </a>
+                        )
+                      })}
+                      <Dropdown className={this.getBorder(el.name)}>
+                        <Dropdown.Toggle
+                          variant="light"
+                          id={displayName}
+                          className="center-content nav-button-container nav-button"
+                        >
+                          {displayName}
+                        </Dropdown.Toggle>
+                        <Dropdown.Menu className="portal-nav-menu">
+                          {plainRoutes.map(route => {
+                            if (route.hideRouteFromNavbar) {
+                              return false
+                            }
+                            const routeDisplayName =
+                              route.displayName || route.name
+                            return (
+                              <Dropdown.Item
+                                key={route.name}
+                                className="SRC-primary-background-color-hover SRC-nested-color center-content"
+                                href={`#${route.to}`}
+                              >
+                                {routeDisplayName}
+                              </Dropdown.Item>
+                            )
+                          })}
+                        </Dropdown.Menu>
+                      </Dropdown>
+                    </>
                   )
                 }
                 // treat it as standard anchor tag
