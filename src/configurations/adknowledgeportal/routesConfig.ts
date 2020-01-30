@@ -404,17 +404,8 @@ const routes: GenericRoute[] = [
     name: 'News',
     to: '/News',
     isNested: false,
-    synapseConfigArray: [
-      {
-        name: 'Markdown',
-        title: 'News',
-        props: {
-          markdown:
-            'The latest from the AMP-AD Community, including the latest data releases, updates such as events and stories, and links to the quarterly newsletter\n---------',
-        },
-      },
-      news,
-    ],
+    synapseConfigArray: news,
+    programmaticRouteConfig: news,
   },
 ]
 
