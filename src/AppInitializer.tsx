@@ -50,50 +50,44 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
     })
   }
 
-  getSession = () => {
-    // we return the chained promises so that any caught error is propogated to the last catch statement
-    SynapseClient.getSessionTokenFromCookie()
-      .then(sessionToken => {
-        if (sessionToken) {
-          return SynapseClient.putRefreshSessionToken(sessionToken)
-            .then(
-              // backend doesn't return a response for this call, its empty
-              _response => {
-                this.setState({ token: sessionToken })
-                return SynapseClient.getUserProfile(sessionToken).then(
-                  userProfile => {
-                    if (userProfile.profilePicureFileHandleId) {
-                      userProfile.clientPreSignedURL = `https://www.synapse.org/Portal/filehandleassociation?associatedObjectId=${userProfile.ownerId}&associatedObjectType=UserProfileAttachment&fileHandleId=${userProfile.profilePicureFileHandleId}`
-                    }
-                    this.setState({
-                      userProfile,
-                    })
-                    this.initializePendo(
-                      userProfile.ownerId,
-                      `${userProfile.userName}@synapse.org`,
-                    )
-                  },
-                )
-              },
-            )
-            .catch(err => {
-              console.log('err on putRefreshSessionToken = ', err)
-              SynapseClient.signOut()
-              this.initializePendo()
-            })
-        } else {
-          this.setState({
-            token: '',
-            userProfile: undefined,
-          })
-        }
+  initAnonymousUserState = () => {
+    // reset token and user profile
+    this.setState({
+      token: '',
+      userProfile: undefined,
+    })
+    this.initializePendo()
+  }
+
+  getSession = async () => {
+    const token = await SynapseClient.getSessionTokenFromCookie()
+    if (!token) {
+      this.initAnonymousUserState()
+      return
+    }
+    try {
+      // try to refresh their session for convenience
+      await SynapseClient.putRefreshSessionToken(token)
+      this.setState({ token })
+      // get user profile
+      const userProfile = await SynapseClient.getUserProfile(token)
+      if (userProfile.profilePicureFileHandleId) {
+        userProfile.clientPreSignedURL = `https://www.synapse.org/Portal/filehandleassociation?associatedObjectId=${userProfile.ownerId}&associatedObjectType=UserProfileAttachment&fileHandleId=${userProfile.profilePicureFileHandleId}`
+      }
+      this.setState({
+        userProfile,
       })
-      .catch(_err => {
-        console.log('no token from cookie could be fetched ', _err)
-        this.initializePendo()
-        // Clear their session token since its stale, components below can then safely check if the user is signed
-        // by checking if token is defined or not
-      })
+      this.initializePendo(
+        userProfile.ownerId,
+        `${userProfile.userName}@synapse.org`,
+      )
+    } catch (e) {
+      console.error('Error on getSesssion: ', e)
+      // intentionally calling sign out because there token could be stale so we want
+      // the stored session to be cleared out.
+      SynapseClient.signOut(() => {})
+      this.initAnonymousUserState()
+    }
   }
 
   componentDidMount() {
@@ -115,24 +109,27 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
   // initialize pendo with the user's email and unique id, if user is anonymous then default values
   // for id and email are 'VISITOR_UNIQUE_ID' and 'n/a'respectively
   initializePendo(id = '', email = 'n/a') {
-    pendo.initialize({
-      sanitizeUrl: function(url: string) {
-        // NOTE: use pendo.normalizedUrl in the js console to see what url we send to Pendo for the page that you're on!
-        if (url.endsWith('#/')) {
-          url += 'Home' // special case, ability to target home page (empty route)
-        }
-        return url.replace('#/', '')
-      },
+    // had a bug where occasionally pendo wasn't loaded to the screen
+    if (Object.prototype.hasOwnProperty.call(window, 'pendo')) {
+      pendo.initialize({
+        sanitizeUrl: function(url: string) {
+          // NOTE: use pendo.normalizedUrl in the js console to see what url we send to Pendo for the page that you're on!
+          if (url.endsWith('#/')) {
+            url += 'Home' // special case, ability to target home page (empty route)
+          }
+          return url.replace('#/', '')
+        },
 
-      visitor: {
-        id,
-        email,
-      },
-      account: {
-        id: docTitleConfig.name,
-      },
-      excludeAllText: true, // Do not send DOM element text to Pendo
-    })
+        visitor: {
+          id,
+          email,
+        },
+        account: {
+          id: docTitleConfig.name,
+        },
+        excludeAllText: true, // Do not send DOM element text to Pendo
+      })
+    }
   }
 
   componentWillUnmount() {

@@ -55,7 +55,7 @@ class Navbar extends React.Component {
     return hash.includes(name) ? 'bottom-border' : ''
   }
 
-  goToTop = (_event: any) => {
+  goToTop = () => {
     window.scroll({ top: 0 })
   }
 

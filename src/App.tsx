@@ -8,9 +8,7 @@ import Navbar from './Navbar'
 import BetaBanner from './BetaBanner'
 import CookiesNotification from './CookiesNotification'
 import { CookiesProvider } from 'react-cookie'
-// @ts-ignore
 const Home = React.lazy(() => import('./Home'))
-// @ts-ignore
 const RouteResolver = React.lazy(() => import('./RouteResolver'))
 
 const App: React.SFC = () => {

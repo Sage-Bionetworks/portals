@@ -4,7 +4,7 @@ import footerConfig from './config/footerConfig'
 import logoFooterConfig from './config/logoFooterConfig'
 
 export const Footer: React.SFC<{}> = () => {
-  const goToTop = (_event: any) => {
+  const goToTop = () => {
     window.scroll({ top: 0, behavior: 'smooth' })
   }
   const { name, icon } = logoFooterConfig
