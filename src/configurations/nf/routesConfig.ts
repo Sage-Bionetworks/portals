@@ -29,6 +29,7 @@ import { cdmrp } from './synapseConfigs/organizationConfigs/cdmrp'
 import { buttonColors, facetAliases } from './synapseConfigs/commonProps'
 import { toolsSql, toolsCardConfiguration } from './synapseConfigs/tools'
 import { toolsEntityId } from './synapseConfigs/tools'
+import { gff } from './synapseConfigs/organizationConfigs/gff'
 
 const limit = 3
 
@@ -120,7 +121,6 @@ const routes: GenericRoute[] = [
         name: 'CardContainerLogic',
         title: 'ORGANIZATIONS',
         props: {
-          limit,
           loadingScreen,
           facetAliases,
           entityId: funders.entityId,
@@ -246,7 +246,7 @@ const routes: GenericRoute[] = [
   {
     name: 'Organizations',
     isNested: true,
-    routes: [ctf, ntap, dhartSpore, cdmrp],
+    routes: [ctf, ntap, dhartSpore, cdmrp, gff],
   },
   {
     name: 'About',
