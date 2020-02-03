@@ -9,6 +9,7 @@ import { SynapseComponents, SynapseConstants } from 'synapse-react-client'
 import UserCard from 'synapse-react-client/dist/containers/UserCard'
 import { TokenContext, SignInProps } from './AppInitializer'
 import SvgIcon from '@material-ui/core/SvgIcon'
+import './Navbar.scss'
 
 type SynapseSettingLink = {
   text: string
@@ -195,11 +196,12 @@ class Navbar extends React.Component {
                         }
                         const routeDisplayName =
                           route.displayName || route.name
+                        const hrefPrefix = window.location.href.substring(0, window.location.href.indexOf('#'))
                         return (
                           <a
                             key={`${route.name}-seo-anchor`}
-                            className="hide"
-                            href={`#${route.to}`}
+                            className="crawler-link"
+                            href={`${hrefPrefix}#${route.to}`}
                           >
                             {routeDisplayName}
                           </a>
