@@ -1,10 +1,12 @@
+
 import { HomeExploreConfig } from 'types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
 import loadingScreen from '../loadingScreen'
 
 const unitDescription = 'people'
+const title = 'PEOPLE'
 const rgbIndex = 2
-const sql = 'SELECT * FROM syn13897207'
+const sql = 'SELECT ownerID as ownerId, firstName, lastName, institution FROM syn13897207'
 const entityId = 'syn13897207'
 
 export const people: HomeExploreConfig = {
@@ -16,12 +18,10 @@ export const people: HomeExploreConfig = {
       loadingScreen,
       link: 'Explore/People',
       linkText: 'Explore People',
-      facet: 'Program',
       initQueryRequest: {
         entityId,
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
         partMask:
-          SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
           SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
         query: {
           sql,
@@ -33,33 +33,13 @@ export const people: HomeExploreConfig = {
     },
   },
   explorePageSynapseObject: {
-    name: 'QueryWrapperMenu',
+    name: 'CardContainerLogic',
     props: {
-      rgbIndex,
-      unitDescription,
-      entityId,
-      stackedBarChartConfiguration: {
-        loadingScreen,
-      },
-      name: 'People',
-      isConsistent: true,
-      cardConfiguration: {
-        type: SynapseConstants.MEDIUM_USER_CARD,
-      },
-      menuConfig: [
-        {
-          sql,
-          facet: 'Program',
-        },
-        {
-          sql,
-          facet: 'Grant Number',
-        },
-        {
-          sql,
-          facet: 'institution',
-        },
-      ],
+      type: SynapseConstants.MEDIUM_USER_CARD,
+      title,
+      sql,
+      entityId
     },
-  },
+  }
 }
+

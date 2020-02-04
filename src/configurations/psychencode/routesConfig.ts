@@ -139,35 +139,6 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        name: 'Publications',
-        to: '/Explore/Publications',
-        isNested: false,
-        synapseConfigArray: [
-          {
-            ...routeButtonControlWrapperProps,
-            props: {
-              ...routeButtonControlWrapperProps.props,
-              synapseConfig: publications.explorePageSynapseObject,
-            },
-          },
-        ],
-        programmaticRouteConfig: [
-          {
-            name: 'CardContainerLogic',
-            isOutsideContainer: true,
-            props: {
-              isHeader: true,
-              backgroundColor: '#407ba0',
-              entityId: publicationEntityId,
-              facetAliases,
-              ...publicationsCardConfiguration,
-              secondaryLabelLimit: Infinity,
-              sql: publicationSql,
-            },
-          },
-        ],
-      },
-      {
         name: 'Studies',
         to: '/Explore/Studies',
         isNested: false,
@@ -239,49 +210,32 @@ const routes: GenericRoute[] = [
             },
           },
         ],
-        programmaticRouteConfig: [
-          {
-            name: 'QueryWrapperFlattened',
-            title: 'Data',
-            props: {
-              initQueryRequest: {
-                entityId: filesEntityId,
-                partMask:
-                  SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
-                  SynapseConstants.BUNDLE_MASK_QUERY_COUNT |
-                  SynapseConstants.BUNDLE_MASK_QUERY_SELECT_COLUMNS |
-                  SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
-                concreteType:
-                  'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-                query: {
-                  sql: filesSql,
-                  selectedFacets: [],
-                  isConsistent: true,
-                  limit: 25,
-                  offset: 0,
-                },
-              },
-              loadingScreen,
-              sqlOperator: '=',
-              facetAliases,
-              rgbIndex: 0,
-              facet: 'consortium',
-              unitDescription: 'Files',
-              title: 'Dataset Files',
-            },
-          },
-        ],
       },
       {
-        name: 'Files',
-        to: '/Explore/Files',
+        name: 'Publications',
+        to: '/Explore/Publications',
         isNested: false,
         synapseConfigArray: [
           {
             ...routeButtonControlWrapperProps,
             props: {
               ...routeButtonControlWrapperProps.props,
-              synapseConfig: files.explorePageSynapseObject,
+              synapseConfig: publications.explorePageSynapseObject,
+            },
+          },
+        ],
+        programmaticRouteConfig: [
+          {
+            name: 'CardContainerLogic',
+            isOutsideContainer: true,
+            props: {
+              isHeader: true,
+              backgroundColor: '#407ba0',
+              entityId: publicationEntityId,
+              facetAliases,
+              ...publicationsCardConfiguration,
+              secondaryLabelLimit: Infinity,
+              sql: publicationSql,
             },
           },
         ],
@@ -303,6 +257,21 @@ const routes: GenericRoute[] = [
     ],
   },
   {
+    name: 'DataAccess',
+    displayName: 'Data Access',
+    to: '/DataAccess',
+    isNested: false,
+    synapseConfigArray: [
+      {
+        name: 'Markdown',
+        props: {
+          ownerId: 'syn4921369',
+          wikiId: '477467',
+        },
+      },
+    ],
+  },
+  {
     name: 'About',
     to: '/About',
     isNested: false,
@@ -310,8 +279,8 @@ const routes: GenericRoute[] = [
       {
         name: 'Markdown',
         props: {
-          ownerId: 'syn7080714',
-          wikiId: '470467',
+          ownerId: 'syn4921369',
+          wikiId: '235539',
         },
       },
     ],
