@@ -246,7 +246,7 @@ const routes: GenericRoute[] = [
   {
     name: 'Organizations',
     isNested: true,
-    routes: [ctf, ntap, dhartSpore, cdmrp, gff],
+    routes: [ctf, ntap, gff, dhartSpore, cdmrp],
   },
   {
     name: 'About',
