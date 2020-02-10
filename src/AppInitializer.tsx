@@ -110,10 +110,10 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
       pendo.initialize({
         sanitizeUrl: function(url: string) {
           // NOTE: use pendo.normalizedUrl in the js console to see what url we send to Pendo for the page that you're on!
-          if (url.endsWith('#/')) {
+          if (url.endsWith('/')) {
             url += 'Home' // special case, ability to target home page (empty route)
           }
-          return url.replace('#/', '')
+          return url.replace('/', '')
         },
 
         visitor: {
@@ -156,7 +156,7 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
       if (gtag) {
         gtag('config', 'UA-29804340-1', {
           page_location: window.location.href,
-          page_path: `/#${this.props.location.pathname}`,
+          page_path: `/${this.props.location.pathname}`,
         })
       }
     }
