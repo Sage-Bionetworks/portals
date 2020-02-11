@@ -118,7 +118,6 @@ class Navbar extends React.Component {
                 >
                   <SynapseComponents.Login
                     sessionCallback={() => getSession()}
-                    token={token}
                     theme={'light'}
                     icon={true}
                   />
