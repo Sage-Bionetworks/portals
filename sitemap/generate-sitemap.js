@@ -22,7 +22,7 @@ fs.readFile('src/config/routesConfig.ts', (err, data) => {
     m = regex.exec(routesConfigContent)
     if (m) {
       // assuming hash router
-      let path = `#${m[1]}`
+      let path = `${m[1]}`
       fileContent += `\t<url>\n\t\t<loc>${baseUrl}${path}</loc>\n\t\t<lastmod>${now}</lastmod>\n\t</url>\n`
     }
   } while (m)
