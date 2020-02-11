@@ -245,10 +245,8 @@ export default class GenerateComponentsFromRow extends React.Component<
       let entityTitle = ''
       if (resolveSynId) {
         // use entity name as either title or value according to resolveSynId
-        const entity =
-          entityHeaders &&
-          entityHeaders.results.find(el => el.id === value.trim())
-        const name = (entity && entity.name) || ''
+        const entity = entityHeaders?.results.find(el => el.id === value.trim())
+        const name = entity?.name ?? ''
         if (!name) {
           console.error('No value mapped for ', columnName)
           return <></>
@@ -270,7 +268,6 @@ export default class GenerateComponentsFromRow extends React.Component<
       }
       const injectedProps = injectPropsIntoConfig(value, el.name, {
         ...props,
-        ...searchParams,
       })
       const synapseConfigWithInjectedProps: SynapseConfig = {
         ...el,
@@ -282,8 +279,7 @@ export default class GenerateComponentsFromRow extends React.Component<
             {entityTitle && (
               <>
                 <h2>
-                  {' '}
-                  {el.title}: {entityTitle}{' '}
+                  {el.title}: {entityTitle}
                 </h2>
                 <hr />
               </>

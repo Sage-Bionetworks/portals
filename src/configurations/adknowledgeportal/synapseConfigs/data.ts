@@ -57,22 +57,22 @@ const data: HomeExploreConfig = {
         },
         {
           sql:
-            'SELECT species, dataType, id as file_id, specimenID, individualID, diagnosis, sex, consortium as "Program", grant, study as "Study", organ, tissue, cellType, assay, fileFormat FROM syn11346063',
+            'SELECT species, dataType, id as file_id, specimenID, individualID, diagnosis, sex, consortium as "Program", grant, study, organ, tissue, cellType, assay, fileFormat FROM syn11346063',
           facet: 'species',
         },
         {
           sql:
-            'SELECT organ, tissue, dataType, assay, id AS file_id, specimenID, individualID, diagnosis, sex, consortium as "Program", grant, study as "Study", species, cellType FROM syn11346063',
+            'SELECT organ, tissue, dataType, assay, id AS file_id, specimenID, individualID, diagnosis, sex, consortium as "Program", grant, study, species, cellType FROM syn11346063',
           facet: 'organ',
         },
         {
           sql:
-            'SELECT dataType, assay, study as "Study", id AS file_id, specimenID, individualID, diagnosis, sex, consortium as "Program", grant, species, organ, tissue, cellType, fileFormat FROM syn11346063',
+            'SELECT dataType, assay, study, id AS file_id, specimenID, individualID, diagnosis, sex, consortium as "Program", grant, species, organ, tissue, cellType, fileFormat FROM syn11346063',
           facet: 'dataType',
         },
         {
           sql:
-            'SELECT assay, fileFormat, id AS file_id, specimenID, individualID, diagnosis, sex, consortium as "Program", grant, study as "Study", species, organ, tissue, cellType, dataType  FROM syn11346063',
+            'SELECT assay, fileFormat, id AS file_id, specimenID, individualID, diagnosis, sex, consortium as "Program", grant, study, species, organ, tissue, cellType, dataType  FROM syn11346063',
           facet: 'assay',
         },
         {
