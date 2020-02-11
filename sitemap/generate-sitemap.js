@@ -11,7 +11,7 @@ fs.readFile('src/config/routesConfig.ts', (err, data) => {
     )
   }
 
-  const baseUrl = `https://${args[0]}.synapse.org/`
+  const baseUrl = `https://${args[0]}.synapse.org`
   const now = new Date().toISOString()
   let fileContent =
     '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
