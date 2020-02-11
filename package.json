@@ -22,7 +22,7 @@
     "react-spinners": "^0.6.1",
     "sass": "^1.5.1",
     "source-map-explorer": "^1.6.0",
-    "synapse-react-client": "1.13.3",
+    "synapse-react-client": "1.13.4",
     "react-bootstrap": "^1.0.0-beta.12",
     "typescript": "3.7.4"
   },
@@ -35,7 +35,7 @@
     "start": "npm-run-all -p watch-css start-js",
     "build": "yarn copy-favicon; yarn save-build-date; yarn run build-css && CI=false react-scripts build",
     "copy-test-configuration": "cp -r src/test-configuration/ src/config/",
-    "test": "yarn run copy-test-configuration && react-scripts test --env=jsdom --setupFiles ./src/tests/setupTests.ts",
+    "test": "yarn run copy-test-configuration && react-scripts test --transformIgnorePatterns \"node_modules/(?!(synapse-react-client|lodash-es|jest*)/)\" , --env=jsdom --setupFiles ./src/tests/setupTests.ts",
     "generate-sitemap": "node sitemap/generate-sitemap.js",
     "eject": "react-scripts eject"
   },

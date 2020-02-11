@@ -118,7 +118,6 @@ class Navbar extends React.Component {
                 >
                   <SynapseComponents.Login
                     sessionCallback={() => getSession()}
-                    token={token}
                     theme={'light'}
                     icon={true}
                   />
@@ -196,12 +195,11 @@ class Navbar extends React.Component {
                         }
                         const routeDisplayName =
                           route.displayName || route.name
-                        const hrefPrefix = window.location.href.substring(0, window.location.href.indexOf('#'))
                         return (
                           <a
                             key={`${route.name}-seo-anchor`}
                             className="crawler-link"
-                            href={`${hrefPrefix}#${route.to}`}
+                            href={`${route.to}`}
                           >
                             {routeDisplayName}
                           </a>
@@ -226,7 +224,7 @@ class Navbar extends React.Component {
                               <Dropdown.Item
                                 key={route.name}
                                 className="SRC-primary-background-color-hover SRC-nested-color center-content"
-                                href={`#${route.to}`}
+                                href={`${route.to}`}
                               >
                                 {routeDisplayName}
                               </Dropdown.Item>
