@@ -88,13 +88,13 @@ const files: HomeExploreConfig = {
           sql: `
             SELECT id AS "File ID", nf1Genotype as "NF1 Genotype", diagnosis, tumorType, species, individualID, dataType, assay, fileFormat, dataSubtype, studyName, fundingAgency, consortium, name AS "File Name", nf2Genotype as "NF2 Genotype", accessType, accessTeam  FROM syn16858331 where resourceType = 'experimentalData'
           `,
-          facet: 'nf1Genotype as "NF1 Genotype"',
+          facet: 'nf1Genotype',
         },
         {
           sql: `
             SELECT id AS "File ID", nf2Genotype as "NF2 Genotype", diagnosis, tumorType, species, individualID, dataType, assay, fileFormat, dataSubtype, studyName, fundingAgency, consortium, name AS "File Name",  nf1Genotype as "NF1 Genotype", accessType, accessTeam  FROM syn16858331 where resourceType = 'experimentalData'
           `,
-          facet: 'nf2Genotype as "NF2 Genotype"',
+          facet: 'nf2Genotype',
         },
         {
           sql: `
