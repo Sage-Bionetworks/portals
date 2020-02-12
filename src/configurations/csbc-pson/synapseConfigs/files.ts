@@ -8,10 +8,6 @@ export const filesEntityId = 'syn9630847'
 const entityId = filesEntityId
 export const filesSql = sql
 
-const facetAliases = {
-  name: 'File Name',
-}
-
 const rgbIndex = 8
 const unitDescription = 'files'
 const synapseId = 'syn9630847'
@@ -25,9 +21,6 @@ export const files: HomeExploreConfig = {
       facet,
       unitDescription,
       loadingScreen,
-      facetAliases: {
-        grantType: 'Grant Type',
-      },
       link: 'Explore/Files',
       linkText: 'Explore Files',
       initQueryRequest: {
@@ -59,7 +52,6 @@ export const files: HomeExploreConfig = {
         loadingScreen,
       },
       name: 'Files',
-      facetAliases,
       menuConfig: [
         {
           sql,
