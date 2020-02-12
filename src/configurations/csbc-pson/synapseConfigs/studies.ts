@@ -1,7 +1,7 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from 'types/portal-config'
 import loadingScreen from '../loadingScreen'
-import { facetAliases, detailPageLinks } from './commonProps'
+import { detailPageLinks } from './commonProps'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 const unitDescription = 'studies'
@@ -50,7 +50,6 @@ export const studies: HomeExploreConfig = {
       unitDescription,
       loadingScreen,
       facet: 'grantType',
-      facetAliases,
       link: 'Explore/Studies',
       linkText: 'Explore Studies',
       initQueryRequest: {
@@ -79,7 +78,6 @@ export const studies: HomeExploreConfig = {
         loadingScreen,
       },
       name: 'Studies',
-      facetAliases,
       searchConfiguration: {
         searchable: [
           {

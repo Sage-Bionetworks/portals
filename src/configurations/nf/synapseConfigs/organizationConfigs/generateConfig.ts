@@ -25,7 +25,7 @@ export const generateOrgConfig: ReturnSynapseConfigArray = (
 ) => {
   const studiesSql = `SELECT * FROM syn16787123 WHERE fundingAgency = '${org}'`
   const datasetsSql = `SELECT * FROM syn16859580 WHERE fundingAgency = '${org}'`
-  const filesSql = `SELECT id AS "File ID", fundingAgency AS "Funding Agency", studyName AS "Study Name", consortium AS "Consortium", dataType AS "Data Type", assay AS "Assay", diagnosis AS "Diagnosis", tumorType AS "Tumor Type", species AS "Species", fileFormat AS "File Format", individualID AS "Individual ID", dataSubtype AS "Data Subtype", nf1Genotype AS "NF1 Genotype", nf2Genotype AS "NF2 Genotype", name AS "File Name" FROM syn16858331 WHERE fundingAgency = '${org}'`
+  const filesSql = `SELECT id AS "File ID", fundingAgency, studyName, consortium, dataType, assay, diagnosis, tumorType, species, fileFormat, individualID, dataSubtype AS "Data Subtype", nf1Genotype AS "NF1 Genotype", nf2Genotype AS "NF2 Genotype", name AS "File Name" FROM syn16858331 WHERE fundingAgency = '${org}'`
   const publicationsSql = `SELECT * FROM syn16857542 WHERE fundingAgency = '${org}'`
   if (type === 'Studies') {
     if (sqlOnly) {

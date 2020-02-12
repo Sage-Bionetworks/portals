@@ -8,14 +8,6 @@ export const filesEntityId = 'syn9630847'
 const entityId = filesEntityId
 export const filesSql = sql
 
-const facetAliases = {
-  name: 'File Name',
-  centerName: 'Grant',
-  fileFormat: 'Data Format',
-  experimentalStrategy: 'Assay',
-  sex: 'Gender',
-}
-
 const rgbIndex = 8
 const unitDescription = 'files'
 const synapseId = 'syn9630847'
@@ -29,13 +21,10 @@ export const files: HomeExploreConfig = {
       facet,
       unitDescription,
       loadingScreen,
-      facetAliases: {
-        grantType: 'Grant Type',
-      },
       link: 'Explore/Files',
       linkText: 'Explore Files',
       initQueryRequest: {
-        entityId,
+        entityId: synapseId,
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
         partMask:
           SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
@@ -63,7 +52,6 @@ export const files: HomeExploreConfig = {
         loadingScreen,
       },
       name: 'Files',
-      facetAliases,
       menuConfig: [
         {
           sql,

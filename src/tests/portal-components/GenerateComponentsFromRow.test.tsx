@@ -250,15 +250,11 @@ describe('GenerateComponentsFromRowProps works', () => {
     const wrapper = await createMountedComponent(props)
     await wrapper.update()
     expect(wrapper.find(QueryWrapperFlattened)).toHaveLength(1)
-    const searchParms = {
-      [key]: MOCK_HEADER_NAME,
-    }
-    const withSearchParams = { ...tableSynapseConfig.props, ...searchParms }
     expect(spyOnInject).toHaveBeenCalled()
     expect(spyOnInject).toHaveBeenCalledWith(
       MOCK_HEADER_NAME,
       'QueryWrapperFlattened',
-      withSearchParams,
+      tableSynapseConfig.props,
     )
   })
 

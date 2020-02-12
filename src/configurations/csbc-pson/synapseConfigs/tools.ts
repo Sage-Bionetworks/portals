@@ -1,7 +1,6 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from 'types/portal-config'
 import loadingScreen from '../loadingScreen'
-import { facetAliases } from './commonProps'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 export const toolsSql = 'SELECT * FROM syn21488853'
 export const toolsEntityId = 'syn21488853'
@@ -44,7 +43,6 @@ export const tools: HomeExploreConfig = {
       unitDescription,
       loadingScreen,
       facet: 'consortium',
-      facetAliases,
       link: 'Explore/Tools',
       linkText: 'Explore Tools',
       initQueryRequest: {
@@ -105,7 +103,6 @@ export const tools: HomeExploreConfig = {
         ],
       },
       name: 'Tools',
-      facetAliases,
       menuConfig: [
         {
           sql,

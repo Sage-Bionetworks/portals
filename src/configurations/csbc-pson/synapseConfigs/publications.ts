@@ -2,7 +2,7 @@ import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from 'types/portal-config'
 import loadingScreen from '../loadingScreen'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
-import { facetAliases, detailPageLinks } from './commonProps'
+import { detailPageLinks } from './commonProps'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 export const publicationSql = 'SELECT * FROM syn10923842'
 export const publicationEntityId = 'syn10923842'
@@ -130,7 +130,6 @@ export const publications: HomeExploreConfig = {
         ],
       },
       name: 'Publications',
-      facetAliases,
       menuConfig: [
         {
           sql,

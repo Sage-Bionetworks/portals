@@ -7,5 +7,4 @@ export const facetAliases = {
   id: 'File ID',
   nf1Genotype: 'NF1 Genotype',
   nf2Genotype: 'NF2 Genotype',
-  name: 'Tool Name',
 }

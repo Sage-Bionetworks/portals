@@ -2,7 +2,7 @@ import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from 'types/portal-config'
 import loadingScreen from '../loadingScreen'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
-import { facetAliases, detailPageLinks } from './commonProps'
+import { detailPageLinks } from './commonProps'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 export const datasetsSql = `SELECT * FROM syn18488466 WHERE ( ( "is.dataset" = 'TRUE' ) )`
 export const datasetsEntityId = 'syn18488466'
@@ -74,7 +74,6 @@ export const datasets: HomeExploreConfig = {
           offset: 0,
         },
       },
-      facetAliases,
     },
   },
   explorePageSynapseObject: {
@@ -88,7 +87,6 @@ export const datasets: HomeExploreConfig = {
         loadingScreen,
       },
       name: 'Datasets',
-      facetAliases,
       searchConfiguration: {
         searchable: [
           {

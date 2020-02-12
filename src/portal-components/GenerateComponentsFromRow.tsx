@@ -18,6 +18,7 @@ import {
 } from 'types/portal-util-types'
 import './GenerateComponentsFromRow.scss'
 import injectPropsIntoConfig from './injectPropsIntoConfig'
+import { cloneDeep } from 'lodash'
 
 type State = {
   queryResultBundle: QueryResultBundle | undefined
@@ -227,6 +228,7 @@ export default class GenerateComponentsFromRow extends React.Component<
   private renderSynapseObjectFromData(el: RowSynapseConfig): React.ReactNode {
     const { queryResultBundle, entityHeaders } = this.state
     const { columnName = '', resolveSynId, props } = el
+    const deepCloneOfProps = cloneDeep(props)
     const row = queryResultBundle!.queryResult.queryResults.rows[0].values
     // map column name to index
     const mapColumnHeaderToRowIndex: Dictionary<number> = {}
@@ -245,10 +247,8 @@ export default class GenerateComponentsFromRow extends React.Component<
       let entityTitle = ''
       if (resolveSynId) {
         // use entity name as either title or value according to resolveSynId
-        const entity =
-          entityHeaders &&
-          entityHeaders.results.find(el => el.id === value.trim())
-        const name = (entity && entity.name) || ''
+        const entity = entityHeaders?.results.find(el => el.id === value.trim())
+        const name = entity?.name ?? ''
         if (!name) {
           console.error('No value mapped for ', columnName)
           return <></>
@@ -269,8 +269,7 @@ export default class GenerateComponentsFromRow extends React.Component<
         })
       }
       const injectedProps = injectPropsIntoConfig(value, el.name, {
-        ...props,
-        ...searchParams,
+        ...deepCloneOfProps,
       })
       const synapseConfigWithInjectedProps: SynapseConfig = {
         ...el,
@@ -282,8 +281,7 @@ export default class GenerateComponentsFromRow extends React.Component<
             {entityTitle && (
               <>
                 <h2>
-                  {' '}
-                  {el.title}: {entityTitle}{' '}
+                  {el.title}: {entityTitle}
                 </h2>
                 <hr />
               </>
