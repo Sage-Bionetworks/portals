@@ -18,6 +18,7 @@ import {
 } from 'types/portal-util-types'
 import './GenerateComponentsFromRow.scss'
 import injectPropsIntoConfig from './injectPropsIntoConfig'
+import { cloneDeep } from 'lodash'
 
 type State = {
   queryResultBundle: QueryResultBundle | undefined
@@ -227,6 +228,7 @@ export default class GenerateComponentsFromRow extends React.Component<
   private renderSynapseObjectFromData(el: RowSynapseConfig): React.ReactNode {
     const { queryResultBundle, entityHeaders } = this.state
     const { columnName = '', resolveSynId, props } = el
+    const deepCloneOfProps = cloneDeep(props)
     const row = queryResultBundle!.queryResult.queryResults.rows[0].values
     // map column name to index
     const mapColumnHeaderToRowIndex: Dictionary<number> = {}
@@ -267,7 +269,7 @@ export default class GenerateComponentsFromRow extends React.Component<
         })
       }
       const injectedProps = injectPropsIntoConfig(value, el.name, {
-        ...props,
+        ...deepCloneOfProps,
       })
       const synapseConfigWithInjectedProps: SynapseConfig = {
         ...el,
