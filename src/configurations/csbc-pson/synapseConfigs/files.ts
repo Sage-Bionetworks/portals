@@ -10,10 +10,6 @@ export const filesSql = sql
 
 const facetAliases = {
   name: 'File Name',
-  centerName: 'Grant',
-  fileFormat: 'Data Format',
-  experimentalStrategy: 'Assay',
-  sex: 'Gender',
 }
 
 const rgbIndex = 8
@@ -35,7 +31,7 @@ export const files: HomeExploreConfig = {
       link: 'Explore/Files',
       linkText: 'Explore Files',
       initQueryRequest: {
-        entityId,
+        entityId: synapseId,
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
         partMask:
           SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
