@@ -13,7 +13,6 @@ import {
   studyCardConfiguration,
   studiesEntityId,
 } from './synapseConfigs/studies'
-import { facetAliases } from './synapseConfigs/commonProps'
 import { publicationSql } from './synapseConfigs/publications'
 import {
   datasetsSql,
@@ -92,7 +91,6 @@ const routes: GenericRoute[] = [
         link: 'Explore/Studies',
         props: {
           loadingScreen,
-          facetAliases,
           entityId: studiesEntityId,
           sql: studiesSql,
           ...studyCardConfiguration,
@@ -105,7 +103,6 @@ const routes: GenericRoute[] = [
         link: 'Explore/Publications',
         props: {
           loadingScreen,
-          facetAliases,
           entityId: publicationEntityId,
           sql: publicationSql,
           ...publicationsCardConfiguration,
@@ -118,7 +115,6 @@ const routes: GenericRoute[] = [
         link: 'Explore/Datasets',
         props: {
           loadingScreen,
-          facetAliases,
           sql: datasetsSql,
           entityId: datasetsEntityId,
           limit: homeLimit,
@@ -131,7 +127,6 @@ const routes: GenericRoute[] = [
         link: 'Explore/Tools',
         props: {
           loadingScreen,
-          facetAliases,
           entityId: toolsEntityId,
           sql: toolsSql,
           limit: homeLimit,
@@ -239,7 +234,6 @@ const routes: GenericRoute[] = [
               isHeader: true,
               backgroundColor: '#407ba0',
               entityId: publicationEntityId,
-              facetAliases,
               ...publicationsCardConfiguration,
               secondaryLabelLimit: Infinity,
               sql: publicationSql,
@@ -269,7 +263,6 @@ const routes: GenericRoute[] = [
               backgroundColor: '#407ba0',
               entityId: studiesEntityId,
               loadingScreen,
-              facetAliases,
               ...studyCardConfiguration,
               secondaryLabelLimit: Infinity,
               sql: studiesSql,
@@ -330,7 +323,6 @@ const routes: GenericRoute[] = [
               secondaryLabelLimit: Infinity,
               entityId: datasetsEntityId,
               sql: datasetsSql,
-              facetAliases,
               iconOptions: {
                 dataset: DatasetSvg,
               },

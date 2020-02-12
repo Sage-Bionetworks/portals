@@ -1,7 +1,6 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from 'types/portal-config'
 import loadingScreen from '../loadingScreen'
-import { facetAliases } from './commonProps'
 import {
   GenericCardSchema,
   IconOptions,
@@ -54,7 +53,6 @@ export const grants: HomeExploreConfig = {
       loadingScreen,
       rgbIndex: 3,
       facet: 'grantType',
-      facetAliases,
       link: 'Explore/Grants',
       linkText: 'Explore Grants',
       initQueryRequest: {
@@ -83,7 +81,6 @@ export const grants: HomeExploreConfig = {
       },
       name: 'Grants',
       entityId,
-      facetAliases,
       searchConfiguration: {
         searchable: [
           {
