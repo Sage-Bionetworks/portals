@@ -5,7 +5,7 @@ import logoFooterConfig from './config/logoFooterConfig'
 import Versions from 'portal-components/Versions'
 
 export const Footer: React.SFC<{}> = () => {
-  const goToTop = (_event: any) => {
+  const goToTop = () => {
     window.scroll({ top: 0, behavior: 'smooth' })
   }
   const { name, icon } = logoFooterConfig

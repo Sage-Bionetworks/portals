@@ -31,7 +31,7 @@ const routes: GenericRoute[] = [
       {
         name: 'SynapseFormSubmissionsGrid',
         props: {
-          pathpart: '#/Apply',
+          pathpart: '/Apply',
           formGroupId: '9',
           itemNoun: 'Compound',
           formClass: 'drug-upload-tool',

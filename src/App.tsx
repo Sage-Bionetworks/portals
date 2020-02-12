@@ -1,22 +1,20 @@
-import { HashRouter, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import * as React from 'react'
 import './App.scss'
 import './Markdown.scss'
 import { Footer } from './Footer'
 import AppInitializer from './AppInitializer'
-import { Navbar } from './Navbar'
+import Navbar from './Navbar'
 import BetaBanner from './BetaBanner'
 import CookiesNotification from './CookiesNotification'
 import { CookiesProvider } from 'react-cookie'
-// @ts-ignore
 const Home = React.lazy(() => import('./Home'))
-// @ts-ignore
 const RouteResolver = React.lazy(() => import('./RouteResolver'))
 
 const App: React.SFC = () => {
   return (
     <CookiesProvider>
-      <HashRouter>
+      <BrowserRouter>
         <AppInitializer>
           <BetaBanner />
           <Navbar />
@@ -34,7 +32,7 @@ const App: React.SFC = () => {
           </main>
           <Footer />
         </AppInitializer>
-      </HashRouter>
+      </BrowserRouter>
     </CookiesProvider>
   )
 }
