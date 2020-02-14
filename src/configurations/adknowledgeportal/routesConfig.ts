@@ -306,11 +306,9 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        name: 'DataUseCertificates',
-        displayName: 'Data Use Certificates',
-        to: '/DataAccess/DataUseCertificates',
+        name: 'Data Use Certificates',
+        to: '/DataAccess/Data Use Certificates',
         isNested: false,
-        hideRouteFromNavbar: true,
         synapseConfigArray: [
           {
             name: 'Markdown',
@@ -357,7 +355,7 @@ const routes: GenericRoute[] = [
   //     {
   //       name: 'SynapseFormSubmissionsGrid',
   //       props: {
-  //         pathpart: '#/Contribute',
+  //         pathpart: '/Contribute',
   //         formGroupId: '11',
   //         itemNoun: 'contribution-request',
   //         formClass: 'contribution-request',
