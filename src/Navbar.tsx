@@ -70,7 +70,6 @@ class Navbar extends React.Component {
       userProfile,
     } = this.props as SignInProps
     const { name, icon } = logoHeaderConfig
-    const token: string = this.context
     const imageElement = icon ? (
       <img alt="navigation logo" className="nav-logo" src={icon} />
     ) : (
@@ -193,8 +192,7 @@ class Navbar extends React.Component {
                         if (route.hideRouteFromNavbar) {
                           return false
                         }
-                        const routeDisplayName =
-                          route.displayName || route.name
+                        const routeDisplayName = route.displayName || route.name
                         return (
                           <a
                             key={`${route.name}-seo-anchor`}
@@ -224,9 +222,8 @@ class Navbar extends React.Component {
                               <Dropdown.Item
                                 key={route.name}
                                 className="SRC-primary-background-color-hover SRC-nested-color center-content"
-                                href={`${route.to}`}
                               >
-                                {routeDisplayName}
+                                <Link to={route.to!}>{routeDisplayName}</Link>
                               </Dropdown.Item>
                             )
                           })}
@@ -238,15 +235,15 @@ class Navbar extends React.Component {
                 // treat it as standard anchor tag
                 if (el.synapseConfigArray!.length === 0) {
                   return (
-                    <a
+                    <Link
                       key={el.name}
                       className={`center-content nav-button nav-button-container ${this.getBorder(
                         el.name,
                       )}`}
-                      href={el.to}
+                      to={el.to!}
                     >
                       {icon} {displayName}
-                    </a>
+                    </Link>
                   )
                 }
                 return (
