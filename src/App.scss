@@ -196,9 +196,7 @@ button.dropdown-toggle.nav-button:hover {
   padding-bottom: 0px;
   .dropdown-item {
     font-size: 16px;
-    a {
-      @extend %nav-dropdown-item;
-    }
+    @extend %nav-dropdown-item;
   }
 }
 

@@ -219,11 +219,13 @@ class Navbar extends React.Component {
                             const routeDisplayName =
                               route.displayName || route.name
                             return (
-                              <Dropdown.Item
-                                key={route.name}
-                                className="SRC-primary-background-color-hover SRC-nested-color center-content"
-                              >
-                                <Link to={route.to!}>{routeDisplayName}</Link>
+                              <Dropdown.Item key={route.name} as="li">
+                                <Link
+                                  className="dropdown-item SRC-primary-background-color-hover SRC-nested-color center-content"
+                                  to={route.to!}
+                                >
+                                  {routeDisplayName}
+                                </Link>
                               </Dropdown.Item>
                             )
                           })}
