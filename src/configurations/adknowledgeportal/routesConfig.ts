@@ -338,51 +338,52 @@ const routes: GenericRoute[] = [
       },
     ],
   },
-  {
-    name: 'Contribute',
-    isNested: false,
-    to: '/Contribute',
-    synapseConfigArray: [
-      {
-        name: 'Markdown',
-        className: 'amp-project-component',
-        props: {
-          ownerId: 'syn12666371',
-          wikiId: '600033',
-        },
-      },
-      {
-        name: 'SynapseFormSubmissionsGrid',
-        props: {
-          pathpart: '/Contribute',
-          formGroupId: '11',
-          itemNoun: 'contribution-request',
-          formClass: 'contribution-request',
-        },
-      },
-    ],
-    programmaticRouteConfig: [
-      {
-        name: 'Markdown',
-        props: {
-          ownerId: 'syn12666371',
-          wikiId: '600034',
-        },
-      },
-      {
-        name: 'SynapseFormWrapper',
-        props: {
-          formSchemaEntityId: 'syn20692910',
-          fileNamePath: 'study.submission_name',
-          formUiSchemaEntityId: 'syn20692911',
-          formNavSchemaEntityId: 'syn20968007',
-          isWizardMode: true,
-          formTitle: 'Your Contribution Request',
-          formClass: 'contribution-request',
-        },
-      },
-    ],
-  },
+  // Uncomment to expose Contribute route (once research team is monitoring submissions)
+  // {
+  //   name: 'Contribute',
+  //   isNested: false,
+  //   to: '/Contribute',
+  //   synapseConfigArray: [
+  //     {
+  //       name: 'Markdown',
+  //       className: 'amp-project-component',
+  //       props: {
+  //         ownerId: 'syn12666371',
+  //         wikiId: '600033',
+  //       },
+  //     },
+  //     {
+  //       name: 'SynapseFormSubmissionsGrid',
+  //       props: {
+  //         pathpart: '/Contribute',
+  //         formGroupId: '11',
+  //         itemNoun: 'contribution-request',
+  //         formClass: 'contribution-request',
+  //       },
+  //     },
+  //   ],
+  //   programmaticRouteConfig: [
+  //     {
+  //       name: 'Markdown',
+  //       props: {
+  //         ownerId: 'syn12666371',
+  //         wikiId: '600034',
+  //       },
+  //     },
+  //     {
+  //       name: 'SynapseFormWrapper',
+  //       props: {
+  //         formSchemaEntityId: 'syn20692910',
+  //         fileNamePath: 'study.submission_name',
+  //         formUiSchemaEntityId: 'syn20692911',
+  //         formNavSchemaEntityId: 'syn20968007',
+  //         isWizardMode: true,
+  //         formTitle: 'Your Contribution Request',
+  //         formClass: 'contribution-request',
+  //       },
+  //     },
+  //   ],
+  // },
   {
     name: 'About',
     isNested: false,
