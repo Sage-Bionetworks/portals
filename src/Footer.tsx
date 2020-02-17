@@ -32,8 +32,7 @@ export const Footer: React.SFC<{}> = () => {
           href={footerConfig.termsOfService}
           className="footer-item"
         >
-          {' '}
-          Terms of Service{' '}
+          Terms of Service
         </a>
         {footerConfig.contactUs && (
           <a
@@ -41,20 +40,14 @@ export const Footer: React.SFC<{}> = () => {
             href={footerConfig.contactUs}
             className="footer-item"
           >
-            {' '}
-            Contact Us{' '}
+            Contact Us
           </a>
         )}
         {footerConfig.forum && (
           <a href={footerConfig.forum} className="footer-item">
-            {' '}
-            Forum{' '}
+            Forum
           </a>
         )}
-        <button className="footer-item" id="pendo-help-us-improve">
-          {' '}
-          Help Us Improve{' '}
-        </button>
       </div>
     </footer>
   )
