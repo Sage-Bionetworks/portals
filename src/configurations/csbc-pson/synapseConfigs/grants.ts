@@ -16,8 +16,8 @@ const rgbIndex = 3
 
 export const grantsSchema: GenericCardSchema = {
   type: 'Grant',
-  title: 'name',
-  subTitle: 'Institutions',
+  title: 'grantName',
+  subTitle: 'institution',
   description: 'abstract',
   secondaryLabels: [
     'keyInvestigators',
@@ -36,8 +36,8 @@ export const grantsCardConfiguration: CardConfiguration = {
   genericCardSchema: grantsSchema,
   titleLinkConfig: {
     isMarkdown: false,
-    URLColumnName: 'id',
-    matchColumnName: 'id',
+    URLColumnName: 'grantId',
+    matchColumnName: 'grantId',
     baseURL: 'Explore/Grants',
   },
   type: SynapseConstants.GENERIC_CARD,
@@ -92,7 +92,7 @@ export const grants: HomeExploreConfig = {
             hintText: 'metastasis',
           },
           {
-            columnName: 'Institutions',
+            columnName: 'institution',
             hintText: 'Vanderbilt',
           },
           {

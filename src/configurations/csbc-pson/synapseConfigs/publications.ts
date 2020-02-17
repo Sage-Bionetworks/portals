@@ -13,23 +13,21 @@ const rgbIndex = 1
 
 export const publicationSchema: GenericCardSchema = {
   type: SynapseConstants.PUBLICATION,
-  title: 'Title',
-  subTitle: 'Authors',
-  description: 'abstract',
+  title: 'publicationTitle',
+  subTitle: 'authors',
   secondaryLabels: [
-    'Journal',
-    'Publication Year',
-    'Theme',
-    'diseaseType',
-    'tissue_or_organ.sv',
-    'experimentalStrategy',
-    'Keywords',
+    'journal',
+    'publicationYear',
+    'theme',
+    'tumorType',
+    'tissue',
+    'assay',
+    'keywords',
     'DOI',
-    'centerName',
-    'Consortium',
+    'grantName',
+    'consortium',
     'grantType',
     'datasets',
-    'studies',
   ],
   link: 'PubMed',
 }
@@ -39,7 +37,8 @@ export const publicationsCardConfiguration: CardConfiguration = {
   genericCardSchema: publicationSchema,
   loadingScreen,
   secondaryLabelLimit: 5,
-  labelLinkConfig: detailPageLinks,
+  // TODO: Add title link config
+  // labelLinkConfig: detailPageLinks,
 }
 
 export const publications: HomeExploreConfig = {
@@ -49,7 +48,7 @@ export const publications: HomeExploreConfig = {
       rgbIndex,
       unitDescription,
       loadingScreen,
-      facet: 'Consortium',
+      facet: 'theme',
       link: 'Explore/Publications',
       linkText: 'Explore Publications',
       initQueryRequest: {
@@ -80,15 +79,15 @@ export const publications: HomeExploreConfig = {
       searchConfiguration: {
         searchable: [
           {
-            columnName: 'Title',
+            columnName: 'publicationTitle',
             hintText: 'methylation',
           },
           {
-            columnName: 'Authors',
+            columnName: 'authors',
             hintText: 'LastName',
           },
           {
-            columnName: 'Keywords',
+            columnName: 'keywords',
             hintText: 'scRNA-seq',
           },
           {
@@ -133,27 +132,31 @@ export const publications: HomeExploreConfig = {
       menuConfig: [
         {
           sql,
-          facet: 'Theme',
+          facet: 'theme',
         },
         {
           sql,
-          facet: 'experimentalStrategy',
+          facet: 'assay',
         },
         {
           sql,
-          facet: 'diseaseType',
+          facet: 'tumorType',
         },
         {
           sql,
-          facet: 'tissue_or_organ.sv',
+          facet: 'tissue',
         },
         {
           sql,
-          facet: 'Publication Year',
+          facet: 'publicationYear',
         },
         {
           sql,
-          facet: 'Consortium',
+          facet: 'grantName',
+        },
+        {
+          sql,
+          facet: 'consortium',
         },
         {
           sql,

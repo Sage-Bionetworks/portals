@@ -37,6 +37,7 @@ import {
   grantsEntityId,
   grantsSql,
 } from './synapseConfigs/grants'
+import { toolsCardConfiguration } from 'configurations/nf/synapseConfigs/tools'
 const homeLimit = 3
 
 const routes: GenericRoute[] = [
@@ -174,9 +175,9 @@ const routes: GenericRoute[] = [
               synapseConfigArray: [
                 {
                   name: 'CardContainerLogic',
-                  columnName: 'centerName',
+                  columnName: 'grantName',
                   title: 'Related Publications',
-                  tableSqlKeys: ['centerName'],
+                  tableSqlKeys: ['grantName'],
                   props: {
                     sqlOperator: 'LIKE',
                     sql: publicationSql,
@@ -186,9 +187,9 @@ const routes: GenericRoute[] = [
                 },
                 {
                   name: 'CardContainerLogic',
-                  columnName: 'centerName',
+                  columnName: 'grantName',
                   title: 'Related Studies',
-                  tableSqlKeys: ['centerName'],
+                  tableSqlKeys: ['grantName'],
                   props: {
                     sqlOperator: 'LIKE',
                     sql: studiesSql,
@@ -198,14 +199,26 @@ const routes: GenericRoute[] = [
                 },
                 {
                   name: 'CardContainerLogic',
-                  columnName: 'centerName',
+                  columnName: 'grantName',
                   title: 'Related Datasets',
-                  tableSqlKeys: ['centerName'],
+                  tableSqlKeys: ['grantName'],
                   props: {
                     sqlOperator: 'LIKE',
                     sql: datasetsSql,
                     entityId: datasetsEntityId,
                     ...datasetCardConfiguration,
+                  },
+                },
+                {
+                  name: 'CardContainerLogic',
+                  columnName: 'grantName',
+                  title: 'Related Tools',
+                  tableSqlKeys: ['grantName'],
+                  props: {
+                    sqlOperator: 'LIKE',
+                    sql: toolsSql,
+                    entityId: toolsEntityId,
+                    ...toolsCardConfiguration,
                   },
                 },
               ],

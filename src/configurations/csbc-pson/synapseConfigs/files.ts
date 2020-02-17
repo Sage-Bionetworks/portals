@@ -3,7 +3,7 @@ import { HomeExploreConfig } from 'types/portal-config'
 import loadingScreen from '../loadingScreen'
 
 const sql =
-  'SELECT name, Title, species, fileFormat, experimentalStrategy, tumorType, sex, tissue, centerName, grantType, consortium FROM syn9630847'
+  'SELECT fileName, Title, species, dataFormat, assay, tumorType, gender, tissue, grantName, grantType, consortium FROM syn9630847'
 export const filesEntityId = 'syn9630847'
 const entityId = filesEntityId
 export const filesSql = sql
@@ -59,7 +59,7 @@ export const files: HomeExploreConfig = {
         },
         {
           sql,
-          facet: 'experimentalStrategy',
+          facet: 'assay',
         },
         {
           sql,
@@ -79,7 +79,7 @@ export const files: HomeExploreConfig = {
         },
         {
           sql,
-          facet: 'fileFormat',
+          facet: 'dataFormat',
         },
         {
           sql,
@@ -91,7 +91,7 @@ export const files: HomeExploreConfig = {
         },
         {
           sql,
-          facet: 'centerName',
+          facet: 'grantName',
         },
       ],
     },
