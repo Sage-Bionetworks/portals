@@ -12,8 +12,6 @@ export type AppInitializerState = {
   userProfile: UserProfile | undefined
 }
 
-// pendo's declaration should be picked up by node_modules/@types/pendo-io-browser but is not
-declare var pendo: any
 export const TokenContext = React.createContext('')
 
 type Props = RouteComponentProps & ReactCookieProps
@@ -37,7 +35,6 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
       userProfile: undefined,
       showLoginDialog: false,
     }
-    this.initializePendo = this.initializePendo.bind(this)
     this.updateSynapseCallbackCookie = this.updateSynapseCallbackCookie.bind(
       this,
     )
@@ -56,7 +53,6 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
       token: '',
       userProfile: undefined,
     })
-    this.initializePendo()
   }
 
   getSession = async () => {
@@ -73,10 +69,6 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
       this.setState({
         userProfile,
       })
-      this.initializePendo(
-        userProfile.ownerId,
-        `${userProfile.userName}@synapse.org`,
-      )
     } catch (e) {
       console.error('Error on getSesssion: ', e)
       // intentionally calling sign out because there token could be stale so we want
@@ -100,32 +92,6 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
     window.addEventListener('click', this.updateSynapseCallbackCookie)
     // on first time, also check for the SSO code
     SynapseClient.detectSSOCode()
-  }
-
-  // initialize pendo with the user's email and unique id, if user is anonymous then default values
-  // for id and email are 'VISITOR_UNIQUE_ID' and 'n/a'respectively
-  initializePendo(id = '', email = 'n/a') {
-    // had a bug where occasionally pendo wasn't loaded to the screen
-    if (Object.prototype.hasOwnProperty.call(window, 'pendo')) {
-      pendo.initialize({
-        sanitizeUrl: function(url: string) {
-          // NOTE: use pendo.normalizedUrl in the js console to see what url we send to Pendo for the page that you're on!
-          if (url.endsWith('/')) {
-            url += 'Home' // special case, ability to target home page (empty route)
-          }
-          return url.replace('/', '')
-        },
-
-        visitor: {
-          id,
-          email,
-        },
-        account: {
-          id: docTitleConfig.name,
-        },
-        excludeAllText: true, // Do not send DOM element text to Pendo
-      })
-    }
   }
 
   componentWillUnmount() {
