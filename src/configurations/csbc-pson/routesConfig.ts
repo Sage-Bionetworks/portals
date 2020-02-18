@@ -4,15 +4,15 @@ import {
   files,
   datasets,
   grants,
-  studies,
+  projects,
   tools,
 } from './synapseConfigs'
 import { SynapseConstants } from 'synapse-react-client'
 import {
-  studiesSql,
-  studyCardConfiguration,
-  studiesEntityId,
-} from './synapseConfigs/studies'
+  projectsSql,
+  projectCardConfiguration,
+  projectsEntityId,
+} from './synapseConfigs/projects'
 import { publicationSql } from './synapseConfigs/publications'
 import {
   datasetsSql,
@@ -64,12 +64,12 @@ const routes: GenericRoute[] = [
               synapseConfigArray: [grants.homePageSynapseObject],
             },
             {
-              name: 'Publications',
-              synapseConfigArray: [publications.homePageSynapseObject],
+              name: 'Projects',
+              synapseConfigArray: [projects.homePageSynapseObject],
             },
             {
-              name: 'Studies',
-              synapseConfigArray: [studies.homePageSynapseObject],
+              name: 'Publications',
+              synapseConfigArray: [publications.homePageSynapseObject],
             },
             {
               name: 'Datasets',
@@ -88,13 +88,13 @@ const routes: GenericRoute[] = [
       },
       {
         name: 'CardContainerLogic',
-        title: 'EXPLORE STUDIES',
-        link: 'Explore/Studies',
+        title: 'EXPLORE PROJECTS',
+        link: 'Explore/Projects',
         props: {
           loadingScreen,
-          entityId: studiesEntityId,
-          sql: studiesSql,
-          ...studyCardConfiguration,
+          entityId: projectsEntityId,
+          sql: projectsSql,
+          ...projectCardConfiguration,
           limit: homeLimit,
         },
       },
@@ -176,6 +176,18 @@ const routes: GenericRoute[] = [
                 {
                   name: 'CardContainerLogic',
                   columnName: 'grantName',
+                  title: 'Related Projects',
+                  tableSqlKeys: ['grantName'],
+                  props: {
+                    sqlOperator: 'LIKE',
+                    sql: projectsSql,
+                    entityId: projectsEntityId,
+                    ...projectCardConfiguration,
+                  },
+                },
+                {
+                  name: 'CardContainerLogic',
+                  columnName: 'grantName',
                   title: 'Related Publications',
                   tableSqlKeys: ['grantName'],
                   props: {
@@ -183,18 +195,6 @@ const routes: GenericRoute[] = [
                     sql: publicationSql,
                     entityId: publicationEntityId,
                     ...publicationsCardConfiguration,
-                  },
-                },
-                {
-                  name: 'CardContainerLogic',
-                  columnName: 'grantName',
-                  title: 'Related Studies',
-                  tableSqlKeys: ['grantName'],
-                  props: {
-                    sqlOperator: 'LIKE',
-                    sql: studiesSql,
-                    entityId: studiesEntityId,
-                    ...studyCardConfiguration,
                   },
                 },
                 {
@@ -227,15 +227,15 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        name: 'Publications',
-        to: '/Explore/Publications',
+        name: 'Projects',
+        to: '/Explore/Projects',
         isNested: false,
         synapseConfigArray: [
           {
             ...routeButtonControlWrapperProps,
             props: {
               ...routeButtonControlWrapperProps.props,
-              synapseConfig: publications.explorePageSynapseObject,
+              synapseConfig: projects.explorePageSynapseObject,
             },
           },
         ],
@@ -246,39 +246,11 @@ const routes: GenericRoute[] = [
             props: {
               isHeader: true,
               backgroundColor: '#407ba0',
-              entityId: publicationEntityId,
-              ...publicationsCardConfiguration,
-              secondaryLabelLimit: Infinity,
-              sql: publicationSql,
-            },
-          },
-        ],
-      },
-      {
-        name: 'Studies',
-        to: '/Explore/Studies',
-        isNested: false,
-        synapseConfigArray: [
-          {
-            ...routeButtonControlWrapperProps,
-            props: {
-              ...routeButtonControlWrapperProps.props,
-              synapseConfig: studies.explorePageSynapseObject,
-            },
-          },
-        ],
-        programmaticRouteConfig: [
-          {
-            name: 'CardContainerLogic',
-            isOutsideContainer: true,
-            props: {
-              isHeader: true,
-              backgroundColor: '#407ba0',
-              entityId: studiesEntityId,
+              entityId: projectsEntityId,
               loadingScreen,
-              ...studyCardConfiguration,
+              ...projectCardConfiguration,
               secondaryLabelLimit: Infinity,
-              sql: studiesSql,
+              sql: projectsSql,
             },
           },
           {
@@ -307,6 +279,34 @@ const routes: GenericRoute[] = [
               facet: 'consortium',
               unitDescription: 'Files',
               title: 'Study Files',
+            },
+          },
+        ],
+      },
+      {
+        name: 'Publications',
+        to: '/Explore/Publications',
+        isNested: false,
+        synapseConfigArray: [
+          {
+            ...routeButtonControlWrapperProps,
+            props: {
+              ...routeButtonControlWrapperProps.props,
+              synapseConfig: publications.explorePageSynapseObject,
+            },
+          },
+        ],
+        programmaticRouteConfig: [
+          {
+            name: 'CardContainerLogic',
+            isOutsideContainer: true,
+            props: {
+              isHeader: true,
+              backgroundColor: '#407ba0',
+              entityId: publicationEntityId,
+              ...publicationsCardConfiguration,
+              secondaryLabelLimit: Infinity,
+              sql: publicationSql,
             },
           },
         ],

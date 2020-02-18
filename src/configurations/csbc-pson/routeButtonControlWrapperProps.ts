@@ -6,8 +6,8 @@ const routeButtonControlProps: RouteButtonControlWrapperProps = {
   colors: ['#47337D', '#407BA0', '#7798AC', '#77BBBF', '#58A158', '#3C4A63'],
   customRoutes: [
     'Grants',
+    'Projects',
     'Publications',
-    'Studies',
     'Datasets',
     'Files',
     'Tools',

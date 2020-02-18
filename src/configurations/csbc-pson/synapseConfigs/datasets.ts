@@ -4,7 +4,7 @@ import loadingScreen from '../loadingScreen'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import { detailPageLinks } from './commonProps'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
-export const datasetsSql = `SELECT * FROM syn18488466 WHERE ( ( "isdataset" = 'TRUE' ) )`
+export const datasetsSql = `SELECT * FROM syn18488466 WHERE ( ( "is.dataset" = 'TRUE' ) )`
 export const datasetsEntityId = 'syn18488466'
 const entityId = datasetsEntityId
 const sql = datasetsSql
