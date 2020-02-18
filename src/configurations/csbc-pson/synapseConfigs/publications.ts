@@ -23,7 +23,7 @@ export const publicationSchema: GenericCardSchema = {
     'tissue',
     'assay',
     'keywords',
-    'DOI',
+    'doi',
     'grantName',
     'consortium',
     'grantType',
@@ -37,7 +37,6 @@ export const publicationsCardConfiguration: CardConfiguration = {
   genericCardSchema: publicationSchema,
   loadingScreen,
   secondaryLabelLimit: 5,
-  // TODO: Add title link config
   labelLinkConfig: detailPageLinks,
 }
 
