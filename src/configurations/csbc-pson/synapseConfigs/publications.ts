@@ -2,7 +2,6 @@ import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from 'types/portal-config'
 import loadingScreen from '../loadingScreen'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
-import { detailPageLinks } from './commonProps'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 export const publicationSql = 'SELECT * FROM syn10923842'
 export const publicationEntityId = 'syn10923842'
@@ -99,32 +98,28 @@ export const publications: HomeExploreConfig = {
             hintText: '10.1158/2159-8290.CD-17-0222',
           },
           {
-            columnName: 'Theme',
+            columnName: 'theme',
             hintText: 'tumor-immune',
           },
           {
-            columnName: 'experimentalStrategy',
+            columnName: 'assay',
             hintText: 'RNA-seq',
           },
           {
-            columnName: 'diseaseType',
+            columnName: 'tumorType',
             hintText: 'Skin Cutaneous Melanoma',
           },
           {
-            columnName: 'tissue_or_organ.sv',
+            columnName: 'tissue',
             hintText: 'Prostate gland',
           },
           {
-            columnName: 'Publication Year',
+            columnName: 'publicationYear',
             hintText: '2018',
           },
           {
-            columnName: 'Consortium',
+            columnName: 'consortium',
             hintText: 'PS-ON',
-          },
-          {
-            columnName: 'grantType',
-            hintText: 'U01',
           },
         ],
       },

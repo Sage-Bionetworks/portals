@@ -365,7 +365,7 @@ const routes: GenericRoute[] = [
               loadingScreen,
               sqlOperator: '=',
               rgbIndex: 0,
-              facet: 'consortium',
+              // facet: 'consortium',
               unitDescription: 'Files',
               title: 'Dataset Files',
             },

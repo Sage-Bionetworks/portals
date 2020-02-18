@@ -4,7 +4,7 @@ import loadingScreen from '../loadingScreen'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import { detailPageLinks } from './commonProps'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
-export const datasetsSql = `SELECT * FROM syn18488466 WHERE ( ( "is.dataset" = 'TRUE' ) )`
+export const datasetsSql = `SELECT * FROM syn18488466 WHERE ( ( "isdataset" = 'TRUE' ) )`
 export const datasetsEntityId = 'syn18488466'
 const entityId = datasetsEntityId
 const sql = datasetsSql
@@ -13,20 +13,16 @@ const rgbIndex = 0
 
 export const datasetSchema: GenericCardSchema = {
   type: SynapseConstants.DATASET,
-  title: 'portalDisplayName',
-  subTitle: 'centerName',
+  title: 'datasetName',
+  subTitle: 'grantName',
   description: 'summary',
   secondaryLabels: [
-    'Title',
+    'publicationTitle',
     'overallDesign',
-    'PubMed',
-    'Theme',
-    'studies',
     'tumorType',
-    'experimentalStrategy',
+    'assay',
     'species',
     'externalLink',
-    'centerName',
     'consortium',
     'grantType',
   ],
@@ -41,6 +37,10 @@ export const datasetCardConfiguration: CardConfiguration = {
     {
       isMarkdown: true,
       matchColumnName: 'externalLink',
+    },
+    {
+      isMarkdown: true,
+      matchColumnName: 'publicationTitle',
     },
   ],
   titleLinkConfig: {
@@ -130,11 +130,7 @@ export const datasets: HomeExploreConfig = {
       menuConfig: [
         {
           sql,
-          facet: 'Theme',
-        },
-        {
-          sql,
-          facet: 'experimentalStrategy',
+          facet: 'assay',
         },
         {
           sql,
@@ -143,6 +139,10 @@ export const datasets: HomeExploreConfig = {
         {
           sql,
           facet: 'species',
+        },
+        {
+          sql,
+          facet: 'grantName',
         },
         {
           sql,
