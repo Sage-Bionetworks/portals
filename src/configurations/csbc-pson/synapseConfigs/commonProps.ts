@@ -7,15 +7,9 @@ export const detailPageLinks = [
   },
   {
     isMarkdown: false,
-    baseURL: 'Explore/Studies',
-    URLColumnName: 'studies',
-    matchColumnName: 'studies',
-  },
-  {
-    isMarkdown: false,
     baseURL: 'Explore/Grants',
-    URLColumnName: 'centerName',
-    matchColumnName: 'centerName',
+    URLColumnName: 'grantName',
+    matchColumnName: 'grantName',
   },
   {
     isMarkdown: false,

@@ -17,20 +17,20 @@ export const toolsConfiguration: CardConfiguration = {
     title: 'toolName',
     description: 'description',
     secondaryLabels: [
-      'PublicationTitle',
-      'projectId',
+      'publicationTitle',
       'inputDataType',
       'outputDataType',
       'softwareLanguage',
-      'study',
+      'grantName',
       'consortium',
+      'grantType',
     ],
     link: 'URL',
   },
   labelLinkConfig: [
     {
       isMarkdown: true,
-      matchColumnName: 'PublicationTitle',
+      matchColumnName: 'publicationTitle',
     },
   ],
 }
@@ -77,6 +77,14 @@ export const tools: HomeExploreConfig = {
             hintText: 'track',
           },
           {
+            columnName: 'description',
+            hintText: 'module',
+          },
+          {
+            columnName: 'publicationTitle',
+            hintText: 'modeling',
+          },
+          {
             columnName: 'inputDataType',
             hintText: 'image',
           },
@@ -89,16 +97,8 @@ export const tools: HomeExploreConfig = {
             hintText: 'python',
           },
           {
-            columnName: 'consortium',
-            hintText: 'PS-ON',
-          },
-          {
-            columnName: 'Description',
-            hintText: 'module',
-          },
-          {
-            columnName: 'PublicationTitle',
-            hintText: 'modeling',
+            columnName: 'grantName',
+            hintText: 'Mechanics',
           },
         ],
       },
@@ -118,7 +118,15 @@ export const tools: HomeExploreConfig = {
         },
         {
           sql,
+          facet: 'grantName',
+        },
+        {
+          sql,
           facet: 'consortium',
+        },
+        {
+          sql,
+          facet: 'grantType',
         },
         {
           sql,

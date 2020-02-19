@@ -4,15 +4,15 @@ import {
   files,
   datasets,
   grants,
-  studies,
+  projects,
   tools,
 } from './synapseConfigs'
 import { SynapseConstants } from 'synapse-react-client'
 import {
-  studiesSql,
-  studyCardConfiguration,
-  studiesEntityId,
-} from './synapseConfigs/studies'
+  projectsSql,
+  projectCardConfiguration,
+  projectsEntityId,
+} from './synapseConfigs/projects'
 import { publicationSql } from './synapseConfigs/publications'
 import {
   datasetsSql,
@@ -37,6 +37,7 @@ import {
   grantsEntityId,
   grantsSql,
 } from './synapseConfigs/grants'
+import { toolsCardConfiguration } from 'configurations/nf/synapseConfigs/tools'
 const homeLimit = 3
 
 const routes: GenericRoute[] = [
@@ -63,12 +64,12 @@ const routes: GenericRoute[] = [
               synapseConfigArray: [grants.homePageSynapseObject],
             },
             {
-              name: 'Publications',
-              synapseConfigArray: [publications.homePageSynapseObject],
+              name: 'Projects',
+              synapseConfigArray: [projects.homePageSynapseObject],
             },
             {
-              name: 'Studies',
-              synapseConfigArray: [studies.homePageSynapseObject],
+              name: 'Publications',
+              synapseConfigArray: [publications.homePageSynapseObject],
             },
             {
               name: 'Datasets',
@@ -87,13 +88,13 @@ const routes: GenericRoute[] = [
       },
       {
         name: 'CardContainerLogic',
-        title: 'EXPLORE STUDIES',
-        link: 'Explore/Studies',
+        title: 'EXPLORE PROJECTS',
+        link: 'Explore/Projects',
         props: {
           loadingScreen,
-          entityId: studiesEntityId,
-          sql: studiesSql,
-          ...studyCardConfiguration,
+          entityId: projectsEntityId,
+          sql: projectsSql,
+          ...projectCardConfiguration,
           limit: homeLimit,
         },
       },
@@ -174,9 +175,21 @@ const routes: GenericRoute[] = [
               synapseConfigArray: [
                 {
                   name: 'CardContainerLogic',
-                  columnName: 'centerName',
+                  columnName: 'grantName',
+                  title: 'Related Projects',
+                  tableSqlKeys: ['grantName'],
+                  props: {
+                    sqlOperator: 'LIKE',
+                    sql: projectsSql,
+                    entityId: projectsEntityId,
+                    ...projectCardConfiguration,
+                  },
+                },
+                {
+                  name: 'CardContainerLogic',
+                  columnName: 'grantName',
                   title: 'Related Publications',
-                  tableSqlKeys: ['centerName'],
+                  tableSqlKeys: ['grantName'],
                   props: {
                     sqlOperator: 'LIKE',
                     sql: publicationSql,
@@ -186,21 +199,9 @@ const routes: GenericRoute[] = [
                 },
                 {
                   name: 'CardContainerLogic',
-                  columnName: 'centerName',
-                  title: 'Related Studies',
-                  tableSqlKeys: ['centerName'],
-                  props: {
-                    sqlOperator: 'LIKE',
-                    sql: studiesSql,
-                    entityId: studiesEntityId,
-                    ...studyCardConfiguration,
-                  },
-                },
-                {
-                  name: 'CardContainerLogic',
-                  columnName: 'centerName',
+                  columnName: 'grantName',
                   title: 'Related Datasets',
-                  tableSqlKeys: ['centerName'],
+                  tableSqlKeys: ['grantName'],
                   props: {
                     sqlOperator: 'LIKE',
                     sql: datasetsSql,
@@ -208,7 +209,75 @@ const routes: GenericRoute[] = [
                     ...datasetCardConfiguration,
                   },
                 },
+                {
+                  name: 'CardContainerLogic',
+                  columnName: 'grantName',
+                  title: 'Related Tools',
+                  tableSqlKeys: ['grantName'],
+                  props: {
+                    sqlOperator: 'LIKE',
+                    sql: toolsSql,
+                    entityId: toolsEntityId,
+                    ...toolsCardConfiguration,
+                  },
+                },
               ],
+            },
+          },
+        ],
+      },
+      {
+        name: 'Projects',
+        to: '/Explore/Projects',
+        isNested: false,
+        synapseConfigArray: [
+          {
+            ...routeButtonControlWrapperProps,
+            props: {
+              ...routeButtonControlWrapperProps.props,
+              synapseConfig: projects.explorePageSynapseObject,
+            },
+          },
+        ],
+        programmaticRouteConfig: [
+          {
+            name: 'CardContainerLogic',
+            isOutsideContainer: true,
+            props: {
+              isHeader: true,
+              backgroundColor: '#407ba0',
+              entityId: projectsEntityId,
+              loadingScreen,
+              ...projectCardConfiguration,
+              secondaryLabelLimit: Infinity,
+              sql: projectsSql,
+            },
+          },
+          {
+            name: 'QueryWrapperFlattened',
+            title: 'Data',
+            props: {
+              initQueryRequest: {
+                partMask:
+                  SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
+                  SynapseConstants.BUNDLE_MASK_QUERY_COUNT |
+                  SynapseConstants.BUNDLE_MASK_QUERY_SELECT_COLUMNS |
+                  SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
+                entityId: filesEntityId,
+                concreteType:
+                  'org.sagebionetworks.repo.model.table.QueryBundleRequest',
+                query: {
+                  sql: filesSql,
+                  selectedFacets: [],
+                  isConsistent: true,
+                  limit: 25,
+                  offset: 0,
+                },
+              },
+              loadingScreen,
+              rgbIndex: 1,
+              unitDescription: 'Files',
+              title: 'Study Files',
             },
           },
         ],
@@ -237,63 +306,6 @@ const routes: GenericRoute[] = [
               ...publicationsCardConfiguration,
               secondaryLabelLimit: Infinity,
               sql: publicationSql,
-            },
-          },
-        ],
-      },
-      {
-        name: 'Studies',
-        to: '/Explore/Studies',
-        isNested: false,
-        synapseConfigArray: [
-          {
-            ...routeButtonControlWrapperProps,
-            props: {
-              ...routeButtonControlWrapperProps.props,
-              synapseConfig: studies.explorePageSynapseObject,
-            },
-          },
-        ],
-        programmaticRouteConfig: [
-          {
-            name: 'CardContainerLogic',
-            isOutsideContainer: true,
-            props: {
-              isHeader: true,
-              backgroundColor: '#407ba0',
-              entityId: studiesEntityId,
-              loadingScreen,
-              ...studyCardConfiguration,
-              secondaryLabelLimit: Infinity,
-              sql: studiesSql,
-            },
-          },
-          {
-            name: 'QueryWrapperFlattened',
-            title: 'Data',
-            props: {
-              initQueryRequest: {
-                partMask:
-                  SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
-                  SynapseConstants.BUNDLE_MASK_QUERY_COUNT |
-                  SynapseConstants.BUNDLE_MASK_QUERY_SELECT_COLUMNS |
-                  SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
-                entityId: filesEntityId,
-                concreteType:
-                  'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-                query: {
-                  sql: filesSql,
-                  selectedFacets: [],
-                  isConsistent: true,
-                  limit: 25,
-                  offset: 0,
-                },
-              },
-              loadingScreen,
-              rgbIndex: 1,
-              facet: 'consortium',
-              unitDescription: 'Files',
-              title: 'Study Files',
             },
           },
         ],
@@ -352,7 +364,6 @@ const routes: GenericRoute[] = [
               loadingScreen,
               sqlOperator: '=',
               rgbIndex: 0,
-              facet: 'consortium',
               unitDescription: 'Files',
               title: 'Dataset Files',
             },

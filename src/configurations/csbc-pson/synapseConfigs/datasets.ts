@@ -2,7 +2,6 @@ import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from 'types/portal-config'
 import loadingScreen from '../loadingScreen'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
-import { detailPageLinks } from './commonProps'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 export const datasetsSql = `SELECT * FROM syn18488466 WHERE ( ( "is.dataset" = 'TRUE' ) )`
 export const datasetsEntityId = 'syn18488466'
@@ -13,20 +12,16 @@ const rgbIndex = 0
 
 export const datasetSchema: GenericCardSchema = {
   type: SynapseConstants.DATASET,
-  title: 'portalDisplayName',
-  subTitle: 'centerName',
+  title: 'datasetName',
   description: 'summary',
   secondaryLabels: [
-    'Title',
+    'publicationTitle',
     'overallDesign',
-    'PubMed',
-    'Theme',
-    'studies',
     'tumorType',
-    'experimentalStrategy',
+    'assay',
     'species',
     'externalLink',
-    'centerName',
+    'grantName',
     'consortium',
     'grantType',
   ],
@@ -37,17 +32,26 @@ export const datasetCardConfiguration: CardConfiguration = {
   genericCardSchema: datasetSchema,
   secondaryLabelLimit: 4,
   labelLinkConfig: [
-    ...detailPageLinks,
     {
       isMarkdown: true,
       matchColumnName: 'externalLink',
+    },
+    {
+      isMarkdown: true,
+      matchColumnName: 'publicationTitle',
+    },
+    {
+      isMarkdown: false,
+      matchColumnName: 'grantName',
+      URLColumnName: 'grantName',
+      baseURL: 'Explore/Grants',
     },
   ],
   titleLinkConfig: {
     isMarkdown: false,
     baseURL: 'Explore/Datasets',
-    URLColumnName: 'datasets',
-    matchColumnName: 'id',
+    URLColumnName: 'datasetName',
+    matchColumnName: 'datasetName',
   },
 }
 
@@ -90,51 +94,39 @@ export const datasets: HomeExploreConfig = {
       searchConfiguration: {
         searchable: [
           {
-            columnName: 'name',
+            columnName: 'datasetName',
             hintText: 'migration',
           },
           {
-            columnName: 'summary',
+            columnName: 'description',
             hintText: 'spatiotemporal',
           },
           {
-            columnName: 'centerName',
+            columnName: 'overallDesign',
             hintText: 'immunology',
           },
           {
-            columnName: 'Theme',
-            hintText: 'tumor-immune',
+            columnName: 'publicationTitle',
+            hintText: 'immune-escape',
           },
           {
-            columnName: 'experimentalStrategy',
+            columnName: 'grantName',
+            hintText: 'immunology',
+          },
+          {
+            columnName: 'assay',
             hintText: 'RNA-seq',
           },
           {
             columnName: 'tumorType',
             hintText: 'Skin Cutaneous Melanoma',
           },
-          {
-            columnName: 'species',
-            hintText: 'Human',
-          },
-          {
-            columnName: 'consortium',
-            hintText: 'PS-ON',
-          },
-          {
-            columnName: 'grantType',
-            hintText: 'U01',
-          },
         ],
       },
       menuConfig: [
         {
           sql,
-          facet: 'Theme',
-        },
-        {
-          sql,
-          facet: 'experimentalStrategy',
+          facet: 'assay',
         },
         {
           sql,
@@ -143,6 +135,10 @@ export const datasets: HomeExploreConfig = {
         {
           sql,
           facet: 'species',
+        },
+        {
+          sql,
+          facet: 'grantName',
         },
         {
           sql,
