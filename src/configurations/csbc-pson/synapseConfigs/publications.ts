@@ -3,7 +3,6 @@ import { HomeExploreConfig } from 'types/portal-config'
 import loadingScreen from '../loadingScreen'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
-import { detailPageLinks } from './commonProps'
 export const publicationSql = 'SELECT * FROM syn10923842'
 export const publicationEntityId = 'syn10923842'
 const entityId = publicationEntityId
@@ -37,7 +36,20 @@ export const publicationsCardConfiguration: CardConfiguration = {
   genericCardSchema: publicationSchema,
   loadingScreen,
   secondaryLabelLimit: 5,
-  labelLinkConfig: detailPageLinks,
+  labelLinkConfig: [
+    {
+      isMarkdown: false,
+      baseURL: 'Explore/Grants',
+      matchColumnName: 'grantName',
+      URLColumnName: 'datasets',
+    },
+    {
+      isMarkdown: false,
+      baseURL: 'Explore/Datasets',
+      URLColumnName: 'datasets',
+      matchColumnName: 'grantName',
+    },
+  ],
 }
 
 export const publications: HomeExploreConfig = {
