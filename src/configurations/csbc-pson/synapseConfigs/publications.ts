@@ -41,13 +41,13 @@ export const publicationsCardConfiguration: CardConfiguration = {
       isMarkdown: false,
       baseURL: 'Explore/Grants',
       matchColumnName: 'grantName',
-      URLColumnName: 'datasets',
+      URLColumnName: 'grantName',
     },
     {
       isMarkdown: false,
       baseURL: 'Explore/Datasets',
-      URLColumnName: 'datasets',
-      matchColumnName: 'grantName',
+      URLColumnName: 'grantName',
+      matchColumnName: 'datasets',
     },
   ],
 }
