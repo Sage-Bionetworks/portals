@@ -59,7 +59,7 @@ export const projects: HomeExploreConfig = {
       stackedBarChartConfiguration: {
         loadingScreen,
       },
-      name: 'projects',
+      name: 'Projects',
       searchConfiguration: {
         searchable: [
           {
