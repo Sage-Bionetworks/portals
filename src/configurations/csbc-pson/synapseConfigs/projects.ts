@@ -4,9 +4,9 @@ import loadingScreen from '../loadingScreen'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 const unitDescription = 'projects'
-export const projectsSql = `SELECT * FROM syn21599334`
-const entityId = 'syn21599334'
-export const projectsEntityId = 'syn21599334'
+export const projectsSql = `SELECT * FROM syn21621978`
+const entityId = 'syn21621978'
+export const projectsEntityId = 'syn21621978'
 const sql = projectsSql
 const rgbIndex = 1
 
@@ -22,6 +22,10 @@ export const projectCardConfiguration: CardConfiguration = {
   type: SynapseConstants.GENERIC_CARD,
   genericCardSchema: projectsSchema,
   secondaryLabelLimit: 4,
+  descriptionLinkConfig: {
+    isMarkdown: true,
+    matchColumnName: 'description',
+  },
 }
 
 export const projects: HomeExploreConfig = {
