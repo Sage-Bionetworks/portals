@@ -1,13 +1,11 @@
 import { HomePageHeaderConfig } from 'types/portal-config'
 
 const homePageHeader: HomePageHeaderConfig = {
-  summary: `The NIH National Cancer Institute-sponsored Cancer Systems Biology Consortium (CSBC) and Physical Sciences
-  in Oncology Network (PS-ON) aim to tackle the most perplexing issues in cancer to increase our understanding
-  of tumor biology, treatment options, and patient outcome. The CSBC / PS-ON Data Portal highlights ongoing
-  research efforts in these richly interdisciplinary fields, including the data generated and methods
-  developed in addresssing fundamental questions in cancer research.`,
+  summary: `Discover and download data and analysis from the NIH National Cancer Institute-sponsored Cancer Systems Biology Consortium (CSBC) and Physical Sciences in Oncology Network (PS-ON).`,
   title:
-    'Cancer Systems Biology Consortium and Physical Sciences in Oncology Network',
+    'Welcome to the Cancer Systems Biology Consortium and Physical Sciences in Oncology Network Portal',
+  showBlur: false,
+  centerText: true,
 }
 
 export default homePageHeader

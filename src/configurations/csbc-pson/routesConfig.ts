@@ -21,11 +21,7 @@ import {
 } from './synapseConfigs/datasets'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
 import loadingScreen from './loadingScreen'
-import {
-  toolsConfiguration,
-  toolsSql,
-  toolsEntityId,
-} from './synapseConfigs/tools'
+import { toolsSql, toolsEntityId } from './synapseConfigs/tools'
 import { filesSql, filesEntityId } from './synapseConfigs/files'
 import DatasetSvg from './style/Dataset.svg'
 import {
@@ -38,7 +34,6 @@ import {
   grantsSql,
 } from './synapseConfigs/grants'
 import { toolsCardConfiguration } from 'configurations/nf/synapseConfigs/tools'
-const homeLimit = 3
 
 const routes: GenericRoute[] = [
   {
@@ -47,92 +42,8 @@ const routes: GenericRoute[] = [
     isNested: false,
     synapseConfigArray: [
       {
-        name: 'StatefulButtonControlWrapper',
-        title: 'EXPLORE PORTAL',
-        props: {
-          colors: [
-            '#47337D',
-            '#407BA0',
-            '#7798AC',
-            '#77BBBF',
-            '#58A158',
-            '#3C4A63',
-          ],
-          configs: [
-            {
-              name: 'Grants',
-              synapseConfigArray: [grants.homePageSynapseObject],
-            },
-            {
-              name: 'Projects',
-              synapseConfigArray: [projects.homePageSynapseObject],
-            },
-            {
-              name: 'Publications',
-              synapseConfigArray: [publications.homePageSynapseObject],
-            },
-            {
-              name: 'Datasets',
-              synapseConfigArray: [datasets.homePageSynapseObject],
-            },
-            {
-              name: 'Files',
-              synapseConfigArray: [files.homePageSynapseObject],
-            },
-            {
-              name: 'Tools',
-              synapseConfigArray: [tools.homePageSynapseObject],
-            },
-          ],
-        },
-      },
-      {
-        name: 'CardContainerLogic',
-        title: 'EXPLORE PROJECTS',
-        link: 'Explore/Projects',
-        props: {
-          loadingScreen,
-          entityId: projectsEntityId,
-          sql: projectsSql,
-          ...projectCardConfiguration,
-          limit: homeLimit,
-        },
-      },
-      {
-        name: 'CardContainerLogic',
-        title: 'EXPLORE PUBLICATIONS',
-        link: 'Explore/Publications',
-        props: {
-          loadingScreen,
-          entityId: publicationEntityId,
-          sql: publicationSql,
-          ...publicationsCardConfiguration,
-          limit: homeLimit,
-        },
-      },
-      {
-        name: 'CardContainerLogic',
-        title: 'EXPLORE DATASETS',
-        link: 'Explore/Datasets',
-        props: {
-          loadingScreen,
-          sql: datasetsSql,
-          entityId: datasetsEntityId,
-          limit: homeLimit,
-          ...datasetCardConfiguration,
-        },
-      },
-      {
-        name: 'CardContainerLogic',
-        title: 'EXPLORE TOOLS',
-        link: 'Explore/Tools',
-        props: {
-          loadingScreen,
-          entityId: toolsEntityId,
-          sql: toolsSql,
-          limit: homeLimit,
-          ...toolsConfiguration,
-        },
+        name: 'ConsortiaGoals',
+        props: undefined,
       },
     ],
   },

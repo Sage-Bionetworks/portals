@@ -4,11 +4,8 @@ import routesConfig from './config/routesConfig'
 import { SynapseConfig } from 'types/portal-config'
 import { SynapseComponents } from 'synapse-react-client'
 import { TokenContext } from './AppInitializer'
-import StatefulButtonControlWrapper from './portal-components/StatefulButtonControlWrapper'
-import RouteButtonControlWrapper from './portal-components/RouteButtonControlWrapper'
-import QueryWrapperFlattened from './portal-components/QueryWrapperFlattened'
+import PortalComponents from './portal-components/'
 import Layout from './portal-components/Layout'
-import GenerateComponentsFromRow from 'portal-components/GenerateComponentsFromRow'
 import docTitleConfig from './config/docTitleConfig'
 
 // https://basarat.gitbooks.io/typescript/docs/types/never.html
@@ -38,23 +35,13 @@ export const getRouteFromParams = (pathname: string) => {
 }
 
 export const generateSynapseObjectHelper = (synapseConfig: SynapseConfig) => {
-  if (synapseConfig.name === 'StatefulButtonControlWrapper') {
-    return <StatefulButtonControlWrapper {...synapseConfig.props} />
-  }
-  if (synapseConfig.name === 'RouteButtonControlWrapper') {
-    return <RouteButtonControlWrapper {...synapseConfig.props} />
-  }
-  if (synapseConfig.name === 'QueryWrapperFlattened') {
-    return <QueryWrapperFlattened {...synapseConfig.props} />
-  }
-  if (synapseConfig.name === 'GenerateComponentsFromRow') {
-    return <GenerateComponentsFromRow {...synapseConfig.props} />
-  }
-  const SynapseComponent = (SynapseComponents as any)[synapseConfig.name]
-  if (!SynapseComponent) {
+  const Component =
+    (PortalComponents as any)[synapseConfig.name] ??
+    (SynapseComponents as any)[synapseConfig.name]
+  if (!Component) {
     throw Error(`No synapse object could be mapped for ${synapseConfig.name}`)
   }
-  const component = <SynapseComponent {...synapseConfig.props} />
+  const component = <Component {...synapseConfig.props} />
   const { style, className } = synapseConfig
   if (style || className) {
     return (

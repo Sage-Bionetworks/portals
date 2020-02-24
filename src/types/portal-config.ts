@@ -16,6 +16,8 @@ import { Operator } from '../portal-components/QueryWrapperFlattened'
 export type HomePageHeaderConfig = {
   summary: string
   title: string
+  showBlur?: boolean
+  centerText?: boolean
 }
 
 // Generic SynapseConfigArray Representation -- maps each component to its props
@@ -71,6 +73,11 @@ type GenerateComponentsFromRow = {
   props: GenerateComponentsFromRowProps
 }
 
+type ConsortiaGoals = {
+  name: 'ConsortiaGoals'
+  props: undefined
+}
+
 type Metadata = {
   title?: string
   link?: string
@@ -111,6 +118,7 @@ export type SynapseConfig = (
   | NewsFeedMenu
   | SynapseFormWrapper
   | SynapseFormSubmissionsGrid
+  | ConsortiaGoals
 ) &
   Metadata
 export type SynapseConfigArray = SynapseConfig[]
@@ -121,10 +129,10 @@ export type HomeExploreConfig = {
   explorePageSynapseObject: SynapseConfig
 }
 
-export interface BaseRoute {
+interface RouteOptions {
   name: string
   displayName?: string
-  isNested: false
+  isNested: boolean
   programmaticRouteConfig?: SynapseConfigArray
   hideRouteFromNavbar?: boolean
   to?: string
@@ -133,7 +141,11 @@ export interface BaseRoute {
   synapseConfigArray?: SynapseConfigArray
 }
 
-export interface NestedRoute extends BaseRoute {
+export interface BaseRoute extends RouteOptions {
+  isNested: false
+}
+
+export interface NestedRoute extends RouteOptions {
   isNested: true
   routes: Array<BaseRoute | NestedRoute>
 }
