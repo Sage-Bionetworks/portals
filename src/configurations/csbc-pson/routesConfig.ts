@@ -44,6 +44,7 @@ const routes: GenericRoute[] = [
       {
         name: 'ConsortiaGoals',
         props: undefined,
+        isOutsideContainer: true,
       },
     ],
   },

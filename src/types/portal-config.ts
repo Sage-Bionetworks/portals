@@ -1,7 +1,7 @@
 import { CardContainerLogicProps } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import { QueryWrapperProps } from 'synapse-react-client/dist/containers/QueryWrapper'
 import { StackedBarChartProps } from 'synapse-react-client/dist/containers/StackedBarChart'
-import { SynapseTableProps } from 'synapse-react-client/dist/containers/SynapseTable'
+import { SynapseTableProps } from 'synapse-react-client/dist/containers/table/SynapseTable'
 import { QueryWrapperMenuProps } from 'synapse-react-client/dist/containers/QueryWrapperMenu'
 import { UserCardProps } from 'synapse-react-client/dist/containers/UserCard'
 import { MarkdownSynapseProps } from 'synapse-react-client/dist/containers/MarkdownSynapse'
@@ -14,7 +14,7 @@ import { Operator } from '../portal-components/QueryWrapperFlattened'
 
 // For styling the header on the home page -- the main title and the summary text
 export type HomePageHeaderConfig = {
-  summary: string
+  summary: string | JSX.Element
   title: string
   showBlur?: boolean
   centerText?: boolean

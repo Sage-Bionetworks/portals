@@ -210,7 +210,6 @@ export const studiesGenerateComponentsFromRowProps: GenerateComponentsFromRowPro
         facetAliases,
         rgbIndex,
         unitDescription: 'Files',
-        synapseId: 'syn11346063',
         title: 'Metadata Files',
       },
     },
@@ -244,7 +243,6 @@ export const studiesGenerateComponentsFromRowProps: GenerateComponentsFromRowPro
         loadingScreen,
         facetAliases,
         rgbIndex,
-        synapseId: 'syn11346063',
         title: 'Data Files',
       },
     },
@@ -266,6 +264,7 @@ export const studiesGenerateComponentsFromRowProps: GenerateComponentsFromRowPro
       props: {
         sqlOperator: '=',
         sql,
+        entityId: studiesEntityId,
         ...studyCardConfiguration,
       },
     },

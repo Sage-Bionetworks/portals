@@ -209,7 +209,7 @@ class Navbar extends React.Component {
                           {displayName}
                         </Dropdown.Toggle>
                         <Dropdown.Menu className="portal-nav-menu">
-                          {plainRoutes.map(route => {
+                          {el.routes.map(route => {
                             if (route.hideRouteFromNavbar) {
                               return false
                             }
