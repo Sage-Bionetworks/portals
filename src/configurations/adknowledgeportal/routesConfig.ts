@@ -306,8 +306,9 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        name: 'Data Use Certificates',
-        to: '/DataAccess/Data Use Certificates',
+        name: 'DataUseCertificates',
+        to: '/DataAccess/DataUseCertificates',
+        displayName: 'Data Use Certificates',
         isNested: false,
         synapseConfigArray: [
           {

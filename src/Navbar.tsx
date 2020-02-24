@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 import * as React from 'react'
 import routesConfig from './config/routesConfig'
-import { GenericRoute } from 'types/portal-config'
 import logoHeaderConfig from './config/logoHeaderConfig'
 import Dialog from '@material-ui/core/Dialog'
 import Dropdown from 'react-bootstrap/Dropdown'
@@ -183,11 +182,9 @@ class Navbar extends React.Component {
                   return false
                 }
                 if (el.isNested) {
-                  // handle the case when the menu has sub options
-                  const plainRoutes = el.routes as GenericRoute[]
                   return (
                     <>
-                      {plainRoutes.map(route => {
+                      {el.routes.map(route => {
                         // Add anchors to the DOM for a crawler to find.  This is an attempt to fix an issue where all routes are Excluded from the index.
                         if (route.hideRouteFromNavbar) {
                           return false
@@ -212,7 +209,7 @@ class Navbar extends React.Component {
                           {displayName}
                         </Dropdown.Toggle>
                         <Dropdown.Menu className="portal-nav-menu">
-                          {plainRoutes.map(route => {
+                          {el.routes.map(route => {
                             if (route.hideRouteFromNavbar) {
                               return false
                             }

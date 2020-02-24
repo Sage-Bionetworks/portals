@@ -1,5 +1,4 @@
 import { SynapseConfig } from './portal-config'
-import { RowSynapseConfig } from '../portal-components/GenerateComponentsFromRow'
 import { SQLOperator } from 'synapse-react-client/dist/utils/modules/sqlFunctions'
 
 /* 
@@ -7,12 +6,6 @@ import { SQLOperator } from 'synapse-react-client/dist/utils/modules/sqlFunction
   implementation detail, not a core type that should be relied up in 
   the portal.
 */
-
-module '*.svg' {
-  const content: string
-  export default content
-}
-
 // The props for GenerateComponentsFromRowProps are kept here so that
 // the configuration files can import the type
 
@@ -32,7 +25,9 @@ type RowToPropTransform = {
 export type RowSynapseConfig = SynapseConfig & RowToPropTransform
 export type GenerateComponentsFromRowProps = {
   showMenu?: boolean // default to true
-  searchParams?: Dictionary<string>
+  searchParams?: {
+    [index: string]: string
+  }
   sql: string
   entityId: string
   token?: string

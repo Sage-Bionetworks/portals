@@ -284,11 +284,17 @@ button.dropdown-toggle.nav-button:hover {
 .header-text {
   h2 {
     font-weight: bold;
+    margin-bottom: 30px;
   }
   height: fit-content;
   color: white;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
+  &.blur {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+  }
+  &.center-text {
+    text-align: center;
+  }
   padding: 30px;
   margin-top: 30px;
   margin-bottom: 30px;
