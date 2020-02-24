@@ -24,7 +24,6 @@ export const projectCardConfiguration: CardConfiguration = {
   secondaryLabelLimit: 4,
   descriptionLinkConfig: {
     isMarkdown: true,
-    matchColumnName: 'description',
   },
 }
 
