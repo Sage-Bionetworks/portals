@@ -39,7 +39,7 @@ export const publicationsCardConfiguration: CardConfiguration = {
   labelLinkConfig: [
     {
       isMarkdown: false,
-      baseURL: 'Explore/Grants',
+      baseURL: 'Explore/Grants/DetailsPage',
       matchColumnName: 'grantName',
       URLColumnName: 'grantName',
     },

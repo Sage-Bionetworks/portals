@@ -38,7 +38,7 @@ export const grantsCardConfiguration: CardConfiguration = {
     isMarkdown: false,
     URLColumnName: 'grantId',
     matchColumnName: 'grantId',
-    baseURL: 'Explore/Grants',
+    baseURL: 'Explore/Grants/DetailsPage',
   },
   type: SynapseConstants.GENERIC_CARD,
   secondaryLabelLimit: 4,

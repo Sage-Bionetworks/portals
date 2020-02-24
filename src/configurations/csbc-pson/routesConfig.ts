@@ -143,7 +143,7 @@ const routes: GenericRoute[] = [
       {
         name: 'Grants',
         to: '/Explore/Grants',
-        isNested: false,
+        isNested: true,
         synapseConfigArray: [
           {
             ...routeButtonControlWrapperProps,
@@ -153,76 +153,83 @@ const routes: GenericRoute[] = [
             },
           },
         ],
-        programmaticRouteConfig: [
+        routes: [
           {
-            name: 'CardContainerLogic',
-            isOutsideContainer: true,
-            props: {
-              isHeader: true,
-              backgroundColor: '#407ba0',
-              entityId: grantsEntityId,
-              ...grantsCardConfiguration,
-              secondaryLabelLimit: Infinity,
-              sql: grantsSql,
-            },
-          },
-          {
-            name: 'GenerateComponentsFromRow',
-            props: {
-              sql: grantsSql,
-              sqlOperator: 'LIKE',
-              entityId: grantsEntityId,
-              synapseConfigArray: [
-                {
-                  name: 'CardContainerLogic',
-                  columnName: 'grantName',
-                  title: 'Related Projects',
-                  tableSqlKeys: ['grantName'],
-                  props: {
-                    sqlOperator: 'LIKE',
-                    sql: projectsSql,
-                    entityId: projectsEntityId,
-                    ...projectCardConfiguration,
-                  },
+            name: 'DetailsPage',
+            to: '/Explore/Grants/DetailsPage',
+            isNested: false,
+            synapseConfigArray: [
+              {
+                name: 'CardContainerLogic',
+                isOutsideContainer: true,
+                props: {
+                  isHeader: true,
+                  backgroundColor: '#407ba0',
+                  entityId: grantsEntityId,
+                  ...grantsCardConfiguration,
+                  secondaryLabelLimit: Infinity,
+                  sql: grantsSql,
                 },
-                {
-                  name: 'CardContainerLogic',
-                  columnName: 'grantName',
-                  title: 'Related Publications',
-                  tableSqlKeys: ['grantName'],
-                  props: {
-                    sqlOperator: 'LIKE',
-                    sql: publicationSql,
-                    entityId: publicationEntityId,
-                    ...publicationsCardConfiguration,
-                  },
+              },
+              {
+                name: 'GenerateComponentsFromRow',
+                props: {
+                  sql: grantsSql,
+                  sqlOperator: 'LIKE',
+                  entityId: grantsEntityId,
+                  synapseConfigArray: [
+                    {
+                      name: 'CardContainerLogic',
+                      columnName: 'grantName',
+                      title: 'Related Projects',
+                      tableSqlKeys: ['grantName'],
+                      props: {
+                        sqlOperator: 'LIKE',
+                        sql: projectsSql,
+                        entityId: projectsEntityId,
+                        ...projectCardConfiguration,
+                      },
+                    },
+                    {
+                      name: 'CardContainerLogic',
+                      columnName: 'grantName',
+                      title: 'Related Publications',
+                      tableSqlKeys: ['grantName'],
+                      props: {
+                        sqlOperator: 'LIKE',
+                        sql: publicationSql,
+                        entityId: publicationEntityId,
+                        ...publicationsCardConfiguration,
+                      },
+                    },
+                    {
+                      name: 'CardContainerLogic',
+                      columnName: 'grantName',
+                      title: 'Related Datasets',
+                      tableSqlKeys: ['grantName'],
+                      props: {
+                        sqlOperator: 'LIKE',
+                        sql: datasetsSql,
+                        entityId: datasetsEntityId,
+                        ...datasetCardConfiguration,
+                      },
+                    },
+                    {
+                      name: 'CardContainerLogic',
+                      columnName: 'grantName',
+                      title: 'Related Tools',
+                      tableSqlKeys: ['grantName'],
+                      props: {
+                        sqlOperator: 'LIKE',
+                        sql: toolsSql,
+                        entityId: toolsEntityId,
+                        ...toolsCardConfiguration,
+                      },
+                    },
+                  ],
                 },
-                {
-                  name: 'CardContainerLogic',
-                  columnName: 'grantName',
-                  title: 'Related Datasets',
-                  tableSqlKeys: ['grantName'],
-                  props: {
-                    sqlOperator: 'LIKE',
-                    sql: datasetsSql,
-                    entityId: datasetsEntityId,
-                    ...datasetCardConfiguration,
-                  },
-                },
-                {
-                  name: 'CardContainerLogic',
-                  columnName: 'grantName',
-                  title: 'Related Tools',
-                  tableSqlKeys: ['grantName'],
-                  props: {
-                    sqlOperator: 'LIKE',
-                    sql: toolsSql,
-                    entityId: toolsEntityId,
-                    ...toolsCardConfiguration,
-                  },
-                },
-              ],
-            },
+              },
+            ],
           },
         ],
       },
@@ -236,48 +243,6 @@ const routes: GenericRoute[] = [
             props: {
               ...routeButtonControlWrapperProps.props,
               synapseConfig: projects.explorePageSynapseObject,
-            },
-          },
-        ],
-        programmaticRouteConfig: [
-          {
-            name: 'CardContainerLogic',
-            isOutsideContainer: true,
-            props: {
-              isHeader: true,
-              backgroundColor: '#407ba0',
-              entityId: projectsEntityId,
-              loadingScreen,
-              ...projectCardConfiguration,
-              secondaryLabelLimit: Infinity,
-              sql: projectsSql,
-            },
-          },
-          {
-            name: 'QueryWrapperFlattened',
-            title: 'Data',
-            props: {
-              initQueryRequest: {
-                partMask:
-                  SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
-                  SynapseConstants.BUNDLE_MASK_QUERY_COUNT |
-                  SynapseConstants.BUNDLE_MASK_QUERY_SELECT_COLUMNS |
-                  SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
-                entityId: filesEntityId,
-                concreteType:
-                  'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-                query: {
-                  sql: filesSql,
-                  selectedFacets: [],
-                  isConsistent: true,
-                  limit: 25,
-                  offset: 0,
-                },
-              },
-              loadingScreen,
-              rgbIndex: 1,
-              unitDescription: 'Files',
-              title: 'Study Files',
             },
           },
         ],
@@ -295,25 +260,11 @@ const routes: GenericRoute[] = [
             },
           },
         ],
-        programmaticRouteConfig: [
-          {
-            name: 'CardContainerLogic',
-            isOutsideContainer: true,
-            props: {
-              isHeader: true,
-              backgroundColor: '#407ba0',
-              entityId: publicationEntityId,
-              ...publicationsCardConfiguration,
-              secondaryLabelLimit: Infinity,
-              sql: publicationSql,
-            },
-          },
-        ],
       },
       {
         name: 'Datasets',
         to: '/Explore/Datasets',
-        isNested: false,
+        isNested: true,
         synapseConfigArray: [
           {
             ...routeButtonControlWrapperProps,
@@ -323,50 +274,57 @@ const routes: GenericRoute[] = [
             },
           },
         ],
-        programmaticRouteConfig: [
+        routes: [
           {
-            name: 'CardContainerLogic',
-            isOutsideContainer: true,
-            props: {
-              isHeader: true,
-              backgroundColor: '#5bb0b5',
-              sqlOperator: '=',
-              ...datasetCardConfiguration,
-              secondaryLabelLimit: Infinity,
-              entityId: datasetsEntityId,
-              sql: datasetsSql,
-              iconOptions: {
-                dataset: DatasetSvg,
-              },
-            },
-          },
-          {
-            name: 'QueryWrapperFlattened',
-            title: 'Data',
-            props: {
-              initQueryRequest: {
-                entityId: filesEntityId,
-                partMask:
-                  SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
-                  SynapseConstants.BUNDLE_MASK_QUERY_COUNT |
-                  SynapseConstants.BUNDLE_MASK_QUERY_SELECT_COLUMNS |
-                  SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
-                concreteType:
-                  'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-                query: {
-                  sql: filesSql,
-                  selectedFacets: [],
-                  isConsistent: true,
-                  limit: 25,
-                  offset: 0,
+            name: 'DetailsPage',
+            to: '/Explore/Datasets/DetailsPage',
+            isNested: false,
+            synapseConfigArray: [
+              {
+                name: 'CardContainerLogic',
+                isOutsideContainer: true,
+                props: {
+                  isHeader: true,
+                  backgroundColor: '#5bb0b5',
+                  sqlOperator: '=',
+                  ...datasetCardConfiguration,
+                  secondaryLabelLimit: Infinity,
+                  entityId: datasetsEntityId,
+                  sql: datasetsSql,
+                  iconOptions: {
+                    dataset: DatasetSvg,
+                  },
                 },
               },
-              loadingScreen,
-              sqlOperator: '=',
-              rgbIndex: 0,
-              unitDescription: 'Files',
-              title: 'Dataset Files',
-            },
+              {
+                name: 'QueryWrapperFlattened',
+                title: 'Data',
+                props: {
+                  initQueryRequest: {
+                    entityId: filesEntityId,
+                    partMask:
+                      SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
+                      SynapseConstants.BUNDLE_MASK_QUERY_COUNT |
+                      SynapseConstants.BUNDLE_MASK_QUERY_SELECT_COLUMNS |
+                      SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
+                    concreteType:
+                      'org.sagebionetworks.repo.model.table.QueryBundleRequest',
+                    query: {
+                      sql: filesSql,
+                      selectedFacets: [],
+                      isConsistent: true,
+                      limit: 25,
+                      offset: 0,
+                    },
+                  },
+                  loadingScreen,
+                  sqlOperator: '=',
+                  rgbIndex: 0,
+                  unitDescription: 'Files',
+                  title: 'Dataset Files',
+                },
+              },
+            ],
           },
         ],
       },
