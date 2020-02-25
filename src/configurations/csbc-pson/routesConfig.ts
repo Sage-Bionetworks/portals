@@ -47,15 +47,45 @@ const routes: GenericRoute[] = [
         isOutsideContainer: true,
       },
       {
+        name: 'Ecosystem',
+        isOutsideContainer: true,
+        props: {
+          config: [
+            {
+              title: 'Public Repositories',
+              ownerId: '',
+            },
+            {
+              title: 'Data Common Nodes',
+              ownerId: '',
+            },
+            {
+              title: 'Data Coordination',
+              ownerId: '',
+            },
+            {
+              title: 'Data Exploration',
+              ownerId: '',
+            },
+            {
+              title: 'Cloud Platform',
+              ownerId: '',
+            },
+          ],
+          title: 'The Cancer Resource Information Ecosystem',
+          subtitle:
+            'The Cancer Resource Information ecosystem contains a growing list of tools and resources. Explore some of them below.',
+        },
+      },
+      {
         name: 'HomePageCardContainer',
         props: {
           cardProps: [
-            { ownerId: 'syn21641142', wikiId: '601363' },
-            { ownerId: 'syn21641142', wikiId: '601363' },
-            { ownerId: 'syn21641142', wikiId: '601363' },
-            { ownerId: 'syn21641142', wikiId: '601363' },
-            { ownerId: 'syn21641142', wikiId: '601363' },
-            { ownerId: 'syn21641142', wikiId: '601363' },
+            { ownerId: 'syn21498902', wikiId: '601367' },
+            { ownerId: 'syn21498902', wikiId: '601368' },
+            { ownerId: 'syn21498902', wikiId: '601369' },
+            { ownerId: 'syn21498902', wikiId: '601370' },
+            { ownerId: 'syn21498902', wikiId: '601371' },
           ],
         },
       },

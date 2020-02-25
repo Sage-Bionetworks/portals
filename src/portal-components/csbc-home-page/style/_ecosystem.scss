@@ -1,0 +1,71 @@
+.Ecosystem {
+  background-color: rgba(64, 123, 160, 0.05);
+  padding-bottom: 50px;
+  padding-top: 45px;
+  margin-top: 50px;
+  .header,
+  .subtitle {
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  h2.header {
+    color: #407ba0;
+    font-weight: bold;
+    font-size: 24px;
+  }
+  .ecosystem-headers-container {
+    display: flex;
+    .ecosystem-button {
+      flex: 1;
+      > :first-child {
+        margin-left: 0px;
+      }
+      > :last-child {
+        margin-right: 0px;
+      }
+      margin: 2px;
+      border-bottom: 4px solid transparent;
+      color: #47337d;
+      font-weight: bold;
+      text-transform: uppercase;
+      &.selected {
+        border-bottom: 4px solid rgba(71, 51, 125, 0.5);
+      }
+      &:hover {
+        border-bottom: 4px solid rgba(71, 51, 125, 0.5);
+      }
+    }
+  }
+  .ecosystem-content {
+    display: flex;
+    justify-content: center;
+
+    .ecosystem-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .markdown {
+        display: inline-block;
+      }
+      .connector {
+        display: inline-block;
+        background: #dcdcdc;
+        width: 150px;
+        height: 2px;
+      }
+      img {
+        background: white;
+      }
+    }
+    .markdown {
+      // thead tr th {
+      //   display: none;
+      // }
+      // thead tr:first-child {
+      //   text-align: center;
+      //   display: block !important;
+      // }
+    }
+  }
+}
