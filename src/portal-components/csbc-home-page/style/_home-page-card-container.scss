@@ -1,0 +1,17 @@
+.HomePageCardContainer {
+  .card-row {
+    display: flex;
+    > :first-child {
+      margin-left: 0px !important;
+    }
+    > :last-child {
+      margin-right: 0px !important;
+    }
+    .HomePageCard {
+      flex: 1;
+      border: 1px solid #dcdcdc;
+      padding: 20px;
+      margin: 10px;
+    }
+  }
+}

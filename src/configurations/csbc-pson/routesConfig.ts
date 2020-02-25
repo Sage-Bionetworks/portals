@@ -46,6 +46,19 @@ const routes: GenericRoute[] = [
         props: undefined,
         isOutsideContainer: true,
       },
+      {
+        name: 'HomePageCardContainer',
+        props: {
+          cardProps: [
+            { ownerId: 'syn21641142', wikiId: '601363' },
+            { ownerId: 'syn21641142', wikiId: '601363' },
+            { ownerId: 'syn21641142', wikiId: '601363' },
+            { ownerId: 'syn21641142', wikiId: '601363' },
+            { ownerId: 'syn21641142', wikiId: '601363' },
+            { ownerId: 'syn21641142', wikiId: '601363' },
+          ],
+        },
+      },
     ],
   },
   {
