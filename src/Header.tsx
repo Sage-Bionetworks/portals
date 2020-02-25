@@ -2,7 +2,7 @@ import * as React from 'react'
 import headerConfig from './config/headerConfig'
 
 export const Header: React.SFC<{}> = () => {
-  const { summary, title, showBlur, centerText = false } = headerConfig
+  const { summary, title, showBlur = true, centerText = false } = headerConfig
   return (
     <header id="header">
       <div className="container-fluid">
