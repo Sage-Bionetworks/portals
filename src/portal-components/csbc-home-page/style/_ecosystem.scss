@@ -25,15 +25,14 @@
         margin-right: 0px;
       }
       margin: 2px;
-      border-bottom: 4px solid transparent;
+      border-bottom: 9px solid transparent;
       color: #47337d;
       font-weight: bold;
       text-transform: uppercase;
-      &.selected {
-        border-bottom: 4px solid rgba(71, 51, 125, 0.5);
-      }
+      text-decoration: underline;
+      &.selected,
       &:hover {
-        border-bottom: 4px solid rgba(71, 51, 125, 0.5);
+        border-bottom: 9px solid rgba(71, 51, 125, 0.1);
       }
     }
   }

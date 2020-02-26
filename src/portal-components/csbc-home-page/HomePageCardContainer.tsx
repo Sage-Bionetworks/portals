@@ -12,20 +12,9 @@ const HomePageCardContainer = (props: HomePageCardContainerProps) => {
   return (
     <div className="HomePageCardContainer">
       <div className="card-row">
-        {cardProps.slice(0, cardProps.length / 2).map((el, index) => (
+        {cardProps.map((el, index) => (
           <HomePageCard token={token} key={`${el.ownerId} ${index} `} {...el} />
         ))}
-      </div>
-      <div className="card-row">
-        {cardProps
-          .slice(cardProps.length / 2, cardProps.length)
-          .map((el, index) => (
-            <HomePageCard
-              token={token}
-              key={`${el.ownerId} ${index} `}
-              {...el}
-            />
-          ))}
       </div>
     </div>
   )

@@ -24,6 +24,9 @@ import loadingScreen from './loadingScreen'
 import { toolsSql, toolsEntityId } from './synapseConfigs/tools'
 import { filesSql, filesEntityId } from './synapseConfigs/files'
 import DatasetSvg from './style/Dataset.svg'
+import SageLogo from './style/SageLogo.svg'
+import NCILogo from './style/NCILogo.svg'
+import NIHLogo from './style/NIH.svg'
 import {
   publicationsCardConfiguration,
   publicationEntityId,
@@ -78,8 +81,12 @@ const routes: GenericRoute[] = [
         },
       },
       {
-        name: 'HomePageCardContainer',
+        name: 'AboutPortal',
         props: {
+          title: 'About the CSBC-PSON Portal',
+          logos: [NIHLogo, NCILogo, SageLogo],
+          ownerId: 'syn21641431',
+          wikiId: '601410',
           cardProps: [
             { ownerId: 'syn21498902', wikiId: '601367' },
             { ownerId: 'syn21498902', wikiId: '601368' },

@@ -1,0 +1,25 @@
+.AboutPortal {
+  h2 {
+    color: #407ba0;
+    text-align: center;
+    margin: 10px;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  .logo-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    img {
+      margin-right: 15px;
+      margin-left: 15px;
+    }
+  }
+  .show-button {
+    text-decoration: underline;
+    color: #47337d;
+    padding: 0px;
+    margin-top: 10px;
+  }
+}
