@@ -9,8 +9,9 @@
   align-items: center;
   .link {
     flex: 1;
-    color: #47337d;
+    color: $primary-action-color;
     text-decoration: underline;
+    text-align: center;
     text-transform: uppercase;
     font-weight: bold;
     font-size: 14px;

@@ -9,6 +9,9 @@ import { NewsFeedMenuProps } from 'synapse-react-client/dist/containers/NewsFeed
 import { SynapseFormSubmissionGridProps } from 'synapse-react-client/dist/containers/synapse_form_wrapper/SynapseFormSubmissionsGrid'
 import { SynapseFormWrapperProps } from 'synapse-react-client/dist/containers/synapse_form_wrapper/SynapseFormWrapper'
 import { RouteButtonControlWrapperProps } from '../portal-components/RouteButtonControlWrapper'
+import { HomePageCardContainerProps } from '../portal-components/csbc-home-page/HomePageCardContainer'
+import { AboutPortalProps } from '../portal-components/csbc-home-page/AboutPortal'
+import { EcosystemProps } from '../portal-components/csbc-home-page/Ecosystem'
 import { GenerateComponentsFromRowProps } from './portal-util-types'
 import { Operator } from '../portal-components/QueryWrapperFlattened'
 
@@ -78,6 +81,21 @@ type ConsortiaGoals = {
   props: undefined
 }
 
+type HomePageCardContainer = {
+  name: 'HomePageCardContainer'
+  props: HomePageCardContainerProps
+}
+
+type Ecosystem = {
+  name: 'Ecosystem'
+  props: EcosystemProps
+}
+
+type AboutPortal = {
+  name: 'AboutPortal'
+  props: AboutPortalProps
+}
+
 type Metadata = {
   title?: string
   link?: string
@@ -119,6 +137,9 @@ export type SynapseConfig = (
   | SynapseFormWrapper
   | SynapseFormSubmissionsGrid
   | ConsortiaGoals
+  | HomePageCardContainer
+  | Ecosystem
+  | AboutPortal
 ) &
   Metadata
 export type SynapseConfigArray = SynapseConfig[]

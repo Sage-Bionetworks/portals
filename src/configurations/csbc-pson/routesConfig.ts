@@ -24,6 +24,9 @@ import loadingScreen from './loadingScreen'
 import { toolsSql, toolsEntityId } from './synapseConfigs/tools'
 import { filesSql, filesEntityId } from './synapseConfigs/files'
 import DatasetSvg from './style/Dataset.svg'
+import SageLogo from './style/SageLogo.svg'
+import NCILogo from './style/NCILogo.svg'
+import NIHLogo from './style/NIH.svg'
 import {
   publicationsCardConfiguration,
   publicationEntityId,
@@ -45,6 +48,58 @@ const routes: GenericRoute[] = [
         name: 'ConsortiaGoals',
         props: undefined,
         isOutsideContainer: true,
+      },
+      {
+        name: 'Ecosystem',
+        isOutsideContainer: true,
+        props: {
+          config: [
+            {
+              title: 'Public Repositories',
+              ownerId: 'syn21641431',
+              icon: NCILogo,
+            },
+            {
+              title: 'Data Common Nodes',
+              ownerId: 'syn21641431',
+              icon: SageLogo,
+            },
+            {
+              title: 'Data Coordination',
+              ownerId: 'syn21641431',
+              icon: NIHLogo,
+            },
+            {
+              title: 'Data Exploration',
+              ownerId: 'syn21641431',
+              icon: NCILogo,
+            },
+            {
+              title: 'Cloud Platform',
+              ownerId: 'syn21641431',
+              icon: SageLogo,
+            },
+          ],
+          title: 'The Cancer Resource Information Ecosystem',
+          subtitle:
+            'The Cancer Resource Information ecosystem contains a growing list of tools and resources. Explore some of them below.',
+        },
+      },
+      {
+        name: 'AboutPortal',
+        props: {
+          title: 'About the CSBC-PSON Portal',
+          logos: [NIHLogo, NCILogo, SageLogo],
+          ownerId: 'syn21498902',
+          wikiId: '601366',
+          cardProps: [
+            { ownerId: 'syn21498902', wikiId: '601367' },
+            { ownerId: 'syn21498902', wikiId: '601368' },
+            { ownerId: 'syn21498902', wikiId: '601369' },
+            { ownerId: 'syn21498902', wikiId: '601370' },
+            { ownerId: 'syn21498902', wikiId: '601371' },
+          ],
+        },
       },
     ],
   },

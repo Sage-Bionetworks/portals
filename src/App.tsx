@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import * as React from 'react'
-import './App.scss'
+import './_App.scss'
 import './Markdown.scss'
 import { Footer } from './Footer'
 import AppInitializer from './AppInitializer'
