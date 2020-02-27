@@ -1,7 +1,6 @@
 import * as React from 'react'
-import './style/_ecosystem.scss'
-// import MarkdownSynapse from 'synapse-react-client/dist/containers/MarkdownSynapse'
 import Layout from 'portal-components/Layout'
+import MarkdownSynapse from 'synapse-react-client/dist/containers/MarkdownSynapse'
 
 type Config = {
   ownerId: string
@@ -19,7 +18,7 @@ export type EcosystemProps = {
 
 const Ecosystem = (props: EcosystemProps) => {
   const [index, setIndex] = React.useState(0)
-  const { config, title, subtitle } = props
+  const { config, title, subtitle, token } = props
   return (
     <div className="Ecosystem">
       <Layout>
@@ -42,6 +41,7 @@ const Ecosystem = (props: EcosystemProps) => {
         </div>
         <div className="ecosystem-content">
           {config.map((el, curIndex) => {
+            const { ownerId } = el
             return (
               <span
                 key={el.title}
@@ -49,16 +49,13 @@ const Ecosystem = (props: EcosystemProps) => {
                   index === curIndex ? '' : 'hide'
                 } `}
               >
-                {/* <MarkdownSynapse
-                  token={token}
-                  // ownerId={el.ownerId}
-                  // wikiId={el.wikiId}
-                  markdown={''}
-                /> */}
+                {ownerId && <MarkdownSynapse token={token} ownerId={ownerId} />}
                 {el.icon && (
                   <>
                     <span className="connector" />
-                    <img src={el.icon} alt="section-icon" />
+                    <span className="section-icon">
+                      <img src={el.icon} alt="section-icon" />
+                    </span>
                   </>
                 )}
               </span>

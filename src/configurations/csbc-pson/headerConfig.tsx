@@ -8,7 +8,7 @@ const style: React.CSSProperties = {
 const homePageHeader: HomePageHeaderConfig = {
   summary: (
     <>
-      Discover and download data and analysis from the NIH National
+      Discover and download data and analysis from the NIH National&nbsp;
       <a style={style} href="https://csbconsortium.org/">
         Cancer Institute-sponsored Cancer Systems Biology Consortium (CSBC)
       </a>

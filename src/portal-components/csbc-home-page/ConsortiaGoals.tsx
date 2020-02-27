@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { ReactComponent as ConsortiaGoalsSvg } from './assets/goals-icon.svg'
-import './style/_consortia-goals.scss'
 import HomePageLinks from './HomePageLinks'
 import Layout from 'portal-components/Layout'
 

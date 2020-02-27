@@ -1,6 +1,7 @@
 .AboutPortal {
+  margin-top: 40px;
   h2 {
-    color: #407ba0;
+    color: $primary-text-color;
     text-align: center;
     margin: 10px;
     font-size: 24px;
@@ -18,7 +19,7 @@
   }
   .show-button {
     text-decoration: underline;
-    color: #47337d;
+    color: $primary-action-color;
     padding: 0px;
     margin-top: 10px;
   }

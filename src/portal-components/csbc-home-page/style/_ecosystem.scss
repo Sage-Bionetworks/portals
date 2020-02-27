@@ -1,3 +1,15 @@
+%border-light {
+  border: 1px solid #dcdcdc;
+}
+
+$border-bottom-size: 9px;
+
+%centerContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .Ecosystem {
   background-color: rgba(64, 123, 160, 0.05);
   padding-bottom: 50px;
@@ -9,8 +21,8 @@
     margin-top: 15px;
     margin-bottom: 15px;
   }
-  h2.header {
-    color: #407ba0;
+  .header {
+    color: $primary-text-color;
     font-weight: bold;
     font-size: 24px;
   }
@@ -25,25 +37,22 @@
         margin-right: 0px;
       }
       margin: 2px;
-      border-bottom: 9px solid transparent;
-      color: #47337d;
+      border-bottom: $border-bottom-size solid transparent;
+      color: $primary-action-color;
       font-weight: bold;
       text-transform: uppercase;
       text-decoration: underline;
       &.selected,
       &:hover {
-        border-bottom: 9px solid rgba(71, 51, 125, 0.1);
+        border-bottom: $border-bottom-size solid rgba(71, 51, 125, 0.1);
       }
     }
   }
   .ecosystem-content {
-    display: flex;
-    justify-content: center;
-
+    @extend %centerContent;
+    padding-top: 20px;
     .ecosystem-section {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      @extend %centerContent;
       .markdown {
         display: inline-block;
       }
@@ -53,18 +62,39 @@
         width: 150px;
         height: 2px;
       }
-      img {
+      .section-icon {
+        @extend %border-light;
+        border-radius: 50%;
+        img {
+          @extend %border-light;
+          background: white;
+        }
+        padding: 25px;
         background: white;
       }
     }
     .markdown {
-      // thead tr th {
-      //   display: none;
-      // }
-      // thead tr:first-child {
-      //   text-align: center;
-      //   display: block !important;
-      // }
+      table {
+        background: white;
+        @extend %border-light;
+      }
+      thead {
+        background: RGBA(64, 123, 160, 0.15);
+      }
+      thead tr th {
+        padding: 10px;
+        text-align: center;
+        text-transform: uppercase;
+        color: $primary-text-color;
+        font-weight: bold;
+        font-size: 18px;
+      }
+      tbody tr td {
+        padding: 20px;
+        a {
+          text-decoration: underline;
+        }
+      }
     }
   }
 }

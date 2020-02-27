@@ -56,23 +56,28 @@ const routes: GenericRoute[] = [
           config: [
             {
               title: 'Public Repositories',
-              ownerId: '',
+              ownerId: 'syn21641431',
+              icon: NCILogo,
             },
             {
               title: 'Data Common Nodes',
-              ownerId: '',
+              ownerId: 'syn21641431',
+              icon: SageLogo,
             },
             {
               title: 'Data Coordination',
-              ownerId: '',
+              ownerId: 'syn21641431',
+              icon: NIHLogo,
             },
             {
               title: 'Data Exploration',
-              ownerId: '',
+              ownerId: 'syn21641431',
+              icon: NCILogo,
             },
             {
               title: 'Cloud Platform',
-              ownerId: '',
+              ownerId: 'syn21641431',
+              icon: SageLogo,
             },
           ],
           title: 'The Cancer Resource Information Ecosystem',

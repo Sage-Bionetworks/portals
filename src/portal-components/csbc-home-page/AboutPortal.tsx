@@ -2,7 +2,6 @@ import * as React from 'react'
 import { HomePageCardProps } from './HomePageCard'
 import HomePageCardContainer from './HomePageCardContainer'
 import MarkdownSynapse from 'synapse-react-client/dist/containers/MarkdownSynapse'
-import './style/_about-portal.scss'
 
 export type AboutPortalProps = {
   title: string
@@ -25,7 +24,7 @@ const AboutPortal = (props: AboutPortalProps) => {
         ))}
       </div>
       <MarkdownSynapse token={token} ownerId={ownerId} wikiId={wikiId} />
-      <div className={hideContent ? 'hide' : ''}>
+      <div className={`box-shadow  ${hideContent ? 'hide' : ''}`}>
         <HomePageCardContainer cardProps={cardProps} token={token} />
       </div>
       <button

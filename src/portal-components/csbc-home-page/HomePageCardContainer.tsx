@@ -1,6 +1,5 @@
 import * as React from 'react'
 import HomePageCard, { HomePageCardProps } from './HomePageCard'
-import './style/_home-page-card-container.scss'
 
 export type HomePageCardContainerProps = {
   cardProps: HomePageCardProps[]
