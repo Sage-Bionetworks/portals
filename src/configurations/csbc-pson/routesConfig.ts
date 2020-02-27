@@ -90,8 +90,8 @@ const routes: GenericRoute[] = [
         props: {
           title: 'About the CSBC-PSON Portal',
           logos: [NIHLogo, NCILogo, SageLogo],
-          ownerId: 'syn21641431',
-          wikiId: '601410',
+          ownerId: 'syn21498902',
+          wikiId: '601366',
           cardProps: [
             { ownerId: 'syn21498902', wikiId: '601367' },
             { ownerId: 'syn21498902', wikiId: '601368' },
