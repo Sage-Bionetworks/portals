@@ -12,6 +12,7 @@ import { RouteButtonControlWrapperProps } from '../portal-components/RouteButton
 import { HomePageCardContainerProps } from '../portal-components/csbc-home-page/HomePageCardContainer'
 import { AboutPortalProps } from '../portal-components/csbc-home-page/AboutPortal'
 import { EcosystemProps } from '../portal-components/csbc-home-page/Ecosystem'
+import { TableWithSideFacetsProps } from '../portal-components/csbc-home-page/TableWithSideFacets'
 import { GenerateComponentsFromRowProps } from './portal-util-types'
 import { Operator } from '../portal-components/QueryWrapperFlattened'
 
@@ -96,6 +97,11 @@ type AboutPortal = {
   props: AboutPortalProps
 }
 
+type TableWithSideFacets = {
+  name: 'TableWithSideFacets'
+  props: TableWithSideFacetsProps
+}
+
 type Metadata = {
   title?: string
   link?: string
@@ -140,6 +146,7 @@ export type SynapseConfig = (
   | HomePageCardContainer
   | Ecosystem
   | AboutPortal
+  | TableWithSideFacets
 ) &
   Metadata
 export type SynapseConfigArray = SynapseConfig[]
