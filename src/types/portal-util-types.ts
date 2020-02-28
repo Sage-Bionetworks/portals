@@ -1,5 +1,5 @@
 import { SynapseConfig } from './portal-config'
-import { SQLOperator } from 'synapse-react-client/dist/utils/modules/sqlFunctions'
+import { SQLOperator } from 'synapse-react-client/dist/utils/functions/sqlFunctions'
 
 /* 
   These are types that come up frequently between portals but are an
