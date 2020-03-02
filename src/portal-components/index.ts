@@ -7,6 +7,7 @@ import HomePageCardContainer from './csbc-home-page/HomePageCardContainer'
 import Ecosystem from './csbc-home-page/Ecosystem'
 import AboutPortal from './csbc-home-page/AboutPortal'
 import TableWithSideFacets from './csbc-home-page/TableWithSideFacets'
+import DevelopedBySage from './csbc-home-page/DevelopedBySage'
 
 const PortalComponents = {
   StatefulButtonControlWrapper,
@@ -18,6 +19,7 @@ const PortalComponents = {
   Ecosystem,
   AboutPortal,
   TableWithSideFacets,
+  DevelopedBySage,
 }
 
 export default PortalComponents

@@ -7,32 +7,19 @@ export type AboutPortalProps = {
   title: string
   token?: string
   cardProps: HomePageCardProps[]
-  logos: string[]
   ownerId?: string
   wikiId?: string
 }
 
 const AboutPortal = (props: AboutPortalProps) => {
-  const { cardProps, title, token, logos, ownerId, wikiId } = props
-  const [hideContent, setHideContent] = React.useState(true)
+  const { cardProps, title, token, ownerId, wikiId } = props
   return (
     <div className="AboutPortal">
       <h2>{title}</h2>
-      <div className="logo-container">
-        {logos.map((el, index) => (
-          <img key={index} alt="funder-icon" src={el} />
-        ))}
-      </div>
       <MarkdownSynapse token={token} ownerId={ownerId} wikiId={wikiId} />
-      <div className={`box-shadow  ${hideContent ? 'hide' : ''}`}>
+      <div>
         <HomePageCardContainer cardProps={cardProps} token={token} />
       </div>
-      <button
-        className="show-button"
-        onClick={() => setHideContent(!hideContent)}
-      >
-        Show {hideContent ? 'More' : 'Less'}
-      </button>
     </div>
   )
 }

@@ -102,6 +102,11 @@ type TableWithSideFacets = {
   props: TableWithSideFacetsProps
 }
 
+type DevelopedBySage = {
+  name: 'DevelopedBySage'
+  props: undefined
+}
+
 type Metadata = {
   title?: string
   link?: string
@@ -147,6 +152,7 @@ export type SynapseConfig = (
   | Ecosystem
   | AboutPortal
   | TableWithSideFacets
+  | DevelopedBySage
 ) &
   Metadata
 export type SynapseConfigArray = SynapseConfig[]
