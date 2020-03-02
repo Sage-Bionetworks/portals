@@ -21,7 +21,6 @@ const homePageHeader: HomePageHeaderConfig = {
   title:
     'Welcome to the Cancer Systems Biology Consortium and Physical Sciences in Oncology Network Portal',
   showBlur: false,
-  centerText: true,
 }
 
 export default homePageHeader
