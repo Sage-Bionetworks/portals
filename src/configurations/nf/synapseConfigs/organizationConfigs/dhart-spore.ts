@@ -3,9 +3,13 @@ import { BaseRoute } from 'types/portal-config'
 import { generateOrgConfig } from './generateConfig'
 import { studiesEntityId } from '../studies'
 import { filesEntityId } from '../files'
+import { buttonColors } from '../commonProps'
+import { publicationsEntityId } from '../publications'
+import { datasetsEntityId } from '../datasets'
 
 const org = 'DHART-SPORE'
 
+const orgColumnName = 'NIH-NCI'
 export const dhartSpore: BaseRoute = {
   name: org,
   displayName: 'NCI DHART SPORE',
@@ -25,19 +29,34 @@ export const dhartSpore: BaseRoute = {
     {
       name: 'StatefulButtonControlWrapper',
       props: {
-        colors: ['#58A058', '#407BA0'],
+        ...buttonColors,
         configs: [
           {
             name: 'Studies',
-            synapseConfigArray: generateOrgConfig('NIH-NCI', 'Studies'),
-            sql: generateOrgConfig('NIH-NCI', 'Studies', true),
+            synapseConfigArray: generateOrgConfig(orgColumnName, 'Studies'),
+            sql: generateOrgConfig(orgColumnName, 'Studies', true),
             entityId: studiesEntityId,
           },
           {
+            name: 'Datasets',
+            sql: generateOrgConfig(orgColumnName, 'Dataset', true),
+            entityId: datasetsEntityId,
+            synapseConfigArray: generateOrgConfig(org, 'Dataset', false),
+          },
+          {
             name: 'Files',
-            synapseConfigArray: generateOrgConfig('NIH-NCI', 'Files'),
-            sql: generateOrgConfig('NIH-NCI', 'Files', true),
+            synapseConfigArray: generateOrgConfig(orgColumnName, 'Files'),
+            sql: generateOrgConfig(orgColumnName, 'Files', true),
             entityId: filesEntityId,
+          },
+          {
+            name: 'Publications',
+            synapseConfigArray: generateOrgConfig(
+              orgColumnName,
+              'Publications',
+            ),
+            sql: generateOrgConfig(orgColumnName, 'Publications', true),
+            entityId: publicationsEntityId,
           },
         ],
       },
