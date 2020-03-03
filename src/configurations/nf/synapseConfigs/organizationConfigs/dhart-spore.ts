@@ -4,8 +4,8 @@ import { generateOrgConfig } from './generateConfig'
 import { studiesEntityId } from '../studies'
 import { filesEntityId } from '../files'
 import { buttonColors } from '../commonProps'
-import { publicationsEntityId } from 'config/synapseConfigs/publications'
-import { datasetsEntityId } from 'config/synapseConfigs/datasets'
+import { publicationsEntityId } from '../publications'
+import { datasetsEntityId } from '../datasets'
 
 const org = 'DHART-SPORE'
 
