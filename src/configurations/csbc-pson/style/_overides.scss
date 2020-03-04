@@ -13,11 +13,13 @@ $primary-action-color: #47337d;
   }
 }
 
-.ThemesPlot {
+.CSBC-ThemesPlot {
   h2.title {
     text-align: center;
     text-transform: none;
     margin-bottom: 30px;
+    font-size: 24px;
+    font-weight: bold;
     color: $primary-text-color !important;
   }
 }

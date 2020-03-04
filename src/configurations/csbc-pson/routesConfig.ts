@@ -52,7 +52,7 @@ const routes: GenericRoute[] = [
       },
       {
         name: 'ThemesPlot',
-        containerClassName: 'ThemesPlot',
+        containerClassName: 'CSBC-ThemesPlot',
         title: 'What Research Themes are Scientists Currently Focusing On?',
         props: {
           onPointClick,
@@ -84,7 +84,8 @@ const routes: GenericRoute[] = [
           config: [
             {
               title: 'Public Repositories',
-              ownerId: 'syn21641431',
+              ownerId: 'syn21498902',
+              wikiId: '601489',
               icon: NCILogo,
             },
             {
