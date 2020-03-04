@@ -21,7 +21,7 @@ const links: LinkProps[] = [
     description:
       'Data with which researchers can develop, validate, or apply their methods',
     linkText: 'Explore Data',
-    to: 'Explore/Data',
+    to: 'Explore/Files',
   },
   {
     title: 'Methods',
@@ -29,7 +29,7 @@ const links: LinkProps[] = [
     description:
       'Methods or tools that researchers can use, adapt, and improve',
     linkText: 'Explore Methods',
-    to: 'Explore/Methods',
+    to: 'Explore/Tools',
   },
   {
     title: 'Insights',
@@ -37,7 +37,7 @@ const links: LinkProps[] = [
     description:
       'Lessons learned from existing data and methods, either in the form of publications or dynamic, summary visualizations that can quickly answer basic questions',
     linkText: 'Explore Insights',
-    to: 'Explore/Insights',
+    to: 'Explore/Publications',
   },
   {
     title: 'Activity',

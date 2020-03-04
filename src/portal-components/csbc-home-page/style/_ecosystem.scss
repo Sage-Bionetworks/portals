@@ -1,98 +1,65 @@
-%border-light {
-  border: 1px solid #dcdcdc;
-}
-
-$border-bottom-size: 9px;
-
-%centerContent {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .Ecosystem {
   background-color: rgba(64, 123, 160, 0.05);
   padding-bottom: 50px;
-  padding-top: 45px;
-  margin-top: 50px;
   .header,
   .subtitle {
     text-align: center;
-    margin-top: 15px;
-    margin-bottom: 15px;
   }
   .header {
     color: $primary-text-color;
     font-weight: bold;
     font-size: 24px;
   }
-  .ecosystem-headers-container {
+  .subtitle {
+    margin-bottom: 20px;
+  }
+  .control-container {
+    background: white;
     display: flex;
-    .ecosystem-button {
+    border: 1px solid #dcdcdc;
+    height: 450px;
+    .button-container {
       flex: 1;
-      > :first-child {
-        margin-left: 0px;
-      }
-      > :last-child {
-        margin-right: 0px;
-      }
-      margin: 2px;
-      border-bottom: $border-bottom-size solid transparent;
-      color: $primary-action-color;
-      font-weight: bold;
-      text-transform: uppercase;
-      text-decoration: underline;
-      &.selected,
-      &:hover {
-        border-bottom: $border-bottom-size solid rgba(71, 51, 125, 0.1);
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      margin: 15px;
+      button {
+        text-align: left;
+        color: #515359;
+        font-size: 16px;
+        padding: 10px;
+        &.isSelected,
+        &:hover {
+          color: $primary-action-color;
+          background-color: rgba(71, 51, 125, 0.1);
+          border-right: 2px solid $primary-action-color;
+        }
+        border-right: 2px solid #dcdcdc;
+        font-weight: bold;
+        flex-grow: 1;
+        flex-shrink: 1;
       }
     }
-  }
-  .ecosystem-content {
-    @extend %centerContent;
-    padding-top: 20px;
-    .ecosystem-section {
-      @extend %centerContent;
-      .markdown {
-        display: inline-block;
-      }
-      .connector {
-        display: inline-block;
-        background: #dcdcdc;
-        width: 150px;
-        height: 2px;
-      }
-      .section-icon {
-        @extend %border-light;
-        border-radius: 50%;
-        img {
-          @extend %border-light;
-          background: white;
-        }
-        padding: 25px;
-        background: white;
-      }
+    .content-container {
+      overflow-y: auto;
+      flex: 3;
+      padding-left: 30px;
+      padding-right: 20px;
     }
     .markdown {
-      table {
-        background: white;
-        @extend %border-light;
+      p {
+        border-bottom: 1px solid #dcdcdc;
+        padding-bottom: 10px;
+        &:last-child {
+          border-bottom: 1px solid transparent;
+        }
       }
-      thead {
-        background: RGBA(64, 123, 160, 0.15);
-      }
-      thead tr th {
-        padding: 10px;
-        text-align: center;
-        text-transform: uppercase;
-        color: $primary-text-color;
-        font-weight: bold;
-        font-size: 18px;
-      }
-      tbody tr td {
-        padding: 20px;
-        a {
-          text-decoration: underline;
+      h4 {
+        margin-bottom: 10px;
+        margin-top: 5px;
+        &:first-child {
+          margin-top: 0px;
         }
       }
     }
