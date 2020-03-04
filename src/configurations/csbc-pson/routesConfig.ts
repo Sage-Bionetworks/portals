@@ -52,6 +52,8 @@ const routes: GenericRoute[] = [
       },
       {
         name: 'ThemesPlot',
+        containerClassName: 'ThemesPlot',
+        title: 'What Research Themes are Scientists Currently Focusing On?',
         props: {
           onPointClick,
           topBarPlot: {
