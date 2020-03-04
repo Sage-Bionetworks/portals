@@ -37,6 +37,7 @@ import {
   grantsSql,
 } from './synapseConfigs/grants'
 import { toolsCardConfiguration } from 'configurations/nf/synapseConfigs/tools'
+import { onPointClick } from './synapseConfigs/onPointClick'
 
 const routes: GenericRoute[] = [
   {
@@ -48,6 +49,33 @@ const routes: GenericRoute[] = [
         name: 'ConsortiaGoals',
         props: undefined,
         isOutsideContainer: true,
+      },
+      {
+        name: 'ThemesPlot',
+        containerClassName: 'ThemesPlot',
+        title: 'What Research Themes are Scientists Currently Focusing On?',
+        props: {
+          onPointClick,
+          topBarPlot: {
+            entityId: 'syn21641485',
+            xField: 'totalCount',
+            yField: 'groupBy',
+            groupField: 'consortium',
+          },
+          sideBarPlot: {
+            entityId: 'syn21649281',
+            xField: 'projects',
+            yField: 'theme',
+            groupField: 'consortium',
+          },
+          dotPlot: {
+            entityId: 'syn21639584',
+            xField: 'totalCount',
+            yField: 'theme',
+            groupField: 'groupBy',
+            whereClause: "groupBy IN ('publications', 'tools', 'datasets')",
+          },
+        },
       },
       {
         name: 'Ecosystem',

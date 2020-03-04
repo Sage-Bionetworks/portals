@@ -13,6 +13,15 @@ $primary-action-color: #47337d;
   }
 }
 
+.ThemesPlot {
+  h2.title {
+    text-align: center;
+    text-transform: none;
+    margin-bottom: 30px;
+    color: $primary-text-color !important;
+  }
+}
+
 // Since scss breaks if a file is missing in a local url link these functinons must get manually overwitten
 @function getHeader($path) {
   @return url($path+'/dna_header.svg');
