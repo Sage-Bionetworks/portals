@@ -8,6 +8,7 @@ import { MarkdownSynapseProps } from 'synapse-react-client/dist/containers/Markd
 import { NewsFeedMenuProps } from 'synapse-react-client/dist/containers/NewsFeedMenu'
 import { SynapseFormSubmissionGridProps } from 'synapse-react-client/dist/containers/synapse_form_wrapper/SynapseFormSubmissionsGrid'
 import { SynapseFormWrapperProps } from 'synapse-react-client/dist/containers/synapse_form_wrapper/SynapseFormWrapper'
+import { ThemesPlotProps } from 'synapse-react-client/dist/containers/widgets/themes-plot/ThemesPlot'
 import { RouteButtonControlWrapperProps } from '../portal-components/RouteButtonControlWrapper'
 import { HomePageCardContainerProps } from '../portal-components/csbc-home-page/HomePageCardContainer'
 import { AboutPortalProps } from '../portal-components/csbc-home-page/AboutPortal'
@@ -57,9 +58,15 @@ type UserCard = {
   name: 'UserCard'
   props: UserCardProps
 }
+
 type Markdown = {
   name: 'Markdown'
   props: MarkdownSynapseProps
+}
+
+type ThemesPlot = {
+  name: 'ThemesPlot'
+  props: ThemesPlotProps
 }
 
 type StatefulButtonControl = {
@@ -153,6 +160,7 @@ export type SynapseConfig = (
   | AboutPortal
   | TableWithSideFacets
   | DevelopedBySage
+  | ThemesPlot
 ) &
   Metadata
 export type SynapseConfigArray = SynapseConfig[]
