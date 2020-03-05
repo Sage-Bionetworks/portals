@@ -7,5 +7,5 @@ export const onPointClick = ({
 }) => {
   const typeUpperCase = type.slice(0, 1).toUpperCase() + type.slice(1)
   // @ts-ignore
-  window.location = `/Explore/${typeUpperCase}?facet=Theme&facetValue=${facetValue.toLowerCase()}`
+  window.location = `/Explore/${typeUpperCase}?facet=theme&facetValue=${facetValue}`
 }
