@@ -2,8 +2,8 @@ import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from 'types/portal-config'
 import loadingScreen from '../loadingScreen'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
-export const toolsSql = 'SELECT * FROM syn21488853'
-export const toolsEntityId = 'syn21488853'
+export const toolsSql = 'SELECT * FROM syn21683595'
+export const toolsEntityId = 'syn21683595'
 const entityId = toolsEntityId
 const sql = toolsSql
 const unitDescription = 'Tools'
@@ -104,6 +104,10 @@ export const tools: HomeExploreConfig = {
       },
       name: 'Tools',
       menuConfig: [
+        {
+          sql,
+          facet: 'theme',
+        },
         {
           sql,
           facet: 'inputDataType',
