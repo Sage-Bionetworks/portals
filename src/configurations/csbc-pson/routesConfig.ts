@@ -70,6 +70,9 @@ const routes: GenericRoute[] = [
             yField: 'theme',
             groupField: 'consortium',
             countLabel: 'projects',
+            plotStyle: {
+              backgroundColor: '#f5f9fa',
+            },
             colors: {
               CSBC: '#1c76af',
               'PS-ON': '#5bb0b5',
@@ -82,10 +85,16 @@ const routes: GenericRoute[] = [
             groupField: 'groupBy',
             infoField: 'themeDescription',
             whereClause: "groupBy IN ('publications', 'tools', 'datasets')",
-            markerStyle: {
-              line: 'rgba(0, 0, 0,0.5)',
-              fill: 'rgba(0, 0, 0,0.5)',
-              size: 9,
+            markerSymbols: {
+              tools: 'y-down',
+              datasets: 'diamond-x',
+              publications: 'circle',
+            },
+            plotStyle: {
+              markerLine: 'rgba(0, 0, 0,1)',
+              markerFill: 'rgba(255, 255, 255,1)',
+              markerSize: 11,
+              backgroundColor: '#f5f9fa',
             },
           },
         },
