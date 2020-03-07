@@ -34,7 +34,7 @@ import {
   grantsSql,
 } from './synapseConfigs/grants'
 import { toolsCardConfiguration } from 'configurations/nf/synapseConfigs/tools'
-import { onPointClick } from './synapseConfigs/onPointClick'
+import { onPointClick } from './synapseConfigs/onPointClickHandler'
 
 const routes: GenericRoute[] = [
   {
