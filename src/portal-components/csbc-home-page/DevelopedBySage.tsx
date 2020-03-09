@@ -15,7 +15,7 @@ const DevelopedBySage = () => {
         and is part of the
         <a
           className="SRC-primary-text-color SRC-boldText"
-          href="https://synapse.org"
+          href="https://sagebionetworks.org/tools_resources/synapse-platform/"
         >
           &nbsp;Sage Platform.&nbsp;
         </a>
@@ -30,7 +30,11 @@ const DevelopedBySage = () => {
         </a>
         .
       </p>
-      <SageLogo id="sage-logo" />
+      <a
+          href="https://sagebionetworks.org/tools_resources/synapse-platform/"
+      >
+        <SageLogo id="sage-logo" />    
+      </a>
     </div>
   )
 }
