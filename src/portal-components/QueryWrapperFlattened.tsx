@@ -18,6 +18,11 @@ type SearchParams = {
 export type Operator = {
   sqlOperator?: SQLOperator
 }
+
+export type QueryCount = {
+  showQueryCount?: boolean
+}
+
 export type QueryWrapperFlattenedProps = QueryWrapperProps &
   Partial<StackedBarChartProps> &
   Partial<SynapseTableProps> &
@@ -32,6 +37,8 @@ const QueryWrapperFlattened: React.FunctionComponent<QueryWrapperFlattenedProps>
     searchParams,
     initQueryRequest,
     sqlOperator,
+    enableLeftFacetFilter,
+    enableDownloadConfirmation,
     ...rest
   } = props
   let derivedQueryRequestFromSearchParams = cloneDeep(initQueryRequest)
@@ -59,6 +66,8 @@ const QueryWrapperFlattened: React.FunctionComponent<QueryWrapperFlattenedProps>
       {title ? (
         <SynapseComponents.SynapseTable
           loadingScreen={loadingScreen}
+          enableLeftFacetFilter={enableLeftFacetFilter}
+          enableDownloadConfirmation={enableDownloadConfirmation}
           title={title}
         />
       ) : (

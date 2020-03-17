@@ -24,43 +24,37 @@ const Ecosystem = (props: EcosystemProps) => {
       <Layout>
         <h2 className="header">{title}</h2>
         <p className="subtitle">{subtitle}</p>
-        <div className="ecosystem-headers-container">
-          {config.map((el, curIndex) => {
-            return (
-              <button
-                onClick={() => setIndex(curIndex)}
-                className={`ecosystem-button ${
-                  index === curIndex ? 'selected' : ''
-                } `}
-                key={el.title}
-              >
-                {el.title}
-              </button>
-            )
-          })}
-        </div>
-        <div className="ecosystem-content">
-          {config.map((el, curIndex) => {
-            const { ownerId } = el
-            return (
-              <span
-                key={el.title}
-                className={`ecosystem-section ${
-                  index === curIndex ? '' : 'hide'
-                } `}
-              >
-                {ownerId && <MarkdownSynapse token={token} ownerId={ownerId} />}
-                {el.icon && (
-                  <>
-                    <span className="connector" />
-                    <span className="section-icon">
-                      <img src={el.icon} alt="section-icon" />
-                    </span>
-                  </>
-                )}
-              </span>
-            )
-          })}
+        <div className="control-container">
+          <div className="button-container">
+            {config.map((el, curIndex) => {
+              return (
+                <button
+                  className={index === curIndex ? 'isSelected' : ''}
+                  onClick={() => setIndex(curIndex)}
+                  key={el.title}
+                >
+                  {' '}
+                  {el.title}{' '}
+                </button>
+              )
+            })}
+          </div>
+          <div className="content-container">
+            {config.map((el, curIndex) => {
+              return (
+                <span
+                  key={el.title}
+                  className={index === curIndex ? '' : 'hide'}
+                >
+                  <MarkdownSynapse
+                    ownerId={el.ownerId}
+                    wikiId={el.wikiId}
+                    token={token}
+                  />
+                </span>
+              )
+            })}
+          </div>
         </div>
       </Layout>
     </div>

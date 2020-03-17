@@ -126,6 +126,10 @@ export const datasets: HomeExploreConfig = {
       menuConfig: [
         {
           sql,
+          facet: 'Theme',
+        },
+        {
+          sql,
           facet: 'assay',
         },
         {

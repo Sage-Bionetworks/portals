@@ -24,9 +24,6 @@ import loadingScreen from './loadingScreen'
 import { toolsSql, toolsEntityId } from './synapseConfigs/tools'
 import { filesSql, filesEntityId } from './synapseConfigs/files'
 import DatasetSvg from './style/Dataset.svg'
-import SageLogo from './style/SageLogo.svg'
-import NCILogo from './style/NCILogo.svg'
-import NIHLogo from './style/NIH.svg'
 import {
   publicationsCardConfiguration,
   publicationEntityId,
@@ -37,6 +34,7 @@ import {
   grantsSql,
 } from './synapseConfigs/grants'
 import { toolsCardConfiguration } from 'configurations/nf/synapseConfigs/tools'
+import { onPointClick } from './synapseConfigs/onPointClick'
 
 const routes: GenericRoute[] = [
   {
@@ -50,34 +48,86 @@ const routes: GenericRoute[] = [
         isOutsideContainer: true,
       },
       {
+        name: 'ThemesPlot',
+        containerClassName: 'CSBC-ThemesPlot',
+        title: 'What Research Themes are Scientists Currently Focusing On?',
+        props: {
+          onPointClick,
+          topBarPlot: {
+            entityId: 'syn21641485',
+            xField: 'totalCount',
+            yField: 'groupBy',
+            groupField: 'consortium',
+            colors: {
+              CSBC: 'rgba(64,123,160, 1)',
+              'PS-ON': 'rgba(91,176,181,1)',
+            },
+            whereClause: 'totalCount is not NULL',
+          },
+          sideBarPlot: {
+            entityId: 'syn21649281',
+            xField: 'totalCount',
+            yField: 'theme',
+            groupField: 'consortium',
+            countLabel: 'projects',
+            plotStyle: {
+              backgroundColor: '#f5f9fa',
+            },
+            colors: {
+              CSBC: '#1c76af',
+              'PS-ON': '#5bb0b5',
+            },
+          },
+          dotPlot: {
+            entityId: 'syn21639584',
+            xField: 'totalCount',
+            yField: 'theme',
+            groupField: 'groupBy',
+            infoField: 'themeDescription',
+            whereClause: "groupBy IN ('publications', 'tools', 'datasets')",
+            markerSymbols: {
+              tools: 'y-down',
+              datasets: 'diamond-x',
+              publications: 'circle',
+            },
+            plotStyle: {
+              markerLine: 'rgba(0, 0, 0,1)',
+              markerFill: 'rgba(255, 255, 255,1)',
+              markerSize: 11,
+              backgroundColor: '#f5f9fa',
+            },
+          },
+        },
+      },
+      {
         name: 'Ecosystem',
         isOutsideContainer: true,
         props: {
           config: [
             {
               title: 'Public Repositories',
-              ownerId: 'syn21641431',
-              icon: NCILogo,
+              ownerId: 'syn21498902',
+              wikiId: '601489',
             },
             {
               title: 'Data Common Nodes',
-              ownerId: 'syn21641431',
-              icon: SageLogo,
+              ownerId: 'syn21498902',
+              wikiId: '601490',
             },
             {
               title: 'Data Coordination',
-              ownerId: 'syn21641431',
-              icon: NIHLogo,
+              ownerId: 'syn21498902',
+              wikiId: '601574',
             },
             {
               title: 'Data Exploration',
-              ownerId: 'syn21641431',
-              icon: NCILogo,
+              ownerId: 'syn21498902',
+              wikiId: '601575',
             },
             {
               title: 'Cloud Platform',
-              ownerId: 'syn21641431',
-              icon: SageLogo,
+              ownerId: 'syn21498902',
+              wikiId: '601576',
             },
           ],
           title: 'The Cancer Resource Information Ecosystem',
@@ -89,17 +139,18 @@ const routes: GenericRoute[] = [
         name: 'AboutPortal',
         props: {
           title: 'About the CSBC-PSON Portal',
-          logos: [NIHLogo, NCILogo, SageLogo],
           ownerId: 'syn21498902',
           wikiId: '601366',
           cardProps: [
             { ownerId: 'syn21498902', wikiId: '601367' },
             { ownerId: 'syn21498902', wikiId: '601368' },
             { ownerId: 'syn21498902', wikiId: '601369' },
-            { ownerId: 'syn21498902', wikiId: '601370' },
-            { ownerId: 'syn21498902', wikiId: '601371' },
           ],
         },
+      },
+      {
+        name: 'DevelopedBySage',
+        props: undefined,
       },
     ],
   },

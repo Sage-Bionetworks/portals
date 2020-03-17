@@ -14,6 +14,7 @@ describe('RouteButtonControlWrapper works', () => {
       props: {
         sql: '',
         type: '',
+        entityId: '',
       },
     },
     colors: ['red'],

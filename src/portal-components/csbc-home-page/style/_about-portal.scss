@@ -1,26 +1,10 @@
 .AboutPortal {
-  margin-top: 40px;
+  margin-top: 63px;
   h2 {
     color: $primary-text-color;
     text-align: center;
-    margin: 10px;
+    margin-bottom: 20px !important;
     font-size: 24px;
     font-weight: bold;
-  }
-  .logo-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    img {
-      margin-right: 15px;
-      margin-left: 15px;
-    }
-  }
-  .show-button {
-    text-decoration: underline;
-    color: $primary-action-color;
-    padding: 0px;
-    margin-top: 10px;
   }
 }

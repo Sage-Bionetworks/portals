@@ -1,25 +1,28 @@
 .HomePageLinks {
   margin-top: -6px;
-  background: #ffffff;
-  border: 1px solid #dddddf;
-  height: 75px;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  .link {
-    flex: 1;
-    color: $primary-action-color;
-    text-decoration: underline;
-    text-align: center;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 14px;
-    line-height: 150%;
-  }
-
-  #goals-icon {
-    height: 100%;
-    width: 100%;
+  .link-container {
+    display: flex;
+    .link-child {
+      h4 {
+        text-transform: none;
+        color: teal;
+      }
+      .icon {
+        margin-right: 4px;
+      }
+      flex: 1;
+      margin-right: 5px;
+      &:last-child {
+        margin-right: 0px;
+      }
+      h4 {
+        display: flex;
+        align-items: center;
+      }
+      .link {
+        color: $primary-action-color;
+      }
+    }
   }
 }

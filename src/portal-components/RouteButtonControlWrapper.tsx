@@ -50,5 +50,4 @@ const RouteButtonControl: React.FunctionComponent<Props> = ({
   )
 }
 
-// @ts-ignore
 export default withRouter(RouteButtonControl)

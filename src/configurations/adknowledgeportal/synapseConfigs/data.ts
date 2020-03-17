@@ -47,8 +47,7 @@ const data: HomeExploreConfig = {
       tableConfiguration: {
         title,
         visibleColumnCount: 4,
-        // uncomment when HasAccess has expected behavior
-        // showAccessColumn: true,
+        showAccessColumn: true,
       },
       menuConfig: [
         {

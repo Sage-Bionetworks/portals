@@ -47,6 +47,7 @@ describe('RouteResolver works', () => {
       props: {
         sql: '',
         type: '',
+        entityId: '',
       },
     }
     const synObj = mount(generateSynapseObjectHelper(mockedSynObject))
