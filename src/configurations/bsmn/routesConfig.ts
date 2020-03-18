@@ -1,7 +1,10 @@
 import { GenericRoute } from 'types/portal-config'
-import { SynapseConstants } from 'synapse-react-client'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
-import loadingScreen from './loadingScreen'
+import projects from './synapseConfigs/projects'
+import studies from './synapseConfigs/studies'
+import publications from './synapseConfigs/publications'
+import tools from './synapseConfigs/tools'
+import individuals from './synapseConfigs/individuals'
 
 const routes: GenericRoute[] = [
   {
@@ -24,16 +27,16 @@ const routes: GenericRoute[] = [
               synapseConfigArray: [studies.homePageSynapseObject],
             },
             {
-              name: 'Files',
-              synapseConfigArray: [files.homePageSynapseObject],
-            },
-            {
               name: 'Publications',
               synapseConfigArray: [publications.homePageSynapseObject],
             },
             {
-              name: 'People',
-              synapseConfigArray: [people.homePageSynapseObject],
+              name: 'Tools',
+              synapseConfigArray: [tools.homePageSynapseObject],
+            },
+            {
+              name: 'Individuals',
+              synapseConfigArray: [individuals.homePageSynapseObject],
             },
           ],
         },
@@ -71,65 +74,6 @@ const routes: GenericRoute[] = [
             },
           },
         ],
-        programmaticRouteConfig: [
-          {
-            name: 'CardContainerLogic',
-            isOutsideContainer: true,
-            props: {
-              isHeader: true,
-              backgroundColor: '#407ba0',
-              entityId: studiesEntityId,
-              loadingScreen,
-              facetAliases,
-              ...studyCardConfiguration,
-              secondaryLabelLimit: Infinity,
-              sql: studiesSql,
-            },
-          },
-          {
-            name: 'QueryWrapperFlattened',
-            title: 'Data',
-            props: {
-              initQueryRequest: {
-                partMask:
-                  SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
-                  SynapseConstants.BUNDLE_MASK_QUERY_COUNT |
-                  SynapseConstants.BUNDLE_MASK_QUERY_SELECT_COLUMNS |
-                  SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
-                entityId: filesEntityId,
-                concreteType:
-                  'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-                query: {
-                  sql: filesSql,
-                  selectedFacets: [],
-                  isConsistent: true,
-                  limit: 25,
-                  offset: 0,
-                },
-              },
-              loadingScreen,
-              facetAliases,
-              rgbIndex: 1,
-              facet: 'consortium',
-              unitDescription: 'Files',
-              title: 'Study Files',
-            },
-          },
-        ],
-      },
-      {
-        name: 'Files',
-        to: '/Explore/Files',
-        isNested: false,
-        synapseConfigArray: [
-          {
-            ...routeButtonControlWrapperProps,
-            props: {
-              ...routeButtonControlWrapperProps.props,
-              synapseConfig: files.explorePageSynapseObject,
-            },
-          },
-        ],
       },
       {
         name: 'Publications',
@@ -144,32 +88,31 @@ const routes: GenericRoute[] = [
             },
           },
         ],
-        programmaticRouteConfig: [
-          {
-            name: 'CardContainerLogic',
-            isOutsideContainer: true,
-            props: {
-              isHeader: true,
-              backgroundColor: '#407ba0',
-              entityId: publicationEntityId,
-              facetAliases,
-              ...publicationsCardConfiguration,
-              secondaryLabelLimit: Infinity,
-              sql: publicationSql,
-            },
-          },
-        ],
       },
       {
-        name: 'People',
-        to: '/Explore/People',
+        name: 'Tools',
+        to: '/Explore/Tools',
         isNested: false,
         synapseConfigArray: [
           {
             ...routeButtonControlWrapperProps,
             props: {
               ...routeButtonControlWrapperProps.props,
-              synapseConfig: people.explorePageSynapseObject,
+              synapseConfig: tools.explorePageSynapseObject,
+            },
+          },
+        ],
+      },
+      {
+        name: 'Individuals',
+        to: '/Explore/Individuals',
+        isNested: false,
+        synapseConfigArray: [
+          {
+            ...routeButtonControlWrapperProps,
+            props: {
+              ...routeButtonControlWrapperProps.props,
+              synapseConfig: individuals.explorePageSynapseObject,
             },
           },
         ],

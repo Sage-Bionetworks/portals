@@ -64,51 +64,39 @@ const projects: HomeExploreConfig = {
     name: 'QueryWrapperMenu',
     props: {
       rgbIndex,
-      stackedBarChartConfiguration: {
-        loadingScreen,
-      },
       entityId,
       searchConfiguration: {
         searchable: [
           {
-            columnName: 'Name',
-            hintText: 'immunity',
+            columnName: 'title',
+            hintText: 'Somatic mosaicism and autism',
           },
           {
-            columnName: 'Abstract',
-            hintText: 'targets',
-          },
-          {
-            columnName: 'Key Investigators',
+            columnName: 'primaryInvestigators',
             hintText: 'LastName',
           },
           {
-            columnName: 'Key Data Contributors',
+            columnName: 'abstract',
+            hintText: 'Somatic mutations are de novo mutations',
+          },
+          {
+            columnName: 'grantNumber',
+            hintText: 'U01MH106876',
+          },
+          {
+            columnName: 'institutions',
+            hintText: 'Boston Children’s Hospital',
+          },
+          {
+            columnName: 'contributors',
             hintText: 'LastName',
-          },
-          {
-            columnName: 'Institutions',
-            hintText: 'Sage Bionetworks',
-          },
-          {
-            columnName: 'Grant Number',
-            hintText: 'U01AG046139',
-          },
-          {
-            columnName: 'Program',
-            hintText: 'MODEL-AD',
           },
         ],
       },
       name: 'Projects',
-      isConsistent: true,
       unitDescription: 'Projects',
       cardConfiguration: projectCardConfiguration,
       menuConfig: [
-        {
-          sql,
-          facet,
-        },
         {
           sql,
         },
