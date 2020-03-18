@@ -5,8 +5,8 @@ import { CardConfiguration } from 'synapse-react-client/dist/containers/CardCont
 
 const unitDescription = 'Tools'
 const rgbIndex = 4
-export const toolsSql = 'SELECT * FROM syn21438192'
-export const toolsEntityId = 'syn21438192'
+export const toolsSql = 'SELECT * FROM syn21438237'
+export const toolsEntityId = 'syn21438237'
 const entityId = toolsEntityId
 const sql = toolsSql
 const facet = 'Project'
@@ -56,15 +56,15 @@ const tools: HomeExploreConfig = {
         searchable: [
           {
             columnName: 'title',
-            hintText: 'e.g. Read level viewer',
+            hintText: 'Read level viewer',
           },
           {
             columnName: 'toolDescription',
-            hintText: 'e.g. CNV read level viewer',
+            hintText: 'CNV read level viewer',
           },
           {
             columnName: 'contributor',
-            hintText: 'e.g. LastName',
+            hintText: 'LastName',
           },
           {
             columnName: 'project',
@@ -75,6 +75,9 @@ const tools: HomeExploreConfig = {
       name: 'Tools',
       unitDescription: 'Tools',
       cardConfiguration: toolCardConfiguration,
+      stackedBarChartConfiguration: {
+        loadingScreen,
+      },
       menuConfig: [
         {
           sql,

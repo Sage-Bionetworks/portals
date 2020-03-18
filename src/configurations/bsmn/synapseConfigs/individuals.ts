@@ -5,8 +5,8 @@ import { CardConfiguration } from 'synapse-react-client/dist/containers/CardCont
 
 const unitDescription = 'Individuals'
 const rgbIndex = 4
-export const individualsSql = 'SELECT * FROM syn21438244'
-export const invidualsEntityId = 'syn21438244'
+export const individualsSql = 'SELECT * FROM syn21781196'
+export const invidualsEntityId = 'syn21781196'
 const entityId = invidualsEntityId
 const sql = individualsSql
 const facet = 'project'
@@ -71,6 +71,9 @@ const tools: HomeExploreConfig = {
       name: 'Individuals',
       unitDescription: 'Individuals',
       cardConfiguration: toolCardConfiguration,
+      stackedBarChartConfiguration: {
+        loadingScreen,
+      },
       menuConfig: [
         {
           sql,

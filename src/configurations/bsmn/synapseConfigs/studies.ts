@@ -65,11 +65,11 @@ const studies: HomeExploreConfig = {
           },
           {
             columnName: 'studyDescription',
-            hintText: 'e.g. Reference Tissue',
+            hintText: 'Reference Tissue',
           },
           {
             columnName: 'diagnosis',
-            hintText: 'e.g. Schizophrenia',
+            hintText: 'Schizophrenia',
           },
           {
             columnName: 'organs',
@@ -77,11 +77,11 @@ const studies: HomeExploreConfig = {
           },
           {
             columnName: 'tissues',
-            hintText: 'e.g. Dorsolateral Prefrontal Cortex',
+            hintText: 'Dorsolateral Prefrontal Cortex',
           },
           {
             columnName: 'dataTypes',
-            hintText: 'e.g. Whole Genome Sequencing',
+            hintText: 'Whole Genome Sequencing',
           },
           {
             columnName: 'project',
@@ -96,6 +96,9 @@ const studies: HomeExploreConfig = {
       name: 'Studies',
       unitDescription: 'Studies',
       cardConfiguration: studyCardConfiguration,
+      stackedBarChartConfiguration: {
+        loadingScreen,
+      },
       menuConfig: [
         {
           sql,
@@ -107,11 +110,18 @@ const studies: HomeExploreConfig = {
         },
         {
           sql,
+          facet: 'tissues',
+        },
+        {
+          sql,
           facet: 'dataTypes',
         },
         {
           sql,
           facet: 'project',
+        },
+        {
+          sql,
         },
       ],
     },

@@ -4,13 +4,7 @@ const routeButtonControlProps: RouteButtonControlWrapperProps = {
   // this has to get overriden,
   synapseConfig: {} as SynapseConfig,
   colors: ['#F06531', '#48ACDD', '#154C9A', '#96C647', '#F4A632'],
-  customRoutes: [
-    'Projects',
-    'Studies',
-    'Files',
-    'Publications',
-    'People',
-  ],
+  customRoutes: ['Projects', 'Studies', 'Publications', 'Tools', 'Individuals'],
 }
 
 const routeButtonControlTemplate: SynapseConfig = {

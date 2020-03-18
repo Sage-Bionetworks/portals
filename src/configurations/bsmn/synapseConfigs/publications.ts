@@ -20,7 +20,7 @@ export const publicationsCardConfiguration: CardConfiguration = {
     subTitle: 'authors',
     secondaryLabels: ['year', 'journal', 'doi', 'pubmedID', 'grantNumber'],
   },
-  secondaryLabelLimit: 4,
+  secondaryLabelLimit: 5,
 }
 
 const publications: HomeExploreConfig = {
@@ -83,6 +83,9 @@ const publications: HomeExploreConfig = {
       name: 'Publications',
       unitDescription: 'Publications',
       cardConfiguration: publicationsCardConfiguration,
+      stackedBarChartConfiguration: {
+        loadingScreen,
+      },
       menuConfig: [
         {
           sql,
