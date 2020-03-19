@@ -1,1 +1,1 @@
-export S3_STAGING_BUCKET_LOCATION=s3://staging.psychencode.synapse.org
+export S3_STAGING_BUCKET_LOCATION=s3://staging.bsmn.synapse.org
