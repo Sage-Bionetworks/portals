@@ -3,7 +3,7 @@ import { SynapseConstants } from 'synapse-react-client'
 import loadingScreen from '../loadingScreen'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 
-const unitDescription = 'Individuals'
+const unitDescription = 'People'
 const rgbIndex = 4
 export const peopleSql = 'SELECT * FROM syn21781196'
 export const invidualsEntityId = 'syn21781196'
@@ -68,8 +68,8 @@ const individuals: HomeExploreConfig = {
           },
         ],
       },
-      name: 'Individuals',
-      unitDescription: 'Individuals',
+      name: 'People',
+      unitDescription: 'People',
       cardConfiguration: toolCardConfiguration,
       stackedBarChartConfiguration: {
         loadingScreen,
