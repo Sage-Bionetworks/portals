@@ -135,8 +135,7 @@ const routes: GenericRoute[] = [
       {
         name: 'Markdown',
         props: {
-          ownerId: 'syn4921369',
-          wikiId: '235539',
+          ownerId: 'syn21645000',
         },
       },
     ],
