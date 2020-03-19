@@ -5,10 +5,10 @@ import { CardConfiguration } from 'synapse-react-client/dist/containers/CardCont
 
 const unitDescription = 'Individuals'
 const rgbIndex = 4
-export const individualsSql = 'SELECT * FROM syn21781196'
+export const peopleSql = 'SELECT * FROM syn21781196'
 export const invidualsEntityId = 'syn21781196'
 const entityId = invidualsEntityId
-const sql = individualsSql
+const sql = peopleSql
 const facet = 'project'
 
 export const toolCardConfiguration: CardConfiguration = {
@@ -23,7 +23,7 @@ export const toolCardConfiguration: CardConfiguration = {
   secondaryLabelLimit: 4,
 }
 
-const tools: HomeExploreConfig = {
+const individuals: HomeExploreConfig = {
   homePageSynapseObject: {
     name: 'QueryWrapperFlattened',
     props: {
@@ -83,4 +83,4 @@ const tools: HomeExploreConfig = {
   },
 }
 
-export default tools
+export default individuals
