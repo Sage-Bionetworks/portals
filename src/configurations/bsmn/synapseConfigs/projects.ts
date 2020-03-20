@@ -1,0 +1,108 @@
+import { HomeExploreConfig } from 'types/portal-config'
+import { SynapseConstants } from 'synapse-react-client'
+import loadingScreen from '../loadingScreen'
+import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
+
+const unitDescription = 'Projects'
+const rgbIndex = 4
+export const projectsSql = 'SELECT * FROM syn21438208'
+export const projectsEntityId = 'syn21438208'
+const entityId = projectsEntityId
+const sql = projectsSql
+const facet = 'Program'
+
+export const projectCardConfiguration: CardConfiguration = {
+  type: SynapseConstants.GENERIC_CARD,
+  loadingScreen,
+  genericCardSchema: {
+    type: 'Project',
+    title: 'title',
+    subTitle: 'primaryInvestigators',
+    description: 'abstract',
+    secondaryLabels: [
+      'grantNumber',
+      'institutions',
+      'contributors',
+      'ndaCollection',
+    ],
+  },
+  secondaryLabelLimit: 4,
+  labelLinkConfig: [
+    {
+      isMarkdown: true,
+      matchColumnName: 'ndaCollection',
+    },
+  ],
+}
+
+const projects: HomeExploreConfig = {
+  homePageSynapseObject: {
+    name: 'QueryWrapperFlattened',
+    props: {
+      unitDescription,
+      rgbIndex,
+      facet,
+      loadingScreen,
+      link: 'Explore/Projects',
+      linkText: 'Explore Projects',
+      initQueryRequest: {
+        entityId,
+        concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
+        partMask:
+          SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
+          SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
+        query: {
+          sql,
+          isConsistent: true,
+          limit: 25,
+          offset: 0,
+        },
+      },
+    },
+  },
+  explorePageSynapseObject: {
+    name: 'QueryWrapperMenu',
+    props: {
+      rgbIndex,
+      entityId,
+      searchConfiguration: {
+        searchable: [
+          {
+            columnName: 'title',
+            hintText: 'Somatic mosaicism and autism',
+          },
+          {
+            columnName: 'primaryInvestigators',
+            hintText: 'LastName',
+          },
+          {
+            columnName: 'abstract',
+            hintText: 'Somatic mutations are de novo mutations',
+          },
+          {
+            columnName: 'grantNumber',
+            hintText: 'U01MH106876',
+          },
+          {
+            columnName: 'institutions',
+            hintText: 'Boston Children’s Hospital',
+          },
+          {
+            columnName: 'contributors',
+            hintText: 'LastName',
+          },
+        ],
+      },
+      name: 'Projects',
+      unitDescription: 'Projects',
+      cardConfiguration: projectCardConfiguration,
+      menuConfig: [
+        {
+          sql,
+        },
+      ],
+    },
+  },
+}
+
+export default projects
