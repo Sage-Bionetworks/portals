@@ -19,8 +19,21 @@ export const studyCardConfiguration: CardConfiguration = {
     title: 'studyName',
     subTitle: 'institutions',
     description: 'studyDescription',
-    secondaryLabels: ['diagnosis', 'organs', 'tissues', 'dataTypes', 'project'],
+    secondaryLabels: [
+      'diagnosis',
+      'organs',
+      'tissues',
+      'dataTypes',
+      'project',
+      'ndaStudy',
+    ],
   },
+  labelLinkConfig: [
+    {
+      matchColumnName: 'ndaStudy',
+      isMarkdown: true,
+    },
+  ],
   secondaryLabelLimit: 4,
 }
 
