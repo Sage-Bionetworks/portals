@@ -13,9 +13,16 @@ const routes: GenericRoute[] = [
     isNested: false,
     synapseConfigArray: [
       {
-        name: 'StatefulButtonControlWrapper',
-        title: 'EXPLORE PORTAL',
+        name: 'RouteButtonControlWrapper',
+        title: 'EXPLORE DATA',
         props: {
+          customRoutes: [
+            'Projects',
+            'Studies',
+            'Tools',
+            'People',
+            'Publications',
+          ],
           colors: [
             '#E5AE4C',
             '#5BB0B5',
@@ -24,28 +31,6 @@ const routes: GenericRoute[] = [
             '#D4689A',
             '#3C4A63',
             '#407BA0',
-          ],
-          configs: [
-            {
-              name: 'Projects',
-              synapseConfigArray: [projects.homePageSynapseObject],
-            },
-            {
-              name: 'Studies',
-              synapseConfigArray: [studies.homePageSynapseObject],
-            },
-            {
-              name: 'Tools',
-              synapseConfigArray: [tools.homePageSynapseObject],
-            },
-            {
-              name: 'People',
-              synapseConfigArray: [people.homePageSynapseObject],
-            },
-            {
-              name: 'Publications',
-              synapseConfigArray: [publications.homePageSynapseObject],
-            },
           ],
         },
       },

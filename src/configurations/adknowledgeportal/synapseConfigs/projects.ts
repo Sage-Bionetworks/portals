@@ -19,7 +19,12 @@ export const projectCardConfiguration: CardConfiguration = {
     title: 'Name',
     subTitle: 'Key Investigators',
     description: 'Abstract',
-    secondaryLabels: ['Institutions', 'Key Data Contributors', 'Program'],
+    secondaryLabels: [
+      'Institutions',
+      'Key Data Contributors',
+      'Program',
+      'Grant Number',
+    ],
   },
   secondaryLabelLimit: 4,
   titleLinkConfig: {
