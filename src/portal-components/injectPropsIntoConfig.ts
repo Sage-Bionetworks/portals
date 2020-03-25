@@ -1,6 +1,7 @@
 import { cloneDeep } from 'lodash'
 import { MarkdownSynapseProps } from 'synapse-react-client/dist/containers/MarkdownSynapse'
 import { SynapseConfig } from 'types/portal-config'
+import { RowSynapseConfig } from 'types/portal-util-types'
 
 type SynapseConfigName = SynapseConfig['name']
 /**
@@ -13,13 +14,17 @@ type SynapseConfigName = SynapseConfig['name']
  */
 const injectPropsIntoConfig = (
   value: string,
-  name: SynapseConfigName,
+  el: RowSynapseConfig,
   props: any,
 ): any => {
   const internalProps = cloneDeep(props)
-  if (name === 'Markdown') {
+  if (el.name === 'Markdown') {
     const markdownProps = internalProps as MarkdownSynapseProps
-    markdownProps.ownerId = value
+    if (el.injectMarkdown) {
+      markdownProps.markdown = value
+    } else {
+      markdownProps.ownerId = value
+    }
   }
   return internalProps
 }

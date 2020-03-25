@@ -39,6 +39,7 @@ const QueryWrapperFlattened: React.FunctionComponent<QueryWrapperFlattenedProps>
     sqlOperator,
     enableLeftFacetFilter,
     enableDownloadConfirmation,
+    visibleColumnCount,
     ...rest
   } = props
   let derivedQueryRequestFromSearchParams = cloneDeep(initQueryRequest)
@@ -65,6 +66,7 @@ const QueryWrapperFlattened: React.FunctionComponent<QueryWrapperFlattenedProps>
       )}
       {title ? (
         <SynapseComponents.SynapseTable
+          visibleColumnCount={visibleColumnCount}
           loadingScreen={loadingScreen}
           enableLeftFacetFilter={enableLeftFacetFilter}
           enableDownloadConfirmation={enableDownloadConfirmation}

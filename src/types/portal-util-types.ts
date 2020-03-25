@@ -19,6 +19,7 @@ type RowToPropTransform = {
   resolveSynId?: ResolveSynId
   tableSqlKeys?: string[]
   columnName?: string
+  injectMarkdown?: boolean
   showTitleSeperator?: boolean
 }
 

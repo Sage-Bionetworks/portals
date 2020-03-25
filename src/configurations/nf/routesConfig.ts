@@ -137,7 +137,7 @@ const routes: GenericRoute[] = [
     routes: [
       {
         name: 'Studies',
-        isNested: false,
+        isNested: true,
         to: '/Explore/Studies',
         synapseConfigArray: [
           {
@@ -148,26 +148,33 @@ const routes: GenericRoute[] = [
             },
           },
         ],
-        programmaticRouteConfig: [
+        routes: [
           {
-            name: 'CardContainerLogic',
-            isOutsideContainer: true,
-            props: {
-              sqlOperator: '=',
-              isHeader: true,
-              backgroundColor: '#119488',
-              entityId: studiesEntityId,
-              ...studyCardConfiguration,
-              facetAliases,
-              iconOptions: studyHeaderIconOptions,
-              secondaryLabelLimit: Infinity,
-              sql: 'SELECT * FROM syn16787123',
-            },
-          },
-          {
-            name: 'GenerateComponentsFromRow',
-            isOutsideContainer: false,
-            props: studiesDetailPage,
+            name: 'DetailsPage',
+            to: 'Explore/Studies/DetailsPage',
+            isNested: false,
+            synapseConfigArray: [
+              {
+                name: 'CardContainerLogic',
+                isOutsideContainer: true,
+                props: {
+                  sqlOperator: '=',
+                  isHeader: true,
+                  backgroundColor: '#119488',
+                  entityId: studiesEntityId,
+                  ...studyCardConfiguration,
+                  facetAliases,
+                  iconOptions: studyHeaderIconOptions,
+                  secondaryLabelLimit: Infinity,
+                  sql: 'SELECT * FROM syn16787123',
+                },
+              },
+              {
+                name: 'GenerateComponentsFromRow',
+                isOutsideContainer: false,
+                props: studiesDetailPage,
+              },
+            ],
           },
         ],
       },

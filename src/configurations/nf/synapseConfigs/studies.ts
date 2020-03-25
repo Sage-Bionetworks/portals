@@ -52,7 +52,7 @@ export const studyCardConfiguration: CardConfiguration = {
   },
   titleLinkConfig: {
     isMarkdown: false,
-    baseURL: 'Explore/Studies',
+    baseURL: 'Explore/Studies/DetailsPage',
     URLColumnName: 'studyId',
     matchColumnName: 'studyId',
   },
@@ -180,21 +180,24 @@ export const studiesDetailPage: GenerateComponentsFromRowProps = {
       name: 'Markdown',
       columnName: 'accessRequirements',
       title: 'Access Requirements',
+      injectMarkdown: true,
       props: {},
     },
     {
       name: 'Markdown',
       columnName: 'acknowledgementStatements',
       title: 'Acknowledgement Statements',
+      injectMarkdown: true,
       props: {},
     },
     {
       name: 'CardContainerLogic',
       columnName: 'studyId',
       title: 'Datasets',
-      tableSqlKeys: [''],
+      tableSqlKeys: ['studyId'],
       props: {
         sql: datasetsSql,
+        sqlOperator: '=',
         type: 'dataset',
         entityId: datasetsEntityId,
       },
@@ -205,6 +208,7 @@ export const studiesDetailPage: GenerateComponentsFromRowProps = {
       columnName: 'studyId',
       tableSqlKeys: ['studyId'],
       props: {
+        visibleColumnCount: 7,
         initQueryRequest: {
           partMask:
             SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
@@ -216,13 +220,12 @@ export const studiesDetailPage: GenerateComponentsFromRowProps = {
             'org.sagebionetworks.repo.model.table.QueryBundleRequest',
           entityId,
           query: {
-            sql: `SELECT * FROM syn16858331 where resourceType = 'experimentalData'`,
+            sql: `SELECT id, dataType, assay, diagnosis, tumorType, species, individualID, fileFormat, dataSubtype, nf1Genotype, nf2Genotype, fundingAgency, consortium FROM syn16858331 where resourceType = 'experimentalData'`,
             limit: 25,
             offset: 0,
           },
         },
         loadingScreen,
-        facetAliases,
         rgbIndex,
         title: 'Data Files',
       },
@@ -233,6 +236,7 @@ export const studiesDetailPage: GenerateComponentsFromRowProps = {
       columnName: 'studyId',
       tableSqlKeys: ['studyId'],
       props: {
+        visibleColumnCount: 7,
         initQueryRequest: {
           partMask:
             SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
@@ -244,13 +248,12 @@ export const studiesDetailPage: GenerateComponentsFromRowProps = {
             'org.sagebionetworks.repo.model.table.QueryBundleRequest',
           entityId,
           query: {
-            sql: `SELECT * FROM syn16858331 where resourceType ='report'`,
+            sql: `SELECT id, dataType, assay, diagnosis, tumorType, species, individualID, fileFormat, dataSubtype, nf1Genotype, nf2Genotype, fundingAgency, consortium FROM syn16858331 where resourceType ='report'`,
             limit: 25,
             offset: 0,
           },
         },
         loadingScreen,
-        facetAliases,
         rgbIndex,
         title: 'Metadata Files',
       },
@@ -273,6 +276,18 @@ export const studiesDetailPage: GenerateComponentsFromRowProps = {
         sql: publicationsSql,
         entityId: publicationsEntityId,
         ...publicationsCardConfiguration,
+      },
+    },
+    {
+      name: 'CardContainerLogic',
+      title: 'Related Studies',
+      columnName: 'studyId',
+      tableSqlKeys: ['studyId'],
+      props: {
+        sqlOperator: 'LIKE',
+        sql: studiesSql,
+        entityId: studiesEntityId,
+        ...studyCardConfiguration,
       },
     },
   ],

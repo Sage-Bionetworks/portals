@@ -17,7 +17,7 @@ export const publicationsCardConfiguration: CardConfiguration = {
   labelLinkConfig: [
     {
       isMarkdown: false,
-      baseURL: 'Explore/Studies',
+      baseURL: 'Explore/Studies/DetailsPage',
       URLColumnName: 'studyName',
       matchColumnName: 'studyName',
     },
