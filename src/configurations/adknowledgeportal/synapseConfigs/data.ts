@@ -48,6 +48,7 @@ const data: HomeExploreConfig = {
         title,
         visibleColumnCount: 4,
         showAccessColumn: true,
+        enableDownloadConfirmation: true,
       },
       menuConfig: [
         {

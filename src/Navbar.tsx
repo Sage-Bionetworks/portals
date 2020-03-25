@@ -68,6 +68,7 @@ class Navbar extends React.Component {
       resetSession,
       userProfile,
     } = this.props as SignInProps
+    const token = this.context
     const { name, icon } = logoHeaderConfig
     const imageElement = icon ? (
       <img alt="navigation logo" className="nav-logo" src={icon} />
@@ -88,7 +89,7 @@ class Navbar extends React.Component {
     return (
       <React.Fragment>
         <nav className="flex-display nav">
-          <div className="center-content nav-logo-container">
+          <div className="nav-logo-container">
             <Link
               onClick={this.goToTop}
               style={{ display: 'flex', alignItems: 'center' }}
@@ -140,7 +141,7 @@ class Navbar extends React.Component {
                   </SvgIcon>
                 </Dropdown.Toggle>
                 <Dropdown.Menu className="user-menu-dropdown portal-nav-menu">
-                  <Dropdown.Item className="SRC-primary-background-color-hover SRC-nested-color center-content border-bottom-1">
+                  <Dropdown.Item className="SRC-primary-background-color-hover SRC-nested-color border-bottom-1">
                     Signed in as&nbsp;<strong>{userProfile.userName}</strong>
                   </Dropdown.Item>
                   {this.synapseQuickLinks.map(el => {
@@ -150,7 +151,7 @@ class Navbar extends React.Component {
                     return (
                       <Dropdown.Item
                         key={el.text}
-                        className={`SRC-primary-background-color-hover SRC-nested-color center-content ${borderBottomClass}`}
+                        className={`SRC-primary-background-color-hover SRC-nested-color ${borderBottomClass}`}
                         href={`https://www.synapse.org/#!Profile:${
                           userProfile.ownerId
                         }${el.settingSubPath ? `/${el.settingSubPath}` : ''}`}
@@ -160,7 +161,7 @@ class Navbar extends React.Component {
                     )
                   })}
                   <Dropdown.Item
-                    className="SRC-primary-background-color-hover SRC-nested-color center-content"
+                    className="SRC-primary-background-color-hover SRC-nested-color"
                     // @ts-ignore
                     onClick={() => resetSession()}
                   >
@@ -169,6 +170,7 @@ class Navbar extends React.Component {
                 </Dropdown.Menu>
               </Dropdown>
             )}
+            <SynapseComponents.ShowDownload token={token} />
             {// we have to loop backwards due to css rendering of flex-direction: row-reverse
             routesConfig
               .slice()
@@ -204,7 +206,7 @@ class Navbar extends React.Component {
                         <Dropdown.Toggle
                           variant="light"
                           id={displayName}
-                          className="center-content nav-button-container nav-button"
+                          className="nav-button-container nav-button"
                         >
                           {displayName}
                         </Dropdown.Toggle>
@@ -218,7 +220,7 @@ class Navbar extends React.Component {
                             return (
                               <Dropdown.Item key={route.name} as="li">
                                 <Link
-                                  className="dropdown-item SRC-primary-background-color-hover SRC-nested-color center-content"
+                                  className="dropdown-item SRC-primary-background-color-hover SRC-nested-color"
                                   to={route.to!}
                                 >
                                   {routeDisplayName}
@@ -236,7 +238,7 @@ class Navbar extends React.Component {
                   return (
                     <Link
                       key={el.name}
-                      className={`center-content nav-button nav-button-container ${this.getBorder(
+                      className={`nav-button nav-button-container center-content ${this.getBorder(
                         el.name,
                       )}`}
                       to={el.to!}
@@ -248,7 +250,7 @@ class Navbar extends React.Component {
                 return (
                   <Link
                     key={el.name}
-                    className={`center-content nav-button nav-button-container ${this.getBorder(
+                    className={`nav-button nav-button-container center-content ${this.getBorder(
                       el.name,
                     )}`}
                     to={el.to!}
