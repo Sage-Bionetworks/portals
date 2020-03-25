@@ -13,8 +13,9 @@ import {
   studyHeaderIconOptions,
   studyCardConfiguration,
   studiesEntityId,
+  studiesDetailPage,
 } from './synapseConfigs/studies'
-import { datasetsSql, datasetsEntityId } from './synapseConfigs/datasets'
+import { datasetsSql } from './synapseConfigs/datasets'
 import {
   publicationsSql,
   publicationsCardConfiguration,
@@ -136,7 +137,7 @@ const routes: GenericRoute[] = [
     routes: [
       {
         name: 'Studies',
-        isNested: false,
+        isNested: true,
         to: '/Explore/Studies',
         synapseConfigArray: [
           {
@@ -147,41 +148,33 @@ const routes: GenericRoute[] = [
             },
           },
         ],
-        programmaticRouteConfig: [
+        routes: [
           {
-            name: 'CardContainerLogic',
-            isOutsideContainer: true,
-            props: {
-              sqlOperator: '=',
-              isHeader: true,
-              backgroundColor: '#119488',
-              entityId: studiesEntityId,
-              ...studyCardConfiguration,
-              facetAliases,
-              iconOptions: studyHeaderIconOptions,
-              secondaryLabelLimit: Infinity,
-              sql: 'SELECT * FROM syn16787123',
-            },
-          },
-          {
-            name: 'CardContainerLogic',
-            props: {
-              title: 'Publications',
-              entityId: publicationsEntityId,
-              sqlOperator: '=',
-              ...publicationsCardConfiguration,
-              sql: 'SELECT * FROM syn16857542',
-            },
-          },
-          {
-            name: 'CardContainerLogic',
-            props: {
-              title: 'Datasets',
-              entityId: datasetsEntityId,
-              sqlOperator: '=',
-              type: SynapseConstants.DATASET,
-              sql: datasetsSql,
-            },
+            name: 'DetailsPage',
+            to: 'Explore/Studies/DetailsPage',
+            isNested: false,
+            synapseConfigArray: [
+              {
+                name: 'CardContainerLogic',
+                isOutsideContainer: true,
+                props: {
+                  sqlOperator: '=',
+                  isHeader: true,
+                  backgroundColor: '#119488',
+                  entityId: studiesEntityId,
+                  ...studyCardConfiguration,
+                  facetAliases,
+                  iconOptions: studyHeaderIconOptions,
+                  secondaryLabelLimit: Infinity,
+                  sql: 'SELECT * FROM syn16787123',
+                },
+              },
+              {
+                name: 'GenerateComponentsFromRow',
+                isOutsideContainer: false,
+                props: studiesDetailPage,
+              },
+            ],
           },
         ],
       },

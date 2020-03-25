@@ -268,7 +268,7 @@ export default class GenerateComponentsFromRow extends React.Component<
           searchParams![key] = value
         })
       }
-      const injectedProps = injectPropsIntoConfig(value, el.name, {
+      const injectedProps = injectPropsIntoConfig(value, el, {
         ...deepCloneOfProps,
       })
       const synapseConfigWithInjectedProps: SynapseConfig = {
