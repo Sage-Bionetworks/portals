@@ -13,8 +13,9 @@ import {
   studyHeaderIconOptions,
   studyCardConfiguration,
   studiesEntityId,
+  studiesDetailPage,
 } from './synapseConfigs/studies'
-import { datasetsSql, datasetsEntityId } from './synapseConfigs/datasets'
+import { datasetsSql } from './synapseConfigs/datasets'
 import {
   publicationsSql,
   publicationsCardConfiguration,
@@ -164,24 +165,9 @@ const routes: GenericRoute[] = [
             },
           },
           {
-            name: 'CardContainerLogic',
-            props: {
-              title: 'Publications',
-              entityId: publicationsEntityId,
-              sqlOperator: '=',
-              ...publicationsCardConfiguration,
-              sql: 'SELECT * FROM syn16857542',
-            },
-          },
-          {
-            name: 'CardContainerLogic',
-            props: {
-              title: 'Datasets',
-              entityId: datasetsEntityId,
-              sqlOperator: '=',
-              type: SynapseConstants.DATASET,
-              sql: datasetsSql,
-            },
+            name: 'GenerateComponentsFromRow',
+            isOutsideContainer: false,
+            props: studiesDetailPage,
           },
         ],
       },

@@ -7,6 +7,14 @@ import studyCompleteSvg from '../style/study-complete.svg'
 import studyCompleteHeaderSvg from '../style/study-completed-header.svg'
 import studyActiveHeaderSvg from '../style/study-active-header.svg'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
+import { GenerateComponentsFromRowProps } from 'types/portal-util-types'
+import { datasetsSql, datasetsEntityId } from './datasets'
+import { toolsSql, toolsEntityId, toolsCardConfiguration } from './tools'
+import {
+  publicationsSql,
+  publicationsEntityId,
+  publicationsCardConfiguration,
+} from './publications'
 
 const sql = 'SELECT * FROM syn16787123'
 export const studiesEntityId = 'syn16787123'
@@ -161,6 +169,113 @@ const studies: HomeExploreConfig = {
       ],
     },
   },
+}
+
+export const studiesDetailPage: GenerateComponentsFromRowProps = {
+  showMenu: true,
+  sql: studiesSql,
+  entityId: studiesEntityId,
+  synapseConfigArray: [
+    {
+      name: 'Markdown',
+      columnName: 'accessRequirements',
+      title: 'Access Requirements',
+      props: {},
+    },
+    {
+      name: 'Markdown',
+      columnName: 'acknowledgementStatements',
+      title: 'Acknowledgement Statements',
+      props: {},
+    },
+    {
+      name: 'CardContainerLogic',
+      columnName: 'studyId',
+      title: 'Datasets',
+      tableSqlKeys: [''],
+      props: {
+        sql: datasetsSql,
+        type: 'dataset',
+        entityId: datasetsEntityId,
+      },
+    },
+    {
+      name: 'QueryWrapperFlattened',
+      title: 'Data Files',
+      columnName: 'studyId',
+      tableSqlKeys: ['studyId'],
+      props: {
+        initQueryRequest: {
+          partMask:
+            SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
+            SynapseConstants.BUNDLE_MASK_QUERY_COUNT |
+            SynapseConstants.BUNDLE_MASK_QUERY_SELECT_COLUMNS |
+            SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS |
+            SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
+          concreteType:
+            'org.sagebionetworks.repo.model.table.QueryBundleRequest',
+          entityId,
+          query: {
+            sql: `SELECT * FROM syn16858331 where resourceType = 'experimentalData'`,
+            limit: 25,
+            offset: 0,
+          },
+        },
+        loadingScreen,
+        facetAliases,
+        rgbIndex,
+        title: 'Data Files',
+      },
+    },
+    {
+      name: 'QueryWrapperFlattened',
+      title: 'Metadata Files',
+      columnName: 'studyId',
+      tableSqlKeys: ['studyId'],
+      props: {
+        initQueryRequest: {
+          partMask:
+            SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
+            SynapseConstants.BUNDLE_MASK_QUERY_COUNT |
+            SynapseConstants.BUNDLE_MASK_QUERY_SELECT_COLUMNS |
+            SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS |
+            SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
+          concreteType:
+            'org.sagebionetworks.repo.model.table.QueryBundleRequest',
+          entityId,
+          query: {
+            sql: `SELECT * FROM syn16858331 where resourceType ='report'`,
+            limit: 25,
+            offset: 0,
+          },
+        },
+        loadingScreen,
+        facetAliases,
+        rgbIndex,
+        title: 'Metadata Files',
+      },
+    },
+    {
+      name: 'CardContainerLogic',
+      title: 'Tools',
+      columnName: 'studyId',
+      props: {
+        sql: toolsSql,
+        entityId: toolsEntityId,
+        ...toolsCardConfiguration,
+      },
+    },
+    {
+      name: 'CardContainerLogic',
+      title: 'Publications',
+      columnName: 'studyId',
+      props: {
+        sql: publicationsSql,
+        entityId: publicationsEntityId,
+        ...publicationsCardConfiguration,
+      },
+    },
+  ],
 }
 
 export default studies
