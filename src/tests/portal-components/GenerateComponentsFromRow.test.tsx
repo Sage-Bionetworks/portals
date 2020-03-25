@@ -84,7 +84,7 @@ describe('GenerateComponentsFromRowProps works', () => {
     selectColumns: [],
     queryCount: 3,
     queryResult: {
-      concreteType: '',
+      concreteType: 'org.sagebionetworks.repo.model.table.QueryResult',
       queryResults: {
         tableId: '',
         concreteType: '',
@@ -175,7 +175,7 @@ describe('GenerateComponentsFromRowProps works', () => {
     expect(spyOnInject).toHaveBeenCalled()
     expect(spyOnInject).toHaveBeenCalledWith(
       MARKDOWN_ROW_TEST_VALUE,
-      'Markdown',
+      markdownSynapseConfig,
       markdownSynapseConfig.props,
     )
   })
@@ -188,7 +188,7 @@ describe('GenerateComponentsFromRowProps works', () => {
     expect(spyOnInject).toHaveBeenCalled()
     expect(spyOnInject).toHaveBeenCalledWith(
       TABLE_ROW_TEST_VALUE,
-      'QueryWrapperFlattened',
+      tableSynapseConfig,
       tableSynapseConfig.props,
     )
   })
@@ -221,19 +221,19 @@ describe('GenerateComponentsFromRowProps works', () => {
     expect(spyOnInject).toHaveBeenNthCalledWith(
       1,
       val1,
-      'Markdown',
+      multiValueMarkdownSynapseConfig,
       multiValueMarkdownSynapseConfig.props,
     )
     expect(spyOnInject).toHaveBeenNthCalledWith(
       2,
       val2,
-      'Markdown',
+      multiValueMarkdownSynapseConfig,
       multiValueMarkdownSynapseConfig.props,
     )
     expect(spyOnInject).toHaveBeenNthCalledWith(
       3,
       val3,
-      'Markdown',
+      multiValueMarkdownSynapseConfig,
       multiValueMarkdownSynapseConfig.props,
     )
   })
@@ -253,7 +253,11 @@ describe('GenerateComponentsFromRowProps works', () => {
     expect(spyOnInject).toHaveBeenCalled()
     expect(spyOnInject).toHaveBeenCalledWith(
       MOCK_HEADER_NAME,
-      'QueryWrapperFlattened',
+      {
+        ...tableSynapseConfig,
+        resolveSynId: { value: true },
+        tableSqlKeys: [key],
+      },
       tableSynapseConfig.props,
     )
   })
