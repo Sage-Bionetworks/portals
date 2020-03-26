@@ -21,7 +21,11 @@ import {
 } from './synapseConfigs/datasets'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
 import loadingScreen from './loadingScreen'
-import { toolsSql, toolsEntityId } from './synapseConfigs/tools'
+import {
+  toolsSql,
+  toolsEntityId,
+  toolsConfiguration,
+} from './synapseConfigs/tools'
 import { filesSql, filesEntityId } from './synapseConfigs/files'
 import DatasetSvg from './style/Dataset.svg'
 import {
@@ -33,7 +37,6 @@ import {
   grantsEntityId,
   grantsSql,
 } from './synapseConfigs/grants'
-import { toolsCardConfiguration } from 'configurations/nf/synapseConfigs/tools'
 import { onPointClick } from './synapseConfigs/onPointClick'
 
 const routes: GenericRoute[] = [
@@ -241,7 +244,7 @@ const routes: GenericRoute[] = [
                         sqlOperator: 'LIKE',
                         sql: toolsSql,
                         entityId: toolsEntityId,
-                        ...toolsCardConfiguration,
+                        ...toolsConfiguration,
                       },
                     },
                   ],
