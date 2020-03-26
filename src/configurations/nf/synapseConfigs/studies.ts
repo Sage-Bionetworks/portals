@@ -262,6 +262,7 @@ export const studiesDetailPage: GenerateComponentsFromRowProps = {
       name: 'CardContainerLogic',
       title: 'Tools',
       columnName: 'studyId',
+      tableSqlKeys: ['studyId'],
       props: {
         sql: toolsSql,
         entityId: toolsEntityId,
@@ -272,6 +273,7 @@ export const studiesDetailPage: GenerateComponentsFromRowProps = {
       name: 'CardContainerLogic',
       title: 'Publications',
       columnName: 'studyId',
+      tableSqlKeys: ['studyId'],
       props: {
         sql: publicationsSql,
         entityId: publicationsEntityId,
