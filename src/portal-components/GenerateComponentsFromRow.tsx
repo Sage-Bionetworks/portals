@@ -241,7 +241,8 @@ export default class GenerateComponentsFromRow extends React.Component<
       console.error('No value mapped for ', columnName)
       return <></>
     }
-    const split = rawValue.split(',')
+    // don't split the value if its to be treated as markdown
+    const split = el.injectMarkdown ? [rawValue] : rawValue.split(',')
     return split.map(splitString => {
       let value = splitString.trim()
       let entityTitle = ''
