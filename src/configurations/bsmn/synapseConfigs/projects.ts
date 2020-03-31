@@ -2,6 +2,14 @@ import { HomeExploreConfig } from 'types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
 import loadingScreen from '../loadingScreen'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
+import { GenerateComponentsFromRowProps } from 'types/portal-util-types'
+import { studiesSql, studyCardConfiguration, studiesEntityId } from './studies'
+import { toolsSql, toolsEntityId, toolCardConfiguration } from './tools'
+import {
+  publicationsSql,
+  publicationsEntityId,
+  publicationsCardConfiguration,
+} from './publications'
 
 const unitDescription = 'Projects'
 const rgbIndex = 4
@@ -33,6 +41,12 @@ export const projectCardConfiguration: CardConfiguration = {
       matchColumnName: 'ndaCollection',
     },
   ],
+  titleLinkConfig: {
+    isMarkdown: false,
+    URLColumnName: 'id',
+    matchColumnName: 'id',
+    baseURL: 'Explore/Projects/DetailsPage',
+  },
 }
 
 const projects: HomeExploreConfig = {
@@ -103,6 +117,66 @@ const projects: HomeExploreConfig = {
       ],
     },
   },
+}
+
+export const projectsDetailsPageConfiguration: GenerateComponentsFromRowProps = {
+  showMenu: true,
+  sql,
+  entityId,
+  synapseConfigArray: [
+    {
+      name: 'Markdown',
+      columnName: 'accessRequirements',
+      title: 'Access Requirements',
+      injectMarkdown: true,
+      props: {},
+    },
+    {
+      name: 'CardContainerLogic',
+      columnName: 'projectId',
+      title: 'Studies',
+      tableSqlKeys: ['projectId'],
+      props: {
+        sql: studiesSql,
+        entityId: studiesEntityId,
+        ...studyCardConfiguration,
+      },
+    },
+    {
+      name: 'CardContainerLogic',
+      columnName: 'projectId',
+      title: 'Tools',
+      tableSqlKeys: ['projectId'],
+      props: {
+        sql: toolsSql,
+        entityId: toolsEntityId,
+        ...toolCardConfiguration,
+      },
+    },
+    {
+      name: 'CardContainerLogic',
+      columnName: 'projectId',
+      title: 'Publications',
+      tableSqlKeys: ['projectId'],
+      props: {
+        sql: publicationsSql,
+        entityId: publicationsEntityId,
+        ...publicationsCardConfiguration,
+      },
+    },
+    // {
+    //   name: 'CardContainerLogic',
+    //   columnName: 'projectId',
+    //   tableSqlKeys: ['projectId'],
+    //   title: 'Related Studies',
+    //   props: {
+    //     sqlOperator: 'LIKE',
+    //     sql,
+    //     entityId,
+    //     ...projectCardConfiguration,
+    //   },
+    // },
+  ],
 }
 
 export default projects

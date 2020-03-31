@@ -2,6 +2,7 @@ import { HomeExploreConfig } from 'types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
 import loadingScreen from '../loadingScreen'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
+// import { GenerateComponentsFromRowProps } from 'types/portal-util-types'
 
 const unitDescription = 'Studies'
 const rgbIndex = 4
@@ -35,6 +36,12 @@ export const studyCardConfiguration: CardConfiguration = {
     },
   ],
   secondaryLabelLimit: 4,
+  titleLinkConfig: {
+    isMarkdown: false,
+    baseURL: 'Explore/Studies/DetailsPage',
+    URLColumnName: 'id',
+    matchColumnName: 'id',
+  },
 }
 
 const studies: HomeExploreConfig = {
@@ -140,5 +147,24 @@ const studies: HomeExploreConfig = {
     },
   },
 }
+
+// export const studiesDetailPageConfiguration: GenerateComponentsFromRowProps = {
+//   showMenu: true,
+//   sql,
+//   entityId,
+//   synapseConfigArray: [
+//     {
+//       name: 'Markdown',
+//       columnName: 'accessRequirements',
+//       injectMarkdown: true,
+//       props: {},
+//     },
+//     {
+//       name: 'CardContainerLogic',
+//       columnName: 'id',
+//       tableSqlKeys: ['projectId'],
+//     }
+//   ],
+// }
 
 export default studies
