@@ -283,7 +283,7 @@ export const studiesDetailPage: GenerateComponentsFromRowProps = {
     {
       name: 'CardContainerLogic',
       title: 'Related Studies',
-      columnName: 'studyId',
+      columnName: 'relatedStudies',
       tableSqlKeys: ['studyId'],
       props: {
         sqlOperator: 'LIKE',
