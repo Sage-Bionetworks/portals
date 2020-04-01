@@ -4,7 +4,7 @@ import loadingScreen from '../loadingScreen'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 
 const unitDescription = 'Tools'
-const rgbIndex = 4
+const rgbIndex = 8
 export const toolsSql = 'SELECT * FROM syn21438237'
 export const toolsEntityId = 'syn21438237'
 const entityId = toolsEntityId

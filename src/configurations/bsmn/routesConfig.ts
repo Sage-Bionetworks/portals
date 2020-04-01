@@ -1,7 +1,17 @@
 import { GenericRoute } from 'types/portal-config'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
-import projects from './synapseConfigs/projects'
-import studies from './synapseConfigs/studies'
+import projects, {
+  projectCardConfiguration,
+  projectsSql,
+  projectsEntityId,
+  projectsDetailsPageConfiguration,
+} from './synapseConfigs/projects'
+import studies, {
+  studyCardConfiguration,
+  studiesSql,
+  studiesEntityId,
+  studiesDetailPageConfiguration,
+} from './synapseConfigs/studies'
 import publications from './synapseConfigs/publications'
 import tools from './synapseConfigs/tools'
 import people from './synapseConfigs/people'
@@ -13,6 +23,12 @@ const routes: GenericRoute[] = [
     isNested: false,
     synapseConfigArray: [
       {
+        name: 'Markdown',
+        props: {
+          ownerId: 'syn21645000',
+        },
+      },
+      {
         name: 'RouteButtonControlWrapper',
         title: 'EXPLORE DATA',
         props: {
@@ -23,15 +39,7 @@ const routes: GenericRoute[] = [
             'People',
             'Publications',
           ],
-          colors: [
-            '#E5AE4C',
-            '#5BB0B5',
-            '#407BA0',
-            '#0F9488',
-            '#D4689A',
-            '#3C4A63',
-            '#407BA0',
-          ],
+          colors: ['#D46D1E', '#5BB0B5', '#58A148', '#47337D', '#109488'],
         },
       },
     ],
@@ -43,7 +51,7 @@ const routes: GenericRoute[] = [
       {
         name: 'Projects',
         to: '/Explore/Projects',
-        isNested: false,
+        isNested: true,
         synapseConfigArray: [
           {
             ...routeButtonControlWrapperProps,
@@ -53,11 +61,37 @@ const routes: GenericRoute[] = [
             },
           },
         ],
+        routes: [
+          {
+            name: 'DetailsPage',
+            isNested: false,
+            to: 'Explore/Projects/DetailsPage',
+            synapseConfigArray: [
+              {
+                name: 'CardContainerLogic',
+                isOutsideContainer: true,
+                props: {
+                  isHeader: true,
+                  ...projectCardConfiguration,
+                  sql: projectsSql,
+                  entityId: projectsEntityId,
+                  isAlignToLeftNav: true,
+                  secondaryLabelLimit: Infinity,
+                  backgroundColor: '#5bb0b5',
+                },
+              },
+              {
+                name: 'GenerateComponentsFromRow',
+                props: projectsDetailsPageConfiguration,
+              },
+            ],
+          },
+        ],
       },
       {
         name: 'Studies',
         to: '/Explore/Studies',
-        isNested: false,
+        isNested: true,
         synapseConfigArray: [
           {
             ...routeButtonControlWrapperProps,
@@ -65,6 +99,32 @@ const routes: GenericRoute[] = [
               ...routeButtonControlWrapperProps.props,
               synapseConfig: studies.explorePageSynapseObject,
             },
+          },
+        ],
+        routes: [
+          {
+            name: 'DetailsPage',
+            to: '/Explore/Studies/DetailsPage',
+            isNested: false,
+            synapseConfigArray: [
+              {
+                name: 'CardContainerLogic',
+                isOutsideContainer: true,
+                props: {
+                  isHeader: true,
+                  ...studyCardConfiguration,
+                  sql: studiesSql,
+                  entityId: studiesEntityId,
+                  isAlignToLeftNav: true,
+                  secondaryLabelLimit: Infinity,
+                  backgroundColor: '#5bb0b5',
+                },
+              },
+              {
+                name: 'GenerateComponentsFromRow',
+                props: studiesDetailPageConfiguration,
+              },
+            ],
           },
         ],
       },
