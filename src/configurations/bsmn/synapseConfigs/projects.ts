@@ -12,7 +12,7 @@ import {
 } from './publications'
 
 const unitDescription = 'Projects'
-const rgbIndex = 4
+const rgbIndex = 7
 export const projectsSql = 'SELECT * FROM syn21438208'
 export const projectsEntityId = 'syn21438208'
 const entityId = projectsEntityId
@@ -125,17 +125,10 @@ export const projectsDetailsPageConfiguration: GenerateComponentsFromRowProps = 
   entityId,
   synapseConfigArray: [
     {
-      name: 'Markdown',
-      columnName: 'accessRequirements',
-      title: 'Access Requirements',
-      injectMarkdown: true,
-      props: {},
-    },
-    {
       name: 'CardContainerLogic',
       columnName: 'projectId',
       title: 'Studies',
-      tableSqlKeys: ['projectId'],
+      tableSqlKeys: ['project'],
       props: {
         sql: studiesSql,
         entityId: studiesEntityId,
@@ -146,7 +139,7 @@ export const projectsDetailsPageConfiguration: GenerateComponentsFromRowProps = 
       name: 'CardContainerLogic',
       columnName: 'projectId',
       title: 'Tools',
-      tableSqlKeys: ['projectId'],
+      tableSqlKeys: ['project'],
       props: {
         sql: toolsSql,
         entityId: toolsEntityId,
@@ -157,25 +150,13 @@ export const projectsDetailsPageConfiguration: GenerateComponentsFromRowProps = 
       name: 'CardContainerLogic',
       columnName: 'projectId',
       title: 'Publications',
-      tableSqlKeys: ['projectId'],
+      tableSqlKeys: ['project'],
       props: {
         sql: publicationsSql,
         entityId: publicationsEntityId,
         ...publicationsCardConfiguration,
       },
     },
-    // {
-    //   name: 'CardContainerLogic',
-    //   columnName: 'projectId',
-    //   tableSqlKeys: ['projectId'],
-    //   title: 'Related Studies',
-    //   props: {
-    //     sqlOperator: 'LIKE',
-    //     sql,
-    //     entityId,
-    //     ...projectCardConfiguration,
-    //   },
-    // },
   ],
 }
 

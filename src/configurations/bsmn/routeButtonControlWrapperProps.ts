@@ -3,7 +3,7 @@ import { RouteButtonControlWrapperProps } from 'portal-components/RouteButtonCon
 const routeButtonControlProps: RouteButtonControlWrapperProps = {
   // this has to get overriden,
   synapseConfig: {} as SynapseConfig,
-  colors: ['#F06531', '#48ACDD', '#154C9A', '#96C647', '#F4A632'],
+  colors: ['#D46D1E', '#5BB0B5', '#58A148', '#47337D', '#109488'],
   customRoutes: ['Projects', 'Studies', 'Tools', 'People', 'Publications'],
 }
 

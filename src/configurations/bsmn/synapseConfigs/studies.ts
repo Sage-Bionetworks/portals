@@ -2,10 +2,15 @@ import { HomeExploreConfig } from 'types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
 import loadingScreen from '../loadingScreen'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
-// import { GenerateComponentsFromRowProps } from 'types/portal-util-types'
+import { GenerateComponentsFromRowProps } from 'types/portal-util-types'
+import {
+  publicationsSql,
+  publicationsCardConfiguration,
+  publicationsEntityId,
+} from './publications'
 
 const unitDescription = 'Studies'
-const rgbIndex = 4
+const rgbIndex = 0
 export const studiesSql = 'SELECT * FROM syn21438231'
 export const studiesEntityId = 'syn21438231'
 const entityId = studiesEntityId
@@ -148,23 +153,35 @@ const studies: HomeExploreConfig = {
   },
 }
 
-// export const studiesDetailPageConfiguration: GenerateComponentsFromRowProps = {
-//   showMenu: true,
-//   sql,
-//   entityId,
-//   synapseConfigArray: [
-//     {
-//       name: 'Markdown',
-//       columnName: 'accessRequirements',
-//       injectMarkdown: true,
-//       props: {},
-//     },
-//     {
-//       name: 'CardContainerLogic',
-//       columnName: 'id',
-//       tableSqlKeys: ['projectId'],
-//     }
-//   ],
-// }
+export const studiesDetailPageConfiguration: GenerateComponentsFromRowProps = {
+  showMenu: true,
+  sql,
+  entityId,
+  synapseConfigArray: [
+    {
+      name: 'Markdown',
+      title: 'Study Description',
+      columnName: 'id',
+      props: {},
+    },
+    {
+      name: 'Markdown',
+      title: 'Access Requirements',
+      columnName: 'accessRequirements',
+      props: {},
+    },
+    {
+      name: 'CardContainerLogic',
+      columnName: 'studyId',
+      title: 'Publications',
+      tableSqlKeys: ['study'],
+      props: {
+        sql: publicationsSql,
+        entityId: publicationsEntityId,
+        ...publicationsCardConfiguration,
+      },
+    },
+  ],
+}
 
 export default studies
