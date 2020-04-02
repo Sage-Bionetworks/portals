@@ -68,7 +68,7 @@ class Navbar extends React.Component {
       resetSession,
       userProfile,
     } = this.props as SignInProps
-    const { name, icon } = logoHeaderConfig
+    const { name, icon, hideLogin = false } = logoHeaderConfig
     const imageElement = icon ? (
       <img alt="navigation logo" className="nav-logo" src={icon} />
     ) : (
@@ -82,9 +82,10 @@ class Navbar extends React.Component {
     const hostname = window.location.hostname.toLowerCase()
     // for now, we only support login in the dev environment (localstorage) or from a .synapse.org subdomain (http-only secure cookie)
     const isSynapseSubdomainOrLocal =
-      hostname.includes('.synapse.org') ||
-      hostname.includes('127.0.0.1') ||
-      hostname.includes('localhost')
+      (hostname.includes('.synapse.org') ||
+        hostname.includes('127.0.0.1') ||
+        hostname.includes('localhost')) &&
+      !hideLogin
     return (
       <React.Fragment>
         <nav className="flex-display nav">
@@ -122,7 +123,7 @@ class Navbar extends React.Component {
                 </Dialog>
               </div>
             )}
-            {userProfile && (
+            {userProfile && isSynapseSubdomainOrLocal && (
               <Dropdown>
                 <Dropdown.Toggle variant="light" id="user-menu-button">
                   <UserCard

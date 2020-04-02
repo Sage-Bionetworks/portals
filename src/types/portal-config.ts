@@ -214,6 +214,7 @@ export type DocTitleConfig = {
 export type LogoConfig = {
   name?: string // plain text
   icon?: string // svg
+  hideLogin?: boolean
 }
 // LogoConfig end
 
