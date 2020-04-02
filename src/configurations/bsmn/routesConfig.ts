@@ -30,7 +30,7 @@ const routes: GenericRoute[] = [
       },
       {
         name: 'RouteButtonControlWrapper',
-        title: 'EXPLORE DATA',
+        title: 'EXPLORE',
         props: {
           customRoutes: [
             'Projects',

@@ -10,6 +10,7 @@ import {
   publicationsEntityId,
   publicationsCardConfiguration,
 } from './publications'
+import { peopleSql, peopleEntityId } from './people'
 
 const unitDescription = 'Projects'
 const rgbIndex = 7
@@ -126,7 +127,7 @@ export const projectsDetailsPageConfiguration: GenerateComponentsFromRowProps = 
   synapseConfigArray: [
     {
       name: 'CardContainerLogic',
-      columnName: 'projectId',
+      columnName: 'id',
       title: 'Studies',
       tableSqlKeys: ['project'],
       props: {
@@ -137,7 +138,18 @@ export const projectsDetailsPageConfiguration: GenerateComponentsFromRowProps = 
     },
     {
       name: 'CardContainerLogic',
-      columnName: 'projectId',
+      columnName: 'id',
+      title: 'People',
+      tableSqlKeys: ['project'],
+      props: {
+        sql: peopleSql,
+        entityId: peopleEntityId,
+        type: SynapseConstants.MEDIUM_USER_CARD,
+      },
+    },
+    {
+      name: 'CardContainerLogic',
+      columnName: 'id',
       title: 'Tools',
       tableSqlKeys: ['project'],
       props: {
@@ -148,7 +160,7 @@ export const projectsDetailsPageConfiguration: GenerateComponentsFromRowProps = 
     },
     {
       name: 'CardContainerLogic',
-      columnName: 'projectId',
+      columnName: 'id',
       title: 'Publications',
       tableSqlKeys: ['project'],
       props: {

@@ -2,25 +2,33 @@ import { HomeExploreConfig } from 'types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
 import loadingScreen from '../loadingScreen'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
+import { MEDIUM_USER_CARD } from 'synapse-react-client/dist/utils/SynapseConstants'
 
 const unitDescription = 'People'
 const rgbIndex = 3
 export const peopleSql = 'SELECT * FROM syn21781196'
-export const invidualsEntityId = 'syn21781196'
-const entityId = invidualsEntityId
+export const peopleEntityId = 'syn21781196'
+const entityId = peopleEntityId
 const sql = peopleSql
 const facet = 'project'
 
-export const toolCardConfiguration: CardConfiguration = {
+export const peopleCardConfiguration: CardConfiguration = {
   type: SynapseConstants.GENERIC_CARD,
   loadingScreen,
   genericCardSchema: {
     type: 'People',
     title: 'name',
-    description: 'expertise',
     secondaryLabels: ['project'],
   },
   secondaryLabelLimit: 4,
+  labelLinkConfig: [
+    {
+      isMarkdown: false,
+      baseURL: 'Explore/Projects/DetailsPage',
+      matchColumnName: 'project',
+      URLColumnName: 'id',
+    },
+  ],
 }
 
 const individuals: HomeExploreConfig = {
@@ -70,7 +78,9 @@ const individuals: HomeExploreConfig = {
       },
       name: 'People',
       unitDescription: 'People',
-      cardConfiguration: toolCardConfiguration,
+      cardConfiguration: {
+        type: MEDIUM_USER_CARD,
+      },
       stackedBarChartConfiguration: {
         loadingScreen,
       },
