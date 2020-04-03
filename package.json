@@ -24,7 +24,7 @@
     "react-spinners": "^0.6.1",
     "sass": "^1.5.1",
     "source-map-explorer": "^1.6.0",
-    "synapse-react-client": "1.13.16",
+    "synapse-react-client": "1.13.17",
     "react-bootstrap": "^1.0.0-beta.12",
     "typescript": "3.7.4"
   },
