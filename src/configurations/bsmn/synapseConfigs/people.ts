@@ -63,16 +63,8 @@ const individuals: HomeExploreConfig = {
       searchConfiguration: {
         searchable: [
           {
-            columnName: 'name',
-            hintText: 'LastName',
-          },
-          {
-            columnName: 'toolDescription',
-            hintText: 'generation of iPSC organoids',
-          },
-          {
-            columnName: 'project',
-            hintText: 'syn12345',
+            columnName: 'experise',
+            hintText: 'genomics',
           },
         ],
       },
