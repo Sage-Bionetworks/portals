@@ -63,7 +63,7 @@ const individuals: HomeExploreConfig = {
       searchConfiguration: {
         searchable: [
           {
-            columnName: 'experise',
+            columnName: 'expertise',
             hintText: 'genomics',
           },
         ],
