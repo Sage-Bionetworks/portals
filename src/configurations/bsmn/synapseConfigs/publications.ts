@@ -21,6 +21,12 @@ export const publicationsCardConfiguration: CardConfiguration = {
     secondaryLabels: ['year', 'journal', 'doi', 'pubmedID', 'grantNumber'],
   },
   secondaryLabelLimit: 5,
+  labelLinkConfig: [
+    {
+      isMarkdown: true,
+      matchColumnName: 'pubmedID',
+    },
+  ],
 }
 
 const publications: HomeExploreConfig = {
@@ -71,10 +77,6 @@ const publications: HomeExploreConfig = {
             hintText: 'Science',
           },
           {
-            columnName: 'doi',
-            hintText: '10.1126/science.aao4426',
-          },
-          {
             columnName: 'grantNumber',
             hintText: 'U01MH106874',
           },
@@ -88,8 +90,8 @@ const publications: HomeExploreConfig = {
       },
       menuConfig: [
         {
+          facet: 'grantNumber',
           sql,
-          facet: 'year',
         },
         {
           sql,
