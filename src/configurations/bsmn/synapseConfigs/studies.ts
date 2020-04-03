@@ -21,10 +21,11 @@ export const studyCardConfiguration: CardConfiguration = {
   type: SynapseConstants.GENERIC_CARD,
   loadingScreen,
   genericCardSchema: {
-    type: 'Study',
+    type: SynapseConstants.STUDY,
     title: 'studyName',
     subTitle: 'institutions',
     description: 'studyDescription',
+    icon: 'studyStatus',
     secondaryLabels: [
       'diagnosis',
       'organs',
@@ -43,7 +44,7 @@ export const studyCardConfiguration: CardConfiguration = {
       isMarkdown: false,
       matchColumnName: 'project',
       URLColumnName: 'id',
-      baseURL: 'Explore/Projects',
+      baseURL: 'Explore/Projects/DetailsPage',
     },
   ],
   secondaryLabelLimit: 4,
