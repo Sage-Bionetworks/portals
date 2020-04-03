@@ -39,6 +39,12 @@ export const studyCardConfiguration: CardConfiguration = {
       matchColumnName: 'ndaStudy',
       isMarkdown: true,
     },
+    {
+      isMarkdown: false,
+      matchColumnName: 'project',
+      URLColumnName: 'id',
+      baseURL: 'Explore/Projects',
+    },
   ],
   secondaryLabelLimit: 4,
   titleLinkConfig: {
@@ -172,7 +178,7 @@ export const studiesDetailPageConfiguration: GenerateComponentsFromRowProps = {
     },
     {
       name: 'CardContainerLogic',
-      columnName: 'studyId',
+      columnName: 'id',
       title: 'Publications',
       tableSqlKeys: ['study'],
       props: {
