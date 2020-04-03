@@ -1020,6 +1020,10 @@
   version "0.2.26"
   resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.2.26.tgz#6e0b13a752676036f8196f8a1500d53a27b4adc1"
 
+"@fortawesome/fontawesome-free@^5.13.0":
+  version "5.13.0"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free/-/fontawesome-free-5.13.0.tgz#fcb113d1aca4b471b709e8c9c168674fbd6e06d9"
+
 "@fortawesome/fontawesome-svg-core@^1.2.4":
   version "1.2.26"
   resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-svg-core/-/fontawesome-svg-core-1.2.26.tgz#671569271d6b532cdea5e3deb8ff16f8b7ac251d"
@@ -10267,10 +10271,11 @@ symbol-tree@^3.2.2:
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.4.tgz#430637d248ba77e078883951fb9aa0eed7c63fa2"
 
-synapse-react-client@1.13.16:
-  version "1.13.16"
-  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-1.13.16.tgz#e502b7bb158ab79abc2907773f909c2b404f4fbb"
+synapse-react-client@1.13.17:
+  version "1.13.17"
+  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-1.13.17.tgz#cb9a8bb3b2b737557dba6c86f93e5463369488dc"
   dependencies:
+    "@fortawesome/fontawesome-free" "^5.13.0"
     "@fortawesome/fontawesome-svg-core" "^1.2.4"
     "@fortawesome/free-solid-svg-icons" "^5.3.1"
     "@fortawesome/react-fontawesome" "^0.1.3"
