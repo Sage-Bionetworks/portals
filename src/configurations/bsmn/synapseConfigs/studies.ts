@@ -150,10 +150,6 @@ const studies: HomeExploreConfig = {
         },
         {
           sql,
-          facet: 'project',
-        },
-        {
-          sql,
         },
       ],
     },
