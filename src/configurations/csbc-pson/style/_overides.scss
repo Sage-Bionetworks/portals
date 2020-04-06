@@ -22,6 +22,7 @@ $primary-action-color: #47337d;
     font-weight: bold;
     color: $primary-text-color !important;
   }
+  margin-bottom: 63px;
 }
 
 // Since scss breaks if a file is missing in a local url link these functinons must get manually overwitten
