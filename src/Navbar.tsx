@@ -68,6 +68,8 @@ class Navbar extends React.Component {
       resetSession,
       userProfile,
     } = this.props as SignInProps
+    const token = this.context
+    console.log('token = ', { token })
     const { name, icon, hideLogin = false } = logoHeaderConfig
     const imageElement = icon ? (
       <img alt="navigation logo" className="nav-logo" src={icon} />
@@ -89,7 +91,7 @@ class Navbar extends React.Component {
     return (
       <React.Fragment>
         <nav className="flex-display nav">
-          <div className="center-content nav-logo-container">
+          <div className="nav-logo-container">
             <Link
               onClick={this.goToTop}
               style={{ display: 'flex', alignItems: 'center' }}
@@ -141,17 +143,17 @@ class Navbar extends React.Component {
                   </SvgIcon>
                 </Dropdown.Toggle>
                 <Dropdown.Menu className="user-menu-dropdown portal-nav-menu">
-                  <Dropdown.Item className="SRC-primary-background-color-hover SRC-nested-color center-content border-bottom-1">
+                  <Dropdown.Item className="SRC-primary-background-color-hover SRC-nested-color border-bottom-1">
                     Signed in as&nbsp;<strong>{userProfile.userName}</strong>
                   </Dropdown.Item>
-                  {this.synapseQuickLinks.map(el => {
+                  {this.synapseQuickLinks.map((el) => {
                     const borderBottomClass = el.hasBorder
                       ? 'border-bottom-1'
                       : ''
                     return (
                       <Dropdown.Item
                         key={el.text}
-                        className={`SRC-primary-background-color-hover SRC-nested-color center-content ${borderBottomClass}`}
+                        className={`SRC-primary-background-color-hover SRC-nested-color ${borderBottomClass}`}
                         href={`https://www.synapse.org/#!Profile:${
                           userProfile.ownerId
                         }${el.settingSubPath ? `/${el.settingSubPath}` : ''}`}
@@ -161,7 +163,7 @@ class Navbar extends React.Component {
                     )
                   })}
                   <Dropdown.Item
-                    className="SRC-primary-background-color-hover SRC-nested-color center-content"
+                    className="SRC-primary-background-color-hover SRC-nested-color"
                     // @ts-ignore
                     onClick={() => resetSession()}
                   >
@@ -170,94 +172,98 @@ class Navbar extends React.Component {
                 </Dropdown.Menu>
               </Dropdown>
             )}
-            {// we have to loop backwards due to css rendering of flex-direction: row-reverse
-            routesConfig
-              .slice()
-              .reverse()
-              .map(el => {
-                const displayName = el.displayName ? el.displayName : el.name
-                const icon = (
-                  <img style={{ padding: '0px 4px' }} src={el.icon} />
-                )
-                if (el.hideRouteFromNavbar) {
-                  return false
-                }
-                if (el.isNested) {
-                  return (
-                    <>
-                      {el.routes.map(route => {
-                        // Add anchors to the DOM for a crawler to find.  This is an attempt to fix an issue where all routes are Excluded from the index.
-                        if (route.hideRouteFromNavbar) {
-                          return false
-                        }
-                        const routeDisplayName = route.displayName || route.name
-                        return (
-                          <a
-                            key={`${route.name}-seo-anchor`}
-                            className="crawler-link"
-                            href={`${route.to}`}
-                          >
-                            {routeDisplayName}
-                          </a>
-                        )
-                      })}
-                      <Dropdown className={this.getBorder(el.name)}>
-                        <Dropdown.Toggle
-                          variant="light"
-                          id={displayName}
-                          className="center-content nav-button-container nav-button"
-                        >
-                          {displayName}
-                        </Dropdown.Toggle>
-                        <Dropdown.Menu className="portal-nav-menu">
-                          {el.routes.map(route => {
-                            if (route.hideRouteFromNavbar) {
-                              return false
-                            }
-                            const routeDisplayName =
-                              route.displayName || route.name
-                            return (
-                              <Dropdown.Item key={route.name} as="li">
-                                <Link
-                                  className="dropdown-item SRC-primary-background-color-hover SRC-nested-color center-content"
-                                  to={route.to!}
-                                >
-                                  {routeDisplayName}
-                                </Link>
-                              </Dropdown.Item>
-                            )
-                          })}
-                        </Dropdown.Menu>
-                      </Dropdown>
-                    </>
+            {/* <SynapseComponents.ShowDownload token={token} /> */}
+            {
+              // we have to loop backwards due to css rendering of flex-direction: row-reverse
+              routesConfig
+                .slice()
+                .reverse()
+                .map((el) => {
+                  const displayName = el.displayName ? el.displayName : el.name
+                  const icon = (
+                    <img style={{ padding: '0px 4px' }} src={el.icon} />
                   )
-                }
-                // treat it as standard anchor tag
-                if (el.synapseConfigArray!.length === 0) {
+                  if (el.hideRouteFromNavbar) {
+                    return false
+                  }
+                  if (el.isNested) {
+                    return (
+                      <>
+                        {el.routes.map((route) => {
+                          // Add anchors to the DOM for a crawler to find.  This is an attempt to fix an issue where all routes are Excluded from the index.
+                          if (route.hideRouteFromNavbar) {
+                            return false
+                          }
+                          const routeDisplayName =
+                            route.displayName || route.name
+                          return (
+                            <a
+                              key={`${route.name}-seo-anchor`}
+                              className="crawler-link"
+                              href={`${route.to}`}
+                            >
+                              {routeDisplayName}
+                            </a>
+                          )
+                        })}
+                        <Dropdown className={this.getBorder(el.name)}>
+                          <Dropdown.Toggle
+                            variant="light"
+                            id={displayName}
+                            className="nav-button-container nav-button"
+                          >
+                            {displayName}
+                          </Dropdown.Toggle>
+                          <Dropdown.Menu className="portal-nav-menu">
+                            {el.routes.map((route) => {
+                              if (route.hideRouteFromNavbar) {
+                                return false
+                              }
+                              const routeDisplayName =
+                                route.displayName || route.name
+                              return (
+                                <Dropdown.Item key={route.name} as="li">
+                                  <Link
+                                    className="dropdown-item SRC-primary-background-color-hover SRC-nested-color"
+                                    to={route.to!}
+                                  >
+                                    {routeDisplayName}
+                                  </Link>
+                                </Dropdown.Item>
+                              )
+                            })}
+                          </Dropdown.Menu>
+                        </Dropdown>
+                      </>
+                    )
+                  }
+                  // treat it as standard anchor tag
+                  if (el.synapseConfigArray!.length === 0) {
+                    return (
+                      <Link
+                        key={el.name}
+                        className={`nav-button nav-button-container center-content ${this.getBorder(
+                          el.name,
+                        )}`}
+                        to={el.to!}
+                      >
+                        {icon} {displayName}
+                      </Link>
+                    )
+                  }
                   return (
                     <Link
                       key={el.name}
-                      className={`center-content nav-button nav-button-container ${this.getBorder(
+                      className={`nav-button nav-button-container center-content ${this.getBorder(
                         el.name,
                       )}`}
                       to={el.to!}
                     >
-                      {icon} {displayName}
+                      {displayName}
                     </Link>
                   )
-                }
-                return (
-                  <Link
-                    key={el.name}
-                    className={`center-content nav-button nav-button-container ${this.getBorder(
-                      el.name,
-                    )}`}
-                    to={el.to!}
-                  >
-                    {displayName}
-                  </Link>
-                )
-              })}
+                })
+            }
           </div>
         </nav>
         <div className="spacer" />
