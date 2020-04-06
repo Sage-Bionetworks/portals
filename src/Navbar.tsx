@@ -68,8 +68,6 @@ class Navbar extends React.Component {
       resetSession,
       userProfile,
     } = this.props as SignInProps
-    const token = this.context
-    console.log('token = ', { token })
     const { name, icon, hideLogin = false } = logoHeaderConfig
     const imageElement = icon ? (
       <img alt="navigation logo" className="nav-logo" src={icon} />
