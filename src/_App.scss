@@ -152,7 +152,7 @@ body {
   font-size: 16px;
   text-align: center;
   justify-content: center;
-  color: #404b63;
+  color: #404b63 !important;
   text-decoration: none;
   padding: 0px 25px !important;
   margin: 0px !important;
@@ -181,7 +181,6 @@ button.dropdown-toggle.nav-button:hover {
 #home-link {
   font-weight: bold;
   font-size: 25px;
-  color: $primary-action-color;
   margin-left: 15px;
 }
 
