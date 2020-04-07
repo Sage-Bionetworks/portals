@@ -7,9 +7,9 @@ const homePageHeader: HomePageHeaderConfig = {
       Discover and download Alzheimer&apos;s Disease data, analyses, and tools
       from the National Institute on Aging&apos;s Alzheimer&apos;s Disease
       Translational Research Program.
-      <p>
+      <p style={{ fontSize: 14 }}>
         <br />
-        <i style={{ fontSize: 14 }}> Supported by the &nbsp;</i>
+        <i> Supported by the &nbsp;</i>
         <span style={{ letterSpacing: 1.5 }}>
           ACCELERATING MEDICINES PARTNERSHIP
         </span>
