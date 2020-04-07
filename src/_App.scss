@@ -95,6 +95,7 @@ body {
 // nav
 .nav-logo-container {
   flex-basis: 50%;
+  display: flex;
 }
 
 .nav-link-container {
@@ -393,17 +394,20 @@ div.SRC-marginBottomTen {
 }
 
 #user-menu-button {
-  display: flex;
-  align-content: center;
   height: 72px;
+  margin-left: 15px;
+  width: inherit;
+  display: inline-flex;
+  align-items: center;
   &:active {
     box-shadow: none;
   }
   outline: none;
-  @extend %fillerBorder;
-  .SRC-userCard {
-    width: 28px;
+  > :first-child,
+  > :last-child {
+    flex: 1;
   }
+  @extend %fillerBorder;
 }
 
 .cookiesBanner {
