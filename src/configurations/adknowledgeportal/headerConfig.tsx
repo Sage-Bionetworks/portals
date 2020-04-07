@@ -9,7 +9,7 @@ const homePageHeader: HomePageHeaderConfig = {
       Translational Research Program.
       <p>
         <br />
-        <i> Supported by the &nbsp;</i>
+        <i style={{ fontSize: 14 }}> Supported by the &nbsp;</i>
         <span style={{ letterSpacing: 1.5 }}>
           ACCELERATING MEDICINES PARTNERSHIP
         </span>

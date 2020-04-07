@@ -195,6 +195,7 @@ button.dropdown-toggle.nav-button:hover {
 .portal-nav-menu {
   padding-top: 0px;
   padding-bottom: 0px;
+  left: 40px !important;
   .dropdown-item {
     font-size: 16px;
     @extend %nav-dropdown-item;
