@@ -69,6 +69,7 @@ class Navbar extends React.Component {
       userProfile,
     } = this.props as SignInProps
     const { name, icon, hideLogin = false } = logoHeaderConfig
+    const token = this.context
     const imageElement = icon ? (
       <img alt="navigation logo" className="nav-logo" src={icon} />
     ) : (
@@ -170,7 +171,7 @@ class Navbar extends React.Component {
                 </Dropdown.Menu>
               </Dropdown>
             )}
-            {/* <SynapseComponents.ShowDownload token={token} /> */}
+            <SynapseComponents.ShowDownload token={token} />
             {
               // we have to loop backwards due to css rendering of flex-direction: row-reverse
               routesConfig
