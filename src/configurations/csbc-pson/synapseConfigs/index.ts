@@ -1,4 +1,4 @@
-import { files } from './files-alt'
+import { files } from './files'
 import { datasets } from './datasets'
 import { grants } from './grants'
 import { publications } from './publications'
