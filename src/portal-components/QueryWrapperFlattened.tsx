@@ -29,7 +29,9 @@ export type QueryWrapperFlattenedProps = QueryWrapperProps &
   SearchParams &
   Operator
 
-const QueryWrapperFlattened: React.FunctionComponent<QueryWrapperFlattenedProps> = props => {
+const QueryWrapperFlattened: React.FunctionComponent<QueryWrapperFlattenedProps> = (
+  props,
+) => {
   const {
     link,
     linkText,
@@ -40,6 +42,7 @@ const QueryWrapperFlattened: React.FunctionComponent<QueryWrapperFlattenedProps>
     enableLeftFacetFilter,
     enableDownloadConfirmation,
     visibleColumnCount,
+    showAccessColumn,
     ...rest
   } = props
   let derivedQueryRequestFromSearchParams = cloneDeep(initQueryRequest)
@@ -69,6 +72,7 @@ const QueryWrapperFlattened: React.FunctionComponent<QueryWrapperFlattenedProps>
           visibleColumnCount={visibleColumnCount}
           loadingScreen={loadingScreen}
           enableLeftFacetFilter={enableLeftFacetFilter}
+          showAccessColumn={showAccessColumn}
           enableDownloadConfirmation={enableDownloadConfirmation}
           title={title}
         />
