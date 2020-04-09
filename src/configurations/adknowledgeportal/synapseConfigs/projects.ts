@@ -29,7 +29,7 @@ export const projectCardConfiguration: CardConfiguration = {
   secondaryLabelLimit: 4,
   titleLinkConfig: {
     isMarkdown: false,
-    baseURL: 'Explore/Projects',
+    baseURL: 'Explore/Projects/DetailsPage',
     URLColumnName: 'Grant Number',
     matchColumnName: 'Grant Number',
   },

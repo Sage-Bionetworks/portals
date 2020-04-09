@@ -47,6 +47,7 @@ export const files: HomeExploreConfig = {
       isConsistent: true,
       tableConfiguration: {
         title: 'Files',
+        enableDownloadConfirmation: true,
       },
       stackedBarChartConfiguration: {
         loadingScreen,

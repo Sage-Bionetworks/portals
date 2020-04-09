@@ -17,7 +17,7 @@ export const programCardConfiguration: CardConfiguration = {
   loadingScreen,
   titleLinkConfig: {
     isMarkdown: false,
-    baseURL: 'Explore/Programs',
+    baseURL: 'Explore/Programs/DetailsPage',
     URLColumnName: 'Program',
     matchColumnName: 'Program',
   },

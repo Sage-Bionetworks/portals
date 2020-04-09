@@ -18,7 +18,7 @@ export const studyCardConfiguration: CardConfiguration = {
   loadingScreen,
   titleLinkConfig: {
     isMarkdown: false,
-    baseURL: 'Explore/Studies',
+    baseURL: 'Explore/Studies/DetailsPage',
     URLColumnName: 'Study',
     matchColumnName: 'Study',
   },
