@@ -69,7 +69,6 @@ const studies: HomeExploreConfig = {
           SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
         query: {
           sql,
-          isConsistent: true,
           limit: 25,
           offset: 0,
         },
@@ -87,7 +86,7 @@ const studies: HomeExploreConfig = {
       },
       entityId,
       name: 'Studies',
-      isConsistent: true,
+
       shouldDeepLink: true,
       cardConfiguration: studyCardConfiguration,
       searchConfiguration: {
@@ -203,7 +202,7 @@ export const studiesGenerateComponentsFromRowProps: GenerateComponentsFromRowPro
           query: {
             sql:
               "SELECT id, metadataType, dataType, assay FROM syn11346063 WHERE `dataSubtype` = 'metadata'",
-            isConsistent: true,
+
             limit: 25,
             offset: 0,
           },
@@ -238,7 +237,7 @@ export const studiesGenerateComponentsFromRowProps: GenerateComponentsFromRowPro
           query: {
             sql:
               "SELECT `resourceType`,`dataType`, `assay`, COUNT(`id`) AS `Files` FROM syn11346063 WHERE  (`dataSubtype` <> 'metadata' OR `dataSubtype` IS NULL) GROUP BY 1, 2,3 ORDER BY 4 DESC",
-            isConsistent: true,
+
             limit: 25,
             offset: 0,
           },

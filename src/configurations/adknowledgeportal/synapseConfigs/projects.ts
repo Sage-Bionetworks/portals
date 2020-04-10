@@ -53,7 +53,6 @@ const projects: HomeExploreConfig = {
           SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
         query: {
           sql,
-          isConsistent: true,
           limit: 25,
           offset: 0,
         },
@@ -102,7 +101,7 @@ const projects: HomeExploreConfig = {
         ],
       },
       name: 'Projects',
-      isConsistent: true,
+
       unitDescription: 'Projects',
       cardConfiguration: projectCardConfiguration,
       menuConfig: [

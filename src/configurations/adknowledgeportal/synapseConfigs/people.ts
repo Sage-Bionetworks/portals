@@ -25,7 +25,6 @@ const people: HomeExploreConfig = {
           SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
         query: {
           sql,
-          isConsistent: true,
           limit: 25,
           offset: 0,
         },
@@ -42,7 +41,7 @@ const people: HomeExploreConfig = {
         loadingScreen,
       },
       name: 'People',
-      isConsistent: true,
+
       shouldDeepLink: true,
       cardConfiguration: {
         type: SynapseConstants.MEDIUM_USER_CARD,
