@@ -85,6 +85,7 @@ const studies: HomeExploreConfig = {
     props: {
       rgbIndex,
       entityId,
+      shouldDeepLink: true,
       searchConfiguration: {
         searchable: [
           {

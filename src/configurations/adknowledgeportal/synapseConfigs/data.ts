@@ -34,59 +34,33 @@ const data: HomeExploreConfig = {
     },
   },
   explorePageSynapseObject: {
-    name: 'QueryWrapperMenu',
+    name: 'TableWithSideFacets',
     props: {
       rgbIndex,
       unitDescription,
-      stackedBarChartConfiguration: {
-        loadingScreen,
-      },
-      isConsistent: true,
       name: 'Data',
-      entityId,
-      tableConfiguration: {
-        title,
-        visibleColumnCount: 4,
-        showAccessColumn: true,
-        enableDownloadConfirmation: true,
+      initQueryRequest: {
+        entityId,
+        concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
+        partMask:
+          SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
+          SynapseConstants.BUNDLE_MASK_QUERY_RESULTS |
+          SynapseConstants.BUNDLE_MASK_QUERY_COUNT |
+          SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS |
+          SynapseConstants.BUNDLE_MASK_QUERY_SELECT_COLUMNS,
+        query: {
+          sql:
+            'SELECT study, dataType, assay, id as File_id, specimenID, individualID, diagnosis, sex, consortium as "Program", grant, species, organ, tissue, cellType, fileFormat FROM syn11346063',
+          limit: 25,
+          offset: 0,
+        },
       },
-      menuConfig: [
-        {
-          sql:
-            'SELECT study, dataType, assay, id AS file_id, specimenID, individualID, diagnosis, sex, consortium as "Program", grant, species, organ, tissue, cellType, fileFormat FROM syn11346063',
-          facet: 'study',
-        },
-        {
-          sql:
-            'SELECT species, dataType, id as file_id, specimenID, individualID, diagnosis, sex, consortium as "Program", grant, study, organ, tissue, cellType, assay, fileFormat FROM syn11346063',
-          facet: 'species',
-        },
-        {
-          sql:
-            'SELECT organ, tissue, dataType, assay, id AS file_id, specimenID, individualID, diagnosis, sex, consortium as "Program", grant, study, species, cellType FROM syn11346063',
-          facet: 'organ',
-        },
-        {
-          sql:
-            'SELECT dataType, assay, study, id AS file_id, specimenID, individualID, diagnosis, sex, consortium as "Program", grant, species, organ, tissue, cellType, fileFormat FROM syn11346063',
-          facet: 'dataType',
-        },
-        {
-          sql:
-            'SELECT assay, fileFormat, id AS file_id, specimenID, individualID, diagnosis, sex, consortium as "Program", grant, study, species, organ, tissue, cellType, dataType  FROM syn11346063',
-          facet: 'assay',
-        },
-        {
-          sql:
-            'SELECT diagnosis, sex, dataType, specimenID, individualID, id as file_id, assay, consortium as "Program", grant, species, organ, tissue, cellType, fileFormat FROM syn11346063 ORDER BY 1 DESC',
-          facet: 'diagnosis',
-        },
-        {
-          sql:
-            'SELECT diagnosis, sex, dataType, assay, count(distinct(id)) as "Files", count(distinct(specimenID)) as "Specimens", count(distinct(individualID)) as "Individuals" FROM syn11346063 GROUP BY 1,2,3,4 ORDER BY 1 DESC',
-          facet: 'individuals',
-        },
-      ],
+      title,
+      visibleColumnCount: 4,
+      showAccessColumn: true,
+      enableDownloadConfirmation: true,
+      enableLeftFacetFilter: true,
+      shouldDeepLink: true,
     },
   },
 }

@@ -141,7 +141,7 @@ class Navbar extends React.Component {
                     <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
                   </SvgIcon>
                 </Dropdown.Toggle>
-                <Dropdown.Menu className="portal-nav-menu">
+                <Dropdown.Menu className="nav-user-menu portal-nav-menu">
                   <Dropdown.Item className="SRC-primary-background-color-hover SRC-nested-color border-bottom-1">
                     Signed in as&nbsp;<strong>{userProfile.userName}</strong>
                   </Dropdown.Item>

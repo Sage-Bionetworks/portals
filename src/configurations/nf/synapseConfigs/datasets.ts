@@ -43,6 +43,7 @@ const datasets: HomeExploreConfig = {
     props: {
       rgbIndex,
       unitDescription,
+      shouldDeepLink: true,
       stackedBarChartConfiguration: {
         loadingScreen,
       },

@@ -62,6 +62,8 @@ export const files: HomeExploreConfig = {
       stackedBarChartConfiguration: {
         loadingScreen,
       },
+      shouldDeepLink: true,
+
       name: 'Files',
       facetAliases,
       menuConfig: [

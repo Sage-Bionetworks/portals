@@ -80,6 +80,7 @@ const projects: HomeExploreConfig = {
     props: {
       rgbIndex,
       entityId,
+      shouldDeepLink: true,
       searchConfiguration: {
         searchable: [
           {

@@ -18,7 +18,7 @@ export const studyCardConfiguration: CardConfiguration = {
   loadingScreen,
   titleLinkConfig: {
     isMarkdown: false,
-    baseURL: 'Explore/Studies',
+    baseURL: 'Explore/Studies/DetailsPage',
     URLColumnName: 'Study',
     matchColumnName: 'Study',
   },
@@ -88,6 +88,7 @@ const studies: HomeExploreConfig = {
       entityId,
       name: 'Studies',
       isConsistent: true,
+      shouldDeepLink: true,
       cardConfiguration: studyCardConfiguration,
       searchConfiguration: {
         searchable: [
@@ -194,6 +195,7 @@ export const studiesGenerateComponentsFromRowProps: GenerateComponentsFromRowPro
             SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
             SynapseConstants.BUNDLE_MASK_QUERY_COUNT |
             SynapseConstants.BUNDLE_MASK_QUERY_SELECT_COLUMNS |
+            SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS |
             SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
           entityId,
           concreteType:
@@ -206,6 +208,7 @@ export const studiesGenerateComponentsFromRowProps: GenerateComponentsFromRowPro
             offset: 0,
           },
         },
+        enableDownloadConfirmation: true,
         loadingScreen,
         facetAliases,
         rgbIndex,
@@ -240,6 +243,7 @@ export const studiesGenerateComponentsFromRowProps: GenerateComponentsFromRowPro
             offset: 0,
           },
         },
+        enableDownloadConfirmation: true,
         loadingScreen,
         facetAliases,
         rgbIndex,

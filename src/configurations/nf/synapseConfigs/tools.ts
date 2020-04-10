@@ -126,6 +126,7 @@ const tools: HomeExploreConfig = {
       name: 'Tools',
       globalQueryCountSql: 'SELECT * FROM syn16859448',
       entityId,
+      shouldDeepLink: true,
       accordionConfig: [
         {
           name: 'Computational',

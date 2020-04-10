@@ -102,7 +102,7 @@ const routes: GenericRoute[] = [
     routes: [
       {
         name: 'Programs',
-        isNested: false,
+        isNested: true,
         to: '/Explore/Programs',
         synapseConfigArray: [
           {
@@ -120,72 +120,86 @@ const routes: GenericRoute[] = [
             },
           },
         ],
-        programmaticRouteConfig: [
+        routes: [
           {
-            name: 'CardContainerLogic',
-            isOutsideContainer: true,
-            props: {
-              loadingScreen,
-              sql: 'SELECT  * FROM syn17024173',
-              entityId: programEntityId,
-              isHeader: true,
-              ...programCardConfiguration,
-              genericCardSchema: {
-                ...programCardConfiguration.genericCardSchema!,
-                description: 'Long Description',
+            name: 'DetailsPage',
+            isNested: false,
+            to: '/Explore/Programs/DetailsPage',
+            synapseConfigArray: [
+              {
+                name: 'CardContainerLogic',
+                isOutsideContainer: true,
+                props: {
+                  loadingScreen,
+                  sql: 'SELECT  * FROM syn17024173',
+                  entityId: programEntityId,
+                  isHeader: true,
+                  ...programCardConfiguration,
+                  genericCardSchema: {
+                    ...programCardConfiguration.genericCardSchema!,
+                    description: 'Long Description',
+                  },
+                  iconOptions: iconHeaderOptions,
+                  backgroundColor: '#5960A5',
+                },
               },
-              iconOptions: iconHeaderOptions,
-              backgroundColor: '#5960A5',
-            },
-          },
-          {
-            name: 'CardContainerLogic',
-            title: 'Explore Projects',
-            props: {
-              ...projectCardConfiguration,
-              sql: projectsSql,
-              entityId: projectsEntityId,
-            },
+              {
+                name: 'CardContainerLogic',
+                title: 'Explore Projects',
+                props: {
+                  ...projectCardConfiguration,
+                  sql: projectsSql,
+                  entityId: projectsEntityId,
+                },
+              },
+            ],
           },
         ],
       },
       {
         name: 'Projects',
-        isNested: false,
+        isNested: true,
         to: '/Explore/Projects',
-        programmaticRouteConfig: [
+        routes: [
           {
-            name: 'CardContainerLogic',
-            isOutsideContainer: true,
-            props: {
-              sql: projectsSql,
-              isHeader: true,
-              ...projectCardConfiguration,
-              entityId: projectsEntityId,
-              backgroundColor: '#DE9A1F',
-            },
+            name: 'DetailsPage',
+            to: 'Explore/Projects/DetailsPage',
+            isNested: false,
+            synapseConfigArray: [
+              {
+                name: 'CardContainerLogic',
+                isOutsideContainer: true,
+                props: {
+                  sql: projectsSql,
+                  isHeader: true,
+                  ...projectCardConfiguration,
+                  entityId: projectsEntityId,
+                  backgroundColor: '#DE9A1F',
+                },
+              },
+              {
+                name: 'CardContainerLogic',
+                props: {
+                  title: 'PEOPLE',
+                  sql:
+                    'SELECT ownerID as ownerId, firstName, lastName, institution FROM syn13897207',
+                  entityId: 'syn13897207',
+                  type: SynapseConstants.MEDIUM_USER_CARD,
+                },
+              },
+              {
+                name: 'CardContainerLogic',
+                title: 'STUDIES',
+                props: {
+                  ...studyCardConfiguration,
+                  loadingScreen,
+                  entityId: studiesEntityId,
+                  sql: studiesSql,
+                },
+              },
+              publicationProgrammatic,
+            ],
           },
-          {
-            name: 'CardContainerLogic',
-            props: {
-              title: 'PEOPLE',
-              sql:
-                'SELECT ownerID as ownerId, firstName, lastName, institution FROM syn13897207',
-              entityId: 'syn13897207',
-              type: SynapseConstants.MEDIUM_USER_CARD,
-            },
-          },
-          {
-            name: 'CardContainerLogic',
-            title: 'STUDIES',
-            props: {
-              ...studyCardConfiguration,
-              loadingScreen,
-              entityId: studiesEntityId,
-              sql: studiesSql,
-            },
-          },
-          publicationProgrammatic,
         ],
         synapseConfigArray: [
           {
@@ -199,7 +213,7 @@ const routes: GenericRoute[] = [
       },
       {
         name: 'Studies',
-        isNested: false,
+        isNested: true,
         to: '/Explore/Studies',
         synapseConfigArray: [
           {
@@ -210,7 +224,14 @@ const routes: GenericRoute[] = [
             },
           },
         ],
-        programmaticRouteConfig: studiesProgrammaticRouteConfig,
+        routes: [
+          {
+            name: 'DetailsPage',
+            to: 'Explore/Studies/DetailsPage',
+            isNested: false,
+            synapseConfigArray: studiesProgrammaticRouteConfig,
+          },
+        ],
       },
       {
         name: 'Data',

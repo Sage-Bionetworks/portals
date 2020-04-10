@@ -43,6 +43,7 @@ const people: HomeExploreConfig = {
       },
       name: 'People',
       isConsistent: true,
+      shouldDeepLink: true,
       cardConfiguration: {
         type: SynapseConstants.MEDIUM_USER_CARD,
       },

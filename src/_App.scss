@@ -192,10 +192,13 @@ button.dropdown-toggle.nav-button:hover {
   color: #515359;
 }
 
+.nav-user-menu {
+  left: 40px !important;
+}
+
 .portal-nav-menu {
   padding-top: 0px;
   padding-bottom: 0px;
-  left: 40px !important;
   .dropdown-item {
     font-size: 16px;
     @extend %nav-dropdown-item;

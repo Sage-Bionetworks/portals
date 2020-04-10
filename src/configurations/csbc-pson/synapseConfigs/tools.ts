@@ -67,6 +67,7 @@ export const tools: HomeExploreConfig = {
       unitDescription,
       entityId,
       cardConfiguration: toolsConfiguration,
+      shouldDeepLink: true,
       stackedBarChartConfiguration: {
         loadingScreen,
       },

@@ -10,7 +10,6 @@ export const filesSql = sql
 
 const rgbIndex = 8
 const unitDescription = 'files'
-const synapseId = 'syn9630847'
 const facet = 'grantType'
 
 export const files: HomeExploreConfig = {
@@ -24,7 +23,7 @@ export const files: HomeExploreConfig = {
       link: 'Explore/Files',
       linkText: 'Explore Files',
       initQueryRequest: {
-        entityId: synapseId,
+        entityId,
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
         partMask:
           SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
@@ -39,61 +38,31 @@ export const files: HomeExploreConfig = {
     },
   },
   explorePageSynapseObject: {
-    name: 'QueryWrapperMenu',
+    name: 'TableWithSideFacets',
     props: {
       rgbIndex,
       unitDescription,
-      entityId,
-      isConsistent: true,
-      tableConfiguration: {
-        title: 'Files',
+      shouldDeepLink: true,
+      initQueryRequest: {
+        entityId,
+        concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
+        partMask:
+          SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
+          SynapseConstants.BUNDLE_MASK_QUERY_RESULTS |
+          SynapseConstants.BUNDLE_MASK_QUERY_COUNT |
+          SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS |
+          SynapseConstants.BUNDLE_MASK_QUERY_SELECT_COLUMNS,
+        query: {
+          sql,
+          limit: 25,
+          offset: 0,
+        },
       },
-      stackedBarChartConfiguration: {
-        loadingScreen,
-      },
+      enableLeftFacetFilter: true,
+      enableDownloadConfirmation: true,
+      title: 'Files',
       name: 'Files',
-      menuConfig: [
-        {
-          sql,
-          facet: 'assay',
-        },
-        {
-          sql,
-          facet: 'tumorType',
-        },
-        {
-          sql,
-          facet: 'species',
-        },
-        {
-          sql,
-          facet: 'tissue',
-        },
-        {
-          sql,
-          facet: 'platform',
-        },
-        {
-          sql,
-          facet: 'dataFormat',
-        },
-        {
-          sql,
-          facet: 'gender',
-        },
-        {
-          sql,
-          facet: 'grantName',
-        },
-        {
-          sql,
-          facet: 'consortium',
-        },
-        {
-          sql,
-          facet: 'grantType',
-        },
-      ],
+      loadingScreen,
     },
   },
 }

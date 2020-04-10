@@ -73,6 +73,8 @@ export const publications: HomeExploreConfig = {
       rgbIndex,
       unitDescription,
       entityId,
+      shouldDeepLink: true,
+
       cardConfiguration: publicationsCardConfiguration,
       stackedBarChartConfiguration: {
         loadingScreen,

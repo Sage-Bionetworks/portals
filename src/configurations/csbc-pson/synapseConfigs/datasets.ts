@@ -90,6 +90,7 @@ export const datasets: HomeExploreConfig = {
       stackedBarChartConfiguration: {
         loadingScreen,
       },
+      shouldDeepLink: true,
       name: 'Datasets',
       searchConfiguration: {
         searchable: [

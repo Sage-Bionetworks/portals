@@ -76,6 +76,7 @@ export const grants: HomeExploreConfig = {
       rgbIndex,
       unitDescription,
       cardConfiguration: grantsCardConfiguration,
+      shouldDeepLink: true,
       stackedBarChartConfiguration: {
         loadingScreen,
       },
