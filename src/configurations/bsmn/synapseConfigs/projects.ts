@@ -30,7 +30,7 @@ export const projectCardConfiguration: CardConfiguration = {
     description: 'abstract',
     secondaryLabels: [
       'grantNumber',
-      'institutions',
+      'institution',
       'contributors',
       'ndaCollection',
     ],
@@ -99,7 +99,7 @@ const projects: HomeExploreConfig = {
             hintText: 'U01MH106876',
           },
           {
-            columnName: 'institutions',
+            columnName: 'institution',
             hintText: 'Boston Children’s Hospital',
           },
           {
