@@ -75,6 +75,7 @@ const publications: HomeExploreConfig = {
       },
       name: 'Publications',
       isConsistent: true,
+      shouldDeepLink: true,
       facetAliases,
       searchConfiguration: {
         searchable: [

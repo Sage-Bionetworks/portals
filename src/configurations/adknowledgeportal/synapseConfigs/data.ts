@@ -60,6 +60,7 @@ const data: HomeExploreConfig = {
       showAccessColumn: true,
       enableDownloadConfirmation: true,
       enableLeftFacetFilter: true,
+      shouldDeepLink: true,
     },
   },
 }

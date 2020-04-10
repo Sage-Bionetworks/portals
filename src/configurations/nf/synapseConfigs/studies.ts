@@ -96,6 +96,7 @@ const studies: HomeExploreConfig = {
       },
       entityId,
       name: 'Studies',
+      shouldDeepLink: true,
       cardConfiguration: studyCardConfiguration,
       searchConfiguration: {
         searchable: [

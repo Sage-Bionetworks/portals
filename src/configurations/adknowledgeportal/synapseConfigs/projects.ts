@@ -68,6 +68,7 @@ const projects: HomeExploreConfig = {
         loadingScreen,
       },
       entityId,
+      shouldDeepLink: true,
       searchConfiguration: {
         searchable: [
           {

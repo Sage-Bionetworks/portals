@@ -126,6 +126,7 @@ const tools: HomeExploreConfig = {
       facetAliases,
       name: 'Tools',
       entityId,
+      shouldDeepLink: true,
       globalQueryCountSql: 'SELECT * FROM syn20337467',
       accordionConfig: [
         {
