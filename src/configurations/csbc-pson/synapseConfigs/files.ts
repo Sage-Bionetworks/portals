@@ -42,6 +42,7 @@ export const files: HomeExploreConfig = {
     props: {
       rgbIndex,
       unitDescription,
+      shouldDeepLink: true,
       initQueryRequest: {
         entityId,
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',

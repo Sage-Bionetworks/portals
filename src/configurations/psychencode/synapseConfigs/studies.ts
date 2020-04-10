@@ -74,6 +74,8 @@ export const studies: HomeExploreConfig = {
       rgbIndex,
       unitDescription,
       entityId,
+      shouldDeepLink: true,
+
       cardConfiguration: studyCardConfiguration,
       stackedBarChartConfiguration: {
         loadingScreen,

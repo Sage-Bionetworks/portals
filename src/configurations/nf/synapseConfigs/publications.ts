@@ -75,6 +75,7 @@ const publications: HomeExploreConfig = {
       stackedBarChartConfiguration: {
         loadingScreen,
       },
+      shouldDeepLink: true,
       name: 'Publications',
       cardConfiguration: publicationsCardConfiguration,
       facetAliases,

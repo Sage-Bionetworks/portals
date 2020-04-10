@@ -67,6 +67,8 @@ export const projects: HomeExploreConfig = {
       stackedBarChartConfiguration: {
         loadingScreen,
       },
+      shouldDeepLink: true,
+
       entityId,
       searchConfiguration: {
         searchable: [

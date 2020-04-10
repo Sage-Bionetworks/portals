@@ -59,6 +59,7 @@ export const projects: HomeExploreConfig = {
       unitDescription,
       entityId,
       cardConfiguration: projectCardConfiguration,
+      shouldDeepLink: true,
       stackedBarChartConfiguration: {
         loadingScreen,
       },
