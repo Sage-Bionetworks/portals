@@ -7,11 +7,11 @@ import {
 } from 'synapse-react-client/dist/containers/GenericCard'
 import { Project } from 'synapse-react-client/dist/assets/themed_icons/Project'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
-export const grantsSql = `SELECT * FROM syn10142562 WHERE ( "grantType" = 'U54' OR "grantType" = 'U01' OR "grantType" = 'Contracts')`
+export const grantsSql = `SELECT * FROM syn21918972 WHERE ( "grantType" = 'U54' OR "grantType" = 'U01' OR "grantType" = 'Contracts')`
 const sql = grantsSql
-export const grantsEntityId = 'syn10142562'
+export const grantsEntityId = 'syn21918972'
 const entityId = grantsEntityId
-const unitDescription = 'grants'
+const unitDescription = 'Grants'
 const rgbIndex = 3
 
 export const grantsSchema: GenericCardSchema = {
@@ -20,10 +20,11 @@ export const grantsSchema: GenericCardSchema = {
   subTitle: 'institution',
   description: 'abstract',
   secondaryLabels: [
-    'keyInvestigators',
+    'investigator',
     'grantNumber',
     'consortium',
     'grantType',
+    'theme',
   ],
 }
 
@@ -97,7 +98,7 @@ export const grants: HomeExploreConfig = {
             hintText: 'Vanderbilt',
           },
           {
-            columnName: 'keyInvestigators',
+            columnName: 'investigator',
             hintText: 'LastName',
           },
           {
@@ -122,6 +123,10 @@ export const grants: HomeExploreConfig = {
         {
           sql,
           facet: 'grantType',
+        },
+        {
+          sql,
+          facet: 'theme',
         },
         {
           sql,

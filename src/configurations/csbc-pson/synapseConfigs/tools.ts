@@ -2,8 +2,8 @@ import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from 'types/portal-config'
 import loadingScreen from '../loadingScreen'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
-export const toolsSql = 'SELECT * FROM syn21683595'
-export const toolsEntityId = 'syn21683595'
+export const toolsSql = 'SELECT * FROM syn21930566'
+export const toolsEntityId = 'syn21930566'
 const entityId = toolsEntityId
 const sql = toolsSql
 const unitDescription = 'Tools'
@@ -21,16 +21,22 @@ export const toolsConfiguration: CardConfiguration = {
       'inputDataType',
       'outputDataType',
       'softwareLanguage',
+      'toolType',
       'grantName',
       'consortium',
-      'grantType',
     ],
-    link: 'URL',
+    link: 'homepageUrl',
   },
   labelLinkConfig: [
     {
       isMarkdown: true,
       matchColumnName: 'publicationTitle',
+    },
+    {
+      isMarkdown: false,
+      URLColumnName: 'grantName',
+      matchColumnName: 'grantName',
+      baseURL: 'Explore/Grants/DetailsPage',
     },
   ],
 }
@@ -119,6 +125,10 @@ export const tools: HomeExploreConfig = {
         },
         {
           sql,
+          facet: 'toolType',
+        },
+        {
+          sql,
           facet: 'softwareLanguage',
         },
         {
@@ -128,10 +138,6 @@ export const tools: HomeExploreConfig = {
         {
           sql,
           facet: 'consortium',
-        },
-        {
-          sql,
-          facet: 'grantType',
         },
         {
           sql,

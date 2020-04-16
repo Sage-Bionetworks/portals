@@ -3,8 +3,8 @@ import { HomeExploreConfig } from 'types/portal-config'
 import loadingScreen from '../loadingScreen'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
-export const datasetsSql = `SELECT * FROM syn18488466 WHERE ( ( "is.dataset" = 'TRUE' ) )`
-export const datasetsEntityId = 'syn18488466'
+export const datasetsSql = `SELECT * FROM syn21897968`
+export const datasetsEntityId = 'syn21897968'
 const entityId = datasetsEntityId
 const sql = datasetsSql
 const unitDescription = 'Datasets'
@@ -13,9 +13,9 @@ const rgbIndex = 0
 export const datasetSchema: GenericCardSchema = {
   type: SynapseConstants.DATASET,
   title: 'datasetName',
-  description: 'summary',
+  description: 'description',
   secondaryLabels: [
-    'publicationTitle',
+    'publication',
     'overallDesign',
     'tumorType',
     'assay',
@@ -23,7 +23,6 @@ export const datasetSchema: GenericCardSchema = {
     'externalLink',
     'grantName',
     'consortium',
-    'grantType',
   ],
 }
 
@@ -38,7 +37,7 @@ export const datasetCardConfiguration: CardConfiguration = {
     },
     {
       isMarkdown: true,
-      matchColumnName: 'publicationTitle',
+      matchColumnName: 'publication',
     },
     {
       isMarkdown: false,
@@ -50,8 +49,8 @@ export const datasetCardConfiguration: CardConfiguration = {
   titleLinkConfig: {
     isMarkdown: false,
     baseURL: 'Explore/Datasets/DetailsPage',
-    URLColumnName: 'datasetName',
-    matchColumnName: 'datasetName',
+    URLColumnName: 'datasetId',
+    matchColumnName: 'datasetId',
   },
 }
 
@@ -127,7 +126,7 @@ export const datasets: HomeExploreConfig = {
       menuConfig: [
         {
           sql,
-          facet: 'Theme',
+          facet: 'theme',
         },
         {
           sql,
@@ -148,10 +147,6 @@ export const datasets: HomeExploreConfig = {
         {
           sql,
           facet: 'consortium',
-        },
-        {
-          sql,
-          facet: 'grantType',
         },
         {
           sql,

@@ -3,8 +3,8 @@ import { HomeExploreConfig } from 'types/portal-config'
 import loadingScreen from '../loadingScreen'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
-export const publicationSql = 'SELECT * FROM syn21682809'
-export const publicationEntityId = 'syn21682809'
+export const publicationSql = 'SELECT * FROM syn21868591'
+export const publicationEntityId = 'syn21868591'
 const entityId = publicationEntityId
 const sql = publicationSql
 const unitDescription = 'Publications'
@@ -25,10 +25,9 @@ export const publicationSchema: GenericCardSchema = {
     'doi',
     'grantName',
     'consortium',
-    'grantType',
-    'datasets',
+    'dataset',
   ],
-  link: 'PubMed',
+  link: 'pubMedUrl',
 }
 
 export const publicationsCardConfiguration: CardConfiguration = {
@@ -45,9 +44,9 @@ export const publicationsCardConfiguration: CardConfiguration = {
     },
     {
       isMarkdown: false,
-      baseURL: 'Explore/Datasets',
-      URLColumnName: 'grantName',
-      matchColumnName: 'datasets',
+      baseURL: 'Explore/Datasets/DetailsPage',
+      URLColumnName: 'datasetName',
+      matchColumnName: 'dataset',
     },
   ],
 }
@@ -165,10 +164,6 @@ export const publications: HomeExploreConfig = {
         {
           sql,
           facet: 'consortium',
-        },
-        {
-          sql,
-          facet: 'grantType',
         },
         {
           sql,
