@@ -45,7 +45,7 @@ export const publicationsCardConfiguration: CardConfiguration = {
     {
       isMarkdown: false,
       baseURL: 'Explore/Datasets/DetailsPage',
-      URLColumnName: 'datasetName',
+      URLColumnName: 'datasetAlias',
       matchColumnName: 'dataset',
     },
   ],
