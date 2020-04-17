@@ -84,6 +84,7 @@ export default class GenerateComponentsFromRow extends React.Component<
             'Error on request, expected rows to be length 1 but got ',
             rows.length,
           )
+          return
         }
         const row = rows[0].values
         // map column name to index
