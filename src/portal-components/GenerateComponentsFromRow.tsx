@@ -45,6 +45,16 @@ export default class GenerateComponentsFromRow extends React.Component<
   }
 
   componentDidMount() {
+    this.getData()
+  }
+
+  componentDidUpdate(prevProps: GenerateComponentsFromRowProps) {
+    if (this.props.token !== prevProps.token) {
+      this.getData()
+    }
+  }
+
+  getData = () => {
     const {
       sql,
       token,
@@ -66,49 +76,53 @@ export default class GenerateComponentsFromRow extends React.Component<
         sql: sqlUsed,
       },
     }
-    SynapseClient.getQueryTableResults(queryBundleRequest, token).then(data => {
-      const rows = data.queryResult.queryResults.rows
-      if (rows.length !== 1) {
-        console.error(
-          'Error on request, expected rows to be length 1 but got ',
-          rows.length,
-        )
-      }
-      const row = rows[0].values
-      // map column name to index
-      const mapColumnHeaderToRowIndex: Dictionary<number> = {}
-      data.queryResult.queryResults.headers.forEach((el, index) => {
-        mapColumnHeaderToRowIndex[el.name] = index
-      })
-      const references: ReferenceList = []
-      synapseConfigArray.forEach((el: RowSynapseConfig) => {
-        if (el.resolveSynId && el.columnName) {
-          const index = mapColumnHeaderToRowIndex[el.columnName]
-          const value: string = row[index]
-          value?.split(',').forEach(val => {
-            if (!references.find(el => el.targetId === val)) {
-              references.push({
-                targetId: val,
-              })
-            }
-          })
+    SynapseClient.getQueryTableResults(queryBundleRequest, token).then(
+      (data) => {
+        const rows = data.queryResult.queryResults.rows
+        if (rows.length !== 1) {
+          console.error(
+            'Error on request, expected rows to be length 1 but got ',
+            rows.length,
+          )
         }
-      })
-      if (references.length === 0) {
-        this.setState({
-          queryResultBundle: data,
-          isLoading: false,
+        const row = rows[0].values
+        // map column name to index
+        const mapColumnHeaderToRowIndex: Dictionary<number> = {}
+        data.queryResult.queryResults.headers.forEach((el, index) => {
+          mapColumnHeaderToRowIndex[el.name] = index
         })
-        return
-      }
-      SynapseClient.getEntityHeader(references, token).then(entityHeaders => {
-        this.setState({
-          queryResultBundle: data,
-          entityHeaders,
-          isLoading: false,
+        const references: ReferenceList = []
+        synapseConfigArray.forEach((el: RowSynapseConfig) => {
+          if (el.resolveSynId && el.columnName) {
+            const index = mapColumnHeaderToRowIndex[el.columnName]
+            const value: string = row[index]
+            value?.split(',').forEach((val) => {
+              if (!references.find((el) => el.targetId === val)) {
+                references.push({
+                  targetId: val,
+                })
+              }
+            })
+          }
         })
-      })
-    })
+        if (references.length === 0) {
+          this.setState({
+            queryResultBundle: data,
+            isLoading: false,
+          })
+          return
+        }
+        SynapseClient.getEntityHeader(references, token).then(
+          (entityHeaders) => {
+            this.setState({
+              queryResultBundle: data,
+              entityHeaders,
+              isLoading: false,
+            })
+          },
+        )
+      },
+    )
   }
 
   handleMenuClick = (index: number) => {
@@ -243,12 +257,14 @@ export default class GenerateComponentsFromRow extends React.Component<
     }
     // don't split the value if its to be treated as markdown
     const split = el.injectMarkdown ? [rawValue] : rawValue.split(',')
-    return split.map(splitString => {
+    return split.map((splitString) => {
       let value = splitString.trim()
       let entityTitle = ''
       if (resolveSynId) {
         // use entity name as either title or value according to resolveSynId
-        const entity = entityHeaders?.results.find(el => el.id === value.trim())
+        const entity = entityHeaders?.results.find(
+          (el) => el.id === value.trim(),
+        )
         const name = entity?.name ?? ''
         if (!name) {
           console.error('No value mapped for ', columnName)
