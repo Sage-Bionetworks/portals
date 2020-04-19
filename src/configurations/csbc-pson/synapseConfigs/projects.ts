@@ -4,9 +4,9 @@ import loadingScreen from '../loadingScreen'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 const unitDescription = 'projects'
-export const projectsSql = `SELECT * FROM syn21621978`
-const entityId = 'syn21621978'
-export const projectsEntityId = 'syn21621978'
+export const projectsSql = `SELECT * FROM syn21868602`
+const entityId = 'syn21868602'
+export const projectsEntityId = 'syn21868602'
 const sql = projectsSql
 const rgbIndex = 1
 
