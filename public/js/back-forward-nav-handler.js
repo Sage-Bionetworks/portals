@@ -20,7 +20,7 @@ html.onmouseleave = function() {
 
 window.onpopstate = function() {
 	if (!window.innerDocClick) {
-		// hash change invoked by action outside of window (like the back button).
+		// history change invoked by action outside of window (like the back/forward button).
 		console.log('detected popstate change outside of doc, reloading');
 		location.reload();
 	} else {
