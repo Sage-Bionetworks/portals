@@ -2475,6 +2475,11 @@ base@^0.11.1:
     mixin-deep "^1.2.0"
     pascalcase "^0.1.1"
 
+batch-processor@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/batch-processor/-/batch-processor-1.0.0.tgz#75c95c32b748e0850d10c2b168f6bdbe9891ace8"
+  integrity sha1-dclcMrdI4IUNEMKxaPa9vpiRrOg=
+
 batch@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/batch/-/batch-0.6.1.tgz#dc34314f4e679318093fc760272525f94bf25c16"
@@ -3923,6 +3928,13 @@ ejs@^2.6.1:
 electron-to-chromium@^1.3.378, electron-to-chromium@^1.3.390:
   version "1.3.397"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.397.tgz#db640c2e67b08d590a504c20b56904537aa2bafa"
+
+element-resize-detector@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/element-resize-detector/-/element-resize-detector-1.2.1.tgz#b0305194447a4863155e58f13323a0aef30851d1"
+  integrity sha512-BdFsPepnQr9fznNPF9nF4vQ457U/ZJXQDSNF1zBe7yaga8v9AdZf3/NElYxFdUh7SitSGt040QygiTo6dtatIw==
+  dependencies:
+    batch-processor "1.0.0"
 
 elliptic@^6.0.0:
   version "6.5.2"
@@ -9028,6 +9040,16 @@ react-scripts@3.4.1, react-scripts@^3.4.1:
   optionalDependencies:
     fsevents "2.1.2"
 
+react-sizeme@^2.6.12:
+  version "2.6.12"
+  resolved "https://registry.yarnpkg.com/react-sizeme/-/react-sizeme-2.6.12.tgz#ed207be5476f4a85bf364e92042520499455453e"
+  integrity sha512-tL4sCgfmvapYRZ1FO2VmBmjPVzzqgHA7kI8lSJ6JS6L78jXFNRdOZFpXyK6P1NBZvKPPCZxReNgzZNUajAerZw==
+  dependencies:
+    element-resize-detector "^1.2.1"
+    invariant "^2.2.4"
+    shallowequal "^1.1.0"
+    throttle-debounce "^2.1.0"
+
 react-spinners@^0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/react-spinners/-/react-spinners-0.6.1.tgz#c4f31a1d0e4c85cdb1785a8bdbe17311cf269b0a"
@@ -9761,6 +9783,11 @@ shallow-clone@^3.0.0:
   dependencies:
     kind-of "^6.0.2"
 
+shallowequal@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/shallowequal/-/shallowequal-1.1.0.tgz#188d521de95b9087404fd4dcb68b13df0ae4e7f8"
+  integrity sha512-y0m1JoUZSlPAjXVtPPW70aZWfIL/dSP7AFkRnniLCrK/8MDKog3TySTBmckD+RObVxH0v4Tox67+F14PdED2oQ==
+
 shebang-command@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/shebang-command/-/shebang-command-1.2.0.tgz#44aac65b695b03398968c39f363fee5deafdf1ea"
@@ -10350,10 +10377,10 @@ symbol-tree@^3.2.2:
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.4.tgz#430637d248ba77e078883951fb9aa0eed7c63fa2"
 
-synapse-react-client@1.14.4:
-  version "1.14.4"
-  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-1.14.4.tgz#7e12e8aa50a3778c618042e7edb713a34bcf6d96"
-  integrity sha512-5/gEGxnRHsdp3MzGBHaxXZ5eUwqyJUPgOF5Fs2dL6+T6iBgLFr+uJqy0/c6VG9EI0IpyLnPwufor0gYKfJVbWA==
+synapse-react-client@1.14.6:
+  version "1.14.6"
+  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-1.14.6.tgz#962f5061f249955ecc712b18a48c062e3e1b7b4a"
+  integrity sha512-5LNxUlovM0rI8A6OL0k4D3IdlUYO2EIDg8HWUcLjGsVK69UI5QneZKDWcDiFfjLFRHN36Rf1WLvyLEJRTvdZJQ==
   dependencies:
     "@fortawesome/fontawesome-free" "^5.13.0"
     "@fortawesome/fontawesome-svg-core" "^1.2.4"
@@ -10409,6 +10436,7 @@ synapse-react-client@1.14.4:
     react-plotlyjs-ts "^2.2.1"
     react-router-dom "5.1.2"
     react-scripts "^3.4.1"
+    react-sizeme "^2.6.12"
     react-switch "^5.0.1"
     react-test-renderer "^16.4.2"
     react-tooltip "4.2.1"
@@ -10501,6 +10529,11 @@ text-table@0.2.0, text-table@^0.2.0:
 throat@^4.0.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/throat/-/throat-4.1.0.tgz#89037cbc92c56ab18926e6ba4cbb200e15672a6a"
+
+throttle-debounce@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/throttle-debounce/-/throttle-debounce-2.1.0.tgz#257e648f0a56bd9e54fe0f132c4ab8611df4e1d5"
+  integrity sha512-AOvyNahXQuU7NN+VVvOOX+uW6FPaWdAOdRP5HfwYxAfCzXTFKRMoIMk+n+po318+ktcChx+F1Dd91G3YHeMKyg==
 
 through2@^2.0.0:
   version "2.0.5"

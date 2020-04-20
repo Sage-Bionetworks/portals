@@ -318,31 +318,44 @@ const routes: GenericRoute[] = [
                 },
               },
               {
-                name: 'QueryWrapperFlattened',
-                title: 'Data',
+                name: 'GenerateComponentsFromRow',
                 props: {
-                  initQueryRequest: {
-                    entityId: filesEntityId,
-                    partMask:
-                      SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
-                      SynapseConstants.BUNDLE_MASK_QUERY_COUNT |
-                      SynapseConstants.BUNDLE_MASK_QUERY_SELECT_COLUMNS |
-                      SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
-                    concreteType:
-                      'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-                    query: {
-                      sql: filesSql,
-                      selectedFacets: [],
-                      isConsistent: true,
-                      limit: 25,
-                      offset: 0,
+                  sql: datasetsSql,
+                  sqlOperator: 'LIKE',
+                  entityId: datasetsEntityId,
+                  showMenu: false,
+                  synapseConfigArray: [
+                    {
+                      name: 'QueryWrapperFlattened',
+                      title: 'Data',
+                      columnName: 'datasetAlias',
+                      tableSqlKeys: ['datasets'],
+                      props: {
+                        initQueryRequest: {
+                          entityId: filesEntityId,
+                          partMask:
+                            SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
+                            SynapseConstants.BUNDLE_MASK_QUERY_COUNT |
+                            SynapseConstants.BUNDLE_MASK_QUERY_SELECT_COLUMNS |
+                            SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
+                          concreteType:
+                            'org.sagebionetworks.repo.model.table.QueryBundleRequest',
+                          query: {
+                            sql: filesSql,
+                            selectedFacets: [],
+                            isConsistent: true,
+                            limit: 25,
+                            offset: 0,
+                          },
+                        },
+                        loadingScreen,
+                        sqlOperator: '=',
+                        rgbIndex: 0,
+                        unitDescription: 'Files',
+                        title: 'Dataset Files',
+                      },
                     },
-                  },
-                  loadingScreen,
-                  sqlOperator: '=',
-                  rgbIndex: 0,
-                  unitDescription: 'Files',
-                  title: 'Dataset Files',
+                  ],
                 },
               },
             ],

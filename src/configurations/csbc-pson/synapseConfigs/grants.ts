@@ -86,7 +86,7 @@ export const grants: HomeExploreConfig = {
       searchConfiguration: {
         searchable: [
           {
-            columnName: 'name',
+            columnName: 'grantName',
             hintText: 'immunity',
           },
           {
