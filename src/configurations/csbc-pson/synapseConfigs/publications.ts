@@ -77,98 +77,14 @@ export const publications: HomeExploreConfig = {
     },
   },
   explorePageSynapseObject: {
-    name: 'QueryWrapperMenu',
+    name: 'QueryWrapperPlotNav',
     props: {
       rgbIndex,
-      unitDescription,
       entityId,
       cardConfiguration: publicationsCardConfiguration,
+      sql,
       shouldDeepLink: true,
-      stackedBarChartConfiguration: {
-        loadingScreen,
-      },
-      searchConfiguration: {
-        searchable: [
-          {
-            columnName: 'publicationTitle',
-            hintText: 'methylation',
-          },
-          {
-            columnName: 'authors',
-            hintText: 'LastName',
-          },
-          {
-            columnName: 'keywords',
-            hintText: 'scRNA-seq',
-          },
-          {
-            columnName: 'Journal',
-            hintText: 'Nucleic Acids Res',
-          },
-          {
-            columnName: 'DOI',
-            hintText: '10.1158/2159-8290.CD-17-0222',
-          },
-          {
-            columnName: 'theme',
-            hintText: 'tumor-immune',
-          },
-          {
-            columnName: 'assay',
-            hintText: 'RNA-seq',
-          },
-          {
-            columnName: 'tumorType',
-            hintText: 'Skin Cutaneous Melanoma',
-          },
-          {
-            columnName: 'tissue',
-            hintText: 'Prostate gland',
-          },
-          {
-            columnName: 'publicationYear',
-            hintText: '2018',
-          },
-          {
-            columnName: 'consortium',
-            hintText: 'PS-ON',
-          },
-        ],
-      },
       name: 'Publications',
-      menuConfig: [
-        {
-          sql,
-          facet: 'theme',
-        },
-        {
-          sql,
-          facet: 'assay',
-        },
-        {
-          sql,
-          facet: 'tumorType',
-        },
-        {
-          sql,
-          facet: 'tissue',
-        },
-        {
-          sql,
-          facet: 'publicationYear',
-        },
-        {
-          sql,
-          facet: 'grantName',
-        },
-        {
-          sql,
-          facet: 'consortium',
-        },
-        {
-          sql,
-        },
-      ],
     },
   },
 }

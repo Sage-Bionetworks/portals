@@ -38,31 +38,17 @@ export const files: HomeExploreConfig = {
     },
   },
   explorePageSynapseObject: {
-    name: 'TableWithSideFacets',
+    name: 'QueryWrapperPlotNav',
     props: {
       rgbIndex,
-      unitDescription,
       shouldDeepLink: true,
-      initQueryRequest: {
-        entityId,
-        concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-        partMask:
-          SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
-          SynapseConstants.BUNDLE_MASK_QUERY_RESULTS |
-          SynapseConstants.BUNDLE_MASK_QUERY_COUNT |
-          SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS |
-          SynapseConstants.BUNDLE_MASK_QUERY_SELECT_COLUMNS,
-        query: {
-          sql,
-          limit: 25,
-          offset: 0,
-        },
-      },
-      enableLeftFacetFilter: true,
-      enableDownloadConfirmation: true,
-      title: 'Files',
+      sql,
+      entityId,
       name: 'Files',
       loadingScreen,
+      tableConfiguration: {
+        visibleColumnCount: Infinity,
+      },
     },
   },
 }

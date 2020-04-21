@@ -53,50 +53,14 @@ export const projects: HomeExploreConfig = {
     },
   },
   explorePageSynapseObject: {
-    name: 'QueryWrapperMenu',
+    name: 'QueryWrapperPlotNav',
     props: {
       rgbIndex,
-      unitDescription,
-      entityId,
       cardConfiguration: projectCardConfiguration,
       shouldDeepLink: true,
-      stackedBarChartConfiguration: {
-        loadingScreen,
-      },
       name: 'Projects',
-      searchConfiguration: {
-        searchable: [
-          {
-            columnName: 'projectName',
-            hintText: 'migration',
-          },
-          {
-            columnName: 'description',
-            hintText: 'spatiotemporal',
-          },
-          {
-            columnName: 'grantName',
-            hintText: 'immunology',
-          },
-        ],
-      },
-      menuConfig: [
-        {
-          sql,
-          facet: 'grantName',
-        },
-        {
-          sql,
-          facet: 'consortium',
-        },
-        {
-          sql,
-          facet: 'grantType',
-        },
-        {
-          sql,
-        },
-      ],
+      entityId,
+      sql,
     },
   },
 }
