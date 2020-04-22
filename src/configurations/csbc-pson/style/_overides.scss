@@ -27,9 +27,9 @@ $primary-action-color: #47337d;
 
 // Since scss breaks if a file is missing in a local url link these functinons must get manually overwitten
 @function getHeader($path) {
-  @return url($path+'/dna_header.svg');
+  @return url($path + '/dna_header.svg');
 }
 
 @function getFooter($path) {
-  @return url($path+'/dna.svg');
+  @return url($path + '/dna.svg');
 }

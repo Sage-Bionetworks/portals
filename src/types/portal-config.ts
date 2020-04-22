@@ -7,6 +7,7 @@ import { UserCardProps } from 'synapse-react-client/dist/containers/UserCard'
 import { MarkdownSynapseProps } from 'synapse-react-client/dist/containers/MarkdownSynapse'
 import { NewsFeedMenuProps } from 'synapse-react-client/dist/containers/NewsFeedMenu'
 import { SynapseFormSubmissionGridProps } from 'synapse-react-client/dist/containers/synapse_form_wrapper/SynapseFormSubmissionsGrid'
+import { QueryWrapperPlotNavProps } from 'synapse-react-client/dist/containers/query_wrapper_plot_nav/QueryWrapperPlotNav'
 import { SynapseFormWrapperProps } from 'synapse-react-client/dist/containers/synapse_form_wrapper/SynapseFormWrapper'
 import { ThemesPlotProps } from 'synapse-react-client/dist/containers/widgets/themes-plot/ThemesPlot'
 import { RouteButtonControlWrapperProps } from '../portal-components/RouteButtonControlWrapper'
@@ -52,6 +53,11 @@ type StackedBarChart = {
 type QueryWrapperMenu = {
   name: 'QueryWrapperMenu'
   props: QueryWrapperMenuProps
+}
+
+type QueryWrapperPlotNav = {
+  name: 'QueryWrapperPlotNav'
+  props: QueryWrapperPlotNavProps
 }
 
 type UserCard = {
@@ -166,6 +172,7 @@ export type SynapseConfig = (
   | TableWithSideFacets
   | DevelopedBySage
   | ThemesPlot
+  | QueryWrapperPlotNav
   | FunderCards
 ) &
   Metadata

@@ -80,78 +80,15 @@ export const datasets: HomeExploreConfig = {
     },
   },
   explorePageSynapseObject: {
-    name: 'QueryWrapperMenu',
+    name: 'QueryWrapperPlotNav',
     props: {
       rgbIndex,
-      unitDescription,
       entityId,
       cardConfiguration: datasetCardConfiguration,
-      stackedBarChartConfiguration: {
-        loadingScreen,
-      },
       shouldDeepLink: true,
       name: 'Datasets',
-      searchConfiguration: {
-        searchable: [
-          {
-            columnName: 'datasetName',
-            hintText: 'migration',
-          },
-          {
-            columnName: 'description',
-            hintText: 'spatiotemporal',
-          },
-          {
-            columnName: 'overallDesign',
-            hintText: 'immunology',
-          },
-          {
-            columnName: 'publicationTitle',
-            hintText: 'immune-escape',
-          },
-          {
-            columnName: 'grantName',
-            hintText: 'immunology',
-          },
-          {
-            columnName: 'assay',
-            hintText: 'RNA-seq',
-          },
-          {
-            columnName: 'tumorType',
-            hintText: 'Skin Cutaneous Melanoma',
-          },
-        ],
-      },
-      menuConfig: [
-        {
-          sql,
-          facet: 'theme',
-        },
-        {
-          sql,
-          facet: 'assay',
-        },
-        {
-          sql,
-          facet: 'tumorType',
-        },
-        {
-          sql,
-          facet: 'species',
-        },
-        {
-          sql,
-          facet: 'grantName',
-        },
-        {
-          sql,
-          facet: 'consortium',
-        },
-        {
-          sql,
-        },
-      ],
+      sql,
+      loadingScreen,
     },
   },
 }
