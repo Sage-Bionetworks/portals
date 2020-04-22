@@ -7,7 +7,7 @@ const ConsortiaGoals = () => {
   return (
     <div className="ConsortiaGoals">
       <Layout>
-        <h2>Consortia Goals</h2>
+        <h2>Consortia Activity</h2>
         <div>
           <ConsortiaGoalsSvg id="goals-icon" />
           <HomePageLinks />
