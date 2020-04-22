@@ -13,7 +13,6 @@ import {
   projectCardConfiguration,
   projectsEntityId,
 } from './synapseConfigs/projects'
-import { publicationSql } from './synapseConfigs/publications'
 import {
   datasetsSql,
   datasetCardConfiguration,
@@ -272,7 +271,7 @@ const routes: GenericRoute[] = [
       {
         name: 'Publications',
         to: '/Explore/Publications',
-        isNested: false,
+        isNested: true,
         synapseConfigArray: [
           {
             ...routeButtonControlWrapperProps,
