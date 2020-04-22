@@ -16,44 +16,44 @@ type LinkProps = {
 
 const links: LinkProps[] = [
   {
-    title: 'Data',
+    title: 'Community',
+    icon: PeopleIconSvg,
+    description:
+      'Funded grant programs comprising institutions and investigators that are pursuing common cancer research themes with diverse approaches. This network drives the activity and output presented in this portal and provides a rich community for potential collaborations.',
+    linkText: 'Explore Grants',
+    to: 'Explore/Grants',
+  },
+  {
+    title: 'Research',
     icon: AcivityIconSvg,
     description:
-      'Data with which researchers can develop, validate, or apply their methods',
+      'Question-driven projects and core services that define the scientific scope of each grant program and provide context to the contributed resources. Consortia projects represent the fundamental unit of work from which data, methods, and insights are produced.',
+    linkText: 'Explore Projects',
+    to: 'Explore/Projects',
+  },
+  {
+    title: 'Data',
+    icon: DataIconSvg,
+    description:
+      'Collected from tumor samples and cell lines, assayed or simulated, across a spectrum of indications and experimental conditions. Data in the portal are shared freely to enable reuse by researchers to develop, validate, or apply new methods.',
     linkText: 'Explore Data',
-    to: 'Explore/Files',
+    to: 'Explore/Data',
   },
   {
     title: 'Methods',
-    icon: DataIconSvg,
-    description:
-      'Methods or tools that researchers can use, adapt, and improve',
-    linkText: 'Explore Methods',
-    to: 'Explore/Tools',
-  },
-  {
-    title: 'Insights',
-    icon: InsightIconSvg,
-    description:
-      'Lessons learned from existing data and methods, either in the form of publications or dynamic, summary visualizations that can quickly answer basic questions',
-    linkText: 'Explore Insights',
-    to: 'Explore/Publications',
-  },
-  {
-    title: 'Activity',
     icon: MethodsIconSvg,
     description:
-      'A record of which researchers have contributed to which products, that can be be used by researchers to augment their CV, and by funders to evaluate the output of researchers.',
-    linkText: 'Explore Activity',
-    to: 'Explore/Activity',
+      'Software tools and algorithms, models, and applications for interrogating and exploring a variety of data types and characterizing cancer related features. The catalog of tools developed by investigators can be used to derive new insights from existing data.',
+    linkText: 'Explore Methods',
+    to: 'Explore/Methods',
   },
   {
-    title: 'People',
-    icon: PeopleIconSvg,
+    title: 'Publications',
+    icon: InsightIconSvg,
     description:
-      'People candidates for collaboration with other researchers, based on their activity and contributions',
-    linkText: 'Explore People',
-    to: 'Explore/People',
+      'Lessons learned from consortia data and methods, shared as peer-reviewed journal articles. The growing library of publications is annotated by disease area, experimental metadata, and scientific theme to allow users to hone in on the most relevant knowledge.',
+    linkText: 'Explore Publications',
+    to: 'Explore/Publications',
   },
 ]
 const PortalHomePageLinks = () => {
@@ -70,7 +70,7 @@ const PortalHomePageLinks = () => {
         access to the following:
       </p>
       <div className="link-container">
-        {links.map(el => {
+        {links.map((el) => {
           const Icon = el.icon
           return (
             <div className="link-child" key={el.linkText}>

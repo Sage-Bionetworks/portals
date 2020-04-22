@@ -46,6 +46,11 @@ const routes: GenericRoute[] = [
     isNested: false,
     synapseConfigArray: [
       {
+        name: 'FunderCards',
+        props: undefined,
+        isOutsideContainer: true,
+      },
+      {
         name: 'ConsortiaGoals',
         props: undefined,
         isOutsideContainer: true,
