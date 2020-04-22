@@ -23,13 +23,18 @@ const FunderCards = () => {
     <Layout>
       <div className="FunderCards">
         {cards.map((el, index) => {
+          const Icon = el.icon
           return (
-            <div key={index} className="funder">
-              <div>{el.icon}</div>
-              <p>{el.text}</p>
-              <p>
-                <a href={el.link}>Visit Website</a>
-              </p>
+            <div key={index} className="FunderCards__funder">
+              <div className="FunderCards__icon">
+                <Icon />
+              </div>
+              <div className="FunderCards__text-container">
+                <p className="FunderCards__text">{el.text}</p>
+                <a className="FunderCards__link" href={el.link}>
+                  Visit Website
+                </a>
+              </div>
             </div>
           )
         })}
