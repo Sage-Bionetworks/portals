@@ -15,7 +15,7 @@ export const datasetSchema: GenericCardSchema = {
   title: 'datasetName',
   description: 'description',
   secondaryLabels: [
-    'publication',
+    'publicationTitle',
     'overallDesign',
     'tumorType',
     'assay',
@@ -36,8 +36,10 @@ export const datasetCardConfiguration: CardConfiguration = {
       matchColumnName: 'externalLink',
     },
     {
-      isMarkdown: true,
-      matchColumnName: 'publication',
+      isMarkdown: false,
+      URLColumnName: 'publicationTitle',
+      matchColumnName: 'publicationTitle',
+      baseURL: 'Explore/Publications/DetailsPage',
     },
     {
       isMarkdown: false,

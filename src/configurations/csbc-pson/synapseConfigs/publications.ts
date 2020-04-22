@@ -15,6 +15,7 @@ export const publicationSchema: GenericCardSchema = {
   title: 'publicationTitle',
   subTitle: 'authors',
   secondaryLabels: [
+    'pubMedUrl',
     'journal',
     'publicationYear',
     'theme',
@@ -41,6 +42,10 @@ export const publicationsCardConfiguration: CardConfiguration = {
     baseURL: 'Explore/Publications/DetailsPage',
   },
   labelLinkConfig: [
+    {
+      isMarkdown: true,
+      matchColumnName: 'pubMedUrl',
+    },
     {
       isMarkdown: false,
       baseURL: 'Explore/Grants/DetailsPage',

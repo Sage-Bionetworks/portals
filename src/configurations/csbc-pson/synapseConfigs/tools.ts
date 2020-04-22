@@ -17,7 +17,7 @@ export const toolsConfiguration: CardConfiguration = {
     title: 'toolName',
     description: 'description',
     secondaryLabels: [
-      'publication',
+      'publicationTitle',
       'inputDataType',
       'outputDataType',
       'softwareLanguage',
@@ -29,8 +29,10 @@ export const toolsConfiguration: CardConfiguration = {
   },
   labelLinkConfig: [
     {
-      isMarkdown: true,
-      matchColumnName: 'publication',
+      isMarkdown: false,
+      URLColumnName: 'publicationTitle',
+      matchColumnName: 'publicationTitle',
+      baseURL: 'Explore/Publications/DetailsPage',
     },
     {
       isMarkdown: false,
