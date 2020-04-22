@@ -27,7 +27,6 @@ export const publicationSchema: GenericCardSchema = {
     'consortium',
     'dataset',
   ],
-  link: 'pubMedUrl',
 }
 
 export const publicationsCardConfiguration: CardConfiguration = {
