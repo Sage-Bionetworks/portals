@@ -85,6 +85,7 @@ export const publications: HomeExploreConfig = {
       sql,
       shouldDeepLink: true,
       name: 'Publications',
+      loadingScreen,
     },
   },
 }

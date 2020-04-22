@@ -79,6 +79,7 @@ export const grants: HomeExploreConfig = {
       shouldDeepLink: true,
       name: 'Grants',
       entityId,
+      loadingScreen,
       sql,
     },
   },

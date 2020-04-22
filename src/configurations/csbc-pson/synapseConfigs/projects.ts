@@ -60,6 +60,7 @@ export const projects: HomeExploreConfig = {
       shouldDeepLink: true,
       name: 'Projects',
       entityId,
+      loadingScreen,
       sql,
     },
   },

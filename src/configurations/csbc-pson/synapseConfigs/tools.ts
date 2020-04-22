@@ -67,82 +67,15 @@ export const tools: HomeExploreConfig = {
     },
   },
   explorePageSynapseObject: {
-    name: 'QueryWrapperMenu',
+    name: 'QueryWrapperPlotNav',
     props: {
       rgbIndex,
-      unitDescription,
       entityId,
+      loadingScreen,
+      sql,
       cardConfiguration: toolsConfiguration,
       shouldDeepLink: true,
-      stackedBarChartConfiguration: {
-        loadingScreen,
-      },
-      searchConfiguration: {
-        searchable: [
-          {
-            columnName: 'toolName',
-            hintText: 'track',
-          },
-          {
-            columnName: 'description',
-            hintText: 'module',
-          },
-          {
-            columnName: 'publicationTitle',
-            hintText: 'modeling',
-          },
-          {
-            columnName: 'inputDataType',
-            hintText: 'image',
-          },
-          {
-            columnName: 'outputDataType',
-            hintText: 'network',
-          },
-          {
-            columnName: 'softwareLanguage',
-            hintText: 'python',
-          },
-          {
-            columnName: 'grantName',
-            hintText: 'Mechanics',
-          },
-        ],
-      },
       name: 'Tools',
-      menuConfig: [
-        {
-          sql,
-          facet: 'theme',
-        },
-        {
-          sql,
-          facet: 'inputDataType',
-        },
-        {
-          sql,
-          facet: 'outputDataType',
-        },
-        {
-          sql,
-          facet: 'toolType',
-        },
-        {
-          sql,
-          facet: 'softwareLanguage',
-        },
-        {
-          sql,
-          facet: 'grantName',
-        },
-        {
-          sql,
-          facet: 'consortium',
-        },
-        {
-          sql,
-        },
-      ],
     },
   },
 }
