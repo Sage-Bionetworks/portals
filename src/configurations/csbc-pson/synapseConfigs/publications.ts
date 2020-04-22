@@ -35,6 +35,12 @@ export const publicationsCardConfiguration: CardConfiguration = {
   genericCardSchema: publicationSchema,
   loadingScreen,
   secondaryLabelLimit: 5,
+  titleLinkConfig: {
+    isMarkdown: false,
+    URLColumnName: 'publicationTitle',
+    matchColumnName: 'publicationTitle',
+    baseURL: 'Explore/Publications/DetailsPage',
+  },
   labelLinkConfig: [
     {
       isMarkdown: false,
