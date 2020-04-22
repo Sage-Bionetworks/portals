@@ -14,6 +14,7 @@ import { HomePageCardContainerProps } from '../portal-components/csbc-home-page/
 import { AboutPortalProps } from '../portal-components/csbc-home-page/AboutPortal'
 import { EcosystemProps } from '../portal-components/csbc-home-page/Ecosystem'
 import { TableWithSideFacetsProps } from '../portal-components/csbc-home-page/TableWithSideFacets'
+import { TableWithSideFacetsProps } from '../portal-components/csbc-home-page/TableWithSideFacets'
 import { GenerateComponentsFromRowProps } from './portal-util-types'
 import { Operator } from '../portal-components/QueryWrapperFlattened'
 
@@ -89,6 +90,11 @@ type ConsortiaGoals = {
   props: undefined
 }
 
+type FunderCards = {
+  name: 'FunderCards'
+  props: undefined
+}
+
 type HomePageCardContainer = {
   name: 'HomePageCardContainer'
   props: HomePageCardContainerProps
@@ -161,6 +167,7 @@ export type SynapseConfig = (
   | TableWithSideFacets
   | DevelopedBySage
   | ThemesPlot
+  | FunderCards
 ) &
   Metadata
 export type SynapseConfigArray = SynapseConfig[]
