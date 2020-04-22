@@ -95,6 +95,11 @@ type ConsortiaGoals = {
   props: undefined
 }
 
+type FunderCards = {
+  name: 'FunderCards'
+  props: undefined
+}
+
 type HomePageCardContainer = {
   name: 'HomePageCardContainer'
   props: HomePageCardContainerProps
@@ -168,6 +173,7 @@ export type SynapseConfig = (
   | DevelopedBySage
   | ThemesPlot
   | QueryWrapperPlotNav
+  | FunderCards
 ) &
   Metadata
 export type SynapseConfigArray = SynapseConfig[]

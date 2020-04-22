@@ -13,7 +13,6 @@ import {
   projectCardConfiguration,
   projectsEntityId,
 } from './synapseConfigs/projects'
-import { publicationSql } from './synapseConfigs/publications'
 import {
   datasetsSql,
   datasetCardConfiguration,
@@ -31,6 +30,7 @@ import DatasetSvg from './style/Dataset.svg'
 import {
   publicationsCardConfiguration,
   publicationEntityId,
+  publicationSql,
 } from './synapseConfigs/publications'
 import {
   grantsCardConfiguration,
@@ -45,6 +45,11 @@ const routes: GenericRoute[] = [
     to: '/',
     isNested: false,
     synapseConfigArray: [
+      {
+        name: 'FunderCards',
+        props: undefined,
+        isOutsideContainer: true,
+      },
       {
         name: 'ConsortiaGoals',
         props: undefined,
@@ -271,7 +276,7 @@ const routes: GenericRoute[] = [
       {
         name: 'Publications',
         to: '/Explore/Publications',
-        isNested: false,
+        isNested: true,
         synapseConfigArray: [
           {
             ...routeButtonControlWrapperProps,
@@ -279,6 +284,73 @@ const routes: GenericRoute[] = [
               ...routeButtonControlWrapperProps.props,
               synapseConfig: publications.explorePageSynapseObject,
             },
+          },
+        ],
+        routes: [
+          {
+            name: 'DetailsPage',
+            to: '/Explore/Publications/DetailsPage',
+            isNested: false,
+            synapseConfigArray: [
+              {
+                name: 'CardContainerLogic',
+                isOutsideContainer: true,
+                props: {
+                  isHeader: true,
+                  backgroundColor: '#407ba0',
+                  entityId: publicationEntityId,
+                  ...publicationsCardConfiguration,
+                  secondaryLabelLimit: Infinity,
+                  sql: publicationSql,
+                },
+              },
+              {
+                name: 'GenerateComponentsFromRow',
+                props: {
+                  sql: publicationSql,
+                  sqlOperator: 'LIKE',
+                  entityId: publicationEntityId,
+                  synapseConfigArray: [
+                    {
+                      name: 'CardContainerLogic',
+                      columnName: 'publicationTitle',
+                      title: 'Related Projects',
+                      tableSqlKeys: ['publicationTitle'],
+                      props: {
+                        sqlOperator: 'LIKE',
+                        sql: projectsSql,
+                        entityId: projectsEntityId,
+                        ...projectCardConfiguration,
+                      },
+                    },
+                    {
+                      name: 'CardContainerLogic',
+                      columnName: 'publicationTitle',
+                      title: 'Related Datasets',
+                      tableSqlKeys: ['publicationTitle'],
+                      props: {
+                        sqlOperator: 'LIKE',
+                        sql: datasetsSql,
+                        entityId: datasetsEntityId,
+                        ...datasetCardConfiguration,
+                      },
+                    },
+                    {
+                      name: 'CardContainerLogic',
+                      columnName: 'publicationTitle',
+                      title: 'Related Tools',
+                      tableSqlKeys: ['publicationTitle'],
+                      props: {
+                        sqlOperator: 'LIKE',
+                        sql: toolsSql,
+                        entityId: toolsEntityId,
+                        ...toolsConfiguration,
+                      },
+                    },
+                  ],
+                },
+              },
+            ],
           },
         ],
       },

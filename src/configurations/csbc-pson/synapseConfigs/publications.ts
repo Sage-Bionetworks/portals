@@ -27,7 +27,6 @@ export const publicationSchema: GenericCardSchema = {
     'consortium',
     'dataset',
   ],
-  link: 'pubMedUrl',
 }
 
 export const publicationsCardConfiguration: CardConfiguration = {
@@ -35,6 +34,12 @@ export const publicationsCardConfiguration: CardConfiguration = {
   genericCardSchema: publicationSchema,
   loadingScreen,
   secondaryLabelLimit: 5,
+  titleLinkConfig: {
+    isMarkdown: false,
+    URLColumnName: 'publicationTitle',
+    matchColumnName: 'publicationTitle',
+    baseURL: 'Explore/Publications/DetailsPage',
+  },
   labelLinkConfig: [
     {
       isMarkdown: false,
