@@ -463,9 +463,21 @@ div.SRC-marginBottomTen {
 }
 
 .developed-by-sage {
-  margin-top: 20px;
+  margin-top: 25px;
   font-size: 15px;
+  color: #515359;
+  p {
+    margin-bottom: 0px;
+  }
   #sage-logo {
     margin-top: 10px;
+  }
+  .logos {
+    margin-top: 15px;
+    a {
+      svg {
+        margin-right: 20px;
+      }
+    }
   }
 }
