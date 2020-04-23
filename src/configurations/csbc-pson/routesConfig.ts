@@ -38,6 +38,7 @@ import {
   grantsSql,
 } from './synapseConfigs/grants'
 import { onPointClick } from './synapseConfigs/onPointClick'
+import facetAliases from './facetAliases'
 
 const routes: GenericRoute[] = [
   {
@@ -225,6 +226,7 @@ const routes: GenericRoute[] = [
                         sql: publicationSql,
                         entityId: publicationEntityId,
                         ...publicationsCardConfiguration,
+                        facetAliases,
                       },
                     },
                     {
@@ -237,6 +239,7 @@ const routes: GenericRoute[] = [
                         sql: datasetsSql,
                         entityId: datasetsEntityId,
                         ...datasetCardConfiguration,
+                        facetAliases,
                       },
                     },
                     {
@@ -249,6 +252,7 @@ const routes: GenericRoute[] = [
                         sql: toolsSql,
                         entityId: toolsEntityId,
                         ...toolsConfiguration,
+                        facetAliases,
                       },
                     },
                   ],
@@ -300,9 +304,7 @@ const routes: GenericRoute[] = [
                   entityId: publicationEntityId,
                   ...publicationsCardConfiguration,
                   secondaryLabelLimit: Infinity,
-                  facetAliases: {
-                    pubMedUrl: 'pubmed',
-                  },
+                  facetAliases,
                   sql: publicationSql,
                 },
               },
@@ -323,6 +325,7 @@ const routes: GenericRoute[] = [
                         sql: datasetsSql,
                         entityId: datasetsEntityId,
                         ...datasetCardConfiguration,
+                        facetAliases,
                       },
                     },
                     {
@@ -335,6 +338,7 @@ const routes: GenericRoute[] = [
                         sql: toolsSql,
                         entityId: toolsEntityId,
                         ...toolsConfiguration,
+                        facetAliases,
                       },
                     },
                   ],
@@ -377,6 +381,7 @@ const routes: GenericRoute[] = [
                   iconOptions: {
                     dataset: DatasetSvg,
                   },
+                  facetAliases,
                 },
               },
               {
@@ -413,7 +418,7 @@ const routes: GenericRoute[] = [
                         loadingScreen,
                         sqlOperator: '=',
                         rgbIndex: 0,
-                        unitDescription: 'Files',
+                        // unitDescription: 'Files',
                         title: 'Dataset Files',
                       },
                     },

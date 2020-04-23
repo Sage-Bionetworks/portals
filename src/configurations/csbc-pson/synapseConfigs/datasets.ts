@@ -3,6 +3,7 @@ import { HomeExploreConfig } from 'types/portal-config'
 import loadingScreen from '../loadingScreen'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
+import facetAliases from '../facetAliases'
 export const datasetsSql = `SELECT * FROM syn21897968`
 export const datasetsEntityId = 'syn21897968'
 const entityId = datasetsEntityId
@@ -92,9 +93,7 @@ export const datasets: HomeExploreConfig = {
       sql,
       loadingScreen,
       // @ts-ignore
-      facetAliases: {
-        publicationTitle: 'publication',
-      },
+      facetAliases,
     },
   },
 }
