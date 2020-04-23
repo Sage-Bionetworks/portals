@@ -1,6 +1,6 @@
 import { LogoConfig } from 'types/portal-config'
 
 const logoHeader: LogoConfig = {
-  name: 'CSBC / PS-ON',
+  name: 'ICR Knowledge Portal',
 }
 export default logoHeader
