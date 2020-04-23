@@ -1,7 +1,7 @@
 import * as React from 'react'
-import { Link } from 'react-router-dom'
 import footerConfig from './config/footerConfig'
 import logoFooterConfig from './config/logoFooterConfig'
+import { ReactComponent as PoweredBySvg } from './portal-assets/poweredbysynapse.svg'
 import Versions from 'portal-components/Versions'
 
 export const Footer: React.SFC<{}> = () => {
@@ -10,17 +10,24 @@ export const Footer: React.SFC<{}> = () => {
   }
   const { name, icon } = logoFooterConfig
   const logo = name ? (
-    name
+    <span className="nav-logo">
+      <button onClick={goToTop}>{name}</button>
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        id="powered-by-anchor"
+        href="https://synapse.org"
+      >
+        <PoweredBySvg />
+      </a>
+    </span>
   ) : (
     <img alt="footer logo" className="nav-logo" src={icon} />
   )
   return (
     <footer id="footer" className="center-content">
       <div id="portal-title-footer">
-        <Link onClick={goToTop} to="/" id="footer-logo-link">
-          {' '}
-          {logo}{' '}
-        </Link>
+        <div id="footer-logo-link">{logo}</div>
       </div>
       <div id="portal-contact-footer" className="center-content">
         <Versions />

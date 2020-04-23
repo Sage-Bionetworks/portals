@@ -4,6 +4,16 @@
 
 .nav-logo {
   height: 50px;
+  button {
+    margin: 0px;
+    padding: 0px;
+    font-size: 18px;
+  }
+  #powered-by-anchor {
+    display: block;
+    margin: 0px;
+    line-height: 0px;
+  }
 }
 
 // this pushes the footer to the bottom of the screen
