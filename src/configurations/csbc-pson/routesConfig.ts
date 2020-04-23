@@ -152,7 +152,7 @@ const routes: GenericRoute[] = [
           wikiId: '601366',
           cardProps: [
             { ownerId: 'syn21498902', wikiId: '601369' },
-            { ownerId: 'syn21498902', wikiId: '601367' },
+            { ownerId: 'syn21498902', wikiId: '601370' },
           ],
         },
       },

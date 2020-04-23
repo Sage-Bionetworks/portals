@@ -79,7 +79,7 @@ export const grants: HomeExploreConfig = {
       shouldDeepLink: true,
       name: 'Grants',
       entityId,
-      unitDescription,
+      // unitDescription,
       stackedBarChartConfiguration: {
         loadingScreen,
       },
