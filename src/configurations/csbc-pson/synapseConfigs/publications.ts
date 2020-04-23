@@ -96,6 +96,10 @@ export const publications: HomeExploreConfig = {
       shouldDeepLink: true,
       name: 'Publications',
       loadingScreen,
+      // @ts-ignore
+      facetAliases: {
+        pubMedUrl: 'Pubmed',
+      },
     },
   },
 }

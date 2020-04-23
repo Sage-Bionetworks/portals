@@ -91,6 +91,10 @@ export const datasets: HomeExploreConfig = {
       name: 'Datasets',
       sql,
       loadingScreen,
+      // @ts-ignore
+      facetAliases: {
+        publicationTitle: 'publication',
+      },
     },
   },
 }

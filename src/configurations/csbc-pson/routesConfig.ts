@@ -146,13 +146,12 @@ const routes: GenericRoute[] = [
       {
         name: 'AboutPortal',
         props: {
-          title: 'About the CSBC-PSON Portal',
+          title: 'About the Integrative Cancer Research Knowledge Portal',
           ownerId: 'syn21498902',
           wikiId: '601366',
           cardProps: [
-            { ownerId: 'syn21498902', wikiId: '601367' },
-            { ownerId: 'syn21498902', wikiId: '601368' },
             { ownerId: 'syn21498902', wikiId: '601369' },
+            { ownerId: 'syn21498902', wikiId: '601367' },
           ],
         },
       },
@@ -301,6 +300,9 @@ const routes: GenericRoute[] = [
                   entityId: publicationEntityId,
                   ...publicationsCardConfiguration,
                   secondaryLabelLimit: Infinity,
+                  facetAliases: {
+                    pubMedUrl: 'pubmed',
+                  },
                   sql: publicationSql,
                 },
               },
