@@ -481,3 +481,11 @@ div.SRC-marginBottomTen {
     }
   }
 }
+
+.SRC-portalCard ~ div:not(.SRC-portalCard) {
+  display: flex;
+  justify-content: flex-end;
+  button.pull-right {
+    float: none !important;
+  }
+}
