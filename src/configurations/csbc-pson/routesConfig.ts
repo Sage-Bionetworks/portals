@@ -301,6 +301,9 @@ const routes: GenericRoute[] = [
                   entityId: publicationEntityId,
                   ...publicationsCardConfiguration,
                   secondaryLabelLimit: Infinity,
+                  facetAliases: {
+                    pubMedUrl: 'pubmed',
+                  },
                   sql: publicationSql,
                 },
               },

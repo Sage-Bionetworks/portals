@@ -78,6 +78,10 @@ export const tools: HomeExploreConfig = {
       cardConfiguration: toolsConfiguration,
       shouldDeepLink: true,
       name: 'Tools',
+      // @ts-ignore
+      facetAliases: {
+        publicationTitle: 'publication',
+      },
     },
   },
 }
