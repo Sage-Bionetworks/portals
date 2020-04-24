@@ -18,15 +18,9 @@ export const publicationsCardConfiguration: CardConfiguration = {
     type: 'Publication',
     title: 'title',
     subTitle: 'authors',
-    secondaryLabels: ['year', 'journal', 'doi', 'pubmedID', 'grantNumber'],
+    secondaryLabels: ['year', 'journal', 'doi', 'grantNumber'],
   },
-  secondaryLabelLimit: 5,
-  labelLinkConfig: [
-    {
-      isMarkdown: true,
-      matchColumnName: 'pubmedID',
-    },
-  ],
+  secondaryLabelLimit: 4
 }
 
 const publications: HomeExploreConfig = {
