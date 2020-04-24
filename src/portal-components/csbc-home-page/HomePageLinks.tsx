@@ -44,8 +44,8 @@ const links: LinkProps[] = [
     icon: MethodsIconSvg,
     description:
       'Software tools and algorithms, models, and applications for interrogating and exploring a variety of data types and characterizing cancer related features. The catalog of tools developed by investigators can be used to derive new insights from existing data.',
-    linkText: 'Explore Methods',
-    to: 'Explore/Methods',
+    linkText: 'Explore Tools',
+    to: 'Explore/Tools',
   },
   {
     title: 'Publications',
