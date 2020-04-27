@@ -33,34 +33,17 @@ const people: HomeExploreConfig = {
     },
   },
   explorePageSynapseObject: {
-    name: 'QueryWrapperMenu',
+    name: 'QueryWrapperPlotNav',
     props: {
       rgbIndex,
-      unitDescription,
       entityId,
-      stackedBarChartConfiguration: {
-        loadingScreen,
-      },
+      sql,
+      loadingScreen,
       name: 'People',
-      isConsistent: true,
       shouldDeepLink: true,
       cardConfiguration: {
         type: SynapseConstants.MEDIUM_USER_CARD,
       },
-      menuConfig: [
-        {
-          sql,
-          facet: 'Program',
-        },
-        {
-          sql,
-          facet: 'Grant Number',
-        },
-        {
-          sql,
-          facet: 'institution',
-        },
-      ],
     },
   },
 }
