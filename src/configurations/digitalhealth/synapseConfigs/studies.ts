@@ -4,7 +4,7 @@ import loadingScreen from '../loadingScreen'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import facetAliases from '../facetAliases'
-export const studySql = 'SELECT * FROM syn21994974'
+export const studySql = 'SELECT id, name, dataAccessInstructions, dataCollectionMethod,deviceLocation,devicePlatform,deviceType,diagnosis, digitalAssessmentCategory, digitalAssessmentDetails, intervention, investigator, keywords, numberParticipants, reportedOutcome, sensorDataType, sensorType, study, studyDataDescriptionLocation, studyDescriptionLocation, studyDescription FROM syn21994974 WHERE dhPortalIndex = \'TRUE\''
 export const studyEntityId = 'syn21994974'
 const entityId = studyEntityId
 const sql = studySql
