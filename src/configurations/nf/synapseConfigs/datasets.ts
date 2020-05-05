@@ -39,65 +39,20 @@ const datasets: HomeExploreConfig = {
     },
   },
   explorePageSynapseObject: {
-    name: 'QueryWrapperMenu',
+    name: 'QueryWrapperPlotNav',
     props: {
       rgbIndex,
-      unitDescription,
       shouldDeepLink: true,
-      stackedBarChartConfiguration: {
-        loadingScreen,
-      },
+      sql,
       cardConfiguration: {
         type,
       },
+      loadingScreen,
       name: 'Datasets',
       entityId,
+      // @ts-ignore
       facetAliases,
-      searchConfiguration: {
-        searchable: [
-          {
-            columnName: 'datasetName',
-            hintText: 'Drug Screening',
-          },
-          {
-            columnName: 'summary',
-            hintText: 'single-agent',
-          },
-          {
-            columnName: 'studyName',
-            hintText: 'Synodos NF2',
-          },
-          {
-            columnName: 'diseaseFocus',
-            hintText: 'Neurofibromatosis 1',
-          },
-          {
-            columnName: 'manifestation',
-            hintText: 'Plexiform Neurofibroma',
-          },
-          {
-            columnName: 'fundingAgency',
-            hintText: 'CTF',
-          },
-        ],
-      },
-      menuConfig: [
-        {
-          sql,
-          facet: 'diseaseFocus',
-        },
-        {
-          sql,
-          facet: 'tumorType',
-        },
-        {
-          sql,
-          facet: 'fundingAgency',
-        },
-        {
-          sql,
-        },
-      ],
+      facetsToPlot: ['diseaseFocus', 'tumorType', 'fundingAgency'],
     },
   },
 }
