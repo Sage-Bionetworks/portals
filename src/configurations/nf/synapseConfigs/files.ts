@@ -47,7 +47,7 @@ const files: HomeExploreConfig = {
       entityId,
       loadingScreen,
       tableConfiguration: {
-        visibleColumnCount,
+        // visibleColumnCount,
         title,
       },
       shouldDeepLink: true,

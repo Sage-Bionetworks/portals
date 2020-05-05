@@ -40,7 +40,8 @@ const data: HomeExploreConfig = {
       name: 'Data',
       tableConfiguration: {
         title,
-        visibleColumnCount: 10,
+        // TODO: Add column select plotnav
+        // visibleColumnCount: 10,
         showAccessColumn: true,
       },
       loadingScreen,
