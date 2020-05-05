@@ -1,6 +1,6 @@
 import { LogoConfig } from 'types/portal-config'
 
 const logoHeader: LogoConfig = {
-  name: 'ICR Knowledge Portal',
+  name: 'Digital Health Portal in logoHeaderConfig.ts',
 }
 export default logoHeader

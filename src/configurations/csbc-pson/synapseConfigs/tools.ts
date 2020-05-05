@@ -2,6 +2,7 @@ import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from 'types/portal-config'
 import loadingScreen from '../loadingScreen'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
+import facetAliases from '../facetAliases'
 export const toolsSql = 'SELECT * FROM syn21930566'
 export const toolsEntityId = 'syn21930566'
 const entityId = toolsEntityId
@@ -29,8 +30,10 @@ export const toolsConfiguration: CardConfiguration = {
   },
   labelLinkConfig: [
     {
-      isMarkdown: true,
+      isMarkdown: false,
+      URLColumnName: 'publicationTitle',
       matchColumnName: 'publicationTitle',
+      baseURL: 'Explore/Publications/DetailsPage',
     },
     {
       isMarkdown: false,
@@ -76,6 +79,8 @@ export const tools: HomeExploreConfig = {
       cardConfiguration: toolsConfiguration,
       shouldDeepLink: true,
       name: 'Tools',
+      // @ts-ignore
+      facetAliases,
     },
   },
 }

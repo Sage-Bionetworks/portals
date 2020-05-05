@@ -3,6 +3,7 @@ import { HomeExploreConfig } from 'types/portal-config'
 import loadingScreen from '../loadingScreen'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
+import facetAliases from '../facetAliases'
 export const datasetsSql = `SELECT * FROM syn21897968`
 export const datasetsEntityId = 'syn21897968'
 const entityId = datasetsEntityId
@@ -15,7 +16,7 @@ export const datasetSchema: GenericCardSchema = {
   title: 'datasetName',
   description: 'description',
   secondaryLabels: [
-    'publication',
+    'publicationTitle',
     'overallDesign',
     'tumorType',
     'assay',
@@ -36,8 +37,10 @@ export const datasetCardConfiguration: CardConfiguration = {
       matchColumnName: 'externalLink',
     },
     {
-      isMarkdown: true,
-      matchColumnName: 'publication',
+      isMarkdown: false,
+      URLColumnName: 'publicationTitle',
+      matchColumnName: 'publicationTitle',
+      baseURL: 'Explore/Publications/DetailsPage',
     },
     {
       isMarkdown: false,
@@ -89,6 +92,8 @@ export const datasets: HomeExploreConfig = {
       name: 'Datasets',
       sql,
       loadingScreen,
+      // @ts-ignore
+      facetAliases,
     },
   },
 }

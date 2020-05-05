@@ -38,6 +38,7 @@ import {
   grantsSql,
 } from './synapseConfigs/grants'
 import { onPointClick } from './synapseConfigs/onPointClick'
+import facetAliases from './facetAliases'
 
 const routes: GenericRoute[] = [
   {
@@ -146,13 +147,12 @@ const routes: GenericRoute[] = [
       {
         name: 'AboutPortal',
         props: {
-          title: 'About the CSBC-PSON Portal',
+          title: 'About the Integrative Cancer Research Knowledge Portal',
           ownerId: 'syn21498902',
           wikiId: '601366',
           cardProps: [
-            { ownerId: 'syn21498902', wikiId: '601367' },
-            { ownerId: 'syn21498902', wikiId: '601368' },
             { ownerId: 'syn21498902', wikiId: '601369' },
+            { ownerId: 'syn21498902', wikiId: '601370' },
           ],
         },
       },
@@ -226,6 +226,7 @@ const routes: GenericRoute[] = [
                         sql: publicationSql,
                         entityId: publicationEntityId,
                         ...publicationsCardConfiguration,
+                        facetAliases,
                       },
                     },
                     {
@@ -238,6 +239,7 @@ const routes: GenericRoute[] = [
                         sql: datasetsSql,
                         entityId: datasetsEntityId,
                         ...datasetCardConfiguration,
+                        facetAliases,
                       },
                     },
                     {
@@ -250,6 +252,7 @@ const routes: GenericRoute[] = [
                         sql: toolsSql,
                         entityId: toolsEntityId,
                         ...toolsConfiguration,
+                        facetAliases,
                       },
                     },
                   ],
@@ -301,6 +304,7 @@ const routes: GenericRoute[] = [
                   entityId: publicationEntityId,
                   ...publicationsCardConfiguration,
                   secondaryLabelLimit: Infinity,
+                  facetAliases,
                   sql: publicationSql,
                 },
               },
@@ -314,18 +318,6 @@ const routes: GenericRoute[] = [
                     {
                       name: 'CardContainerLogic',
                       columnName: 'publicationTitle',
-                      title: 'Related Projects',
-                      tableSqlKeys: ['publicationTitle'],
-                      props: {
-                        sqlOperator: 'LIKE',
-                        sql: projectsSql,
-                        entityId: projectsEntityId,
-                        ...projectCardConfiguration,
-                      },
-                    },
-                    {
-                      name: 'CardContainerLogic',
-                      columnName: 'publicationTitle',
                       title: 'Related Datasets',
                       tableSqlKeys: ['publicationTitle'],
                       props: {
@@ -333,6 +325,7 @@ const routes: GenericRoute[] = [
                         sql: datasetsSql,
                         entityId: datasetsEntityId,
                         ...datasetCardConfiguration,
+                        facetAliases,
                       },
                     },
                     {
@@ -345,6 +338,7 @@ const routes: GenericRoute[] = [
                         sql: toolsSql,
                         entityId: toolsEntityId,
                         ...toolsConfiguration,
+                        facetAliases,
                       },
                     },
                   ],
@@ -387,6 +381,7 @@ const routes: GenericRoute[] = [
                   iconOptions: {
                     dataset: DatasetSvg,
                   },
+                  facetAliases,
                 },
               },
               {
@@ -423,7 +418,7 @@ const routes: GenericRoute[] = [
                         loadingScreen,
                         sqlOperator: '=',
                         rgbIndex: 0,
-                        unitDescription: 'Files',
+                        // unitDescription: 'Files',
                         title: 'Dataset Files',
                       },
                     },
