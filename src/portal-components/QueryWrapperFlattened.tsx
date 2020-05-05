@@ -40,7 +40,6 @@ const QueryWrapperFlattened: React.FunctionComponent<QueryWrapperFlattenedProps>
     initQueryRequest,
     sqlOperator,
     enableLeftFacetFilter,
-    enableDownloadConfirmation,
     visibleColumnCount,
     showAccessColumn,
     ...rest
@@ -73,7 +72,6 @@ const QueryWrapperFlattened: React.FunctionComponent<QueryWrapperFlattenedProps>
           loadingScreen={loadingScreen}
           enableLeftFacetFilter={enableLeftFacetFilter}
           showAccessColumn={showAccessColumn}
-          enableDownloadConfirmation={enableDownloadConfirmation}
           title={title}
         />
       ) : (

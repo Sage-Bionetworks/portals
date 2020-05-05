@@ -47,7 +47,6 @@ const files: HomeExploreConfig = {
       title,
       visibleColumnCount,
       shouldDeepLink: true,
-      enableDownloadConfirmation: true,
       enableLeftFacetFilter: true,
       showAccessColumn: true,
       initQueryRequest: {

@@ -42,7 +42,6 @@ const data: HomeExploreConfig = {
         title,
         visibleColumnCount: 10,
         showAccessColumn: true,
-        enableDownloadConfirmation: true,
       },
       loadingScreen,
       sql,
