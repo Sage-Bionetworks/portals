@@ -61,59 +61,16 @@ const projects: HomeExploreConfig = {
     },
   },
   explorePageSynapseObject: {
-    name: 'QueryWrapperMenu',
+    name: 'QueryWrapperPlotNav',
     props: {
       rgbIndex,
-      stackedBarChartConfiguration: {
-        loadingScreen,
-      },
+      loadingScreen,
       entityId,
+      sql,
       shouldDeepLink: true,
-      searchConfiguration: {
-        searchable: [
-          {
-            columnName: 'Name',
-            hintText: 'immunity',
-          },
-          {
-            columnName: 'Abstract',
-            hintText: 'targets',
-          },
-          {
-            columnName: 'Key Investigators',
-            hintText: 'LastName',
-          },
-          {
-            columnName: 'Key Data Contributors',
-            hintText: 'LastName',
-          },
-          {
-            columnName: 'Institutions',
-            hintText: 'Sage Bionetworks',
-          },
-          {
-            columnName: 'Grant Number',
-            hintText: 'U01AG046139',
-          },
-          {
-            columnName: 'Program',
-            hintText: 'MODEL-AD',
-          },
-        ],
-      },
       name: 'Projects',
-      isConsistent: true,
-      unitDescription: 'Projects',
       cardConfiguration: projectCardConfiguration,
-      menuConfig: [
-        {
-          sql,
-          facet,
-        },
-        {
-          sql,
-        },
-      ],
+      // unitDescription: 'Projects',
     },
   },
 }

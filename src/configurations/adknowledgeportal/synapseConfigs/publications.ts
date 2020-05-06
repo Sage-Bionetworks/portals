@@ -65,68 +65,49 @@ const publications: HomeExploreConfig = {
     },
   },
   explorePageSynapseObject: {
-    name: 'QueryWrapperMenu',
+    name: 'QueryWrapperPlotNav',
     props: {
       rgbIndex,
-      unitDescription,
       entityId,
-      stackedBarChartConfiguration: {
-        loadingScreen,
-      },
+      sql,
       name: 'Publications',
-      isConsistent: true,
       shouldDeepLink: true,
-      facetAliases,
-      searchConfiguration: {
-        searchable: [
-          {
-            columnName: 'title',
-            hintText: 'network',
-          },
-          {
-            columnName: 'journal',
-            hintText: 'Alzheimers Dement',
-          },
-          {
-            columnName: 'authors',
-            hintText: 'LastName',
-          },
-          {
-            columnName: 'year',
-            hintText: '2018',
-          },
-          {
-            columnName: 'doi',
-            hintText: '10.1186/s13024-017-0219-3',
-          },
-          {
-            columnName: 'long_amp_ad_grants',
-            hintText: 'U01AG046161',
-          },
-          {
-            columnName: 'consortium',
-            hintText: 'AMP-AD',
-          },
-        ],
-      },
+      facetsToPlot: ['consortium', 'year', 'long_amp_ad_grants'],
       cardConfiguration: publicationCardProps,
-      menuConfig: [
-        {
-          sql,
-          facet: 'consortium',
-        },
-        {
-          sql,
-          facet: 'year',
-        },
-        {
-          sql,
-          facet: 'long_amp_ad_grants',
-        },
-        {
-          sql,
-        },
-      ],
+      // @ts-ignore
+      facetAliases,
+      // searchConfiguration: {
+      //   searchable: [
+      //     {
+      //       columnName: 'title',
+      //       hintText: 'network',
+      //     },
+      //     {
+      //       columnName: 'journal',
+      //       hintText: 'Alzheimers Dement',
+      //     },
+      //     {
+      //       columnName: 'authors',
+      //       hintText: 'LastName',
+      //     },
+      //     {
+      //       columnName: 'year',
+      //       hintText: '2018',
+      //     },
+      //     {
+      //       columnName: 'doi',
+      //       hintText: '10.1186/s13024-017-0219-3',
+      //     },
+      //     {
+      //       columnName: 'long_amp_ad_grants',
+      //       hintText: 'U01AG046161',
+      //     },
+      //     {
+      //       columnName: 'consortium',
+      //       hintText: 'AMP-AD',
+      //     },
+      //   ],
+      // },
     },
   },
 }

@@ -87,86 +87,23 @@ const studies: HomeExploreConfig = {
     },
   },
   explorePageSynapseObject: {
-    name: 'QueryWrapperMenu',
+    name: 'QueryWrapperPlotNav',
     props: {
       rgbIndex,
-      unitDescription,
-      stackedBarChartConfiguration: {
-        loadingScreen,
-      },
       entityId,
+      sql,
       name: 'Studies',
       shouldDeepLink: true,
       cardConfiguration: studyCardConfiguration,
-      searchConfiguration: {
-        searchable: [
-          {
-            columnName: 'studyName',
-            hintText: 'Synodos NF2',
-          },
-          {
-            columnName: 'summary',
-            hintText: 'nonsurgical therapy',
-          },
-          {
-            columnName: 'studyLeads',
-            hintText: 'Schwann cell',
-          },
-          {
-            columnName: 'studyStatus',
-            hintText: 'Active',
-          },
-          {
-            columnName: 'dataStatus',
-            hintText: 'Under Embargo',
-          },
-          {
-            columnName: 'institutions',
-            hintText: 'Massachusetts General Hospital',
-          },
-          {
-            columnName: 'diseaseFocus',
-            hintText: 'Neurofibromatosis 2',
-          },
-          {
-            columnName: 'manifestation',
-            hintText: 'Schwannoma',
-          },
-          {
-            columnName: 'fundingAgency',
-            hintText: 'NTAP',
-          },
-        ],
-      },
+      // @ts-ignore
       facetAliases,
-      menuConfig: [
-        {
-          sql,
-          facet: 'studyStatus',
-        },
-        {
-          sql,
-          facet: 'dataStatus',
-        },
-        {
-          sql,
-          facet: 'institutions',
-        },
-        {
-          sql,
-          facet: 'fundingAgency',
-        },
-        {
-          sql,
-          facet: 'manifestation',
-        },
-        {
-          sql,
-          facet: 'diseaseFocus',
-        },
-        {
-          sql,
-        },
+      facetsToPlot: [
+        'studyStatus',
+        'dataStatus',
+        'institutions',
+        'fundingAgency',
+        'manifestation',
+        'diseaseFocus',
       ],
     },
   },

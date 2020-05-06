@@ -34,32 +34,19 @@ const data: HomeExploreConfig = {
     },
   },
   explorePageSynapseObject: {
-    name: 'TableWithSideFacets',
+    name: 'QueryWrapperPlotNav',
     props: {
       rgbIndex,
-      unitDescription,
       name: 'Data',
-      initQueryRequest: {
-        entityId,
-        concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-        partMask:
-          SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
-          SynapseConstants.BUNDLE_MASK_QUERY_RESULTS |
-          SynapseConstants.BUNDLE_MASK_QUERY_COUNT |
-          SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS |
-          SynapseConstants.BUNDLE_MASK_QUERY_SELECT_COLUMNS,
-        query: {
-          sql:
-            'SELECT study, dataType, assay, id as File_id, specimenID, individualID, diagnosis, sex, consortium as "Program", grant, species, organ, tissue, cellType, fileFormat FROM syn11346063',
-          limit: 25,
-          offset: 0,
-        },
+      tableConfiguration: {
+        title,
+        // TODO: Add column select plotnav
+        // visibleColumnCount: 10,
+        showAccessColumn: true,
       },
-      title,
-      visibleColumnCount: 4,
-      showAccessColumn: true,
-      enableDownloadConfirmation: true,
-      enableLeftFacetFilter: true,
+      loadingScreen,
+      sql,
+      entityId,
       shouldDeepLink: true,
     },
   },

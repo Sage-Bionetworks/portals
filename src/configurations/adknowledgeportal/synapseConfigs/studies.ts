@@ -77,76 +77,58 @@ const studies: HomeExploreConfig = {
     },
   },
   explorePageSynapseObject: {
-    name: 'QueryWrapperMenu',
+    name: 'QueryWrapperPlotNav',
     props: {
       rgbIndex,
-      unitDescription,
+      // @ts-ignore
       facetAliases,
-      stackedBarChartConfiguration: {
-        loadingScreen,
-      },
+      loadingScreen,
       entityId,
+      sql,
       name: 'Studies',
-      isConsistent: true,
       shouldDeepLink: true,
+      facetsToPlot: ['Species', 'Grant', 'Consortium'],
       cardConfiguration: studyCardConfiguration,
-      searchConfiguration: {
-        searchable: [
-          {
-            columnName: 'Study_Name',
-            hintText: 'Mayo',
-          },
-          {
-            columnName: 'Study_Description',
-            hintText: 'RNAseq',
-          },
-          {
-            columnName: 'DataType_All',
-            hintText: 'Gene Expression',
-          },
-          {
-            columnName: 'Diagnosis_or_Model_System',
-            hintText: 'LOAD',
-          },
-          {
-            columnName: 'Data_Contributor',
-            hintText: 'LastName',
-          },
-          {
-            columnName: 'Sample_Type',
-            hintText: 'Temporal Cortex',
-          },
-          {
-            columnName: 'Species',
-            hintText: 'Drosophila',
-          },
-          {
-            columnName: 'Grant',
-            hintText: 'U01AG046139',
-          },
-          {
-            columnName: 'Consortium',
-            hintText: 'AMP-AD',
-          },
-        ],
-      },
-      menuConfig: [
-        {
-          sql,
-          facet,
-        },
-        {
-          sql,
-          facet: 'Grant',
-        },
-        {
-          sql,
-          facet: 'Consortium',
-        },
-        {
-          sql,
-        },
-      ],
+      // searchConfiguration: {
+      //   searchable: [
+      //     {
+      //       columnName: 'Study_Name',
+      //       hintText: 'Mayo',
+      //     },
+      //     {
+      //       columnName: 'Study_Description',
+      //       hintText: 'RNAseq',
+      //     },
+      //     {
+      //       columnName: 'DataType_All',
+      //       hintText: 'Gene Expression',
+      //     },
+      //     {
+      //       columnName: 'Diagnosis_or_Model_System',
+      //       hintText: 'LOAD',
+      //     },
+      //     {
+      //       columnName: 'Data_Contributor',
+      //       hintText: 'LastName',
+      //     },
+      //     {
+      //       columnName: 'Sample_Type',
+      //       hintText: 'Temporal Cortex',
+      //     },
+      //     {
+      //       columnName: 'Species',
+      //       hintText: 'Drosophila',
+      //     },
+      //     {
+      //       columnName: 'Grant',
+      //       hintText: 'U01AG046139',
+      //     },
+      //     {
+      //       columnName: 'Consortium',
+      //       hintText: 'AMP-AD',
+      //     },
+      //   ],
+      // },
     },
   },
 }
@@ -208,7 +190,6 @@ export const studiesGenerateComponentsFromRowProps: GenerateComponentsFromRowPro
             offset: 0,
           },
         },
-        enableDownloadConfirmation: true,
         loadingScreen,
         facetAliases,
         rgbIndex,
@@ -243,7 +224,6 @@ export const studiesGenerateComponentsFromRowProps: GenerateComponentsFromRowPro
             offset: 0,
           },
         },
-        enableDownloadConfirmation: true,
         loadingScreen,
         facetAliases,
         rgbIndex,
