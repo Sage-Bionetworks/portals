@@ -67,87 +67,65 @@ const publications: HomeExploreConfig = {
     },
   },
   explorePageSynapseObject: {
-    name: 'QueryWrapperMenu',
+    name: 'QueryWrapperPlotNav',
     props: {
       rgbIndex,
-      unitDescription,
       entityId,
-      stackedBarChartConfiguration: {
-        loadingScreen,
-      },
+      loadingScreen,
+      sql,
       shouldDeepLink: true,
       name: 'Publications',
       cardConfiguration: publicationsCardConfiguration,
-      facetAliases,
-      searchConfiguration: {
-        searchable: [
-          {
-            columnName: 'title',
-            hintText: 'Schwann',
-          },
-          {
-            columnName: 'author',
-            hintText: 'Weimer',
-          },
-          {
-            columnName: 'journal',
-            hintText: 'neuro',
-          },
-          {
-            columnName: 'pmid',
-            hintText: '29055717',
-          },
-          {
-            columnName: 'year',
-            hintText: '2018',
-          },
-          {
-            columnName: 'fundingAgency',
-            hintText: 'NTAP',
-          },
-          {
-            columnName: 'studyName',
-            hintText: 'Plexiform',
-          },
-          {
-            columnName: 'diseaseFocus',
-            hintText: 'Neurofibromatosis 2',
-          },
-          {
-            columnName: 'manifestation',
-            hintText: 'MPNST',
-          },
-        ],
-      },
-      menuConfig: [
-        {
-          sql,
-          facet: 'fundingAgency',
-        },
-        {
-          sql,
-          facet: 'journal',
-        },
-        {
-          sql,
-          facet: 'year',
-        },
-        {
-          sql,
-          facet: 'studyName',
-        },
-        {
-          sql,
-          facet: 'diseaseFocus',
-        },
-        {
-          sql,
-          facet: 'manifestation',
-        },
-        {
-          sql,
-        },
+      facetsToPlot: [
+        'fundingAgency',
+        'journal',
+        'year',
+        'studyName',
+        'diseaseFocus',
+        'manifestation',
       ],
+      // @ts-ignore
+      facetAliases,
+      // searchConfiguration: {
+      //   searchable: [
+      //     {
+      //       columnName: 'title',
+      //       hintText: 'Schwann',
+      //     },
+      //     {
+      //       columnName: 'author',
+      //       hintText: 'Weimer',
+      //     },
+      //     {
+      //       columnName: 'journal',
+      //       hintText: 'neuro',
+      //     },
+      //     {
+      //       columnName: 'pmid',
+      //       hintText: '29055717',
+      //     },
+      //     {
+      //       columnName: 'year',
+      //       hintText: '2018',
+      //     },
+      //     {
+      //       columnName: 'fundingAgency',
+      //       hintText: 'NTAP',
+      //     },
+      //     {
+      //       columnName: 'studyName',
+      //       hintText: 'Plexiform',
+      //     },
+      //     {
+      //       columnName: 'diseaseFocus',
+      //       hintText: 'Neurofibromatosis 2',
+      //     },
+      //     {
+      //       columnName: 'manifestation',
+      //       hintText: 'MPNST',
+      //     },
+      //   ],
+      // },
     },
   },
 }
