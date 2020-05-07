@@ -20,7 +20,7 @@ export const publicationsCardConfiguration: CardConfiguration = {
     subTitle: 'authors',
     secondaryLabels: ['year', 'journal', 'doi', 'grantNumber'],
   },
-  secondaryLabelLimit: 4
+  secondaryLabelLimit: 4,
 }
 
 const publications: HomeExploreConfig = {
@@ -48,50 +48,39 @@ const publications: HomeExploreConfig = {
     },
   },
   explorePageSynapseObject: {
-    name: 'QueryWrapperMenu',
+    name: 'QueryWrapperPlotNav',
     props: {
       rgbIndex,
       entityId,
       shouldDeepLink: true,
-      searchConfiguration: {
-        searchable: [
-          {
-            columnName: 'title',
-            hintText: 'mosaicism',
-          },
-          {
-            columnName: 'authors',
-            hintText: 'LastName',
-          },
-          {
-            columnName: 'year',
-            hintText: '2019',
-          },
-          {
-            columnName: 'journal',
-            hintText: 'Science',
-          },
-          {
-            columnName: 'grantNumber',
-            hintText: 'U01MH106874',
-          },
-        ],
-      },
       name: 'Publications',
-      unitDescription: 'Publications',
       cardConfiguration: publicationsCardConfiguration,
-      stackedBarChartConfiguration: {
-        loadingScreen,
-      },
-      menuConfig: [
-        {
-          facet: 'grantNumber',
-          sql,
-        },
-        {
-          sql,
-        },
-      ],
+      sql,
+      facetsToPlot: ['grantNumber'],
+      // searchConfiguration: {
+      //   searchable: [
+      //     {
+      //       columnName: 'title',
+      //       hintText: 'mosaicism',
+      //     },
+      //     {
+      //       columnName: 'authors',
+      //       hintText: 'LastName',
+      //     },
+      //     {
+      //       columnName: 'year',
+      //       hintText: '2019',
+      //     },
+      //     {
+      //       columnName: 'journal',
+      //       hintText: 'Science',
+      //     },
+      //     {
+      //       columnName: 'grantNumber',
+      //       hintText: 'U01MH106874',
+      //     },
+      //   ],
+      // },
     },
   },
 }

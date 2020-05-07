@@ -81,78 +81,55 @@ const studies: HomeExploreConfig = {
     },
   },
   explorePageSynapseObject: {
-    name: 'QueryWrapperMenu',
+    name: 'QueryWrapperPlotNav',
     props: {
       rgbIndex,
       entityId,
       shouldDeepLink: true,
-      searchConfiguration: {
-        searchable: [
-          {
-            columnName: 'studyName',
-            hintText: 'mosaic single nucleotide variations',
-          },
-          {
-            columnName: 'institutions',
-            hintText: 'Mayo Clinic',
-          },
-          {
-            columnName: 'studyDescription',
-            hintText: 'Reference Tissue',
-          },
-          {
-            columnName: 'diagnosis',
-            hintText: 'Schizophrenia',
-          },
-          {
-            columnName: 'organs',
-            hintText: 'Bran',
-          },
-          {
-            columnName: 'tissues',
-            hintText: 'Dorsolateral Prefrontal Cortex',
-          },
-          {
-            columnName: 'dataTypes',
-            hintText: 'Whole Genome Sequencing',
-          },
-          {
-            columnName: 'project',
-            hintText: 'syn1234',
-          },
-          {
-            columnName: 'methods',
-            hintText: '',
-          },
-        ],
-      },
+      sql,
       name: 'Studies',
-      unitDescription: 'Studies',
       cardConfiguration: studyCardConfiguration,
-      stackedBarChartConfiguration: {
-        loadingScreen,
-      },
-      menuConfig: [
-        {
-          sql,
-          facet: 'diagnosis',
-        },
-        {
-          sql,
-          facet: 'organs',
-        },
-        {
-          sql,
-          facet: 'tissues',
-        },
-        {
-          sql,
-          facet: 'dataTypes',
-        },
-        {
-          sql,
-        },
-      ],
+      facetsToPlot: ['diagnosis', 'organs', 'tissues', 'dataTypes'],
+      // searchConfiguration: {
+      //   searchable: [
+      //     {
+      //       columnName: 'studyName',
+      //       hintText: 'mosaic single nucleotide variations',
+      //     },
+      //     {
+      //       columnName: 'institutions',
+      //       hintText: 'Mayo Clinic',
+      //     },
+      //     {
+      //       columnName: 'studyDescription',
+      //       hintText: 'Reference Tissue',
+      //     },
+      //     {
+      //       columnName: 'diagnosis',
+      //       hintText: 'Schizophrenia',
+      //     },
+      //     {
+      //       columnName: 'organs',
+      //       hintText: 'Bran',
+      //     },
+      //     {
+      //       columnName: 'tissues',
+      //       hintText: 'Dorsolateral Prefrontal Cortex',
+      //     },
+      //     {
+      //       columnName: 'dataTypes',
+      //       hintText: 'Whole Genome Sequencing',
+      //     },
+      //     {
+      //       columnName: 'project',
+      //       hintText: 'syn1234',
+      //     },
+      //     {
+      //       columnName: 'methods',
+      //       hintText: '',
+      //     },
+      //   ],
+      // },
     },
   },
 }
