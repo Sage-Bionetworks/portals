@@ -48,46 +48,35 @@ const tools: HomeExploreConfig = {
     },
   },
   explorePageSynapseObject: {
-    name: 'QueryWrapperMenu',
+    name: 'QueryWrapperPlotNav',
     props: {
       rgbIndex,
       entityId,
+      sql,
       shouldDeepLink: true,
-      searchConfiguration: {
-        searchable: [
-          {
-            columnName: 'title',
-            hintText: 'Read level viewer',
-          },
-          {
-            columnName: 'toolDescription',
-            hintText: 'CNV read level viewer',
-          },
-          {
-            columnName: 'contributor',
-            hintText: 'LastName',
-          },
-          {
-            columnName: 'project',
-            hintText: '4',
-          },
-        ],
-      },
+      facetsToPlot: ['Project'],
       name: 'Tools',
-      unitDescription: 'Tools',
       cardConfiguration: toolCardConfiguration,
-      stackedBarChartConfiguration: {
-        loadingScreen,
-      },
-      menuConfig: [
-        {
-          sql,
-          facet: 'Project',
-        },
-        {
-          sql,
-        },
-      ],
+      // searchConfiguration: {
+      //   searchable: [
+      //     {
+      //       columnName: 'title',
+      //       hintText: 'Read level viewer',
+      //     },
+      //     {
+      //       columnName: 'toolDescription',
+      //       hintText: 'CNV read level viewer',
+      //     },
+      //     {
+      //       columnName: 'contributor',
+      //       hintText: 'LastName',
+      //     },
+      //     {
+      //       columnName: 'project',
+      //       hintText: '4',
+      //     },
+      //   ],
+      // },
     },
   },
 }
