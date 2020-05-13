@@ -1,8 +1,5 @@
 import { GenericRoute } from 'types/portal-config'
-import {
-  files,
-  studies,
-} from './synapseConfigs'
+import { publications, studies, data, tools } from './synapseConfigs'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
 
 const routes: GenericRoute[] = [
@@ -10,23 +7,22 @@ const routes: GenericRoute[] = [
     name: 'Home',
     to: '/',
     isNested: false,
-    synapseConfigArray: [
-    ],
+    synapseConfigArray: [],
   },
   {
     name: 'Explore',
     isNested: true,
     routes: [
       {
-        name: 'Files',
-        to: '/Explore/Files',
+        name: 'Publications',
+        to: '/Explore/Publications',
         isNested: false,
         synapseConfigArray: [
           {
             ...routeButtonControlWrapperProps,
             props: {
               ...routeButtonControlWrapperProps.props,
-              synapseConfig: files.explorePageSynapseObject,
+              synapseConfig: publications.explorePageSynapseObject,
             },
           },
         ],
@@ -41,6 +37,34 @@ const routes: GenericRoute[] = [
             props: {
               ...routeButtonControlWrapperProps.props,
               synapseConfig: studies.explorePageSynapseObject,
+            },
+          },
+        ],
+      },
+      {
+        name: 'Data',
+        to: '/Explore/Data',
+        isNested: false,
+        synapseConfigArray: [
+          {
+            ...routeButtonControlWrapperProps,
+            props: {
+              ...routeButtonControlWrapperProps.props,
+              synapseConfig: data.explorePageSynapseObject,
+            },
+          },
+        ],
+      },
+      {
+        name: 'Tools',
+        to: '/Explore/Tools',
+        isNested: false,
+        synapseConfigArray: [
+          {
+            ...routeButtonControlWrapperProps,
+            props: {
+              ...routeButtonControlWrapperProps.props,
+              synapseConfig: tools.explorePageSynapseObject,
             },
           },
         ],

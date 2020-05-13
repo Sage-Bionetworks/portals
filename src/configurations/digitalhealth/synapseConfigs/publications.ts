@@ -1,17 +1,41 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from 'types/portal-config'
 import loadingScreen from '../loadingScreen'
+import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
+import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 
-const sql = "SELECT * FROM syn21994970 WHERE dhPortalIndex = 'TRUE'"
-export const filesEntityId = 'syn21994970'
+const sql = 'SELECT * FROM syn22017695'
+export const filesEntityId = 'syn22017695'
 const entityId = filesEntityId
 export const filesSql = sql
 
 const rgbIndex = 8
-const unitDescription = 'files'
+const unitDescription = 'Publications'
 const facet = 'study'
 
-export const files: HomeExploreConfig = {
+export const publicationSchema: GenericCardSchema = {
+  type: SynapseConstants.PUBLICATION,
+  title: 'Title',
+  subTitle: 'Author',
+  secondaryLabels: [
+    'Year',
+    'Journal',
+    'doi',
+    'PMID',
+    'Study',
+    'sensorType',
+    'digitalAssessmentCategory',
+  ],
+  link: 'url',
+}
+
+export const publicationCardConfiguration: CardConfiguration = {
+  type: SynapseConstants.GENERIC_CARD,
+  genericCardSchema: publicationSchema,
+  loadingScreen,
+}
+
+export const publications: HomeExploreConfig = {
   homePageSynapseObject: {
     name: 'QueryWrapperFlattened',
     props: {
@@ -43,10 +67,10 @@ export const files: HomeExploreConfig = {
       shouldDeepLink: true,
       sql,
       entityId,
-      name: 'Files',
+      name: 'Publications',
+      cardConfiguration: publicationCardConfiguration,
       loadingScreen,
       visibleColumnCount: Infinity,
-      tableConfiguration: {},
     },
   },
 }
