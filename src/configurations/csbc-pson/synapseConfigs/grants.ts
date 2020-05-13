@@ -72,54 +72,40 @@ export const grants: HomeExploreConfig = {
     },
   },
   explorePageSynapseObject: {
-    name: 'QueryWrapperMenu',
+    name: 'QueryWrapperPlotNav',
     props: {
       rgbIndex,
+      sql,
       cardConfiguration: grantsCardConfiguration,
       shouldDeepLink: true,
       name: 'Grants',
       entityId,
+      facetsToPlot: ['consortium', 'grantType'],
       // unitDescription,
-      stackedBarChartConfiguration: {
-        loadingScreen,
-      },
-      searchConfiguration: {
-        searchable: [
-          {
-            columnName: 'grantName',
-            hintText: 'immunity',
-          },
-          {
-            columnName: 'abstract',
-            hintText: 'metastasis',
-          },
-          {
-            columnName: 'institution',
-            hintText: 'Vanderbilt',
-          },
-          {
-            columnName: 'investigator',
-            hintText: 'LastName',
-          },
-          {
-            columnName: 'grantNumber',
-            hintText: 'CA202123',
-          },
-        ],
-      },
-      menuConfig: [
-        {
-          sql,
-          facet: 'consortium',
-        },
-        {
-          sql,
-          facet: 'grantType',
-        },
-        {
-          sql,
-        },
-      ],
+      // searchConfiguration: {
+      //   searchable: [
+      //     {
+      //       columnName: 'grantName',
+      //       hintText: 'immunity',
+      //     },
+      //     {
+      //       columnName: 'abstract',
+      //       hintText: 'metastasis',
+      //     },
+      //     {
+      //       columnName: 'institution',
+      //       hintText: 'Vanderbilt',
+      //     },
+      //     {
+      //       columnName: 'investigator',
+      //       hintText: 'LastName',
+      //     },
+      //     {
+      //       columnName: 'grantNumber',
+      //       hintText: 'CA202123',
+      //     },
+      //   ],
+      // },
     },
   },
 }

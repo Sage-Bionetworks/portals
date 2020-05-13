@@ -500,3 +500,8 @@ div.SRC-marginBottomTen {
     float: none !important;
   }
 }
+
+#addAndRemoveColumns ~ div.dropdown-menu {
+  height: 300px;
+  overflow: auto;
+}

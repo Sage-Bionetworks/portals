@@ -1,4 +1,4 @@
 export default {
   publicationTitle: 'publication',
-  pubMedUrl: 'Pubmed',
+  pubMedLink: 'Pubmed Link',
 }

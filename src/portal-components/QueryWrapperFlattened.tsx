@@ -40,7 +40,6 @@ const QueryWrapperFlattened: React.FunctionComponent<QueryWrapperFlattenedProps>
     initQueryRequest,
     sqlOperator,
     enableLeftFacetFilter,
-    visibleColumnCount,
     showAccessColumn,
     ...rest
   } = props
@@ -68,7 +67,6 @@ const QueryWrapperFlattened: React.FunctionComponent<QueryWrapperFlattenedProps>
       )}
       {title ? (
         <SynapseComponents.SynapseTable
-          visibleColumnCount={visibleColumnCount}
           loadingScreen={loadingScreen}
           enableLeftFacetFilter={enableLeftFacetFilter}
           showAccessColumn={showAccessColumn}
