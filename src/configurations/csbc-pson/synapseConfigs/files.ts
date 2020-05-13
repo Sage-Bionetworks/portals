@@ -46,9 +46,8 @@ export const files: HomeExploreConfig = {
       entityId,
       name: 'Files',
       loadingScreen,
-      tableConfiguration: {
-        visibleColumnCount: Infinity,
-      },
+      visibleColumnCount: Infinity,
+      tableConfiguration: {},
     },
   },
 }
