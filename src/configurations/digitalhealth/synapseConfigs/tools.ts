@@ -3,28 +3,34 @@ import { HomeExploreConfig } from 'types/portal-config'
 import loadingScreen from '../loadingScreen'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
-import facetAliases from '../facetAliases'
-export const studySql =
-  "SELECT * FROM syn21994974 WHERE dhPortalIndex = 'TRUE' and isDHProject <> 'TRUE'"
-export const studyEntityId = 'syn21994974'
-const entityId = studyEntityId
-const sql = studySql
-const unitDescription = 'Studies'
+export const toolsSql = 'SELECT * FROM syn22014091'
+export const toolsEntityId = 'syn22014091'
+const entityId = toolsEntityId
+const sql = toolsSql
+const unitDescription = 'Tools'
 const rgbIndex = 1
 
-export const studySchema: GenericCardSchema = {
-  type: SynapseConstants.STUDY,
-  title: 'study',
-  subTitle: 'studyDescription',
+export const toolsSchema: GenericCardSchema = {
+  type: SynapseConstants.COMPUTATIONAL,
+  title: 'softwareName',
+  subTitle: 'softwareType',
+  description: 'summary',
+  secondaryLabels: [
+    'digitalAssessmentCategory',
+    'inputDataType',
+    'outputDataType',
+    'softwareLanguage',
+    'softwareAuthor',
+  ],
 }
 
 export const studiesCardConfiguration: CardConfiguration = {
   type: SynapseConstants.GENERIC_CARD,
-  genericCardSchema: studySchema,
+  genericCardSchema: toolsSchema,
   loadingScreen,
 }
 
-export const studies: HomeExploreConfig = {
+export const tools: HomeExploreConfig = {
   homePageSynapseObject: {
     name: 'QueryWrapperFlattened',
     props: {
@@ -59,8 +65,13 @@ export const studies: HomeExploreConfig = {
       shouldDeepLink: true,
       name: 'Studies',
       loadingScreen,
-      // @ts-ignore
-      facetAliases,
+      facetsToPlot: [
+        'digitalAssessmentCategory',
+        'inputDataType',
+        'outputDataType',
+        'softwareLanguage',
+        'softwareType',
+      ],
     },
   },
 }
