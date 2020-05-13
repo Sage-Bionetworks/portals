@@ -46,10 +46,7 @@ const files: HomeExploreConfig = {
       sql: `SELECT id AS "File ID", assay, dataType, diagnosis, tumorType,  species, individualID,  fileFormat, dataSubtype, nf1Genotype as "NF1 Genotype", nf2Genotype as "NF2 Genotype", studyName, fundingAgency, consortium, name AS "File Name", accessType, accessTeam  FROM syn16858331 WHERE resourceType = 'experimentalData'`,
       entityId,
       loadingScreen,
-      tableConfiguration: {
-        // visibleColumnCount,
-        title,
-      },
+      tableConfiguration: {},
       shouldDeepLink: true,
       // @ts-ignore
       facetAliases,

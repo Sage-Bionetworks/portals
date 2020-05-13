@@ -38,10 +38,8 @@ const data: HomeExploreConfig = {
     props: {
       rgbIndex,
       name: 'Data',
+      visibleColumnCount: 10,
       tableConfiguration: {
-        title,
-        // TODO: Add column select plotnav
-        // visibleColumnCount: 10,
         showAccessColumn: true,
       },
       loadingScreen,

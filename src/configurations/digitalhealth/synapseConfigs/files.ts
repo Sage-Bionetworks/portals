@@ -2,8 +2,7 @@ import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from 'types/portal-config'
 import loadingScreen from '../loadingScreen'
 
-const sql =
-  'SELECT * FROM syn21994970 WHERE dhPortalIndex = \'TRUE\''
+const sql = "SELECT * FROM syn21994970 WHERE dhPortalIndex = 'TRUE'"
 export const filesEntityId = 'syn21994970'
 const entityId = filesEntityId
 export const filesSql = sql
@@ -46,9 +45,8 @@ export const files: HomeExploreConfig = {
       entityId,
       name: 'Files',
       loadingScreen,
-      tableConfiguration: {
-        visibleColumnCount: Infinity,
-      },
+      visibleColumnCount: Infinity,
+      tableConfiguration: {},
     },
   },
 }
