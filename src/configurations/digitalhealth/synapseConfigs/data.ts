@@ -1,5 +1,6 @@
 import { HomeExploreConfig } from 'types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
+import facetAliases from '../facetAliases'
 import loadingScreen from '../loadingScreen'
 
 const unitDescription = 'Data'
@@ -42,6 +43,8 @@ const data: HomeExploreConfig = {
       shouldDeepLink: true,
       sql,
       name: 'Data',
+      // @ts-ignore
+      facetAliases,
       tableConfiguration: {},
       facetsToPlot: [
         'study',
