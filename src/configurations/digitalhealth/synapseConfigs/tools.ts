@@ -3,6 +3,7 @@ import { HomeExploreConfig } from 'types/portal-config'
 import loadingScreen from '../loadingScreen'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
+import facetAliases from '../facetAliases'
 export const toolsSql = 'SELECT * FROM syn22014091'
 export const toolsEntityId = 'syn22014091'
 const entityId = toolsEntityId
@@ -22,9 +23,10 @@ export const toolsSchema: GenericCardSchema = {
     'softwareLanguage',
     'softwareAuthor',
   ],
+  link: 'url',
 }
 
-export const studiesCardConfiguration: CardConfiguration = {
+export const toolsCardConfiguration: CardConfiguration = {
   type: SynapseConstants.GENERIC_CARD,
   genericCardSchema: toolsSchema,
   loadingScreen,
@@ -60,11 +62,13 @@ export const tools: HomeExploreConfig = {
     props: {
       rgbIndex,
       entityId,
-      cardConfiguration: studiesCardConfiguration,
+      cardConfiguration: toolsCardConfiguration,
       sql,
       shouldDeepLink: true,
-      name: 'Studies',
+      name: 'Tools',
       loadingScreen,
+      // @ts-ignore
+      facetAliases,
       facetsToPlot: [
         'digitalAssessmentCategory',
         'inputDataType',

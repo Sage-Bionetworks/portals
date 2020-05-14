@@ -4,29 +4,28 @@ import loadingScreen from '../loadingScreen'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import facetAliases from '../facetAliases'
-export const studySql =
-  "SELECT * FROM syn21994974 WHERE ((isDHProject IS NULL) OR (isDHProject <> 'TRUE')) AND (dhPortalIndex = 'TRUE') "
-export const studyEntityId = 'syn21994974'
-const entityId = studyEntityId
-const sql = studySql
-const unitDescription = 'Studies'
+export const projectsSql =
+  "SELECT * FROM syn21994974 WHERE  dhPortalIndex = 'TRUE' and isDHProject = 'TRUE'"
+export const projectsEntityId = 'syn21994974'
+const entityId = projectsEntityId
+const sql = projectsSql
+const unitDescription = 'Projects'
 const rgbIndex = 1
 
-export const studySchema: GenericCardSchema = {
-  type: SynapseConstants.STUDY,
-  title: 'study',
-  subTitle: 'investigator',
+export const projectSchema: GenericCardSchema = {
+  type: SynapseConstants.PROJECT,
   link: 'id',
+  title: 'study',
   description: 'studyDescription',
 }
 
-export const studiesCardConfiguration: CardConfiguration = {
+export const projectsCardConfiguration: CardConfiguration = {
   type: SynapseConstants.GENERIC_CARD,
-  genericCardSchema: studySchema,
+  genericCardSchema: projectSchema,
   loadingScreen,
 }
 
-export const studies: HomeExploreConfig = {
+export const projects: HomeExploreConfig = {
   homePageSynapseObject: {
     name: 'QueryWrapperFlattened',
     props: {
@@ -34,8 +33,8 @@ export const studies: HomeExploreConfig = {
       unitDescription,
       loadingScreen,
       facet: 'theme',
-      link: 'Explore/Studies',
-      linkText: 'Explore Studies',
+      link: 'Explore/Projects',
+      linkText: 'Explore Projects',
       initQueryRequest: {
         entityId,
         concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
@@ -56,21 +55,24 @@ export const studies: HomeExploreConfig = {
     props: {
       rgbIndex,
       entityId,
-      cardConfiguration: studiesCardConfiguration,
+      cardConfiguration: projectsCardConfiguration,
       sql,
       shouldDeepLink: true,
-      name: 'Studies',
+      name: 'Projects',
       loadingScreen,
       // @ts-ignore
-      facetAliases,
+      facetAliases: {
+        ...facetAliases,
+        studyDescriptionLocation: 'Project Description',
+        projectId: 'Study',
+      },
       facetsToPlot: [
-        'deviceLocation',
-        'devicePlatform',
         'deviceType',
         'diagnosis',
         'digitalAssessmentCategory',
         'intervention',
         'reportedOutcome',
+        'resourceType',
         'sensorType',
       ],
     },
