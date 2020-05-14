@@ -63,6 +63,16 @@ export const studies: HomeExploreConfig = {
       loadingScreen,
       // @ts-ignore
       facetAliases,
+      facetsToPlot: [
+        'deviceLocation',
+        'devicePlatform',
+        'deviceType',
+        'diagnosis',
+        'digitalAssessmentCategory',
+        'intervention',
+        'reportedOutcome',
+        'sensorType',
+      ],
     },
   },
 }

@@ -9,7 +9,7 @@ export const projectsSql =
 export const projectsEntityId = 'syn21994974'
 const entityId = projectsEntityId
 const sql = projectsSql
-const unitDescription = 'Studies'
+const unitDescription = 'Projects'
 const rgbIndex = 1
 
 export const projectSchema: GenericCardSchema = {
@@ -19,7 +19,7 @@ export const projectSchema: GenericCardSchema = {
   description: 'studyDescription',
 }
 
-export const studiesCardConfiguration: CardConfiguration = {
+export const projectsCardConfiguration: CardConfiguration = {
   type: SynapseConstants.GENERIC_CARD,
   genericCardSchema: projectSchema,
   loadingScreen,
@@ -55,13 +55,26 @@ export const projects: HomeExploreConfig = {
     props: {
       rgbIndex,
       entityId,
-      cardConfiguration: studiesCardConfiguration,
+      cardConfiguration: projectsCardConfiguration,
       sql,
       shouldDeepLink: true,
-      name: 'Studies',
+      name: 'Projects',
       loadingScreen,
       // @ts-ignore
-      facetAliases,
+      facetAliases: {
+        ...facetAliases,
+        studyDescriptionLocation: 'Project Description',
+        projectId: 'Study',
+      },
+      facetsToPlot: [
+        'deviceType',
+        'diagnosis',
+        'digitalAssessmentCategory',
+        'intervention',
+        'reportedOutcome',
+        'resourceType',
+        'sensorType',
+      ],
     },
   },
 }
