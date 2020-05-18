@@ -23,7 +23,17 @@ const injectPropsIntoConfig = (
     if (el.injectMarkdown) {
       markdownProps.markdown = value
     } else {
-      markdownProps.ownerId = value
+      if (value.includes('wiki')) {
+        // value looks like syn20681023/wiki/594680
+        const split = value.split('/')
+        const ownerId = split[0]
+        const wikiId = split[2]
+        markdownProps.ownerId = ownerId
+        markdownProps.wikiId = wikiId
+      } else {
+        // else assume its an ownerId
+        markdownProps.ownerId = value
+      }
     }
   }
   return internalProps
