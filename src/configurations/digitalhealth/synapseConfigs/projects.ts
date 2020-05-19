@@ -1,9 +1,10 @@
 import { SynapseConstants } from 'synapse-react-client'
-import { HomeExploreConfig } from 'types/portal-config'
+import { HomeExploreConfig, SynapseConfigArray } from 'types/portal-config'
 import loadingScreen from '../loadingScreen'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import facetAliases from '../facetAliases'
+import { GenerateComponentsFromRowProps } from 'types/portal-util-types'
 export const projectsSql =
   "SELECT * FROM syn21994974 WHERE  dhPortalIndex = 'TRUE' and isDHProject = 'TRUE'"
 export const projectsEntityId = 'syn21994974'
@@ -14,14 +15,40 @@ const rgbIndex = 1
 
 export const projectSchema: GenericCardSchema = {
   type: SynapseConstants.PROJECT,
-  link: 'id',
   title: 'study',
   description: 'studyDescription',
+  secondaryLabels: [
+    'diagnosis',
+    'intervention',
+    'reportedOutcome',
+    'deviceType',
+    'sensorType',
+    'dataCollectionMethod',
+    'digitalAssessmentCategory',
+    'digitalAssessmentDetails',
+    'dataUsed',
+    'investigator',
+    'keywords',
+  ],
 }
 
 export const projectsCardConfiguration: CardConfiguration = {
   type: SynapseConstants.GENERIC_CARD,
   genericCardSchema: projectSchema,
+  titleLinkConfig: {
+    isMarkdown: false,
+    matchColumnName: 'study',
+    URLColumnName: 'study',
+    baseURL: 'Explore/Projects/DetailsPage',
+  },
+  labelLinkConfig: [
+    {
+      isMarkdown: false,
+      matchColumnName: 'dataUsed',
+      URLColumnName: 'id',
+      baseURL: 'Explore/Studies/DetailsPage',
+    },
+  ],
   loadingScreen,
 }
 
@@ -78,3 +105,42 @@ export const projects: HomeExploreConfig = {
     },
   },
 }
+
+export const details: GenerateComponentsFromRowProps = {
+  sql,
+  entityId,
+  synapseConfigArray: [
+    {
+      name: 'Markdown',
+      props: {},
+      injectMarkdown: false,
+      columnName: 'studyDescriptionLocation',
+      title: 'Study Description',
+    },
+  ],
+}
+
+export const projectDetailPage: SynapseConfigArray = [
+  {
+    name: 'CardContainerLogic',
+    isOutsideContainer: true,
+    props: {
+      isHeader: true,
+      isAlignToLeftNav: true,
+      backgroundColor: '#5bb0b5',
+      ...projectsCardConfiguration,
+      titleLinkConfig: undefined,
+      genericCardSchema: {
+        ...projectSchema,
+        title: 'study',
+        link: 'id',
+      },
+      sql,
+      entityId,
+    },
+  },
+  {
+    name: 'GenerateComponentsFromRow',
+    props: details,
+  },
+]

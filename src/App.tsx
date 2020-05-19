@@ -8,6 +8,8 @@ import Navbar from './Navbar'
 import BetaBanner from './BetaBanner'
 import CookiesNotification from './CookiesNotification'
 import { CookiesProvider } from 'react-cookie'
+import '@fortawesome/fontawesome-free/css/all.css'
+
 const Home = React.lazy(() => import('./Home'))
 const RouteResolver = React.lazy(() => import('./RouteResolver'))
 

@@ -45,7 +45,9 @@ const data: HomeExploreConfig = {
       name: 'Data',
       // @ts-ignore
       facetAliases,
-      tableConfiguration: {},
+      tableConfiguration: {
+        markdownColumns: ['dataDescriptionLocation', 'dataAccessInstructions'],
+      },
       facetsToPlot: [
         'study',
         'reportedOutcome',
