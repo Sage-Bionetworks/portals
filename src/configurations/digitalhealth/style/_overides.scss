@@ -12,17 +12,16 @@ $primary-action-color: #47337d;
   }
 }
 
-.CSBC-ThemesPlot {
-  h2.title {
-    margin-top: 63px;
-    text-align: center;
-    text-transform: none;
-    margin-bottom: 30px;
-    font-size: 24px;
-    font-weight: bold;
-    color: $primary-text-color !important;
+td.SRC_noBorderTop {
+  .markdown.markdown-inline {
+    a {
+      white-space: nowrap;
+    }
+    a::after {
+      font-family: 'Font Awesome 5 Free';
+      content: '\f35d';
+    }
   }
-  margin-bottom: 63px;
 }
 
 // Since scss breaks if a file is missing in a local url link these functinons must get manually overwitten
