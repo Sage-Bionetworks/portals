@@ -37,7 +37,7 @@ const links: LinkProps[] = [
     description:
       'Collected from tumor samples and cell lines, assayed or simulated, across a spectrum of indications and experimental conditions. Data in the portal are shared freely to enable reuse by researchers to develop, validate, or apply new methods.',
     linkText: 'Explore Data',
-    to: 'Explore/Data',
+    to: 'Explore/Datasets',
   },
   {
     title: 'Methods',
