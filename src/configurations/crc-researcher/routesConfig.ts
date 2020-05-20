@@ -16,7 +16,7 @@ const routes: GenericRoute[] = [
     routes: [
       {
         name: 'Uncategorized',
-        to: '/Participants/Uncategorized',
+        to: '/Explore/Uncategorized',
         isNested: false,
         synapseConfigArray: [
           {
@@ -30,7 +30,7 @@ const routes: GenericRoute[] = [
       },
       {
         name: 'Selected',
-        to: '/Participants/Selected',
+        to: '/Explore/Selected',
         isNested: false,
         synapseConfigArray: [
           {
@@ -44,7 +44,7 @@ const routes: GenericRoute[] = [
       },
       {
         name: 'Invited',
-        to: '/Participants/Invited',
+        to: '/Explore/Invited',
         isNested: false,
         synapseConfigArray: [
           {
@@ -58,7 +58,7 @@ const routes: GenericRoute[] = [
       },
       {
         name: 'Hidden',
-        to: '/Participants/Hidden',
+        to: '/Explore/Hidden',
         isNested: false,
         synapseConfigArray: [
           {
