@@ -1,0 +1,34 @@
+$primary-text-color: #90CCCC;
+$primary-action-color: #0085ff;
+
+#header,
+#footer {
+  background-blend-mode: multiply;
+}
+
+.SRC-chart-link {
+  a {
+    background: $primary-action-color !important;
+  }
+}
+
+td.SRC_noBorderTop {
+  .markdown.markdown-inline {
+    a {
+      white-space: nowrap;
+    }
+    a::after {
+      font-family: 'Font Awesome 5 Free';
+      content: '\f35d';
+    }
+  }
+}
+
+// Since scss breaks if a file is missing in a local url link these functinons must get manually overwitten
+@function getHeader($path) {
+  @return url($path + '/dna_header.svg');
+}
+
+@function getFooter($path) {
+  @return url($path + '/dna.svg');
+}
