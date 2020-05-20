@@ -10,7 +10,7 @@ const routes: GenericRoute[] = [
     synapseConfigArray: [],
   },
   {
-    name: 'Participants',
+    name: 'Explore',
     isNested: true,
     to: '/',
     routes: [
