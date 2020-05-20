@@ -16,7 +16,6 @@ export const selected: SynapseConfig = {
     shouldDeepLink: true,
     sql,
     name: 'Selected Participants',
-    // @ts-ignore
     facetAliases,
     facetsToPlot: [
       'COVID19TestType',

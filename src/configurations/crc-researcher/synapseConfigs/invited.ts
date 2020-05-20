@@ -18,7 +18,6 @@ export const invited: SynapseConfig = {
     shouldDeepLink: true,
     sql,
     name: 'Invited Participants',
-    // @ts-ignore
     facetAliases,
     tableConfiguration: {
     },

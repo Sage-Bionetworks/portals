@@ -18,7 +18,6 @@ export const uncategorized: SynapseConfig = {
     shouldDeepLink: true,
     sql,
     name: 'Uncategorized Participants',
-    // @ts-ignore
     facetAliases,
     tableConfiguration: {
       isRowSelectionVisible: true,

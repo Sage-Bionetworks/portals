@@ -16,7 +16,6 @@ export const hidden: SynapseConfig = {
     shouldDeepLink: true,
     sql,
     name: 'Hidden Participants',
-    // @ts-ignore
     facetAliases,
     facetsToPlot: [
       'COVID19TestType',

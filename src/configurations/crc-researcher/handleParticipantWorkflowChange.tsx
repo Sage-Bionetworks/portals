@@ -1,9 +1,14 @@
-import * as React from 'react'
 import { PartialRow, TableUpdateTransactionRequest } from 'synapse-react-client/dist/utils/synapseTypes/Table/TableUpdate'
-import { Row } from 'synapse-react-client/dist/utils/synapseTypes'
+import { Row, QueryResultBundle } from 'synapse-react-client/dist/utils/synapseTypes'
 import { SynapseClient } from 'synapse-react-client'
 
-const handleParticipantWorkflowChange = async (event:any, newWorkflowState:string) => {
+type CustomControlCallbackData = {
+  data: QueryResultBundle | undefined,
+  selectedRowIndices: number[] | undefined
+  refresh: () => void
+}
+
+const handleParticipantWorkflowChange = async (event:CustomControlCallbackData, newWorkflowState:string) => {
     // Demo custom control updates all values in a particular column for the selected rows (CRC)
       // test Updating a Synapse Table for the first time from SRC, by updating the WorkflowState column value
       const entityId:string = event.data?.queryResult.queryResults.tableId!
@@ -39,6 +44,8 @@ const handleParticipantWorkflowChange = async (event:any, newWorkflowState:strin
       SynapseClient.updateTable(request, token).then(() => {
         // refresh data after successful update
         event.refresh()
+      }).catch((err) => {
+        console.error(err)
       })
 }
 
