@@ -1,5 +1,5 @@
 import { GenericRoute } from 'types/portal-config'
-import { uncategorized, selected } from './synapseConfigs'
+import { uncategorized, selected, invited, hidden } from './synapseConfigs'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
 
 const routes: GenericRoute[] = [
@@ -38,6 +38,34 @@ const routes: GenericRoute[] = [
             props: {
               ...routeButtonControlWrapperProps.props,
               synapseConfig: selected,
+            },
+          },
+        ],
+      },
+      {
+        name: 'Invited',
+        to: '/Participants/Invited',
+        isNested: false,
+        synapseConfigArray: [
+          {
+            ...routeButtonControlWrapperProps,
+            props: {
+              ...routeButtonControlWrapperProps.props,
+              synapseConfig: invited,
+            },
+          },
+        ],
+      },
+      {
+        name: 'Hidden',
+        to: '/Participants/Hidden',
+        isNested: false,
+        synapseConfigArray: [
+          {
+            ...routeButtonControlWrapperProps,
+            props: {
+              ...routeButtonControlWrapperProps.props,
+              synapseConfig: hidden,
             },
           },
         ],
