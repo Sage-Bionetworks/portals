@@ -89,7 +89,13 @@ const studies: HomeExploreConfig = {
       sql,
       name: 'Studies',
       cardConfiguration: studyCardConfiguration,
-      facetsToPlot: ['diagnosis', 'organs', 'tissues', 'dataTypes'],
+      facetsToPlot: [
+        'studyStatus',
+        'diagnosis',
+        'organs',
+        'tissues',
+        'dataTypes',
+      ],
       // searchConfiguration: {
       //   searchable: [
       //     {

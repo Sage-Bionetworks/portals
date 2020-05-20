@@ -48,7 +48,6 @@ const files: HomeExploreConfig = {
       loadingScreen,
       tableConfiguration: {},
       shouldDeepLink: true,
-      // @ts-ignore
       facetAliases,
     },
   },

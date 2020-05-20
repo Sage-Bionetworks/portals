@@ -56,32 +56,25 @@ const individuals: HomeExploreConfig = {
     },
   },
   explorePageSynapseObject: {
-    name: 'QueryWrapperMenu',
+    name: 'QueryWrapperPlotNav',
     props: {
       rgbIndex,
       entityId,
       shouldDeepLink: true,
-      searchConfiguration: {
-        searchable: [
-          {
-            columnName: 'expertise',
-            hintText: 'genomics',
-          },
-        ],
-      },
+      // searchConfiguration: {
+      //   searchable: [
+      //     {
+      //       columnName: 'expertise',
+      //       hintText: 'genomics',
+      //     },
+      //   ],
+      // },
       name: 'People',
-      unitDescription: 'People',
+      sql,
+      loadingScreen,
       cardConfiguration: {
         type: MEDIUM_USER_CARD,
       },
-      stackedBarChartConfiguration: {
-        loadingScreen,
-      },
-      menuConfig: [
-        {
-          sql,
-        },
-      ],
     },
   },
 }

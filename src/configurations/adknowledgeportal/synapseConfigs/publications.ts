@@ -74,7 +74,6 @@ const publications: HomeExploreConfig = {
       shouldDeepLink: true,
       facetsToPlot: ['consortium', 'year', 'long_amp_ad_grants'],
       cardConfiguration: publicationCardProps,
-      // @ts-ignore
       facetAliases,
       // searchConfiguration: {
       //   searchable: [

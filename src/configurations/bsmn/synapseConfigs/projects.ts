@@ -76,47 +76,43 @@ const projects: HomeExploreConfig = {
     },
   },
   explorePageSynapseObject: {
-    name: 'QueryWrapperMenu',
+    name: 'QueryWrapperPlotNav',
     props: {
       rgbIndex,
       entityId,
-      shouldDeepLink: true,
-      searchConfiguration: {
-        searchable: [
-          {
-            columnName: 'title',
-            hintText: 'Somatic mosaicism and autism',
-          },
-          {
-            columnName: 'primaryInvestigators',
-            hintText: 'LastName',
-          },
-          {
-            columnName: 'abstract',
-            hintText: 'Somatic mutations are de novo mutations',
-          },
-          {
-            columnName: 'grantNumber',
-            hintText: 'U01MH106876',
-          },
-          {
-            columnName: 'institution',
-            hintText: 'Boston Children’s Hospital',
-          },
-          {
-            columnName: 'contributors',
-            hintText: 'LastName',
-          },
-        ],
-      },
+      sql,
       name: 'Projects',
-      unitDescription: 'Projects',
       cardConfiguration: projectCardConfiguration,
-      menuConfig: [
-        {
-          sql,
-        },
-      ],
+      shouldDeepLink: true,
+      facetsToPlot: ['primaryInvestigators', 'grantNumber', 'institutions'],
+      // searchConfiguration: {
+      //   searchable: [
+      //     {
+      //       columnName: 'title',
+      //       hintText: 'Somatic mosaicism and autism',
+      //     },
+      //     {
+      //       columnName: 'primaryInvestigators',
+      //       hintText: 'LastName',
+      //     },
+      //     {
+      //       columnName: 'abstract',
+      //       hintText: 'Somatic mutations are de novo mutations',
+      //     },
+      //     {
+      //       columnName: 'grantNumber',
+      //       hintText: 'U01MH106876',
+      //     },
+      //     {
+      //       columnName: 'institution',
+      //       hintText: 'Boston Children’s Hospital',
+      //     },
+      //     {
+      //       columnName: 'contributors',
+      //       hintText: 'LastName',
+      //     },
+      //   ],
+      // },
     },
   },
 }

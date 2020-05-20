@@ -84,7 +84,6 @@ const publications: HomeExploreConfig = {
         'diseaseFocus',
         'manifestation',
       ],
-      // @ts-ignore
       facetAliases,
       // searchConfiguration: {
       //   searchable: [
