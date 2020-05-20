@@ -50,7 +50,6 @@ const datasets: HomeExploreConfig = {
       loadingScreen,
       name: 'Datasets',
       entityId,
-      // @ts-ignore
       facetAliases,
       facetsToPlot: ['diseaseFocus', 'tumorType', 'fundingAgency'],
     },

@@ -87,7 +87,6 @@ export const projects: HomeExploreConfig = {
       shouldDeepLink: true,
       name: 'Projects',
       loadingScreen,
-      // @ts-ignore
       facetAliases: {
         ...facetAliases,
         studyDescriptionLocation: 'Project Description',

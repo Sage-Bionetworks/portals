@@ -82,7 +82,6 @@ export const studies: HomeExploreConfig = {
       shouldDeepLink: true,
       name: 'Studies',
       loadingScreen,
-      // @ts-ignore
       facetAliases,
       facetsToPlot: [
         'deviceLocation',

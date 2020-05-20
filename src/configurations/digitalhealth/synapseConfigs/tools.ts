@@ -64,10 +64,11 @@ export const tools: HomeExploreConfig = {
       entityId,
       cardConfiguration: toolsCardConfiguration,
       sql,
+      hideDownload: true,
       shouldDeepLink: true,
+      defaultColumn: 'softwareType',
       name: 'Tools',
       loadingScreen,
-      // @ts-ignore
       facetAliases,
       facetsToPlot: [
         'digitalAssessmentCategory',

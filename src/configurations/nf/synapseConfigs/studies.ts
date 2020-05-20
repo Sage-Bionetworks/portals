@@ -95,7 +95,6 @@ const studies: HomeExploreConfig = {
       name: 'Studies',
       shouldDeepLink: true,
       cardConfiguration: studyCardConfiguration,
-      // @ts-ignore
       facetAliases,
       facetsToPlot: [
         'studyStatus',

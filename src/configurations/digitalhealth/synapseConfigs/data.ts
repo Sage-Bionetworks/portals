@@ -43,7 +43,6 @@ const data: HomeExploreConfig = {
       shouldDeepLink: true,
       sql,
       name: 'Data',
-      // @ts-ignore
       facetAliases,
       tableConfiguration: {
         markdownColumns: ['dataDescriptionLocation', 'dataAccessInstructions'],

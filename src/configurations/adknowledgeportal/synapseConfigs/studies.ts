@@ -80,7 +80,6 @@ const studies: HomeExploreConfig = {
     name: 'QueryWrapperPlotNav',
     props: {
       rgbIndex,
-      // @ts-ignore
       facetAliases,
       loadingScreen,
       entityId,
