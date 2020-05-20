@@ -21,6 +21,12 @@ export const toolCardConfiguration: CardConfiguration = {
     secondaryLabels: ['toolLink', 'contributor', 'project'],
   },
   secondaryLabelLimit: 4,
+  labelLinkConfig: [
+    {
+      isMarkdown: true,
+      matchColumnName: 'toolLink',
+    },
+  ],
 }
 
 const tools: HomeExploreConfig = {
@@ -54,7 +60,7 @@ const tools: HomeExploreConfig = {
       entityId,
       sql,
       shouldDeepLink: true,
-      facetsToPlot: ['Project'],
+      facetsToPlot: ['contributor'],
       name: 'Tools',
       cardConfiguration: toolCardConfiguration,
       // searchConfiguration: {
