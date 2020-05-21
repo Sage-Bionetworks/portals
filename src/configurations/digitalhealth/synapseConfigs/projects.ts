@@ -5,13 +5,19 @@ import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericC
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import facetAliases from '../facetAliases'
 import { GenerateComponentsFromRowProps } from 'types/portal-util-types'
+import { dataSql, dataMarkdownColumns } from './data'
+import {
+  publicationCardConfiguration,
+  publicationSql,
+  publicationEntityId,
+} from './publications'
 export const projectsSql =
   "SELECT * FROM syn21994974 WHERE  dhPortalIndex = 'TRUE' and isDHProject = 'TRUE'"
 export const projectsEntityId = 'syn21994974'
 const entityId = projectsEntityId
 const sql = projectsSql
 const unitDescription = 'Projects'
-const rgbIndex = 1
+const rgbIndex = 9
 
 export const projectSchema: GenericCardSchema = {
   type: SynapseConstants.PROJECT,
@@ -85,6 +91,7 @@ export const projects: HomeExploreConfig = {
       cardConfiguration: projectsCardConfiguration,
       sql,
       shouldDeepLink: true,
+      hideDownload: true,
       name: 'Projects',
       loadingScreen,
       facetAliases: {
@@ -115,6 +122,39 @@ export const details: GenerateComponentsFromRowProps = {
       injectMarkdown: false,
       columnName: 'studyDescriptionLocation',
       title: 'Study Description',
+    },
+    {
+      name: 'Markdown',
+      props: {},
+      injectMarkdown: false,
+      columnName: 'studyDescriptionLocation',
+      title: 'Project Description',
+    },
+    {
+      name: 'StandaloneQueryWrapper',
+      tableSqlKeys: ['projectId'],
+      columnName: 'studyDescriptionLocation',
+      title: 'Data Files',
+      props: {
+        sql: dataSql,
+        title: 'Files',
+        rgbIndex,
+        markdownColumns: dataMarkdownColumns,
+      },
+      injectMarkdown: false,
+    },
+    {
+      name: 'CardContainerLogic',
+      tableSqlKeys: ['projectId'],
+      columnName: 'studyDescriptionLocation',
+      title: 'Publications',
+      props: {
+        sql: publicationSql,
+        entityId: publicationEntityId,
+        ...publicationCardConfiguration,
+        sqlOperator: 'LIKE',
+      },
+      injectMarkdown: false,
     },
   ],
 }

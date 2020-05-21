@@ -5,6 +5,13 @@ import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericC
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import facetAliases from '../facetAliases'
 import { GenerateComponentsFromRowProps } from 'types/portal-util-types'
+import { dataSql, dataMarkdownColumns } from './data'
+import { toolsSql, toolsCardConfiguration, toolsEntityId } from './tools'
+import {
+  publicationCardConfiguration,
+  publicationEntityId,
+  publicationSql,
+} from './publications'
 export const studySql =
   "SELECT * FROM syn21994974 WHERE ((isDHProject IS NULL) OR (isDHProject <> 'TRUE')) AND (dhPortalIndex = 'TRUE') "
 export const studyEntityId = 'syn21994974'
@@ -80,6 +87,7 @@ export const studies: HomeExploreConfig = {
       cardConfiguration: studiesCardConfiguration,
       sql,
       shouldDeepLink: true,
+      hideDownload: true,
       name: 'Studies',
       loadingScreen,
       facetAliases,
@@ -112,15 +120,51 @@ export const details: GenerateComponentsFromRowProps = {
       name: 'Markdown',
       props: {},
       injectMarkdown: false,
-      columnName: 'studyDataDescriptionLocation',
-      title: 'Data Description',
+      columnName: 'accessRequirements',
+      title: 'Access requirements',
     },
     {
       name: 'Markdown',
       props: {},
       injectMarkdown: false,
-      columnName: 'dataAccessInstructions',
-      title: 'Data Access',
+      columnName: 'studyDataDescriptionLocation',
+      title: 'Data Description',
+    },
+    {
+      name: 'StandaloneQueryWrapper',
+      title: 'Data Files',
+      columnName: 'id',
+      tableSqlKeys: ['projectId'],
+      props: {
+        sql: dataSql,
+        rgbIndex,
+        title: 'Data Files',
+        markdownColumns: dataMarkdownColumns,
+      },
+    },
+    {
+      name: 'CardContainerLogic',
+      title: 'Suggested Tools',
+      columnName: 'id',
+      tableSqlKeys: ['suggestedStudies'],
+      props: {
+        sql: toolsSql,
+        entityId: toolsEntityId,
+        ...toolsCardConfiguration,
+        sqlOperator: 'LIKE',
+      },
+    },
+    {
+      name: 'CardContainerLogic',
+      title: 'Publications',
+      columnName: 'id',
+      tableSqlKeys: ['synID'],
+      props: {
+        sql: publicationSql,
+        entityId: publicationEntityId,
+        ...publicationCardConfiguration,
+        sqlOperator: 'LIKE',
+      },
     },
   ],
 }
@@ -134,6 +178,11 @@ export const studyDetailPage: SynapseConfigArray = [
       isAlignToLeftNav: true,
       backgroundColor: '#5bb0b5',
       ...studiesCardConfiguration,
+      genericCardSchema: {
+        ...studySchema,
+        title: 'study',
+        link: 'id',
+      },
       sql,
       entityId,
     },

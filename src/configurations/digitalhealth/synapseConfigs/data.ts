@@ -5,11 +5,15 @@ import loadingScreen from '../loadingScreen'
 
 const unitDescription = 'Data'
 const rgbIndex = 0
-export const dataSql = `SELECT id, projectId,numberParticipants,reportedOutcome,dataCollectionMethod,deviceType,devicePlatform,deviceLocation,sensorType,diagnosis,digitalAssessmentCategory,digitalAssessmentDetails,dataType,dataSubtype,dataDescriptionLocation, dataAccessInstructions FROM syn21994970 where dhPortalIndex = 'TRUE'`
+export const dataSql = `SELECT id, study, project, projectId, numberParticipants,reportedOutcome,dataCollectionMethod,deviceType,devicePlatform,deviceLocation,sensorType,diagnosis,digitalAssessmentCategory,digitalAssessmentDetails,dataType,dataSubtype,dataDescriptionLocation, dataAccessInstructions FROM syn21994970 where dhPortalIndex = 'TRUE'`
 export const dataEntityId = 'syn21994970'
 const entityId = dataEntityId
 const sql = dataSql
 const facet = 'Program'
+export const dataMarkdownColumns = [
+  'dataDescriptionLocation',
+  'dataAccessInstructions',
+]
 
 const data: HomeExploreConfig = {
   homePageSynapseObject: {
@@ -41,11 +45,13 @@ const data: HomeExploreConfig = {
       rgbIndex,
       entityId,
       shouldDeepLink: true,
+      hideDownload: true,
+      loadingScreen,
       sql,
       name: 'Data',
       facetAliases,
       tableConfiguration: {
-        markdownColumns: ['dataDescriptionLocation', 'dataAccessInstructions'],
+        markdownColumns: dataMarkdownColumns,
       },
       facetsToPlot: [
         'study',

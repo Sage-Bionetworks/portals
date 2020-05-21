@@ -5,9 +5,9 @@ import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericC
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 
 const sql = 'SELECT * FROM syn22017695'
-export const filesEntityId = 'syn22017695'
-const entityId = filesEntityId
-export const filesSql = sql
+export const publicationEntityId = 'syn22017695'
+const entityId = publicationEntityId
+export const publicationSql = sql
 
 const rgbIndex = 8
 const unitDescription = 'Publications'
@@ -65,6 +65,7 @@ export const publications: HomeExploreConfig = {
     props: {
       rgbIndex,
       shouldDeepLink: true,
+      hideDownload: true,
       sql,
       entityId,
       name: 'Publications',

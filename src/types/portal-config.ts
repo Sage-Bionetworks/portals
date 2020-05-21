@@ -1,7 +1,6 @@
 import { CardContainerLogicProps } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import { QueryWrapperProps } from 'synapse-react-client/dist/containers/QueryWrapper'
 import { StackedBarChartProps } from 'synapse-react-client/dist/containers/StackedBarChart'
-import { SynapseTableProps } from 'synapse-react-client/dist/containers/table/SynapseTable'
 import { QueryWrapperMenuProps } from 'synapse-react-client/dist/containers/QueryWrapperMenu'
 import { UserCardProps } from 'synapse-react-client/dist/containers/UserCard'
 import { MarkdownSynapseProps } from 'synapse-react-client/dist/containers/MarkdownSynapse'
@@ -16,7 +15,8 @@ import { AboutPortalProps } from '../portal-components/csbc-home-page/AboutPorta
 import { EcosystemProps } from '../portal-components/csbc-home-page/Ecosystem'
 import { TableWithSideFacetsProps } from '../portal-components/csbc-home-page/TableWithSideFacets'
 import { GenerateComponentsFromRowProps } from './portal-util-types'
-import { Operator } from '../portal-components/QueryWrapperFlattened'
+import { QueryWrapperFlattenedProps } from '../portal-components/QueryWrapperFlattened'
+import { StandaloneQueryWrapperProps } from '../portal-components/StandaloneQueryWrapper'
 
 // For styling the header on the home page -- the main title and the summary text
 export type HomePageHeaderConfig = {
@@ -40,10 +40,7 @@ type QueryWrapper = {
 // This should likely be placed in SRC
 type QueryWrapperFlattened = {
   name: 'QueryWrapperFlattened'
-  props: QueryWrapperProps &
-    Partial<StackedBarChartProps> &
-    Partial<SynapseTableProps> &
-    Operator
+  props: QueryWrapperFlattenedProps
 }
 
 type StackedBarChart = {
@@ -151,6 +148,11 @@ type SynapseFormSubmissionsGrid = {
   props: SynapseFormSubmissionGridProps
 }
 
+type StandaloneQueryWrapper = {
+  name: 'StandaloneQueryWrapper'
+  props: StandaloneQueryWrapperProps
+}
+
 export type SynapseConfig = (
   | StatefulButtonControl
   | RouteButtonControl
@@ -174,6 +176,7 @@ export type SynapseConfig = (
   | ThemesPlot
   | QueryWrapperPlotNav
   | FunderCards
+  | StandaloneQueryWrapper
 ) &
   Metadata
 export type SynapseConfigArray = SynapseConfig[]

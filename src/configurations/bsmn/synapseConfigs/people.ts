@@ -61,6 +61,7 @@ const individuals: HomeExploreConfig = {
       rgbIndex,
       entityId,
       shouldDeepLink: true,
+      hideDownload: true,
       // searchConfiguration: {
       //   searchable: [
       //     {
