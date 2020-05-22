@@ -53,6 +53,7 @@ const publications: HomeExploreConfig = {
       rgbIndex,
       entityId,
       shouldDeepLink: true,
+      hideDownload: true,
       name: 'Publications',
       cardConfiguration: publicationsCardConfiguration,
       sql,

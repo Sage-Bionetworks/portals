@@ -84,6 +84,7 @@ const projects: HomeExploreConfig = {
       name: 'Projects',
       cardConfiguration: projectCardConfiguration,
       shouldDeepLink: true,
+      hideDownload: true,
       facetsToPlot: ['primaryInvestigators', 'grantNumber', 'institutions'],
       // searchConfiguration: {
       //   searchable: [
