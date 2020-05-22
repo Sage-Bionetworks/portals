@@ -107,12 +107,8 @@ export const details: GenerateComponentsFromRowProps = {
   synapseConfigArray: [
     {
       name: 'Markdown',
-      props: {
-        markdown:
-          '[Explore/Studies/DetailsPage?id=syn20681023](Explore/Studies/DetailsPage?id=syn20681023)',
-      },
+      props: {},
       injectMarkdown: false,
-      standalone: true,
       columnName: 'studyDescriptionLocation',
       title: 'Study Description',
     },
