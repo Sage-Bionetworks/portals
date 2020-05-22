@@ -5,13 +5,19 @@ import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericC
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import facetAliases from '../facetAliases'
 import { GenerateComponentsFromRowProps } from 'types/portal-util-types'
+import { dataSql, dataColumnLinks } from './data'
+import {
+  publicationCardConfiguration,
+  publicationSql,
+  publicationEntityId,
+} from './publications'
 export const projectsSql =
   "SELECT * FROM syn21994974 WHERE  dhPortalIndex = 'TRUE' and isDHProject = 'TRUE'"
 export const projectsEntityId = 'syn21994974'
 const entityId = projectsEntityId
 const sql = projectsSql
 const unitDescription = 'Projects'
-const rgbIndex = 1
+const rgbIndex = 9
 
 export const projectSchema: GenericCardSchema = {
   type: SynapseConstants.PROJECT,
@@ -27,6 +33,7 @@ export const projectSchema: GenericCardSchema = {
     'digitalAssessmentCategory',
     'digitalAssessmentDetails',
     'dataUsed',
+    'externalDataUsed',
     'investigator',
     'keywords',
   ],
@@ -47,6 +54,10 @@ export const projectsCardConfiguration: CardConfiguration = {
       matchColumnName: 'dataUsed',
       URLColumnName: 'id',
       baseURL: 'Explore/Studies/DetailsPage',
+    },
+    {
+      isMarkdown: true,
+      matchColumnName: 'externalDataUsed',
     },
   ],
   loadingScreen,
@@ -85,6 +96,7 @@ export const projects: HomeExploreConfig = {
       cardConfiguration: projectsCardConfiguration,
       sql,
       shouldDeepLink: true,
+      hideDownload: true,
       name: 'Projects',
       loadingScreen,
       facetAliases: {
@@ -93,13 +105,13 @@ export const projects: HomeExploreConfig = {
         projectId: 'Study',
       },
       facetsToPlot: [
-        'deviceType',
+        'resourceType',
         'diagnosis',
-        'digitalAssessmentCategory',
         'intervention',
         'reportedOutcome',
-        'resourceType',
+        'deviceType',
         'sensorType',
+        'digitalAssessmentCategory',
       ],
     },
   },
@@ -115,6 +127,39 @@ export const details: GenerateComponentsFromRowProps = {
       injectMarkdown: false,
       columnName: 'studyDescriptionLocation',
       title: 'Study Description',
+    },
+    {
+      name: 'Markdown',
+      props: {},
+      injectMarkdown: false,
+      columnName: 'studyDescriptionLocation',
+      title: 'Project Description',
+    },
+    {
+      name: 'StandaloneQueryWrapper',
+      tableSqlKeys: ['projectId'],
+      columnName: 'studyDescriptionLocation',
+      title: 'Data Files',
+      props: {
+        sql: dataSql,
+        title: 'Files',
+        rgbIndex,
+        columnLinks: dataColumnLinks,
+      },
+      injectMarkdown: false,
+    },
+    {
+      name: 'CardContainerLogic',
+      tableSqlKeys: ['synID'],
+      columnName: 'studyDescriptionLocation',
+      title: 'Publications',
+      props: {
+        sql: publicationSql,
+        entityId: publicationEntityId,
+        ...publicationCardConfiguration,
+        sqlOperator: 'LIKE',
+      },
+      injectMarkdown: false,
     },
   ],
 }
@@ -134,6 +179,7 @@ export const projectDetailPage: SynapseConfigArray = [
         title: 'study',
         link: 'id',
       },
+      rgbIndex,
       sql,
       entityId,
     },

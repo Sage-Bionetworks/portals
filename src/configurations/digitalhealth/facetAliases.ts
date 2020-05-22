@@ -7,4 +7,5 @@ export default {
   dataAccessInstructions: 'Data Access',
   studyDataDescriptionLocation: 'Data Description',
   studyDescriptionLocation: 'Study Description',
+  dataDescriptionLocation: 'Data Description',
 }

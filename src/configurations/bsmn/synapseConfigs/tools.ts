@@ -60,6 +60,7 @@ const tools: HomeExploreConfig = {
       entityId,
       sql,
       shouldDeepLink: true,
+      hideDownload: true,
       facetsToPlot: ['contributor'],
       name: 'Tools',
       cardConfiguration: toolCardConfiguration,
