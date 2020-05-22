@@ -87,6 +87,7 @@ const studies: HomeExploreConfig = {
       entityId,
       shouldDeepLink: true,
       sql,
+      hideDownload: true,
       name: 'Studies',
       cardConfiguration: studyCardConfiguration,
       facetsToPlot: [

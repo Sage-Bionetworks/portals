@@ -1,6 +1,6 @@
 import { LogoConfig } from 'types/portal-config'
-
+import icon from './style/logoHeader.svg'
 const logoHeader: LogoConfig = {
-  name: 'Digital Health Portal in logoHeaderConfig.ts',
+  icon,
 }
 export default logoHeader

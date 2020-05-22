@@ -93,6 +93,7 @@ export const dataDetailPageProps = {
   rgbIndex,
   title: 'Data Files',
   columnLinks: dataColumnLinks,
+  hideDownload: true,
 }
 
 export default data

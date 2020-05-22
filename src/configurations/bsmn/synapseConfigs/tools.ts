@@ -15,7 +15,7 @@ export const toolCardConfiguration: CardConfiguration = {
   type: SynapseConstants.GENERIC_CARD,
   loadingScreen,
   genericCardSchema: {
-    type: 'Tool',
+    type: SynapseConstants.COMPUTATIONAL,
     title: 'title',
     description: 'toolDescription',
     secondaryLabels: ['toolLink', 'contributor', 'project'],
