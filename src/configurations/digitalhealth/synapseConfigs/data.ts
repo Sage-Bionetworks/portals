@@ -88,4 +88,11 @@ const data: HomeExploreConfig = {
   },
 }
 
+export const dataDetailPageProps = {
+  sql: dataSql,
+  rgbIndex,
+  title: 'Data Files',
+  columnLinks: dataColumnLinks,
+}
+
 export default data

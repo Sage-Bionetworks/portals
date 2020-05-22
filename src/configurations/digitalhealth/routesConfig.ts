@@ -16,42 +16,6 @@ const routes: GenericRoute[] = [
     isNested: true,
     routes: [
       {
-        name: 'Projects',
-        to: '/Explore/Projects',
-        isNested: true,
-        synapseConfigArray: [
-          {
-            ...routeButtonControlWrapperProps,
-            props: {
-              ...routeButtonControlWrapperProps.props,
-              synapseConfig: projects.explorePageSynapseObject,
-            },
-          },
-        ],
-        routes: [
-          {
-            name: 'DetailsPage',
-            to: '/Explore/Projects/DetailsPage',
-            isNested: false,
-            synapseConfigArray: projectDetailPage,
-          },
-        ],
-      },
-      {
-        name: 'Publications',
-        to: '/Explore/Publications',
-        isNested: false,
-        synapseConfigArray: [
-          {
-            ...routeButtonControlWrapperProps,
-            props: {
-              ...routeButtonControlWrapperProps.props,
-              synapseConfig: publications.explorePageSynapseObject,
-            },
-          },
-        ],
-      },
-      {
         name: 'Studies',
         to: '/Explore/Studies',
         isNested: true,
@@ -70,6 +34,28 @@ const routes: GenericRoute[] = [
             to: 'Explore/Studies/DetailsPage',
             isNested: false,
             synapseConfigArray: studyDetailPage,
+          },
+        ],
+      },
+      {
+        name: 'Projects',
+        to: '/Explore/Projects',
+        isNested: true,
+        synapseConfigArray: [
+          {
+            ...routeButtonControlWrapperProps,
+            props: {
+              ...routeButtonControlWrapperProps.props,
+              synapseConfig: projects.explorePageSynapseObject,
+            },
+          },
+        ],
+        routes: [
+          {
+            name: 'DetailsPage',
+            to: '/Explore/Projects/DetailsPage',
+            isNested: false,
+            synapseConfigArray: projectDetailPage,
           },
         ],
       },
@@ -97,6 +83,20 @@ const routes: GenericRoute[] = [
             props: {
               ...routeButtonControlWrapperProps.props,
               synapseConfig: tools.explorePageSynapseObject,
+            },
+          },
+        ],
+      },
+      {
+        name: 'Publications',
+        to: '/Explore/Publications',
+        isNested: false,
+        synapseConfigArray: [
+          {
+            ...routeButtonControlWrapperProps,
+            props: {
+              ...routeButtonControlWrapperProps.props,
+              synapseConfig: publications.explorePageSynapseObject,
             },
           },
         ],

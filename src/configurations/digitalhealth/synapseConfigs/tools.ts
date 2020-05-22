@@ -2,14 +2,17 @@ import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from 'types/portal-config'
 import loadingScreen from '../loadingScreen'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
-import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
+import {
+  CardConfiguration,
+  CardContainerLogicProps,
+} from 'synapse-react-client/dist/containers/CardContainerLogic'
 import facetAliases from '../facetAliases'
 export const toolsSql = 'SELECT * FROM syn22014091'
 export const toolsEntityId = 'syn22014091'
 const entityId = toolsEntityId
 const sql = toolsSql
 const unitDescription = 'Tools'
-const rgbIndex = 1
+const rgbIndex = 3
 
 export const toolsSchema: GenericCardSchema = {
   type: SynapseConstants.COMPUTATIONAL,
@@ -79,4 +82,12 @@ export const tools: HomeExploreConfig = {
       ],
     },
   },
+}
+
+export const toolsDetailPageProps: CardContainerLogicProps = {
+  sql,
+  entityId: toolsEntityId,
+  ...toolsCardConfiguration,
+  sqlOperator: 'LIKE',
+  facetAliases,
 }
