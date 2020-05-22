@@ -5,20 +5,16 @@ import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericC
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import facetAliases from '../facetAliases'
 import { GenerateComponentsFromRowProps } from 'types/portal-util-types'
-import { dataSql, dataColumnLinks } from './data'
-import { toolsSql, toolsCardConfiguration, toolsEntityId } from './tools'
-import {
-  publicationCardConfiguration,
-  publicationEntityId,
-  publicationSql,
-} from './publications'
+import { dataDetailPageProps } from './data'
+import { toolsDetailPageProps } from './tools'
+import { publicationDetailPageProps } from './publications'
 export const studySql =
   "SELECT * FROM syn21994974 WHERE ((isDHProject IS NULL) OR (isDHProject <> 'TRUE')) AND (dhPortalIndex = 'TRUE') "
 export const studyEntityId = 'syn21994974'
 const entityId = studyEntityId
 const sql = studySql
 const unitDescription = 'Studies'
-const rgbIndex = 0
+const rgbIndex = 9
 
 export const studySchema: GenericCardSchema = {
   type: SynapseConstants.STUDY,
@@ -135,36 +131,21 @@ export const details: GenerateComponentsFromRowProps = {
       title: 'Data Files',
       columnName: 'id',
       tableSqlKeys: ['projectId'],
-      props: {
-        sql: dataSql,
-        rgbIndex,
-        title: 'Data Files',
-        columnLinks: dataColumnLinks,
-      },
+      props: dataDetailPageProps,
     },
     {
       name: 'CardContainerLogic',
       title: 'Suggested Tools',
       columnName: 'id',
       tableSqlKeys: ['suggestedStudies'],
-      props: {
-        sql: toolsSql,
-        entityId: toolsEntityId,
-        ...toolsCardConfiguration,
-        sqlOperator: 'LIKE',
-      },
+      props: toolsDetailPageProps,
     },
     {
       name: 'CardContainerLogic',
       title: 'Publications',
       columnName: 'id',
       tableSqlKeys: ['synID'],
-      props: {
-        sql: publicationSql,
-        entityId: publicationEntityId,
-        ...publicationCardConfiguration,
-        sqlOperator: 'LIKE',
-      },
+      props: publicationDetailPageProps,
     },
   ],
 }
@@ -178,6 +159,7 @@ export const studyDetailPage: SynapseConfigArray = [
       isAlignToLeftNav: true,
       ...studiesCardConfiguration,
       rgbIndex,
+      facetAliases,
       genericCardSchema: {
         ...studySchema,
         title: 'study',

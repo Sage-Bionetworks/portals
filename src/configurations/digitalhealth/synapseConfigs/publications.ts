@@ -2,14 +2,17 @@ import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from 'types/portal-config'
 import loadingScreen from '../loadingScreen'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
-import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
+import {
+  CardConfiguration,
+  CardContainerLogicProps,
+} from 'synapse-react-client/dist/containers/CardContainerLogic'
 
 const sql = 'SELECT * FROM syn22017695'
 export const publicationEntityId = 'syn22017695'
 const entityId = publicationEntityId
 export const publicationSql = sql
 
-const rgbIndex = 8
+const rgbIndex = 7
 const unitDescription = 'Publications'
 const facet = 'study'
 
@@ -74,4 +77,11 @@ export const publications: HomeExploreConfig = {
       visibleColumnCount: Infinity,
     },
   },
+}
+
+export const publicationDetailPageProps: CardContainerLogicProps = {
+  sql: publicationSql,
+  entityId: publicationEntityId,
+  ...publicationCardConfiguration,
+  sqlOperator: 'LIKE',
 }

@@ -5,19 +5,15 @@ import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericC
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import facetAliases from '../facetAliases'
 import { GenerateComponentsFromRowProps } from 'types/portal-util-types'
-import { dataSql, dataColumnLinks } from './data'
-import {
-  publicationCardConfiguration,
-  publicationSql,
-  publicationEntityId,
-} from './publications'
+import { dataDetailPageProps } from './data'
+import { publicationDetailPageProps } from './publications'
 export const projectsSql =
   "SELECT * FROM syn21994974 WHERE  dhPortalIndex = 'TRUE' and isDHProject = 'TRUE'"
 export const projectsEntityId = 'syn21994974'
 const entityId = projectsEntityId
 const sql = projectsSql
 const unitDescription = 'Projects'
-const rgbIndex = 9
+const rgbIndex = 2
 
 export const projectSchema: GenericCardSchema = {
   type: SynapseConstants.PROJECT,
@@ -126,13 +122,6 @@ export const details: GenerateComponentsFromRowProps = {
       props: {},
       injectMarkdown: false,
       columnName: 'studyDescriptionLocation',
-      title: 'Study Description',
-    },
-    {
-      name: 'Markdown',
-      props: {},
-      injectMarkdown: false,
-      columnName: 'studyDescriptionLocation',
       title: 'Project Description',
     },
     {
@@ -140,12 +129,7 @@ export const details: GenerateComponentsFromRowProps = {
       tableSqlKeys: ['projectId'],
       columnName: 'studyDescriptionLocation',
       title: 'Data Files',
-      props: {
-        sql: dataSql,
-        title: 'Files',
-        rgbIndex,
-        columnLinks: dataColumnLinks,
-      },
+      props: dataDetailPageProps,
       injectMarkdown: false,
     },
     {
@@ -153,13 +137,8 @@ export const details: GenerateComponentsFromRowProps = {
       tableSqlKeys: ['synID'],
       columnName: 'studyDescriptionLocation',
       title: 'Publications',
-      props: {
-        sql: publicationSql,
-        entityId: publicationEntityId,
-        ...publicationCardConfiguration,
-        sqlOperator: 'LIKE',
-      },
       injectMarkdown: false,
+      props: publicationDetailPageProps,
     },
   ],
 }
@@ -174,6 +153,7 @@ export const projectDetailPage: SynapseConfigArray = [
       backgroundColor: '#5bb0b5',
       ...projectsCardConfiguration,
       titleLinkConfig: undefined,
+      facetAliases,
       genericCardSchema: {
         ...projectSchema,
         title: 'study',
