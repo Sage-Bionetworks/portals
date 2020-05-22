@@ -5,7 +5,7 @@ import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericC
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import facetAliases from '../facetAliases'
 import { GenerateComponentsFromRowProps } from 'types/portal-util-types'
-import { dataSql, dataMarkdownColumns } from './data'
+import { dataSql, dataColumnLinks } from './data'
 import { toolsSql, toolsCardConfiguration, toolsEntityId } from './tools'
 import {
   publicationCardConfiguration,
@@ -18,7 +18,7 @@ export const studyEntityId = 'syn21994974'
 const entityId = studyEntityId
 const sql = studySql
 const unitDescription = 'Studies'
-const rgbIndex = 1
+const rgbIndex = 0
 
 export const studySchema: GenericCardSchema = {
   type: SynapseConstants.STUDY,
@@ -139,7 +139,7 @@ export const details: GenerateComponentsFromRowProps = {
         sql: dataSql,
         rgbIndex,
         title: 'Data Files',
-        markdownColumns: dataMarkdownColumns,
+        columnLinks: dataColumnLinks,
       },
     },
     {
@@ -176,8 +176,8 @@ export const studyDetailPage: SynapseConfigArray = [
     props: {
       isHeader: true,
       isAlignToLeftNav: true,
-      backgroundColor: '#5bb0b5',
       ...studiesCardConfiguration,
+      rgbIndex,
       genericCardSchema: {
         ...studySchema,
         title: 'study',

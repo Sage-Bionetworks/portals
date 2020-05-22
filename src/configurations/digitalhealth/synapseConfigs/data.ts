@@ -2,6 +2,7 @@ import { HomeExploreConfig } from 'types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
 import facetAliases from '../facetAliases'
 import loadingScreen from '../loadingScreen'
+import { LabelLinkConfig } from 'synapse-react-client/dist/containers/CardContainerLogic'
 
 const unitDescription = 'Data'
 const rgbIndex = 0
@@ -10,9 +11,27 @@ export const dataEntityId = 'syn21994970'
 const entityId = dataEntityId
 const sql = dataSql
 const facet = 'Program'
-export const dataMarkdownColumns = [
-  'dataDescriptionLocation',
-  'dataAccessInstructions',
+export const dataColumnLinks: LabelLinkConfig = [
+  {
+    matchColumnName: 'dataDescriptionLocation',
+    isMarkdown: true,
+  },
+  {
+    matchColumnName: 'dataAccessInstructions',
+    isMarkdown: true,
+  },
+  {
+    matchColumnName: 'study',
+    isMarkdown: false,
+    URLColumnName: 'study',
+    baseURL: 'Explore/Studies/DetailsPage',
+  },
+  {
+    matchColumnName: 'project',
+    isMarkdown: false,
+    URLColumnName: 'study',
+    baseURL: 'Explore/Projects/DetailsPage',
+  },
 ]
 
 const data: HomeExploreConfig = {
@@ -51,7 +70,7 @@ const data: HomeExploreConfig = {
       name: 'Data',
       facetAliases,
       tableConfiguration: {
-        markdownColumns: dataMarkdownColumns,
+        columnLinks: dataColumnLinks,
       },
       facetsToPlot: [
         'study',

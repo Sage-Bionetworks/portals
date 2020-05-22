@@ -5,7 +5,7 @@ import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericC
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import facetAliases from '../facetAliases'
 import { GenerateComponentsFromRowProps } from 'types/portal-util-types'
-import { dataSql, dataMarkdownColumns } from './data'
+import { dataSql, dataColumnLinks } from './data'
 import {
   publicationCardConfiguration,
   publicationSql,
@@ -33,6 +33,7 @@ export const projectSchema: GenericCardSchema = {
     'digitalAssessmentCategory',
     'digitalAssessmentDetails',
     'dataUsed',
+    'externalDataUsed',
     'investigator',
     'keywords',
   ],
@@ -53,6 +54,10 @@ export const projectsCardConfiguration: CardConfiguration = {
       matchColumnName: 'dataUsed',
       URLColumnName: 'id',
       baseURL: 'Explore/Studies/DetailsPage',
+    },
+    {
+      isMarkdown: true,
+      matchColumnName: 'externalDataUsed',
     },
   ],
   loadingScreen,
@@ -100,13 +105,13 @@ export const projects: HomeExploreConfig = {
         projectId: 'Study',
       },
       facetsToPlot: [
-        'deviceType',
+        'resourceType',
         'diagnosis',
-        'digitalAssessmentCategory',
         'intervention',
         'reportedOutcome',
-        'resourceType',
+        'deviceType',
         'sensorType',
+        'digitalAssessmentCategory',
       ],
     },
   },
@@ -139,13 +144,13 @@ export const details: GenerateComponentsFromRowProps = {
         sql: dataSql,
         title: 'Files',
         rgbIndex,
-        markdownColumns: dataMarkdownColumns,
+        columnLinks: dataColumnLinks,
       },
       injectMarkdown: false,
     },
     {
       name: 'CardContainerLogic',
-      tableSqlKeys: ['projectId'],
+      tableSqlKeys: ['synID'],
       columnName: 'studyDescriptionLocation',
       title: 'Publications',
       props: {
@@ -174,6 +179,7 @@ export const projectDetailPage: SynapseConfigArray = [
         title: 'study',
         link: 'id',
       },
+      rgbIndex,
       sql,
       entityId,
     },
