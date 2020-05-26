@@ -15,11 +15,13 @@ import {
   publicationsEntityId,
   publicationsCardConfiguration,
 } from './publications'
+import { filesEntityId } from 'config/synapseConfigs/files'
 
 const sql = 'SELECT * FROM syn16787123'
 export const studiesEntityId = 'syn16787123'
 const entityId = studiesEntityId
 export const studiesSql = sql
+export const newStudiesSql = `${sql} order by ROW_ID desc limit 3`
 const type = SynapseConstants.GENERIC_CARD
 const unitDescription = 'Studies'
 const rgbIndex = 5
@@ -155,8 +157,9 @@ export const studiesDetailPage: GenerateComponentsFromRowProps = {
             SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
           concreteType:
             'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-          entityId,
+          entityId: filesEntityId,
           query: {
+            isConsistent: false,
             sql: `SELECT id, dataType, assay, diagnosis, tumorType, species, individualID, fileFormat, dataSubtype, nf1Genotype, nf2Genotype, fundingAgency, consortium FROM syn16858331 where resourceType = 'experimentalData'`,
             limit: 25,
             offset: 0,
@@ -183,8 +186,9 @@ export const studiesDetailPage: GenerateComponentsFromRowProps = {
             SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
           concreteType:
             'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-          entityId,
+          entityId: filesEntityId,
           query: {
+            isConsistent: false,
             sql: `SELECT id, dataType, assay, diagnosis, tumorType, species, individualID, fileFormat, dataSubtype, nf1Genotype, nf2Genotype, fundingAgency, consortium FROM syn16858331 where resourceType ='report'`,
             limit: 25,
             offset: 0,
@@ -220,7 +224,7 @@ export const studiesDetailPage: GenerateComponentsFromRowProps = {
     {
       name: 'CardContainerLogic',
       title: 'Related Studies',
-      columnName: 'relatedStudies',
+      columnName: 'relatedStudies_list',
       tableSqlKeys: ['studyId'],
       props: {
         sqlOperator: 'LIKE',

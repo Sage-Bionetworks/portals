@@ -6,6 +6,7 @@ import loadingScreen from '../loadingScreen'
 
 const sql = 'SELECT * FROM syn16857542'
 export const publicationsSql = sql
+export const newPublicationsSql = `${sql} order by ROW_ID desc limit 3`
 export const publicationsEntityId = 'syn16857542'
 export const entityId = publicationsEntityId
 const type = SynapseConstants.GENERIC_CARD

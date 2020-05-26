@@ -9,17 +9,17 @@ import {
   funders,
 } from './synapseConfigs'
 import {
-  studiesSql,
+  newStudiesSql,
   studyHeaderIconOptions,
   studyCardConfiguration,
   studiesEntityId,
   studiesDetailPage,
 } from './synapseConfigs/studies'
-import { datasetsSql } from './synapseConfigs/datasets'
+import { newDatasetsSql } from './synapseConfigs/datasets'
 import {
-  publicationsSql,
   publicationsCardConfiguration,
   publicationsEntityId,
+  newPublicationsSql,
 } from './synapseConfigs/publications'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
 import loadingScreen from './loadingScreen'
@@ -28,7 +28,7 @@ import { dhartSpore } from './synapseConfigs/organizationConfigs/dhart-spore'
 import { ctf } from './synapseConfigs/organizationConfigs/ctf'
 import { cdmrp } from './synapseConfigs/organizationConfigs/cdmrp'
 import { buttonColors, facetAliases } from './synapseConfigs/commonProps'
-import { toolsSql, toolsCardConfiguration } from './synapseConfigs/tools'
+import { toolsCardConfiguration, newToolsSql } from './synapseConfigs/tools'
 import { toolsEntityId } from './synapseConfigs/tools'
 import { gff } from './synapseConfigs/organizationConfigs/gff'
 
@@ -75,7 +75,7 @@ const routes: GenericRoute[] = [
         props: {
           limit,
           facetAliases,
-          sql: studiesSql,
+          sql: newStudiesSql,
           entityId: studiesEntityId,
           title: 'NEW STUDIES',
           ...studyCardConfiguration,
@@ -89,7 +89,7 @@ const routes: GenericRoute[] = [
           limit,
           facetAliases,
           entityId: publicationsEntityId,
-          sql: publicationsSql,
+          sql: newPublicationsSql,
           ...publicationsCardConfiguration,
         },
       },
@@ -102,7 +102,7 @@ const routes: GenericRoute[] = [
           facetAliases,
           loadingScreen,
           entityId: publicationsEntityId,
-          sql: datasetsSql,
+          sql: newDatasetsSql,
           type: SynapseConstants.DATASET,
         },
       },
@@ -115,7 +115,7 @@ const routes: GenericRoute[] = [
           facetAliases,
           entityId: toolsEntityId,
           ...toolsCardConfiguration,
-          sql: toolsSql,
+          sql: newToolsSql,
         },
       },
       {

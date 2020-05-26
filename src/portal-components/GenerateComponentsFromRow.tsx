@@ -9,6 +9,7 @@ import {
   QueryBundleRequest,
   QueryResultBundle,
   ReferenceList,
+  EntityColumnType,
 } from 'synapse-react-client/dist/utils/synapseTypes/'
 import loadingScreen from 'test-configuration/loadingScreen'
 import { SynapseConfig } from 'types/portal-config'
@@ -88,22 +89,51 @@ export default class GenerateComponentsFromRow extends React.Component<
         }
         const row = rows[0].values
         // map column name to index
-        const mapColumnHeaderToRowIndex: Dictionary<number> = {}
+        const mapColumnHeaderToRowIndex: Dictionary<{
+          index: number
+          columnType: EntityColumnType
+        }> = {}
         data.queryResult.queryResults.headers.forEach((el, index) => {
-          mapColumnHeaderToRowIndex[el.name] = index
+          mapColumnHeaderToRowIndex[el.name] = {
+            index,
+            columnType: el.columnType,
+          }
         })
         const references: ReferenceList = []
         synapseConfigArray.forEach((el: RowSynapseConfig) => {
           if (el.resolveSynId && el.columnName) {
-            const index = mapColumnHeaderToRowIndex[el.columnName]
-            const value: string = row[index]
-            value?.split(',').forEach((val) => {
-              if (!references.find((el) => el.targetId === val)) {
-                references.push({
-                  targetId: val,
-                })
+            const { index, columnType } = mapColumnHeaderToRowIndex[
+              el.columnName
+            ]
+            let value: string = row[index]
+            if (
+              columnType === EntityColumnType.STRING_LIST ||
+              columnType === EntityColumnType.INTEGER_LIST
+            ) {
+              try {
+                value = JSON.parse(value)
+              } catch (e) {
+                console.error('value could not be parsed as string_list', e)
+                return
               }
-            })
+            }
+            if (typeof value === 'object') {
+              ;(value as string[])?.forEach((val) => {
+                if (!references.find((el) => el.targetId === val)) {
+                  references.push({
+                    targetId: val,
+                  })
+                }
+              })
+            } else {
+              value?.split(',').forEach((val) => {
+                if (!references.find((el) => el.targetId === val)) {
+                  references.push({
+                    targetId: val,
+                  })
+                }
+              })
+            }
           }
         })
         if (references.length === 0) {
@@ -246,18 +276,47 @@ export default class GenerateComponentsFromRow extends React.Component<
     const deepCloneOfProps = cloneDeep(props)
     const row = queryResultBundle!.queryResult.queryResults.rows[0].values
     // map column name to index
-    const mapColumnHeaderToRowIndex: Dictionary<number> = {}
+    const mapColumnHeaderToRowIndex: Dictionary<{
+      index: number
+      columnType: EntityColumnType
+    }> = {}
     queryResultBundle!.queryResult.queryResults.headers.forEach((el, index) => {
-      mapColumnHeaderToRowIndex[el.name] = index
+      mapColumnHeaderToRowIndex[el.name] = { index, columnType: el.columnType }
     })
-    const columnNameRowIndex = mapColumnHeaderToRowIndex[columnName]
-    let rawValue: string = row[columnNameRowIndex]
+    const { index, columnType } = mapColumnHeaderToRowIndex[columnName]
+    let rawValue: string = row[index]
     if (!rawValue) {
       console.error('No value mapped for ', columnName)
       return <></>
+    } else if (
+      columnType === EntityColumnType.STRING_LIST ||
+      columnType === EntityColumnType.INTEGER_LIST
+    ) {
+      try {
+        rawValue = JSON.parse(rawValue)
+      } catch (e) {
+        console.error('Error on parsing value ', e)
+        return <></>
+      }
     }
-    // don't split the value if its to be treated as markdown
-    const split = el.injectMarkdown ? [rawValue] : rawValue.split(',')
+
+    let split: string[] = ['']
+    if (el.injectMarkdown) {
+      split = [rawValue]
+    } else if (typeof rawValue === 'object') {
+      split = rawValue
+    } else {
+      split = rawValue.split(',')
+    }
+    /*
+      There's a known ineffeciency here, we have components like CardContainer where it makes sense
+      to construct a sql statement with a chain of OR statements rather than having N different queries.
+
+      But this doesn't work for a component like MarkdownSynapse where there is a desire to have
+      N different markdown components. 
+      
+      For simplicity's sake this will be left as is, but this could be revisited if performance is an issue.
+    */
     return split.map((splitString) => {
       let value = splitString.trim()
       let entityTitle = ''
