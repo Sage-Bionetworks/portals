@@ -7,6 +7,7 @@ const sql = 'SELECT * FROM syn16859580'
 export const datasetsEntityId = 'syn16859580'
 const entityId = datasetsEntityId
 export const datasetsSql = sql
+export const newDatasetsSql = `${sql} order by ROW_ID desc limit 3`
 const type = 'dataset'
 const unitDescription = 'datasets'
 const rgbIndex = 8

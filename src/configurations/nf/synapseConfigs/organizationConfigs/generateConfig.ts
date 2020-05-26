@@ -23,10 +23,10 @@ export const generateOrgConfig: ReturnSynapseConfigArray = (
   type,
   sqlOnly = false,
 ) => {
-  const studiesSql = `SELECT * FROM syn16787123 WHERE fundingAgency = '${org}'`
+  const studiesSql = `SELECT * FROM syn16787123 WHERE fundingAgency LIKE '%${org}%'`
   const datasetsSql = `SELECT * FROM syn16859580 WHERE fundingAgency = '${org}'`
   const filesSql = `SELECT id AS "File ID", fundingAgency, studyName, consortium, dataType, assay, diagnosis, tumorType, species, fileFormat, individualID, dataSubtype AS "Data Subtype", nf1Genotype AS "NF1 Genotype", nf2Genotype AS "NF2 Genotype", name AS "File Name" FROM syn16858331 WHERE fundingAgency = '${org}'`
-  const publicationsSql = `SELECT * FROM syn16857542 WHERE fundingAgency = '${org}'`
+  const publicationsSql = `SELECT * FROM syn16857542 WHERE fundingAgency HAS('${org}')`
   if (type === 'Studies') {
     if (sqlOnly) {
       return studiesSql
@@ -179,6 +179,7 @@ export const generateOrgConfig: ReturnSynapseConfigArray = (
         entityId: publicationsEntityId,
         ...publicationsCardConfiguration,
         facet: 'diseaseFocus',
+        sqlOperator: 'LIKE',
       },
       title: 'NEW PUBLICATIONS',
     },

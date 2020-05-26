@@ -6,6 +6,7 @@ import { facetAliases } from './commonProps'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 
 export const toolsSql = 'SELECT * FROM syn16859448'
+export const newToolsSql = `${toolsSql}  order by ROW_ID desc limit 3`
 
 export const toolsSchema: GenericCardSchema = {
   type: 'TOOL',
