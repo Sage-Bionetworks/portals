@@ -8,7 +8,7 @@ const homePageHeader: HomePageHeaderConfig = {
     </>
   ),
   title:
-    'Welcome to the Integrative Cancer Research Knowledge Portal',
+    'Welcome to the Cancer Complexity Knowledge Portal',
   showBlur: false,
 }
 

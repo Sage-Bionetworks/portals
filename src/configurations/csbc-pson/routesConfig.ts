@@ -147,7 +147,7 @@ const routes: GenericRoute[] = [
       {
         name: 'AboutPortal',
         props: {
-          title: 'About the Integrative Cancer Research Knowledge Portal',
+          title: 'About the Cancer Complexity Knowledge Portal',
           ownerId: 'syn21498902',
           wikiId: '601366',
           cardProps: [
