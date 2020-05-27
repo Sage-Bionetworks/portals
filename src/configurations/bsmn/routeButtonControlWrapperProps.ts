@@ -1,5 +1,6 @@
 import { SynapseConfig } from 'types/portal-config'
 import { RouteButtonControlWrapperProps } from 'portal-components/RouteButtonControlWrapper'
+
 const routeButtonControlProps: RouteButtonControlWrapperProps = {
   // this has to get overriden,
   synapseConfig: {} as SynapseConfig,
@@ -7,10 +8,4 @@ const routeButtonControlProps: RouteButtonControlWrapperProps = {
   customRoutes: ['Projects', 'Studies', 'Tools', 'People', 'Publications'],
 }
 
-const routeButtonControlTemplate: SynapseConfig = {
-  name: 'RouteButtonControlWrapper',
-  title: 'Explore',
-  props: routeButtonControlProps,
-}
-
-export default routeButtonControlTemplate
+export default routeButtonControlProps

@@ -106,9 +106,10 @@ const routes: GenericRoute[] = [
         to: '/Explore/Programs',
         synapseConfigArray: [
           {
-            ...routeButtonControlWrapperProps,
+            name: 'RouteButtonControlWrapper',
+            title: 'Explore',
             props: {
-              ...routeButtonControlWrapperProps.props,
+              ...routeButtonControlWrapperProps,
               synapseConfig: {
                 name: 'CardContainerLogic',
                 props: {
@@ -203,9 +204,10 @@ const routes: GenericRoute[] = [
         ],
         synapseConfigArray: [
           {
-            ...routeButtonControlWrapperProps,
+            name: 'RouteButtonControlWrapper',
+            title: 'Explore',
             props: {
-              ...routeButtonControlWrapperProps.props,
+              ...routeButtonControlWrapperProps,
               synapseConfig: projects.explorePageSynapseObject,
             },
           },
@@ -217,9 +219,10 @@ const routes: GenericRoute[] = [
         to: '/Explore/Studies',
         synapseConfigArray: [
           {
-            ...routeButtonControlWrapperProps,
+            name: 'RouteButtonControlWrapper',
+            title: 'Explore',
             props: {
-              ...routeButtonControlWrapperProps.props,
+              ...routeButtonControlWrapperProps,
               synapseConfig: studies.explorePageSynapseObject,
             },
           },
@@ -239,9 +242,10 @@ const routes: GenericRoute[] = [
         to: '/Explore/Data',
         synapseConfigArray: [
           {
-            ...routeButtonControlWrapperProps,
+            name: 'RouteButtonControlWrapper',
+            title: 'Explore',
             props: {
-              ...routeButtonControlWrapperProps.props,
+              ...routeButtonControlWrapperProps,
               synapseConfig: data.explorePageSynapseObject,
             },
           },
@@ -253,9 +257,10 @@ const routes: GenericRoute[] = [
         to: '/Explore/Publications',
         synapseConfigArray: [
           {
-            ...routeButtonControlWrapperProps,
+            name: 'RouteButtonControlWrapper',
+            title: 'Explore',
             props: {
-              ...routeButtonControlWrapperProps.props,
+              ...routeButtonControlWrapperProps,
               synapseConfig: publications.explorePageSynapseObject,
             },
           },
@@ -267,9 +272,10 @@ const routes: GenericRoute[] = [
         to: '/Explore/People',
         synapseConfigArray: [
           {
-            ...routeButtonControlWrapperProps,
+            name: 'RouteButtonControlWrapper',
+            title: 'Explore',
             props: {
-              ...routeButtonControlWrapperProps.props,
+              ...routeButtonControlWrapperProps,
               synapseConfig: people.explorePageSynapseObject,
             },
           },
@@ -281,9 +287,10 @@ const routes: GenericRoute[] = [
         to: '/Explore/Tools',
         synapseConfigArray: [
           {
-            ...routeButtonControlWrapperProps,
+            name: 'RouteButtonControlWrapper',
+            title: 'Explore',
             props: {
-              ...routeButtonControlWrapperProps.props,
+              ...routeButtonControlWrapperProps,
               synapseConfig: tools.explorePageSynapseObject,
             },
           },
@@ -295,9 +302,10 @@ const routes: GenericRoute[] = [
         to: '/Explore/Results',
         synapseConfigArray: [
           {
-            ...routeButtonControlWrapperProps,
+            name: 'RouteButtonControlWrapper',
+            title: 'Explore',
             props: {
-              ...routeButtonControlWrapperProps.props,
+              ...routeButtonControlWrapperProps,
               synapseConfig: results,
             },
           },

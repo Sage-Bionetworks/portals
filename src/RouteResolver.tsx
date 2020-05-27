@@ -19,14 +19,14 @@ export const getRouteFromParams = (pathname: string) => {
   const pathWithName = pathname === '/' ? '/Home' : pathname
   // e.g. split = '', 'Explore', 'Programs
   const split = pathWithName.split('/')
-  let route = routesConfig.find(el => split[1] === el.name)!
+  let route = routesConfig.find((el) => split[1] === el.name)!
   // search the route configs for the pathname
   for (let i = 2; i < split.length; i += 1) {
     if (!route) {
       return fail(`Error: url at ${pathWithName} has no route mapping`)
     }
     if (route.isNested) {
-      route = route.routes.find(el => split[i] === el.name)!
+      route = route.routes.find((el) => split[i] === el.name)!
     } else {
       fail(`Route at ${pathname} has no SynapseConfigArray mapping`)
     }
@@ -59,15 +59,17 @@ export const generateSynapseObject = (
   searchParams?: any,
 ) => {
   // return the synapse object but with token/search params injected into its props from the context created in AppInitializer
-  const { props, ...rest } = synapseConfig
+  const { props, name, ...rest } = synapseConfig
   const key = JSON.stringify(props)
   return (
     <TokenContext.Consumer key={key}>
       {(value: string) => {
         const propsWithSearchAndToken = { ...props, searchParams, token: value }
-        const synapseObjectWithTokenAndSearch = {
+        // @ts-ignore
+        const synapseObjectWithTokenAndSearch: SynapseConfig = {
           props: propsWithSearchAndToken,
           ...rest,
+          name,
         }
         return generateSynapseObjectHelper(synapseObjectWithTokenAndSearch)
       }}
