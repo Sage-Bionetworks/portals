@@ -20,9 +20,10 @@ const routes: GenericRoute[] = [
         isNested: false,
         synapseConfigArray: [
           {
-            ...routeButtonControlWrapperProps,
+            name: 'RouteButtonControlWrapper',
+            title: 'EXPLORE',
             props: {
-              ...routeButtonControlWrapperProps.props,
+              ...routeButtonControlWrapperProps,
               synapseConfig: uncategorized,
             },
           },
@@ -34,9 +35,10 @@ const routes: GenericRoute[] = [
         isNested: false,
         synapseConfigArray: [
           {
-            ...routeButtonControlWrapperProps,
+            name: 'RouteButtonControlWrapper',
+            title: 'EXPLORE',
             props: {
-              ...routeButtonControlWrapperProps.props,
+              ...routeButtonControlWrapperProps,
               synapseConfig: selected,
             },
           },
@@ -48,9 +50,10 @@ const routes: GenericRoute[] = [
         isNested: false,
         synapseConfigArray: [
           {
-            ...routeButtonControlWrapperProps,
+            name: 'RouteButtonControlWrapper',
+            title: 'EXPLORE',
             props: {
-              ...routeButtonControlWrapperProps.props,
+              ...routeButtonControlWrapperProps,
               synapseConfig: invited,
             },
           },
@@ -62,9 +65,10 @@ const routes: GenericRoute[] = [
         isNested: false,
         synapseConfigArray: [
           {
-            ...routeButtonControlWrapperProps,
+            name: 'RouteButtonControlWrapper',
+            title: 'EXPLORE',
             props: {
-              ...routeButtonControlWrapperProps.props,
+              ...routeButtonControlWrapperProps,
               synapseConfig: hidden,
             },
           },

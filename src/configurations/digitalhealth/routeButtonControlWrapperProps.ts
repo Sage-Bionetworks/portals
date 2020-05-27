@@ -17,10 +17,4 @@ const routeButtonControlProps: RouteButtonControlWrapperProps = {
   customRoutes: ['Studies', 'Projects', 'Data', 'Tools', 'Publications'],
 }
 
-const routeButtonControlTemplate: SynapseConfig = {
-  name: 'RouteButtonControlWrapper',
-  title: 'Explore',
-  props: routeButtonControlProps,
-}
-
-export default routeButtonControlTemplate
+export default routeButtonControlProps

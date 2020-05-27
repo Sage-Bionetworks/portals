@@ -77,9 +77,10 @@ const routes: GenericRoute[] = [
         isNested: false,
         synapseConfigArray: [
           {
-            ...routeButtonControlWrapperProps,
+            name: 'RouteButtonControlWrapper',
+            title: 'EXPLORE',
             props: {
-              ...routeButtonControlWrapperProps.props,
+              ...routeButtonControlWrapperProps,
               synapseConfig: projects.explorePageSynapseObject,
             },
           },
@@ -91,9 +92,10 @@ const routes: GenericRoute[] = [
         isNested: false,
         synapseConfigArray: [
           {
-            ...routeButtonControlWrapperProps,
+            name: 'RouteButtonControlWrapper',
+            title: 'EXPLORE',
             props: {
-              ...routeButtonControlWrapperProps.props,
+              ...routeButtonControlWrapperProps,
               synapseConfig: studies.explorePageSynapseObject,
             },
           },
@@ -150,9 +152,10 @@ const routes: GenericRoute[] = [
         isNested: false,
         synapseConfigArray: [
           {
-            ...routeButtonControlWrapperProps,
+            name: 'RouteButtonControlWrapper',
+            title: 'EXPLORE',
             props: {
-              ...routeButtonControlWrapperProps.props,
+              ...routeButtonControlWrapperProps,
               synapseConfig: files.explorePageSynapseObject,
             },
           },
@@ -164,9 +167,10 @@ const routes: GenericRoute[] = [
         isNested: false,
         synapseConfigArray: [
           {
-            ...routeButtonControlWrapperProps,
+            name: 'RouteButtonControlWrapper',
+            title: 'EXPLORE',
             props: {
-              ...routeButtonControlWrapperProps.props,
+              ...routeButtonControlWrapperProps,
               synapseConfig: publications.explorePageSynapseObject,
             },
           },
@@ -193,9 +197,10 @@ const routes: GenericRoute[] = [
         isNested: false,
         synapseConfigArray: [
           {
-            ...routeButtonControlWrapperProps,
+            name: 'RouteButtonControlWrapper',
+            title: 'EXPLORE',
             props: {
-              ...routeButtonControlWrapperProps.props,
+              ...routeButtonControlWrapperProps,
               synapseConfig: people.explorePageSynapseObject,
             },
           },

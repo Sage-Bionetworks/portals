@@ -28,9 +28,9 @@ type Props = RouteComponentProps & RouteButtonControlWrapperProps
 const RouteButtonControl: React.FunctionComponent<Props> = ({
   location,
   synapseConfig,
-  colors,
+  colors = [],
   history,
-  customRoutes,
+  customRoutes = [],
   searchParams,
 }) => {
   const pathname = location.pathname

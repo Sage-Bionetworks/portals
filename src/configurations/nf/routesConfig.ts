@@ -31,6 +31,7 @@ import { buttonColors, facetAliases } from './synapseConfigs/commonProps'
 import { toolsCardConfiguration, newToolsSql } from './synapseConfigs/tools'
 import { toolsEntityId } from './synapseConfigs/tools'
 import { gff } from './synapseConfigs/organizationConfigs/gff'
+import { nfri } from './synapseConfigs/organizationConfigs/nfri'
 
 const limit = 3
 
@@ -141,9 +142,10 @@ const routes: GenericRoute[] = [
         to: '/Explore/Studies',
         synapseConfigArray: [
           {
-            ...routeButtonControlWrapperProps,
+            name: 'RouteButtonControlWrapper',
+            title: 'Explore',
             props: {
-              ...routeButtonControlWrapperProps.props,
+              ...routeButtonControlWrapperProps,
               synapseConfig: studies.explorePageSynapseObject,
             },
           },
@@ -184,9 +186,10 @@ const routes: GenericRoute[] = [
         to: '/Explore/Datasets',
         synapseConfigArray: [
           {
-            ...routeButtonControlWrapperProps,
+            name: 'RouteButtonControlWrapper',
+            title: 'Explore',
             props: {
-              ...routeButtonControlWrapperProps.props,
+              ...routeButtonControlWrapperProps,
               synapseConfig: datasets.explorePageSynapseObject,
             },
           },
@@ -198,9 +201,10 @@ const routes: GenericRoute[] = [
         to: '/Explore/Files',
         synapseConfigArray: [
           {
-            ...routeButtonControlWrapperProps,
+            name: 'RouteButtonControlWrapper',
+            title: 'Explore',
             props: {
-              ...routeButtonControlWrapperProps.props,
+              ...routeButtonControlWrapperProps,
               synapseConfig: files.explorePageSynapseObject,
             },
           },
@@ -212,9 +216,10 @@ const routes: GenericRoute[] = [
         to: '/Explore/Publications',
         synapseConfigArray: [
           {
-            ...routeButtonControlWrapperProps,
+            name: 'RouteButtonControlWrapper',
+            title: 'Explore',
             props: {
-              ...routeButtonControlWrapperProps.props,
+              ...routeButtonControlWrapperProps,
               synapseConfig: publications.explorePageSynapseObject,
             },
           },
@@ -226,9 +231,10 @@ const routes: GenericRoute[] = [
         to: '/Explore/Tools',
         synapseConfigArray: [
           {
-            ...routeButtonControlWrapperProps,
+            name: 'RouteButtonControlWrapper',
+            title: 'Explore',
             props: {
-              ...routeButtonControlWrapperProps.props,
+              ...routeButtonControlWrapperProps,
               synapseConfig: tools.explorePageSynapseObject,
             },
           },
@@ -239,7 +245,7 @@ const routes: GenericRoute[] = [
   {
     name: 'Organizations',
     isNested: true,
-    routes: [ctf, ntap, gff, dhartSpore, cdmrp],
+    routes: [ctf, ntap, gff, dhartSpore, cdmrp, nfri],
   },
   {
     name: 'About',

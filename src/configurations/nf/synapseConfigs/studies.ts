@@ -15,7 +15,6 @@ import {
   publicationsEntityId,
   publicationsCardConfiguration,
 } from './publications'
-import { filesEntityId } from 'config/synapseConfigs/files'
 
 const sql = 'SELECT * FROM syn16787123'
 export const studiesEntityId = 'syn16787123'
@@ -142,58 +141,26 @@ export const studiesDetailPage: GenerateComponentsFromRowProps = {
       },
     },
     {
-      name: 'QueryWrapperFlattened',
+      name: 'StandaloneQueryWrapper',
       title: 'Data Files',
       columnName: 'studyId',
       tableSqlKeys: ['studyId'],
       props: {
         visibleColumnCount: 7,
-        initQueryRequest: {
-          partMask:
-            SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
-            SynapseConstants.BUNDLE_MASK_QUERY_COUNT |
-            SynapseConstants.BUNDLE_MASK_QUERY_SELECT_COLUMNS |
-            SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS |
-            SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
-          concreteType:
-            'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-          entityId: filesEntityId,
-          query: {
-            isConsistent: false,
-            sql: `SELECT id, dataType, assay, diagnosis, tumorType, species, individualID, fileFormat, dataSubtype, nf1Genotype, nf2Genotype, fundingAgency, consortium FROM syn16858331 where resourceType = 'experimentalData'`,
-            limit: 25,
-            offset: 0,
-          },
-        },
+        sql: `SELECT id, dataType, assay, diagnosis, tumorType, species, individualID, fileFormat, dataSubtype, nf1Genotype, nf2Genotype, fundingAgency, consortium FROM syn16858331 where resourceType = 'experimentalData'`,
         loadingScreen,
         rgbIndex,
         title: 'Data Files',
       },
     },
     {
-      name: 'QueryWrapperFlattened',
+      name: 'StandaloneQueryWrapper',
       title: 'Metadata Files',
       columnName: 'studyId',
       tableSqlKeys: ['studyId'],
       props: {
         visibleColumnCount: 7,
-        initQueryRequest: {
-          partMask:
-            SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
-            SynapseConstants.BUNDLE_MASK_QUERY_COUNT |
-            SynapseConstants.BUNDLE_MASK_QUERY_SELECT_COLUMNS |
-            SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS |
-            SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
-          concreteType:
-            'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-          entityId: filesEntityId,
-          query: {
-            isConsistent: false,
-            sql: `SELECT id, dataType, assay, diagnosis, tumorType, species, individualID, fileFormat, dataSubtype, nf1Genotype, nf2Genotype, fundingAgency, consortium FROM syn16858331 where resourceType ='report'`,
-            limit: 25,
-            offset: 0,
-          },
-        },
+        sql: `SELECT id, dataType, assay, diagnosis, tumorType, species, individualID, fileFormat, dataSubtype, nf1Genotype, nf2Genotype, fundingAgency, consortium FROM syn16858331 where resourceType ='report'`,
         loadingScreen,
         rgbIndex,
         title: 'Metadata Files',

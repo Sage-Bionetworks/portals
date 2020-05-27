@@ -1,23 +1,26 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { BaseRoute } from 'types/portal-config'
 import { buttonColors } from '../commonProps'
+import loadingScreen from '../../loadingScreen'
 import { generateOrgConfig } from './generateConfig'
-const org = 'NTAP'
 
-export const ntap: BaseRoute = {
-  name: 'NTAP',
-  to: '/Organizations/NTAP',
+const org = 'NFRI'
+
+export const nfri: BaseRoute = {
+  name: org,
+  to: `/Organizations/${org}`,
   isNested: false,
   synapseConfigArray: [
     {
       name: 'CardContainerLogic',
       props: {
         limit: 1,
-        sql: "SELECT * FROM syn16858699 WHERE abbreviation = 'NTAP'",
-        entityId: 'syn16858699',
+        sql: `SELECT * FROM syn16858699 WHERE abbreviation = '${org}'`,
         type: SynapseConstants.FUNDER,
+        entityId: 'syn16858699',
+        loadingScreen,
       },
-      title: 'THE NEUROFIBROMATOSIS THERAPEUTIC ACCELERATION PROGRAM',
+      title: 'Neurofibromatosis Research Initiative',
     },
     {
       name: 'StatefulButtonControlWrapper',

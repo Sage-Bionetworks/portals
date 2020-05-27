@@ -17,6 +17,7 @@ import { TableWithSideFacetsProps } from '../portal-components/csbc-home-page/Ta
 import { GenerateComponentsFromRowProps } from './portal-util-types'
 import { QueryWrapperFlattenedProps } from '../portal-components/QueryWrapperFlattened'
 import { StandaloneQueryWrapperProps } from '../portal-components/StandaloneQueryWrapper'
+import { StatefulButtonControlWrapperProps } from 'portal-components/StatefulButtonControlWrapper'
 
 // For styling the header on the home page -- the main title and the summary text
 export type HomePageHeaderConfig = {
@@ -74,7 +75,7 @@ type ThemesPlot = {
 
 type StatefulButtonControl = {
   name: 'StatefulButtonControlWrapper'
-  props: any
+  props: StatefulButtonControlWrapperProps
 }
 
 type RouteButtonControl = {

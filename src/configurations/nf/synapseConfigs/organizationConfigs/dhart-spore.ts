@@ -1,11 +1,7 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { BaseRoute } from 'types/portal-config'
-import { generateOrgConfig } from './generateConfig'
-import { studiesEntityId } from '../studies'
-import { filesEntityId } from '../files'
 import { buttonColors } from '../commonProps'
-import { publicationsEntityId } from '../publications'
-import { datasetsEntityId } from '../datasets'
+import { generateOrgConfig } from './generateConfig'
 
 const org = 'DHART-SPORE'
 
@@ -30,35 +26,7 @@ export const dhartSpore: BaseRoute = {
       name: 'StatefulButtonControlWrapper',
       props: {
         ...buttonColors,
-        configs: [
-          {
-            name: 'Studies',
-            synapseConfigArray: generateOrgConfig(orgColumnName, 'Studies'),
-            sql: generateOrgConfig(orgColumnName, 'Studies', true),
-            entityId: studiesEntityId,
-          },
-          {
-            name: 'Datasets',
-            sql: generateOrgConfig(orgColumnName, 'Dataset', true),
-            entityId: datasetsEntityId,
-            synapseConfigArray: generateOrgConfig(org, 'Dataset', false),
-          },
-          {
-            name: 'Files',
-            synapseConfigArray: generateOrgConfig(orgColumnName, 'Files'),
-            sql: generateOrgConfig(orgColumnName, 'Files', true),
-            entityId: filesEntityId,
-          },
-          {
-            name: 'Publications',
-            synapseConfigArray: generateOrgConfig(
-              orgColumnName,
-              'Publications',
-            ),
-            sql: generateOrgConfig(orgColumnName, 'Publications', true),
-            entityId: publicationsEntityId,
-          },
-        ],
+        configs: generateOrgConfig(orgColumnName),
       },
     },
   ],
