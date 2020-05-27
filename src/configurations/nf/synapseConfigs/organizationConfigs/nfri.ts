@@ -2,7 +2,7 @@ import { SynapseConstants } from 'synapse-react-client'
 import { BaseRoute } from 'types/portal-config'
 import { buttonColors } from '../commonProps'
 import loadingScreen from '../../loadingScreen'
-import { generateOrgConfigImproved } from './generateConfig'
+import { generateOrgConfig } from './generateConfig'
 
 const org = 'NFRI'
 
@@ -26,7 +26,7 @@ export const nfri: BaseRoute = {
       name: 'StatefulButtonControlWrapper',
       props: {
         ...buttonColors,
-        configs: generateOrgConfigImproved(org),
+        configs: generateOrgConfig(org),
       },
     },
   ],

@@ -14,7 +14,7 @@ const datasetsEntityId = 'syn16859580'
 const publicationsEntityId = 'syn16857542'
 
 // Helper function to more easily generate configs for NF
-export const generateOrgConfigImproved = (
+export const generateOrgConfig = (
   org: string,
 ): StatefulButtonControlConfigs[] => {
   const studiesSql = `SELECT * FROM syn16787123 WHERE fundingAgency LIKE '%${org}%'`

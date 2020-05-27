@@ -15,7 +15,6 @@ import {
   publicationsEntityId,
   publicationsCardConfiguration,
 } from './publications'
-import { filesEntityId } from 'config/synapseConfigs/files'
 
 const sql = 'SELECT * FROM syn16787123'
 export const studiesEntityId = 'syn16787123'

@@ -1,7 +1,7 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { BaseRoute } from 'types/portal-config'
 import { buttonColors } from '../commonProps'
-import { generateOrgConfigImproved } from './generateConfig'
+import { generateOrgConfig } from './generateConfig'
 
 const org = 'CTF'
 
@@ -24,7 +24,7 @@ export const ctf: BaseRoute = {
       name: 'StatefulButtonControlWrapper',
       props: {
         ...buttonColors,
-        configs: generateOrgConfigImproved(org),
+        configs: generateOrgConfig(org),
       },
     },
   ],
