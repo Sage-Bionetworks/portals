@@ -1,24 +1,26 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { BaseRoute } from 'types/portal-config'
 import { buttonColors } from '../commonProps'
-import { generateOrgConfigImproved } from 'config/synapseConfigs/organizationConfigs/generateConfig'
+import loadingScreen from '../../loadingScreen'
+import { generateOrgConfigImproved } from './generateConfig'
 
-const org = 'GFF'
+const org = 'NFRI'
 
-export const gff: BaseRoute = {
-  name: 'GFF',
-  to: '/Organizations/GFF',
+export const nfri: BaseRoute = {
+  name: org,
+  to: `/Organizations/${org}`,
   isNested: false,
   synapseConfigArray: [
     {
       name: 'CardContainerLogic',
       props: {
         limit: 1,
-        sql: "SELECT * FROM syn16858699 WHERE abbreviation = 'GFF'",
+        sql: `SELECT * FROM syn16858699 WHERE abbreviation = '${org}'`,
         type: SynapseConstants.FUNDER,
         entityId: 'syn16858699',
+        loadingScreen,
       },
-      title: 'Gilbert Family Foundation (GFF)',
+      title: 'Neurofibromatosis Research Initiative',
     },
     {
       name: 'StatefulButtonControlWrapper',

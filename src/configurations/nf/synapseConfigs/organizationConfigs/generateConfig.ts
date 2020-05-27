@@ -4,6 +4,9 @@ import { publicationsCardConfiguration } from '../publications'
 import { studyCardConfiguration } from '../studies'
 import { SynapseConfigArray } from 'types/portal-config'
 import loadingScreen from '../../loadingScreen'
+import { StatefulButtonControlConfigs } from 'portal-components/StatefulButtonControlWrapper'
+import { studyEntityId } from 'configurations/digitalhealth/synapseConfigs/studies'
+import { filesEntityId } from '../files'
 
 type Key = 'Dataset' | 'Studies' | 'Publications' | 'Files'
 type ReturnSynapseConfigArray = (
@@ -14,8 +17,109 @@ type ReturnSynapseConfigArray = (
 
 const studiesEntityId = 'syn16787123'
 const datasetsEntityId = 'syn16859580'
-const filesSqlEntityId = 'syn16858331'
 const publicationsEntityId = 'syn16857542'
+
+// Helper function to more easily generate configs for NF
+export const generateOrgConfigImproved = (
+  org: string,
+): StatefulButtonControlConfigs[] => {
+  const studiesSql = `SELECT * FROM syn16787123 WHERE fundingAgency LIKE '%${org}%'`
+  const datasetsSql = `SELECT * FROM syn16859580 WHERE fundingAgency = '${org}'`
+  const filesSql = `SELECT id AS "File ID", fundingAgency, studyName, consortium, dataType, assay, diagnosis, tumorType, species, fileFormat, individualID, dataSubtype AS "Data Subtype", nf1Genotype AS "NF1 Genotype", nf2Genotype AS "NF2 Genotype", name AS "File Name" FROM syn16858331 WHERE fundingAgency = '${org}'`
+  const publicationsSql = `SELECT * FROM syn16857542 WHERE fundingAgency HAS('${org}')`
+  console.log('called')
+  return [
+    {
+      name: 'Studies',
+      entityId: studyEntityId,
+      synapseConfigArray: [
+        {
+          name: 'StandaloneQueryWrapper',
+          props: {
+            facetAliases,
+            unitDescription: 'Studies',
+            rgbIndex: 5,
+            facet: 'diseaseFocus',
+            sql: studiesSql,
+          },
+        },
+        {
+          name: 'CardContainerLogic',
+          props: {
+            loadingScreen,
+            sql: studiesSql,
+            entityId: studiesEntityId,
+            ...studyCardConfiguration,
+            facet: 'diseaseFocus',
+          },
+          title: 'Funded Studies',
+        },
+      ],
+    },
+    {
+      name: 'Datasets',
+      entityId: datasetsEntityId,
+      synapseConfigArray: [
+        {
+          name: 'StandaloneQueryWrapper',
+          props: {
+            facetAliases,
+            unitDescription: 'Studies',
+            rgbIndex: 8,
+            facet: 'diseaseFocus',
+            sql: datasetsSql,
+          },
+        },
+        {
+          name: 'CardContainerLogic',
+          props: {
+            loadingScreen,
+            entityId: datasetsEntityId,
+            sql: datasetsSql,
+            type: SynapseConstants.DATASET,
+            facet: 'diseaseFocus',
+          },
+          title: 'NEW DATASETS',
+        },
+      ],
+    },
+    {
+      name: 'Files',
+      entityId: filesEntityId,
+      synapseConfigArray: [
+        {
+          name: 'StandaloneQueryWrapper',
+          props: {
+            facetAliases,
+            unitDescription: 'Files',
+            title: 'Files',
+            rgbIndex: 1,
+            facet: 'assay',
+            sql: filesSql,
+          },
+        },
+      ],
+    },
+    {
+      name: 'Publications',
+      entityId: publicationsEntityId,
+      synapseConfigArray: [
+        {
+          name: 'CardContainerLogic',
+          props: {
+            loadingScreen,
+            sql: publicationsSql,
+            entityId: publicationsEntityId,
+            ...publicationsCardConfiguration,
+            facet: 'diseaseFocus',
+            sqlOperator: 'LIKE',
+          },
+          title: 'NEW PUBLICATIONS',
+        },
+      ],
+    },
+  ]
+}
 
 // Helper function to more easily generate configs for NF
 export const generateOrgConfig: ReturnSynapseConfigArray = (
@@ -33,27 +137,13 @@ export const generateOrgConfig: ReturnSynapseConfigArray = (
     }
     return [
       {
-        name: 'QueryWrapperFlattened',
+        name: 'StandaloneQueryWrapper',
         props: {
           facetAliases,
           unitDescription: 'Studies',
           rgbIndex: 5,
           facet: 'diseaseFocus',
-          initQueryRequest: {
-            entityId: studiesEntityId,
-            concreteType:
-              'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-            partMask:
-              SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS |
-              SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
-              SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
-            query: {
-              sql: studiesSql,
-              isConsistent: true,
-              limit: 25,
-              offset: 0,
-            },
-          },
+          sql: studiesSql,
         },
       },
       {
@@ -75,27 +165,13 @@ export const generateOrgConfig: ReturnSynapseConfigArray = (
     }
     return [
       {
-        name: 'QueryWrapperFlattened',
+        name: 'StandaloneQueryWrapper',
         props: {
           facetAliases,
           unitDescription: 'Studies',
           rgbIndex: 8,
           facet: 'diseaseFocus',
-          initQueryRequest: {
-            entityId: datasetsEntityId,
-            concreteType:
-              'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-            partMask:
-              SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS |
-              SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
-              SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
-            query: {
-              sql: datasetsSql,
-              isConsistent: true,
-              limit: 25,
-              offset: 0,
-            },
-          },
+          sql: datasetsSql,
         },
       },
       {
@@ -117,28 +193,14 @@ export const generateOrgConfig: ReturnSynapseConfigArray = (
     }
     return [
       {
-        name: 'QueryWrapperFlattened',
+        name: 'StandaloneQueryWrapper',
         props: {
           facetAliases,
           unitDescription: 'Files',
           title: 'Files',
           rgbIndex: 1,
           facet: 'assay',
-          initQueryRequest: {
-            entityId: filesSqlEntityId,
-            concreteType:
-              'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-            partMask:
-              SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS |
-              SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
-              SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
-            query: {
-              sql: filesSql,
-              isConsistent: true,
-              limit: 25,
-              offset: 0,
-            },
-          },
+          sql: filesSql,
         },
       },
     ]
@@ -148,27 +210,13 @@ export const generateOrgConfig: ReturnSynapseConfigArray = (
   }
   return [
     {
-      name: 'QueryWrapperFlattened',
+      name: 'StandaloneQueryWrapper',
       props: {
         facetAliases,
         unitDescription: 'Publications',
         rgbIndex: 0,
         facet: 'diseaseFocus',
-        initQueryRequest: {
-          entityId: publicationsEntityId,
-          concreteType:
-            'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-          partMask:
-            SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS |
-            SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
-            SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
-          query: {
-            sql: publicationsSql,
-            isConsistent: true,
-            limit: 25,
-            offset: 0,
-          },
-        },
+        sql: publicationsSql,
       },
     },
     {

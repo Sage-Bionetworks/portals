@@ -4,7 +4,7 @@ import { SynapseConfigArray } from 'types/portal-config'
 import { generateSynapseObject } from '../RouteResolver'
 import QueryCount from 'synapse-react-client/dist/containers/QueryCount'
 
-type StatefulButtonControlConfigs = {
+export type StatefulButtonControlConfigs = {
   synapseConfigArray: SynapseConfigArray
   name: string
   sql?: string
@@ -55,7 +55,7 @@ class StatefulButtonControl extends React.Component<
     ]
     const buttonControlProps: ButtonControlProps = {
       colors,
-      customRoutes: configs.map(el => el.name),
+      customRoutes: configs.map((el) => el.name),
       handleChanges: this.handleChange,
       isSelected: (val: string) => val === name,
     }
@@ -64,10 +64,10 @@ class StatefulButtonControl extends React.Component<
         <ButtonControl {...buttonControlProps} />
         {name && sql && entityId && (
           <h3 className="SRC-boldText queryCountHeader">
-            <QueryCount entityId={entityId} name={name} sql={sql} />{' '}
+            <QueryCount entityId={entityId} name={name} sql={sql} />
           </h3>
         )}
-        {synapseConfigArray.map(config => {
+        {synapseConfigArray.map((config) => {
           return (
             <React.Fragment key={JSON.stringify(config.props)}>
               {config.title && (

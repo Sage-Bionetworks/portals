@@ -1,12 +1,7 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { BaseRoute } from 'types/portal-config'
 import { buttonColors } from '../commonProps'
-import { generateOrgConfig } from './generateConfig'
-import { studiesEntityId } from '../studies'
-import { datasetsEntityId } from '../datasets'
-import { filesEntityId } from '../files'
-import { publicationsEntityId } from '../publications'
-
+import { generateOrgConfigImproved } from './generateConfig'
 const org = 'NTAP'
 
 export const ntap: BaseRoute = {
@@ -28,32 +23,7 @@ export const ntap: BaseRoute = {
       name: 'StatefulButtonControlWrapper',
       props: {
         ...buttonColors,
-        configs: [
-          {
-            name: 'Studies',
-            synapseConfigArray: generateOrgConfig(org, 'Studies'),
-            sql: generateOrgConfig(org, 'Studies', true),
-            entityId: studiesEntityId,
-          },
-          {
-            name: 'Datasets',
-            synapseConfigArray: generateOrgConfig(org, 'Dataset'),
-            sql: generateOrgConfig(org, 'Dataset', true),
-            entityId: datasetsEntityId,
-          },
-          {
-            name: 'Files',
-            synapseConfigArray: generateOrgConfig(org, 'Files'),
-            sql: generateOrgConfig(org, 'Files', true),
-            entityId: filesEntityId,
-          },
-          {
-            name: 'Publications',
-            synapseConfigArray: generateOrgConfig(org, 'Publications'),
-            sql: generateOrgConfig(org, 'Publications', true),
-            entityId: publicationsEntityId,
-          },
-        ],
+        configs: generateOrgConfigImproved(org),
       },
     },
   ],
