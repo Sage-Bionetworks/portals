@@ -65,11 +65,11 @@ export const generateSynapseObject = (
     <TokenContext.Consumer key={key}>
       {(value: string) => {
         const propsWithSearchAndToken = { ...props, searchParams, token: value }
+        // TODO: Understand why typescript is throwing an error below
         // @ts-ignore
         const synapseObjectWithTokenAndSearch: SynapseConfig = {
           props: propsWithSearchAndToken,
           ...rest,
-          name,
         }
         return generateSynapseObjectHelper(synapseObjectWithTokenAndSearch)
       }}
