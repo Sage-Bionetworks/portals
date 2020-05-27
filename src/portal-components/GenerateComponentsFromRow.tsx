@@ -102,9 +102,8 @@ export default class GenerateComponentsFromRow extends React.Component<
         const references: ReferenceList = []
         synapseConfigArray.forEach((el: RowSynapseConfig) => {
           if (el.resolveSynId && el.columnName) {
-            const { index, columnType } = mapColumnHeaderToRowIndex[
-              el.columnName
-            ]
+            const { index, columnType } =
+              mapColumnHeaderToRowIndex[el.columnName] ?? {}
             let value: string = row[index]
             if (
               columnType === EntityColumnType.STRING_LIST ||
@@ -283,7 +282,7 @@ export default class GenerateComponentsFromRow extends React.Component<
     queryResultBundle!.queryResult.queryResults.headers.forEach((el, index) => {
       mapColumnHeaderToRowIndex[el.name] = { index, columnType: el.columnType }
     })
-    const { index, columnType } = mapColumnHeaderToRowIndex[columnName]
+    const { index, columnType } = mapColumnHeaderToRowIndex[columnName] ?? {}
     let rawValue: string = row[index]
     if (!rawValue) {
       console.error('No value mapped for ', columnName)
