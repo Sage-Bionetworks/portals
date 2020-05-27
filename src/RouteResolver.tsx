@@ -59,7 +59,7 @@ export const generateSynapseObject = (
   searchParams?: any,
 ) => {
   // return the synapse object but with token/search params injected into its props from the context created in AppInitializer
-  const { props, name, ...rest } = synapseConfig
+  const { props, ...rest } = synapseConfig
   const key = JSON.stringify(props)
   return (
     <TokenContext.Consumer key={key}>
