@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
-import { ReactComponent as AcivityIconSvg } from './assets/activity-icon.svg'
 import { ReactComponent as DataIconSvg } from './assets/data-icon.svg'
 import { ReactComponent as InsightIconSvg } from './assets/insight-icon.svg'
 import { ReactComponent as MethodsIconSvg } from './assets/methods-icon.svg'
@@ -16,20 +15,12 @@ type LinkProps = {
 
 const links: LinkProps[] = [
   {
-    title: 'Community',
+    title: 'Research',
     icon: PeopleIconSvg,
     description:
       'Funded grant programs comprising institutions and investigators that are pursuing common cancer research themes with diverse approaches. This network drives the activity and output presented in this portal and provides a rich community for potential collaborations.',
     linkText: 'Explore Grants',
     to: 'Explore/Grants',
-  },
-  {
-    title: 'Research',
-    icon: AcivityIconSvg,
-    description:
-      'Question-driven projects and core services that define the scientific scope of each grant program and provide context to the contributed resources. Consortia projects represent the fundamental unit of work from which data, methods, and insights are produced.',
-    linkText: 'Explore Projects',
-    to: 'Explore/Projects',
   },
   {
     title: 'Data',

@@ -79,6 +79,7 @@ export const grants: HomeExploreConfig = {
       cardConfiguration: grantsCardConfiguration,
       shouldDeepLink: true,
       name: 'Grants',
+      loadingScreen,
       entityId,
       facetsToPlot: ['consortium', 'grantType'],
       // unitDescription,
