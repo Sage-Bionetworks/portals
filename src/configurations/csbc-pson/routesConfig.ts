@@ -194,7 +194,7 @@ const routes: GenericRoute[] = [
               {
                 name: 'GenerateComponentsFromRow',
                 props: {
-                  sql: `${grantsSql} AND grantType = 'U54'`,
+                  sql: `${grantsSql}`,
                   sqlOperator: 'LIKE',
                   entityId: grantsEntityId,
                   synapseConfigArray: [
@@ -205,7 +205,8 @@ const routes: GenericRoute[] = [
                       tableSqlKeys: ['grantName'],
                       props: {
                         sqlOperator: 'LIKE',
-                        sql: projectsSql,
+                        loadingScreen,
+                        sql: `${projectsSql} where grantType LIKE '%U54%'`,
                         entityId: projectsEntityId,
                         ...projectCardConfiguration,
                       },
