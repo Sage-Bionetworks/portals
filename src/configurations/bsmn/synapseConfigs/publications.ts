@@ -57,7 +57,7 @@ const publications: HomeExploreConfig = {
       name: 'Publications',
       cardConfiguration: publicationsCardConfiguration,
       sql,
-      facetsToPlot: ['grantNumber'],
+      facetsToPlot: ['grantNumber', 'year', 'journal'],
       // searchConfiguration: {
       //   searchable: [
       //     {

@@ -30,6 +30,7 @@ export const studyCardConfiguration: CardConfiguration = {
       'diagnosis',
       'organs',
       'tissues',
+      'tissueFraction',
       'dataTypes',
       'project',
       'ndaStudy',
@@ -96,6 +97,7 @@ const studies: HomeExploreConfig = {
         'organs',
         'tissues',
         'dataTypes',
+        'tissueFraction',
       ],
       // searchConfiguration: {
       //   searchable: [
