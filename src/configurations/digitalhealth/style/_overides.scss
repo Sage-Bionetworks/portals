@@ -12,13 +12,41 @@ $primary-action-color: #245879;
   }
 }
 
-td.SRC_noBorderTop {
+// targets all columns that are 4 from the beginning
+// https://developer.mozilla.org/en-US/docs/Web/CSS/:nth-child
+// relying on having specified the order in the studies sql
+td.SRC_noBorderTop:nth-child(n + 4) {
   .markdown.markdown-inline {
     a {
+      font-size: 0px;
       white-space: nowrap;
     }
-    a::after {
+    a::before {
+      font-size: 14px;
       font-family: 'Font Awesome 5 Free';
+      content: '\f05a';
+    }
+    a::after {
+      font-size: 14px;
+      padding-left: 3px;
+      content: '  More Info';
+    }
+  }
+}
+
+.PORTALS-1365 {
+  .markdown {
+    a {
+      font-size: 0px;
+    }
+    a::before {
+      font-size: 14px;
+      content: 'How to access the data     ';
+    }
+    a::after {
+      font-size: 14px;
+      font-family: 'Font Awesome 5 Free';
+      padding-left: 3px;
       content: '\f35d';
     }
   }

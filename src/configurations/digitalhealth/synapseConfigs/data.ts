@@ -6,7 +6,7 @@ import { LabelLinkConfig } from 'synapse-react-client/dist/containers/CardContai
 
 const unitDescription = 'Data'
 const rgbIndex = 0
-export const dataSql = `SELECT id, study, project, projectId, numberParticipants,reportedOutcome,dataCollectionMethod,deviceType,devicePlatform,deviceLocation,sensorType,diagnosis,digitalAssessmentCategory,digitalAssessmentDetails,dataType,dataSubtype,dataDescriptionLocation, dataAccessInstructions FROM syn21994970 where dhPortalIndex = 'TRUE'`
+export const dataSql = `SELECT id, studyOrProject, projectId, numberParticipants,reportedOutcome,dataCollectionMethod,deviceType,devicePlatform,deviceLocation,sensorType,diagnosis,digitalAssessmentCategory,digitalAssessmentDetails,dataType,dataSubtype,dataDescriptionLocation, dataAccessInstructions FROM syn21994970 where dhPortalIndex = 'TRUE'`
 export const dataEntityId = 'syn21994970'
 const entityId = dataEntityId
 const sql = dataSql
@@ -21,16 +21,14 @@ export const dataColumnLinks: LabelLinkConfig = [
     isMarkdown: true,
   },
   {
+    matchColumnName: 'studyOrProject',
+    isMarkdown: true,
+  },
+  {
     matchColumnName: 'study',
     isMarkdown: false,
     URLColumnName: 'study',
     baseURL: 'Explore/Studies/DetailsPage',
-  },
-  {
-    matchColumnName: 'project',
-    isMarkdown: false,
-    URLColumnName: 'study',
-    baseURL: 'Explore/Projects/DetailsPage',
   },
 ]
 
