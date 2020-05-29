@@ -29,7 +29,7 @@ export const projectSchema: GenericCardSchema = {
     'digitalAssessmentCategory',
     'digitalAssessmentDetails',
     'dataUsed',
-    'externalDataUsed',
+    // 'externalDataUsed',
     'investigator',
     'keywords',
   ],
@@ -46,15 +46,13 @@ export const projectsCardConfiguration: CardConfiguration = {
   },
   labelLinkConfig: [
     {
-      isMarkdown: false,
-      matchColumnName: 'dataUsed',
-      URLColumnName: 'id',
-      baseURL: 'Explore/Studies/DetailsPage',
-    },
-    {
       isMarkdown: true,
-      matchColumnName: 'externalDataUsed',
+      matchColumnName: 'dataUsed',
     },
+    // {
+    //   isMarkdown: true,
+    //   matchColumnName: 'externalDataUsed',
+    // },
   ],
   loadingScreen,
 }

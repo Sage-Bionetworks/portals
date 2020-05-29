@@ -115,9 +115,10 @@ export const details: GenerateComponentsFromRowProps = {
     {
       name: 'Markdown',
       props: {},
-      injectMarkdown: false,
-      columnName: 'accessRequirements',
-      title: 'Access requirements',
+      injectMarkdown: true,
+      columnName: 'dataAccessInstructions',
+      title: 'Data Access',
+      className: 'PORTALS-1365',
     },
     {
       name: 'Markdown',
