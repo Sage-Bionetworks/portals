@@ -24,12 +24,6 @@ export const dataColumnLinks: LabelLinkConfig = [
     matchColumnName: 'studyOrProject',
     isMarkdown: true,
   },
-  {
-    matchColumnName: 'study',
-    isMarkdown: false,
-    URLColumnName: 'study',
-    baseURL: 'Explore/Studies/DetailsPage',
-  },
 ]
 
 const data: HomeExploreConfig = {

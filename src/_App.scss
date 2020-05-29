@@ -294,7 +294,7 @@ button.dropdown-toggle.nav-button:hover {
   background-image: getHeader('config/style');
   background-repeat: no-repeat;
   background-size: cover;
-  height: 395px;
+  height: fit-content;
 }
 
 .header-text {
