@@ -6649,11 +6649,7 @@ locate-path@^5.0.0:
   dependencies:
     p-locate "^4.1.0"
 
-lodash-es@4.17.5:
-  version "4.17.5"
-  resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.5.tgz#9fc6e737b1c4d151d8f9cae2247305d552ce748f"
-
-lodash-es@^4.17.15:
+lodash-es@>=4.17.14, lodash-es@^4.17.15:
   version "4.17.15"
   resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.15.tgz#21bd96839354412f23d7a10340e5eac6ee455d78"
 
@@ -10377,10 +10373,10 @@ symbol-tree@^3.2.2:
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.4.tgz#430637d248ba77e078883951fb9aa0eed7c63fa2"
 
-synapse-react-client@1.14.16:
-  version "1.14.16"
-  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-1.14.16.tgz#2c0fc2e9f85b0e2e5b23b289079b7b745971d55e"
-  integrity sha512-wmprUvjcBRY4jhpuyFsZUgKbsLJsnYdRbkIK0TMMRLWJaTmM07bsjx/ZsVb7DJdEY0ZFi3UY5Dt8+6R6iTEsQQ==
+synapse-react-client@1.14.17:
+  version "1.14.17"
+  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-1.14.17.tgz#f863b16358a3531dbab0a438ed2c20084d04ee3e"
+  integrity sha512-6q7yNfuSY/6DTgiXiwh+kMpVn2CSGMdJYguGW3iWGzeOE6LjUz78rRGi2cN+yJ94/kGZDqkttavcrjAWHOzfoQ==
   dependencies:
     "@fortawesome/fontawesome-free" "^5.13.0"
     "@fortawesome/fontawesome-svg-core" "^1.2.4"
@@ -10406,7 +10402,7 @@ synapse-react-client@1.14.16:
     json-rules-engine "^4.0.0"
     json-schema-ref-parser "^7.1.1"
     katex "0.11.1"
-    lodash-es "4.17.5"
+    lodash-es ">=4.17.14"
     markdown-it "^8.4.2"
     markdown-it-br "^1.0.0"
     markdown-it-center-text "^1.0.4"
