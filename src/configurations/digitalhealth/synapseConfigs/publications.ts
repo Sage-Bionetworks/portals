@@ -75,6 +75,42 @@ export const publications: HomeExploreConfig = {
       cardConfiguration: publicationCardConfiguration,
       loadingScreen,
       visibleColumnCount: Infinity,
+      searchConfiguration: {
+        searchable: [
+          {
+            columnName: 'Abstract',
+            hintText: '',
+          },
+          {
+            columnName: 'Author',
+            hintText: 'LastName',
+          },
+          {
+            columnName: 'Diagnosis',
+            hintText: "Parkinson's",
+          },
+          {
+            columnName: 'Journal',
+            hintText: '',
+          },
+          {
+            columnName: 'Title',
+            hintText: "Parkinson's",
+          },
+          {
+            columnName: 'Year',
+            hintText: '2018',
+          },
+          {
+            columnName: 'digitalAssessmentCategory',
+            hintText: 'tremor',
+          },
+          {
+            columnName: 'sensorType',
+            hintText: 'accelerometer',
+          },
+        ],
+      },
     },
   },
 }

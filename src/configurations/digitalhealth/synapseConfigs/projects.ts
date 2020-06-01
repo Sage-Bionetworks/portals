@@ -107,6 +107,46 @@ export const projects: HomeExploreConfig = {
         'sensorType',
         'digitalAssessmentCategory',
       ],
+      searchConfiguration: {
+        searchable: [
+          {
+            columnName: 'diagnosis',
+            hintText: "Parkinson's",
+          },
+          {
+            columnName: 'digitalAssessmentCategory',
+            hintText: 'tremor',
+          },
+          {
+            columnName: 'digitalAssessmentDetails',
+            hintText: 'walking',
+          },
+          {
+            columnName: 'intervention',
+            hintText: 'levodopa',
+          },
+          {
+            columnName: 'investigator',
+            hintText: 'LastName',
+          },
+          {
+            columnName: 'keywords',
+            hintText: 'neurodegeneration',
+          },
+          {
+            columnName: 'reportedOutcome',
+            hintText: 'MDS-UPDRS',
+          },
+          {
+            columnName: 'study',
+            hintText: 'mPower',
+          },
+          {
+            columnName: 'studyDescriptionLocation',
+            hintText: '',
+          },
+        ],
+      },
     },
   },
 }
@@ -125,7 +165,7 @@ export const details: GenerateComponentsFromRowProps = {
     {
       name: 'StandaloneQueryWrapper',
       tableSqlKeys: ['projectId'],
-      columnName: 'studyDescriptionLocation',
+      columnName: 'id',
       title: 'Data Files',
       props: dataDetailPageProps,
       injectMarkdown: false,

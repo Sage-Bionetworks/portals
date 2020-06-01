@@ -80,6 +80,26 @@ export const tools: HomeExploreConfig = {
         'softwareLanguage',
         'softwareType',
       ],
+      searchConfiguration: {
+        searchable: [
+          {
+            columnName: 'digitalAssessmentCategory',
+            hintText: 'tremor',
+          },
+          {
+            columnName: 'inputDataType',
+            hintText: 'accelerometer',
+          },
+          {
+            columnName: 'outputDataType',
+            hintText: 'heart rate',
+          },
+          {
+            columnName: 'softwareAuthor',
+            hintText: 'LastName',
+          },
+        ],
+      },
     },
   },
 }
