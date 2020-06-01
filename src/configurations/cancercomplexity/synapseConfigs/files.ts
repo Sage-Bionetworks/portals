@@ -1,6 +1,7 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from 'types/portal-config'
 import loadingScreen from '../loadingScreen'
+import facetAliases from '../facetAliases'
 
 const sql =
   'SELECT fileName, title, species, dataFormat, assay, tumorType, gender, tissue, grantName, grantType, consortium FROM syn9630847'
@@ -48,6 +49,43 @@ export const files: HomeExploreConfig = {
       loadingScreen,
       visibleColumnCount: Infinity,
       tableConfiguration: {},
+      facetAliases,
+      searchConfiguration: {
+        searchable: [
+          {
+            columnName: 'tummorType',
+            hintText: 'Skin Cutaneous Melanoma',
+          },
+          {
+            columnName: 'tissue',
+            hintText: 'Prostate gland',
+          },
+          {
+            columnName: 'assay',
+            hintText: 'RNA-seq',
+          },
+          {
+            columnName: 'dataFormat',
+            hintText: 'bam',
+          },
+          {
+            columnName: 'species',
+            hintText: 'Human',
+          },
+          {
+            columnName: 'gender',
+            hintText: 'Female',
+          },
+          {
+            columnName: 'grantName',
+            hintText: 'immunity',
+          },
+          {
+            columnName: 'grant',
+            hintText: 'CA202123',
+          },
+        ],
+      },
     },
   },
 }

@@ -82,31 +82,31 @@ export const grants: HomeExploreConfig = {
       loadingScreen,
       entityId,
       facetsToPlot: ['consortium', 'grantType'],
-      // unitDescription,
-      // searchConfiguration: {
-      //   searchable: [
-      //     {
-      //       columnName: 'grantName',
-      //       hintText: 'immunity',
-      //     },
-      //     {
-      //       columnName: 'abstract',
-      //       hintText: 'metastasis',
-      //     },
-      //     {
-      //       columnName: 'institution',
-      //       hintText: 'Vanderbilt',
-      //     },
-      //     {
-      //       columnName: 'investigator',
-      //       hintText: 'LastName',
-      //     },
-      //     {
-      //       columnName: 'grantNumber',
-      //       hintText: 'CA202123',
-      //     },
-      //   ],
-      // },
+      unitDescription,
+      searchConfiguration: {
+        searchable: [
+          {
+            columnName: 'grantName',
+            hintText: 'immunity',
+          },
+          {
+            columnName: 'abstract',
+            hintText: 'metastasis',
+          },
+          {
+            columnName: 'institution',
+            hintText: 'Vanderbilt',
+          },
+          {
+            columnName: 'investigator',
+            hintText: 'LastName',
+          },
+          {
+            columnName: 'grantNumber',
+            hintText: 'CA202123',
+          },
+        ],
+      },
     },
   },
 }

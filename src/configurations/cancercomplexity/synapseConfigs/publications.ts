@@ -98,6 +98,58 @@ export const publications: HomeExploreConfig = {
       name: 'Publications',
       loadingScreen,
       facetAliases,
+      searchConfiguration: {
+        searchable: [
+          {
+            columnName: 'publicationTitle',
+            hintText: 'methylation',
+          },
+          {
+            columnName: 'authors',
+            hintText: 'LastName',
+          },
+          {
+            columnName: 'journal',
+            hintText: 'Nucleic Acids Res',
+          },
+          {
+            columnName: 'doi',
+            hintText: '10.1158/2159-8290.CD-17-0222',
+          },
+          {
+            columnName: 'pubMedId',
+            hintText: '28053997',
+          },
+          {
+            columnName: 'keywords',
+            hintText: 'scRNA-seq',
+          },
+          {
+            columnName: 'tummorType',
+            hintText: 'Skin Cutaneous Melanoma',
+          },
+          {
+            columnName: 'tissue',
+            hintText: 'Prostate gland',
+          },
+          {
+            columnName: 'assay',
+            hintText: 'RNA-seq',
+          },
+          {
+            columnName: 'grantName',
+            hintText: 'immunity',
+          },
+          {
+            columnName: 'grant',
+            hintText: 'CA202123',
+          },
+          {
+            columnName: 'dataset',
+            hintText: 'PRJNA312905',
+          },
+        ],
+      },
     },
   },
 }
