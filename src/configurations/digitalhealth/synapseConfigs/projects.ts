@@ -125,7 +125,7 @@ export const details: GenerateComponentsFromRowProps = {
     {
       name: 'StandaloneQueryWrapper',
       tableSqlKeys: ['projectId'],
-      columnName: 'studyDescriptionLocation',
+      columnName: 'id',
       title: 'Data Files',
       props: dataDetailPageProps,
       injectMarkdown: false,

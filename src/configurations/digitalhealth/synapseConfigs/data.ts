@@ -3,10 +3,11 @@ import { SynapseConstants } from 'synapse-react-client'
 import facetAliases from '../facetAliases'
 import loadingScreen from '../loadingScreen'
 import { LabelLinkConfig } from 'synapse-react-client/dist/containers/CardContainerLogic'
+import { StandaloneQueryWrapperProps } from 'portal-components/StandaloneQueryWrapper'
 
 const unitDescription = 'Data'
 const rgbIndex = 0
-export const dataSql = `SELECT id, studyOrProject, projectId, numberParticipants,reportedOutcome,dataCollectionMethod,deviceType,devicePlatform,deviceLocation,sensorType,diagnosis,digitalAssessmentCategory,digitalAssessmentDetails,dataType,dataSubtype,dataDescriptionLocation, dataAccessInstructions FROM syn21994970 where dhPortalIndex = 'TRUE'`
+export const dataSql = `SELECT id, studyOrProject, numberParticipants,reportedOutcome,dataCollectionMethod,deviceType,devicePlatform,deviceLocation,sensorType,diagnosis,digitalAssessmentCategory,digitalAssessmentDetails,dataType,dataSubtype,dataDescriptionLocation, dataAccessInstructions FROM syn21994970 where dhPortalIndex = 'TRUE'`
 export const dataEntityId = 'syn21994970'
 const entityId = dataEntityId
 const sql = dataSql
@@ -80,12 +81,13 @@ const data: HomeExploreConfig = {
   },
 }
 
-export const dataDetailPageProps = {
+export const dataDetailPageProps: StandaloneQueryWrapperProps = {
   sql: dataSql,
   rgbIndex,
   title: 'Data Files',
   columnLinks: dataColumnLinks,
   hideDownload: true,
+  sqlOperator: '=',
 }
 
 export default data
