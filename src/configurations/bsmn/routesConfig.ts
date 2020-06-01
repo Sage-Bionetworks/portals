@@ -115,6 +115,7 @@ const routes: GenericRoute[] = [
                 props: {
                   isHeader: true,
                   ...studyCardConfiguration,
+                  titleLinkConfig: undefined,
                   sql: studiesSql,
                   entityId: studiesEntityId,
                   isAlignToLeftNav: true,

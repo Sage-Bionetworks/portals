@@ -18,7 +18,7 @@ export const toolCardConfiguration: CardConfiguration = {
     type: SynapseConstants.COMPUTATIONAL,
     title: 'title',
     description: 'toolDescription',
-    secondaryLabels: ['toolLink', 'contributor', 'project'],
+    secondaryLabels: ['toolLink', 'contributor', 'institutions', 'project'],
   },
   secondaryLabelLimit: 4,
   labelLinkConfig: [
@@ -61,7 +61,7 @@ const tools: HomeExploreConfig = {
       sql,
       shouldDeepLink: true,
       hideDownload: true,
-      facetsToPlot: ['contributor'],
+      facetsToPlot: ['contributor', 'institutions'],
       name: 'Tools',
       cardConfiguration: toolCardConfiguration,
       // searchConfiguration: {

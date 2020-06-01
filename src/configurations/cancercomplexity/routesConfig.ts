@@ -1,12 +1,5 @@
 import { GenericRoute } from 'types/portal-config'
-import {
-  publications,
-  files,
-  datasets,
-  grants,
-  projects,
-  tools,
-} from './synapseConfigs'
+import { publications, files, datasets, grants, tools } from './synapseConfigs'
 import { SynapseConstants } from 'synapse-react-client'
 import {
   projectsSql,
@@ -147,7 +140,7 @@ const routes: GenericRoute[] = [
       {
         name: 'AboutPortal',
         props: {
-          title: 'About the Integrative Cancer Research Knowledge Portal',
+          title: 'About the Cancer Complexity Knowledge Portal',
           ownerId: 'syn21498902',
           wikiId: '601366',
           cardProps: [
@@ -201,7 +194,7 @@ const routes: GenericRoute[] = [
               {
                 name: 'GenerateComponentsFromRow',
                 props: {
-                  sql: grantsSql,
+                  sql: `${grantsSql}`,
                   sqlOperator: 'LIKE',
                   entityId: grantsEntityId,
                   synapseConfigArray: [
@@ -212,7 +205,8 @@ const routes: GenericRoute[] = [
                       tableSqlKeys: ['grantName'],
                       props: {
                         sqlOperator: 'LIKE',
-                        sql: projectsSql,
+                        loadingScreen,
+                        sql: `${projectsSql} where grantType LIKE '%U54%'`,
                         entityId: projectsEntityId,
                         ...projectCardConfiguration,
                       },
@@ -260,21 +254,6 @@ const routes: GenericRoute[] = [
                 },
               },
             ],
-          },
-        ],
-      },
-      {
-        name: 'Projects',
-        to: '/Explore/Projects',
-        isNested: false,
-        synapseConfigArray: [
-          {
-            name: 'RouteButtonControlWrapper',
-            title: 'EXPLORE',
-            props: {
-              ...routeButtonControlWrapperProps,
-              synapseConfig: projects.explorePageSynapseObject,
-            },
           },
         ],
       },
