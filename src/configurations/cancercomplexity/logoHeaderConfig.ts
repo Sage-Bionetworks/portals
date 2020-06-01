@@ -1,6 +1,6 @@
 import { LogoConfig } from 'types/portal-config'
 
 const logoHeader: LogoConfig = {
-  name: 'TODO'
+  name: 'Cancer Complexity Knowledge Portal',
 }
 export default logoHeader
