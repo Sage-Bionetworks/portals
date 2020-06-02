@@ -107,7 +107,7 @@ export const tools: HomeExploreConfig = {
             hintText: 'immunity',
           },
           {
-            columnName: 'grant',
+            columnName: 'grantNumber',
             hintText: 'CA202123',
           },
         ],
