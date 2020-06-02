@@ -25,6 +25,7 @@ export type HomePageHeaderConfig = {
   title: string
   showBlur?: boolean
   centerText?: boolean
+  HeaderSvg?: any
 }
 
 // Generic SynapseConfigArray Representation -- maps each component to its props
