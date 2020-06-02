@@ -17,7 +17,7 @@ const rgbIndex = 3
 export const grantsSchema: GenericCardSchema = {
   type: 'Grant',
   title: 'grantName',
-  subTitle: 'institution',
+  subTitle: 'grantInstitution',
   description: 'abstract',
   secondaryLabels: [
     'investigator',
@@ -94,7 +94,7 @@ export const grants: HomeExploreConfig = {
             hintText: 'metastasis',
           },
           {
-            columnName: 'institution',
+            columnName: 'grantInstitution',
             hintText: 'Vanderbilt',
           },
           {

@@ -128,7 +128,7 @@ export const datasets: HomeExploreConfig = {
             hintText: 'immunity',
           },
           {
-            columnName: 'grant',
+            columnName: 'grantNumber',
             hintText: 'CA202123',
           },
           {
