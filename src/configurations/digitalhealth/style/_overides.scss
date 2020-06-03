@@ -4,7 +4,7 @@ $primary-action-color: #245879;
 #footer,
 #header {
   height: fit-content;
-  background-image: none !important;
+  background-image: none;
 }
 
 #header {
@@ -17,7 +17,7 @@ $primary-action-color: #245879;
 }
 
 #footer {
-  background-color: #3e7293 !important;
+  background-color: #3e7293;
 }
 
 .SRC-chart-link {
