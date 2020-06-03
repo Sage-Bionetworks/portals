@@ -98,6 +98,10 @@ export const tools: HomeExploreConfig = {
             columnName: 'softwareAuthor',
             hintText: 'LastName',
           },
+          {
+            columnName: 'softwareName',
+            hintText: '',
+          },
         ],
       },
     },

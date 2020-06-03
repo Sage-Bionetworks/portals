@@ -1,9 +1,23 @@
 $primary-text-color: #245879;
 $primary-action-color: #245879;
 
-#header,
+#footer,
+#header {
+  height: fit-content;
+  background-image: none;
+}
+
+#header {
+  position: relative;
+  .container-fluid {
+    position: absolute;
+    top: 20%;
+    width: 80%;
+  }
+}
+
 #footer {
-  background-blend-mode: multiply;
+  background-color: #3e7293;
 }
 
 .SRC-chart-link {
