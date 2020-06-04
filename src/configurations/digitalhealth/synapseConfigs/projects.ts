@@ -173,7 +173,7 @@ export const details: GenerateComponentsFromRowProps = {
     {
       name: 'CardContainerLogic',
       tableSqlKeys: ['synID'],
-      columnName: 'studyDescriptionLocation',
+      columnName: 'id',
       title: 'Publications',
       injectMarkdown: false,
       props: publicationDetailPageProps,

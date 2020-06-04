@@ -10,23 +10,33 @@ export const Header: React.SFC<{}> = () => {
     HeaderSvg,
   } = headerConfig
   const hasImg = HeaderSvg !== undefined
+  const content = (
+    <>
+      <div
+        className={`header-text ${showBlur ? 'blur' : ''} ${
+          centerText ? 'center-text' : ''
+        }`}
+      >
+        <h2>{title}</h2>
+        <p className="normal-weight">{summary}</p>
+      </div>
+    </>
+  )
   return (
     <header id="header">
-      {hasImg && <HeaderSvg />}
-      <div className="container-fluid">
-        <div className="row">
-          <div className="col-md-offset-1 col-md-10">
-            <div
-              className={`header-text ${showBlur ? 'blur' : ''} ${
-                centerText ? 'center-text' : ''
-              }`}
-            >
-              <h2>{title}</h2>
-              <p className="normal-weight">{summary}</p>
-            </div>
+      {hasImg && (
+        <>
+          <HeaderSvg />
+          {content}
+        </>
+      )}
+      {!hasImg && (
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-md-offset-1 col-md-10">{content}</div>
           </div>
         </div>
-      </div>
+      )}
     </header>
   )
 }
