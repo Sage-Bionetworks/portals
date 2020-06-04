@@ -21,7 +21,7 @@ import {
   publicationsCardConfiguration,
   publicationEntityId,
 } from './synapseConfigs/publications'
-const homeLimit = 4
+const homeLimit = 3
 
 const routes: GenericRoute[] = [
   {
