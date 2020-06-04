@@ -9046,7 +9046,7 @@ react-sizeme@^2.6.12:
     shallowequal "^1.1.0"
     throttle-debounce "^2.1.0"
 
-react-spinners@^0.8.4:
+react-spinners@^0.8.3:
   version "0.8.3"
   resolved "https://registry.yarnpkg.com/react-spinners/-/react-spinners-0.8.3.tgz#d08ed753aec4a7ef9f5d9b907ee0161271c932ee"
   integrity sha512-fuYNjH0megp5FLuUqQXWM9mPgBXUjvYD6IkMOiwNGOOlI2UdOP1ZC3vejUAa3Y/q4qWJ6yx8rjfMjIBgEji+9A==

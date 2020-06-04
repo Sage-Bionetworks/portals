@@ -4,7 +4,7 @@ import { ReactComponent as HeaderImg } from './style/dna_header.svg'
 
 const homePageHeader: HomePageHeaderConfig = {
   summary: <>Description of Digital Health portal in headerConfig.tsx</>,
-  title: 'Welcome to the Digital Health Portal in headerConfig.tsx',
+  title: 'Welcome to the Digital Health Portal',
   showBlur: true,
   HeaderSvg: HeaderImg, // need's to be direct svg import for proper scaling
 }
