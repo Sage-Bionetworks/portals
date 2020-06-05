@@ -6,6 +6,10 @@ $primary-action-color: #47337d;
   background-blend-mode: multiply;
 }
 
+.nav-logo {
+  height: 65px;
+}
+
 .SRC-chart-link {
   a {
     background: $primary-action-color !important;
