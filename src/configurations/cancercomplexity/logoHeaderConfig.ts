@@ -1,6 +1,7 @@
 import { LogoConfig } from 'types/portal-config'
+import icon from './style/CancerComplexityKnowledgePortal.svg'
 
 const logoHeader: LogoConfig = {
-  name: 'Cancer Complexity Knowledge Portal',
+  icon,
 }
 export default logoHeader
