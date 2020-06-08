@@ -97,14 +97,6 @@ const studies: HomeExploreConfig = {
       shouldDeepLink: true,
       cardConfiguration: studyCardConfiguration,
       facetAliases,
-      facetsToPlot: [
-        'studyStatus',
-        'dataStatus',
-        'institutions',
-        'fundingAgency',
-        'manifestation',
-        'diseaseFocus',
-      ],
     },
   },
 }
