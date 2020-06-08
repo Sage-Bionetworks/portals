@@ -52,7 +52,6 @@ const datasets: HomeExploreConfig = {
       name: 'Datasets',
       entityId,
       facetAliases,
-      facetsToPlot: ['diseaseFocus', 'tumorType', 'fundingAgency'],
     },
   },
 }

@@ -77,14 +77,6 @@ const publications: HomeExploreConfig = {
       shouldDeepLink: true,
       name: 'Publications',
       cardConfiguration: publicationsCardConfiguration,
-      facetsToPlot: [
-        'fundingAgency',
-        'journal',
-        'year',
-        'studyName',
-        'diseaseFocus',
-        'manifestation',
-      ],
       facetAliases,
       // searchConfiguration: {
       //   searchable: [
