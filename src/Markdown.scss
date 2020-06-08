@@ -34,8 +34,7 @@
     padding: 0;
   }
 
-  // only select anchors without SRC-primary-button class
-  a:not(.SRC-primary-button),
+  a,
   details > summary {
     font-weight: 700;
     color: $primary-action-color;

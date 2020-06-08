@@ -13,6 +13,12 @@ $primary-action-color: #245879;
     position: absolute;
     top: 20%;
     min-height: 50%;
+    @media only screen and (max-width: 1200px) {
+      top: 5%;
+      width: 90%;
+      left: 5%;
+      height: 90%;
+    }
     height: fit-content;
     h2 {
       margin-bottom: 20px;
@@ -72,6 +78,10 @@ td.SRC_noBorderTop:nth-child(n + 4) {
       content: '\f35d';
     }
   }
+}
+
+.AboutPage {
+  margin-top: 25px;
 }
 
 // Since scss breaks if a file is missing in a local url link these functinons must get manually overwitten

@@ -26,6 +26,7 @@ export const publicationSchema: GenericCardSchema = {
     'doi',
     'PMID',
     'Study',
+    'Tools',
     'sensorType',
     'digitalAssessmentCategory',
   ],
@@ -35,6 +36,14 @@ export const publicationSchema: GenericCardSchema = {
 export const publicationCardConfiguration: CardConfiguration = {
   type: SynapseConstants.GENERIC_CARD,
   genericCardSchema: publicationSchema,
+  labelLinkConfig: [
+    {
+      matchColumnName: 'Tools',
+      URLColumnName: 'softwareName',
+      baseURL: 'Explore/Tools/DetailsPage',
+      isMarkdown: false,
+    },
+  ],
   loadingScreen,
 }
 
@@ -108,6 +117,10 @@ export const publications: HomeExploreConfig = {
           {
             columnName: 'sensorType',
             hintText: 'accelerometer',
+          },
+          {
+            columnName: 'Tools',
+            hintText: '',
           },
         ],
       },

@@ -1,5 +1,5 @@
 import { SynapseConstants } from 'synapse-react-client'
-import { HomeExploreConfig } from 'types/portal-config'
+import { HomeExploreConfig, SynapseConfigArray } from 'types/portal-config'
 import loadingScreen from '../loadingScreen'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import {
@@ -115,3 +115,22 @@ export const toolsDetailPageProps: CardContainerLogicProps = {
   sqlOperator: 'LIKE',
   facetAliases,
 }
+
+export const toolsDetailsLandingPage: SynapseConfigArray = [
+  {
+    name: 'CardContainerLogic',
+    isOutsideContainer: true,
+    props: {
+      isHeader: true,
+      isAlignToLeftNav: true,
+      backgroundColor: '#5bb0b5',
+      ...toolsCardConfiguration,
+      titleLinkConfig: undefined,
+      facetAliases,
+      genericCardSchema: toolsSchema,
+      rgbIndex,
+      sql,
+      entityId,
+    },
+  },
+]

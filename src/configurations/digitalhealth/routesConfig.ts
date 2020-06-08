@@ -3,6 +3,7 @@ import { publications, studies, data, tools, projects } from './synapseConfigs'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
 import { studyDetailPage } from './synapseConfigs/studies'
 import { projectDetailPage } from './synapseConfigs/projects'
+import { toolsDetailsLandingPage } from './synapseConfigs/tools'
 
 const routes: GenericRoute[] = [
   {
@@ -79,7 +80,7 @@ const routes: GenericRoute[] = [
       {
         name: 'Tools',
         to: '/Explore/Tools',
-        isNested: false,
+        isNested: true,
         synapseConfigArray: [
           {
             name: 'RouteButtonControlWrapper',
@@ -88,6 +89,14 @@ const routes: GenericRoute[] = [
               ...routeButtonControlWrapperProps,
               synapseConfig: tools.explorePageSynapseObject,
             },
+          },
+        ],
+        routes: [
+          {
+            name: 'DetailsPage',
+            to: '/Explore/Tools/DetailsPage',
+            isNested: false,
+            synapseConfigArray: toolsDetailsLandingPage,
           },
         ],
       },
@@ -115,9 +124,9 @@ const routes: GenericRoute[] = [
     synapseConfigArray: [
       {
         name: 'Markdown',
+        className: 'AboutPage',
         props: {
-          ownerId: 'syn7080714',
-          wikiId: '470467',
+          ownerId: 'syn22130826',
         },
       },
     ],
