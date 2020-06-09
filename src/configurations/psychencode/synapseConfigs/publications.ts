@@ -1,11 +1,11 @@
 import { SynapseConstants } from 'synapse-react-client'
-import { HomeExploreConfig } from 'types/portal-config'
+import { SynapseConfig } from 'types/portal-config'
 import loadingScreen from '../loadingScreen'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
-import { facetAliases, detailPageLinks } from './commonProps'
+import { facetAliases } from './commonProps'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
-export const publicationSql = 'SELECT * FROM syn10923842'
-export const publicationEntityId = 'syn10923842'
+export const publicationSql = 'SELECT * FROM syn20448807'
+export const publicationEntityId = 'syn20448807'
 const entityId = publicationEntityId
 const sql = publicationSql
 const unitDescription = 'Publications'
@@ -13,25 +13,10 @@ const rgbIndex = 1
 
 export const publicationSchema: GenericCardSchema = {
   type: SynapseConstants.PUBLICATION,
-  title: 'Title',
-  subTitle: 'Authors',
+  title: 'title',
+  subTitle: 'authors',
   description: 'abstract',
-  secondaryLabels: [
-    'Journal',
-    'Publication Year',
-    'Theme',
-    'diseaseType',
-    'tissue_or_organ.sv',
-    'experimentalStrategy',
-    'Keywords',
-    'DOI',
-    'centerName',
-    'Consortium',
-    'grantType',
-    'datasets',
-    'studies',
-  ],
-  link: 'PubMed',
+  secondaryLabels: ['year', 'journal', 'study', 'grants', 'DOI', 'pubmedId'],
 }
 
 export const publicationsCardConfiguration: CardConfiguration = {
@@ -39,133 +24,54 @@ export const publicationsCardConfiguration: CardConfiguration = {
   genericCardSchema: publicationSchema,
   loadingScreen,
   secondaryLabelLimit: 5,
-  labelLinkConfig: detailPageLinks,
 }
 
-export const publications: HomeExploreConfig = {
-  homePageSynapseObject: {
-    name: 'QueryWrapperFlattened',
-    props: {
-      rgbIndex,
-      unitDescription,
-      loadingScreen,
-      facet: 'Consortium',
-      link: 'Explore/Publications',
-      linkText: 'Explore Publications',
-      initQueryRequest: {
-        entityId,
-        concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-        partMask:
-          SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
-          SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
-        query: {
-          sql,
-          isConsistent: true,
-          limit: 25,
-          offset: 0,
-        },
-      },
-    },
-  },
-  explorePageSynapseObject: {
-    name: 'QueryWrapperMenu',
-    props: {
-      rgbIndex,
-      unitDescription,
-      entityId,
-      shouldDeepLink: true,
-
-      cardConfiguration: publicationsCardConfiguration,
-      stackedBarChartConfiguration: {
-        loadingScreen,
-      },
-      searchConfiguration: {
-        searchable: [
-          {
-            columnName: 'Title',
-            hintText: 'methylation',
-          },
-          {
-            columnName: 'Authors',
-            hintText: 'LastName',
-          },
-          {
-            columnName: 'Keywords',
-            hintText: 'scRNA-seq',
-          },
-          {
-            columnName: 'Journal',
-            hintText: 'Nucleic Acids Res',
-          },
-          {
-            columnName: 'DOI',
-            hintText: '10.1158/2159-8290.CD-17-0222',
-          },
-          {
-            columnName: 'Theme',
-            hintText: 'tumor-immune',
-          },
-          {
-            columnName: 'experimentalStrategy',
-            hintText: 'RNA-seq',
-          },
-          {
-            columnName: 'diseaseType',
-            hintText: 'Skin Cutaneous Melanoma',
-          },
-          {
-            columnName: 'tissue_or_organ.sv',
-            hintText: 'Prostate gland',
-          },
-          {
-            columnName: 'Publication Year',
-            hintText: '2018',
-          },
-          {
-            columnName: 'Consortium',
-            hintText: 'PS-ON',
-          },
-          {
-            columnName: 'grantType',
-            hintText: 'U01',
-          },
-        ],
-      },
-      name: 'Publications',
-      facetAliases,
-      menuConfig: [
+export const publications: SynapseConfig = {
+  name: 'QueryWrapperPlotNav',
+  props: {
+    rgbIndex,
+    unitDescription,
+    entityId,
+    sql,
+    shouldDeepLink: true,
+    cardConfiguration: publicationsCardConfiguration,
+    searchConfiguration: {
+      searchable: [
         {
-          sql,
-          facet: 'Theme',
+          columnName: 'title',
+          hintText: '',
         },
         {
-          sql,
-          facet: 'experimentalStrategy',
+          columnName: 'authors',
+          hintText: '',
         },
         {
-          sql,
-          facet: 'diseaseType',
+          columnName: 'year',
+          hintText: '',
         },
         {
-          sql,
-          facet: 'tissue_or_organ.sv',
+          columnName: 'journal',
+          hintText: '',
         },
         {
-          sql,
-          facet: 'Publication Year',
+          columnName: 'study',
+          hintText: '',
         },
         {
-          sql,
-          facet: 'Consortium',
+          columnName: 'grants',
+          hintText: '',
         },
         {
-          sql,
-          facet: 'grantType',
+          columnName: 'DOI',
+          hintText: '',
         },
         {
-          sql,
+          columnName: 'pubmedid',
+          hintText: '',
         },
       ],
     },
+    name: 'Publications',
+    facetAliases,
   },
 }

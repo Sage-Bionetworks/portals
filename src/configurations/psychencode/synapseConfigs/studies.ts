@@ -1,7 +1,7 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from 'types/portal-config'
 import loadingScreen from '../loadingScreen'
-import { facetAliases, detailPageLinks } from './commonProps'
+import { facetAliases } from './commonProps'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 const unitDescription = 'studies'
@@ -33,7 +33,6 @@ export const studyCardConfiguration: CardConfiguration = {
   type: SynapseConstants.GENERIC_CARD,
   genericCardSchema: studySchema,
   secondaryLabelLimit: 4,
-  labelLinkConfig: detailPageLinks,
   titleLinkConfig: {
     isMarkdown: false,
     baseURL: 'Explore/Studies',

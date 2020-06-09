@@ -10,6 +10,9 @@ export type AppInitializerState = {
   token: string
   showLoginDialog: boolean
   userProfile: UserProfile | undefined
+  // delay render until get session is called, o.w. theres an uneccessary refresh right
+  // after page load
+  hasCalledGetSession: boolean
 }
 
 export const TokenContext = React.createContext('')
@@ -32,6 +35,7 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
     super(props)
     this.state = {
       token: '',
+      hasCalledGetSession: false,
       userProfile: undefined,
       showLoginDialog: false,
     }
@@ -48,19 +52,26 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
   }
 
   initAnonymousUserState = () => {
-    // reset token and user profile
-    this.setState({
-      token: '',
-      userProfile: undefined,
+    SynapseClient.signOut(() => {
+      // reset token and user profile
+      this.setState({
+        token: '',
+        userProfile: undefined,
+        hasCalledGetSession: true,
+      })
     })
   }
 
   getSession = async () => {
     try {
       const token = await SynapseClient.getSessionTokenFromCookie()
+      if (!token) {
+        this.initAnonymousUserState()
+        return
+      }
       // try to refresh their session for convenience
       await SynapseClient.putRefreshSessionToken(token)
-      this.setState({ token })
+      this.setState({ token, hasCalledGetSession: true })
       // get user profile
       const userProfile = await SynapseClient.getUserProfile(token)
       if (userProfile.profilePicureFileHandleId) {
@@ -70,10 +81,9 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
         userProfile,
       })
     } catch (e) {
-      console.error('Error on getSesssion: ', e)
+      console.error('Error on getSession: ', e)
       // intentionally calling sign out because there token could be stale so we want
       // the stored session to be cleared out.
-      SynapseClient.signOut(() => {})
       this.initAnonymousUserState()
     }
   }
@@ -89,7 +99,7 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
     this.getSession()
     // Technically, the AppInitializer is only mounted once during the portal app lifecycle.
     // But it's best practice to clean up the global listener on component unmount.
-    window.addEventListener('click', this.updateSynapseCallbackCookie)
+    // window.addEventListener('click', this.updateSynapseCallbackCookie)
     // on first time, also check for the SSO code
     SynapseClient.detectSSOCode()
   }
@@ -129,6 +139,11 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
   }
 
   render() {
+    if (!this.state.hasCalledGetSession) {
+      console.log('waiting for get session to be called')
+      // prevent componentDidUpdate all over the page by waiting for get session call
+      return <></>
+    }
     return (
       <TokenContext.Provider value={this.state.token}>
         {React.Children.map(this.props.children, (child: any) => {
