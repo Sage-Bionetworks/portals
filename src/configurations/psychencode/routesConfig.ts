@@ -29,42 +29,42 @@ const routes: GenericRoute[] = [
     to: '/',
     isNested: false,
     synapseConfigArray: [
-      {
-        name: 'Markdown',
-        props: {
-          ownerId: 'syn21438192',
-          wikiId: '600054',
-        },
-      },
-      {
-        name: 'StatefulButtonControlWrapper',
-        title: 'EXPLORE PORTAL',
-        props: {
-          colors: ['#F06531', '#48ACDD', '#154C9A', '#96C647', '#F4A632'],
-          configs: [
-            {
-              name: 'Projects',
-              synapseConfigArray: [projects.homePageSynapseObject],
-            },
-            {
-              name: 'Studies',
-              synapseConfigArray: [studies.homePageSynapseObject],
-            },
-            {
-              name: 'Files',
-              synapseConfigArray: [files.homePageSynapseObject],
-            },
-            {
-              name: 'Publications',
-              synapseConfigArray: [publications.homePageSynapseObject],
-            },
-            {
-              name: 'People',
-              synapseConfigArray: [people.homePageSynapseObject],
-            },
-          ],
-        },
-      },
+      // {
+      //   name: 'Markdown',
+      //   props: {
+      //     ownerId: 'syn21438192',
+      //     wikiId: '600054',
+      //   },
+      // },
+      // {
+      //   name: 'StatefulButtonControlWrapper',
+      //   title: 'EXPLORE PORTAL',
+      //   props: {
+      //     colors: ['#F06531', '#48ACDD', '#154C9A', '#96C647', '#F4A632'],
+      //     configs: [
+      //       {
+      //         name: 'Projects',
+      //         synapseConfigArray: [projects.homePageSynapseObject],
+      //       },
+      //       {
+      //         name: 'Studies',
+      //         synapseConfigArray: [studies.homePageSynapseObject],
+      //       },
+      //       {
+      //         name: 'Files',
+      //         synapseConfigArray: [files.homePageSynapseObject],
+      //       },
+      //       {
+      //         name: 'Publications',
+      //         synapseConfigArray: [publications.homePageSynapseObject],
+      //       },
+      //       {
+      //         name: 'People',
+      //         synapseConfigArray: [people.homePageSynapseObject],
+      //       },
+      //     ],
+      //   },
+      // },
     ],
   },
   {
