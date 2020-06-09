@@ -21,51 +21,14 @@ import {
   publicationsCardConfiguration,
   publicationEntityId,
 } from './synapseConfigs/publications'
-const homeLimit = 3
+import { grants, grantsDetailPage } from './synapseConfigs/grants'
 
 const routes: GenericRoute[] = [
   {
     name: 'Home',
     to: '/',
     isNested: false,
-    synapseConfigArray: [
-      // {
-      //   name: 'Markdown',
-      //   props: {
-      //     ownerId: 'syn21438192',
-      //     wikiId: '600054',
-      //   },
-      // },
-      // {
-      //   name: 'StatefulButtonControlWrapper',
-      //   title: 'EXPLORE PORTAL',
-      //   props: {
-      //     colors: ['#F06531', '#48ACDD', '#154C9A', '#96C647', '#F4A632'],
-      //     configs: [
-      //       {
-      //         name: 'Projects',
-      //         synapseConfigArray: [projects.homePageSynapseObject],
-      //       },
-      //       {
-      //         name: 'Studies',
-      //         synapseConfigArray: [studies.homePageSynapseObject],
-      //       },
-      //       {
-      //         name: 'Files',
-      //         synapseConfigArray: [files.homePageSynapseObject],
-      //       },
-      //       {
-      //         name: 'Publications',
-      //         synapseConfigArray: [publications.homePageSynapseObject],
-      //       },
-      //       {
-      //         name: 'People',
-      //         synapseConfigArray: [people.homePageSynapseObject],
-      //       },
-      //     ],
-      //   },
-      // },
-    ],
+    synapseConfigArray: [],
   },
   {
     name: 'Explore',
@@ -162,6 +125,29 @@ const routes: GenericRoute[] = [
         ],
       },
       {
+        name: 'Grants',
+        to: '/Explore/Grants',
+        isNested: true,
+        synapseConfigArray: [
+          {
+            name: 'RouteButtonControlWrapper',
+            title: 'EXPLORE',
+            props: {
+              ...routeButtonControlWrapperProps,
+              synapseConfig: grants,
+            },
+          },
+        ],
+        routes: [
+          {
+            name: 'DetailsPage',
+            to: 'Explore/Grants/DetailsPage',
+            isNested: false,
+            synapseConfigArray: grantsDetailPage,
+          },
+        ],
+      },
+      {
         name: 'Publications',
         to: '/Explore/Publications',
         isNested: false,
@@ -201,7 +187,7 @@ const routes: GenericRoute[] = [
             title: 'EXPLORE',
             props: {
               ...routeButtonControlWrapperProps,
-              synapseConfig: people.explorePageSynapseObject,
+              synapseConfig: people,
             },
           },
         ],
