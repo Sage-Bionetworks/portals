@@ -1,27 +1,16 @@
 import { GenericRoute } from 'types/portal-config'
-import {
-  publications,
-  files,
-  projects,
-  studies,
-  people,
-} from './synapseConfigs'
-import { SynapseConstants } from 'synapse-react-client'
-import {
-  studiesSql,
-  studyCardConfiguration,
-  studiesEntityId,
-} from './synapseConfigs/studies'
+import { studies } from './synapseConfigs/studies'
 import { facetAliases } from './synapseConfigs/commonProps'
-import { publicationSql } from './synapseConfigs/publications'
+import { publicationSql, publications } from './synapseConfigs/publications'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
-import loadingScreen from './loadingScreen'
-import { filesSql, filesEntityId } from './synapseConfigs/files'
 import {
   publicationsCardConfiguration,
   publicationEntityId,
 } from './synapseConfigs/publications'
 import { grants, grantsDetailPage } from './synapseConfigs/grants'
+import { people } from './synapseConfigs/people'
+import { data } from './synapseConfigs/data'
+import { projects } from './synapseConfigs/projects'
 
 const routes: GenericRoute[] = [
   {
@@ -63,55 +52,10 @@ const routes: GenericRoute[] = [
             },
           },
         ],
-        programmaticRouteConfig: [
-          {
-            name: 'CardContainerLogic',
-            isOutsideContainer: true,
-            props: {
-              isHeader: true,
-              backgroundColor: '#407ba0',
-              entityId: studiesEntityId,
-              loadingScreen,
-              facetAliases,
-              ...studyCardConfiguration,
-              secondaryLabelLimit: Infinity,
-              sql: studiesSql,
-            },
-          },
-          {
-            name: 'QueryWrapperFlattened',
-            title: 'Data',
-            props: {
-              initQueryRequest: {
-                partMask:
-                  SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
-                  SynapseConstants.BUNDLE_MASK_QUERY_COUNT |
-                  SynapseConstants.BUNDLE_MASK_QUERY_SELECT_COLUMNS |
-                  SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
-                entityId: filesEntityId,
-                concreteType:
-                  'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-                query: {
-                  sql: filesSql,
-                  selectedFacets: [],
-                  isConsistent: true,
-                  limit: 25,
-                  offset: 0,
-                },
-              },
-              loadingScreen,
-              facetAliases,
-              rgbIndex: 1,
-              facet: 'consortium',
-              unitDescription: 'Files',
-              title: 'Study Files',
-            },
-          },
-        ],
       },
       {
-        name: 'Files',
-        to: '/Explore/Files',
+        name: 'Data',
+        to: '/Explore/Data',
         isNested: false,
         synapseConfigArray: [
           {
@@ -119,7 +63,7 @@ const routes: GenericRoute[] = [
             title: 'EXPLORE',
             props: {
               ...routeButtonControlWrapperProps,
-              synapseConfig: files.explorePageSynapseObject,
+              synapseConfig: data,
             },
           },
         ],

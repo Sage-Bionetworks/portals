@@ -1,0 +1,38 @@
+import { SynapseConfig } from 'types/portal-config'
+import loadingScreen from '../loadingScreen'
+
+const sql = 'SELECT * FROM syn20821313'
+export const dataSql = sql
+const entityId = 'syn20821313'
+
+const facetAliases = {
+  id: 'File',
+}
+
+const rgbIndex = 8
+const unitDescription = 'files'
+
+export const data: SynapseConfig = {
+  name: 'QueryWrapperPlotNav',
+  props: {
+    rgbIndex,
+    unitDescription,
+    entityId,
+    sql,
+    tableConfiguration: {
+      showAccessColumn: true,
+    },
+    loadingScreen,
+    shouldDeepLink: true,
+    name: 'Data',
+    facetAliases,
+    facetsToPlot: [
+      'study',
+      'dataType',
+      'species',
+      'tissue',
+      'referenceSet',
+      'fileFormat',
+    ],
+  },
+}

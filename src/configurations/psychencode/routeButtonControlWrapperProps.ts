@@ -7,7 +7,7 @@ const routeButtonControlProps: RouteButtonControlWrapperProps = {
   customRoutes: [
     'Projects',
     'Studies',
-    'Files',
+    'Data',
     'Publications',
     'People',
     'Grants',
