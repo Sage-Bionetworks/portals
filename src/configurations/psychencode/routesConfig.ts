@@ -10,7 +10,6 @@ import {
 import { grants, grantsDetailPage } from './synapseConfigs/grants'
 import { people } from './synapseConfigs/people'
 import { data } from './synapseConfigs/data'
-import { projects } from './synapseConfigs/projects'
 
 const routes: GenericRoute[] = [
   {
@@ -23,21 +22,6 @@ const routes: GenericRoute[] = [
     name: 'Explore',
     isNested: true,
     routes: [
-      {
-        name: 'Projects',
-        to: '/Explore/Projects',
-        isNested: false,
-        synapseConfigArray: [
-          {
-            name: 'RouteButtonControlWrapper',
-            title: 'EXPLORE',
-            props: {
-              ...routeButtonControlWrapperProps,
-              synapseConfig: projects.explorePageSynapseObject,
-            },
-          },
-        ],
-      },
       {
         name: 'Studies',
         to: '/Explore/Studies',
