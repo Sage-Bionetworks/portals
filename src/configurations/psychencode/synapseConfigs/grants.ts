@@ -4,6 +4,9 @@ import loadingScreen from '../loadingScreen'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import { GenerateComponentsFromRowProps } from 'types/portal-util-types'
+import { studyDetailPageProps } from './studies'
+import { publicationDetailPageProps } from './publications'
+import { peopleDetailPageProps } from './people'
 export const grantSql = 'SELECT * FROM syn22096130'
 export const grantEntityId = 'syn22096130'
 const entityId = grantEntityId
@@ -74,11 +77,25 @@ const details: GenerateComponentsFromRowProps = {
   entityId,
   synapseConfigArray: [
     {
-      name: 'Markdown',
-      props: {},
-      injectMarkdown: false,
-      columnName: 'studyDescriptionLocation',
-      title: 'Project Description',
+      name: 'CardContainerLogic',
+      props: studyDetailPageProps,
+      columnName: 'grants',
+      tableSqlKeys: ['grants'],
+      title: 'Studies',
+    },
+    {
+      name: 'CardContainerLogic',
+      props: publicationDetailPageProps,
+      columnName: 'grants',
+      tableSqlKeys: ['grants'],
+      title: 'Publications',
+    },
+    {
+      name: 'CardContainerLogic',
+      props: peopleDetailPageProps,
+      columnName: 'grants',
+      tableSqlKeys: ['grants'],
+      title: 'People',
     },
     {
       name: 'CardContainerLogic',

@@ -182,3 +182,9 @@ export const studyDetailPage: SynapseConfigArray = [
     props: details,
   },
 ]
+
+export const studyDetailPageProps = {
+  sql,
+  entityId,
+  ...studyCardConfiguration,
+}

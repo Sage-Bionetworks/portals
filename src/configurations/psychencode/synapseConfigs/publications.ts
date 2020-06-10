@@ -75,3 +75,9 @@ export const publications: SynapseConfig = {
     facetAliases,
   },
 }
+
+export const publicationDetailPageProps = {
+  sql,
+  entityId,
+  ...publicationsCardConfiguration,
+}

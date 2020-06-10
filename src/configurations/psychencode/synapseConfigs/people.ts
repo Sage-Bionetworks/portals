@@ -22,3 +22,10 @@ export const people: SynapseConfig = {
     hideDownload: true,
   },
 }
+
+export const peopleDetailPageProps = {
+  entityId,
+  sql,
+  type: SynapseConstants.MEDIUM_USER_CARD,
+  loadingScreen,
+}
