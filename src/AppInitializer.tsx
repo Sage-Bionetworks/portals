@@ -99,7 +99,7 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
     this.getSession()
     // Technically, the AppInitializer is only mounted once during the portal app lifecycle.
     // But it's best practice to clean up the global listener on component unmount.
-    // window.addEventListener('click', this.updateSynapseCallbackCookie)
+    window.addEventListener('click', this.updateSynapseCallbackCookie)
     // on first time, also check for the SSO code
     SynapseClient.detectSSOCode()
   }
@@ -140,7 +140,6 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
 
   render() {
     if (!this.state.hasCalledGetSession) {
-      console.log('waiting for get session to be called')
       // prevent componentDidUpdate all over the page by waiting for get session call
       return <></>
     }
