@@ -1,148 +1,190 @@
 import { SynapseConstants } from 'synapse-react-client'
-import { HomeExploreConfig } from 'types/portal-config'
 import loadingScreen from '../loadingScreen'
-import { facetAliases, detailPageLinks } from './commonProps'
+import { facetAliases } from './commonProps'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
-const unitDescription = 'studies'
-export const studiesSql = `SELECT * FROM syn18483791 WHERE ( ( "is.study" = 'TRUE' ) )`
-const entityId = 'syn18483791'
-export const studiesEntityId = 'syn18483791'
+import { SynapseConfig, SynapseConfigArray } from 'types/portal-config'
+import { GenerateComponentsFromRowProps } from 'types/portal-util-types'
+import { dataSql } from 'config/synapseConfigs/data'
+export const studiesSql = `SELECT * FROM syn21783965`
+const entityId = 'syn21783965'
+export const studiesEntityId = 'syn21783965'
 const sql = studiesSql
 const rgbIndex = 1
 
 export const studySchema: GenericCardSchema = {
   type: SynapseConstants.STUDY,
-  title: 'portalDisplayName',
-  subTitle: 'centerName',
-  description: 'description',
+  title: 'studyName',
+  subTitle: 'dataContributor',
+  description: 'studyDescription',
   secondaryLabels: [
-    'Title',
-    'PubMed',
-    'Theme',
-    'tumorType',
-    'experimentalStrategy',
-    'datasets',
-    'centerName',
-    'consortium',
-    'grantType',
+    'dataTypes',
+    'diagnosis',
+    'tissue',
+    'nucleicAcidSource',
+    'species',
+    'numberOfIndividuals',
+    'grants',
   ],
 }
 
 export const studyCardConfiguration: CardConfiguration = {
   type: SynapseConstants.GENERIC_CARD,
   genericCardSchema: studySchema,
-  secondaryLabelLimit: 4,
-  labelLinkConfig: detailPageLinks,
+  secondaryLabelLimit: 7,
   titleLinkConfig: {
+    baseURL: 'Explore/Studies/DetailsPage',
+    URLColumnName: 'study',
+    matchColumnName: 'study',
     isMarkdown: false,
-    baseURL: 'Explore/Studies',
-    URLColumnName: 'studies',
-    matchColumnName: 'id',
   },
 }
 
-export const studies: HomeExploreConfig = {
-  homePageSynapseObject: {
-    name: 'QueryWrapperFlattened',
-    props: {
-      rgbIndex,
-      unitDescription,
-      loadingScreen,
-      facet: 'grantType',
-      facetAliases,
-      link: 'Explore/Studies',
-      linkText: 'Explore Studies',
-      initQueryRequest: {
-        entityId,
-        concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-        partMask:
-          SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
-          SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
-        query: {
-          sql,
-          isConsistent: true,
-          limit: 25,
-          offset: 0,
-        },
-      },
-    },
-  },
-  explorePageSynapseObject: {
-    name: 'QueryWrapperMenu',
-    props: {
-      rgbIndex,
-      unitDescription,
-      entityId,
-      shouldDeepLink: true,
-
-      cardConfiguration: studyCardConfiguration,
-      stackedBarChartConfiguration: {
-        loadingScreen,
-      },
-      name: 'Studies',
-      facetAliases,
-      searchConfiguration: {
-        searchable: [
-          {
-            columnName: 'name',
-            hintText: '',
-          },
-          {
-            columnName: 'description',
-            hintText: '',
-          },
-          {
-            columnName: 'centerName',
-            hintText: '',
-          },
-          {
-            columnName: 'Theme',
-            hintText: '',
-          },
-          {
-            columnName: 'experimentalStrategy',
-            hintText: '',
-          },
-          {
-            columnName: 'tumorType',
-            hintText: '',
-          },
-          {
-            columnName: 'consortium',
-            hintText: '',
-          },
-          {
-            columnName: 'grantType',
-            hintText: '',
-          },
-        ],
-      },
-      menuConfig: [
+export const studies: SynapseConfig = {
+  name: 'QueryWrapperPlotNav',
+  props: {
+    rgbIndex,
+    entityId,
+    sql,
+    loadingScreen,
+    shouldDeepLink: true,
+    cardConfiguration: studyCardConfiguration,
+    name: 'Studies',
+    facetAliases,
+    searchConfiguration: {
+      searchable: [
         {
-          sql,
-          facet: 'Theme',
+          columnName: 'dataContributor',
+          hintText: '',
         },
         {
-          sql,
-          facet: 'experimentalStrategy',
+          columnName: 'dataTypes',
+          hintText: '',
         },
         {
-          sql,
-          facet: 'tumorType',
+          columnName: 'diagnosis',
+          hintText: '',
         },
         {
-          sql,
-          facet: 'consortium',
+          columnName: 'grants',
+          hintText: '',
         },
         {
-          sql,
-          facet: 'grantType',
+          columnName: 'tissue',
+          hintText: '',
         },
         {
-          sql,
+          columnName: 'species',
+          hintText: '',
+        },
+        {
+          columnName: 'studyDescription',
+          hintText: '',
+        },
+        {
+          columnName: 'studyName',
+          hintText: '',
         },
       ],
     },
   },
+}
+
+export const details: GenerateComponentsFromRowProps = {
+  sql,
+  entityId,
+  synapseConfigArray: [
+    {
+      name: 'Markdown',
+      props: {},
+      injectMarkdown: false,
+      columnName: 'study',
+      title: 'Study Description',
+    },
+    {
+      name: 'Markdown',
+      props: {
+        ownerId: 'syn4921369',
+        wikiId: '477467',
+      },
+      title: 'Access Requirements',
+      standalone: true,
+    },
+    {
+      name: 'Markdown',
+      props: {},
+      columnName: 'methods',
+      title: 'Methods',
+      resolveSynId: {
+        title: true,
+      },
+    },
+    {
+      name: 'StandaloneQueryWrapper',
+      props: {
+        sql: `${dataSql} WHERE "dataSubtype" = 'metadata'`,
+        rgbIndex,
+        title: 'Metadata',
+      },
+      resolveSynId: {
+        value: true,
+      },
+      tableSqlKeys: ['study'],
+      columnName: 'study',
+      title: 'Metadata',
+    },
+    {
+      name: 'StandaloneQueryWrapper',
+      props: {
+        sql: dataSql,
+        rgbIndex,
+        title: 'Data',
+      },
+      resolveSynId: {
+        value: true,
+      },
+      tableSqlKeys: ['study'],
+      columnName: 'study',
+      title: 'Data',
+    },
+    {
+      name: 'CardContainerLogic',
+      title: 'Related Studies',
+      props: {
+        ...studyCardConfiguration,
+        sql,
+        entityId,
+      },
+      columnName: 'relatedStudies',
+      tableSqlKeys: ['study'],
+    },
+  ],
+}
+
+export const studyDetailPage: SynapseConfigArray = [
+  {
+    name: 'CardContainerLogic',
+    isOutsideContainer: true,
+    props: {
+      isHeader: true,
+      isAlignToLeftNav: true,
+      ...studyCardConfiguration,
+      titleLinkConfig: undefined,
+      rgbIndex,
+      facetAliases,
+      genericCardSchema: studySchema,
+      sql,
+      entityId,
+    },
+  },
+  {
+    name: 'GenerateComponentsFromRow',
+    props: details,
+  },
+]
+
+export const studyDetailPageProps = {
+  sql,
+  entityId,
+  ...studyCardConfiguration,
 }

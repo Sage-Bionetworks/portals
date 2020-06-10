@@ -1,94 +1,53 @@
 import { GenericRoute } from 'types/portal-config'
-import {
-  publications,
-  files,
-  projects,
-  studies,
-  people,
-} from './synapseConfigs'
-import { SynapseConstants } from 'synapse-react-client'
-import {
-  studiesSql,
-  studyCardConfiguration,
-  studiesEntityId,
-} from './synapseConfigs/studies'
+import { studies, studyDetailPage } from './synapseConfigs/studies'
 import { facetAliases } from './synapseConfigs/commonProps'
-import { publicationSql } from './synapseConfigs/publications'
+import { publicationSql, publications } from './synapseConfigs/publications'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
-import loadingScreen from './loadingScreen'
-import { filesSql, filesEntityId } from './synapseConfigs/files'
 import {
   publicationsCardConfiguration,
   publicationEntityId,
 } from './synapseConfigs/publications'
-const homeLimit = 3
+import { grants, grantsDetailPage } from './synapseConfigs/grants'
+import { people } from './synapseConfigs/people'
+import { data } from './synapseConfigs/data'
 
 const routes: GenericRoute[] = [
   {
     name: 'Home',
     to: '/',
     isNested: false,
-    synapseConfigArray: [
-      {
-        name: 'Markdown',
-        props: {
-          ownerId: 'syn21438192',
-          wikiId: '600054',
-        },
-      },
-      {
-        name: 'StatefulButtonControlWrapper',
-        title: 'EXPLORE PORTAL',
-        props: {
-          colors: ['#F06531', '#48ACDD', '#154C9A', '#96C647', '#F4A632'],
-          configs: [
-            {
-              name: 'Projects',
-              synapseConfigArray: [projects.homePageSynapseObject],
-            },
-            {
-              name: 'Studies',
-              synapseConfigArray: [studies.homePageSynapseObject],
-            },
-            {
-              name: 'Files',
-              synapseConfigArray: [files.homePageSynapseObject],
-            },
-            {
-              name: 'Publications',
-              synapseConfigArray: [publications.homePageSynapseObject],
-            },
-            {
-              name: 'People',
-              synapseConfigArray: [people.homePageSynapseObject],
-            },
-          ],
-        },
-      },
-    ],
+    synapseConfigArray: [],
   },
   {
     name: 'Explore',
     isNested: true,
     routes: [
       {
-        name: 'Projects',
-        to: '/Explore/Projects',
-        isNested: false,
-        synapseConfigArray: [
-          {
-            name: 'RouteButtonControlWrapper',
-            title: 'EXPLORE',
-            props: {
-              ...routeButtonControlWrapperProps,
-              synapseConfig: projects.explorePageSynapseObject,
-            },
-          },
-        ],
-      },
-      {
         name: 'Studies',
         to: '/Explore/Studies',
+        isNested: true,
+        synapseConfigArray: [
+          {
+            name: 'RouteButtonControlWrapper',
+            title: 'EXPLORE',
+            props: {
+              ...routeButtonControlWrapperProps,
+              synapseConfig: studies,
+            },
+          },
+        ],
+        routes: [
+          {
+            name: 'DetailsPage',
+            to: 'Explore/Studies/DetailsPage',
+            isNested: false,
+            synapseConfigArray: studyDetailPage,
+          },
+        ],
+      },
+      {
+        name: 'Data',
+        to: '/Explore/Data',
         isNested: false,
         synapseConfigArray: [
           {
@@ -96,68 +55,31 @@ const routes: GenericRoute[] = [
             title: 'EXPLORE',
             props: {
               ...routeButtonControlWrapperProps,
-              synapseConfig: studies.explorePageSynapseObject,
-            },
-          },
-        ],
-        programmaticRouteConfig: [
-          {
-            name: 'CardContainerLogic',
-            isOutsideContainer: true,
-            props: {
-              isHeader: true,
-              backgroundColor: '#407ba0',
-              entityId: studiesEntityId,
-              loadingScreen,
-              facetAliases,
-              ...studyCardConfiguration,
-              secondaryLabelLimit: Infinity,
-              sql: studiesSql,
-            },
-          },
-          {
-            name: 'QueryWrapperFlattened',
-            title: 'Data',
-            props: {
-              initQueryRequest: {
-                partMask:
-                  SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
-                  SynapseConstants.BUNDLE_MASK_QUERY_COUNT |
-                  SynapseConstants.BUNDLE_MASK_QUERY_SELECT_COLUMNS |
-                  SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
-                entityId: filesEntityId,
-                concreteType:
-                  'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-                query: {
-                  sql: filesSql,
-                  selectedFacets: [],
-                  isConsistent: true,
-                  limit: 25,
-                  offset: 0,
-                },
-              },
-              loadingScreen,
-              facetAliases,
-              rgbIndex: 1,
-              facet: 'consortium',
-              unitDescription: 'Files',
-              title: 'Study Files',
+              synapseConfig: data,
             },
           },
         ],
       },
       {
-        name: 'Files',
-        to: '/Explore/Files',
-        isNested: false,
+        name: 'Grants',
+        to: '/Explore/Grants',
+        isNested: true,
         synapseConfigArray: [
           {
             name: 'RouteButtonControlWrapper',
             title: 'EXPLORE',
             props: {
               ...routeButtonControlWrapperProps,
-              synapseConfig: files.explorePageSynapseObject,
+              synapseConfig: grants,
             },
+          },
+        ],
+        routes: [
+          {
+            name: 'DetailsPage',
+            to: 'Explore/Grants/DetailsPage',
+            isNested: false,
+            synapseConfigArray: grantsDetailPage,
           },
         ],
       },
@@ -171,7 +93,7 @@ const routes: GenericRoute[] = [
             title: 'EXPLORE',
             props: {
               ...routeButtonControlWrapperProps,
-              synapseConfig: publications.explorePageSynapseObject,
+              synapseConfig: publications,
             },
           },
         ],
@@ -201,7 +123,7 @@ const routes: GenericRoute[] = [
             title: 'EXPLORE',
             props: {
               ...routeButtonControlWrapperProps,
-              synapseConfig: people.explorePageSynapseObject,
+              synapseConfig: people,
             },
           },
         ],
