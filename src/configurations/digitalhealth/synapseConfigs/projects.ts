@@ -29,7 +29,6 @@ export const projectSchema: GenericCardSchema = {
     'digitalAssessmentCategory',
     'digitalAssessmentDetails',
     'dataUsed',
-    // 'externalDataUsed',
     'investigator',
     'keywords',
   ],
@@ -140,10 +139,6 @@ export const projects: HomeExploreConfig = {
           {
             columnName: 'study',
             hintText: 'mPower',
-          },
-          {
-            columnName: 'studyDescriptionLocation',
-            hintText: '',
           },
         ],
       },

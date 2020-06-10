@@ -131,14 +131,6 @@ export const studies: HomeExploreConfig = {
             columnName: 'study',
             hintText: 'mPower',
           },
-          {
-            columnName: 'studyDataDescriptionLocation',
-            hintText: 'tremor',
-          },
-          {
-            columnName: 'studyDescriptionLocation',
-            hintText: '',
-          },
         ],
       },
     },
