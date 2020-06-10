@@ -1,5 +1,5 @@
 import { GenericRoute } from 'types/portal-config'
-import { studies } from './synapseConfigs/studies'
+import { studies, studyDetailPage } from './synapseConfigs/studies'
 import { facetAliases } from './synapseConfigs/commonProps'
 import { publicationSql, publications } from './synapseConfigs/publications'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
@@ -25,7 +25,7 @@ const routes: GenericRoute[] = [
       {
         name: 'Studies',
         to: '/Explore/Studies',
-        isNested: false,
+        isNested: true,
         synapseConfigArray: [
           {
             name: 'RouteButtonControlWrapper',
@@ -34,6 +34,14 @@ const routes: GenericRoute[] = [
               ...routeButtonControlWrapperProps,
               synapseConfig: studies,
             },
+          },
+        ],
+        routes: [
+          {
+            name: 'DetailsPage',
+            to: 'Explore/Studies/DetailsPage',
+            isNested: false,
+            synapseConfigArray: studyDetailPage,
           },
         ],
       },
