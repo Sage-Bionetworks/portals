@@ -32,6 +32,7 @@ export const publications: SynapseConfig = {
     entityId,
     sql,
     shouldDeepLink: true,
+    hideDownload: true,
     cardConfiguration: publicationsCardConfiguration,
     searchConfiguration: {
       searchable: [

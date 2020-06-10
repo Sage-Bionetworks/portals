@@ -1,145 +1,82 @@
 import { SynapseConstants } from 'synapse-react-client'
-import { HomeExploreConfig } from 'types/portal-config'
 import loadingScreen from '../loadingScreen'
 import { facetAliases } from './commonProps'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
-const unitDescription = 'studies'
-export const studiesSql = `SELECT * FROM syn18483791 WHERE ( ( "is.study" = 'TRUE' ) )`
-const entityId = 'syn18483791'
-export const studiesEntityId = 'syn18483791'
+import { SynapseConfig } from 'types/portal-config'
+export const studiesSql = `SELECT * FROM syn21783965`
+const entityId = 'syn21783965'
+export const studiesEntityId = 'syn21783965'
 const sql = studiesSql
 const rgbIndex = 1
 
 export const studySchema: GenericCardSchema = {
   type: SynapseConstants.STUDY,
-  title: 'portalDisplayName',
-  subTitle: 'centerName',
-  description: 'description',
+  title: 'studyName',
+  subTitle: 'dataContributor',
+  description: 'studyDescription',
   secondaryLabels: [
-    'Title',
-    'PubMed',
-    'Theme',
-    'tumorType',
-    'experimentalStrategy',
-    'datasets',
-    'centerName',
-    'consortium',
-    'grantType',
+    'dataTypes',
+    'diagnosis',
+    'tissue',
+    'nucleicAcidSource',
+    'species',
+    'numberOfIndividuals',
+    'grants',
   ],
+  link: 'study',
 }
 
 export const studyCardConfiguration: CardConfiguration = {
   type: SynapseConstants.GENERIC_CARD,
   genericCardSchema: studySchema,
-  secondaryLabelLimit: 4,
-  titleLinkConfig: {
-    isMarkdown: false,
-    baseURL: 'Explore/Studies',
-    URLColumnName: 'studies',
-    matchColumnName: 'id',
-  },
+  secondaryLabelLimit: 7,
 }
 
-export const studies: HomeExploreConfig = {
-  homePageSynapseObject: {
-    name: 'QueryWrapperFlattened',
-    props: {
-      rgbIndex,
-      unitDescription,
-      loadingScreen,
-      facet: 'grantType',
-      facetAliases,
-      link: 'Explore/Studies',
-      linkText: 'Explore Studies',
-      initQueryRequest: {
-        entityId,
-        concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-        partMask:
-          SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
-          SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
-        query: {
-          sql,
-          isConsistent: true,
-          limit: 25,
-          offset: 0,
-        },
-      },
-    },
-  },
-  explorePageSynapseObject: {
-    name: 'QueryWrapperMenu',
-    props: {
-      rgbIndex,
-      unitDescription,
-      entityId,
-      shouldDeepLink: true,
-
-      cardConfiguration: studyCardConfiguration,
-      stackedBarChartConfiguration: {
-        loadingScreen,
-      },
-      name: 'Studies',
-      facetAliases,
-      searchConfiguration: {
-        searchable: [
-          {
-            columnName: 'name',
-            hintText: '',
-          },
-          {
-            columnName: 'description',
-            hintText: '',
-          },
-          {
-            columnName: 'centerName',
-            hintText: '',
-          },
-          {
-            columnName: 'Theme',
-            hintText: '',
-          },
-          {
-            columnName: 'experimentalStrategy',
-            hintText: '',
-          },
-          {
-            columnName: 'tumorType',
-            hintText: '',
-          },
-          {
-            columnName: 'consortium',
-            hintText: '',
-          },
-          {
-            columnName: 'grantType',
-            hintText: '',
-          },
-        ],
-      },
-      menuConfig: [
+export const studies: SynapseConfig = {
+  name: 'QueryWrapperPlotNav',
+  props: {
+    rgbIndex,
+    entityId,
+    sql,
+    loadingScreen,
+    shouldDeepLink: true,
+    cardConfiguration: studyCardConfiguration,
+    name: 'Studies',
+    facetAliases,
+    searchConfiguration: {
+      searchable: [
         {
-          sql,
-          facet: 'Theme',
+          columnName: 'dataContributor',
+          hintText: '',
         },
         {
-          sql,
-          facet: 'experimentalStrategy',
+          columnName: 'dataTypes',
+          hintText: '',
         },
         {
-          sql,
-          facet: 'tumorType',
+          columnName: 'diagnosis',
+          hintText: '',
         },
         {
-          sql,
-          facet: 'consortium',
+          columnName: 'grants',
+          hintText: '',
         },
         {
-          sql,
-          facet: 'grantType',
+          columnName: 'tissue',
+          hintText: '',
         },
         {
-          sql,
+          columnName: 'species',
+          hintText: '',
+        },
+        {
+          columnName: 'studyDescription',
+          hintText: '',
+        },
+        {
+          columnName: 'studyName',
+          hintText: '',
         },
       ],
     },

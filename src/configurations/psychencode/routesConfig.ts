@@ -48,7 +48,7 @@ const routes: GenericRoute[] = [
             title: 'EXPLORE',
             props: {
               ...routeButtonControlWrapperProps,
-              synapseConfig: studies.explorePageSynapseObject,
+              synapseConfig: studies,
             },
           },
         ],
