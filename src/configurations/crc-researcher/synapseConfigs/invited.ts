@@ -2,7 +2,7 @@ import { HomeExploreConfig, SynapseConfig } from 'types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
 import loadingScreen from '../loadingScreen'
 import facetAliases from '../facetAliases'
-import { baseDataSql } from './uncategorized'
+import { baseDataSql, allFacetsToPlot } from './uncategorized'
 
 const rgbIndex = 0
 export const dataSql = `${baseDataSql} 'Invited'`
@@ -21,13 +21,7 @@ export const invited: SynapseConfig = {
     facetAliases,
     tableConfiguration: {
     },
-    facetsToPlot: [
-      'gender',
-      'ethnicity',
-      'kind_of_testing',
-      'zip_code',
-      'symptom',
-    ],
+    facetsToPlot: allFacetsToPlot,
   },
 }
 

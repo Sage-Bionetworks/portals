@@ -28,7 +28,13 @@ export const baseDataSql = `SELECT
     healthCode,
     recordId
   FROM syn22154087 where WorkflowState = `
-
+export const allFacetsToPlot = [
+  'gender',
+  'ethnicity',
+  'testType',
+  'zipcode',
+  'symptom',
+]
 export const dataSql = `${baseDataSql} 'Uncategorized'`
 export const dataEntityId = 'syn22154087'
 const entityId = dataEntityId
@@ -46,13 +52,7 @@ export const uncategorized: SynapseConfig = {
     tableConfiguration: {
       isRowSelectionVisible: true,
     },
-    facetsToPlot: [
-      'gender',
-      'ethnicity',
-      'kind_of_testing',
-      'zip_code',
-      'symptom',
-    ],
+    facetsToPlot: allFacetsToPlot,
     customControls: [
       {
         buttonText: 'Select for blood draw',

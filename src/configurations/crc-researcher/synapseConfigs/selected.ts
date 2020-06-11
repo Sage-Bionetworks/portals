@@ -1,7 +1,7 @@
 import { HomeExploreConfig, SynapseConfig } from 'types/portal-config'
 import facetAliases from '../facetAliases'
 import handleParticipantWorkflowChange from '../handleParticipantWorkflowChange'
-import { baseDataSql } from './uncategorized'
+import { baseDataSql, allFacetsToPlot } from './uncategorized'
 
 const rgbIndex = 0
 export const dataSql = `${baseDataSql} 'Selected'`
@@ -18,13 +18,7 @@ export const selected: SynapseConfig = {
     sql,
     name: 'Selected Participants',
     facetAliases,
-    facetsToPlot: [
-      'gender',
-      'ethnicity',
-      'kind_of_testing',
-      'zip_code',
-      'symptom',
-    ],
+    facetsToPlot: allFacetsToPlot,
     tableConfiguration: {
       isRowSelectionVisible: true
     },
