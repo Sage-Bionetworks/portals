@@ -5,7 +5,7 @@ import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericC
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import { SynapseConfig, SynapseConfigArray } from 'types/portal-config'
 import { GenerateComponentsFromRowProps } from 'types/portal-util-types'
-import { dataSql } from 'config/synapseConfigs/data'
+import { dataSql } from './data'
 export const studiesSql = `SELECT * FROM syn21783965`
 const entityId = 'syn21783965'
 export const studiesEntityId = 'syn21783965'

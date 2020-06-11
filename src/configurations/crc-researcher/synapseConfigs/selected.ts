@@ -3,8 +3,8 @@ import facetAliases from '../facetAliases'
 import handleParticipantWorkflowChange from '../handleParticipantWorkflowChange'
 
 const rgbIndex = 0
-export const dataSql = `SELECT * FROM syn22084217 where WorkflowState = 'Selected'`
-export const dataEntityId = 'syn22084217'
+export const dataSql = `SELECT * FROM syn22154087 where WorkflowState = 'selected'`
+export const dataEntityId = 'syn22154087'
 const entityId = dataEntityId
 const sql = dataSql
 
@@ -18,11 +18,11 @@ export const selected: SynapseConfig = {
     name: 'Selected Participants',
     facetAliases,
     facetsToPlot: [
-      'COVID19TestType',
-      'Age',
-      'ZipCode',
-      'Sex',
-      'Ethnicity',
+      'gender',
+      'ethnicity',
+      'kind_of_testing',
+      'zip_code',
+      'symptom',
     ],
     tableConfiguration: {
       isRowSelectionVisible: true
@@ -33,14 +33,14 @@ export const selected: SynapseConfig = {
         buttonText: 'Send blood draw invite',
         classNames: 'exampleClassNameToAddToButton',
         onClick: (async (event) => {
-          handleParticipantWorkflowChange(event, 'Invited')
+          handleParticipantWorkflowChange(event, 'invited')
         }),
       },
       {
         buttonText: 'Deselect for blood draw',
         classNames: 'exampleClassNameToAddToButton',
         onClick: (async (event) => {
-          handleParticipantWorkflowChange(event, 'Uncategorized')
+          handleParticipantWorkflowChange(event, 'uncategorized')
         }),
       }]
   },
