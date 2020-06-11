@@ -5,8 +5,38 @@ import facetAliases from '../facetAliases'
 import handleParticipantWorkflowChange from '../handleParticipantWorkflowChange'
 
 const rgbIndex = 0
-export const dataSql = `SELECT * FROM syn22084217 where WorkflowState = 'Uncategorized'`
-export const dataEntityId = 'syn22084217'
+
+export const baseDataSql = `SELECT 
+    symptom, 
+    firstDayOfSymptoms, 
+    lastDayOfSymptoms,
+    startOfSymptoms,
+    stillHaveSymptoms,
+    testType,
+    feverHighest, 
+    otherSpecify, 
+    howWasItTreated, 
+    gender, 
+    age, 
+    ethnicity, 
+    zipcode, 
+    nasalSwabDate, 
+    nasalSwabResult, 
+    serumTestDate, 
+    serumTestResult, 
+    uploadDate,
+    healthCode,
+    recordId
+  FROM syn22154087 where WorkflowState = `
+export const allFacetsToPlot = [
+  'gender',
+  'ethnicity',
+  'testType',
+  'zipcode',
+  'symptom',
+]
+export const dataSql = `${baseDataSql} 'Uncategorized'`
+export const dataEntityId = 'syn22154087'
 const entityId = dataEntityId
 const sql = dataSql
 
@@ -22,13 +52,7 @@ export const uncategorized: SynapseConfig = {
     tableConfiguration: {
       isRowSelectionVisible: true,
     },
-    facetsToPlot: [
-      'COVID19TestType',
-      'Age',
-      'ZipCode',
-      'Sex',
-      'Ethnicity',  
-    ],
+    facetsToPlot: allFacetsToPlot,
     customControls: [
       {
         buttonText: 'Select for blood draw',
