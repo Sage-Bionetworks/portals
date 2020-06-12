@@ -6859,6 +6859,13 @@ markdown-it-synapse@^1.1.1:
   dependencies:
     node "^10.3.0"
 
+markdown-it-synapse@^1.1.7:
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/markdown-it-synapse/-/markdown-it-synapse-1.1.7.tgz#b91324a4b366769ef3623fe4869fc6582a9f9a80"
+  integrity sha512-xCxlY5T75nbI2hWJKpBveoN2mDgpKD+dj2zepWS8n5z8GzvWy1IPmcm8MgDH2qDGd8hKHv5zspaN4XZp1znd2g==
+  dependencies:
+    node "^10.3.0"
+
 markdown-it@^8.4.2:
   version "8.4.2"
   resolved "https://registry.yarnpkg.com/markdown-it/-/markdown-it-8.4.2.tgz#386f98998dc15a37722aa7722084f4020bdd9b54"
