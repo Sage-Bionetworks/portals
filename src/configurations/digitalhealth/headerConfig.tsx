@@ -3,11 +3,12 @@ import { HomePageHeaderConfig } from 'types/portal-config'
 import { ReactComponent as HeaderImg } from './style/dna_header.svg'
 
 const homePageHeader: HomePageHeaderConfig = {
-  title: 'Welcome to the dHealth Digital Health Data Portal',
+  title: 'Welcome to dHealth',
   summary: (
     <>
-      Discover and download digital and mobile health data, tools, and
-      benchmarked outcomes and digital biomarkers.
+      A Digital Health Knowledge Portal to enable the discovery and download
+      digital and mobile health data, tools, and benchmarked outcomes and
+      digital biomarkers.
       <br />
       <br />
       Supported by SAGE BIONETWORKS
