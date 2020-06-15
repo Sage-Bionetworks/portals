@@ -1,1 +1,1 @@
-export S3_STAGING_BUCKET_LOCATION=s3://staging.digitalhealth.synapse.org
+export S3_STAGING_BUCKET_LOCATION=s3://staging.dhealth.synapse.org
