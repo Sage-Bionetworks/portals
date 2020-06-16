@@ -6,6 +6,7 @@ import { CardConfiguration } from 'synapse-react-client/dist/containers/CardCont
 import { SynapseConfig, SynapseConfigArray } from 'types/portal-config'
 import { GenerateComponentsFromRowProps } from 'types/portal-util-types'
 import { dataSql } from './data'
+import { publicationDetailPageProps } from './publications'
 export const studiesSql = `SELECT * FROM syn21783965`
 const entityId = 'syn21783965'
 export const studiesEntityId = 'syn21783965'
@@ -156,6 +157,13 @@ export const details: GenerateComponentsFromRowProps = {
         entityId,
       },
       columnName: 'relatedStudies',
+      tableSqlKeys: ['study'],
+    },
+    {
+      name: 'CardContainerLogic',
+      title: 'Publications',
+      props: publicationDetailPageProps,
+      columnName: 'study',
       tableSqlKeys: ['study'],
     },
   ],

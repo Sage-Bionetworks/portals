@@ -46,7 +46,9 @@ const files: HomeExploreConfig = {
       entityId,
       visibleColumnCount,
       loadingScreen,
-      tableConfiguration: {},
+      tableConfiguration: {
+        showAccessColumn: true,
+      },
       shouldDeepLink: true,
       facetAliases,
     },

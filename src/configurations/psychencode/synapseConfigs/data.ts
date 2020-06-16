@@ -22,6 +22,7 @@ export const data: SynapseConfig = {
     tableConfiguration: {
       showAccessColumn: true,
     },
+    visibleColumnCount: 10,
     loadingScreen,
     shouldDeepLink: true,
     name: 'Data',
