@@ -6,7 +6,7 @@ const homePageHeader: HomePageHeaderConfig = {
   title: 'Welcome to dHealth',
   summary: (
     <>
-      A Digital Health Knowledge Portal to enable the discovery and download
+      A Digital Health Knowledge Portal to enable the discovery and download of
       digital and mobile health data, tools, and benchmarked outcomes and
       digital biomarkers.
       <br />
