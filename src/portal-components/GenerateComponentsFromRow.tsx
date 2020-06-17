@@ -145,6 +145,7 @@ export default class GenerateComponentsFromRow extends React.Component<
           this.setState({
             queryResultBundle: data,
             isLoading: false,
+            hasError: false,
           })
           return
         }
@@ -154,6 +155,7 @@ export default class GenerateComponentsFromRow extends React.Component<
               queryResultBundle: data,
               entityHeaders,
               isLoading: false,
+              hasError: false,
             })
           },
         )
