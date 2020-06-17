@@ -10,7 +10,9 @@ export const baseDataSql = `SELECT
     symptom, 
     firstDayOfSymptoms, 
     lastDayOfSymptoms,
-    startOfSymptoms,
+    worstDayOfSymptoms,
+    dontFeelBetter,
+    recoveryDateOfSymptoms,
     stillHaveSymptoms,
     testType,
     feverHighest, 
@@ -26,7 +28,8 @@ export const baseDataSql = `SELECT
     serumTestResult, 
     uploadDate,
     healthCode,
-    recordId
+    recordId,
+    testLocation
   FROM syn22154087 where WorkflowState = `
 export const allFacetsToPlot = [
   'gender',
@@ -34,6 +37,7 @@ export const allFacetsToPlot = [
   'testType',
   'zipcode',
   'symptom',
+  'testLocation',
 ]
 export const dataSql = `${baseDataSql} 'Uncategorized'`
 export const dataEntityId = 'syn22154087'
