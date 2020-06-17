@@ -20,11 +20,13 @@ import {
 import './GenerateComponentsFromRow.scss'
 import injectPropsIntoConfig from './injectPropsIntoConfig'
 import { cloneDeep } from 'lodash'
+const pluralize = require('pluralize')
 
 type State = {
   queryResultBundle: QueryResultBundle | undefined
   entityHeaders: PaginatedResults<EntityHeader> | undefined
   isLoading: boolean
+  hasError: boolean
 }
 
 const COMPONENT_ID_PREFIX = 'src-component-'
@@ -41,6 +43,7 @@ export default class GenerateComponentsFromRow extends React.Component<
       queryResultBundle: undefined,
       entityHeaders: undefined,
       isLoading: true,
+      hasError: false,
     }
     this.ref = React.createRef()
   }
@@ -85,6 +88,9 @@ export default class GenerateComponentsFromRow extends React.Component<
             'Error on request, expected rows to be length 1 but got ',
             rows.length,
           )
+          this.setState({
+            hasError: true,
+          })
           return
         }
         const row = rows[0].values
@@ -175,9 +181,36 @@ export default class GenerateComponentsFromRow extends React.Component<
     }
   }
 
+  goToLastPlace = () => {
+    // window.history.back()
+    // if above command does not navigate then go to the right explore page
+    const lastLocation = window.location.href.split('/')
+    const lastPlace = lastLocation.slice(0, lastLocation.length - 1).join('/')
+    window.location.assign(lastPlace)
+  }
+
   render() {
-    const { isLoading } = this.state
+    const { isLoading, hasError } = this.state
     const { showMenu = true } = this.props
+    if (hasError) {
+      const currentLocation = window.location.href.split('/')
+      const name = currentLocation[currentLocation.length - 2]
+      return (
+        <div className="GenerateComponentsFromRow__ComingSoon">
+          <h2> Coming Soon! </h2>
+          <p>
+            This {pluralize.singular(name).toLowerCase()} is not yet available,
+            please check back soon.
+          </p>
+          <button
+            onClick={this.goToLastPlace}
+            className="SRC-standard-button-shape SRC-primary-background-color SRC-whiteText"
+          >
+            CONTINUE EXPLORING
+          </button>
+        </div>
+      )
+    }
     const synapseConfigContent = (
       <>
         {isLoading && loadingScreen}
