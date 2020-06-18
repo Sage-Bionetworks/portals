@@ -133,4 +133,12 @@ export const toolsDetailsLandingPage: SynapseConfigArray = [
       entityId,
     },
   },
+  {
+    name: 'GenerateComponentsFromRow',
+    props: {
+      sql,
+      entityId,
+      synapseConfigArray: [],
+    },
+  },
 ]
