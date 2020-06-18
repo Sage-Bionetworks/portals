@@ -183,9 +183,11 @@ export default class GenerateComponentsFromRow extends React.Component<
     }
   }
 
-  goToLastPlace = () => {
-    // window.history.back()
-    // if above command does not navigate then go to the right explore page
+  goToExplorePage = () => {
+    /*
+      Below assumes that going from the details page url up one level will work,
+      for the current set of portals this assumption will hold true.
+    */
     const lastLocation = window.location.href.split('/')
     const lastPlace = lastLocation.slice(0, lastLocation.length - 1).join('/')
     window.location.assign(lastPlace)
@@ -201,11 +203,15 @@ export default class GenerateComponentsFromRow extends React.Component<
         <div className="GenerateComponentsFromRow__ComingSoon">
           <h2> Coming Soon! </h2>
           <p>
+            {/* 
+                pluralize is used to convert the detail of interest e.g. studies/publications/etc
+                to a singular form like study/publication/etc
+            */}
             This {pluralize.singular(name).toLowerCase()} is not yet available,
             please check back soon.
           </p>
           <button
-            onClick={this.goToLastPlace}
+            onClick={this.goToExplorePage}
             className="SRC-standard-button-shape SRC-primary-background-color SRC-whiteText"
           >
             CONTINUE EXPLORING
