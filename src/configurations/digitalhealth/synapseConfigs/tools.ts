@@ -7,7 +7,7 @@ import {
   CardContainerLogicProps,
 } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import facetAliases from '../facetAliases'
-export const toolsSql = 'SELECT * FROM syn22014091'
+export const toolsSql = 'SELECT * FROM syn22014091 ORDER BY "softwareName"'
 export const toolsEntityId = 'syn22014091'
 const entityId = toolsEntityId
 const sql = toolsSql

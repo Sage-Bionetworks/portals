@@ -9,7 +9,7 @@ import { dataDetailPageProps } from './data'
 import { toolsDetailPageProps } from './tools'
 import { publicationDetailPageProps } from './publications'
 export const studySql =
-  "SELECT * FROM syn21994974 WHERE ((isDHProject IS NULL) OR (isDHProject <> 'TRUE')) AND (dhPortalIndex = 'TRUE') "
+  "SELECT * FROM syn21994974 WHERE ((isDHProject IS NULL) OR (isDHProject <> 'TRUE')) AND (dhPortalIndex = 'TRUE') ORDER BY 'study'"
 export const studyEntityId = 'syn21994974'
 const entityId = studyEntityId
 const sql = studySql
