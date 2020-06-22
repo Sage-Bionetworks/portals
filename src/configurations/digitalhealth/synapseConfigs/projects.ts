@@ -8,7 +8,7 @@ import { GenerateComponentsFromRowProps } from 'types/portal-util-types'
 import { dataDetailPageProps } from './data'
 import { publicationDetailPageProps } from './publications'
 export const projectsSql =
-  "SELECT * FROM syn21994974 WHERE  dhPortalIndex = 'TRUE' and isDHProject = 'TRUE'"
+  "SELECT * FROM syn21994974 WHERE  dhPortalIndex = 'TRUE' and isDHProject = 'TRUE' ORDER BY 'study'"
 export const projectsEntityId = 'syn21994974'
 const entityId = projectsEntityId
 const sql = projectsSql
