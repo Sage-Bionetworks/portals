@@ -2552,9 +2552,10 @@ boolbase@^1.0.0, boolbase@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
 
-bootstrap@3:
-  version "3.4.1"
-  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-3.4.1.tgz#c3a347d419e289ad11f4033e3c4132b87c081d72"
+bootstrap@>=3.4.1:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.5.0.tgz#97d9dbcb5a8972f8722c9962483543b907d9b9ec"
+  integrity sha512-Z93QoXvodoVslA+PWNdk23Hze4RBYIkpb5h8I2HY2Tu2h7A0LpAgLcyrhrSUyo2/Oxm2l1fRZPs1e5hnxnliXA==
 
 brace-expansion@^1.1.7:
   version "1.1.11"
@@ -3089,13 +3090,6 @@ color@^3.0.0:
   dependencies:
     color-convert "^1.9.1"
     color-string "^1.5.2"
-
-column-resizer@^1.3.5:
-  version "1.3.5"
-  resolved "https://registry.yarnpkg.com/column-resizer/-/column-resizer-1.3.5.tgz#69fd30d990674ed335da5fa79c340d1ab31ff9a7"
-  integrity sha512-gGhpjIf2xCXvnQQOCG4c7ZpP0vs42krEeDtDaXtn797uUx8k6RzkJwGaUI1i3sYvGo8LrlntNd1TjdLMLK8x4A==
-  dependencies:
-    string-hash "~1.1.3"
 
 combined-stream@^1.0.6, combined-stream@~1.0.6:
   version "1.0.8"
@@ -10157,11 +10151,6 @@ strict-uri-encode@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/strict-uri-encode/-/strict-uri-encode-1.1.0.tgz#279b225df1d582b1f54e65addd4352e18faa0713"
 
-string-hash@~1.1.3:
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/string-hash/-/string-hash-1.1.3.tgz#e8aafc0ac1855b4666929ed7dd1275df5d6c811b"
-  integrity sha1-6Kr8CsGFW0Zmkp7X3RJ1311sgRs=
-
 string-length@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/string-length/-/string-length-2.0.0.tgz#d40dbb686a3ace960c1cffca562bf2c45f8363ed"
@@ -10415,10 +10404,10 @@ symbol-tree@^3.2.2:
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.4.tgz#430637d248ba77e078883951fb9aa0eed7c63fa2"
 
-synapse-react-client@1.14.25:
-  version "1.14.25"
-  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-1.14.25.tgz#c1274f5ee72ed0fcc91277d7ea7829ec4228e687"
-  integrity sha512-Kp6p+XLPhCEE02OJttwMxjTGnouhQofk1/D3K/nQVAQNRoY6HSLG6h1jwPKU+Mx9/U4Er5W8zUJqBGCjMGvlPQ==
+synapse-react-client@1.14.28:
+  version "1.14.28"
+  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-1.14.28.tgz#08bc99558e7d09355483d34c4e4073165a9d8dc1"
+  integrity sha512-dAf3+oKefpEAGablgn8apRAzpSQ11hVbr4kYAcs0WkHwgjEcziWAG9wFAPf9aup4+i90UFjYYQyPLVHTxRxvZA==
   dependencies:
     "@fortawesome/fontawesome-free" "^5.13.0"
     "@fortawesome/fontawesome-svg-core" "^1.2.4"
@@ -10438,8 +10427,7 @@ synapse-react-client@1.14.25:
     "@types/sinon" "^7.0.2"
     "@types/spark-md5" "^3.0.1"
     "@types/xml2js" "^0.4.4"
-    bootstrap "3"
-    column-resizer "^1.3.5"
+    bootstrap ">=3.4.1"
     gh-pages "^2.0.0"
     i "^0.3.6"
     json-rules-engine "^4.0.0"
