@@ -1,6 +1,7 @@
 import { GenericRoute } from 'types/portal-config'
 import { uncategorized, selected, invited, hidden } from './synapseConfigs'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
+import { baseDataSql, allFacetsToPlot } from './synapseConfigs/uncategorized'
 
 const routes: GenericRoute[] = [
   {
@@ -15,8 +16,8 @@ const routes: GenericRoute[] = [
     to: '/',
     routes: [
       {
-        name: 'Uncategorized',
-        to: '/Explore/Uncategorized',
+        name: '1. Uncategorized',
+        to: '/Explore/1. Uncategorized',
         isNested: false,
         synapseConfigArray: [
           {
@@ -30,8 +31,8 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        name: 'Selected',
-        to: '/Explore/Selected',
+        name: '2. Selected',
+        to: '/Explore/2. Selected',
         isNested: false,
         synapseConfigArray: [
           {
@@ -45,8 +46,8 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        name: 'Invited',
-        to: '/Explore/Invited',
+        name: '3. Invited',
+        to: '/Explore/3. Invited',
         isNested: false,
         synapseConfigArray: [
           {
