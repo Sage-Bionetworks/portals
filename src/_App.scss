@@ -505,3 +505,15 @@ div.SRC-marginBottomTen {
   height: 300px;
   overflow: auto;
 }
+
+// TODO: Remove once this is fixed in the portals
+.EnumFacetFilter {
+  button {
+    color: $primary-action-color !important;
+  }
+  input {
+    &:focus {
+      outline-color: $primary-action-color !important;
+    }
+  }
+}
