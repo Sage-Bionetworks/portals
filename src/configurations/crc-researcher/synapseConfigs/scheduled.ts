@@ -5,21 +5,19 @@ import facetAliases from '../facetAliases'
 import { baseDataSqlColumns, baseDataSqlFrom, baseDataSqlWhere, allFacetsToPlot } from './uncategorized'
 
 const rgbIndex = 0
-// TODO: add testSentOn (when available):
-// export const dataSql = `SELECT testSentOn, ${baseDataSqlColumns} ${baseDataSqlFrom} ${baseDataSqlWhere} 'Invited'`
-export const dataSql = `SELECT ${baseDataSqlColumns} ${baseDataSqlFrom} ${baseDataSqlWhere} 'Invited'`
+export const dataSql = `SELECT scheduledLabDrawOn, ${baseDataSqlColumns} ${baseDataSqlFrom} ${baseDataSqlWhere} 'Scheduled'`
 export const dataEntityId = 'syn22154087'
 const entityId = dataEntityId
 const sql = dataSql
 
-export const invited: SynapseConfig = {
+export const scheduled: SynapseConfig = {
   name: 'QueryWrapperPlotNav',
   props: {
     rgbIndex,
     entityId,
     shouldDeepLink: true,
     sql,
-    name: 'Invited Participants',
+    name: 'Scheduled Participants',
     facetAliases,
     tableConfiguration: {
     },
@@ -27,4 +25,4 @@ export const invited: SynapseConfig = {
   },
 }
 
-export default invited
+export default scheduled

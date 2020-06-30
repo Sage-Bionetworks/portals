@@ -1,22 +1,22 @@
-import { HomeExploreConfig, SynapseConfig } from 'types/portal-config'
+import { SynapseConfig } from 'types/portal-config'
 import facetAliases from '../facetAliases'
 import handleParticipantWorkflowChange from '../handleParticipantWorkflowChange'
 import { baseDataSql, allFacetsToPlot } from './uncategorized'
 
 const rgbIndex = 0
-export const dataSql = `${baseDataSql} 'Selected'`
+export const dataSql = `${baseDataSql} 'Potential'`
 export const dataEntityId = 'syn22154087'
 const entityId = dataEntityId
 const sql = dataSql
 
-export const selected: SynapseConfig = {
+export const potential: SynapseConfig = {
   name: 'QueryWrapperPlotNav',
   props: {
     rgbIndex,
     entityId,
     shouldDeepLink: true,
     sql,
-    name: 'Selected Participants',
+    name: 'Potential Participants',
     facetAliases,
     facetsToPlot: allFacetsToPlot,
     tableConfiguration: {
@@ -25,14 +25,14 @@ export const selected: SynapseConfig = {
     visibleColumnCount: 10,
     customControls: [
       {
-        buttonText: 'Send blood draw invite',
+        buttonText: 'Send lab invitation',
         classNames: 'exampleClassNameToAddToButton',
         onClick: (async (event) => {
           handleParticipantWorkflowChange(event, 'Invited')
         }),
       },
       {
-        buttonText: 'Deselect for blood draw',
+        buttonText: 'Move to uncategorized',
         classNames: 'exampleClassNameToAddToButton',
         onClick: (async (event) => {
           handleParticipantWorkflowChange(event, 'Uncategorized')
@@ -43,4 +43,4 @@ export const selected: SynapseConfig = {
 
 
 
-export default selected
+export default potential

@@ -6,8 +6,7 @@ import handleParticipantWorkflowChange from '../handleParticipantWorkflowChange'
 
 const rgbIndex = 0
 
-export const baseDataSql = `SELECT 
-    symptom, 
+export const baseDataSqlColumns = `symptom, 
     firstDayOfSymptoms, 
     lastDayOfSymptoms,
     worstDayOfSymptoms,
@@ -29,8 +28,13 @@ export const baseDataSql = `SELECT
     uploadDate,
     healthCode,
     recordId,
-    testLocation
-  FROM syn22154087 where WorkflowState = `
+    testLocation`
+
+export const baseDataSqlFrom = ` FROM syn22154087 `
+export const baseDataSqlWhere = ` WHERE WorkflowState = `
+
+export const baseDataSql = `SELECT ${baseDataSqlColumns} ${baseDataSqlFrom} ${baseDataSqlWhere}  `
+
 export const allFacetsToPlot = [
   'gender',
   'ethnicity',
@@ -59,10 +63,10 @@ export const uncategorized: SynapseConfig = {
     facetsToPlot: allFacetsToPlot,
     customControls: [
       {
-        buttonText: 'Select for blood draw',
+        buttonText: 'Select as potential',
         classNames: 'exampleClassNameToAddToButton',
         onClick: (async (event) => {
-          handleParticipantWorkflowChange(event, 'Selected')
+          handleParticipantWorkflowChange(event, 'Potential')
         }),
       },
       {

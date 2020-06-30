@@ -17,7 +17,12 @@ $primary-action-color: #0085ff;
   border-top-color: black !important;
   border: black 2px solid;
   color: black;
+  white-space: nowrap;
 }
+.explore-buttons button:last-child {
+  border: none !important;
+}
+
 .SRC-chart-link {
   a {
     background: $primary-action-color !important;
