@@ -183,7 +183,9 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
       if (
         buttonElement.classList.contains(SynapseConstants.SRC_SIGN_IN_CLASS)
       ) {
-        this.setState({ showLoginDialog: true })
+        if (!this.state.showLoginDialog) {
+          this.setState({ showLoginDialog: true })
+        }
       }
     }
     let color = 'white'

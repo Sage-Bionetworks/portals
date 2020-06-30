@@ -91,10 +91,6 @@ export const publications: HomeExploreConfig = {
       searchConfiguration: {
         searchable: [
           {
-            columnName: 'Abstract',
-            hintText: '',
-          },
-          {
             columnName: 'Author',
             hintText: 'LastName',
           },
