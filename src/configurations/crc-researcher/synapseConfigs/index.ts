@@ -1,9 +1,10 @@
 import { uncategorized } from './uncategorized'
-import { selected } from './selected'
+import { potential } from './potential'
 import { hidden } from './hidden'
 import { invited } from './invited'
+import { scheduled } from './scheduled'
+import { tested } from './tested'
 
+export { uncategorized, potential, invited, scheduled, tested, hidden }
 
-export { uncategorized, selected, hidden, invited }
-
-export default { uncategorized, selected, hidden, invited }
+export default { uncategorized, potential, invited, scheduled, tested, hidden }

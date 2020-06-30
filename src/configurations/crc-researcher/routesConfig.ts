@@ -1,5 +1,5 @@
 import { GenericRoute } from 'types/portal-config'
-import { uncategorized, selected, invited, hidden } from './synapseConfigs'
+import { uncategorized, potential, invited, scheduled, tested, hidden } from './synapseConfigs'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
 import { baseDataSql, allFacetsToPlot } from './synapseConfigs/uncategorized'
 
@@ -31,8 +31,8 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        name: '2. Selected',
-        to: '/Explore/2. Selected',
+        name: '2. Potential',
+        to: '/Explore/2. Potential',
         isNested: false,
         synapseConfigArray: [
           {
@@ -40,7 +40,7 @@ const routes: GenericRoute[] = [
             title: 'EXPLORE',
             props: {
               ...routeButtonControlWrapperProps,
-              synapseConfig: selected,
+              synapseConfig: potential,
             },
           },
         ],
@@ -56,6 +56,36 @@ const routes: GenericRoute[] = [
             props: {
               ...routeButtonControlWrapperProps,
               synapseConfig: invited,
+            },
+          },
+        ],
+      },
+      {
+        name: '4. Scheduled',
+        to: '/Explore/4. Scheduled',
+        isNested: false,
+        synapseConfigArray: [
+          {
+            name: 'RouteButtonControlWrapper',
+            title: 'EXPLORE',
+            props: {
+              ...routeButtonControlWrapperProps,
+              synapseConfig: scheduled,
+            },
+          },
+        ],
+      },
+      {
+        name: '5. Tested',
+        to: '/Explore/5. Tested',
+        isNested: false,
+        synapseConfigArray: [
+          {
+            name: 'RouteButtonControlWrapper',
+            title: 'EXPLORE',
+            props: {
+              ...routeButtonControlWrapperProps,
+              synapseConfig: tested,
             },
           },
         ],
