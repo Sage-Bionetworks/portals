@@ -18,6 +18,7 @@ import { GenerateComponentsFromRowProps } from './portal-util-types'
 import { QueryWrapperFlattenedProps } from '../portal-components/QueryWrapperFlattened'
 import { StandaloneQueryWrapperProps } from '../portal-components/StandaloneQueryWrapper'
 import { StatefulButtonControlWrapperProps } from 'portal-components/StatefulButtonControlWrapper'
+import { ParticipantsBarPlotProps } from '../portal-components/crc-researcher/ParticipantsBarPlot'
 
 // For styling the header on the home page -- the main title and the summary text
 export type HomePageHeaderConfig = {
@@ -155,6 +156,13 @@ type StandaloneQueryWrapper = {
   props: StandaloneQueryWrapperProps
 }
 
+
+type ParticipantsBarPlot = {
+  name: 'ParticipantsBarPlot'
+  props: ParticipantsBarPlotProps
+}
+
+
 export type SynapseConfig = (
   | StatefulButtonControl
   | RouteButtonControl
@@ -179,6 +187,7 @@ export type SynapseConfig = (
   | QueryWrapperPlotNav
   | FunderCards
   | StandaloneQueryWrapper
+  | ParticipantsBarPlot
 ) &
   Metadata
 export type SynapseConfigArray = SynapseConfig[]

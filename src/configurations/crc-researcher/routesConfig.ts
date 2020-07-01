@@ -8,7 +8,14 @@ const routes: GenericRoute[] = [
     name: 'Home',
     to: '/',
     isNested: false,
-    synapseConfigArray: [],
+    synapseConfigArray: [
+      {
+        name: 'ParticipantsBarPlot',
+        isOutsideContainer: true,
+        props: {
+        }
+      }
+    ],
   },
   {
     name: 'Explore',
