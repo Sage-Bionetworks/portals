@@ -27,7 +27,8 @@
     "sass": "^1.5.1",
     "source-map-explorer": "^1.6.0",
     "synapse-react-client": "1.14.28",
-    "typescript": "3.7.4"
+    "typescript": "3.7.4",
+    "plotly.js-basic-dist": "^1.47.3"
   },
   "scripts": {
     "build-css": "node-sass src/ -o src/",
