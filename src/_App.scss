@@ -132,9 +132,8 @@ body {
   height: $header-height;
   position: fixed;
   width: 100%;
-  z-index: 6;
+  z-index: 10000;
   background: rgba(256, 256, 256, 0.9);
-  // background: white;
   height: 67px;
   a:hover {
     text-decoration: none;
