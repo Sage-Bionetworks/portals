@@ -3,12 +3,11 @@ import { HomePageHeaderConfig } from 'types/portal-config'
 
 const homePageHeader: HomePageHeaderConfig = {
   summary: (
-    <>
-    Covid Recovery Corps Researcher portal
+    <>    
     </>
   ),
   title:
-    'Welcome to the Covid Recovery Corps Researcher',
+    'Welcome to the Covid Recovery Corps Participant Manager',
   showBlur: false,
 }
 

@@ -10,6 +10,7 @@ import AboutPortal from './csbc-home-page/AboutPortal'
 import TableWithSideFacets from './csbc-home-page/TableWithSideFacets'
 import FunderCards from './csbc-home-page/FunderCards'
 import DevelopedBySage from './csbc-home-page/DevelopedBySage'
+import ParticipantsBarPlot from './crc-researcher/ParticipantsBarPlot'
 
 const PortalComponents = {
   StatefulButtonControlWrapper,
@@ -24,6 +25,7 @@ const PortalComponents = {
   TableWithSideFacets,
   DevelopedBySage,
   FunderCards,
+  ParticipantsBarPlot,
 }
 
 export default PortalComponents

@@ -63,6 +63,8 @@ const routes: GenericRoute[] = [
             colors: {
               CSBC: 'rgba(64,123,160, 1)',
               'PS-ON': 'rgba(91,176,181,1)',
+              ICBP: 'rgba(156, 196, 233, 1)',
+              TEC: 'rgba(197, 191, 223, 1)'
             },
             whereClause: 'totalCount is not NULL',
           },
@@ -71,13 +73,15 @@ const routes: GenericRoute[] = [
             xField: 'totalCount',
             yField: 'theme',
             groupField: 'consortium',
-            countLabel: 'projects',
+            countLabel: 'grants',
             plotStyle: {
               backgroundColor: '#f5f9fa',
             },
             colors: {
               CSBC: '#1c76af',
               'PS-ON': '#5bb0b5',
+              ICBP: '#c5bfdf',
+              TEC: '#9cc4e9'
             },
           },
           dotPlot: {

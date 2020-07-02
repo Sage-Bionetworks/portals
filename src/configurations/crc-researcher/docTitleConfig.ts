@@ -1,9 +1,9 @@
 import { DocTitleConfig } from 'types/portal-config'
 
 const docTitleConfig: DocTitleConfig = {
-  name: 'Covid Recovery Corps Researcher Portal',
+  name: 'Participant Manager',
   description:
-    'Covid Recovery Corps Researcher description in doctitleConfig.ts',
+    'Covid Recovery Corps Participant Manager',
 }
 
 export default docTitleConfig

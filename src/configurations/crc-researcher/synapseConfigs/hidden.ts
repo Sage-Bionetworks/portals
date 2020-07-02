@@ -30,13 +30,6 @@ export const hidden: SynapseConfig = {
         onClick: (async (event) => {
           handleParticipantWorkflowChange(event, 'Uncategorized')
         }),
-      },
-      {
-        buttonText: 'Select for blood draw',
-        classNames: 'exampleClassNameToAddToButton',
-        onClick: (async (event) => {
-          handleParticipantWorkflowChange(event, 'Selected')
-        }),
       }]
   },
 }
