@@ -10404,10 +10404,10 @@ symbol-tree@^3.2.2:
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.4.tgz#430637d248ba77e078883951fb9aa0eed7c63fa2"
 
-synapse-react-client@1.14.28:
-  version "1.14.28"
-  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-1.14.28.tgz#08bc99558e7d09355483d34c4e4073165a9d8dc1"
-  integrity sha512-dAf3+oKefpEAGablgn8apRAzpSQ11hVbr4kYAcs0WkHwgjEcziWAG9wFAPf9aup4+i90UFjYYQyPLVHTxRxvZA==
+synapse-react-client@1.14.29:
+  version "1.14.29"
+  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-1.14.29.tgz#d71fda117f204e37ebfd8ed95284ffc5d55efc57"
+  integrity sha512-atn+EoCzK1MgXLdZmvXX6aRrn4O9B0PciAb8Y/LLS/Y76q3MzrqjAjMSEPDl8fUIk+y75973U4sIXMzIJjBTJA==
   dependencies:
     "@fortawesome/fontawesome-free" "^5.13.0"
     "@fortawesome/fontawesome-svg-core" "^1.2.4"
