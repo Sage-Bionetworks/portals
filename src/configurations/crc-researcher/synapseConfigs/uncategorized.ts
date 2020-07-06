@@ -1,6 +1,4 @@
-import { HomeExploreConfig, SynapseConfig } from 'types/portal-config'
-import { SynapseConstants } from 'synapse-react-client'
-import loadingScreen from '../loadingScreen'
+import { SynapseConfig } from 'types/portal-config'
 import facetAliases from '../facetAliases'
 import handleParticipantWorkflowChange from '../handleParticipantWorkflowChange'
 
@@ -28,7 +26,8 @@ export const baseDataSqlColumns = `symptom,
     uploadDate,
     healthCode,
     recordId,
-    testLocation`
+    testLocation,
+    dataGroups`
 
 export const baseDataSqlFrom = ` FROM syn22154087 `
 export const baseDataSqlWhere = ` WHERE WorkflowState = `
