@@ -161,9 +161,9 @@ export function fetchData(
 
 const StatusLineChart: FunctionComponent<StatusLineChartProps> = ({
   token,
-  style = { width: '100%', height: '100%', margin: '30px 10px' },
+  style = { width: '100%'},
 }: StatusLineChartProps) => {
-  // get plot data!
+
   const [isLoaded, setIsLoaded] = useState(false)
   const [barPlotQueryData, setBarPlotQueryData] = useState<GraphItem[]>([])
   const [plotData, setPlotData] = useState<PlotData | null>(null)
@@ -210,7 +210,7 @@ const StatusLineChart: FunctionComponent<StatusLineChartProps> = ({
       )}
 
       {isLoaded && plotData && token && (
-        <div style={{ width: '100%', backgroundColor: 'blue' }}>
+        <div style={style}>
           <Plot
             layout={barLayoutConfig}
             style={{ width: '100%' }}
