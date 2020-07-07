@@ -165,6 +165,9 @@ export const details: GenerateComponentsFromRowProps = {
       props: publicationDetailPageProps,
       columnName: 'study',
       tableSqlKeys: ['study'],
+      resolveSynId: {
+        value: true,
+      },
     },
   ],
 }
