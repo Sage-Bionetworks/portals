@@ -77,7 +77,7 @@ const routes: GenericRoute[] = [
             '#0F9488',
             '#D4689A',
             '#3C4A63',
-            '#407BA0',
+            '#D46D1E',
             '#407BA0',
           ],
         },

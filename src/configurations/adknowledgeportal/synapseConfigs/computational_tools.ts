@@ -20,7 +20,7 @@ const cardConfiguration: CardConfiguration = {
 
 const sql = 'Select * from syn20337467'
 const entityId = 'syn20337467'
-const rgbIndex = 6
+const rgbIndex = 7
 const unitDescription = 'Tools'
 
 const computationalTools: HomeExploreConfig = {
