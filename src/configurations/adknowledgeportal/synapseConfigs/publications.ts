@@ -72,7 +72,7 @@ const publications: HomeExploreConfig = {
       sql,
       name: 'Publications',
       shouldDeepLink: true,
-      facetsToPlot: ['consortium', 'year', 'long_amp_ad_grants'],
+      facetsToPlot: ['consortium', 'year', 'long_amp_ad_grants', 'journal'],
       cardConfiguration: publicationCardProps,
       facetAliases,
       // searchConfiguration: {

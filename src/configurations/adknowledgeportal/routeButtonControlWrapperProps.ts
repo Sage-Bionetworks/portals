@@ -11,6 +11,7 @@ const routeButtonControlWrapper = {
     '#D4689A',
     '#3C4A63',
     '#407BA0',
+    '#407BA0',
   ],
   customRoutes: [
     'Programs',
@@ -19,7 +20,8 @@ const routeButtonControlWrapper = {
     'Data',
     'Publications',
     'People',
-    'Tools',
+    'Experimental Tools',
+    'Computational Tools',
     'Results',
   ],
 }

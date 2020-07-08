@@ -134,7 +134,7 @@ const studies: HomeExploreConfig = {
 
 export const studiesGenerateComponentsFromRowProps: GenerateComponentsFromRowProps = {
   sql: studiesSql,
-  sqlOperator: '=',
+  sqlOperator: 'LIKE',
   entityId,
   synapseConfigArray: [
     {
@@ -163,7 +163,7 @@ export const studiesGenerateComponentsFromRowProps: GenerateComponentsFromRowPro
       },
     },
     {
-      name: 'QueryWrapperFlattened',
+      name: 'StandaloneQueryWrapper',
       title: 'Study Metadata',
       columnName: 'Study',
       resolveSynId: {
@@ -171,24 +171,8 @@ export const studiesGenerateComponentsFromRowProps: GenerateComponentsFromRowPro
       },
       tableSqlKeys: ['study'],
       props: {
-        initQueryRequest: {
-          partMask:
-            SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
-            SynapseConstants.BUNDLE_MASK_QUERY_COUNT |
-            SynapseConstants.BUNDLE_MASK_QUERY_SELECT_COLUMNS |
-            SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS |
-            SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
-          entityId,
-          concreteType:
-            'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-          query: {
-            sql:
-              "SELECT id, metadataType, dataType, assay FROM syn11346063 WHERE `dataSubtype` = 'metadata'",
-            isConsistent: true,
-            limit: 25,
-            offset: 0,
-          },
-        },
+        sql:
+          "SELECT id, metadataType, dataType, assay FROM syn11346063 WHERE `dataSubtype` = 'metadata'",
         loadingScreen,
         facetAliases,
         rgbIndex,
@@ -197,7 +181,7 @@ export const studiesGenerateComponentsFromRowProps: GenerateComponentsFromRowPro
       },
     },
     {
-      name: 'QueryWrapperFlattened',
+      name: 'StandaloneQueryWrapper',
       title: 'Study Data',
       columnName: 'Study',
       resolveSynId: {
@@ -205,24 +189,9 @@ export const studiesGenerateComponentsFromRowProps: GenerateComponentsFromRowPro
       },
       tableSqlKeys: ['study'],
       props: {
-        initQueryRequest: {
-          partMask:
-            SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
-            SynapseConstants.BUNDLE_MASK_QUERY_COUNT |
-            SynapseConstants.BUNDLE_MASK_QUERY_SELECT_COLUMNS |
-            SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS |
-            SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
-          concreteType:
-            'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-          entityId,
-          query: {
-            sql:
-              "SELECT `resourceType`,`dataType`, `assay`, COUNT(`id`) AS `Files` FROM syn11346063 WHERE  (`dataSubtype` <> 'metadata' OR `dataSubtype` IS NULL) GROUP BY 1, 2,3 ORDER BY 4 DESC",
-            isConsistent: true,
-            limit: 25,
-            offset: 0,
-          },
-        },
+        sql:
+          "SELECT `resourceType`,`dataType`, `assay`, COUNT(`id`) AS `Files` FROM syn11346063 WHERE  (`dataSubtype` <> 'metadata' OR `dataSubtype` IS NULL) GROUP BY 1, 2,3 ORDER BY 4 DESC",
+        entityId,
         loadingScreen,
         facetAliases,
         rgbIndex,

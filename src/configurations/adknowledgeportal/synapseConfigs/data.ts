@@ -6,7 +6,6 @@ const unitDescription = 'data files'
 const rgbIndex = 1
 const sql = 'SELECT * FROM syn11346063'
 const entityId = 'syn11346063'
-const title = 'Data'
 
 const data: HomeExploreConfig = {
   homePageSynapseObject: {
@@ -41,6 +40,14 @@ const data: HomeExploreConfig = {
       visibleColumnCount: 10,
       tableConfiguration: {
         showAccessColumn: true,
+        columnLinks: [
+          {
+            matchColumnName: 'study',
+            isMarkdown: false,
+            baseURL: 'Explore/Studies/DetailsPage',
+            URLColumnName: 'Study_Name',
+          },
+        ],
       },
       loadingScreen,
       sql,
