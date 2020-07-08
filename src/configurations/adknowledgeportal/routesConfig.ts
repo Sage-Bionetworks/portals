@@ -7,7 +7,6 @@ import {
   people,
   programs,
   publications,
-  tools,
   news,
 } from './synapseConfigs'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
@@ -30,6 +29,8 @@ import {
   programEntityId,
 } from './synapseConfigs/programs'
 import { studiesEntityId } from './synapseConfigs/studies'
+import experiementalTools from './synapseConfigs/experimental_tools'
+import computationalTools from './synapseConfigs/computational_tools'
 
 const routes: GenericRoute[] = [
   {
@@ -60,8 +61,12 @@ const routes: GenericRoute[] = [
               synapseConfigArray: [people.homePageSynapseObject],
             },
             {
-              name: 'Tools',
-              synapseConfigArray: [tools.homePageSynapseObject],
+              name: 'Experiemental Tools',
+              synapseConfigArray: [experiementalTools.homePageSynapseObject],
+            },
+            {
+              name: 'Computational Tools',
+              synapseConfigArray: [computationalTools.homePageSynapseObject],
             },
             { name: 'Results', synapseConfigArray: [results] },
           ],
@@ -72,6 +77,7 @@ const routes: GenericRoute[] = [
             '#0F9488',
             '#D4689A',
             '#3C4A63',
+            '#D46D1E',
             '#407BA0',
           ],
         },
@@ -282,16 +288,31 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        name: 'Tools',
+        name: 'Experimental Tools',
         isNested: false,
-        to: '/Explore/Tools',
+        to: '/Explore/Experimental Tools',
         synapseConfigArray: [
           {
             name: 'RouteButtonControlWrapper',
             title: 'Explore',
             props: {
               ...routeButtonControlWrapperProps,
-              synapseConfig: tools.explorePageSynapseObject,
+              synapseConfig: experiementalTools.explorePageSynapseObject,
+            },
+          },
+        ],
+      },
+      {
+        name: 'Computational Tools',
+        isNested: false,
+        to: '/Explore/Computational Tools',
+        synapseConfigArray: [
+          {
+            name: 'RouteButtonControlWrapper',
+            title: 'Explore',
+            props: {
+              ...routeButtonControlWrapperProps,
+              synapseConfig: computationalTools.explorePageSynapseObject,
             },
           },
         ],
@@ -369,51 +390,51 @@ const routes: GenericRoute[] = [
     ],
   },
   // Uncomment to expose Contribute route (once research team is monitoring submissions)
-  // {
-  //   name: 'Contribute',
-  //   isNested: false,
-  //   to: '/Contribute',
-  //   synapseConfigArray: [
-  //     {
-  //       name: 'Markdown',
-  //       className: 'amp-project-component',
-  //       props: {
-  //         ownerId: 'syn12666371',
-  //         wikiId: '600033',
-  //       },
-  //     },
-  //     {
-  //       name: 'SynapseFormSubmissionsGrid',
-  //       props: {
-  //         pathpart: '/Contribute',
-  //         formGroupId: '11',
-  //         itemNoun: 'contribution-request',
-  //         formClass: 'contribution-request',
-  //       },
-  //     },
-  //   ],
-  //   programmaticRouteConfig: [
-  //     {
-  //       name: 'Markdown',
-  //       props: {
-  //         ownerId: 'syn12666371',
-  //         wikiId: '600034',
-  //       },
-  //     },
-  //     {
-  //       name: 'SynapseFormWrapper',
-  //       props: {
-  //         formSchemaEntityId: 'syn20692910',
-  //         fileNamePath: 'study.submission_name',
-  //         formUiSchemaEntityId: 'syn20692911',
-  //         formNavSchemaEntityId: 'syn20968007',
-  //         isWizardMode: true,
-  //         formTitle: 'Your Contribution Request',
-  //         formClass: 'contribution-request',
-  //       },
-  //     },
-  //   ],
-  // },
+  {
+    name: 'Contribute',
+    isNested: false,
+    to: '/Contribute',
+    synapseConfigArray: [
+      {
+        name: 'Markdown',
+        className: 'amp-project-component',
+        props: {
+          ownerId: 'syn12666371',
+          wikiId: '600033',
+        },
+      },
+      {
+        name: 'SynapseFormSubmissionsGrid',
+        props: {
+          pathpart: '/Contribute',
+          formGroupId: '11',
+          itemNoun: 'contribution-request',
+          formClass: 'contribution-request',
+        },
+      },
+    ],
+    programmaticRouteConfig: [
+      {
+        name: 'Markdown',
+        props: {
+          ownerId: 'syn12666371',
+          wikiId: '600034',
+        },
+      },
+      {
+        name: 'SynapseFormWrapper',
+        props: {
+          formSchemaEntityId: 'syn20692910',
+          fileNamePath: 'study.submission_name',
+          formUiSchemaEntityId: 'syn20692911',
+          formNavSchemaEntityId: 'syn20968007',
+          isWizardMode: true,
+          formTitle: 'Your Contribution Request',
+          formClass: 'contribution-request',
+        },
+      },
+    ],
+  },
   {
     name: 'About',
     isNested: false,
