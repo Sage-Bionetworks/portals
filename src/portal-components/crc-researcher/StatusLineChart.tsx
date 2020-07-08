@@ -27,7 +27,7 @@ type PlotData = {
   apptMade: GraphItem[]
 }
 
-const barLayoutConfig: Partial<PlotlyTyped.Layout> = {
+const layoutConfig: Partial<PlotlyTyped.Layout> = {
   showlegend: true,
   yaxis: {
     title: {
@@ -165,7 +165,6 @@ const StatusLineChart: FunctionComponent<StatusLineChartProps> = ({
 }: StatusLineChartProps) => {
 
   const [isLoaded, setIsLoaded] = useState(false)
-  const [barPlotQueryData, setBarPlotQueryData] = useState<GraphItem[]>([])
   const [plotData, setPlotData] = useState<PlotData | null>(null)
   const samplesCollectedSql =
     'SELECT uploadDate as "x", count(distinct(recordId)) as "y" FROM syn22154087 WHERE scheduledLabDrawOn IS NOT NULL GROUP BY uploadDate ORDER BY uploadDate'
@@ -212,7 +211,7 @@ const StatusLineChart: FunctionComponent<StatusLineChartProps> = ({
       {isLoaded && plotData && token && (
         <div style={style}>
           <Plot
-            layout={barLayoutConfig}
+            layout={layoutConfig}
             style={{ width: '100%' }}
             config={optionsConfig}
             data={getChartDataPoints(plotData)}
