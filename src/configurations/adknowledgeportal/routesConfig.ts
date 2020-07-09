@@ -29,7 +29,7 @@ import {
   programEntityId,
 } from './synapseConfigs/programs'
 import { studiesEntityId } from './synapseConfigs/studies'
-import experiementalTools from './synapseConfigs/experimental_tools'
+import experimentalTools from './synapseConfigs/experimental_tools'
 import computationalTools from './synapseConfigs/computational_tools'
 
 const routes: GenericRoute[] = [
@@ -61,8 +61,8 @@ const routes: GenericRoute[] = [
               synapseConfigArray: [people.homePageSynapseObject],
             },
             {
-              name: 'Experiemental Tools',
-              synapseConfigArray: [experiementalTools.homePageSynapseObject],
+              name: 'Experimental Tools',
+              synapseConfigArray: [experimentalTools.homePageSynapseObject],
             },
             {
               name: 'Computational Tools',
@@ -297,7 +297,7 @@ const routes: GenericRoute[] = [
             title: 'Explore',
             props: {
               ...routeButtonControlWrapperProps,
-              synapseConfig: experiementalTools.explorePageSynapseObject,
+              synapseConfig: experimentalTools.explorePageSynapseObject,
             },
           },
         ],

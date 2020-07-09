@@ -42,7 +42,7 @@ const entityId = 'syn22219805'
 const rgbIndex = 6
 const unitDescription = 'Tools'
 
-const experiementalTools: HomeExploreConfig = {
+const experimentalTools: HomeExploreConfig = {
   homePageSynapseObject: {
     name: 'QueryWrapperFlattened',
     props: {
@@ -127,4 +127,4 @@ const experiementalTools: HomeExploreConfig = {
   },
 }
 
-export default experiementalTools
+export default experimentalTools
