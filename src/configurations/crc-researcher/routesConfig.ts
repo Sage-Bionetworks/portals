@@ -13,6 +13,12 @@ const routes: GenericRoute[] = [
         isOutsideContainer: true,
         props: {
         }
+      },
+      {
+        name: 'StatusLineChart',
+        isOutsideContainer: true,
+        props: {
+        }
       }
     ],
   },
