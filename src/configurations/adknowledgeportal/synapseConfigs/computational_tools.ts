@@ -10,6 +10,7 @@ const computationalSchema: GenericCardSchema = {
   description: 'summary',
   subTitle: 'softwareType',
   secondaryLabels: ['contributor', 'program', 'grant', 'documentation'],
+  link: 'url',
 }
 
 const cardConfiguration: CardConfiguration = {
