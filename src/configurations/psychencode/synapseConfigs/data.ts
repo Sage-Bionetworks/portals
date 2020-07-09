@@ -21,6 +21,14 @@ export const data: SynapseConfig = {
     sql,
     tableConfiguration: {
       showAccessColumn: true,
+      columnLinks: [
+        {
+          matchColumnName: 'study',
+          URLColumnName: 'studyName',
+          baseURL: 'Explore/Studies/DetailsPage',
+          isMarkdown: false,
+        },
+      ],
     },
     visibleColumnCount: 10,
     loadingScreen,
