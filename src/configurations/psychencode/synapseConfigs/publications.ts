@@ -15,7 +15,7 @@ export const publicationSchema: GenericCardSchema = {
   title: 'title',
   subTitle: 'authors',
   description: 'abstract',
-  secondaryLabels: ['year', 'journal', 'study', 'grants', 'DOI', 'pubmedId'],
+  secondaryLabels: ['year', 'journal', 'study', 'grants', 'DOI'],
 }
 
 export const publicationsCardConfiguration: CardConfiguration = {
