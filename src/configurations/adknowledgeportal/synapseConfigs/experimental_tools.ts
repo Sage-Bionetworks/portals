@@ -31,8 +31,10 @@ const cardConfiguration: CardConfiguration = {
       matchColumnName: 'AlzForum',
     },
     {
-      isMarkdown: true,
+      isMarkdown: false,
       matchColumnName: 'data',
+      URLColumnName: 'Study_Name',
+      baseURL: 'Explore/Studies/DetailsPage',
     },
   ],
 }
