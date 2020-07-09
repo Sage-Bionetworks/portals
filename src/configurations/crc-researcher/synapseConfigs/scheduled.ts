@@ -1,6 +1,4 @@
-import { HomeExploreConfig, SynapseConfig } from 'types/portal-config'
-import { SynapseConstants } from 'synapse-react-client'
-import loadingScreen from '../loadingScreen'
+import { SynapseConfig } from 'types/portal-config'
 import facetAliases from '../facetAliases'
 import { baseDataSqlColumns, baseDataSqlFrom, baseDataSqlWhere, allFacetsToPlot } from './uncategorized'
 

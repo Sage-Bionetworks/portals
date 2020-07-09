@@ -1,13 +1,9 @@
-import { HomeExploreConfig, SynapseConfig } from 'types/portal-config'
-import { SynapseConstants } from 'synapse-react-client'
-import loadingScreen from '../loadingScreen'
+import { SynapseConfig } from 'types/portal-config'
 import facetAliases from '../facetAliases'
 import { baseDataSqlColumns, baseDataSqlFrom, baseDataSqlWhere, allFacetsToPlot } from './uncategorized'
 
 const rgbIndex = 0
-// TODO: add testSentOn (when available):
-// export const dataSql = `SELECT testSentOn, ${baseDataSqlColumns} ${baseDataSqlFrom} ${baseDataSqlWhere} 'Invited'`
-export const dataSql = `SELECT ${baseDataSqlColumns} ${baseDataSqlFrom} ${baseDataSqlWhere} 'Invited'`
+export const dataSql = `SELECT inviteSentOn, ${baseDataSqlColumns} ${baseDataSqlFrom} ${baseDataSqlWhere} 'Invited'`
 export const dataEntityId = 'syn22154087'
 const entityId = dataEntityId
 const sql = dataSql

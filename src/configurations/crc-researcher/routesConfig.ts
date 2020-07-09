@@ -1,7 +1,6 @@
 import { GenericRoute } from 'types/portal-config'
 import { uncategorized, potential, invited, scheduled, tested, hidden } from './synapseConfigs'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
-import { baseDataSql, allFacetsToPlot } from './synapseConfigs/uncategorized'
 
 const routes: GenericRoute[] = [
   {
