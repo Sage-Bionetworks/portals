@@ -39,6 +39,14 @@ export const studyCardConfiguration: CardConfiguration = {
     matchColumnName: 'study',
     isMarkdown: false,
   },
+  labelLinkConfig: [
+    {
+      matchColumnName: 'grants',
+      URLColumnName: 'grants',
+      isMarkdown: false,
+      baseURL: 'Explore/Grants/DetailsPage',
+    },
+  ],
 }
 
 export const studies: SynapseConfig = {
