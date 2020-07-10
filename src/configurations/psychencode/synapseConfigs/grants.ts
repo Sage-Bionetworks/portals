@@ -1,12 +1,16 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { SynapseConfigArray, SynapseConfig } from 'types/portal-config'
 import loadingScreen from '../loadingScreen'
-import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
+import {
+  GenericCardSchema,
+  IconOptions,
+} from 'synapse-react-client/dist/containers/GenericCard'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import { GenerateComponentsFromRowProps } from 'types/portal-util-types'
 import { studyDetailPageProps } from './studies'
 import { publicationDetailPageProps } from './publications'
 import { peopleDetailPageProps } from './people'
+import { Project } from 'synapse-react-client/dist/assets/themed_icons/Project'
 export const grantSql = 'SELECT * FROM syn22096130'
 export const grantEntityId = 'syn22096130'
 const entityId = grantEntityId
@@ -21,16 +25,21 @@ export const grantSchema: GenericCardSchema = {
   secondaryLabels: ['institutions', 'grants', 'phase'],
 }
 
+const iconOptions: IconOptions = {
+  Grant: (Project as unknown) as string,
+}
+
 export const grantCardConfiguration: CardConfiguration = {
   type: SynapseConstants.GENERIC_CARD,
   genericCardSchema: grantSchema,
   titleLinkConfig: {
     isMarkdown: false,
-    matchColumnName: 'keyInvestigators',
-    URLColumnName: 'keyInvestigators',
+    matchColumnName: 'grants',
+    URLColumnName: 'grants',
     baseURL: 'Explore/Grants/DetailsPage',
   },
   loadingScreen,
+  iconOptions,
 }
 
 export const grants: SynapseConfig = {
@@ -75,6 +84,7 @@ export const grants: SynapseConfig = {
 const details: GenerateComponentsFromRowProps = {
   sql,
   entityId,
+  sqlOperator: 'LIKE',
   synapseConfigArray: [
     {
       name: 'CardContainerLogic',
