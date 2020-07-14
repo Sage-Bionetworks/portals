@@ -75,38 +75,6 @@ const publications: HomeExploreConfig = {
       facetsToPlot: ['consortium', 'year', 'long_amp_ad_grants', 'journal'],
       cardConfiguration: publicationCardProps,
       facetAliases,
-      // searchConfiguration: {
-      //   searchable: [
-      //     {
-      //       columnName: 'title',
-      //       hintText: 'network',
-      //     },
-      //     {
-      //       columnName: 'journal',
-      //       hintText: 'Alzheimers Dement',
-      //     },
-      //     {
-      //       columnName: 'authors',
-      //       hintText: 'LastName',
-      //     },
-      //     {
-      //       columnName: 'year',
-      //       hintText: '2018',
-      //     },
-      //     {
-      //       columnName: 'doi',
-      //       hintText: '10.1186/s13024-017-0219-3',
-      //     },
-      //     {
-      //       columnName: 'long_amp_ad_grants',
-      //       hintText: 'U01AG046161',
-      //     },
-      //     {
-      //       columnName: 'consortium',
-      //       hintText: 'AMP-AD',
-      //     },
-      //   ],
-      // },
     },
   },
 }

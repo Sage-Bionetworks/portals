@@ -37,6 +37,10 @@ const cardConfiguration: CardConfiguration = {
       URLColumnName: 'Study_Name',
       baseURL: 'Explore/Studies/DetailsPage',
     },
+    {
+      isMarkdown: true,
+      matchColumnName: 'supplementaryInformation',
+    },
   ],
 }
 
