@@ -30,7 +30,7 @@ export const baseDataSqlColumns = `symptom,
     dataGroups`
 
 export const baseDataSqlFrom = ` FROM syn22154087 `
-export const baseDataSqlWhere = ` WHERE WorkflowState = `
+export const baseDataSqlWhere = ` WHERE testLocation in ('lab', 'home', 'noTest') and WorkflowState = `
 
 export const baseDataSql = `SELECT ${baseDataSqlColumns} ${baseDataSqlFrom} ${baseDataSqlWhere}  `
 
