@@ -3,7 +3,7 @@ import loadingScreen from '../loadingScreen'
 
 const sql = 'SELECT * FROM syn20821313'
 export const dataSql = sql
-const entityId = 'syn20821313'
+export const dataEntityId = 'syn20821313'
 
 const facetAliases = {
   id: 'File',
@@ -17,7 +17,7 @@ export const data: SynapseConfig = {
   props: {
     rgbIndex,
     unitDescription,
-    entityId,
+    entityId: dataEntityId,
     sql,
     tableConfiguration: {
       showAccessColumn: true,

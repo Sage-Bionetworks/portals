@@ -5,7 +5,7 @@ import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericC
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import { SynapseConfig, SynapseConfigArray } from 'types/portal-config'
 import { GenerateComponentsFromRowProps } from 'types/portal-util-types'
-import { dataSql } from './data'
+import { dataSql, dataEntityId } from './data'
 import { publicationDetailPageProps } from './publications'
 export const studiesSql = `SELECT * FROM syn21783965`
 const entityId = 'syn21783965'
@@ -131,7 +131,11 @@ export const details: GenerateComponentsFromRowProps = {
     {
       name: 'StandaloneQueryWrapper',
       props: {
-        sql: `${dataSql} WHERE "dataSubtype" = 'metadata'`,
+        sql: `SELECT id, dataType FROM ${dataEntityId} WHERE "dataSubtype" = 'metadata'`,
+        facetAliases: {
+          id: 'File Name',
+          dataType: 'Data Type',
+        },
         rgbIndex,
         title: 'Metadata',
       },
