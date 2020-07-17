@@ -48,7 +48,6 @@ const generateInitQueryRequest = (sql: string): QueryBundleRequest => {
     concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
     query: {
       sql,
-      isConsistent: true,
       limit: 25,
       offset: 0,
     },
