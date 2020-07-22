@@ -132,7 +132,7 @@ body {
   height: $header-height;
   position: fixed;
   width: 100%;
-  z-index: 1000;
+  z-index: 1001;
   background: rgba(256, 256, 256, 0.9);
   height: 67px;
   a:hover {
@@ -490,17 +490,4 @@ div.SRC-marginBottomTen {
       }
     }
   }
-}
-
-.SRC-portalCard ~ div:not(.SRC-portalCard) {
-  display: flex;
-  justify-content: flex-end;
-  button.pull-right {
-    float: none !important;
-  }
-}
-
-#addAndRemoveColumns ~ div.dropdown-menu {
-  height: 300px;
-  overflow: auto;
 }
