@@ -131,10 +131,12 @@ export const details: GenerateComponentsFromRowProps = {
     {
       name: 'StandaloneQueryWrapper',
       props: {
-        sql: `SELECT id, dataType FROM ${dataEntityId} WHERE "dataSubtype" = 'metadata'`,
+        sql: `SELECT id, dataSubtype, dataType, assay FROM ${dataEntityId} WHERE "dataSubtype" = 'metadata'`,
         facetAliases: {
           id: 'File Name',
+          dataSubtype: 'Metadata Type',
           dataType: 'Data Type',
+          assay: 'Assay',
         },
         rgbIndex,
         title: 'Metadata',
