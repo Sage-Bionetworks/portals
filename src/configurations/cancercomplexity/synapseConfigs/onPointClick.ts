@@ -5,6 +5,7 @@ import { grantsSql, grantsEntityId } from './grants'
 import { projectsSql, projectsEntityId } from './projects'
 import { filesSql, filesEntityId } from './files'
 import { Query } from 'synapse-react-client/dist/utils/synapseTypes'
+import { ClickCallbackParams } from 'synapse-react-client/dist/containers/widgets/themes-plot/types'
 
 const sqlAndEntityMap: {
   [value: string]: { sql: string; entityId: string }
@@ -40,10 +41,8 @@ const generateEncodedQueryForURL = (
 export const onPointClick = ({
   facetValue,
   type,
-}: {
-  facetValue: any
-  type: any
-}) => {
+  event,
+}: ClickCallbackParams) => {
   const typeUpperCase = type.slice(0, 1).toUpperCase() + type.slice(1)
   let facet = 'theme'
   if (typeUpperCase === 'Grants' || typeUpperCase === 'Projects') {
@@ -54,6 +53,7 @@ export const onPointClick = ({
     facet,
     facetValue,
   )
-  // @ts-ignore
-  window.location = `/Explore/${typeUpperCase}?QueryWrapper0=${encodedQuery}`
+  const url = `/Explore/${typeUpperCase}?QueryWrapper0=${encodedQuery}`
+  const target = event.ctrlKey || event.metaKey ? '_blank' : '_self'
+  window.open(url, target)
 }
