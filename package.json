@@ -26,7 +26,7 @@
     "react-spinners": "^0.8.3",
     "sass": "^1.5.1",
     "source-map-explorer": "^1.6.0",
-    "synapse-react-client": "1.14.35",
+    "synapse-react-client": "1.14.36",
     "typescript": "3.7.4",
     "plotly.js-basic-dist": "^1.47.3"
   },
