@@ -166,8 +166,9 @@ const StatusLineChart: FunctionComponent<StatusLineChartProps> = ({
 
   const [isLoaded, setIsLoaded] = useState(false)
   const [plotData, setPlotData] = useState<PlotData | null>(null)
+
   const samplesCollectedSql =
-    'SELECT uploadDate as "x", count(distinct(recordId)) as "y" FROM syn22154087 WHERE scheduledLabDrawOn IS NOT NULL GROUP BY uploadDate ORDER BY uploadDate'
+    'SELECT uploadDate as "x", count(distinct(recordId)) as "y" FROM syn22154087 WHERE uploadDate IS NOT NULL GROUP BY uploadDate ORDER BY uploadDate'
   const inviteSentSql =
     'SELECT inviteSentOn as "x", count(distinct(recordId)) as "y" FROM syn22154087 WHERE inviteSentOn IS NOT NULL GROUP BY inviteSentOn ORDER BY inviteSentOn'
   const appointmentScheduledSql =
