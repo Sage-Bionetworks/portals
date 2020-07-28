@@ -96,6 +96,46 @@ const studies: HomeExploreConfig = {
       shouldDeepLink: true,
       cardConfiguration: studyCardConfiguration,
       facetAliases,
+      searchConfiguration: {
+        searchable: [
+          {
+            columnName: 'studyName',
+            hintText: '',
+          },
+          {
+            columnName: 'summary',
+            hintText: '',
+          },
+          {
+            columnName: 'studyLeads',
+            hintText: '',
+          },
+          {
+            columnName: 'studyStatus',
+            hintText: '',
+          },
+          {
+            columnName: 'dataStatus',
+            hintText: '',
+          },
+          {
+            columnName: 'institutions',
+            hintText: '',
+          },
+          {
+            columnName: 'diseaseFocus',
+            hintText: '',
+          },
+          {
+            columnName: 'manifestation',
+            hintText: '',
+          },
+          {
+            columnName: 'fundingAgency',
+            hintText: '',
+          },
+        ],
+      },
     },
   },
 }
