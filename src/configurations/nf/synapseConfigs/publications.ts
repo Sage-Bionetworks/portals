@@ -77,46 +77,46 @@ const publications: HomeExploreConfig = {
       name: 'Publications',
       cardConfiguration: publicationsCardConfiguration,
       facetAliases,
-      // searchConfiguration: {
-      //   searchable: [
-      //     {
-      //       columnName: 'title',
-      //       hintText: 'Schwann',
-      //     },
-      //     {
-      //       columnName: 'author',
-      //       hintText: 'Weimer',
-      //     },
-      //     {
-      //       columnName: 'journal',
-      //       hintText: 'neuro',
-      //     },
-      //     {
-      //       columnName: 'pmid',
-      //       hintText: '29055717',
-      //     },
-      //     {
-      //       columnName: 'year',
-      //       hintText: '2018',
-      //     },
-      //     {
-      //       columnName: 'fundingAgency',
-      //       hintText: 'NTAP',
-      //     },
-      //     {
-      //       columnName: 'studyName',
-      //       hintText: 'Plexiform',
-      //     },
-      //     {
-      //       columnName: 'diseaseFocus',
-      //       hintText: 'Neurofibromatosis 2',
-      //     },
-      //     {
-      //       columnName: 'manifestation',
-      //       hintText: 'MPNST',
-      //     },
-      //   ],
-      // },
+      searchConfiguration: {
+        searchable: [
+          {
+            columnName: 'title',
+            hintText: '',
+          },
+          {
+            columnName: 'author',
+            hintText: '',
+          },
+          {
+            columnName: 'journal',
+            hintText: '',
+          },
+          {
+            columnName: 'pmid',
+            hintText: '',
+          },
+          {
+            columnName: 'year',
+            hintText: '',
+          },
+          {
+            columnName: 'fundingAgency',
+            hintText: '',
+          },
+          {
+            columnName: 'studyName',
+            hintText: '',
+          },
+          {
+            columnName: 'diseaseFocus',
+            hintText: ' ',
+          },
+          {
+            columnName: 'manifestation',
+            hintText: '',
+          },
+        ],
+      },
     },
   },
 }
