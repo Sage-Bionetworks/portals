@@ -126,6 +126,11 @@ type DevelopedBySage = {
   props: undefined
 }
 
+type ExternalFileHandleLink = {
+  name: 'ExternalFileHandleLink'
+  props: ExternalFileHandleLinkProps
+}
+
 type Metadata = {
   title?: string
   link?: string
@@ -157,7 +162,6 @@ type StandaloneQueryWrapper = {
   props: StandaloneQueryWrapperProps
 }
 
-
 type ParticipantsBarPlot = {
   name: 'ParticipantsBarPlot'
   props: ParticipantsBarPlotProps
@@ -167,8 +171,6 @@ type StatusLineChart = {
   name: 'StatusLineChart'
   props: StatusLineChartProps
 }
-
-
 
 export type SynapseConfig = (
   | StatefulButtonControl
@@ -196,6 +198,7 @@ export type SynapseConfig = (
   | StandaloneQueryWrapper
   | ParticipantsBarPlot
   | StatusLineChart
+  | ExternalFileHandleLink
 ) &
   Metadata
 export type SynapseConfigArray = SynapseConfig[]

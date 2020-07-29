@@ -1,3 +1,4 @@
+import { ExternalFileHandleLink } from './ExternalFileHandleLink'
 import StatefulButtonControlWrapper from './StatefulButtonControlWrapper'
 import RouteButtonControlWrapper from './RouteButtonControlWrapper'
 import QueryWrapperFlattened from './QueryWrapperFlattened'
@@ -27,7 +28,8 @@ const PortalComponents = {
   DevelopedBySage,
   FunderCards,
   ParticipantsBarPlot,
-  StatusLineChart
+  StatusLineChart,
+  ExternalFileHandleLink,
 }
 
 export default PortalComponents
