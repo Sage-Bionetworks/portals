@@ -168,13 +168,15 @@ const StatusLineChart: FunctionComponent<StatusLineChartProps> = ({
   const [plotData, setPlotData] = useState<PlotData | null>(null)
 
   const samplesCollectedSql =
-    'SELECT uploadDate as "x", count(distinct(recordId)) as "y" FROM syn22154087 WHERE uploadDate IS NOT NULL GROUP BY uploadDate ORDER BY uploadDate'
+    'SELECT uploadDate as "x", count(distinct(recordId)) as "y" FROM syn22154087 WHERE uploadDate IS NOT NULL AND dataGroups NOT HAS (\'test_user\') AND uploadDate > 1595808000000 AND testLocation IN (\'lab\', \'home\', \'noTest\') GROUP BY uploadDate ORDER BY uploadDate'
   const inviteSentSql =
-    'SELECT inviteSentOn as "x", count(distinct(recordId)) as "y" FROM syn22154087 WHERE inviteSentOn IS NOT NULL GROUP BY inviteSentOn ORDER BY inviteSentOn'
+    'SELECT inviteSentOn as "x", count(distinct(recordId)) as "y" FROM syn22154087 WHERE inviteSentOn IS NOT NULL AND dataGroups NOT HAS (\'test_user\') AND uploadDate > 1595808000000 AND testLocation IN (\'lab\', \'home\', \'noTest\') GROUP BY inviteSentOn ORDER BY inviteSentOn'
   const appointmentScheduledSql =
-    'SELECT scheduledLabDrawOn as "x", count(distinct(recordId)) as "y" FROM syn22154087 WHERE scheduledLabDrawOn IS NOT NULL GROUP BY scheduledLabDrawOn ORDER BY scheduledLabDrawOn'
+    'SELECT scheduledLabDrawOn as "x", count(distinct(recordId)) as "y" FROM syn22154087 WHERE scheduledLabDrawOn IS NOT NULL AND dataGroups NOT HAS (\'test_user\') AND uploadDate > 1595808000000 GROUP BY scheduledLabDrawOn ORDER BY scheduledLabDrawOn'
+
+  // NOTE: dataGroups is a String column in syn22028237 (rather than a multi-value StringList type column), so we're using a LIKE clause in this one to filter out test users instead of HAS.
   const appointmentMadeSql =
-    'SELECT uploadDate as "x", count(distinct(recordId)) as "y" FROM syn22028237 where `metadata.type` =  \'appointment\' AND uploadDate IS NOT NULL GROUP BY uploadDate'
+    'SELECT uploadDate as "x", count(distinct(recordId)) as "y" FROM syn22028237 where `metadata.type` =  \'appointment\' AND uploadDate IS NOT NULL AND dataGroups NOT LIKE \'%test_user%\' GROUP BY uploadDate'
 
   useEffect(() => {
     const collectedData = fetchData(token!, samplesCollectedSql, 'syn22154087')
