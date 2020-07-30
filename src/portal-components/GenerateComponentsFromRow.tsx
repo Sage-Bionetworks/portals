@@ -20,7 +20,7 @@ import {
 import './GenerateComponentsFromRow.scss'
 import injectPropsIntoConfig from './injectPropsIntoConfig'
 import { cloneDeep } from 'lodash'
-import { ExternalFileHandleLink } from './ExternalFileHandleLink'
+import { ExternalFileHandleLink } from 'synapse-react-client/dist/containers/ExternalFileHandleLink'
 const pluralize = require('pluralize')
 
 type State = {

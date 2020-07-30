@@ -5,6 +5,7 @@ import { facetAliases } from './synapseConfigs/commonProps'
 import { publicationsCardConfiguration } from './synapseConfigs/publications'
 import { studyCardConfiguration } from './synapseConfigs/studies'
 import loadingScreen from './loadingScreen'
+import organizationsSvg from './style/organizations.svg'
 
 const studiesEntityId = 'syn16787123'
 const datasetsEntityId = 'syn16859580'
@@ -94,6 +95,9 @@ export const organizationDetailsPage: SynapseConfig[] = [
         description: 'summary',
         icon: 'logo',
         link: 'website',
+      },
+      iconOptions: {
+        ORGANIZATION: organizationsSvg,
       },
       entityId: 'syn16858699',
       isHeader: true,
