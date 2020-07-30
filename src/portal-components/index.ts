@@ -27,7 +27,7 @@ const PortalComponents = {
   DevelopedBySage,
   FunderCards,
   ParticipantsBarPlot,
-  StatusLineChart
+  StatusLineChart,
 }
 
 export default PortalComponents

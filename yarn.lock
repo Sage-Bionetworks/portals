@@ -8151,6 +8151,11 @@ plotly.js-basic-dist@^1.47.3:
   version "1.53.0"
   resolved "https://registry.yarnpkg.com/plotly.js-basic-dist/-/plotly.js-basic-dist-1.53.0.tgz#dadc4cbd1fcdeec803deb55462439b5bcbcd2b40"
 
+plotly.js-basic-dist@^1.54.7:
+  version "1.54.7"
+  resolved "https://registry.yarnpkg.com/plotly.js-basic-dist/-/plotly.js-basic-dist-1.54.7.tgz#df9d635d182f7feafe66cc114f82adb089df93c4"
+  integrity sha512-89L14wW/WzzbaSdek3SjljKyXs4O36sl7S/0NIlqyDZKnf0pi+H4nOxJIPYXjyY/kw1oZVSmsNJkMUb4HYxkFQ==
+
 pluralize@^8.0.0:
   version "8.0.0"
   resolved "https://registry.yarnpkg.com/pluralize/-/pluralize-8.0.0.tgz#1a6fa16a38d12a1901e0320fa017051c539ce3b1"
@@ -10598,10 +10603,10 @@ symbol-tree@^3.2.2:
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.4.tgz#430637d248ba77e078883951fb9aa0eed7c63fa2"
 
-synapse-react-client@1.14.37:
-  version "1.14.37"
-  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-1.14.37.tgz#61865566af2ed60d2b3be18c38732044161b7057"
-  integrity sha512-bTjkKGmdqXDyjDrCaRWMu0zRAIJ5vBERKPCVh6WC2XbL1RK0tq6buBcgXAbAEKZ3+KlIDuXYeYIAbDHYVHISOA==
+synapse-react-client@1.15.0:
+  version "1.15.0"
+  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-1.15.0.tgz#e7868b2bc108ead2a2c53349c052c7ffe9bff1ea"
+  integrity sha512-Uj/ESmsqCQHHuaW7ZN9Fe9UTjvFw7dfsAc55hw6dsxTsYtT1zThl46soDKeDPf0x/p+W508IxCJ4VHoJs3BLFA==
   dependencies:
     "@fortawesome/fontawesome-free" "^5.13.0"
     "@fortawesome/fontawesome-svg-core" "^1.2.4"
@@ -10644,7 +10649,7 @@ synapse-react-client@1.14.37:
     markdown-it-synapse-table "^1.0.6"
     moment "^2.24.0"
     node-sass "4.12.0"
-    plotly.js-basic-dist "^1.47.3"
+    plotly.js-basic-dist "^1.54.7"
     raf "^3.4.1"
     react "16.13.1"
     react-app-polyfill "^1.0.1"

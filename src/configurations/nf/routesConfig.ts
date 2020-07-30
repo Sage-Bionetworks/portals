@@ -23,15 +23,10 @@ import {
 } from './synapseConfigs/publications'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
 import loadingScreen from './loadingScreen'
-import { ntap } from './synapseConfigs/organizationConfigs/ntap'
-import { dhartSpore } from './synapseConfigs/organizationConfigs/dhart-spore'
-import { ctf } from './synapseConfigs/organizationConfigs/ctf'
-import { cdmrp } from './synapseConfigs/organizationConfigs/cdmrp'
 import { buttonColors, facetAliases } from './synapseConfigs/commonProps'
 import { toolsCardConfiguration, newToolsSql } from './synapseConfigs/tools'
 import { toolsEntityId } from './synapseConfigs/tools'
-import { gff } from './synapseConfigs/organizationConfigs/gff'
-import { nfri } from './synapseConfigs/organizationConfigs/nfri'
+import { organizationDetailsPage } from './organizations'
 
 const limit = 3
 
@@ -245,7 +240,50 @@ const routes: GenericRoute[] = [
   {
     name: 'Organizations',
     isNested: true,
-    routes: [ctf, ntap, gff, dhartSpore, cdmrp, nfri],
+    routes: [
+      {
+        displayName: 'CTF',
+        name: 'DetailsPage',
+        to: '/Organizations/DetailsPage?abbreviation=CTF',
+        isNested: false,
+        programmaticRouteConfig: organizationDetailsPage,
+      },
+      {
+        displayName: 'NTAP',
+        name: 'DetailsPage',
+        to: '/Organizations/DetailsPage?abbreviation=NTAP',
+        isNested: false,
+        programmaticRouteConfig: organizationDetailsPage,
+      },
+      {
+        displayName: 'GFF',
+        name: 'DetailsPage',
+        to: '/Organizations/DetailsPage?abbreviation=GFF',
+        isNested: false,
+        programmaticRouteConfig: organizationDetailsPage,
+      },
+      {
+        displayName: 'NCI DHART SPORE',
+        name: 'DetailsPage',
+        to: '/Organizations/DetailsPage?fundingAgency=NIH-NCI',
+        isNested: false,
+        programmaticRouteConfig: organizationDetailsPage,
+      },
+      {
+        displayName: 'CDMRP NFRP',
+        name: 'DetailsPage',
+        to: '/Organizations/DetailsPage?abbreviation=CDMRP',
+        isNested: false,
+        programmaticRouteConfig: organizationDetailsPage,
+      },
+      {
+        displayName: 'NFRI',
+        name: 'DetailsPage',
+        to: '/Organizations/DetailsPage?abbreviation=NFRI',
+        isNested: false,
+        programmaticRouteConfig: organizationDetailsPage,
+      },
+    ],
   },
   {
     name: 'About',

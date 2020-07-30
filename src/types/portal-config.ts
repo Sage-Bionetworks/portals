@@ -3,6 +3,7 @@ import { QueryWrapperProps } from 'synapse-react-client/dist/containers/QueryWra
 import { StackedBarChartProps } from 'synapse-react-client/dist/containers/StackedBarChart'
 import { QueryWrapperMenuProps } from 'synapse-react-client/dist/containers/QueryWrapperMenu'
 import { UserCardProps } from 'synapse-react-client/dist/containers/UserCard'
+import { ExternalFileHandleLinkProps } from 'synapse-react-client/dist/containers/ExternalFileHandleLink'
 import { MarkdownSynapseProps } from 'synapse-react-client/dist/containers/MarkdownSynapse'
 import { NewsFeedMenuProps } from 'synapse-react-client/dist/containers/NewsFeedMenu'
 import { SynapseFormSubmissionGridProps } from 'synapse-react-client/dist/containers/synapse_form_wrapper/SynapseFormSubmissionsGrid'
@@ -126,6 +127,11 @@ type DevelopedBySage = {
   props: undefined
 }
 
+type ExternalFileHandleLink = {
+  name: 'ExternalFileHandleLink'
+  props: ExternalFileHandleLinkProps
+}
+
 type Metadata = {
   title?: string
   link?: string
@@ -157,7 +163,6 @@ type StandaloneQueryWrapper = {
   props: StandaloneQueryWrapperProps
 }
 
-
 type ParticipantsBarPlot = {
   name: 'ParticipantsBarPlot'
   props: ParticipantsBarPlotProps
@@ -167,8 +172,6 @@ type StatusLineChart = {
   name: 'StatusLineChart'
   props: StatusLineChartProps
 }
-
-
 
 export type SynapseConfig = (
   | StatefulButtonControl
@@ -196,6 +199,7 @@ export type SynapseConfig = (
   | StandaloneQueryWrapper
   | ParticipantsBarPlot
   | StatusLineChart
+  | ExternalFileHandleLink
 ) &
   Metadata
 export type SynapseConfigArray = SynapseConfig[]

@@ -20,6 +20,7 @@ import {
 import './GenerateComponentsFromRow.scss'
 import injectPropsIntoConfig from './injectPropsIntoConfig'
 import { cloneDeep } from 'lodash'
+import { ExternalFileHandleLink } from 'synapse-react-client/dist/containers/ExternalFileHandleLink'
 const pluralize = require('pluralize')
 
 type State = {
@@ -54,6 +55,8 @@ export default class GenerateComponentsFromRow extends React.Component<
 
   componentDidUpdate(prevProps: GenerateComponentsFromRowProps) {
     if (this.props.token !== prevProps.token) {
+      this.getData()
+    } else if (this.props.searchParams !== prevProps.searchParams) {
       this.getData()
     }
   }
@@ -240,7 +243,7 @@ export default class GenerateComponentsFromRow extends React.Component<
   }
 
   renderMenu = () => {
-    const { synapseConfigArray } = this.props
+    const { synapseConfigArray, token } = this.props
     const { queryResultBundle } = this.state
     const mapColumnHeaderToRowIndex: Dictionary<number> = {}
     let row: string[] = []
@@ -266,6 +269,15 @@ export default class GenerateComponentsFromRow extends React.Component<
       const className = `menu-row-button ${
         isDisabled ? '' : 'SRC-primary-background-color-hover'
       }`
+      if (el.name === 'ExternalFileHandleLink') {
+        return (
+          <ExternalFileHandleLink
+            className={className}
+            token={token}
+            synId={el.props.synId}
+          />
+        )
+      }
       return (
         <button
           style={style}

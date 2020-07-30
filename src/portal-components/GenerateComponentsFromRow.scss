@@ -1,5 +1,11 @@
 $marginTop: 40px;
 
+%alignContent {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
 .GenerateComponentsFromRow {
   // keeps h2 in markdown and in this component the same
   .h2,
@@ -13,6 +19,11 @@ $marginTop: 40px;
 
   display: flex;
   .menu-row-button {
+    @extend %alignContent;
+    span {
+      height: 25px;
+      @extend %alignContent;
+    }
     background: rgba(60, 74, 99, 0.1);
     height: 40px;
     width: 180px;
