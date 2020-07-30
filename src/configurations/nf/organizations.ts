@@ -73,7 +73,7 @@ export const organizationDetailsPageConfig: GenerateComponentsFromRowProps = {
     {
       name: 'ExternalFileHandleLink',
       props: {
-        synId: 'syn22276050',
+        synId: 'syn22272075',
       },
       title: 'Funder Dashboard',
       standalone: true,
