@@ -171,7 +171,7 @@ class Navbar extends React.Component {
                 </Dropdown.Menu>
               </Dropdown>
             )}
-            <SynapseComponents.ShowDownload token={token} />
+            
             {
               // we have to loop backwards due to css rendering of flex-direction: row-reverse
               routesConfig

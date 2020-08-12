@@ -4,6 +4,7 @@ import { StackedBarChartProps } from 'synapse-react-client/dist/containers/Stack
 import { QueryWrapperMenuProps } from 'synapse-react-client/dist/containers/QueryWrapperMenu'
 import { UserCardProps } from 'synapse-react-client/dist/containers/UserCard'
 import { ExternalFileHandleLinkProps } from 'synapse-react-client/dist/containers/ExternalFileHandleLink'
+import { UpsetPlotProps } from 'synapse-react-client/dist/containers/UpsetPlot'
 import { MarkdownSynapseProps } from 'synapse-react-client/dist/containers/MarkdownSynapse'
 import { NewsFeedMenuProps } from 'synapse-react-client/dist/containers/NewsFeedMenu'
 import { SynapseFormSubmissionGridProps } from 'synapse-react-client/dist/containers/synapse_form_wrapper/SynapseFormSubmissionsGrid'
@@ -131,6 +132,10 @@ type ExternalFileHandleLink = {
   name: 'ExternalFileHandleLink'
   props: ExternalFileHandleLinkProps
 }
+type UpsetPlot = {
+  name: 'UpsetPlot'
+  props: UpsetPlotProps
+}
 
 type Metadata = {
   title?: string
@@ -200,6 +205,7 @@ export type SynapseConfig = (
   | ParticipantsBarPlot
   | StatusLineChart
   | ExternalFileHandleLink
+  | UpsetPlot
 ) &
   Metadata
 export type SynapseConfigArray = SynapseConfig[]
