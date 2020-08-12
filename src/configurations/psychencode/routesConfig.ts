@@ -10,7 +10,7 @@ import {
 import { grants, grantsDetailPage } from './synapseConfigs/grants'
 import { people } from './synapseConfigs/people'
 import { data } from './synapseConfigs/data'
-import loadingScreen from 'config/loadingScreen'
+import loadingScreen from './loadingScreen'
 
 const routes: GenericRoute[] = [
   {
