@@ -5,7 +5,6 @@ import { facetAliases } from './synapseConfigs/commonProps'
 import { publicationsCardConfiguration } from './synapseConfigs/publications'
 import { studyCardConfiguration } from './synapseConfigs/studies'
 import loadingScreen from './loadingScreen'
-import organizationsSvg from './style/organizations.svg'
 
 const studiesEntityId = 'syn16787123'
 const datasetsEntityId = 'syn16859580'
@@ -71,9 +70,10 @@ export const organizationDetailsPageConfig: GenerateComponentsFromRowProps = {
       tableSqlKeys: ['fundingAgency'],
     },
     {
-      name: 'ExternalFileHandleLink',
+      name: 'Markdown',
       props: {
-        synId: 'syn22272075',
+        ownerId: 'syn22272075',
+        wikiId: '604853',
       },
       title: 'Funder Dashboard',
       standalone: true,
@@ -91,13 +91,10 @@ export const organizationDetailsPage: SynapseConfig[] = [
       type: SynapseConstants.GENERIC_CARD,
       genericCardSchema: {
         title: 'organizationName',
-        type: 'ORGANIZATION',
+        type: SynapseConstants.ORGANIZATION,
         description: 'summary',
         icon: 'logo',
         link: 'website',
-      },
-      iconOptions: {
-        ORGANIZATION: organizationsSvg,
       },
       entityId: 'syn16858699',
       isHeader: true,
