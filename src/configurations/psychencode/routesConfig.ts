@@ -10,13 +10,28 @@ import {
 import { grants, grantsDetailPage } from './synapseConfigs/grants'
 import { people } from './synapseConfigs/people'
 import { data } from './synapseConfigs/data'
+import loadingScreen from './loadingScreen'
 
 const routes: GenericRoute[] = [
   {
     name: 'Home',
     to: '/',
     isNested: false,
-    synapseConfigArray: [],
+    synapseConfigArray: [
+      {
+        name: 'UpsetPlot',
+        title: 'Featured Data',
+        className: 'whatThePlot',
+        props: {
+          sql: 'SELECT distinct individualID, assay FROM syn20821313 where individualID is not null',
+          rgbIndex: 0,
+          maxBarCount: 20,
+          setName: 'Individuals (#) per Assay',
+          combinationName:'Individuals (#)',
+          loadingScreen: loadingScreen
+        },
+      },
+    ],
   },
   {
     name: 'Explore',

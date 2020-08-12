@@ -1855,6 +1855,11 @@
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.159.tgz#61089719dc6fdd9c5cb46efc827f2571d1517065"
   integrity sha512-gF7A72f7WQN33DpqOWw9geApQPh4M3PxluMtaHxWHXEGSN12/WbcEk/eNSqWNQcQhF66VSZ06vCF94CrHwXJDg==
 
+"@types/lz-string@^1.3.34":
+  version "1.3.34"
+  resolved "https://registry.yarnpkg.com/@types/lz-string/-/lz-string-1.3.34.tgz#69bfadde419314b4a374bf2c8e58659c035ed0a5"
+  integrity sha512-j6G1e8DULJx3ONf6NdR5JiR2ZY3K3PaaqiEuKYkLQO0Czfi1AzrtjfnfCROyWGeDd5IVMKCwsgSmMip9OWijow==
+
 "@types/minimatch@*":
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/@types/minimatch/-/minimatch-3.0.3.tgz#3dca0e3f33b200fc7d1139c0cd96c1268cadfd9d"
@@ -1972,7 +1977,7 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@16.9.34", "@types/react@^16.9.11", "@types/react@^16.9.35":
+"@types/react@*", "@types/react@16.9.34", "@types/react@^16.9.11", "@types/react@^16.9.35", "@types/react@^16.9.38":
   version "16.9.34"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.9.34.tgz#f7d5e331c468f53affed17a8a4d488cd44ea9349"
   integrity sha512-8AJlYMOfPe1KGLKyHpflCg5z46n0b5DbRfqDksxBLBTUpB75ypDBAO9eCUcjNwE6LCUslwTz00yyG/X9gaVtow==
@@ -2080,6 +2085,21 @@
     lodash "^4.17.15"
     semver "^7.3.2"
     tsutils "^3.17.1"
+
+"@upsetjs/model@~1.6.1":
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/@upsetjs/model/-/model-1.6.1.tgz#4f74afdc38a7909730571ec98813a5d5dcb807e2"
+  integrity sha512-92qU2qDQCf3gFAVCqylZTf/A48gR9JqvlrQ86WZdyiaN/lOyj9ujW4sDfYeJeqVVQMIjh+RXcBoHHIzrHj9Fgg==
+
+"@upsetjs/react@^1.6.2":
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/@upsetjs/react/-/react-1.6.2.tgz#acad2bc33940c33e8554db21523da2d0f485f6c4"
+  integrity sha512-SBaYoLnCQYeXLh2SWqmDSRld/AgTaRRJhLoGNoQvf4M3f0/LqKiAidyiv7cIRG55ZbGGEaI5di66HHru4GFCFA==
+  dependencies:
+    "@types/lz-string" "^1.3.34"
+    "@types/react" "^16.9.38"
+    "@upsetjs/model" "~1.6.1"
+    lz-string "^1.4.4"
 
 "@webassemblyjs/ast@1.8.5":
   version "1.8.5"
@@ -8013,6 +8033,11 @@ lru-cache@^5.1.1:
   dependencies:
     yallist "^3.0.2"
 
+lz-string@^1.4.4:
+  version "1.4.4"
+  resolved "https://registry.yarnpkg.com/lz-string/-/lz-string-1.4.4.tgz#c0d8eaf36059f705796e1e344811cf4c498d3a26"
+  integrity sha1-wNjq82BZ9wV5bh40SBHPTEmNOiY=
+
 make-dir@^2.0.0, make-dir@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/make-dir/-/make-dir-2.1.0.tgz#5f0310e18b8be898cc07009295a30ae41e91e6f5"
@@ -12129,10 +12154,10 @@ symbol-tree@^3.2.2:
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.4.tgz#430637d248ba77e078883951fb9aa0eed7c63fa2"
   integrity sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==
 
-synapse-react-client@1.15.1:
-  version "1.15.1"
-  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-1.15.1.tgz#e52b06aea33cb2c0b55948cde3ae22ac58a03daf"
-  integrity sha512-1WAtI7yXkLBiATHtwoebfLsXeAeCjxJMjCwIyQWAuOEUWVYsLD3C8Uhe/uowajmuwTYndsGqNGj/BdO3Lw7PyA==
+synapse-react-client@1.15.2:
+  version "1.15.2"
+  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-1.15.2.tgz#918403169f15f80b808264b68f5ef546eb28edad"
+  integrity sha512-IwoKLlIi6lgJFEiIkvr8vc5HH6+1Sz8qVs7y41ihAj22yWEQUWBbMs5yqEmiSI1x1b4EPwkCu1bjbvnUclq++Q==
   dependencies:
     "@fortawesome/fontawesome-free" "^5.13.0"
     "@fortawesome/fontawesome-svg-core" "^1.2.4"
@@ -12152,6 +12177,7 @@ synapse-react-client@1.15.1:
     "@types/sinon" "^7.0.2"
     "@types/spark-md5" "^3.0.1"
     "@types/xml2js" "^0.4.4"
+    "@upsetjs/react" "^1.6.2"
     bootstrap ">=3.4.1"
     column-resizer "^1.3.5"
     gh-pages "^2.0.0"
