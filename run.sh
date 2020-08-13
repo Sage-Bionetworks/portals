@@ -62,14 +62,20 @@ if [ "$1" = "WARNING-push-production" ]; then
   # sync staging with prod
   aws s3 sync --delete --cache-control max-age=3000 $S3_STAGING_BUCKET_LOCATION $S3_PRODUCTION_BUCK_LOCATION
   # update robots.txt
-  echo "User Agent: * \nAllow: /\n" > ./robots.txt
+cat > ./robots.txt <<EOL
+User-agent: * 
+Allow: /
+EOL
   aws s3 cp --cache-control max-age=3000 ./robots.txt $S3_PRODUCTION_BUCK_LOCATION
 elif [ "$1" = "push-staging" ]; then
   # sync current with staging
   yarn && yarn build
   node sitemap/generate-sitemap.js $2
   # generate robots.txt
-  echo "User Agent: * \nDisallow: /\n" > ./build/robots.txt
+cat > ./robots.txt <<EOL
+User-agent: * 
+Disallow: /
+EOL
   aws s3 sync --delete --cache-control max-age=0 ./build $S3_STAGING_BUCKET_LOCATION
 fi
 echo 'Success - finished!'
