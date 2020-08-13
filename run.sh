@@ -72,7 +72,7 @@ elif [ "$1" = "push-staging" ]; then
   yarn && yarn build
   node sitemap/generate-sitemap.js $2
   # generate robots.txt
-cat > ./robots.txt <<EOL
+cat > ./build/robots.txt <<EOL
 User-agent: * 
 Disallow: /
 EOL
