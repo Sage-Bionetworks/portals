@@ -76,7 +76,7 @@ export function fetchData(
 ): Promise<number> {
   const queryRequest: QueryBundleRequest = {
     concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-    partMask: SynapseConstants.BUNDLE_MASK_QUERY_COUNT,
+    partMask: SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
     entityId: entityId,
     query: {
       sql: sql,
@@ -84,7 +84,7 @@ export function fetchData(
   }
   return getQueryTableResults(queryRequest, token).then(
     (data: QueryResultBundle) => {
-      return data.queryCount!
+      return parseInt(data.queryResult.queryResults.rows[0].values[0])
     },
   )
 }
@@ -97,18 +97,18 @@ const SurveysCompletedPlots: FunctionComponent<SurveysCompletedPlotsProps> = ({
   const [isLoaded, setIsLoaded] = useState(false)
   const [plotData, setPlotData] = useState<PlotData | null>(null)
 
-  const survey1Sql = 'SELECT * FROM syn22311184 WHERE survey_1 = \'TRUE\' and test_user = \'FALSE\''
-  const survey2Sql = 'SELECT * FROM syn22311184 WHERE survey_2 = \'TRUE\' and test_user = \'FALSE\''
-  const survey3Sql = 'SELECT * FROM syn22311184 WHERE survey_3 = \'TRUE\' and test_user = \'FALSE\''
-  const survey4Sql = 'SELECT * FROM syn22311184 WHERE survey_4 = \'TRUE\' and test_user = \'FALSE\''
-  const totalSql = 'SELECT * FROM syn22311184 WHERE test_user = \'FALSE\''
+  const survey1Sql = 'SELECT SUM(survey_1) FROM syn22314856'
+  const survey2Sql = 'SELECT SUM(survey_2) FROM syn22314856'
+  const survey3Sql = 'SELECT SUM(survey_3) FROM syn22314856'
+  const survey4Sql = 'SELECT SUM(survey_4) FROM syn22314856'
+  const totalSql = 'SELECT SUM(CONTACT) FROM syn22314856'
   
   useEffect(() => {
-    const survey1Data = fetchData(token!, survey1Sql, 'syn22311184')
-    const survey2Data = fetchData(token!, survey2Sql, 'syn22311184')
-    const survey3Data = fetchData(token!, survey3Sql, 'syn22311184')
-    const survey4Data = fetchData(token!, survey4Sql, 'syn22311184')
-    const totalData = fetchData(token!, totalSql, 'syn22311184')
+    const survey1Data = fetchData(token!, survey1Sql, 'syn22314856')
+    const survey2Data = fetchData(token!, survey2Sql, 'syn22314856')
+    const survey3Data = fetchData(token!, survey3Sql, 'syn22314856')
+    const survey4Data = fetchData(token!, survey4Sql, 'syn22314856')
+    const totalData = fetchData(token!, totalSql, 'syn22314856')
     
     Promise.all([survey1Data, survey2Data, survey3Data, survey4Data, totalData])
       .then((result) => {
