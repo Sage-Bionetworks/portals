@@ -31,7 +31,8 @@ const baseLayoutConfig: Partial<PlotlyTyped.Layout> = {
     t: 25,
     pad: 15,
   },
-  height: 200,  
+  height: 200, 
+  hovermode: false
 }
 
 const optionsConfig: Partial<PlotlyTyped.Config> = {
@@ -90,17 +91,17 @@ export function fetchData(
 
 const SurveysCompletedPlots: FunctionComponent<SurveysCompletedPlotsProps> = ({
   token,
-  style = { width: '100%', height: '300px'},
+  style = { width: '100%', height: '400px', padding: '100px 50px'},
 }: SurveysCompletedPlotsProps) => {
 
   const [isLoaded, setIsLoaded] = useState(false)
   const [plotData, setPlotData] = useState<PlotData | null>(null)
 
-  const survey1Sql = 'SELECT * FROM syn22311184 WHERE survey_1 = \'TRUE\''
-  const survey2Sql = 'SELECT * FROM syn22311184 WHERE survey_2 = \'TRUE\''
-  const survey3Sql = 'SELECT * FROM syn22311184 WHERE survey_3 = \'TRUE\''
-  const survey4Sql = 'SELECT * FROM syn22311184 WHERE survey_4 = \'TRUE\''
-  const totalSql = 'SELECT * FROM syn22311184'
+  const survey1Sql = 'SELECT * FROM syn22311184 WHERE survey_1 = \'TRUE\' and test_user = \'FALSE\''
+  const survey2Sql = 'SELECT * FROM syn22311184 WHERE survey_2 = \'TRUE\' and test_user = \'FALSE\''
+  const survey3Sql = 'SELECT * FROM syn22311184 WHERE survey_3 = \'TRUE\' and test_user = \'FALSE\''
+  const survey4Sql = 'SELECT * FROM syn22311184 WHERE survey_4 = \'TRUE\' and test_user = \'FALSE\''
+  const totalSql = 'SELECT * FROM syn22311184 WHERE test_user = \'FALSE\''
   
   useEffect(() => {
     const survey1Data = fetchData(token!, survey1Sql, 'syn22311184')
@@ -132,7 +133,7 @@ const SurveysCompletedPlots: FunctionComponent<SurveysCompletedPlotsProps> = ({
       )}
 
       {isLoaded && plotData && token && (
-        <div style={style} className="SRC-card-grid-row">
+        <div style={style} className="SRC-flex">
           <Plot
             layout={getLayoutConfig(0, plotData)}
             config={optionsConfig}
