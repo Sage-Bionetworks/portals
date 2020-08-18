@@ -21,16 +21,17 @@ type PlotData = {
   totalCount: number
 }
 
+const colors: string[] = ['#D099CA', '#7292C1', '#7472C1', '#72C1A5']
 const baseLayoutConfig: Partial<PlotlyTyped.Layout> = {
   showlegend: false,
-  height: 400,
   margin: {
-    l: 200,
-    r: 50,
-    b: 50,
-    t: 50,
+    l: 25,
+    r: 25,
+    b: 25,
+    t: 25,
     pad: 15,
   },
+  height: 200,  
 }
 
 const optionsConfig: Partial<PlotlyTyped.Config> = {
@@ -45,7 +46,8 @@ function getLayoutConfig(offset: number, plotData: PlotData): Partial<PlotlyType
   
   newLayoutConfig.annotations = [
     {
-      text: `${plotData.surveyCounts[offset]}/${plotData.totalCount} completed surveys ${offset + 1}`,
+      text: `${plotData.surveyCounts[offset]}/${plotData.totalCount} <br />completed <br />surveys ${offset + 1}`,
+      showarrow: false,
     }
   ]
   return newLayoutConfig
@@ -57,8 +59,9 @@ function getChartDataPoints(offset: number, plotData: PlotData) {
     hole: .6,
     type: 'pie',
     marker: {
-      colors: ['#D099CA', '#E9F1F5']
+      colors: [colors[offset], '#E9F1F5']
     },
+    textinfo: 'none'
   }
 
   const data = [surveyData]
@@ -129,30 +132,30 @@ const SurveysCompletedPlots: FunctionComponent<SurveysCompletedPlotsProps> = ({
       )}
 
       {isLoaded && plotData && token && (
-        <div style={style} className="row">
+        <div style={style} className="SRC-card-grid-row">
           <Plot
             layout={getLayoutConfig(0, plotData)}
             config={optionsConfig}
             data={getChartDataPoints(0, plotData)}
-            className="col-sm-3"
+            style={{flexBasis: '25%'}}
           />
           <Plot
             layout={getLayoutConfig(1, plotData)}
             config={optionsConfig}
             data={getChartDataPoints(1, plotData)}
-            className="col-sm-3"
+            style={{flexBasis: '25%'}}
           />
           <Plot
             layout={getLayoutConfig(2, plotData)}
             config={optionsConfig}
             data={getChartDataPoints(2, plotData)}
-            className="col-sm-3"
+            style={{flexBasis: '25%'}}
           />
           <Plot
             layout={getLayoutConfig(3, plotData)}
             config={optionsConfig}
             data={getChartDataPoints(3, plotData)}
-            className="col-sm-3"
+            style={{flexBasis: '25%'}}
           />
 
         </div>
