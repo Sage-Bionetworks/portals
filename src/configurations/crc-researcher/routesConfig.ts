@@ -19,6 +19,12 @@ const routes: GenericRoute[] = [
         isOutsideContainer: true,
         props: {
         }
+      },
+      {
+        name: 'SurveysCompletedPlots',
+        isOutsideContainer: true,
+        props: {
+        }
       }
     ],
   },
