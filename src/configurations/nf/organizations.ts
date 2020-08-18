@@ -75,7 +75,7 @@ export const organizationDetailsPageConfig: GenerateComponentsFromRowProps = {
         ownerId: 'syn22272075',
         wikiId: '604853',
       },
-      title: 'Funder Dashboard',
+      title: 'Funding Impact',
       standalone: true,
     },
   ],
