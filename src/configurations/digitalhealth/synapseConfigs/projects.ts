@@ -4,7 +4,7 @@ import loadingScreen from '../loadingScreen'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import facetAliases from '../facetAliases'
-import { GenerateComponentsFromRowProps } from 'types/portal-util-types'
+import { DetailsPageProps } from 'types/portal-util-types'
 import { dataDetailPageProps } from './data'
 import { publicationDetailPageProps } from './publications'
 export const projectsSql =
@@ -145,7 +145,7 @@ export const projects: HomeExploreConfig = {
   },
 }
 
-export const details: GenerateComponentsFromRowProps = {
+export const details: DetailsPageProps = {
   sql,
   entityId,
   synapseConfigArray: [
@@ -197,7 +197,7 @@ export const projectDetailPage: SynapseConfigArray = [
     },
   },
   {
-    name: 'GenerateComponentsFromRow',
+    name: 'DetailsPage',
     props: details,
   },
 ]

@@ -196,7 +196,7 @@ const routes: GenericRoute[] = [
                 },
               },
               {
-                name: 'GenerateComponentsFromRow',
+                name: 'DetailsPage',
                 props: {
                   sql: `${grantsSql}`,
                   sqlOperator: 'LIKE',
@@ -295,7 +295,7 @@ const routes: GenericRoute[] = [
                 },
               },
               {
-                name: 'GenerateComponentsFromRow',
+                name: 'DetailsPage',
                 props: {
                   sql: publicationSql,
                   sqlOperator: 'LIKE',
@@ -372,7 +372,7 @@ const routes: GenericRoute[] = [
                 },
               },
               {
-                name: 'GenerateComponentsFromRow',
+                name: 'DetailsPage',
                 props: {
                   sql: datasetsSql,
                   sqlOperator: 'LIKE',

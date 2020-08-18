@@ -16,7 +16,7 @@ import { HomePageCardContainerProps } from '../portal-components/csbc-home-page/
 import { AboutPortalProps } from '../portal-components/csbc-home-page/AboutPortal'
 import { EcosystemProps } from '../portal-components/csbc-home-page/Ecosystem'
 import { TableWithSideFacetsProps } from '../portal-components/csbc-home-page/TableWithSideFacets'
-import { GenerateComponentsFromRowProps } from './portal-util-types'
+import { DetailsPageProps } from './portal-util-types'
 import { QueryWrapperFlattenedProps } from '../portal-components/QueryWrapperFlattened'
 import { StandaloneQueryWrapperProps } from '../portal-components/StandaloneQueryWrapper'
 import { StatefulButtonControlWrapperProps } from 'portal-components/StatefulButtonControlWrapper'
@@ -88,9 +88,9 @@ type RouteButtonControl = {
   props: RouteButtonControlWrapperProps
 }
 
-type GenerateComponentsFromRow = {
-  name: 'GenerateComponentsFromRow'
-  props: GenerateComponentsFromRowProps
+type DetailsPage = {
+  name: 'DetailsPage'
+  props: DetailsPageProps
 }
 
 type ConsortiaGoals = {
@@ -188,7 +188,7 @@ export type SynapseConfig = (
   | QueryWrapperMenu
   | UserCard
   | Markdown
-  | GenerateComponentsFromRow
+  | DetailsPage
   | NewsFeedMenu
   | SynapseFormWrapper
   | SynapseFormSubmissionsGrid

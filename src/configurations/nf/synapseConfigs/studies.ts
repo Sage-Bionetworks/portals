@@ -7,7 +7,7 @@ import studyCompleteSvg from '../style/study-complete.svg'
 import studyCompleteHeaderSvg from '../style/study-completed-header.svg'
 import studyActiveHeaderSvg from '../style/study-active-header.svg'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
-import { GenerateComponentsFromRowProps } from 'types/portal-util-types'
+import { DetailsPageProps } from 'types/portal-util-types'
 import { datasetsSql, datasetsEntityId } from './datasets'
 import { toolsSql, toolsEntityId, toolsCardConfiguration } from './tools'
 import {
@@ -140,7 +140,7 @@ const studies: HomeExploreConfig = {
   },
 }
 
-export const studiesDetailPage: GenerateComponentsFromRowProps = {
+export const studiesDetailPage: DetailsPageProps = {
   showMenu: true,
   sql: studiesSql,
   entityId: studiesEntityId,

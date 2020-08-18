@@ -2,7 +2,7 @@ import { HomeExploreConfig } from 'types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
 import loadingScreen from '../loadingScreen'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
-import { GenerateComponentsFromRowProps } from 'types/portal-util-types'
+import { DetailsPageProps } from 'types/portal-util-types'
 import {
   publicationsSql,
   publicationsCardConfiguration,
@@ -143,7 +143,7 @@ const studies: HomeExploreConfig = {
   },
 }
 
-export const studiesDetailPageConfiguration: GenerateComponentsFromRowProps = {
+export const studiesDetailPageConfiguration: DetailsPageProps = {
   showMenu: true,
   sql,
   entityId,

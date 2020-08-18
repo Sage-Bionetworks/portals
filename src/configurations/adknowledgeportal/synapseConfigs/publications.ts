@@ -1,6 +1,6 @@
 import { HomeExploreConfig, SynapseConfig } from 'types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
-import { GenerateComponentsFromRowProps } from 'types/portal-util-types'
+import { DetailsPageProps } from 'types/portal-util-types'
 import loadingScreen from '../loadingScreen'
 import { projectsSql, projectsEntityId } from './projects'
 
@@ -78,7 +78,7 @@ const publications: HomeExploreConfig = {
   },
 }
 
-const publicationsFromRowProps: GenerateComponentsFromRowProps = {
+const publicationsFromRowProps: DetailsPageProps = {
   sql: projectsSql,
   showMenu: false,
   entityId: projectsEntityId,
@@ -98,7 +98,7 @@ const publicationsFromRowProps: GenerateComponentsFromRowProps = {
   ],
 }
 export const publicationProgrammatic: SynapseConfig = {
-  name: 'GenerateComponentsFromRow',
+  name: 'DetailsPage',
   props: publicationsFromRowProps,
 }
 

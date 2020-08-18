@@ -133,7 +133,7 @@ export const toolsDetailsLandingPage: SynapseConfigArray = [
     },
   },
   {
-    name: 'GenerateComponentsFromRow',
+    name: 'DetailsPage',
     props: {
       sql,
       entityId,

@@ -1,5 +1,5 @@
 import { SynapseConstants } from 'synapse-react-client'
-import { GenerateComponentsFromRowProps } from 'types/portal-util-types'
+import { DetailsPageProps } from 'types/portal-util-types'
 import { SynapseConfig } from 'types/portal-config'
 import { facetAliases } from './synapseConfigs/commonProps'
 import { publicationsCardConfiguration } from './synapseConfigs/publications'
@@ -15,7 +15,7 @@ const datasetsSql = `SELECT * FROM syn16859580`
 const filesSql = `SELECT id AS "File ID", fundingAgency, studyName, consortium, dataType, assay, diagnosis, tumorType, species, fileFormat, individualID, dataSubtype AS "Data Subtype", nf1Genotype AS "NF1 Genotype", nf2Genotype AS "NF2 Genotype", name AS "File Name" FROM syn16858331`
 const publicationsSql = `SELECT * FROM syn16857542`
 
-export const organizationDetailsPageConfig: GenerateComponentsFromRowProps = {
+export const organizationDetailsPageConfig: DetailsPageProps = {
   entityId: 'syn16858699',
   sql: 'SELECT * FROM syn16858699',
   synapseConfigArray: [
@@ -102,7 +102,7 @@ export const organizationDetailsPage: SynapseConfig[] = [
     },
   },
   {
-    name: 'GenerateComponentsFromRow',
+    name: 'DetailsPage',
     props: organizationDetailsPageConfig,
   },
 ]

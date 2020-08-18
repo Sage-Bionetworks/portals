@@ -1,5 +1,5 @@
 import { HomeExploreConfig, SynapseConfig } from 'types/portal-config'
-import { GenerateComponentsFromRowProps } from 'types/portal-util-types'
+import { DetailsPageProps } from 'types/portal-util-types'
 import { SynapseConstants } from 'synapse-react-client'
 import loadingScreen from '../loadingScreen'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
@@ -131,7 +131,7 @@ const studies: HomeExploreConfig = {
   },
 }
 
-export const studiesGenerateComponentsFromRowProps: GenerateComponentsFromRowProps = {
+export const studiesDetailsPageProps: DetailsPageProps = {
   sql: studiesSql,
   sqlOperator: 'LIKE',
   entityId,
@@ -241,9 +241,9 @@ export const studiesProgrammaticRouteConfig: SynapseConfig[] = [
     },
   },
   {
-    name: 'GenerateComponentsFromRow',
+    name: 'DetailsPage',
     isOutsideContainer: false,
-    props: studiesGenerateComponentsFromRowProps,
+    props: studiesDetailsPageProps,
   },
 ]
 export default studies

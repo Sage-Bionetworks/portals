@@ -6,7 +6,7 @@ import {
   IconOptions,
 } from 'synapse-react-client/dist/containers/GenericCard'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
-import { GenerateComponentsFromRowProps } from 'types/portal-util-types'
+import { DetailsPageProps } from 'types/portal-util-types'
 import { studyDetailPageProps } from './studies'
 import { publicationDetailPageProps } from './publications'
 import { peopleDetailPageProps } from './people'
@@ -81,7 +81,7 @@ export const grants: SynapseConfig = {
   },
 }
 
-const details: GenerateComponentsFromRowProps = {
+const details: DetailsPageProps = {
   sql,
   entityId,
   sqlOperator: 'LIKE',
@@ -138,7 +138,7 @@ export const grantsDetailPage: SynapseConfigArray = [
     },
   },
   {
-    name: 'GenerateComponentsFromRow',
+    name: 'DetailsPage',
     props: details,
   },
 ]
