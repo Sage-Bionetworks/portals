@@ -2,7 +2,7 @@ import StatefulButtonControlWrapper from './StatefulButtonControlWrapper'
 import RouteButtonControlWrapper from './RouteButtonControlWrapper'
 import QueryWrapperFlattened from './QueryWrapperFlattened'
 import StandaloneQueryWrapper from './StandaloneQueryWrapper'
-import GenerateComponentsFromRow from './GenerateComponentsFromRow'
+import DetailsPage from './DetailsPage'
 import ConsortiaGoals from './csbc-home-page/ConsortiaGoals'
 import HomePageCardContainer from './csbc-home-page/HomePageCardContainer'
 import Ecosystem from './csbc-home-page/Ecosystem'
@@ -18,7 +18,7 @@ const PortalComponents = {
   RouteButtonControlWrapper,
   StandaloneQueryWrapper,
   QueryWrapperFlattened,
-  GenerateComponentsFromRow,
+  DetailsPage,
   ConsortiaGoals,
   HomePageCardContainer,
   Ecosystem,

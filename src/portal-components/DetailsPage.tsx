@@ -13,11 +13,8 @@ import {
 } from 'synapse-react-client/dist/utils/synapseTypes/'
 import loadingScreen from 'test-configuration/loadingScreen'
 import { SynapseConfig } from 'types/portal-config'
-import {
-  GenerateComponentsFromRowProps,
-  RowSynapseConfig,
-} from 'types/portal-util-types'
-import './GenerateComponentsFromRow.scss'
+import { DetailsPageProps, RowSynapseConfig } from 'types/portal-util-types'
+import './DetailsPage.scss'
 import injectPropsIntoConfig from './injectPropsIntoConfig'
 import { cloneDeep } from 'lodash'
 import { ExternalFileHandleLink } from 'synapse-react-client/dist/containers/ExternalFileHandleLink'
@@ -32,13 +29,13 @@ type State = {
 
 const COMPONENT_ID_PREFIX = 'src-component-'
 
-export default class GenerateComponentsFromRow extends React.Component<
-  GenerateComponentsFromRowProps,
+export default class DetailsPage extends React.Component<
+  DetailsPageProps,
   State
 > {
   public ref: React.RefObject<HTMLDivElement>
 
-  constructor(props: GenerateComponentsFromRowProps) {
+  constructor(props: DetailsPageProps) {
     super(props)
     this.state = {
       queryResultBundle: undefined,
@@ -53,7 +50,7 @@ export default class GenerateComponentsFromRow extends React.Component<
     this.getData()
   }
 
-  componentDidUpdate(prevProps: GenerateComponentsFromRowProps) {
+  componentDidUpdate(prevProps: DetailsPageProps) {
     if (this.props.token !== prevProps.token) {
       this.getData()
     } else if (this.props.searchParams !== prevProps.searchParams) {
@@ -203,7 +200,7 @@ export default class GenerateComponentsFromRow extends React.Component<
       const currentLocation = window.location.href.split('/')
       const name = currentLocation[currentLocation.length - 2]
       return (
-        <div className="GenerateComponentsFromRow__ComingSoon">
+        <div className="DetailsPage__ComingSoon">
           <h2> Coming Soon! </h2>
           <p>
             {/* 
@@ -230,7 +227,7 @@ export default class GenerateComponentsFromRow extends React.Component<
     )
     if (showMenu) {
       return (
-        <div className="GenerateComponentsFromRow">
+        <div className="DetailsPage">
           <div className="button-container">{this.renderMenu()}</div>
           <div className="component-container" ref={this.ref}>
             {synapseConfigContent}

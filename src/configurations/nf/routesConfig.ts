@@ -167,7 +167,7 @@ const routes: GenericRoute[] = [
                 },
               },
               {
-                name: 'GenerateComponentsFromRow',
+                name: 'DetailsPage',
                 isOutsideContainer: false,
                 props: studiesDetailPage,
               },

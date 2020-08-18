@@ -4,7 +4,7 @@ import { facetAliases } from './commonProps'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import { SynapseConfig, SynapseConfigArray } from 'types/portal-config'
-import { GenerateComponentsFromRowProps } from 'types/portal-util-types'
+import { DetailsPageProps } from 'types/portal-util-types'
 import { dataSql, dataEntityId } from './data'
 import { publicationDetailPageProps } from './publications'
 export const studiesSql = `SELECT * FROM syn21783965`
@@ -99,7 +99,7 @@ export const studies: SynapseConfig = {
   },
 }
 
-export const details: GenerateComponentsFromRowProps = {
+export const details: DetailsPageProps = {
   sql,
   entityId,
   synapseConfigArray: [
@@ -203,7 +203,7 @@ export const studyDetailPage: SynapseConfigArray = [
     },
   },
   {
-    name: 'GenerateComponentsFromRow',
+    name: 'DetailsPage',
     props: details,
   },
 ]

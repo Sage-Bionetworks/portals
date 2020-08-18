@@ -8,23 +8,16 @@ import {
   PaginatedResults,
   QueryResultBundle,
 } from 'synapse-react-client/dist/utils/synapseTypes/'
-import {
-  GenerateComponentsFromRowProps,
-  RowSynapseConfig,
-} from 'types/portal-util-types'
-import GenerateComponentsFromRow from '../../portal-components/GenerateComponentsFromRow'
+import { DetailsPageProps, RowSynapseConfig } from 'types/portal-util-types'
+import DetailsPage from '../../portal-components/DetailsPage'
 const injectPropsIntoConfig = require('portal-components/injectPropsIntoConfig')
 
-const createMountedComponent = async (
-  props: GenerateComponentsFromRowProps,
-) => {
-  const wrapper = await mount<GenerateComponentsFromRow>(
-    <GenerateComponentsFromRow {...props} />,
-  )
+const createMountedComponent = async (props: DetailsPageProps) => {
+  const wrapper = await mount<DetailsPage>(<DetailsPage {...props} />)
   return wrapper
 }
 
-describe('GenerateComponentsFromRowProps works', () => {
+describe('DetailsPageProps works', () => {
   // ---- MARKDOWN COMPONENT PROPS SETUP ----
   const MARKDOWN_COL_TEST_NAME = 'MARKDOWN_COL_TEST_NAME'
   const MARKDOWN_ROW_TEST_VALUE = 'syn123'
@@ -149,7 +142,7 @@ describe('GenerateComponentsFromRowProps works', () => {
   // ---- COMPONENT PROPS DATA END ----
 
   const spyOnInject = jest.spyOn(injectPropsIntoConfig, 'default')
-  const props: GenerateComponentsFromRowProps = {
+  const props: DetailsPageProps = {
     searchParams: {
       study: 'syn',
     },
@@ -194,7 +187,7 @@ describe('GenerateComponentsFromRowProps works', () => {
   })
 
   it('renders a component with its props already set', async () => {
-    const standaloneProps: GenerateComponentsFromRowProps = {
+    const standaloneProps: DetailsPageProps = {
       searchParams: {
         study: 'syn',
       },
@@ -208,7 +201,7 @@ describe('GenerateComponentsFromRowProps works', () => {
   })
 
   it('renders a component with a value that is comma delimited', async () => {
-    const multivalueProps: GenerateComponentsFromRowProps = {
+    const multivalueProps: DetailsPageProps = {
       searchParams: {
         study: 'syn',
       },
@@ -273,11 +266,8 @@ describe('GenerateComponentsFromRowProps works', () => {
     ]
     const wrapper = await createMountedComponent(props)
     await wrapper.update()
-    expect(
-      wrapper
-        .find('h2')
-        .text()
-        .trim(),
-    ).toEqual(`${tableSynapseConfig.title}: ${MOCK_HEADER_NAME}`)
+    expect(wrapper.find('h2').text().trim()).toEqual(
+      `${tableSynapseConfig.title}: ${MOCK_HEADER_NAME}`,
+    )
   })
 })

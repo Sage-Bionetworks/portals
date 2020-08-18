@@ -82,7 +82,7 @@ const routes: GenericRoute[] = [
                 },
               },
               {
-                name: 'GenerateComponentsFromRow',
+                name: 'DetailsPage',
                 props: projectsDetailsPageConfiguration,
               },
             ],
@@ -124,7 +124,7 @@ const routes: GenericRoute[] = [
                 },
               },
               {
-                name: 'GenerateComponentsFromRow',
+                name: 'DetailsPage',
                 props: studiesDetailPageConfiguration,
               },
             ],
