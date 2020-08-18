@@ -20,9 +20,35 @@ To run a portal locally, use the linkConfig script, which copies configuration f
 ./linkConfig.sh <portal-name>
 ```
 
+To run a portal with a local version of SRC run the following commands:
+
+```sh
+# In Synapse-React-Client/
+# Symlink the package itself as well as the local react, react-router, and react-router-dom packages
+$ yarn link
+$ cd node_modules/react
+$ yarn link
+$ cd ../react-router
+$ yarn link
+$ cd ../react-router-dom
+$ yarn link
+$ cd ../../
+$ yarn build # last step is to build the project
+
+# In portals/
+$ yarn link synapse-react-client
+$ yarn link react
+$ yarn link react-router
+$ yarn link react-router-dom
+$ ./linkConfig <portal-name>
+# Note that you can make changes in the SRC project and reflect
+# them in the portals by running yarn build again. The portals project
+# can continue to run as you make changes.
+```
+
 # Build/Deploy Process
 
-The code thats run on jenkins is in `run.sh`
+The code that is run on jenkins is in `run.sh`
 
 Usage:
 Sync current with staging:
