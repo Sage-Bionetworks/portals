@@ -133,32 +133,34 @@ const SurveysCompletedPlots: FunctionComponent<SurveysCompletedPlotsProps> = ({
       )}
 
       {isLoaded && plotData && token && (
-        <div style={style} className="SRC-flex">
-          <Plot
-            layout={getLayoutConfig(0, plotData)}
-            config={optionsConfig}
-            data={getChartDataPoints(0, plotData)}
-            style={{flexBasis: '25%'}}
-          />
-          <Plot
-            layout={getLayoutConfig(1, plotData)}
-            config={optionsConfig}
-            data={getChartDataPoints(1, plotData)}
-            style={{flexBasis: '25%'}}
-          />
-          <Plot
-            layout={getLayoutConfig(2, plotData)}
-            config={optionsConfig}
-            data={getChartDataPoints(2, plotData)}
-            style={{flexBasis: '25%'}}
-          />
-          <Plot
-            layout={getLayoutConfig(3, plotData)}
-            config={optionsConfig}
-            data={getChartDataPoints(3, plotData)}
-            style={{flexBasis: '25%'}}
-          />
-
+        <div style={style}>
+          <h4 className="SRC-center-text">Survey Completion Tracking</h4>
+          <div className="SRC-flex">
+            <Plot
+              layout={getLayoutConfig(0, plotData)}
+              config={optionsConfig}
+              data={getChartDataPoints(0, plotData)}
+              style={{flexBasis: '25%'}}
+            />
+            <Plot
+              layout={getLayoutConfig(1, plotData)}
+              config={optionsConfig}
+              data={getChartDataPoints(1, plotData)}
+              style={{flexBasis: '25%'}}
+            />
+            <Plot
+              layout={getLayoutConfig(2, plotData)}
+              config={optionsConfig}
+              data={getChartDataPoints(2, plotData)}
+              style={{flexBasis: '25%'}}
+            />
+            <Plot
+              layout={getLayoutConfig(3, plotData)}
+              config={optionsConfig}
+              data={getChartDataPoints(3, plotData)}
+              style={{flexBasis: '25%'}}
+            />
+          </div>
         </div>
       )}
     </>
