@@ -1,5 +1,5 @@
 import { SynapseConstants } from 'synapse-react-client'
-import { iconOptions } from './programs/iconOptions'
+import { iconOptions } from './iconOptions'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import loadingScreen from '../loadingScreen'
 

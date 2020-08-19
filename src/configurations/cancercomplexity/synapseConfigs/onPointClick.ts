@@ -23,7 +23,7 @@ const generateEncodedQueryForURL = (
   facet: string,
   facetValue: string,
 ): string => {
-  const { sql } = sqlAndEntityMap[path]
+  const sql = sqlAndEntityMap[path]
   const query: Query = {
     sql,
     selectedFacets: [

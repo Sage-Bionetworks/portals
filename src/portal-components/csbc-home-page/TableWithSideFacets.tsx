@@ -16,7 +16,6 @@ const TableWithSideFacets = (
         <QueryCount
           name={props.name}
           token={props.token}
-          entityId={props.initQueryRequest.entityId}
           sql={props.initQueryRequest.query.sql}
         />
       </h3>
