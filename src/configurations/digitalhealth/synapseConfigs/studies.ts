@@ -78,7 +78,6 @@ export const studies: HomeExploreConfig = {
     name: 'QueryWrapperPlotNav',
     props: {
       rgbIndex,
-      entityId,
       cardConfiguration: studiesCardConfiguration,
       sql,
       shouldDeepLink: true,
@@ -194,7 +193,6 @@ export const studyDetailPage: SynapseConfigArray = [
         link: 'id',
       },
       sql,
-      entityId,
     },
   },
   {

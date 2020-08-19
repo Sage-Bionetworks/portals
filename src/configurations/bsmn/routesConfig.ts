@@ -3,13 +3,11 @@ import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
 import projects, {
   projectCardConfiguration,
   projectsSql,
-  projectsEntityId,
   projectsDetailsPageConfiguration,
 } from './synapseConfigs/projects'
 import studies, {
   studyCardConfiguration,
   studiesSql,
-  studiesEntityId,
   studiesDetailPageConfiguration,
 } from './synapseConfigs/studies'
 import publications from './synapseConfigs/publications'
@@ -75,7 +73,6 @@ const routes: GenericRoute[] = [
                   isHeader: true,
                   ...projectCardConfiguration,
                   sql: projectsSql,
-                  entityId: projectsEntityId,
                   isAlignToLeftNav: true,
                   secondaryLabelLimit: Infinity,
                   backgroundColor: '#5bb0b5',
@@ -117,7 +114,6 @@ const routes: GenericRoute[] = [
                   ...studyCardConfiguration,
                   titleLinkConfig: undefined,
                   sql: studiesSql,
-                  entityId: studiesEntityId,
                   isAlignToLeftNav: true,
                   secondaryLabelLimit: Infinity,
                   backgroundColor: '#5bb0b5',

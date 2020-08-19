@@ -19,6 +19,13 @@ const routes: GenericRoute[] = [
     isNested: false,
     synapseConfigArray: [
       {
+        name: 'Goals',
+        title: 'Goals',
+        props: {
+          entityId: 'syn22315959',
+        },
+      },
+      {
         name: 'UpsetPlot',
         title: 'Featured Data',
         className: 'whatThePlot',
@@ -32,13 +39,6 @@ const routes: GenericRoute[] = [
           loadingScreen: loadingScreen,
         },
       },
-      // {
-      //   name: 'Goals',
-      //   title: 'Goals',
-      //   props: {
-      //     entityId: 'syn22315959',
-      //   },
-      // },
       {
         name: 'Resources',
         title: 'Resources',

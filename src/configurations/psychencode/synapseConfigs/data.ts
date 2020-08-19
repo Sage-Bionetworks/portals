@@ -17,7 +17,6 @@ export const data: SynapseConfig = {
   props: {
     rgbIndex,
     unitDescription,
-    entityId: dataEntityId,
     sql,
     tableConfiguration: {
       showAccessColumn: true,

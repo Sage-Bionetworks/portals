@@ -50,7 +50,6 @@ const data: HomeExploreConfig = {
       },
       loadingScreen,
       sql,
-      entityId,
       shouldDeepLink: true,
     },
   },

@@ -79,7 +79,6 @@ export const grants: HomeExploreConfig = {
       shouldDeepLink: true,
       name: 'Grants',
       loadingScreen,
-      entityId,
       facetsToPlot: ['consortium', 'grantType'],
       searchConfiguration: {
         searchable: [

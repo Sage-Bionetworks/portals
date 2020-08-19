@@ -53,7 +53,6 @@ export const studies: SynapseConfig = {
   name: 'QueryWrapperPlotNav',
   props: {
     rgbIndex,
-    entityId,
     sql,
     loadingScreen,
     shouldDeepLink: true,
@@ -160,7 +159,6 @@ export const details: DetailsPageProps = {
       props: {
         ...studyCardConfiguration,
         sql,
-        entityId,
       },
       columnName: 'relatedStudies',
       tableSqlKeys: ['study'],
@@ -191,7 +189,6 @@ export const studyDetailPage: SynapseConfigArray = [
       facetAliases,
       genericCardSchema: studySchema,
       sql,
-      entityId,
     },
   },
   {

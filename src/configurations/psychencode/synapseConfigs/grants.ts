@@ -106,7 +106,6 @@ const details: DetailsPageProps = {
       name: 'CardContainerLogic',
       props: {
         sql,
-        entityId,
         ...grantCardConfiguration,
       },
       columnName: 'relatedGrants',
@@ -129,7 +128,6 @@ export const grantsDetailPage: SynapseConfigArray = [
       genericCardSchema: grantSchema,
       rgbIndex,
       sql,
-      entityId,
     },
   },
   {

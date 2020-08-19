@@ -84,7 +84,6 @@ export const projects: HomeExploreConfig = {
     name: 'QueryWrapperPlotNav',
     props: {
       rgbIndex,
-      entityId,
       cardConfiguration: projectsCardConfiguration,
       sql,
       shouldDeepLink: true,
@@ -185,7 +184,6 @@ export const projectDetailPage: SynapseConfigArray = [
       },
       rgbIndex,
       sql,
-      entityId,
     },
   },
   {

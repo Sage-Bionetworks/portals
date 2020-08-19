@@ -18,17 +18,12 @@ import {
 import {
   projectCardConfiguration,
   projectsSql,
-  projectsEntityId,
 } from './synapseConfigs/projects'
 import { results } from './synapseConfigs/results'
 import { iconHeaderOptions } from './synapseConfigs/programs/iconOptions'
 import loadingScreen from './loadingScreen'
 import { publicationProgrammatic } from './synapseConfigs/publications'
-import {
-  programCardConfiguration,
-  programEntityId,
-} from './synapseConfigs/programs'
-import { studiesEntityId } from './synapseConfigs/studies'
+import { programCardConfiguration } from './synapseConfigs/programs'
 import experimentalTools from './synapseConfigs/experimental_tools'
 import computationalTools from './synapseConfigs/computational_tools'
 
@@ -88,7 +83,6 @@ const routes: GenericRoute[] = [
         props: {
           ...programs,
           sql: 'SELECT * FROM syn17024173',
-          entityId: 'syn17024173',
         },
       },
       {
@@ -121,7 +115,6 @@ const routes: GenericRoute[] = [
                 props: {
                   ...programs,
                   sql: 'SELECT  * FROM syn17024173',
-                  entityId: programEntityId,
                 },
               },
             },
@@ -139,7 +132,6 @@ const routes: GenericRoute[] = [
                 props: {
                   loadingScreen,
                   sql: 'SELECT  * FROM syn17024173',
-                  entityId: programEntityId,
                   isHeader: true,
                   ...programCardConfiguration,
                   genericCardSchema: {
@@ -156,7 +148,6 @@ const routes: GenericRoute[] = [
                 props: {
                   ...projectCardConfiguration,
                   sql: projectsSql,
-                  entityId: projectsEntityId,
                 },
               },
             ],
@@ -180,7 +171,6 @@ const routes: GenericRoute[] = [
                   sql: projectsSql,
                   isHeader: true,
                   ...projectCardConfiguration,
-                  entityId: projectsEntityId,
                   backgroundColor: '#DE9A1F',
                 },
               },
@@ -190,7 +180,6 @@ const routes: GenericRoute[] = [
                   title: 'PEOPLE',
                   sql:
                     'SELECT ownerID as ownerId, firstName, lastName, institution FROM syn13897207',
-                  entityId: 'syn13897207',
                   type: SynapseConstants.MEDIUM_USER_CARD,
                 },
               },
@@ -200,7 +189,6 @@ const routes: GenericRoute[] = [
                 props: {
                   ...studyCardConfiguration,
                   loadingScreen,
-                  entityId: studiesEntityId,
                   sql: studiesSql,
                 },
               },

@@ -6,10 +6,6 @@ import { publicationsCardConfiguration } from './synapseConfigs/publications'
 import { studyCardConfiguration } from './synapseConfigs/studies'
 import loadingScreen from './loadingScreen'
 
-const studiesEntityId = 'syn16787123'
-const datasetsEntityId = 'syn16859580'
-const publicationsEntityId = 'syn16857542'
-
 const studiesSql = `SELECT * FROM syn16787123`
 const datasetsSql = `SELECT * FROM syn16859580`
 const filesSql = `SELECT id AS "File ID", fundingAgency, studyName, consortium, dataType, assay, diagnosis, tumorType, species, fileFormat, individualID, dataSubtype AS "Data Subtype", nf1Genotype AS "NF1 Genotype", nf2Genotype AS "NF2 Genotype", name AS "File Name" FROM syn16858331`
@@ -24,7 +20,6 @@ export const organizationDetailsPageConfig: DetailsPageProps = {
       props: {
         loadingScreen,
         sql: studiesSql,
-        entityId: studiesEntityId,
         ...studyCardConfiguration,
       },
       title: 'Funded Studies',
@@ -35,7 +30,6 @@ export const organizationDetailsPageConfig: DetailsPageProps = {
       name: 'CardContainerLogic',
       props: {
         loadingScreen,
-        entityId: datasetsEntityId,
         sql: datasetsSql,
         type: SynapseConstants.DATASET,
       },
@@ -61,7 +55,6 @@ export const organizationDetailsPageConfig: DetailsPageProps = {
       props: {
         loadingScreen,
         sql: publicationsSql,
-        entityId: publicationsEntityId,
         ...publicationsCardConfiguration,
         sqlOperator: 'LIKE',
       },
@@ -96,7 +89,6 @@ export const organizationDetailsPage: SynapseConfig[] = [
         icon: 'logo',
         link: 'website',
       },
-      entityId: 'syn16858699',
       isHeader: true,
       backgroundColor: '#125E81',
     },

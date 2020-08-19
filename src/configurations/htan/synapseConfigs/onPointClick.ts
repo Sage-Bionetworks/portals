@@ -1,20 +1,20 @@
-import { toolsSql, toolsEntityId } from './tools'
-import { datasetsSql, datasetsEntityId } from './datasets'
-import { publicationSql, publicationEntityId } from './publications'
-import { grantsSql, grantsEntityId } from './grants'
-import { projectsSql, projectsEntityId } from './projects'
-import { filesSql, filesEntityId } from './files'
+import { toolsSql } from './tools'
+import { datasetsSql } from './datasets'
+import { publicationSql } from './publications'
+import { grantsSql } from './grants'
+import { projectsSql } from './projects'
+import { filesSql } from './files'
 import { Query } from 'synapse-react-client/dist/utils/synapseTypes'
 
 const sqlAndEntityMap: {
-  [value: string]: { sql: string; entityId: string }
+  [value: string]: string
 } = {
-  Tools: { sql: toolsSql, entityId: toolsEntityId },
-  Datasets: { sql: datasetsSql, entityId: datasetsEntityId },
-  Publications: { sql: publicationSql, entityId: publicationEntityId },
-  Grants: { sql: grantsSql, entityId: grantsEntityId },
-  Projects: { sql: projectsSql, entityId: projectsEntityId },
-  Files: { sql: filesSql, entityId: filesEntityId },
+  Tools: toolsSql,
+  Datasets: datasetsSql,
+  Publications: publicationSql,
+  Grants: grantsSql,
+  Projects: projectsSql,
+  Files: filesSql,
 }
 
 const generateEncodedQueryForURL = (
@@ -22,7 +22,7 @@ const generateEncodedQueryForURL = (
   facet: string,
   facetValue: string,
 ): string => {
-  const { sql } = sqlAndEntityMap[path]
+  const sql = sqlAndEntityMap[path]
   const query: Query = {
     sql,
     selectedFacets: [

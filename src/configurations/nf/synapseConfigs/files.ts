@@ -42,7 +42,6 @@ const files: HomeExploreConfig = {
       rgbIndex,
       name: 'Files',
       sql: `SELECT id AS "File ID", assay, dataType, diagnosis, tumorType,  species, individualID,  fileFormat, dataSubtype, nf1Genotype as "NF1 Genotype", nf2Genotype as "NF2 Genotype", studyName, fundingAgency, consortium, name AS "File Name", accessType, accessTeam  FROM syn16858331 WHERE resourceType = 'experimentalData'`,
-      entityId,
       visibleColumnCount,
       loadingScreen,
       tableConfiguration: {

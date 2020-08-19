@@ -35,7 +35,6 @@ const people: HomeExploreConfig = {
     name: 'QueryWrapperPlotNav',
     props: {
       rgbIndex,
-      entityId,
       sql,
       loadingScreen,
       name: 'People',

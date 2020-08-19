@@ -82,7 +82,6 @@ export const publications: HomeExploreConfig = {
       shouldDeepLink: true,
       hideDownload: true,
       sql,
-      entityId,
       name: 'Publications',
       cardConfiguration: publicationCardConfiguration,
       loadingScreen,
@@ -121,7 +120,6 @@ export const publications: HomeExploreConfig = {
 
 export const publicationDetailPageProps: CardContainerLogicProps = {
   sql: publicationSql,
-  entityId: publicationEntityId,
   ...publicationCardConfiguration,
   sqlOperator: 'LIKE',
 }

@@ -64,7 +64,6 @@ const projects: HomeExploreConfig = {
     props: {
       rgbIndex,
       loadingScreen,
-      entityId,
       sql,
       shouldDeepLink: true,
       name: 'Projects',

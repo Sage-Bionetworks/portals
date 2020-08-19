@@ -90,7 +90,6 @@ export const publications: HomeExploreConfig = {
     name: 'QueryWrapperPlotNav',
     props: {
       rgbIndex,
-      entityId,
       cardConfiguration: publicationsCardConfiguration,
       sql,
       shouldDeepLink: true,

@@ -43,7 +43,6 @@ export const files: HomeExploreConfig = {
       rgbIndex,
       shouldDeepLink: true,
       sql,
-      entityId,
       name: 'Files',
       loadingScreen,
       visibleColumnCount: Infinity,

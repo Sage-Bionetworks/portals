@@ -85,7 +85,6 @@ export const datasets: HomeExploreConfig = {
     name: 'QueryWrapperPlotNav',
     props: {
       rgbIndex,
-      entityId,
       cardConfiguration: datasetCardConfiguration,
       shouldDeepLink: true,
       name: 'Datasets',

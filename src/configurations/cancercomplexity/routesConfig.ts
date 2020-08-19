@@ -4,7 +4,6 @@ import { SynapseConstants } from 'synapse-react-client'
 import {
   projectsSql,
   projectCardConfiguration,
-  projectsEntityId,
 } from './synapseConfigs/projects'
 import {
   datasetsSql,
@@ -13,11 +12,7 @@ import {
 } from './synapseConfigs/datasets'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
 import loadingScreen from './loadingScreen'
-import {
-  toolsSql,
-  toolsEntityId,
-  toolsConfiguration,
-} from './synapseConfigs/tools'
+import { toolsSql, toolsConfiguration } from './synapseConfigs/tools'
 import { filesSql, filesEntityId } from './synapseConfigs/files'
 import DatasetSvg from './style/Dataset.svg'
 import {
@@ -188,8 +183,6 @@ const routes: GenericRoute[] = [
                 isOutsideContainer: true,
                 props: {
                   isHeader: true,
-                  backgroundColor: '#407ba0',
-                  entityId: grantsEntityId,
                   ...grantsCardConfiguration,
                   secondaryLabelLimit: Infinity,
                   sql: grantsSql,
@@ -211,7 +204,6 @@ const routes: GenericRoute[] = [
                         sqlOperator: 'LIKE',
                         loadingScreen,
                         sql: `${projectsSql} where grantType LIKE '%U54%'`,
-                        entityId: projectsEntityId,
                         ...projectCardConfiguration,
                       },
                     },
@@ -223,7 +215,6 @@ const routes: GenericRoute[] = [
                       props: {
                         sqlOperator: 'LIKE',
                         sql: publicationSql,
-                        entityId: publicationEntityId,
                         ...publicationsCardConfiguration,
                         facetAliases,
                       },
@@ -236,7 +227,6 @@ const routes: GenericRoute[] = [
                       props: {
                         sqlOperator: 'LIKE',
                         sql: datasetsSql,
-                        entityId: datasetsEntityId,
                         ...datasetCardConfiguration,
                         facetAliases,
                       },
@@ -249,7 +239,6 @@ const routes: GenericRoute[] = [
                       props: {
                         sqlOperator: 'LIKE',
                         sql: toolsSql,
-                        entityId: toolsEntityId,
                         ...toolsConfiguration,
                         facetAliases,
                       },
@@ -287,7 +276,6 @@ const routes: GenericRoute[] = [
                 props: {
                   isHeader: true,
                   backgroundColor: '#407ba0',
-                  entityId: publicationEntityId,
                   ...publicationsCardConfiguration,
                   secondaryLabelLimit: Infinity,
                   facetAliases,
@@ -309,7 +297,6 @@ const routes: GenericRoute[] = [
                       props: {
                         sqlOperator: 'LIKE',
                         sql: datasetsSql,
-                        entityId: datasetsEntityId,
                         ...datasetCardConfiguration,
                         facetAliases,
                       },
@@ -322,7 +309,6 @@ const routes: GenericRoute[] = [
                       props: {
                         sqlOperator: 'LIKE',
                         sql: toolsSql,
-                        entityId: toolsEntityId,
                         ...toolsConfiguration,
                         facetAliases,
                       },
@@ -363,7 +349,6 @@ const routes: GenericRoute[] = [
                   sqlOperator: '=',
                   ...datasetCardConfiguration,
                   secondaryLabelLimit: Infinity,
-                  entityId: datasetsEntityId,
                   sql: datasetsSql,
                   iconOptions: {
                     dataset: DatasetSvg,
@@ -405,7 +390,6 @@ const routes: GenericRoute[] = [
                         loadingScreen,
                         sqlOperator: '=',
                         rgbIndex: 0,
-                        // unitDescription: 'Files',
                         title: 'Dataset Files',
                       },
                     },

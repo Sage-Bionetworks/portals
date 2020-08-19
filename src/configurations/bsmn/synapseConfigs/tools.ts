@@ -57,7 +57,6 @@ const tools: HomeExploreConfig = {
     name: 'QueryWrapperPlotNav',
     props: {
       rgbIndex,
-      entityId,
       sql,
       shouldDeepLink: true,
       hideDownload: true,

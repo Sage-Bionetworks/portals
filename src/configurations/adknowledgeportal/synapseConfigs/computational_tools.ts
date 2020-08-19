@@ -54,7 +54,6 @@ const computationalTools: HomeExploreConfig = {
       rgbIndex,
       sql,
       cardConfiguration,
-      entityId,
       shouldDeepLink: true,
       name: 'Computational Tools',
       facetsToPlot: ['grant', 'program', 'softwareType'],

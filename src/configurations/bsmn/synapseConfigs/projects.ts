@@ -3,14 +3,10 @@ import { SynapseConstants } from 'synapse-react-client'
 import loadingScreen from '../loadingScreen'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import { DetailsPageProps } from 'types/portal-util-types'
-import { studiesSql, studyCardConfiguration, studiesEntityId } from './studies'
-import { toolsSql, toolsEntityId, toolCardConfiguration } from './tools'
-import {
-  publicationsSql,
-  publicationsEntityId,
-  publicationsCardConfiguration,
-} from './publications'
-import { peopleSql, peopleEntityId } from './people'
+import { studiesSql, studyCardConfiguration } from './studies'
+import { toolsSql, toolCardConfiguration } from './tools'
+import { publicationsSql, publicationsCardConfiguration } from './publications'
+import { peopleSql } from './people'
 
 const unitDescription = 'Projects'
 const rgbIndex = 7
@@ -78,7 +74,6 @@ const projects: HomeExploreConfig = {
     name: 'QueryWrapperPlotNav',
     props: {
       rgbIndex,
-      entityId,
       sql,
       name: 'Projects',
       cardConfiguration: projectCardConfiguration,
@@ -129,7 +124,6 @@ export const projectsDetailsPageConfiguration: DetailsPageProps = {
       tableSqlKeys: ['project'],
       props: {
         sql: studiesSql,
-        entityId: studiesEntityId,
         ...studyCardConfiguration,
       },
     },
@@ -140,7 +134,6 @@ export const projectsDetailsPageConfiguration: DetailsPageProps = {
       tableSqlKeys: ['project'],
       props: {
         sql: peopleSql,
-        entityId: peopleEntityId,
         type: SynapseConstants.MEDIUM_USER_CARD,
       },
     },
@@ -151,7 +144,6 @@ export const projectsDetailsPageConfiguration: DetailsPageProps = {
       tableSqlKeys: ['project'],
       props: {
         sql: toolsSql,
-        entityId: toolsEntityId,
         ...toolCardConfiguration,
       },
     },
@@ -162,7 +154,6 @@ export const projectsDetailsPageConfiguration: DetailsPageProps = {
       tableSqlKeys: ['project'],
       props: {
         sql: publicationsSql,
-        entityId: publicationsEntityId,
         ...publicationsCardConfiguration,
       },
     },

@@ -49,7 +49,6 @@ const datasets: HomeExploreConfig = {
       },
       loadingScreen,
       name: 'Datasets',
-      entityId,
       facetAliases,
       searchConfiguration: {
         searchable: [

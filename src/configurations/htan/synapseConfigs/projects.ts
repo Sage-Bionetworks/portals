@@ -58,7 +58,6 @@ export const projects: HomeExploreConfig = {
       cardConfiguration: projectCardConfiguration,
       shouldDeepLink: true,
       name: 'Projects',
-      entityId,
       loadingScreen,
       sql,
     },

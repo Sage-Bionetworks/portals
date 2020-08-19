@@ -81,7 +81,6 @@ const studies: HomeExploreConfig = {
       rgbIndex,
       facetAliases,
       loadingScreen,
-      entityId,
       sql,
       name: 'Studies',
       shouldDeepLink: true,
@@ -206,7 +205,6 @@ export const studiesDetailsPageProps: DetailsPageProps = {
       props: {
         sqlOperator: '=',
         sql,
-        entityId: studiesEntityId,
         ...studyCardConfiguration,
       },
     },
@@ -221,7 +219,6 @@ export const studiesProgrammaticRouteConfig: SynapseConfig[] = [
       isHeader: true,
       ...studyCardConfiguration,
       sql,
-      entityId,
       facetAliases,
       isAlignToLeftNav: true,
       secondaryLabelLimit: Infinity,

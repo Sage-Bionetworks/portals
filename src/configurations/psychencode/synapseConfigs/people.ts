@@ -10,7 +10,6 @@ const rgbIndex = 4
 export const people: SynapseConfig = {
   name: 'QueryWrapperPlotNav',
   props: {
-    entityId,
     sql,
     cardConfiguration: {
       type: SynapseConstants.MEDIUM_USER_CARD,

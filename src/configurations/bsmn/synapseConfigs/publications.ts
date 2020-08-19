@@ -51,7 +51,6 @@ const publications: HomeExploreConfig = {
     name: 'QueryWrapperPlotNav',
     props: {
       rgbIndex,
-      entityId,
       shouldDeepLink: true,
       hideDownload: true,
       name: 'Publications',

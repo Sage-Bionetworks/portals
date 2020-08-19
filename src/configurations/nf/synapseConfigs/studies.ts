@@ -8,13 +8,9 @@ import studyCompleteHeaderSvg from '../style/study-completed-header.svg'
 import studyActiveHeaderSvg from '../style/study-active-header.svg'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import { DetailsPageProps } from 'types/portal-util-types'
-import { datasetsSql, datasetsEntityId } from './datasets'
-import { toolsSql, toolsEntityId, toolsCardConfiguration } from './tools'
-import {
-  publicationsSql,
-  publicationsEntityId,
-  publicationsCardConfiguration,
-} from './publications'
+import { datasetsSql } from './datasets'
+import { toolsSql, toolsCardConfiguration } from './tools'
+import { publicationsSql, publicationsCardConfiguration } from './publications'
 
 const sql = 'SELECT * FROM syn16787123'
 export const studiesEntityId = 'syn16787123'
@@ -90,7 +86,6 @@ const studies: HomeExploreConfig = {
     name: 'QueryWrapperPlotNav',
     props: {
       rgbIndex,
-      entityId,
       sql,
       name: 'Studies',
       shouldDeepLink: true,
@@ -159,7 +154,6 @@ export const studiesDetailPage: DetailsPageProps = {
         sql: datasetsSql,
         sqlOperator: '=',
         type: 'dataset',
-        entityId: datasetsEntityId,
       },
     },
     {
@@ -195,7 +189,6 @@ export const studiesDetailPage: DetailsPageProps = {
       tableSqlKeys: ['studyId'],
       props: {
         sql: toolsSql,
-        entityId: toolsEntityId,
         ...toolsCardConfiguration,
       },
     },
@@ -206,7 +199,6 @@ export const studiesDetailPage: DetailsPageProps = {
       tableSqlKeys: ['studyId'],
       props: {
         sql: publicationsSql,
-        entityId: publicationsEntityId,
         ...publicationsCardConfiguration,
       },
     },
@@ -218,7 +210,6 @@ export const studiesDetailPage: DetailsPageProps = {
       props: {
         sqlOperator: 'LIKE',
         sql: studiesSql,
-        entityId: studiesEntityId,
         ...studyCardConfiguration,
       },
     },

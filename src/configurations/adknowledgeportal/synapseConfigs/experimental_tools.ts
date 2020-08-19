@@ -78,7 +78,6 @@ const experimentalTools: HomeExploreConfig = {
     props: {
       rgbIndex,
       sql,
-      entityId,
       name: 'Experimental Tools',
       shouldDeepLink: true,
       cardConfiguration,

@@ -72,7 +72,6 @@ export const tools: HomeExploreConfig = {
     name: 'QueryWrapperPlotNav',
     props: {
       rgbIndex,
-      entityId,
       loadingScreen,
       sql,
       cardConfiguration: toolsConfiguration,

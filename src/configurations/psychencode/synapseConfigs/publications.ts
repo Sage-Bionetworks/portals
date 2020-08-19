@@ -29,7 +29,6 @@ export const publications: SynapseConfig = {
   name: 'QueryWrapperPlotNav',
   props: {
     rgbIndex,
-    entityId,
     sql,
     shouldDeepLink: true,
     hideDownload: true,

@@ -67,7 +67,6 @@ const publications: HomeExploreConfig = {
     name: 'QueryWrapperPlotNav',
     props: {
       rgbIndex,
-      entityId,
       sql,
       name: 'Publications',
       shouldDeepLink: true,
@@ -90,7 +89,6 @@ const publicationsFromRowProps: DetailsPageProps = {
       showTitleSeperator: false,
       tableSqlKeys: ['long_amp_ad_grants'],
       props: {
-        entityId: publicationsEntityId,
         sql,
         ...publicationCardProps,
       },

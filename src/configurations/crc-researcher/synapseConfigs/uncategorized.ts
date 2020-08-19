@@ -44,14 +44,12 @@ export const allFacetsToPlot = [
 ]
 export const dataSql = `${baseDataSql} 'Uncategorized'`
 export const dataEntityId = 'syn22154087'
-const entityId = dataEntityId
 const sql = dataSql
 
 export const uncategorized: SynapseConfig = {
   name: 'QueryWrapperPlotNav',
   props: {
     rgbIndex,
-    entityId,
     shouldDeepLink: true,
     sql,
     name: 'Uncategorized Participants',
@@ -64,17 +62,18 @@ export const uncategorized: SynapseConfig = {
       {
         buttonText: 'Select as potential',
         classNames: 'exampleClassNameToAddToButton',
-        onClick: (async (event) => {
+        onClick: async (event) => {
           handleParticipantWorkflowChange(event, 'Potential')
-        }),
+        },
       },
       {
         buttonText: 'Hide from view',
         classNames: 'exampleClassNameToAddToButton',
-        onClick: (async (event) => {
+        onClick: async (event) => {
           handleParticipantWorkflowChange(event, 'Hidden')
-        }),
-      }]
+        },
+      },
+    ],
   },
 }
 

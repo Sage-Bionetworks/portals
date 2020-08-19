@@ -12,20 +12,17 @@ import {
   newStudiesSql,
   studyHeaderIconOptions,
   studyCardConfiguration,
-  studiesEntityId,
   studiesDetailPage,
 } from './synapseConfigs/studies'
 import { newDatasetsSql } from './synapseConfigs/datasets'
 import {
   publicationsCardConfiguration,
-  publicationsEntityId,
   newPublicationsSql,
 } from './synapseConfigs/publications'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
 import loadingScreen from './loadingScreen'
 import { buttonColors, facetAliases } from './synapseConfigs/commonProps'
 import { toolsCardConfiguration, newToolsSql } from './synapseConfigs/tools'
-import { toolsEntityId } from './synapseConfigs/tools'
 import { organizationDetailsPage } from './organizations'
 
 const limit = 3
@@ -72,7 +69,6 @@ const routes: GenericRoute[] = [
           limit,
           facetAliases,
           sql: newStudiesSql,
-          entityId: studiesEntityId,
           title: 'NEW STUDIES',
           ...studyCardConfiguration,
         },
@@ -84,7 +80,6 @@ const routes: GenericRoute[] = [
         props: {
           limit,
           facetAliases,
-          entityId: publicationsEntityId,
           sql: newPublicationsSql,
           ...publicationsCardConfiguration,
         },
@@ -97,7 +92,6 @@ const routes: GenericRoute[] = [
           limit,
           facetAliases,
           loadingScreen,
-          entityId: publicationsEntityId,
           sql: newDatasetsSql,
           type: SynapseConstants.DATASET,
         },
@@ -109,7 +103,6 @@ const routes: GenericRoute[] = [
         props: {
           limit,
           facetAliases,
-          entityId: toolsEntityId,
           ...toolsCardConfiguration,
           sql: newToolsSql,
         },
@@ -120,7 +113,6 @@ const routes: GenericRoute[] = [
         props: {
           loadingScreen,
           facetAliases,
-          entityId: funders.entityId,
           sql: funders.sql,
           type: funders.type,
         },
@@ -158,7 +150,6 @@ const routes: GenericRoute[] = [
                   sqlOperator: '=',
                   isHeader: true,
                   backgroundColor: '#119488',
-                  entityId: studiesEntityId,
                   ...studyCardConfiguration,
                   facetAliases,
                   iconOptions: studyHeaderIconOptions,

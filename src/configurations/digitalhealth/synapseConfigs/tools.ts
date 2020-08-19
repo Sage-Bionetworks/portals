@@ -63,7 +63,6 @@ export const tools: HomeExploreConfig = {
     name: 'QueryWrapperPlotNav',
     props: {
       rgbIndex,
-      entityId,
       cardConfiguration: toolsCardConfiguration,
       sql,
       hideDownload: true,
@@ -104,7 +103,6 @@ export const tools: HomeExploreConfig = {
 
 export const toolsDetailPageProps: CardContainerLogicProps = {
   sql,
-  entityId: toolsEntityId,
   ...toolsCardConfiguration,
   sqlOperator: 'LIKE',
   facetAliases,
@@ -124,7 +122,6 @@ export const toolsDetailsLandingPage: SynapseConfigArray = [
       genericCardSchema: toolsSchema,
       rgbIndex,
       sql,
-      entityId,
     },
   },
   {

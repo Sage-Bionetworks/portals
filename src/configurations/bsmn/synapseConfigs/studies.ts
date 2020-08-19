@@ -85,7 +85,6 @@ const studies: HomeExploreConfig = {
     name: 'QueryWrapperPlotNav',
     props: {
       rgbIndex,
-      entityId,
       shouldDeepLink: true,
       sql,
       hideDownload: true,
@@ -158,7 +157,6 @@ export const studiesDetailPageConfiguration: DetailsPageProps = {
       tableSqlKeys: ['study'],
       props: {
         sql: publicationsSql,
-        entityId: publicationsEntityId,
         ...publicationsCardConfiguration,
       },
     },
