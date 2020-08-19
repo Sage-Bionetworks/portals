@@ -17,7 +17,7 @@ const news: SynapseConfigArray = [
           feedName: 'Updates',
           feedDescription:
             'The AD Knowledge Portal reaches the broader scientific community through multiple channels that encourage open-science collaborations. News updates include videos, events, and presentations that highlight the community behind the data.',
-          feedUrl: 'https://portalnewsdev.wpengine.com/?feed=rss2',
+          feedUrl: 'https://portalnews.wpengine.com/?feed=rss2',
           feedKeyValue: { cat: '3' },
           defaultItemsToShow: 3,
           twitterFeedUrl: 'https://twitter.com/AMPADPortal?ref_src=twsrc%5Etfw',
@@ -26,7 +26,7 @@ const news: SynapseConfigArray = [
           feedName: 'Data Releases',
           feedDescription:
             "The AD Knowledge Portal releases new Alzheimer's disease data twice annually, in May and November. Data releases may include new data, analyses, and results; as well as changes and updates to previously released data.",
-          feedUrl: 'https://portalnewsdev.wpengine.com/?feed=rss2',
+          feedUrl: 'https://portalnews.wpengine.com/?feed=rss2',
           feedKeyValue: { cat: '4' },
           defaultItemsToShow: 3,
         },
@@ -34,7 +34,7 @@ const news: SynapseConfigArray = [
           feedName: 'Newsletter',
           feedDescription:
             'The AD Knowledge Portal sends a quarterly newsletter to interested members of the scientific community, delivering consolidated information and updates related to the Portal.',
-          feedUrl: 'https://portalnewsdev.wpengine.com/?feed=rss2',
+          feedUrl: 'https://portalnews.wpengine.com/?feed=rss2',
           feedKeyValue: { cat: '5' },
           defaultItemsToShow: 3,
           mailChimpListName: 'Quarterly AD Knowledge Portal Newsletter',
@@ -44,7 +44,7 @@ const news: SynapseConfigArray = [
         {
           feedName: 'Webinars',
           feedDescription: 'The AMP-AD Knowledge Portal webinar series is an opportunity to discuss data, analysis, and tools related to the Portal. It features speakers from the AMP-AD Target Discovery Program and associated consortia.',
-          feedUrl: 'https://portalnewsdev.wpengine.com/?feed=rss2',
+          feedUrl: 'https://portalnews.wpengine.com/?feed=rss2',
           feedKeyValue: { cat: '93' },
           defaultItemsToShow: 3,
         }
