@@ -219,6 +219,7 @@ export type SynapseConfig = (
   | ExternalFileHandleLink
   | Goals
   | Resources
+  | UpsetPlot
 ) &
   Metadata
 export type SynapseConfigArray = SynapseConfig[]
