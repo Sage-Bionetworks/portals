@@ -85,34 +85,34 @@ const projects: HomeExploreConfig = {
       shouldDeepLink: true,
       hideDownload: true,
       facetsToPlot: ['primaryInvestigators', 'grantNumber', 'institutions'],
-      // searchConfiguration: {
-      //   searchable: [
-      //     {
-      //       columnName: 'title',
-      //       hintText: 'Somatic mosaicism and autism',
-      //     },
-      //     {
-      //       columnName: 'primaryInvestigators',
-      //       hintText: 'LastName',
-      //     },
-      //     {
-      //       columnName: 'abstract',
-      //       hintText: 'Somatic mutations are de novo mutations',
-      //     },
-      //     {
-      //       columnName: 'grantNumber',
-      //       hintText: 'U01MH106876',
-      //     },
-      //     {
-      //       columnName: 'institution',
-      //       hintText: 'Boston Children’s Hospital',
-      //     },
-      //     {
-      //       columnName: 'contributors',
-      //       hintText: 'LastName',
-      //     },
-      //   ],
-      // },
+      facetAliases: {
+        ndaCollection: 'NDA Collection',
+      },
+      searchConfiguration: {
+        searchable: [
+          {
+            columnName: 'title',
+          },
+          {
+            columnName: 'primaryInvestigators',
+          },
+          {
+            columnName: 'abstract',
+          },
+          {
+            columnName: 'grantNumber',
+          },
+          {
+            columnName: 'institution',
+          },
+          {
+            columnName: 'contributors',
+          },
+          {
+            columnName: 'ndaCollection',
+          },
+        ],
+      },
     },
   },
 }

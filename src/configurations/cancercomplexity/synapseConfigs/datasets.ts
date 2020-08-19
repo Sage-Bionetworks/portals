@@ -96,47 +96,36 @@ export const datasets: HomeExploreConfig = {
         searchable: [
           {
             columnName: 'datasetName',
-            hintText: 'migration',
           },
           {
             columnName: 'description',
-            hintText: 'spatiotemporal',
           },
           {
             columnName: 'overallDesign',
-            hintText: 'spatiotemporal',
           },
           {
             columnName: 'publicationTitle',
-            hintText: 'methylation',
           },
           {
             columnName: 'tummorType',
-            hintText: 'Skin Cutaneous Melanoma',
           },
           {
             columnName: 'species',
-            hintText: 'Human',
           },
           {
             columnName: 'assay',
-            hintText: 'RNA-seq',
           },
           {
             columnName: 'grantName',
-            hintText: 'immunity',
           },
           {
             columnName: 'grantNumber',
-            hintText: 'CA202123',
           },
           {
             columnName: 'datasetAlias',
-            hintText: 'PRJNA312905',
           },
           {
             columnName: 'externalLink',
-            hintText: 'GSE93776',
           },
         ],
       },

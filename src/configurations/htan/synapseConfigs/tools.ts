@@ -83,31 +83,24 @@ export const tools: HomeExploreConfig = {
         searchable: [
           {
             columnName: 'toolName',
-            hintText: 'track',
           },
           {
             columnName: 'description',
-            hintText: 'module',
           },
           {
             columnName: 'publicationTitle',
-            hintText: 'modeling',
           },
           {
             columnName: 'inputDataType',
-            hintText: 'image',
           },
           {
             columnName: 'outputDataType',
-            hintText: 'network',
           },
           {
             columnName: 'grantName',
-            hintText: 'immunity',
           },
           {
             columnName: 'grantNumber',
-            hintText: 'CA202123',
           },
         ],
       },

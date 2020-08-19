@@ -7,6 +7,8 @@ import { ExternalFileHandleLinkProps } from 'synapse-react-client/dist/container
 import { UpsetPlotProps } from 'synapse-react-client/dist/containers/UpsetPlot'
 import { MarkdownSynapseProps } from 'synapse-react-client/dist/containers/MarkdownSynapse'
 import { NewsFeedMenuProps } from 'synapse-react-client/dist/containers/NewsFeedMenu'
+import { GoalsProps } from 'synapse-react-client/dist/containers/Goals'
+import { ResourcesProps } from 'synapse-react-client/dist/containers/Resources'
 import { SynapseFormSubmissionGridProps } from 'synapse-react-client/dist/containers/synapse_form_wrapper/SynapseFormSubmissionsGrid'
 import { QueryWrapperPlotNavProps } from 'synapse-react-client/dist/containers/query_wrapper_plot_nav/QueryWrapperPlotNav'
 import { SynapseFormWrapperProps } from 'synapse-react-client/dist/containers/synapse_form_wrapper/SynapseFormWrapper'
@@ -77,6 +79,16 @@ type Markdown = {
 type ThemesPlot = {
   name: 'ThemesPlot'
   props: ThemesPlotProps
+}
+
+type Goals = {
+  name: 'Goals'
+  props: GoalsProps
+}
+
+type Resources = {
+  name: 'Resources'
+  props: ResourcesProps
 }
 
 type StatefulButtonControl = {
@@ -213,6 +225,8 @@ export type SynapseConfig = (
   | StatusLineChart
   | SurveysCompletedPlots
   | ExternalFileHandleLink
+  | Goals
+  | Resources
   | UpsetPlot
 ) &
   Metadata

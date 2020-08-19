@@ -98,35 +98,27 @@ const experimentalTools: HomeExploreConfig = {
         searchable: [
           {
             columnName: 'name',
-            hintText: '',
           },
           {
             columnName: 'summary',
-            hintText: '',
           },
           {
             columnName: 'toolType',
-            hintText: '',
           },
           {
             columnName: 'contributor',
-            hintText: '',
           },
           {
             columnName: 'grant',
-            hintText: '',
           },
           {
             columnName: 'program',
-            hintText: '',
           },
           {
             columnName: 'backgroundStrain',
-            hintText: '',
           },
           {
             columnName: 'targetedGenes',
-            hintText: '',
           },
         ],
       },

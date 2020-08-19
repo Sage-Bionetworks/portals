@@ -91,35 +91,27 @@ export const publications: HomeExploreConfig = {
         searchable: [
           {
             columnName: 'Author',
-            hintText: 'LastName',
           },
           {
             columnName: 'Diagnosis',
-            hintText: "Parkinson's",
           },
           {
             columnName: 'Journal',
-            hintText: '',
           },
           {
             columnName: 'Title',
-            hintText: "Parkinson's",
           },
           {
             columnName: 'Year',
-            hintText: '2018',
           },
           {
             columnName: 'digitalAssessmentCategory',
-            hintText: 'tremor',
           },
           {
             columnName: 'sensorType',
-            hintText: 'accelerometer',
           },
           {
             columnName: 'Tools',
-            hintText: '',
           },
         ],
       },

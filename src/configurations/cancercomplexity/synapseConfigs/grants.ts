@@ -85,23 +85,18 @@ export const grants: HomeExploreConfig = {
         searchable: [
           {
             columnName: 'grantName',
-            hintText: 'immunity',
           },
           {
             columnName: 'abstract',
-            hintText: 'metastasis',
           },
           {
             columnName: 'grantInstitution',
-            hintText: 'Vanderbilt',
           },
           {
             columnName: 'investigator',
-            hintText: 'LastName',
           },
           {
             columnName: 'grantNumber',
-            hintText: 'CA202123',
           },
         ],
       },

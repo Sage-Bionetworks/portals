@@ -23,12 +23,27 @@ const routes: GenericRoute[] = [
         title: 'Featured Data',
         className: 'whatThePlot',
         props: {
-          sql: 'SELECT distinct individualID, assay FROM syn20821313 where individualID is not null',
+          sql:
+            'SELECT distinct individualID, assay FROM syn20821313 where individualID is not null',
           rgbIndex: 0,
           maxBarCount: 20,
           setName: 'Individuals (#) per Assay',
-          combinationName:'Individuals (#)',
-          loadingScreen: loadingScreen
+          combinationName: 'Individuals (#)',
+          loadingScreen: loadingScreen,
+        },
+      },
+      // {
+      //   name: 'Goals',
+      //   title: 'Goals',
+      //   props: {
+      //     entityId: 'syn22315959',
+      //   },
+      // },
+      {
+        name: 'Resources',
+        title: 'Resources',
+        props: {
+          entityId: 'syn22311127',
         },
       },
     ],

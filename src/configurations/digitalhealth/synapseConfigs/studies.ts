@@ -100,35 +100,27 @@ export const studies: HomeExploreConfig = {
         searchable: [
           {
             columnName: 'diagnosis',
-            hintText: "Parkinson's",
           },
           {
             columnName: 'digitalAssessmentCategory',
-            hintText: 'tremor',
           },
           {
             columnName: 'digitalAssessmentDetails',
-            hintText: 'walking',
           },
           {
             columnName: 'intervention',
-            hintText: 'levodopa',
           },
           {
             columnName: 'investigator',
-            hintText: 'LastName',
           },
           {
             columnName: 'keywords',
-            hintText: 'neurodegeneration',
           },
           {
             columnName: 'reportedOutcome',
-            hintText: 'MDS-UPDRS',
           },
           {
             columnName: 'study',
-            hintText: 'mPower',
           },
         ],
       },

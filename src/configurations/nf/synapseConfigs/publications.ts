@@ -81,39 +81,30 @@ const publications: HomeExploreConfig = {
         searchable: [
           {
             columnName: 'title',
-            hintText: '',
           },
           {
             columnName: 'author',
-            hintText: '',
           },
           {
             columnName: 'journal',
-            hintText: '',
           },
           {
             columnName: 'pmid',
-            hintText: '',
           },
           {
             columnName: 'year',
-            hintText: '',
           },
           {
             columnName: 'fundingAgency',
-            hintText: '',
           },
           {
             columnName: 'studyName',
-            hintText: '',
           },
           {
             columnName: 'diseaseFocus',
-            hintText: ' ',
           },
           {
             columnName: 'manifestation',
-            hintText: '',
           },
         ],
       },

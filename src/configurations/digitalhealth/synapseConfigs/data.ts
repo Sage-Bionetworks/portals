@@ -81,27 +81,21 @@ const data: HomeExploreConfig = {
         searchable: [
           {
             columnName: 'studyOrProject',
-            hintText: '',
           },
           {
             columnName: 'reportedOutcome',
-            hintText: 'MDS-UPDRS',
           },
           {
             columnName: 'devicePlatform',
-            hintText: 'Android',
           },
           {
             columnName: 'diagnosis',
-            hintText: "Parkinson's",
           },
           {
             columnName: 'digitalAssessmentCategory',
-            hintText: 'tremor',
           },
           {
             columnName: 'digitalAssessmentDetails',
-            hintText: 'walking',
           },
         ],
       },

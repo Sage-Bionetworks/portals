@@ -10573,7 +10573,7 @@ react-router@5.1.2:
     tiny-invariant "^1.0.2"
     tiny-warning "^1.0.0"
 
-react-scripts@3.4.3, react-scripts@^3.4.1:
+react-scripts@3.4.3, react-scripts@^3.4.3:
   version "3.4.3"
   resolved "https://registry.yarnpkg.com/react-scripts/-/react-scripts-3.4.3.tgz#21de5eb93de41ee92cd0b85b0e1298d0bb2e6c51"
   integrity sha512-oSnoWmii/iKdeQiwaO6map1lUaZLmG0xIUyb/HwCVFLT7gNbj8JZ9RmpvMCZ4fB98ZUMRfNmp/ft8uy/xD1RLA==
@@ -12154,10 +12154,10 @@ symbol-tree@^3.2.2:
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.4.tgz#430637d248ba77e078883951fb9aa0eed7c63fa2"
   integrity sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==
 
-synapse-react-client@1.15.2:
-  version "1.15.2"
-  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-1.15.2.tgz#918403169f15f80b808264b68f5ef546eb28edad"
-  integrity sha512-IwoKLlIi6lgJFEiIkvr8vc5HH6+1Sz8qVs7y41ihAj22yWEQUWBbMs5yqEmiSI1x1b4EPwkCu1bjbvnUclq++Q==
+synapse-react-client@1.15.3:
+  version "1.15.3"
+  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-1.15.3.tgz#a249fdaf3c200847b97ddab2dedbd1a2ff962fe5"
+  integrity sha512-y6l/l26GUs1tHpY9+3twyGRRUnBO5P4PP5vle3bbqkqC3q7P4epJ25Hz619sZR3L5IYeEZRvHPF7P/zpJvYrFg==
   dependencies:
     "@fortawesome/fontawesome-free" "^5.13.0"
     "@fortawesome/fontawesome-svg-core" "^1.2.4"
@@ -12214,7 +12214,7 @@ synapse-react-client@1.15.2:
     react-plotly.js "^2.3.0"
     react-plotlyjs-ts "^2.2.1"
     react-router-dom "5.1.2"
-    react-scripts "^3.4.1"
+    react-scripts "^3.4.3"
     react-sizeme "^2.6.12"
     react-switch "^5.0.1"
     react-test-renderer "^16.4.2"
