@@ -9,6 +9,12 @@ const routes: GenericRoute[] = [
     isNested: false,
     synapseConfigArray: [
       {
+        name: 'SurveysCompletedPlots',
+        isOutsideContainer: true,
+        props: {
+        }
+      },
+      {
         name: 'ParticipantsBarPlot',
         isOutsideContainer: true,
         props: {
@@ -19,7 +25,7 @@ const routes: GenericRoute[] = [
         isOutsideContainer: true,
         props: {
         }
-      }
+      },
     ],
   },
   {

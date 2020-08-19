@@ -122,7 +122,7 @@ function getLayout(
 export function fetchData(
   token: string
 ): Promise<RowSet> {
-  const sql = 'SELECT WorkflowState as "x", count(*) as "count" FROM syn22154087 WHERE dataGroups NOT HAS (\'test_user\') AND uploadDate > 1595808000000 AND testLocation IN (\'lab\', \'home\', \'noTest\') GROUP BY WorkflowState'
+  const sql = 'SELECT WorkflowState as "x", count(healthCode) as "count" FROM syn22154087 WHERE dataGroups NOT HAS (\'test_user\') AND testLocation IN (\'lab\', \'home\', \'noTest\') GROUP BY WorkflowState'
   
   const queryRequest: QueryBundleRequest = {
     concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
