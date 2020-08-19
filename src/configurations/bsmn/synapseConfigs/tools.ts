@@ -64,26 +64,22 @@ const tools: HomeExploreConfig = {
       facetsToPlot: ['contributor', 'institutions'],
       name: 'Tools',
       cardConfiguration: toolCardConfiguration,
-      // searchConfiguration: {
-      //   searchable: [
-      //     {
-      //       columnName: 'title',
-      //       hintText: 'Read level viewer',
-      //     },
-      //     {
-      //       columnName: 'toolDescription',
-      //       hintText: 'CNV read level viewer',
-      //     },
-      //     {
-      //       columnName: 'contributor',
-      //       hintText: 'LastName',
-      //     },
-      //     {
-      //       columnName: 'project',
-      //       hintText: '4',
-      //     },
-      //   ],
-      // },
+      searchConfiguration: {
+        searchable: [
+          {
+            columnName: 'title',
+          },
+          {
+            columnName: 'toolDescription',
+          },
+          {
+            columnName: 'contributor',
+          },
+          {
+            columnName: 'institutions',
+          },
+        ],
+      },
     },
   },
 }

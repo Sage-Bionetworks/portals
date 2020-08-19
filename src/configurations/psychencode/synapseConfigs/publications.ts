@@ -38,35 +38,27 @@ export const publications: SynapseConfig = {
       searchable: [
         {
           columnName: 'title',
-          hintText: '',
         },
         {
           columnName: 'authors',
-          hintText: '',
         },
         {
           columnName: 'year',
-          hintText: '',
         },
         {
           columnName: 'journal',
-          hintText: '',
         },
         {
           columnName: 'study',
-          hintText: '',
         },
         {
           columnName: 'grants',
-          hintText: '',
         },
         {
           columnName: 'DOI',
-          hintText: '',
         },
         {
           columnName: 'pubmedId',
-          hintText: '',
         },
       ],
     },

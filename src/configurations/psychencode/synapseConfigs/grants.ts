@@ -58,23 +58,18 @@ export const grants: SynapseConfig = {
       searchable: [
         {
           columnName: 'title',
-          hintText: '',
         },
         {
           columnName: 'keyInvestigators',
-          hintText: '',
         },
         {
           columnName: 'abstract',
-          hintText: '',
         },
         {
           columnName: 'institutions',
-          hintText: '',
         },
         {
           columnName: 'grants',
-          hintText: '',
         },
       ],
     },

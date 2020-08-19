@@ -62,14 +62,6 @@ const individuals: HomeExploreConfig = {
       entityId,
       shouldDeepLink: true,
       hideDownload: true,
-      // searchConfiguration: {
-      //   searchable: [
-      //     {
-      //       columnName: 'expertise',
-      //       hintText: 'genomics',
-      //     },
-      //   ],
-      // },
       name: 'People',
       sql,
       loadingScreen,

@@ -87,46 +87,37 @@ const studies: HomeExploreConfig = {
       shouldDeepLink: true,
       facetsToPlot: ['Species', 'Grant', 'Consortium'],
       cardConfiguration: studyCardConfiguration,
-      // searchConfiguration: {
-      //   searchable: [
-      //     {
-      //       columnName: 'Study_Name',
-      //       hintText: 'Mayo',
-      //     },
-      //     {
-      //       columnName: 'Study_Description',
-      //       hintText: 'RNAseq',
-      //     },
-      //     {
-      //       columnName: 'DataType_All',
-      //       hintText: 'Gene Expression',
-      //     },
-      //     {
-      //       columnName: 'Diagnosis_or_Model_System',
-      //       hintText: 'LOAD',
-      //     },
-      //     {
-      //       columnName: 'Data_Contributor',
-      //       hintText: 'LastName',
-      //     },
-      //     {
-      //       columnName: 'Sample_Type',
-      //       hintText: 'Temporal Cortex',
-      //     },
-      //     {
-      //       columnName: 'Species',
-      //       hintText: 'Drosophila',
-      //     },
-      //     {
-      //       columnName: 'Grant',
-      //       hintText: 'U01AG046139',
-      //     },
-      //     {
-      //       columnName: 'Consortium',
-      //       hintText: 'AMP-AD',
-      //     },
-      //   ],
-      // },
+      searchConfiguration: {
+        searchable: [
+          {
+            columnName: 'Study_Name',
+          },
+          {
+            columnName: 'Study_Description',
+          },
+          {
+            columnName: 'DataType_All',
+          },
+          {
+            columnName: 'Diagnosis_or_Model_System',
+          },
+          {
+            columnName: 'Data_Contributor',
+          },
+          {
+            columnName: 'Sample_Type',
+          },
+          {
+            columnName: 'Species',
+          },
+          {
+            columnName: 'Grant',
+          },
+          {
+            columnName: 'Consortium',
+          },
+        ],
+      },
     },
   },
 }

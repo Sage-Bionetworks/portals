@@ -53,35 +53,27 @@ export const files: HomeExploreConfig = {
         searchable: [
           {
             columnName: 'tummorType',
-            hintText: 'Skin Cutaneous Melanoma',
           },
           {
             columnName: 'tissue',
-            hintText: 'Prostate gland',
           },
           {
             columnName: 'assay',
-            hintText: 'RNA-seq',
           },
           {
             columnName: 'dataFormat',
-            hintText: 'bam',
           },
           {
             columnName: 'species',
-            hintText: 'Human',
           },
           {
             columnName: 'gender',
-            hintText: 'Female',
           },
           {
             columnName: 'grantName',
-            hintText: 'immunity',
           },
           {
             columnName: 'grant',
-            hintText: 'CA202123',
           },
         ],
       },

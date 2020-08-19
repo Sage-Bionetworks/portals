@@ -64,35 +64,27 @@ export const studies: SynapseConfig = {
       searchable: [
         {
           columnName: 'dataContributor',
-          hintText: '',
         },
         {
           columnName: 'dataTypes',
-          hintText: '',
         },
         {
           columnName: 'diagnosis',
-          hintText: '',
         },
         {
           columnName: 'grants',
-          hintText: '',
         },
         {
           columnName: 'tissue',
-          hintText: '',
         },
         {
           columnName: 'species',
-          hintText: '',
         },
         {
           columnName: 'studyDescription',
-          hintText: '',
         },
         {
           columnName: 'studyName',
-          hintText: '',
         },
       ],
     },

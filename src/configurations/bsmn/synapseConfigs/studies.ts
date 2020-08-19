@@ -99,46 +99,37 @@ const studies: HomeExploreConfig = {
         'dataTypes',
         'tissueFraction',
       ],
-      // searchConfiguration: {
-      //   searchable: [
-      //     {
-      //       columnName: 'studyName',
-      //       hintText: 'mosaic single nucleotide variations',
-      //     },
-      //     {
-      //       columnName: 'institutions',
-      //       hintText: 'Mayo Clinic',
-      //     },
-      //     {
-      //       columnName: 'studyDescription',
-      //       hintText: 'Reference Tissue',
-      //     },
-      //     {
-      //       columnName: 'diagnosis',
-      //       hintText: 'Schizophrenia',
-      //     },
-      //     {
-      //       columnName: 'organs',
-      //       hintText: 'Bran',
-      //     },
-      //     {
-      //       columnName: 'tissues',
-      //       hintText: 'Dorsolateral Prefrontal Cortex',
-      //     },
-      //     {
-      //       columnName: 'dataTypes',
-      //       hintText: 'Whole Genome Sequencing',
-      //     },
-      //     {
-      //       columnName: 'project',
-      //       hintText: 'syn1234',
-      //     },
-      //     {
-      //       columnName: 'methods',
-      //       hintText: '',
-      //     },
-      //   ],
-      // },
+      searchConfiguration: {
+        searchable: [
+          {
+            columnName: 'studyName',
+          },
+          {
+            columnName: 'institutions',
+          },
+          {
+            columnName: 'studyDescription',
+          },
+          {
+            columnName: 'diagnosis',
+          },
+          {
+            columnName: 'organs',
+          },
+          {
+            columnName: 'tissues',
+          },
+          {
+            columnName: 'tissueFraction',
+          },
+          {
+            columnName: 'dataTypes',
+          },
+          {
+            columnName: 'methods',
+          },
+        ],
+      },
     },
   },
 }

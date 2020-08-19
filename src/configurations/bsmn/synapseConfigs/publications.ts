@@ -58,30 +58,25 @@ const publications: HomeExploreConfig = {
       cardConfiguration: publicationsCardConfiguration,
       sql,
       facetsToPlot: ['grantNumber', 'year', 'journal'],
-      // searchConfiguration: {
-      //   searchable: [
-      //     {
-      //       columnName: 'title',
-      //       hintText: 'mosaicism',
-      //     },
-      //     {
-      //       columnName: 'authors',
-      //       hintText: 'LastName',
-      //     },
-      //     {
-      //       columnName: 'year',
-      //       hintText: '2019',
-      //     },
-      //     {
-      //       columnName: 'journal',
-      //       hintText: 'Science',
-      //     },
-      //     {
-      //       columnName: 'grantNumber',
-      //       hintText: 'U01MH106874',
-      //     },
-      //   ],
-      // },
+      searchConfiguration: {
+        searchable: [
+          {
+            columnName: 'title',
+          },
+          {
+            columnName: 'authors',
+          },
+          {
+            columnName: 'year',
+          },
+          {
+            columnName: 'journal',
+          },
+          {
+            columnName: 'grantNumber',
+          },
+        ],
+      },
     },
   },
 }

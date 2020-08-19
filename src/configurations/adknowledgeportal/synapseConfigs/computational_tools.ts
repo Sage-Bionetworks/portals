@@ -62,27 +62,21 @@ const computationalTools: HomeExploreConfig = {
         searchable: [
           {
             columnName: 'contributor',
-            hintText: '',
           },
           {
             columnName: 'name',
-            hintText: '',
           },
           {
             columnName: 'grant',
-            hintText: '',
           },
           {
             columnName: 'program',
-            hintText: '',
           },
           {
             columnName: 'softwareType',
-            hintText: '',
           },
           {
             columnName: 'summary',
-            hintText: '',
           },
         ],
       },

@@ -55,27 +55,21 @@ const datasets: HomeExploreConfig = {
         searchable: [
           {
             columnName: 'datasetName',
-            hintText: '',
           },
           {
             columnName: 'summary',
-            hintText: '',
           },
           {
             columnName: 'studyName',
-            hintText: '',
           },
           {
             columnName: 'diseaseFocus',
-            hintText: '',
           },
           {
             columnName: 'manifestation',
-            hintText: '',
           },
           {
             columnName: 'fundingAgency',
-            hintText: '',
           },
         ],
       },
