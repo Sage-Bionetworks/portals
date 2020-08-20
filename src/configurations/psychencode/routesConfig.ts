@@ -21,6 +21,7 @@ const routes: GenericRoute[] = [
       {
         name: 'Goals',
         title: 'Goals',
+        centerTitle: true,
         props: {
           entityId: 'syn22315959',
         },
@@ -29,6 +30,7 @@ const routes: GenericRoute[] = [
         name: 'UpsetPlot',
         title: 'Featured Data',
         className: 'whatThePlot',
+        centerTitle: true,
         props: {
           sql:
             'SELECT distinct individualID, assay FROM syn20821313 where individualID is not null',
@@ -42,6 +44,7 @@ const routes: GenericRoute[] = [
       {
         name: 'Resources',
         title: 'Resources',
+        centerTitle: true,
         props: {
           entityId: 'syn22311127',
         },

@@ -111,7 +111,13 @@ const RouteResolver: React.FunctionComponent<RouteComponentProps> = ({
           <React.Fragment key={JSON.stringify(el.props)}>
             {el.isOutsideContainer ? (
               <div className={containerClassName}>
-                {el.title && <h2 className="title"> {el.title} </h2>}
+                {el.title && (
+                  <h2
+                    className={`title ${el.centerTitle ? 'center-title' : ''}`}
+                  >
+                    {el.title}
+                  </h2>
+                )}
                 {generateSynapseObject(el, searchParamsProps)}
               </div>
             ) : (
@@ -120,7 +126,13 @@ const RouteResolver: React.FunctionComponent<RouteComponentProps> = ({
                 containerClassName={containerClassName}
               >
                 {/* re-think how this renders! remove specific styling */}
-                {el.title && <h2 className="title"> {el.title} </h2>}
+                {el.title && (
+                  <h2
+                    className={`title ${el.centerTitle ? 'center-title' : ''}`}
+                  >
+                    {el.title}
+                  </h2>
+                )}
                 {generateSynapseObject(el, searchParamsProps)}
               </Layout>
             )}

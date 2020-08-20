@@ -151,6 +151,7 @@ type UpsetPlot = {
 
 type Metadata = {
   title?: string
+  centerTitle?: boolean
   link?: string
   style?: React.CSSProperties
   isOutsideContainer?: boolean
