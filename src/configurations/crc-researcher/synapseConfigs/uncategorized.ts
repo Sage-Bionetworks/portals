@@ -30,7 +30,7 @@ export const baseDataSqlColumns = `symptom,
     dataGroups`
 
 export const baseDataSqlFrom = ` FROM syn22154087 `
-export const baseDataSqlWhere = ` WHERE testLocation IN ('lab', 'home', 'noTest') AND dataGroups NOT HAS ('test_user') AND uploadDate > 1595808000000 AND WorkflowState = `
+export const baseDataSqlWhere = ` WHERE testLocation IN ('lab', 'home', 'noTest') AND dataGroups NOT HAS ('test_user') AND WorkflowState = `
 
 export const baseDataSql = `SELECT ${baseDataSqlColumns} ${baseDataSqlFrom} ${baseDataSqlWhere}  `
 

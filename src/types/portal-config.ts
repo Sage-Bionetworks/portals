@@ -24,6 +24,7 @@ import { StandaloneQueryWrapperProps } from '../portal-components/StandaloneQuer
 import { StatefulButtonControlWrapperProps } from 'portal-components/StatefulButtonControlWrapper'
 import { ParticipantsBarPlotProps } from '../portal-components/crc-researcher/ParticipantsBarPlot'
 import { StatusLineChartProps } from '../portal-components/crc-researcher/StatusLineChart'
+import { SurveysCompletedPlotsProps } from 'portal-components/crc-researcher/SurveysCompletedPlots'
 
 // For styling the header on the home page -- the main title and the summary text
 export type HomePageHeaderConfig = {
@@ -191,6 +192,12 @@ type StatusLineChart = {
   props: StatusLineChartProps
 }
 
+type SurveysCompletedPlots = {
+  name: 'SurveysCompletedPlots'
+  props: SurveysCompletedPlotsProps
+}
+
+
 export type SynapseConfig = (
   | StatefulButtonControl
   | RouteButtonControl
@@ -217,6 +224,7 @@ export type SynapseConfig = (
   | StandaloneQueryWrapper
   | ParticipantsBarPlot
   | StatusLineChart
+  | SurveysCompletedPlots
   | ExternalFileHandleLink
   | Goals
   | Resources
