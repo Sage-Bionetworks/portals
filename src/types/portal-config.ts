@@ -9,6 +9,7 @@ import { MarkdownSynapseProps } from 'synapse-react-client/dist/containers/Markd
 import { NewsFeedMenuProps } from 'synapse-react-client/dist/containers/NewsFeedMenu'
 import { GoalsProps } from 'synapse-react-client/dist/containers/Goals'
 import { ResourcesProps } from 'synapse-react-client/dist/containers/Resources'
+import { UserCardListRotateProps } from 'synapse-react-client/dist/containers/UserCardListRotate'
 import { SynapseFormSubmissionGridProps } from 'synapse-react-client/dist/containers/synapse_form_wrapper/SynapseFormSubmissionsGrid'
 import { QueryWrapperPlotNavProps } from 'synapse-react-client/dist/containers/query_wrapper_plot_nav/QueryWrapperPlotNav'
 import { SynapseFormWrapperProps } from 'synapse-react-client/dist/containers/synapse_form_wrapper/SynapseFormWrapper'
@@ -150,6 +151,11 @@ type UpsetPlot = {
   props: UpsetPlotProps
 }
 
+type UserCardListRotate = {
+  name: 'UserCardListRotate'
+  props: UserCardListRotateProps
+}
+
 type Metadata = {
   title?: string
   centerTitle?: boolean
@@ -197,7 +203,6 @@ type SurveysCompletedPlots = {
   props: SurveysCompletedPlotsProps
 }
 
-
 export type SynapseConfig = (
   | StatefulButtonControl
   | RouteButtonControl
@@ -229,6 +234,7 @@ export type SynapseConfig = (
   | Goals
   | Resources
   | UpsetPlot
+  | UserCardListRotate
 ) &
   Metadata
 export type SynapseConfigArray = SynapseConfig[]
