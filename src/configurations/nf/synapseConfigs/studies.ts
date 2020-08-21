@@ -13,7 +13,6 @@ import { toolsSql, toolsCardConfiguration } from './tools'
 import { publicationsSql, publicationsCardConfiguration } from './publications'
 
 const sql = 'SELECT * FROM syn16787123'
-export const studiesEntityId = 'syn16787123'
 export const studiesSql = sql
 export const newStudiesSql = `${sql} order by ROW_ID desc limit 3`
 const type = SynapseConstants.GENERIC_CARD

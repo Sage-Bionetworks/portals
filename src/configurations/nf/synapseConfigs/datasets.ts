@@ -3,7 +3,6 @@ import loadingScreen from '../loadingScreen'
 import { facetAliases } from './commonProps'
 
 const sql = 'SELECT * FROM syn16859580'
-export const datasetsEntityId = 'syn16859580'
 export const datasetsSql = sql
 export const newDatasetsSql = `${sql} order by ROW_ID desc limit 3`
 const type = 'dataset'

@@ -5,7 +5,6 @@ import { facetAliases } from './commonProps'
 const rgbIndex = 1
 const unitDescription = 'Files'
 const visibleColumnCount = 7
-export const filesEntityId = 'syn16858331'
 
 const files: HomeExploreConfig = {
   homePageSynapseObject: {

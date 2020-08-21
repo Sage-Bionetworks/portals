@@ -42,7 +42,6 @@ export const studies: HomeExploreConfig = {
       stackedBarChartConfiguration: {
         loadingScreen,
       },
-      entityId: 'syn18483791',
       cardConfiguration: {
         type: SynapseConstants.GENERIC_CARD,
         genericCardSchema: studySchema,

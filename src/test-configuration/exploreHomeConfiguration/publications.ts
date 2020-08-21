@@ -29,7 +29,6 @@ export const publications: HomeExploreConfig = {
     name: 'QueryWrapperMenu',
     props: {
       unitDescription,
-      entityId: 'syn10923842',
       stackedBarChartConfiguration: {
         loadingScreen,
       },
