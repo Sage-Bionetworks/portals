@@ -1,5 +1,5 @@
 import { mount } from 'enzyme'
-import QueryWrapperFlattened from 'portal-components/QueryWrapperFlattened'
+import StandaloneQueryWrapper from 'portal-components/StandaloneQueryWrapper'
 import * as React from 'react'
 import { SynapseClient } from 'synapse-react-client'
 import MarkdownSynapse from 'synapse-react-client/dist/containers/MarkdownSynapse'
@@ -169,7 +169,7 @@ describe('DetailsPageProps works', () => {
     props.synapseConfigArray = [tableSynapseConfig]
     const wrapper = await createMountedComponent(props)
     await wrapper.update()
-    expect(wrapper.find(QueryWrapperFlattened)).toHaveLength(1)
+    expect(wrapper.find(StandaloneQueryWrapper)).toHaveLength(1)
     expect(spyOnInject).toHaveBeenCalled()
     expect(spyOnInject).toHaveBeenCalledWith(
       TABLE_ROW_TEST_VALUE,
@@ -234,7 +234,7 @@ describe('DetailsPageProps works', () => {
     ]
     const wrapper = await createMountedComponent(props)
     await wrapper.update()
-    expect(wrapper.find(QueryWrapperFlattened)).toHaveLength(1)
+    expect(wrapper.find(StandaloneQueryWrapper)).toHaveLength(1)
     expect(spyOnInject).toHaveBeenCalled()
     expect(spyOnInject).toHaveBeenCalledWith(
       MOCK_HEADER_NAME,
