@@ -5,7 +5,6 @@ import { HomeExploreConfig } from 'types/portal-config'
 import facetAliases from '../facetAliases'
 import loadingScreen from '../loadingScreen'
 export const publicationSql = 'SELECT * FROM syn21868591'
-export const publicationEntityId = 'syn21868591'
 const sql = publicationSql
 const unitDescription = 'Publications'
 const rgbIndex = 1

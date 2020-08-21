@@ -4,7 +4,6 @@ import loadingScreen from '../loadingScreen'
 
 const name = 'PEOPLE'
 const sql = 'SELECT * FROM syn22096112'
-const entityId = 'syn13897207'
 const rgbIndex = 4
 
 export const people: SynapseConfig = {
@@ -23,7 +22,6 @@ export const people: SynapseConfig = {
 }
 
 export const peopleDetailPageProps = {
-  entityId,
   sql,
   type: SynapseConstants.MEDIUM_USER_CARD,
   loadingScreen,

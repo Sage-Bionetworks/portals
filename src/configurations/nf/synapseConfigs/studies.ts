@@ -116,7 +116,6 @@ const studies: HomeExploreConfig = {
 export const studiesDetailPage: DetailsPageProps = {
   showMenu: true,
   sql: studiesSql,
-  entityId: studiesEntityId,
   synapseConfigArray: [
     {
       name: 'Markdown',

@@ -5,7 +5,6 @@ import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericC
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 const unitDescription = 'projects'
 export const projectsSql = `SELECT * FROM syn21868602`
-export const projectsEntityId = 'syn21868602'
 const sql = projectsSql
 const rgbIndex = 1
 

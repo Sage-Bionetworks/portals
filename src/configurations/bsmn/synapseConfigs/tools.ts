@@ -6,7 +6,6 @@ import { CardConfiguration } from 'synapse-react-client/dist/containers/CardCont
 const unitDescription = 'Tools'
 const rgbIndex = 8
 export const toolsSql = 'SELECT * FROM syn21438237'
-export const toolsEntityId = 'syn21438237'
 const sql = toolsSql
 const facet = 'Project'
 

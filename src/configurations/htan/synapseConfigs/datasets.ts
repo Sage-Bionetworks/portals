@@ -5,7 +5,6 @@ import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericC
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import facetAliases from '../facetAliases'
 export const datasetsSql = `SELECT * FROM syn21897968`
-export const datasetsEntityId = 'syn21897968'
 const sql = datasetsSql
 const unitDescription = 'Datasets'
 const rgbIndex = 0

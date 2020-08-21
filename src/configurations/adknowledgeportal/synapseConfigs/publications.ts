@@ -2,13 +2,12 @@ import { HomeExploreConfig, SynapseConfig } from 'types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
 import { DetailsPageProps } from 'types/portal-util-types'
 import loadingScreen from '../loadingScreen'
-import { projectsSql, projectsEntityId } from './projects'
+import { projectsSql } from './projects'
 
 const rgbIndex = 5
 const unitDescription = 'Publications'
 
 const sql = 'SELECT * FROM syn20448807'
-export const publicationsEntityId = 'syn20448807'
 
 export const publicationCardProps = {
   type: SynapseConstants.GENERIC_CARD,
@@ -68,7 +67,6 @@ const publications: HomeExploreConfig = {
 const publicationsFromRowProps: DetailsPageProps = {
   sql: projectsSql,
   showMenu: false,
-  entityId: projectsEntityId,
   synapseConfigArray: [
     {
       name: 'CardContainerLogic',

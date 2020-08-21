@@ -2,7 +2,10 @@ import { Dictionary } from 'lodash'
 import * as React from 'react'
 import { generateSynapseObject } from 'RouteResolver'
 import { SynapseClient, SynapseConstants } from 'synapse-react-client'
-import { insertConditionsFromSearchParams } from 'synapse-react-client/dist/utils/functions/sqlFunctions'
+import {
+  insertConditionsFromSearchParams,
+  parseEntityIdFromSqlStatement,
+} from 'synapse-react-client/dist/utils/functions/sqlFunctions'
 import {
   EntityHeader,
   PaginatedResults,
@@ -62,7 +65,6 @@ export default class DetailsPage extends React.Component<
     const {
       sql,
       token,
-      entityId,
       searchParams = {},
       synapseConfigArray,
       sqlOperator,
@@ -72,6 +74,7 @@ export default class DetailsPage extends React.Component<
       sql,
       sqlOperator,
     )
+    const entityId = parseEntityIdFromSqlStatement(sql)
     const queryBundleRequest: QueryBundleRequest = {
       entityId,
       concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',

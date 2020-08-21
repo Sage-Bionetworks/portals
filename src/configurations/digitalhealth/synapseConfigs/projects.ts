@@ -9,8 +9,6 @@ import { dataDetailPageProps } from './data'
 import { publicationDetailPageProps } from './publications'
 export const projectsSql =
   "SELECT * FROM syn21994974 WHERE  dhPortalIndex = 'TRUE' and isDHProject = 'TRUE' ORDER BY 'study'"
-export const projectsEntityId = 'syn21994974'
-const entityId = projectsEntityId
 const sql = projectsSql
 const unitDescription = 'Projects'
 const rgbIndex = 2
@@ -127,7 +125,6 @@ export const projects: HomeExploreConfig = {
 
 export const details: DetailsPageProps = {
   sql,
-  entityId,
   synapseConfigArray: [
     {
       name: 'Markdown',

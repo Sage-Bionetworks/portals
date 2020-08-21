@@ -9,7 +9,6 @@ import { Project } from 'synapse-react-client/dist/assets/themed_icons/Project'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 export const grantsSql = `SELECT * FROM syn21918972`
 const sql = grantsSql
-export const grantsEntityId = 'syn21918972'
 const unitDescription = 'Grants'
 const rgbIndex = 3
 

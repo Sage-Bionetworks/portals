@@ -9,7 +9,6 @@ import {
 
 const rgbIndex = 0
 export const dataSql = `SELECT scheduledLabDrawOn, ${baseDataSqlColumns} ${baseDataSqlFrom} ${baseDataSqlWhere} 'Scheduled'`
-export const dataEntityId = 'syn22154087'
 const sql = dataSql
 
 export const scheduled: SynapseConfig = {

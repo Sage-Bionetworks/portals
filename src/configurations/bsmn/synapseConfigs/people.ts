@@ -7,7 +7,6 @@ import { MEDIUM_USER_CARD } from 'synapse-react-client/dist/utils/SynapseConstan
 const unitDescription = 'People'
 const rgbIndex = 3
 export const peopleSql = 'SELECT * FROM syn21781196'
-export const peopleEntityId = 'syn21781196'
 const sql = peopleSql
 const facet = 'project'
 

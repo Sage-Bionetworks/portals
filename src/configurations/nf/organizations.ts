@@ -12,7 +12,6 @@ const filesSql = `SELECT id AS "File ID", fundingAgency, studyName, consortium, 
 const publicationsSql = `SELECT * FROM syn16857542`
 
 export const organizationDetailsPageConfig: DetailsPageProps = {
-  entityId: 'syn16858699',
   sql: 'SELECT * FROM syn16858699',
   synapseConfigArray: [
     {

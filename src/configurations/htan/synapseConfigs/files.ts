@@ -4,7 +4,6 @@ import facetAliases from '../facetAliases'
 
 const sql =
   'SELECT fileName, title, species, dataFormat, assay, tumorType, gender, tissue, grantName, grantType, consortium FROM syn9630847'
-export const filesEntityId = 'syn9630847'
 export const filesSql = sql
 
 const rgbIndex = 8

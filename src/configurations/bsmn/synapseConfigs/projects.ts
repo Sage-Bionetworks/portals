@@ -11,8 +11,6 @@ import { peopleSql } from './people'
 const unitDescription = 'Projects'
 const rgbIndex = 7
 export const projectsSql = 'SELECT * FROM syn21438208 ORDER BY ndaCollection'
-export const projectsEntityId = 'syn21438208'
-const entityId = projectsEntityId
 const sql = projectsSql
 const facet = 'Program'
 
@@ -104,7 +102,6 @@ const projects: HomeExploreConfig = {
 export const projectsDetailsPageConfiguration: DetailsPageProps = {
   showMenu: true,
   sql,
-  entityId,
   synapseConfigArray: [
     {
       name: 'CardContainerLogic',

@@ -7,7 +7,6 @@ import { StandaloneQueryWrapperProps } from 'portal-components/StandaloneQueryWr
 const unitDescription = 'Data'
 const rgbIndex = 0
 export const dataSql = `SELECT id, studyOrProject, numberParticipants,reportedOutcome,dataCollectionMethod,deviceType,devicePlatform,deviceLocation,sensorType,diagnosis,digitalAssessmentCategory,digitalAssessmentDetails,dataType,dataSubtype,dataDescriptionLocation, dataAccessInstructions FROM syn21994970 where dhPortalIndex = 'TRUE'`
-export const dataEntityId = 'syn21994970'
 const sql = dataSql
 const facet = 'Program'
 export const dataColumnLinks: LabelLinkConfig = [

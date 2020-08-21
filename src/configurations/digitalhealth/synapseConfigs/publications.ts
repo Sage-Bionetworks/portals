@@ -8,7 +8,6 @@ import {
 } from 'synapse-react-client/dist/containers/CardContainerLogic'
 
 const sql = 'SELECT * FROM syn22017695 ORDER BY "Year" DESC, "Title" ASC'
-export const publicationEntityId = 'syn22017695'
 export const publicationSql = sql
 
 const rgbIndex = 7

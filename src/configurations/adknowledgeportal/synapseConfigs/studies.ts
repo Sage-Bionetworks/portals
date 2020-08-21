@@ -10,8 +10,6 @@ const rgbIndex = 0
 export const studiesSql = 'SELECT * FROM syn17083367'
 const sql = studiesSql
 const facet = 'Species'
-export const studiesEntityId = 'syn17083367'
-const entityId = studiesEntityId
 export const studyCardConfiguration: CardConfiguration = {
   type: SynapseConstants.GENERIC_CARD,
   secondaryLabelLimit: 4,
@@ -113,7 +111,6 @@ const studies: HomeExploreConfig = {
 export const studiesDetailsPageProps: DetailsPageProps = {
   sql: studiesSql,
   sqlOperator: 'LIKE',
-  entityId,
   synapseConfigArray: [
     {
       name: 'Markdown',
@@ -169,7 +166,6 @@ export const studiesDetailsPageProps: DetailsPageProps = {
       props: {
         sql:
           "SELECT `resourceType`,`dataType`, `assay`, COUNT(`id`) AS `Files` FROM syn11346063 WHERE  (`dataSubtype` <> 'metadata' OR `dataSubtype` IS NULL) GROUP BY 1, 2,3 ORDER BY 4 DESC",
-        entityId,
         loadingScreen,
         facetAliases,
         rgbIndex,

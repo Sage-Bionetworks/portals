@@ -7,7 +7,6 @@ import {
 import {
   datasetsSql,
   datasetCardConfiguration,
-  datasetsEntityId,
 } from './synapseConfigs/datasets'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
 import loadingScreen from './loadingScreen'
@@ -16,14 +15,9 @@ import { filesSql } from './synapseConfigs/files'
 import DatasetSvg from './style/Dataset.svg'
 import {
   publicationsCardConfiguration,
-  publicationEntityId,
   publicationSql,
 } from './synapseConfigs/publications'
-import {
-  grantsCardConfiguration,
-  grantsEntityId,
-  grantsSql,
-} from './synapseConfigs/grants'
+import { grantsCardConfiguration, grantsSql } from './synapseConfigs/grants'
 import { onPointClick } from './synapseConfigs/onPointClick'
 import facetAliases from './facetAliases'
 
@@ -192,7 +186,6 @@ const routes: GenericRoute[] = [
                 props: {
                   sql: `${grantsSql}`,
                   sqlOperator: 'LIKE',
-                  entityId: grantsEntityId,
                   synapseConfigArray: [
                     {
                       name: 'CardContainerLogic',
@@ -286,7 +279,6 @@ const routes: GenericRoute[] = [
                 props: {
                   sql: publicationSql,
                   sqlOperator: 'LIKE',
-                  entityId: publicationEntityId,
                   synapseConfigArray: [
                     {
                       name: 'CardContainerLogic',
@@ -360,7 +352,6 @@ const routes: GenericRoute[] = [
                 props: {
                   sql: datasetsSql,
                   sqlOperator: 'LIKE',
-                  entityId: datasetsEntityId,
                   showMenu: false,
                   synapseConfigArray: [
                     {

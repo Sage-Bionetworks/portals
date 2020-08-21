@@ -8,8 +8,6 @@ import { publicationsSql, publicationsCardConfiguration } from './publications'
 const unitDescription = 'Studies'
 const rgbIndex = 0
 export const studiesSql = 'SELECT * FROM syn21438231'
-export const studiesEntityId = 'syn21438231'
-const entityId = studiesEntityId
 const sql = studiesSql
 const facet = 'Program'
 
@@ -121,7 +119,6 @@ const studies: HomeExploreConfig = {
 export const studiesDetailPageConfiguration: DetailsPageProps = {
   showMenu: true,
   sql,
-  entityId,
   synapseConfigArray: [
     {
       name: 'Markdown',

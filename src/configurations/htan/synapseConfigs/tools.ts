@@ -4,7 +4,6 @@ import loadingScreen from '../loadingScreen'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import facetAliases from '../facetAliases'
 export const toolsSql = 'SELECT * FROM syn21930566'
-export const toolsEntityId = 'syn21930566'
 const sql = toolsSql
 const unitDescription = 'Tools'
 const rgbIndex = 6
