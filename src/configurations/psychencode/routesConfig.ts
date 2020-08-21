@@ -41,13 +41,16 @@ const routes: GenericRoute[] = [
           loadingScreen: loadingScreen,
         },
       },
-      // {
-      //   name: 'Goals',
-      //   title: 'Goals',
-      //   props: {
-      //     entityId: 'syn22315959',
-      //   },
-      // },
+      {
+        name: 'UserCardListRotate',
+        title: 'Our People and Institutions',
+        centerTitle: true,
+        props: {
+          sql: 'SELECT * FROM syn22096112 where feature=true',
+          rgbIndex: 0,
+          count: 3,
+        },
+      },
       {
         name: 'Resources',
         title: 'Resources',
