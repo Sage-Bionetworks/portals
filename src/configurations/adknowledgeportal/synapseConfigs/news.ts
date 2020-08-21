@@ -1,4 +1,4 @@
-import { SynapseConfig, SynapseConfigArray } from 'types/portal-config'
+import { SynapseConfigArray } from 'types/portal-config'
 
 const news: SynapseConfigArray = [
   {
@@ -43,11 +43,12 @@ const news: SynapseConfigArray = [
         },
         {
           feedName: 'Webinars',
-          feedDescription: 'The AMP-AD Knowledge Portal webinar series is an opportunity to discuss data, analysis, and tools related to the Portal. It features speakers from the AMP-AD Target Discovery Program and associated consortia.',
+          feedDescription:
+            'The AMP-AD Knowledge Portal webinar series is an opportunity to discuss data, analysis, and tools related to the Portal. It features speakers from the AMP-AD Target Discovery Program and associated consortia.',
           feedUrl: 'https://portalnews.wpengine.com/?feed=rss2',
           feedKeyValue: { cat: '93' },
           defaultItemsToShow: 3,
-        }
+        },
       ],
       routeToNewsFeed: '/News',
     },

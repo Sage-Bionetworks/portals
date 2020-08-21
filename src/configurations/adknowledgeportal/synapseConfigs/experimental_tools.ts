@@ -45,13 +45,12 @@ const cardConfiguration: CardConfiguration = {
 }
 
 const sql = 'select * from syn22219805'
-const entityId = 'syn22219805'
 const rgbIndex = 6
 const unitDescription = 'Tools'
 
 const experimentalTools: HomeExploreConfig = {
   homePageSynapseObject: {
-    name: 'QueryWrapperFlattened',
+    name: 'StandaloneQueryWrapper',
     props: {
       unitDescription,
       rgbIndex,
@@ -59,18 +58,7 @@ const experimentalTools: HomeExploreConfig = {
       link: 'Explore/Experimental Tools',
       linkText: 'Explore Experimental Tools',
       facet: 'toolType',
-      initQueryRequest: {
-        entityId,
-        concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-        partMask:
-          SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
-          SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
-        query: {
-          sql,
-          limit: 25,
-          offset: 0,
-        },
-      },
+      sql,
     },
   },
   explorePageSynapseObject: {

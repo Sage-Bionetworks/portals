@@ -7,7 +7,6 @@ const unitDescription = 'Tools'
 const rgbIndex = 8
 export const toolsSql = 'SELECT * FROM syn21438237'
 export const toolsEntityId = 'syn21438237'
-const entityId = toolsEntityId
 const sql = toolsSql
 const facet = 'Project'
 
@@ -31,7 +30,7 @@ export const toolCardConfiguration: CardConfiguration = {
 
 const tools: HomeExploreConfig = {
   homePageSynapseObject: {
-    name: 'QueryWrapperFlattened',
+    name: 'StandaloneQueryWrapper',
     props: {
       unitDescription,
       rgbIndex,
@@ -39,18 +38,7 @@ const tools: HomeExploreConfig = {
       loadingScreen,
       link: 'Explore/Tools',
       linkText: 'Explore Tools',
-      initQueryRequest: {
-        entityId,
-        concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-        partMask:
-          SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
-          SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
-        query: {
-          sql,
-          limit: 25,
-          offset: 0,
-        },
-      },
+      sql,
     },
   },
   explorePageSynapseObject: {

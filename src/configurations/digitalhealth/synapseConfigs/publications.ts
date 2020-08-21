@@ -9,7 +9,6 @@ import {
 
 const sql = 'SELECT * FROM syn22017695 ORDER BY "Year" DESC, "Title" ASC'
 export const publicationEntityId = 'syn22017695'
-const entityId = publicationEntityId
 export const publicationSql = sql
 
 const rgbIndex = 7
@@ -53,7 +52,7 @@ export const publicationCardConfiguration: CardConfiguration = {
 
 export const publications: HomeExploreConfig = {
   homePageSynapseObject: {
-    name: 'QueryWrapperFlattened',
+    name: 'StandaloneQueryWrapper',
     props: {
       rgbIndex,
       facet,
@@ -61,18 +60,7 @@ export const publications: HomeExploreConfig = {
       loadingScreen,
       link: 'Explore/Files',
       linkText: 'Explore Files',
-      initQueryRequest: {
-        entityId,
-        concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-        partMask:
-          SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
-          SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
-        query: {
-          sql,
-          limit: 25,
-          offset: 0,
-        },
-      },
+      sql,
     },
   },
   explorePageSynapseObject: {

@@ -9,7 +9,6 @@ const unitDescription = 'Publications'
 
 const sql = 'SELECT * FROM syn20448807'
 export const publicationsEntityId = 'syn20448807'
-const entityId = publicationsEntityId
 
 export const publicationCardProps = {
   type: SynapseConstants.GENERIC_CARD,
@@ -38,7 +37,7 @@ const facetAliases = {
 
 const publications: HomeExploreConfig = {
   homePageSynapseObject: {
-    name: 'QueryWrapperFlattened',
+    name: 'StandaloneQueryWrapper',
     props: {
       unitDescription,
       rgbIndex,
@@ -49,18 +48,7 @@ const publications: HomeExploreConfig = {
       facetAliases: {
         consortium: 'Program',
       },
-      initQueryRequest: {
-        entityId,
-        concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-        partMask:
-          SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
-          SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
-        query: {
-          sql,
-          limit: 25,
-          offset: 0,
-        },
-      },
+      sql,
     },
   },
   explorePageSynapseObject: {
