@@ -18,9 +18,7 @@ import { RouteButtonControlWrapperProps } from '../portal-components/RouteButton
 import { HomePageCardContainerProps } from '../portal-components/csbc-home-page/HomePageCardContainer'
 import { AboutPortalProps } from '../portal-components/csbc-home-page/AboutPortal'
 import { EcosystemProps } from '../portal-components/csbc-home-page/Ecosystem'
-import { TableWithSideFacetsProps } from '../portal-components/csbc-home-page/TableWithSideFacets'
 import { DetailsPageProps } from './portal-util-types'
-import { QueryWrapperFlattenedProps } from '../portal-components/QueryWrapperFlattened'
 import { StandaloneQueryWrapperProps } from '../portal-components/StandaloneQueryWrapper'
 import { StatefulButtonControlWrapperProps } from 'portal-components/StatefulButtonControlWrapper'
 import { ParticipantsBarPlotProps } from '../portal-components/crc-researcher/ParticipantsBarPlot'
@@ -45,12 +43,6 @@ type CardContainerLogic = {
 type QueryWrapper = {
   name: 'QueryWrapper'
   props: QueryWrapperProps
-}
-
-// This should likely be placed in SRC
-type QueryWrapperFlattened = {
-  name: 'QueryWrapperFlattened'
-  props: QueryWrapperFlattenedProps
 }
 
 type StackedBarChart = {
@@ -132,11 +124,6 @@ type AboutPortal = {
   props: AboutPortalProps
 }
 
-type TableWithSideFacets = {
-  name: 'TableWithSideFacets'
-  props: TableWithSideFacetsProps
-}
-
 type DevelopedBySage = {
   name: 'DevelopedBySage'
   props: undefined
@@ -209,7 +196,6 @@ export type SynapseConfig = (
   | CardContainerLogic
   | StackedBarChart
   | QueryWrapper
-  | QueryWrapperFlattened
   | QueryWrapperMenu
   | UserCard
   | Markdown
@@ -221,7 +207,6 @@ export type SynapseConfig = (
   | HomePageCardContainer
   | Ecosystem
   | AboutPortal
-  | TableWithSideFacets
   | DevelopedBySage
   | ThemesPlot
   | QueryWrapperPlotNav
