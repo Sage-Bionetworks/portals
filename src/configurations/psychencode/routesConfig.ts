@@ -39,6 +39,16 @@ const routes: GenericRoute[] = [
         },
       },
       {
+        name: 'UserCardListRotate',
+        title: 'Our People and Institutions',
+        centerTitle: true,
+        props: {
+          sql: 'SELECT * FROM syn22096112 where feature=true',
+          rgbIndex: 0,
+          count: 3,
+        },
+      },
+      {
         name: 'Resources',
         title: 'Resources',
         centerTitle: true,
