@@ -5,8 +5,6 @@ import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericC
 import { facetAliases } from './commonProps'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 export const publicationSql = 'SELECT * FROM syn22095937'
-export const publicationEntityId = 'syn22095937'
-const entityId = publicationEntityId
 const sql = publicationSql
 const rgbIndex = 1
 
@@ -29,7 +27,6 @@ export const publications: SynapseConfig = {
   name: 'QueryWrapperPlotNav',
   props: {
     rgbIndex,
-    entityId,
     sql,
     shouldDeepLink: true,
     hideDownload: true,
@@ -70,6 +67,5 @@ export const publications: SynapseConfig = {
 
 export const publicationDetailPageProps = {
   sql,
-  entityId,
   ...publicationsCardConfiguration,
 }

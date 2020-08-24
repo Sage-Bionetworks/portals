@@ -7,8 +7,6 @@ import { MEDIUM_USER_CARD } from 'synapse-react-client/dist/utils/SynapseConstan
 const unitDescription = 'People'
 const rgbIndex = 3
 export const peopleSql = 'SELECT * FROM syn21781196'
-export const peopleEntityId = 'syn21781196'
-const entityId = peopleEntityId
 const sql = peopleSql
 const facet = 'project'
 
@@ -33,7 +31,7 @@ export const peopleCardConfiguration: CardConfiguration = {
 
 const individuals: HomeExploreConfig = {
   homePageSynapseObject: {
-    name: 'QueryWrapperFlattened',
+    name: 'StandaloneQueryWrapper',
     props: {
       unitDescription,
       rgbIndex,
@@ -41,25 +39,13 @@ const individuals: HomeExploreConfig = {
       loadingScreen,
       link: 'Explore/Individuals',
       linkText: 'Explore Individuals',
-      initQueryRequest: {
-        entityId,
-        concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-        partMask:
-          SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
-          SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
-        query: {
-          sql,
-          limit: 25,
-          offset: 0,
-        },
-      },
+      sql,
     },
   },
   explorePageSynapseObject: {
     name: 'QueryWrapperPlotNav',
     props: {
       rgbIndex,
-      entityId,
       shouldDeepLink: true,
       hideDownload: true,
       name: 'People',

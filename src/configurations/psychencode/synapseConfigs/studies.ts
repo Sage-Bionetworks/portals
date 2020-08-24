@@ -8,7 +8,6 @@ import { DetailsPageProps } from 'types/portal-util-types'
 import { dataSql, dataEntityId } from './data'
 import { publicationDetailPageProps } from './publications'
 export const studiesSql = `SELECT * FROM syn21783965`
-const entityId = 'syn21783965'
 export const studiesEntityId = 'syn21783965'
 const sql = studiesSql
 const rgbIndex = 1
@@ -53,7 +52,6 @@ export const studies: SynapseConfig = {
   name: 'QueryWrapperPlotNav',
   props: {
     rgbIndex,
-    entityId,
     sql,
     loadingScreen,
     shouldDeepLink: true,
@@ -93,7 +91,6 @@ export const studies: SynapseConfig = {
 
 export const details: DetailsPageProps = {
   sql,
-  entityId,
   synapseConfigArray: [
     {
       name: 'Markdown',
@@ -160,7 +157,6 @@ export const details: DetailsPageProps = {
       props: {
         ...studyCardConfiguration,
         sql,
-        entityId,
       },
       columnName: 'relatedStudies',
       tableSqlKeys: ['study'],
@@ -191,7 +187,6 @@ export const studyDetailPage: SynapseConfigArray = [
       facetAliases,
       genericCardSchema: studySchema,
       sql,
-      entityId,
     },
   },
   {
@@ -202,6 +197,5 @@ export const studyDetailPage: SynapseConfigArray = [
 
 export const studyDetailPageProps = {
   sql,
-  entityId,
   ...studyCardConfiguration,
 }

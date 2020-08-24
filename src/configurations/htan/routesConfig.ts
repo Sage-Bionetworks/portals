@@ -1,35 +1,23 @@
 import { GenericRoute } from 'types/portal-config'
 import { publications, files, datasets, grants, tools } from './synapseConfigs'
-import { SynapseConstants } from 'synapse-react-client'
 import {
   projectsSql,
   projectCardConfiguration,
-  projectsEntityId,
 } from './synapseConfigs/projects'
 import {
   datasetsSql,
   datasetCardConfiguration,
-  datasetsEntityId,
 } from './synapseConfigs/datasets'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
 import loadingScreen from './loadingScreen'
-import {
-  toolsSql,
-  toolsEntityId,
-  toolsConfiguration,
-} from './synapseConfigs/tools'
-import { filesSql, filesEntityId } from './synapseConfigs/files'
+import { toolsSql, toolsConfiguration } from './synapseConfigs/tools'
+import { filesSql } from './synapseConfigs/files'
 import DatasetSvg from './style/Dataset.svg'
 import {
   publicationsCardConfiguration,
-  publicationEntityId,
   publicationSql,
 } from './synapseConfigs/publications'
-import {
-  grantsCardConfiguration,
-  grantsEntityId,
-  grantsSql,
-} from './synapseConfigs/grants'
+import { grantsCardConfiguration, grantsSql } from './synapseConfigs/grants'
 import { onPointClick } from './synapseConfigs/onPointClick'
 import facetAliases from './facetAliases'
 
@@ -189,7 +177,6 @@ const routes: GenericRoute[] = [
                 props: {
                   isHeader: true,
                   backgroundColor: '#407ba0',
-                  entityId: grantsEntityId,
                   ...grantsCardConfiguration,
                   secondaryLabelLimit: Infinity,
                   sql: grantsSql,
@@ -200,7 +187,6 @@ const routes: GenericRoute[] = [
                 props: {
                   sql: `${grantsSql}`,
                   sqlOperator: 'LIKE',
-                  entityId: grantsEntityId,
                   synapseConfigArray: [
                     {
                       name: 'CardContainerLogic',
@@ -211,7 +197,6 @@ const routes: GenericRoute[] = [
                         sqlOperator: 'LIKE',
                         loadingScreen,
                         sql: `${projectsSql} where grantType LIKE '%U54%'`,
-                        entityId: projectsEntityId,
                         ...projectCardConfiguration,
                       },
                     },
@@ -223,7 +208,6 @@ const routes: GenericRoute[] = [
                       props: {
                         sqlOperator: 'LIKE',
                         sql: publicationSql,
-                        entityId: publicationEntityId,
                         ...publicationsCardConfiguration,
                         facetAliases,
                       },
@@ -236,7 +220,6 @@ const routes: GenericRoute[] = [
                       props: {
                         sqlOperator: 'LIKE',
                         sql: datasetsSql,
-                        entityId: datasetsEntityId,
                         ...datasetCardConfiguration,
                         facetAliases,
                       },
@@ -249,7 +232,6 @@ const routes: GenericRoute[] = [
                       props: {
                         sqlOperator: 'LIKE',
                         sql: toolsSql,
-                        entityId: toolsEntityId,
                         ...toolsConfiguration,
                         facetAliases,
                       },
@@ -287,7 +269,6 @@ const routes: GenericRoute[] = [
                 props: {
                   isHeader: true,
                   backgroundColor: '#407ba0',
-                  entityId: publicationEntityId,
                   ...publicationsCardConfiguration,
                   secondaryLabelLimit: Infinity,
                   facetAliases,
@@ -299,7 +280,6 @@ const routes: GenericRoute[] = [
                 props: {
                   sql: publicationSql,
                   sqlOperator: 'LIKE',
-                  entityId: publicationEntityId,
                   synapseConfigArray: [
                     {
                       name: 'CardContainerLogic',
@@ -309,7 +289,6 @@ const routes: GenericRoute[] = [
                       props: {
                         sqlOperator: 'LIKE',
                         sql: datasetsSql,
-                        entityId: datasetsEntityId,
                         ...datasetCardConfiguration,
                         facetAliases,
                       },
@@ -322,7 +301,6 @@ const routes: GenericRoute[] = [
                       props: {
                         sqlOperator: 'LIKE',
                         sql: toolsSql,
-                        entityId: toolsEntityId,
                         ...toolsConfiguration,
                         facetAliases,
                       },
@@ -363,7 +341,6 @@ const routes: GenericRoute[] = [
                   sqlOperator: '=',
                   ...datasetCardConfiguration,
                   secondaryLabelLimit: Infinity,
-                  entityId: datasetsEntityId,
                   sql: datasetsSql,
                   iconOptions: {
                     dataset: DatasetSvg,
@@ -376,36 +353,18 @@ const routes: GenericRoute[] = [
                 props: {
                   sql: datasetsSql,
                   sqlOperator: 'LIKE',
-                  entityId: datasetsEntityId,
                   showMenu: false,
                   synapseConfigArray: [
                     {
-                      name: 'QueryWrapperFlattened',
+                      name: 'StandaloneQueryWrapper',
                       title: 'Data',
                       columnName: 'datasetAlias',
                       tableSqlKeys: ['datasets'],
                       props: {
-                        initQueryRequest: {
-                          entityId: filesEntityId,
-                          partMask:
-                            SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
-                            SynapseConstants.BUNDLE_MASK_QUERY_COUNT |
-                            SynapseConstants.BUNDLE_MASK_QUERY_SELECT_COLUMNS |
-                            SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS |
-                            SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
-                          concreteType:
-                            'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-                          query: {
-                            sql: filesSql,
-                            selectedFacets: [],
-                            limit: 25,
-                            offset: 0,
-                          },
-                        },
+                        sql: filesSql,
                         loadingScreen,
                         sqlOperator: '=',
                         rgbIndex: 0,
-                        // unitDescription: 'Files',
                         title: 'Dataset Files',
                       },
                     },

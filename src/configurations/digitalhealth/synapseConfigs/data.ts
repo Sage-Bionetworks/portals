@@ -1,5 +1,4 @@
 import { HomeExploreConfig } from 'types/portal-config'
-import { SynapseConstants } from 'synapse-react-client'
 import facetAliases from '../facetAliases'
 import loadingScreen from '../loadingScreen'
 import { LabelLinkConfig } from 'synapse-react-client/dist/containers/CardContainerLogic'
@@ -8,8 +7,6 @@ import { StandaloneQueryWrapperProps } from 'portal-components/StandaloneQueryWr
 const unitDescription = 'Data'
 const rgbIndex = 0
 export const dataSql = `SELECT id, studyOrProject, numberParticipants,reportedOutcome,dataCollectionMethod,deviceType,devicePlatform,deviceLocation,sensorType,diagnosis,digitalAssessmentCategory,digitalAssessmentDetails,dataType,dataSubtype,dataDescriptionLocation, dataAccessInstructions FROM syn21994970 where dhPortalIndex = 'TRUE'`
-export const dataEntityId = 'syn21994970'
-const entityId = dataEntityId
 const sql = dataSql
 const facet = 'Program'
 export const dataColumnLinks: LabelLinkConfig = [
@@ -29,7 +26,7 @@ export const dataColumnLinks: LabelLinkConfig = [
 
 const data: HomeExploreConfig = {
   homePageSynapseObject: {
-    name: 'QueryWrapperFlattened',
+    name: 'StandaloneQueryWrapper',
     props: {
       unitDescription,
       rgbIndex,
@@ -37,25 +34,13 @@ const data: HomeExploreConfig = {
       loadingScreen,
       link: 'Explore/Studies',
       linkText: 'Explore Studies',
-      initQueryRequest: {
-        entityId,
-        concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-        partMask:
-          SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
-          SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
-        query: {
-          sql,
-          limit: 25,
-          offset: 0,
-        },
-      },
+      sql,
     },
   },
   explorePageSynapseObject: {
     name: 'QueryWrapperPlotNav',
     props: {
       rgbIndex,
-      entityId,
       shouldDeepLink: true,
       hideDownload: true,
       loadingScreen,

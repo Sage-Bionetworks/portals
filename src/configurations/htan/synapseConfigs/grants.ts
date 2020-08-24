@@ -9,8 +9,6 @@ import { Project } from 'synapse-react-client/dist/assets/themed_icons/Project'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 export const grantsSql = `SELECT * FROM syn21918972`
 const sql = grantsSql
-export const grantsEntityId = 'syn21918972'
-const entityId = grantsEntityId
 const unitDescription = 'Grants'
 const rgbIndex = 3
 
@@ -48,7 +46,7 @@ export const grantsCardConfiguration: CardConfiguration = {
 
 export const grants: HomeExploreConfig = {
   homePageSynapseObject: {
-    name: 'QueryWrapperFlattened',
+    name: 'StandaloneQueryWrapper',
     props: {
       unitDescription,
       loadingScreen,
@@ -56,18 +54,7 @@ export const grants: HomeExploreConfig = {
       facet: 'grantType',
       link: 'Explore/Grants',
       linkText: 'Explore Grants',
-      initQueryRequest: {
-        concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-        entityId,
-        partMask:
-          SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
-          SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
-        query: {
-          sql,
-          limit: 25,
-          offset: 0,
-        },
-      },
+      sql,
     },
   },
   explorePageSynapseObject: {
@@ -79,7 +66,6 @@ export const grants: HomeExploreConfig = {
       shouldDeepLink: true,
       name: 'Grants',
       loadingScreen,
-      entityId,
       facetsToPlot: ['consortium', 'grantType'],
       unitDescription,
       searchConfiguration: {

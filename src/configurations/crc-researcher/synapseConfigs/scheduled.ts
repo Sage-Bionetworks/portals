@@ -1,24 +1,25 @@
 import { SynapseConfig } from 'types/portal-config'
 import facetAliases from '../facetAliases'
-import { baseDataSqlColumns, baseDataSqlFrom, baseDataSqlWhere, allFacetsToPlot } from './uncategorized'
+import {
+  baseDataSqlColumns,
+  baseDataSqlFrom,
+  baseDataSqlWhere,
+  allFacetsToPlot,
+} from './uncategorized'
 
 const rgbIndex = 0
 export const dataSql = `SELECT scheduledLabDrawOn, ${baseDataSqlColumns} ${baseDataSqlFrom} ${baseDataSqlWhere} 'Scheduled'`
-export const dataEntityId = 'syn22154087'
-const entityId = dataEntityId
 const sql = dataSql
 
 export const scheduled: SynapseConfig = {
   name: 'QueryWrapperPlotNav',
   props: {
     rgbIndex,
-    entityId,
     shouldDeepLink: true,
     sql,
     name: 'Scheduled Participants',
     facetAliases,
-    tableConfiguration: {
-    },
+    tableConfiguration: {},
     facetsToPlot: allFacetsToPlot,
   },
 }

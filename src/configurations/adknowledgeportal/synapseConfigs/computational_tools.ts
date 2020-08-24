@@ -20,13 +20,12 @@ const cardConfiguration: CardConfiguration = {
 }
 
 const sql = 'Select * from syn20337467'
-const entityId = 'syn20337467'
 const rgbIndex = 7
 const unitDescription = 'Tools'
 
 const computationalTools: HomeExploreConfig = {
   homePageSynapseObject: {
-    name: 'QueryWrapperFlattened',
+    name: 'StandaloneQueryWrapper',
     props: {
       unitDescription,
       rgbIndex,
@@ -34,18 +33,7 @@ const computationalTools: HomeExploreConfig = {
       link: 'Explore/Computational Tools',
       linkText: 'Explore Computational Tools',
       facet: 'softwareType',
-      initQueryRequest: {
-        entityId,
-        concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-        partMask:
-          SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
-          SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
-        query: {
-          sql,
-          limit: 25,
-          offset: 0,
-        },
-      },
+      sql,
     },
   },
   explorePageSynapseObject: {
@@ -54,7 +42,6 @@ const computationalTools: HomeExploreConfig = {
       rgbIndex,
       sql,
       cardConfiguration,
-      entityId,
       shouldDeepLink: true,
       name: 'Computational Tools',
       facetsToPlot: ['grant', 'program', 'softwareType'],

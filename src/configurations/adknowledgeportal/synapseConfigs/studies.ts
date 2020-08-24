@@ -10,8 +10,6 @@ const rgbIndex = 0
 export const studiesSql = 'SELECT * FROM syn17083367'
 const sql = studiesSql
 const facet = 'Species'
-export const studiesEntityId = 'syn17083367'
-const entityId = studiesEntityId
 export const studyCardConfiguration: CardConfiguration = {
   type: SynapseConstants.GENERIC_CARD,
   secondaryLabelLimit: 4,
@@ -53,7 +51,7 @@ const facetAliases = {
 }
 const studies: HomeExploreConfig = {
   homePageSynapseObject: {
-    name: 'QueryWrapperFlattened',
+    name: 'StandaloneQueryWrapper',
     props: {
       unitDescription,
       rgbIndex,
@@ -61,18 +59,7 @@ const studies: HomeExploreConfig = {
       facet,
       link: 'Explore/Studies',
       linkText: 'Explore Studies',
-      initQueryRequest: {
-        entityId,
-        concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-        partMask:
-          SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
-          SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
-        query: {
-          sql,
-          limit: 25,
-          offset: 0,
-        },
-      },
+      sql,
     },
   },
   explorePageSynapseObject: {
@@ -81,7 +68,6 @@ const studies: HomeExploreConfig = {
       rgbIndex,
       facetAliases,
       loadingScreen,
-      entityId,
       sql,
       name: 'Studies',
       shouldDeepLink: true,
@@ -125,7 +111,6 @@ const studies: HomeExploreConfig = {
 export const studiesDetailsPageProps: DetailsPageProps = {
   sql: studiesSql,
   sqlOperator: 'LIKE',
-  entityId,
   synapseConfigArray: [
     {
       name: 'Markdown',
@@ -181,7 +166,6 @@ export const studiesDetailsPageProps: DetailsPageProps = {
       props: {
         sql:
           "SELECT `resourceType`,`dataType`, `assay`, COUNT(`id`) AS `Files` FROM syn11346063 WHERE  (`dataSubtype` <> 'metadata' OR `dataSubtype` IS NULL) GROUP BY 1, 2,3 ORDER BY 4 DESC",
-        entityId,
         loadingScreen,
         facetAliases,
         rgbIndex,
@@ -206,7 +190,6 @@ export const studiesDetailsPageProps: DetailsPageProps = {
       props: {
         sqlOperator: '=',
         sql,
-        entityId: studiesEntityId,
         ...studyCardConfiguration,
       },
     },
@@ -221,7 +204,6 @@ export const studiesProgrammaticRouteConfig: SynapseConfig[] = [
       isHeader: true,
       ...studyCardConfiguration,
       sql,
-      entityId,
       facetAliases,
       isAlignToLeftNav: true,
       secondaryLabelLimit: Infinity,

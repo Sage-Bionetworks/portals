@@ -8,17 +8,11 @@ import studyCompleteHeaderSvg from '../style/study-completed-header.svg'
 import studyActiveHeaderSvg from '../style/study-active-header.svg'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import { DetailsPageProps } from 'types/portal-util-types'
-import { datasetsSql, datasetsEntityId } from './datasets'
-import { toolsSql, toolsEntityId, toolsCardConfiguration } from './tools'
-import {
-  publicationsSql,
-  publicationsEntityId,
-  publicationsCardConfiguration,
-} from './publications'
+import { datasetsSql } from './datasets'
+import { toolsSql, toolsCardConfiguration } from './tools'
+import { publicationsSql, publicationsCardConfiguration } from './publications'
 
 const sql = 'SELECT * FROM syn16787123'
-export const studiesEntityId = 'syn16787123'
-const entityId = studiesEntityId
 export const studiesSql = sql
 export const newStudiesSql = `${sql} order by ROW_ID desc limit 3`
 const type = SynapseConstants.GENERIC_CARD
@@ -62,7 +56,7 @@ export const studyCardConfiguration: CardConfiguration = {
 
 const studies: HomeExploreConfig = {
   homePageSynapseObject: {
-    name: 'QueryWrapperFlattened',
+    name: 'StandaloneQueryWrapper',
     props: {
       facetAliases,
       unitDescription,
@@ -71,26 +65,13 @@ const studies: HomeExploreConfig = {
       link: 'Explore/Studies',
       linkText: 'Explore Studies',
       facet: 'diseaseFocus',
-      initQueryRequest: {
-        entityId,
-        concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-        partMask:
-          SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS |
-          SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
-          SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
-        query: {
-          sql,
-          limit: 25,
-          offset: 0,
-        },
-      },
+      sql,
     },
   },
   explorePageSynapseObject: {
     name: 'QueryWrapperPlotNav',
     props: {
       rgbIndex,
-      entityId,
       sql,
       name: 'Studies',
       shouldDeepLink: true,
@@ -134,7 +115,6 @@ const studies: HomeExploreConfig = {
 export const studiesDetailPage: DetailsPageProps = {
   showMenu: true,
   sql: studiesSql,
-  entityId: studiesEntityId,
   synapseConfigArray: [
     {
       name: 'Markdown',
@@ -159,7 +139,6 @@ export const studiesDetailPage: DetailsPageProps = {
         sql: datasetsSql,
         sqlOperator: '=',
         type: 'dataset',
-        entityId: datasetsEntityId,
       },
     },
     {
@@ -195,7 +174,6 @@ export const studiesDetailPage: DetailsPageProps = {
       tableSqlKeys: ['studyId'],
       props: {
         sql: toolsSql,
-        entityId: toolsEntityId,
         ...toolsCardConfiguration,
       },
     },
@@ -206,7 +184,6 @@ export const studiesDetailPage: DetailsPageProps = {
       tableSqlKeys: ['studyId'],
       props: {
         sql: publicationsSql,
-        entityId: publicationsEntityId,
         ...publicationsCardConfiguration,
       },
     },
@@ -218,7 +195,6 @@ export const studiesDetailPage: DetailsPageProps = {
       props: {
         sqlOperator: 'LIKE',
         sql: studiesSql,
-        entityId: studiesEntityId,
         ...studyCardConfiguration,
       },
     },

@@ -7,8 +7,6 @@ import loadingScreen from '../loadingScreen'
 const sql = 'SELECT * FROM syn16857542'
 export const publicationsSql = sql
 export const newPublicationsSql = `${sql} order by ROW_ID desc limit 3`
-export const publicationsEntityId = 'syn16857542'
-export const entityId = publicationsEntityId
 const type = SynapseConstants.GENERIC_CARD
 const unitDescription = 'Publications'
 const rgbIndex = 0
@@ -44,25 +42,13 @@ export const publicationsCardConfiguration: CardConfiguration = {
 
 const publications: HomeExploreConfig = {
   homePageSynapseObject: {
-    name: 'QueryWrapperFlattened',
+    name: 'StandaloneQueryWrapper',
     props: {
       unitDescription,
       rgbIndex,
       link: 'Explore/Publications',
       linkText: 'Explore Publications',
-      initQueryRequest: {
-        entityId,
-        concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-        partMask:
-          SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS |
-          SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
-          SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
-        query: {
-          sql,
-          limit: 25,
-          offset: 0,
-        },
-      },
+      sql,
       facet: 'diseaseFocus',
     },
   },
@@ -70,7 +56,6 @@ const publications: HomeExploreConfig = {
     name: 'QueryWrapperPlotNav',
     props: {
       rgbIndex,
-      entityId,
       loadingScreen,
       sql,
       shouldDeepLink: true,

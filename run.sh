@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 # Usage:
 #   Sync current with staging:
 #     ./run.sh push-staging [portal-name]

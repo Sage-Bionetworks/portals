@@ -10,8 +10,6 @@ import { toolsDetailPageProps } from './tools'
 import { publicationDetailPageProps } from './publications'
 export const studySql =
   "SELECT * FROM syn21994974 WHERE ((isDHProject IS NULL) OR (isDHProject <> 'TRUE')) AND (dhPortalIndex = 'TRUE') ORDER BY 'study'"
-export const studyEntityId = 'syn21994974'
-const entityId = studyEntityId
 const sql = studySql
 const unitDescription = 'Studies'
 const rgbIndex = 9
@@ -52,7 +50,7 @@ export const studiesCardConfiguration: CardConfiguration = {
 
 export const studies: HomeExploreConfig = {
   homePageSynapseObject: {
-    name: 'QueryWrapperFlattened',
+    name: 'StandaloneQueryWrapper',
     props: {
       rgbIndex,
       unitDescription,
@@ -60,25 +58,13 @@ export const studies: HomeExploreConfig = {
       facet: 'theme',
       link: 'Explore/Studies',
       linkText: 'Explore Studies',
-      initQueryRequest: {
-        entityId,
-        concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-        partMask:
-          SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
-          SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
-        query: {
-          sql,
-          limit: 25,
-          offset: 0,
-        },
-      },
+      sql,
     },
   },
   explorePageSynapseObject: {
     name: 'QueryWrapperPlotNav',
     props: {
       rgbIndex,
-      entityId,
       cardConfiguration: studiesCardConfiguration,
       sql,
       shouldDeepLink: true,
@@ -130,7 +116,6 @@ export const studies: HomeExploreConfig = {
 
 export const details: DetailsPageProps = {
   sql,
-  entityId,
   synapseConfigArray: [
     {
       name: 'Markdown',
@@ -194,7 +179,6 @@ export const studyDetailPage: SynapseConfigArray = [
         link: 'id',
       },
       sql,
-      entityId,
     },
   },
   {

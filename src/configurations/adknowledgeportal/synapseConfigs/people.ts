@@ -5,11 +5,10 @@ import loadingScreen from '../loadingScreen'
 const unitDescription = 'people'
 const rgbIndex = 2
 const sql = 'SELECT * FROM syn13897207'
-const entityId = 'syn13897207'
 
 const people: HomeExploreConfig = {
   homePageSynapseObject: {
-    name: 'QueryWrapperFlattened',
+    name: 'StandaloneQueryWrapper',
     props: {
       unitDescription,
       rgbIndex,
@@ -17,25 +16,13 @@ const people: HomeExploreConfig = {
       link: 'Explore/People',
       linkText: 'Explore People',
       facet: 'Program',
-      initQueryRequest: {
-        entityId,
-        concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-        partMask:
-          SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
-          SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
-        query: {
-          sql,
-          limit: 25,
-          offset: 0,
-        },
-      },
+      sql,
     },
   },
   explorePageSynapseObject: {
     name: 'QueryWrapperPlotNav',
     props: {
       rgbIndex,
-      entityId,
       sql,
       loadingScreen,
       name: 'People',
