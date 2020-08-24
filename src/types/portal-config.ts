@@ -5,6 +5,7 @@ import { QueryWrapperMenuProps } from 'synapse-react-client/dist/containers/Quer
 import { UserCardProps } from 'synapse-react-client/dist/containers/UserCard'
 import { ExternalFileHandleLinkProps } from 'synapse-react-client/dist/containers/ExternalFileHandleLink'
 import { UpsetPlotProps } from 'synapse-react-client/dist/containers/UpsetPlot'
+import { SynapsePlotProps } from 'synapse-react-client/dist/containers/widgets/SynapsePlot'
 import { MarkdownSynapseProps } from 'synapse-react-client/dist/containers/MarkdownSynapse'
 import { NewsFeedMenuProps } from 'synapse-react-client/dist/containers/NewsFeedMenu'
 import { GoalsProps } from 'synapse-react-client/dist/containers/Goals'
@@ -137,7 +138,10 @@ type UpsetPlot = {
   name: 'UpsetPlot'
   props: UpsetPlotProps
 }
-
+type SynapsePlot = {
+  name: 'SynapsePlot'
+  props: SynapsePlotProps
+}
 type UserCardListRotate = {
   name: 'UserCardListRotate'
   props: UserCardListRotateProps
@@ -220,6 +224,7 @@ export type SynapseConfig = (
   | Resources
   | UpsetPlot
   | UserCardListRotate
+  | SynapsePlot
 ) &
   Metadata
 export type SynapseConfigArray = SynapseConfig[]
