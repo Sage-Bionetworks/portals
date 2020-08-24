@@ -1,9 +1,7 @@
 import { GenericRoute } from 'types/portal-config'
 import { studies, studyDetailPage } from './synapseConfigs/studies'
-import { facetAliases } from './synapseConfigs/commonProps'
-import { publicationSql, publications } from './synapseConfigs/publications'
+import { publications } from './synapseConfigs/publications'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
-import { publicationsCardConfiguration } from './synapseConfigs/publications'
 import { grants, grantsDetailPage } from './synapseConfigs/grants'
 import { people } from './synapseConfigs/people'
 import { data } from './synapseConfigs/data'
@@ -134,20 +132,6 @@ const routes: GenericRoute[] = [
             props: {
               ...routeButtonControlWrapperProps,
               synapseConfig: publications,
-            },
-          },
-        ],
-        programmaticRouteConfig: [
-          {
-            name: 'CardContainerLogic',
-            isOutsideContainer: true,
-            props: {
-              isHeader: true,
-              backgroundColor: '#407ba0',
-              facetAliases,
-              ...publicationsCardConfiguration,
-              secondaryLabelLimit: Infinity,
-              sql: publicationSql,
             },
           },
         ],

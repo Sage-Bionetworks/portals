@@ -380,7 +380,7 @@ const routes: GenericRoute[] = [
   // Uncomment to expose Contribute route (once research team is monitoring submissions)
   {
     name: 'Contribute',
-    isNested: false,
+    isNested: true,
     to: '/Contribute',
     synapseConfigArray: [
       {
@@ -394,32 +394,40 @@ const routes: GenericRoute[] = [
       {
         name: 'SynapseFormSubmissionsGrid',
         props: {
-          pathpart: '/Contribute',
+          pathpart: '/Contribute/FormSubmission',
           formGroupId: '11',
           itemNoun: 'contribution-request',
           formClass: 'contribution-request',
         },
       },
     ],
-    programmaticRouteConfig: [
+    routes: [
       {
-        name: 'Markdown',
-        props: {
-          ownerId: 'syn12666371',
-          wikiId: '600034',
-        },
-      },
-      {
-        name: 'SynapseFormWrapper',
-        props: {
-          formSchemaEntityId: 'syn20692910',
-          fileNamePath: 'study.submission_name',
-          formUiSchemaEntityId: 'syn20692911',
-          formNavSchemaEntityId: 'syn20968007',
-          isWizardMode: true,
-          formTitle: 'Your Contribution Request',
-          formClass: 'contribution-request',
-        },
+        isNested: false,
+        to: '/Contribute/FormSubmission',
+        hideRouteFromNavbar: true,
+        name: 'FormSubmission',
+        synapseConfigArray: [
+          {
+            name: 'Markdown',
+            props: {
+              ownerId: 'syn12666371',
+              wikiId: '600034',
+            },
+          },
+          {
+            name: 'SynapseFormWrapper',
+            props: {
+              formSchemaEntityId: 'syn20692910',
+              fileNamePath: 'study.submission_name',
+              formUiSchemaEntityId: 'syn20692911',
+              formNavSchemaEntityId: 'syn20968007',
+              isWizardMode: true,
+              formTitle: 'Your Contribution Request',
+              formClass: 'contribution-request',
+            },
+          },
+        ],
       },
     ],
   },
@@ -443,7 +451,6 @@ const routes: GenericRoute[] = [
     to: '/News',
     isNested: false,
     synapseConfigArray: news,
-    programmaticRouteConfig: news,
   },
 ]
 

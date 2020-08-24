@@ -92,11 +92,7 @@ const RouteResolver: React.FunctionComponent<RouteComponentProps> = ({
       searchParamsProps[key] = value
     })
   }
-  let synapseConfigArray: SynapseConfig[] = route.synapseConfigArray!
-  const { programmaticRouteConfig } = route
-  if (search && programmaticRouteConfig) {
-    synapseConfigArray = programmaticRouteConfig
-  }
+  const synapseConfigArray: SynapseConfig[] = route.synapseConfigArray!
   const pageName: string = route.displayName ? route.displayName : route.name
   const newTitle: string = `${docTitleConfig.name} - ${pageName}`
   if (document.title !== newTitle) {

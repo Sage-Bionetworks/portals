@@ -234,7 +234,6 @@ interface RouteOptions {
   name: string
   displayName?: string
   isNested: boolean
-  programmaticRouteConfig?: SynapseConfigArray
   hideRouteFromNavbar?: boolean
   to?: string
   link?: string
