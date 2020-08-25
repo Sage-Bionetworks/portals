@@ -19,6 +19,7 @@ const routes: GenericRoute[] = [
         name: 'Goals',
         title: 'Portal Goals',
         centerTitle: true,
+        outsideContainerClassName: 'home',
         props: {
           entityId: 'syn22315959',
         },
@@ -27,6 +28,7 @@ const routes: GenericRoute[] = [
         name: 'UpsetPlot',
         title: 'Featured Data',
         className: 'whatThePlot',
+        outsideContainerClassName: 'home',
         centerTitle: true,
         props: {
           sql:
@@ -41,6 +43,7 @@ const routes: GenericRoute[] = [
       {
         name: 'UserCardListRotate',
         title: 'Our People and Institutions',
+        outsideContainerClassName: 'home',
         centerTitle: true,
         props: {
           sql: 'SELECT * FROM syn22096112 where feature=true',
@@ -52,6 +55,8 @@ const routes: GenericRoute[] = [
       },
       {
         name: 'Resources',
+        outsideContainerClassName: 'home',
+        // isOutsideContainer: true,
         title: 'Related Resources',
         centerTitle: true,
         props: {
