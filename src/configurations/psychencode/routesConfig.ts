@@ -17,7 +17,7 @@ const routes: GenericRoute[] = [
     synapseConfigArray: [
       {
         name: 'Goals',
-        title: 'Goals',
+        title: 'Portal Goals',
         centerTitle: true,
         props: {
           entityId: 'syn22315959',
@@ -46,11 +46,13 @@ const routes: GenericRoute[] = [
           sql: 'SELECT * FROM syn22096112 where feature=true',
           rgbIndex: 0,
           count: 3,
+          loadingScreen,
+          summaryLink: 'Explore/People',
         },
       },
       {
         name: 'Resources',
-        title: 'Resources',
+        title: 'Related Resources',
         centerTitle: true,
         props: {
           entityId: 'syn22311127',
