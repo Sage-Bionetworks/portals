@@ -20,7 +20,7 @@ const routes: GenericRoute[] = [
     synapseConfigArray: [
       {
         name: 'Goals',
-        title: 'Goals',
+        title: 'Portal Goals',
         centerTitle: true,
         props: {
           entityId: 'syn22315959',
@@ -43,7 +43,7 @@ const routes: GenericRoute[] = [
       },
       {
         name: 'Resources',
-        title: 'Resources',
+        title: 'Related Resources',
         centerTitle: true,
         props: {
           entityId: 'syn22311127',

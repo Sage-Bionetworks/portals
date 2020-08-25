@@ -12154,10 +12154,10 @@ symbol-tree@^3.2.2:
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.4.tgz#430637d248ba77e078883951fb9aa0eed7c63fa2"
   integrity sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==
 
-synapse-react-client@1.15.4:
-  version "1.15.4"
-  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-1.15.4.tgz#e9d268ff747dfc65390392ff7dc23020dff6c453"
-  integrity sha512-/Y4k4ABwXGuGH0nih0erS4qvckeorwQePKpT1oAyu7PPdGbmXaaqbdK5lotrt53Z3KdJVgGmci5CAFNheE7kkA==
+synapse-react-client@1.15.9:
+  version "1.15.9"
+  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-1.15.9.tgz#d6d53216ebb2f3c1109bf14b28e34b4ede33bbf2"
+  integrity sha512-s4V6u46EugvTX0EImfkCJuhZRYFTpAqzSle4WGqrcIEnXVp214NFKkOvFdMGQ70ZcOKAqTdNE5jRD1U4kPpbPA==
   dependencies:
     "@fortawesome/fontawesome-free" "^5.13.0"
     "@fortawesome/fontawesome-svg-core" "^1.2.4"
