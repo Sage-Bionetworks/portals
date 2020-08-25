@@ -5,10 +5,12 @@ import { QueryWrapperMenuProps } from 'synapse-react-client/dist/containers/Quer
 import { UserCardProps } from 'synapse-react-client/dist/containers/UserCard'
 import { ExternalFileHandleLinkProps } from 'synapse-react-client/dist/containers/ExternalFileHandleLink'
 import { UpsetPlotProps } from 'synapse-react-client/dist/containers/UpsetPlot'
+import { SynapsePlotProps } from 'synapse-react-client/dist/containers/widgets/SynapsePlot'
 import { MarkdownSynapseProps } from 'synapse-react-client/dist/containers/MarkdownSynapse'
 import { NewsFeedMenuProps } from 'synapse-react-client/dist/containers/NewsFeedMenu'
 import { GoalsProps } from 'synapse-react-client/dist/containers/Goals'
 import { ResourcesProps } from 'synapse-react-client/dist/containers/Resources'
+import { UserCardListRotateProps } from 'synapse-react-client/dist/containers/UserCardListRotate'
 import { SynapseFormSubmissionGridProps } from 'synapse-react-client/dist/containers/synapse_form_wrapper/SynapseFormSubmissionsGrid'
 import { QueryWrapperPlotNavProps } from 'synapse-react-client/dist/containers/query_wrapper_plot_nav/QueryWrapperPlotNav'
 import { SynapseFormWrapperProps } from 'synapse-react-client/dist/containers/synapse_form_wrapper/SynapseFormWrapper'
@@ -17,9 +19,7 @@ import { RouteButtonControlWrapperProps } from '../portal-components/RouteButton
 import { HomePageCardContainerProps } from '../portal-components/csbc-home-page/HomePageCardContainer'
 import { AboutPortalProps } from '../portal-components/csbc-home-page/AboutPortal'
 import { EcosystemProps } from '../portal-components/csbc-home-page/Ecosystem'
-import { TableWithSideFacetsProps } from '../portal-components/csbc-home-page/TableWithSideFacets'
 import { DetailsPageProps } from './portal-util-types'
-import { QueryWrapperFlattenedProps } from '../portal-components/QueryWrapperFlattened'
 import { StandaloneQueryWrapperProps } from '../portal-components/StandaloneQueryWrapper'
 import { StatefulButtonControlWrapperProps } from 'portal-components/StatefulButtonControlWrapper'
 import { ParticipantsBarPlotProps } from '../portal-components/crc-researcher/ParticipantsBarPlot'
@@ -44,12 +44,6 @@ type CardContainerLogic = {
 type QueryWrapper = {
   name: 'QueryWrapper'
   props: QueryWrapperProps
-}
-
-// This should likely be placed in SRC
-type QueryWrapperFlattened = {
-  name: 'QueryWrapperFlattened'
-  props: QueryWrapperFlattenedProps
 }
 
 type StackedBarChart = {
@@ -131,11 +125,6 @@ type AboutPortal = {
   props: AboutPortalProps
 }
 
-type TableWithSideFacets = {
-  name: 'TableWithSideFacets'
-  props: TableWithSideFacetsProps
-}
-
 type DevelopedBySage = {
   name: 'DevelopedBySage'
   props: undefined
@@ -148,6 +137,14 @@ type ExternalFileHandleLink = {
 type UpsetPlot = {
   name: 'UpsetPlot'
   props: UpsetPlotProps
+}
+type SynapsePlot = {
+  name: 'SynapsePlot'
+  props: SynapsePlotProps
+}
+type UserCardListRotate = {
+  name: 'UserCardListRotate'
+  props: UserCardListRotateProps
 }
 
 type Metadata = {
@@ -197,14 +194,12 @@ type SurveysCompletedPlots = {
   props: SurveysCompletedPlotsProps
 }
 
-
 export type SynapseConfig = (
   | StatefulButtonControl
   | RouteButtonControl
   | CardContainerLogic
   | StackedBarChart
   | QueryWrapper
-  | QueryWrapperFlattened
   | QueryWrapperMenu
   | UserCard
   | Markdown
@@ -216,7 +211,6 @@ export type SynapseConfig = (
   | HomePageCardContainer
   | Ecosystem
   | AboutPortal
-  | TableWithSideFacets
   | DevelopedBySage
   | ThemesPlot
   | QueryWrapperPlotNav
@@ -229,6 +223,8 @@ export type SynapseConfig = (
   | Goals
   | Resources
   | UpsetPlot
+  | UserCardListRotate
+  | SynapsePlot
 ) &
   Metadata
 export type SynapseConfigArray = SynapseConfig[]

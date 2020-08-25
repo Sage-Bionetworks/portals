@@ -9,8 +9,6 @@ import { dataDetailPageProps } from './data'
 import { publicationDetailPageProps } from './publications'
 export const projectsSql =
   "SELECT * FROM syn21994974 WHERE  dhPortalIndex = 'TRUE' and isDHProject = 'TRUE' ORDER BY 'study'"
-export const projectsEntityId = 'syn21994974'
-const entityId = projectsEntityId
 const sql = projectsSql
 const unitDescription = 'Projects'
 const rgbIndex = 2
@@ -58,7 +56,7 @@ export const projectsCardConfiguration: CardConfiguration = {
 
 export const projects: HomeExploreConfig = {
   homePageSynapseObject: {
-    name: 'QueryWrapperFlattened',
+    name: 'StandaloneQueryWrapper',
     props: {
       rgbIndex,
       unitDescription,
@@ -66,18 +64,7 @@ export const projects: HomeExploreConfig = {
       facet: 'theme',
       link: 'Explore/Projects',
       linkText: 'Explore Projects',
-      initQueryRequest: {
-        entityId,
-        concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-        partMask:
-          SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
-          SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
-        query: {
-          sql,
-          limit: 25,
-          offset: 0,
-        },
-      },
+      sql,
     },
   },
   explorePageSynapseObject: {
@@ -138,7 +125,6 @@ export const projects: HomeExploreConfig = {
 
 export const details: DetailsPageProps = {
   sql,
-  entityId,
   synapseConfigArray: [
     {
       name: 'Markdown',

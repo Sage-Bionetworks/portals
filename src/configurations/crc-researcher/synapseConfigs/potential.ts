@@ -5,7 +5,6 @@ import { baseDataSql, allFacetsToPlot } from './uncategorized'
 
 const rgbIndex = 0
 export const dataSql = `${baseDataSql} 'Potential'`
-export const dataEntityId = 'syn22154087'
 const sql = dataSql
 
 export const potential: SynapseConfig = {

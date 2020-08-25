@@ -13,8 +13,6 @@ import { toolsSql, toolsCardConfiguration } from './tools'
 import { publicationsSql, publicationsCardConfiguration } from './publications'
 
 const sql = 'SELECT * FROM syn16787123'
-export const studiesEntityId = 'syn16787123'
-const entityId = studiesEntityId
 export const studiesSql = sql
 export const newStudiesSql = `${sql} order by ROW_ID desc limit 3`
 const type = SynapseConstants.GENERIC_CARD
@@ -58,7 +56,7 @@ export const studyCardConfiguration: CardConfiguration = {
 
 const studies: HomeExploreConfig = {
   homePageSynapseObject: {
-    name: 'QueryWrapperFlattened',
+    name: 'StandaloneQueryWrapper',
     props: {
       facetAliases,
       unitDescription,
@@ -67,19 +65,7 @@ const studies: HomeExploreConfig = {
       link: 'Explore/Studies',
       linkText: 'Explore Studies',
       facet: 'diseaseFocus',
-      initQueryRequest: {
-        entityId,
-        concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-        partMask:
-          SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS |
-          SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
-          SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
-        query: {
-          sql,
-          limit: 25,
-          offset: 0,
-        },
-      },
+      sql,
     },
   },
   explorePageSynapseObject: {
@@ -129,7 +115,6 @@ const studies: HomeExploreConfig = {
 export const studiesDetailPage: DetailsPageProps = {
   showMenu: true,
   sql: studiesSql,
-  entityId: studiesEntityId,
   synapseConfigArray: [
     {
       name: 'Markdown',

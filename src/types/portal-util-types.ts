@@ -30,7 +30,6 @@ export type DetailsPageProps = {
     [index: string]: string
   }
   sql: string
-  entityId: string
   token?: string
   synapseConfigArray: RowSynapseConfig[]
   sqlOperator?: SQLOperator

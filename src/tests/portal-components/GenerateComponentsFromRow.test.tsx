@@ -1,5 +1,5 @@
 import { mount } from 'enzyme'
-import QueryWrapperFlattened from 'portal-components/QueryWrapperFlattened'
+import StandaloneQueryWrapper from 'portal-components/StandaloneQueryWrapper'
 import * as React from 'react'
 import { SynapseClient } from 'synapse-react-client'
 import MarkdownSynapse from 'synapse-react-client/dist/containers/MarkdownSynapse'
@@ -7,6 +7,7 @@ import {
   EntityHeader,
   PaginatedResults,
   QueryResultBundle,
+  EntityColumnType,
 } from 'synapse-react-client/dist/utils/synapseTypes/'
 import { DetailsPageProps, RowSynapseConfig } from 'types/portal-util-types'
 import DetailsPage from '../../portal-components/DetailsPage'
@@ -50,23 +51,14 @@ describe('DetailsPageProps works', () => {
   const TABLE_COL_TEST_NAME = 'TABLE_COL_TEST_NAME'
   const TABLE_ROW_TEST_VALUE = 'TABLE_ROW_TEST_VALUE'
   const tableSynapseConfig: RowSynapseConfig = {
-    name: 'QueryWrapperFlattened',
+    name: 'StandaloneQueryWrapper',
     columnName: TABLE_COL_TEST_NAME,
     title: 'title',
     props: {
-      initQueryRequest: {
-        entityId: 'syn11346063',
-        partMask: 0,
-        concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-        query: {
-          sql: 'SELECT * FROM syn11346063',
-          limit: 25,
-          offset: 0,
-        },
-      },
-      synapseId: 'syn',
+      sql: 'SELECT * FROM syn11346063',
       unitDescription: '',
       title: 'title',
+      rgbIndex: 0,
     },
   }
   // ---- TABLE COMPONENT PROPS END ----
@@ -84,17 +76,17 @@ describe('DetailsPageProps works', () => {
         etag: '',
         headers: [
           {
-            columnType: 'STRING',
+            columnType: EntityColumnType.STRING,
             name: MARKDOWN_COL_TEST_NAME,
             id: '',
           },
           {
-            columnType: 'STRING',
+            columnType: EntityColumnType.STRING,
             name: MARKDOWN_COL_MULTI_VALUE_TEST_NAME,
             id: '',
           },
           {
-            columnType: 'STRING',
+            columnType: EntityColumnType.STRING,
             name: TABLE_COL_TEST_NAME,
             id: '',
           },
@@ -177,7 +169,7 @@ describe('DetailsPageProps works', () => {
     props.synapseConfigArray = [tableSynapseConfig]
     const wrapper = await createMountedComponent(props)
     await wrapper.update()
-    expect(wrapper.find(QueryWrapperFlattened)).toHaveLength(1)
+    expect(wrapper.find(StandaloneQueryWrapper)).toHaveLength(1)
     expect(spyOnInject).toHaveBeenCalled()
     expect(spyOnInject).toHaveBeenCalledWith(
       TABLE_ROW_TEST_VALUE,
@@ -242,7 +234,7 @@ describe('DetailsPageProps works', () => {
     ]
     const wrapper = await createMountedComponent(props)
     await wrapper.update()
-    expect(wrapper.find(QueryWrapperFlattened)).toHaveLength(1)
+    expect(wrapper.find(StandaloneQueryWrapper)).toHaveLength(1)
     expect(spyOnInject).toHaveBeenCalled()
     expect(spyOnInject).toHaveBeenCalledWith(
       MOCK_HEADER_NAME,

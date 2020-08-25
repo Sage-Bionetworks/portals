@@ -8,8 +8,6 @@ import {
 } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import facetAliases from '../facetAliases'
 export const toolsSql = 'SELECT * FROM syn22014091 ORDER BY "softwareName"'
-export const toolsEntityId = 'syn22014091'
-const entityId = toolsEntityId
 const sql = toolsSql
 const unitDescription = 'Tools'
 const rgbIndex = 3
@@ -37,7 +35,7 @@ export const toolsCardConfiguration: CardConfiguration = {
 
 export const tools: HomeExploreConfig = {
   homePageSynapseObject: {
-    name: 'QueryWrapperFlattened',
+    name: 'StandaloneQueryWrapper',
     props: {
       rgbIndex,
       unitDescription,
@@ -45,18 +43,7 @@ export const tools: HomeExploreConfig = {
       facet: 'theme',
       link: 'Explore/Studies',
       linkText: 'Explore Studies',
-      initQueryRequest: {
-        entityId,
-        concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-        partMask:
-          SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
-          SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
-        query: {
-          sql,
-          limit: 25,
-          offset: 0,
-        },
-      },
+      sql,
     },
   },
   explorePageSynapseObject: {
@@ -128,7 +115,6 @@ export const toolsDetailsLandingPage: SynapseConfigArray = [
     name: 'DetailsPage',
     props: {
       sql,
-      entityId,
       synapseConfigArray: [],
     },
   },

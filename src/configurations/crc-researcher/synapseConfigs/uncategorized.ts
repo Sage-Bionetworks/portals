@@ -43,7 +43,6 @@ export const allFacetsToPlot = [
   'testLocation',
 ]
 export const dataSql = `${baseDataSql} 'Uncategorized'`
-export const dataEntityId = 'syn22154087'
 const sql = dataSql
 
 export const uncategorized: SynapseConfig = {

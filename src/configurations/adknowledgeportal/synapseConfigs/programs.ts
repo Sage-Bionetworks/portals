@@ -3,8 +3,6 @@ import { iconOptions } from './iconOptions'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import loadingScreen from '../loadingScreen'
 
-export const programEntityId = 'syn17024173'
-
 export const programCardConfiguration: CardConfiguration = {
   iconOptions,
   type: SynapseConstants.GENERIC_CARD,

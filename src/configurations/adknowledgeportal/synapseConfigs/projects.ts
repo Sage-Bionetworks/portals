@@ -6,8 +6,6 @@ import { CardConfiguration } from 'synapse-react-client/dist/containers/CardCont
 const unitDescription = 'Projects'
 const rgbIndex = 4
 export const projectsSql = 'SELECT * FROM syn17024229'
-export const projectsEntityId = 'syn17024229'
-const entityId = projectsEntityId
 const sql = projectsSql
 const facet = 'Program'
 
@@ -37,7 +35,7 @@ export const projectCardConfiguration: CardConfiguration = {
 
 const projects: HomeExploreConfig = {
   homePageSynapseObject: {
-    name: 'QueryWrapperFlattened',
+    name: 'StandaloneQueryWrapper',
     props: {
       unitDescription,
       rgbIndex,
@@ -45,18 +43,7 @@ const projects: HomeExploreConfig = {
       loadingScreen,
       link: 'Explore/Projects',
       linkText: 'Explore Projects',
-      initQueryRequest: {
-        entityId,
-        concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-        partMask:
-          SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
-          SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
-        query: {
-          sql,
-          limit: 25,
-          offset: 0,
-        },
-      },
+      sql,
     },
   },
   explorePageSynapseObject: {

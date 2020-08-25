@@ -5,8 +5,6 @@ import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericC
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import facetAliases from '../facetAliases'
 export const datasetsSql = `SELECT * FROM syn21897968`
-export const datasetsEntityId = 'syn21897968'
-const entityId = datasetsEntityId
 const sql = datasetsSql
 const unitDescription = 'Datasets'
 const rgbIndex = 0
@@ -59,7 +57,7 @@ export const datasetCardConfiguration: CardConfiguration = {
 
 export const datasets: HomeExploreConfig = {
   homePageSynapseObject: {
-    name: 'QueryWrapperFlattened',
+    name: 'StandaloneQueryWrapper',
     props: {
       unitDescription,
       loadingScreen,
@@ -67,18 +65,7 @@ export const datasets: HomeExploreConfig = {
       facet: 'tumorType',
       link: 'Explore/Datasets',
       linkText: 'Explore Datasets',
-      initQueryRequest: {
-        entityId,
-        concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-        partMask:
-          SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
-          SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
-        query: {
-          sql,
-          limit: 25,
-          offset: 0,
-        },
-      },
+      sql,
     },
   },
   explorePageSynapseObject: {

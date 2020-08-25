@@ -9,7 +9,6 @@ import {
 
 const rgbIndex = 0
 export const dataSql = `SELECT inviteSentOn, ${baseDataSqlColumns} ${baseDataSqlFrom} ${baseDataSqlWhere} 'Invited'`
-export const dataEntityId = 'syn22154087'
 const sql = dataSql
 
 export const invited: SynapseConfig = {

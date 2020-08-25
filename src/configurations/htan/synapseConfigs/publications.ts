@@ -1,12 +1,10 @@
 import { SynapseConstants } from 'synapse-react-client'
-import { HomeExploreConfig } from 'types/portal-config'
-import loadingScreen from '../loadingScreen'
-import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
+import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
+import { HomeExploreConfig } from 'types/portal-config'
 import facetAliases from '../facetAliases'
+import loadingScreen from '../loadingScreen'
 export const publicationSql = 'SELECT * FROM syn21868591'
-export const publicationEntityId = 'syn21868591'
-const entityId = publicationEntityId
 const sql = publicationSql
 const unitDescription = 'Publications'
 const rgbIndex = 1
@@ -64,7 +62,7 @@ export const publicationsCardConfiguration: CardConfiguration = {
 
 export const publications: HomeExploreConfig = {
   homePageSynapseObject: {
-    name: 'QueryWrapperFlattened',
+    name: 'StandaloneQueryWrapper',
     props: {
       rgbIndex,
       unitDescription,
@@ -72,18 +70,7 @@ export const publications: HomeExploreConfig = {
       facet: 'theme',
       link: 'Explore/Publications',
       linkText: 'Explore Publications',
-      initQueryRequest: {
-        entityId,
-        concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-        partMask:
-          SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
-          SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
-        query: {
-          sql,
-          limit: 25,
-          offset: 0,
-        },
-      },
+      sql,
     },
   },
   explorePageSynapseObject: {

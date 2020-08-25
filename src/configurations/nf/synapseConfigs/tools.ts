@@ -91,30 +91,17 @@ const experimentalSql = "SELECT * FROM syn16859448 WHERE type = 'experimental'"
 const clinicalSql = "SELECT * FROM syn16859448 WHERE type = 'clinical'"
 const rgbIndex = 6
 export const toolsEntityId = 'syn16859448'
-const entityId = toolsEntityId
 
 const tools: HomeExploreConfig = {
   homePageSynapseObject: {
-    name: 'QueryWrapperFlattened',
+    name: 'StandaloneQueryWrapper',
     props: {
       rgbIndex,
       unitDescription: 'Tools',
       link: 'Explore/Tools',
       linkText: 'Explore Tools',
-      initQueryRequest: {
-        entityId,
-        concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-        partMask:
-          SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS |
-          SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
-          SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
-        query: {
-          sql: 'SELECT * FROM syn16859448',
-          limit: 25,
-          offset: 0,
-        },
-      },
       facet: 'type',
+      sql: 'SELECT * FROM syn16859448',
       facetAliases,
     },
   },

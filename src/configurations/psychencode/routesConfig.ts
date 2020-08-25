@@ -3,10 +3,7 @@ import { studies, studyDetailPage } from './synapseConfigs/studies'
 import { facetAliases } from './synapseConfigs/commonProps'
 import { publicationSql, publications } from './synapseConfigs/publications'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
-import {
-  publicationsCardConfiguration,
-  publicationEntityId,
-} from './synapseConfigs/publications'
+import { publicationsCardConfiguration } from './synapseConfigs/publications'
 import { grants, grantsDetailPage } from './synapseConfigs/grants'
 import { people } from './synapseConfigs/people'
 import { data } from './synapseConfigs/data'
@@ -39,6 +36,16 @@ const routes: GenericRoute[] = [
           setName: 'Individuals (#) per Assay',
           combinationName: 'Individuals (#)',
           loadingScreen: loadingScreen,
+        },
+      },
+      {
+        name: 'UserCardListRotate',
+        title: 'Our People and Institutions',
+        centerTitle: true,
+        props: {
+          sql: 'SELECT * FROM syn22096112 where feature=true',
+          rgbIndex: 0,
+          count: 3,
         },
       },
       {
@@ -137,7 +144,6 @@ const routes: GenericRoute[] = [
             props: {
               isHeader: true,
               backgroundColor: '#407ba0',
-              entityId: publicationEntityId,
               facetAliases,
               ...publicationsCardConfiguration,
               secondaryLabelLimit: Infinity,

@@ -3,17 +3,11 @@ import { SynapseConstants } from 'synapse-react-client'
 import loadingScreen from '../loadingScreen'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import { DetailsPageProps } from 'types/portal-util-types'
-import {
-  publicationsSql,
-  publicationsCardConfiguration,
-  publicationsEntityId,
-} from './publications'
+import { publicationsSql, publicationsCardConfiguration } from './publications'
 
 const unitDescription = 'Studies'
 const rgbIndex = 0
 export const studiesSql = 'SELECT * FROM syn21438231'
-export const studiesEntityId = 'syn21438231'
-const entityId = studiesEntityId
 const sql = studiesSql
 const facet = 'Program'
 
@@ -59,7 +53,7 @@ export const studyCardConfiguration: CardConfiguration = {
 
 const studies: HomeExploreConfig = {
   homePageSynapseObject: {
-    name: 'QueryWrapperFlattened',
+    name: 'StandaloneQueryWrapper',
     props: {
       unitDescription,
       rgbIndex,
@@ -67,18 +61,7 @@ const studies: HomeExploreConfig = {
       loadingScreen,
       link: 'Explore/Studies',
       linkText: 'Explore Studies',
-      initQueryRequest: {
-        entityId,
-        concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-        partMask:
-          SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
-          SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
-        query: {
-          sql,
-          limit: 25,
-          offset: 0,
-        },
-      },
+      sql,
     },
   },
   explorePageSynapseObject: {
@@ -136,7 +119,6 @@ const studies: HomeExploreConfig = {
 export const studiesDetailPageConfiguration: DetailsPageProps = {
   showMenu: true,
   sql,
-  entityId,
   synapseConfigArray: [
     {
       name: 'Markdown',

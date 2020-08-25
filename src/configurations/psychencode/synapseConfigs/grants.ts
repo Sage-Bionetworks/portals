@@ -12,8 +12,6 @@ import { publicationDetailPageProps } from './publications'
 import { peopleDetailPageProps } from './people'
 import { Project } from 'synapse-react-client/dist/assets/themed_icons/Project'
 export const grantSql = 'SELECT * FROM syn22096130'
-export const grantEntityId = 'syn22096130'
-const entityId = grantEntityId
 const sql = grantSql
 const rgbIndex = 2
 
@@ -46,7 +44,6 @@ export const grants: SynapseConfig = {
   name: 'QueryWrapperPlotNav',
   props: {
     rgbIndex,
-    entityId,
     cardConfiguration: grantCardConfiguration,
     sql,
     shouldDeepLink: true,
@@ -78,7 +75,6 @@ export const grants: SynapseConfig = {
 
 const details: DetailsPageProps = {
   sql,
-  entityId,
   sqlOperator: 'LIKE',
   synapseConfigArray: [
     {

@@ -1,6 +1,5 @@
 import { GenericRoute } from 'types/portal-config'
 import { publications, files, datasets, grants, tools } from './synapseConfigs'
-import { SynapseConstants } from 'synapse-react-client'
 import {
   projectsSql,
   projectCardConfiguration,
@@ -8,23 +7,17 @@ import {
 import {
   datasetsSql,
   datasetCardConfiguration,
-  datasetsEntityId,
 } from './synapseConfigs/datasets'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
 import loadingScreen from './loadingScreen'
 import { toolsSql, toolsConfiguration } from './synapseConfigs/tools'
-import { filesSql, filesEntityId } from './synapseConfigs/files'
+import { filesSql } from './synapseConfigs/files'
 import DatasetSvg from './style/Dataset.svg'
 import {
   publicationsCardConfiguration,
-  publicationEntityId,
   publicationSql,
 } from './synapseConfigs/publications'
-import {
-  grantsCardConfiguration,
-  grantsEntityId,
-  grantsSql,
-} from './synapseConfigs/grants'
+import { grantsCardConfiguration, grantsSql } from './synapseConfigs/grants'
 import { onPointClick } from './synapseConfigs/onPointClick'
 import facetAliases from './facetAliases'
 
@@ -193,7 +186,6 @@ const routes: GenericRoute[] = [
                 props: {
                   sql: `${grantsSql}`,
                   sqlOperator: 'LIKE',
-                  entityId: grantsEntityId,
                   synapseConfigArray: [
                     {
                       name: 'CardContainerLogic',
@@ -287,7 +279,6 @@ const routes: GenericRoute[] = [
                 props: {
                   sql: publicationSql,
                   sqlOperator: 'LIKE',
-                  entityId: publicationEntityId,
                   synapseConfigArray: [
                     {
                       name: 'CardContainerLogic',
@@ -361,32 +352,15 @@ const routes: GenericRoute[] = [
                 props: {
                   sql: datasetsSql,
                   sqlOperator: 'LIKE',
-                  entityId: datasetsEntityId,
                   showMenu: false,
                   synapseConfigArray: [
                     {
-                      name: 'QueryWrapperFlattened',
+                      name: 'StandaloneQueryWrapper',
                       title: 'Data',
                       columnName: 'datasetAlias',
                       tableSqlKeys: ['datasets'],
                       props: {
-                        initQueryRequest: {
-                          entityId: filesEntityId,
-                          partMask:
-                            SynapseConstants.BUNDLE_MASK_QUERY_FACETS |
-                            SynapseConstants.BUNDLE_MASK_QUERY_COUNT |
-                            SynapseConstants.BUNDLE_MASK_QUERY_SELECT_COLUMNS |
-                            SynapseConstants.BUNDLE_MASK_QUERY_COLUMN_MODELS |
-                            SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
-                          concreteType:
-                            'org.sagebionetworks.repo.model.table.QueryBundleRequest',
-                          query: {
-                            sql: filesSql,
-                            selectedFacets: [],
-                            limit: 25,
-                            offset: 0,
-                          },
-                        },
+                        sql: filesSql,
                         loadingScreen,
                         sqlOperator: '=',
                         rgbIndex: 0,
