@@ -23,6 +23,12 @@ $primary-bgcolor-rgba: unset; // TODO: need to remove in src
   padding-bottom: 50px;
   &:nth-child(odd) {
     background: rgba(38, 153, 167, 0.03);
+    &:last-child {
+      // this handles the case when the last element on the home page
+      // has its background colored and should not have padding on the bottom
+      // that is added from the .main class
+      margin-bottom: -60px;
+    }
   }
 }
 
@@ -31,6 +37,7 @@ $primary-bgcolor-rgba: unset; // TODO: need to remove in src
   min-height: 100vh; /* will cover the 100% of viewport */
   display: block;
   position: relative;
+  padding-bottom: 60px;
 }
 
 .uppercase {
