@@ -38,6 +38,8 @@ const routes: GenericRoute[] = [
           setName: 'Individuals (#) per Assay',
           combinationName: 'Individuals (#)',
           loadingScreen: loadingScreen,
+          // summaryLinkText: 'EXPLORE ALL STUDIES',
+          // summaryLink: '/Explore/Studies',
         },
       },
       {
