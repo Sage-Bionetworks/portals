@@ -7,7 +7,7 @@ import studyHeaderSvg from '../style/study-header.svg'
 
 const unitDescription = 'studies'
 const rgbIndex = 0
-export const studiesSql = 'SELECT * FROM syn17083367'
+export const studiesSql = 'SELECT * FROM syn17083367 ORDER BY isFeatured DESC'
 const sql = studiesSql
 const facet = 'Species'
 export const studyCardConfiguration: CardConfiguration = {
@@ -71,7 +71,6 @@ const studies: HomeExploreConfig = {
       sql,
       name: 'Studies',
       shouldDeepLink: true,
-      facetsToPlot: ['Species', 'Grant', 'Consortium'],
       cardConfiguration: studyCardConfiguration,
       searchConfiguration: {
         searchable: [
