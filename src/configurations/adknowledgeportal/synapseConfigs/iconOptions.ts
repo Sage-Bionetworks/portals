@@ -6,11 +6,14 @@ import resilienceadSvg from './icons/resilience-icon.svg'
 import resilienceadSvgHeader from './icons/resilience-icon-header.svg'
 import circleSvg from './icons/amp-icon.svg'
 import circleSvgHeader from './icons/amp-icon-header.svg'
+import psychIconSvg from './icons/Psych-AD-icon.svg'
+
 export const iconOptions = {
   'AMP-AD': circleSvg,
   'M2OVE-AD': brainSvg,
   'MODEL-AD': mouseSvg,
   'Resilience-AD': resilienceadSvg,
+  'Psych-AD': psychIconSvg,
 }
 
 export const iconHeaderOptions = {
@@ -18,4 +21,5 @@ export const iconHeaderOptions = {
   'M2OVE-AD': brainSvgHeader,
   'MODEL-AD': mouseSvgHeader,
   'Resilience-AD': resilienceadSvgHeader,
+  'Psych-AD': psychIconSvg,
 }
