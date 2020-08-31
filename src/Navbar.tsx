@@ -4,6 +4,7 @@ import routesConfig from './config/routesConfig'
 import logoHeaderConfig from './config/logoHeaderConfig'
 import Dialog from '@material-ui/core/Dialog'
 import Dropdown from 'react-bootstrap/Dropdown'
+// import Drawer from "@material-ui/core/Drawer";
 import { SynapseComponents, SynapseConstants } from 'synapse-react-client'
 import UserCard from 'synapse-react-client/dist/containers/UserCard'
 import { TokenContext, SignInProps } from './AppInitializer'
@@ -16,7 +17,7 @@ type SynapseSettingLink = {
   settingSubPath?: string
 }
 
-class Navbar extends React.Component {
+class Navbar extends React.Component<any, any> {
   synapseQuickLinks: SynapseSettingLink[] = [
     {
       text: 'Profile',
@@ -45,6 +46,16 @@ class Navbar extends React.Component {
     },
   ]
 
+  private openBtnRef = React.createRef<HTMLDivElement>()
+  // private showMenu: boolean = false
+
+  constructor(props: any) {
+    super(props)
+    this.state = {
+      showMenu: false
+    }
+  }
+
   // given the hash, decide if the link should have a bottom border
   getBorder = (name: string) => {
     if (name === '') {
@@ -59,6 +70,23 @@ class Navbar extends React.Component {
     window.scroll({ top: 0 })
   }
 
+  componentDidMount() {
+    document.addEventListener('click', this.handleClickOutside.bind(this))
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('click', this.handleClickOutside)
+  }
+
+  handleClickOutside(e:Event) {
+    const node = e.target as HTMLElement
+    if (this.openBtnRef &&
+        !((this.openBtnRef.current === node) ||
+            (node?.classList.contains("dropdown-toggle")))) {
+      this.setState({ showMenu: false })
+    }
+  }
+
   render() {
     const {
       onSignIn,
@@ -67,7 +95,7 @@ class Navbar extends React.Component {
       getSession,
       resetSession,
       userProfile,
-    } = this.props as SignInProps
+    } = this.props as SignInProps   // TODO: Emma double-check signin
     const { name, icon, hideLogin = false } = logoHeaderConfig
     const token = this.context
     const imageElement = icon ? (
@@ -87,9 +115,10 @@ class Navbar extends React.Component {
         hostname.includes('127.0.0.1') ||
         hostname.includes('localhost')) &&
       !hideLogin
+
     return (
       <React.Fragment>
-        <nav className="flex-display nav">
+        <nav className={ !this.state.showMenu ? "flex-display nav" : "flex-display nav mb-active" }>
           <div className="nav-logo-container">
             <Link
               onClick={this.goToTop}
@@ -100,9 +129,22 @@ class Navbar extends React.Component {
               {imageElement} {nameElement}
             </Link>
           </div>
+          <div
+            className="nav-mobile-menu-btn mb-open"
+            onClick={() => { this.setState({showMenu: true})}}
+            ref={this.openBtnRef}
+          >
+            MENU
+          </div>
+          <div
+            className="nav-mobile-menu-btn mb-close"
+            onClick={() => { this.setState({showMenu: false})}}
+          >
+            <span>&#10005;</span>
+          </div>
           <div className="nav-link-container">
             {!userProfile && isSynapseSubdomainOrLocal && (
-              <div className="center-content nav-button">
+              <div className="center-content top-nav-button nav-button-signin">
                 <button
                   id="signin-button"
                   className="SRC-primary-text-color-background"
@@ -209,7 +251,7 @@ class Navbar extends React.Component {
                           <Dropdown.Toggle
                             variant="light"
                             id={displayName}
-                            className="nav-button-container nav-button"
+                            className="nav-button-container top-nav-button"
                           >
                             {displayName}
                           </Dropdown.Toggle>
@@ -241,7 +283,7 @@ class Navbar extends React.Component {
                     return (
                       <Link
                         key={el.name}
-                        className={`nav-button nav-button-container center-content ${this.getBorder(
+                        className={`top-nav-button nav-button-container center-content ${this.getBorder(
                           el.name,
                         )}`}
                         to={el.to!}
@@ -253,7 +295,7 @@ class Navbar extends React.Component {
                   return (
                     <Link
                       key={el.name}
-                      className={`nav-button nav-button-container center-content ${this.getBorder(
+                      className={`top-nav-button nav-button-container center-content ${this.getBorder(
                         el.name,
                       )}`}
                       to={el.to!}

@@ -171,6 +171,24 @@ body {
   @extend %fillerBorder;
 }
 
+.top-nav-button, a.top-nav-button {
+  text-transform: uppercase;
+  font-weight: bold;
+  height: -webkit-fill-available;
+  // fallback for mozilla and ie11
+  height: 100%;
+  font-size: 16px;
+  text-align: center;
+  justify-content: center;
+  color: #404b63;
+  text-decoration: none;
+  padding: 0px 25px;
+  margin: 0px;
+  min-width: 100px;
+  white-space: nowrap;
+  @extend %fillerBorder;
+}
+
 %bottomBorderNav {
   @extend %borderStyle;
   border-bottom-color: $primary-action-color;
@@ -186,6 +204,18 @@ button.dropdown-toggle.nav-button:hover {
   background: unset !important;
   color: unset;
   @extend %bottomBorderNav;
+}
+
+// Adjustment for desktop version after adding mobile topnav bar
+.nav-link-container button.dropdown-toggle,
+.nav-link-container button.dropdown-toggle:hover {
+  background: none;
+  color: #404b63;
+  box-shadow: none;
+  outline: none;
+}
+.nav-link-container .show button.dropdown-toggle {
+  border-bottom-color: $primary-action-color;
 }
 
 #home-link {
@@ -461,6 +491,135 @@ div.SRC-marginBottomTen {
   margin-top: 15px;
 }
 
+.nav-mobile-menu-btn {
+  display: none;
+}
+
+@media screen and (max-width: 640px) {
+
+  .nav + .spacer {
+    display: none;
+  }
+  .nav {
+    display: grid;
+    grid-template-columns: auto 200px;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "header-logo mobile-topnav-btn"
+      "mobile-topnav mobile-topnav";
+    position: static;
+    height: auto;
+
+    .nav-mobile-menu-btn {
+      display: block;
+      cursor: pointer;
+    }
+    .nav-logo-container {
+      grid-area: header-logo;
+    }
+    .mb-open, .mb-close {
+      grid-area: mobile-topnav-btn;
+      text-align: right;
+      padding: 24px 18px;
+      font-size: 16px;
+    }
+    .mb-close {
+      display: none;
+      align-self: center;
+      padding: 28px 18px;
+    }
+    .nav-link-container {
+      grid-area: mobile-topnav;
+      flex-basis: 100%;
+      flex-direction: column-reverse;
+      padding-right: 0;
+      //display: none;
+      display: flex;
+      height: 0;
+      overflow-y: hidden;
+
+      .top-nav-button{
+        display: block;
+        width: 100%;
+        padding: 20px 42px;
+        border-bottom: 0;
+        text-align: left;
+        margin: 0;
+        text-transform: unset;
+
+        &:hover {
+          background-color: $primary-action-color;
+          color: #fff;
+          border-bottom: 0;
+        }
+      }
+      .nav-button-signin {
+        padding: 48px 26px;
+        border-top: 1px solid #B2B3B6;
+        margin-top: 30px;
+        box-sizing: border-box;
+
+        &:hover {
+          background-color: transparent;
+        }
+      }
+      #signin-button {
+        width: 100%;
+      }
+      .dropdown-toggle {
+        padding-right: 18px;
+
+        &::after {
+          float: right;
+          content: "+";
+          font-size: 30px;
+          line-height: 16px;
+          font-weight: normal;
+        }
+      }
+      .dropdown-menu {
+        position: static !important; // override inline !important injected by js
+        transform: none !important; // override inline !important injected by js
+        z-index: auto;
+        float: none;
+        background-clip: inherit;
+        border: 0;
+        box-shadow: none;
+      }
+      .dropdown-item {
+        width: 100%;
+      }
+      .dropdown-menu>li>a {
+        padding: 3px 42px
+      }
+    }
+
+    &.mb-active {
+      .nav-link-container {
+        //display: flex;
+        height: auto;
+        overflow-y: visible;
+
+        .show .dropdown-toggle {
+          &::after {
+            content: "—";
+            font-size: 22px;
+          }
+        }
+      }
+      .mb-open {
+        display: none;
+      }
+      .mb-close {
+        display: block;
+        line-height: 16px;
+        font-size: 24px;
+      }
+    }
+
+  }
+}
+
 @media print {
   footer,
   footer * {
@@ -494,3 +653,5 @@ div.SRC-marginBottomTen {
     }
   }
 }
+
+
