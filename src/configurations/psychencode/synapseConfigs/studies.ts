@@ -1,15 +1,14 @@
 import { SynapseConstants } from 'synapse-react-client'
 import loadingScreen from '../loadingScreen'
-import { facetAliases } from './commonProps'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import { SynapseConfig, SynapseConfigArray } from 'types/portal-config'
 import { DetailsPageProps } from 'types/portal-util-types'
-import { dataSql, dataEntityId } from './data'
+import { studiesSql, dataSql } from '../resources'
+import { parseEntityIdFromSqlStatement } from 'synapse-react-client/dist/utils/functions/sqlFunctions'
 import { publicationDetailPageProps } from './publications'
-export const studiesSql = `SELECT * FROM syn21783965`
 export const studiesEntityId = 'syn21783965'
-const sql = studiesSql
+const sql = `SELECT * FROM syn21783965`
 const rgbIndex = 1
 
 export const studySchema: GenericCardSchema = {
@@ -52,12 +51,11 @@ export const studies: SynapseConfig = {
   name: 'QueryWrapperPlotNav',
   props: {
     rgbIndex,
-    sql,
+    sql: studiesSql,
     loadingScreen,
     shouldDeepLink: true,
     cardConfiguration: studyCardConfiguration,
     name: 'Studies',
-    facetAliases,
     searchConfiguration: {
       searchable: [
         {
@@ -120,7 +118,9 @@ export const details: DetailsPageProps = {
     {
       name: 'StandaloneQueryWrapper',
       props: {
-        sql: `SELECT id, dataSubtype, dataType, assay FROM ${dataEntityId} WHERE "dataSubtype" = 'metadata'`,
+        sql: `SELECT id, dataSubtype, dataType, assay FROM ${parseEntityIdFromSqlStatement(
+          dataSql,
+        )} WHERE "dataSubtype" = 'metadata'`,
         facetAliases: {
           id: 'File Name',
           dataSubtype: 'Metadata Type',
@@ -184,7 +184,6 @@ export const studyDetailPage: SynapseConfigArray = [
       ...studyCardConfiguration,
       titleLinkConfig: undefined,
       rgbIndex,
-      facetAliases,
       genericCardSchema: studySchema,
       sql,
     },

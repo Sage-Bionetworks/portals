@@ -2,10 +2,8 @@ import { SynapseConstants } from 'synapse-react-client'
 import { SynapseConfig } from 'types/portal-config'
 import loadingScreen from '../loadingScreen'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
-import { facetAliases } from './commonProps'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
-export const publicationSql = 'SELECT * FROM syn22095937'
-const sql = publicationSql
+const sql = 'SELECT * FROM syn22095937'
 const rgbIndex = 1
 
 export const publicationSchema: GenericCardSchema = {
@@ -61,7 +59,6 @@ export const publications: SynapseConfig = {
     },
     facetsToPlot: ['study', 'grants'],
     name: 'Publications',
-    facetAliases,
   },
 }
 
