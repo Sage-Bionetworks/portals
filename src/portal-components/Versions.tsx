@@ -1,40 +1,83 @@
 import React, { useState, useEffect } from 'react'
 import moment from 'moment'
 import './Versions.scss'
+import ReactTooltip from 'react-tooltip'
+import packageJson from '../../package.json'
+
+// To test this component, create a deploy_date.txt in the public folder (just like the deploy jobs do):
+// date +"%D %T" > ./public/deploy_date.txt
 
 const Versions: React.FunctionComponent = () => {
   const [buildDate, setBuildDate] = useState<string>()
+  const [deployDate, setDeployDate] = useState<string>()
 
   useEffect(() => {
-    let isCancelled: boolean = false
-    const getBuildDate = async () => {
+    let isDeployDateFetchCancelled: boolean = false
+    const getDeployDate = async () => {
       try {
-        fetch('/build-date.txt').then(v => {
-          v.text().then(txt => {
-            if (!isCancelled) {
-              // making this date look like a version number so people don't think it reflects all content on the page,
-              // since much of it is live!
-              setBuildDate(moment(txt).format('MM_DD_YYYY_h:mma'))
+        fetch('/deploy_date.txt').then(v => {
+          v?.text().then(txt => {
+            // if file does not exist, the main html page might be returned.  version should not contain '<'
+            if (!isDeployDateFetchCancelled && txt.indexOf('<') === -1) {
+              setDeployDate(moment(txt).format('L LT'))
             }
           })
         })
-
       } catch (err) {
-        if (!isCancelled) {
+        if (!isDeployDateFetchCancelled) {
+          setBuildDate('Error retrieving deploy info')
+        }
+      }
+    }
+    getDeployDate()
+    return () => {
+      isDeployDateFetchCancelled = true
+    }
+  })
+
+  useEffect(() => {
+    let isBuildDateFetchCancelled: boolean = false
+    const getBuildDate = async () => {      
+      try {
+        fetch('/build-date.txt').then(v => {
+          v?.text().then(txt => {
+            if (!isBuildDateFetchCancelled) {
+              setBuildDate(moment(txt).format('L LT'))
+            }
+          })
+        })
+      } catch (err) {
+        if (!isBuildDateFetchCancelled) {
           setBuildDate('Error retrieving build info')
         }
       }
     }
     getBuildDate()
     return () => {
-      isCancelled = true
+      isBuildDateFetchCancelled = true
     }
   })
+
   return (
     <>
-      {buildDate &&
-        <a className='Versions footer-item' target='_blank' rel='noopener noreferrer' href='https://github.com/Sage-Bionetworks/portals'>VERSION: {buildDate}</a>
-      }
+      {deployDate && buildDate &&
+        <span
+          data-for='versions'
+          data-tip={`Built: ${buildDate},<br>Deployed: ${deployDate},<br>SRC Version: ${packageJson.dependencies["synapse-react-client"]}`}
+        >
+          <a className='Versions footer-item' target='_blank' rel='noopener noreferrer' href='https://github.com/Sage-Bionetworks/portals'>
+            VERSION
+          </a>
+          <ReactTooltip 
+              delayShow={500}
+              id='versions' 
+              multiline={true}
+              place="top"
+              type="dark"
+              effect="solid"
+          />
+        </span>
+      }      
     </>
   )
 }
