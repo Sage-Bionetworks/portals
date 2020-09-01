@@ -1,10 +1,10 @@
 import { HomeExploreConfig } from 'types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
 import loadingScreen from '../loadingScreen'
+import { peopleSql } from '../resources'
 
 const unitDescription = 'people'
 const rgbIndex = 2
-const sql = 'SELECT * FROM syn13897207'
 
 const people: HomeExploreConfig = {
   homePageSynapseObject: {
@@ -16,14 +16,14 @@ const people: HomeExploreConfig = {
       link: 'Explore/People',
       linkText: 'Explore People',
       facet: 'Program',
-      sql,
+      sql: peopleSql,
     },
   },
   explorePageSynapseObject: {
     name: 'QueryWrapperPlotNav',
     props: {
       rgbIndex,
-      sql,
+      sql: peopleSql,
       loadingScreen,
       name: 'People',
       shouldDeepLink: true,

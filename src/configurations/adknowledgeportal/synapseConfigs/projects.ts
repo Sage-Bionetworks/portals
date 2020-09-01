@@ -2,11 +2,10 @@ import { HomeExploreConfig } from 'types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
 import loadingScreen from '../loadingScreen'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
+import { projectsSql } from '../resources'
 
 const unitDescription = 'Projects'
 const rgbIndex = 4
-export const projectsSql = 'SELECT * FROM syn17024229'
-const sql = projectsSql
 const facet = 'Program'
 
 export const projectCardConfiguration: CardConfiguration = {
@@ -43,7 +42,7 @@ const projects: HomeExploreConfig = {
       loadingScreen,
       link: 'Explore/Projects',
       linkText: 'Explore Projects',
-      sql,
+      sql: projectsSql,
     },
   },
   explorePageSynapseObject: {
@@ -51,7 +50,7 @@ const projects: HomeExploreConfig = {
     props: {
       rgbIndex,
       loadingScreen,
-      sql,
+      sql: projectsSql,
       shouldDeepLink: true,
       name: 'Projects',
       cardConfiguration: projectCardConfiguration,
