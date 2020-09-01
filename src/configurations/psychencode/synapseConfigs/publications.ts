@@ -3,7 +3,7 @@ import { SynapseConfig } from 'types/portal-config'
 import loadingScreen from '../loadingScreen'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
-const sql = 'SELECT * FROM syn22095937'
+import { publicationSql } from '../resources'
 const rgbIndex = 1
 
 export const publicationSchema: GenericCardSchema = {
@@ -25,7 +25,7 @@ export const publications: SynapseConfig = {
   name: 'QueryWrapperPlotNav',
   props: {
     rgbIndex,
-    sql,
+    sql: publicationSql,
     shouldDeepLink: true,
     hideDownload: true,
     cardConfiguration: publicationsCardConfiguration,
@@ -63,6 +63,6 @@ export const publications: SynapseConfig = {
 }
 
 export const publicationDetailPageProps = {
-  sql,
+  sql: publicationSql,
   ...publicationsCardConfiguration,
 }

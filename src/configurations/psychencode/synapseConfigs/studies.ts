@@ -7,8 +7,6 @@ import { DetailsPageProps } from 'types/portal-util-types'
 import { studiesSql, dataSql } from '../resources'
 import { parseEntityIdFromSqlStatement } from 'synapse-react-client/dist/utils/functions/sqlFunctions'
 import { publicationDetailPageProps } from './publications'
-export const studiesEntityId = 'syn21783965'
-const sql = `SELECT * FROM syn21783965`
 const rgbIndex = 1
 
 export const studySchema: GenericCardSchema = {
@@ -88,7 +86,7 @@ export const studies: SynapseConfig = {
 }
 
 export const details: DetailsPageProps = {
-  sql,
+  sql: studiesSql,
   synapseConfigArray: [
     {
       name: 'Markdown',
@@ -156,7 +154,7 @@ export const details: DetailsPageProps = {
       title: 'Related Studies',
       props: {
         ...studyCardConfiguration,
-        sql,
+        sql: studiesSql,
       },
       columnName: 'relatedStudies',
       tableSqlKeys: ['study'],
@@ -185,7 +183,7 @@ export const studyDetailPage: SynapseConfigArray = [
       titleLinkConfig: undefined,
       rgbIndex,
       genericCardSchema: studySchema,
-      sql,
+      sql: studiesSql,
     },
   },
   {
@@ -195,6 +193,6 @@ export const studyDetailPage: SynapseConfigArray = [
 ]
 
 export const studyDetailPageProps = {
-  sql,
+  sql: studiesSql,
   ...studyCardConfiguration,
 }
