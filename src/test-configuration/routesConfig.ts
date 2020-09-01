@@ -97,7 +97,7 @@ routes[ORGANIZATION_INDEX] = {
 }
 
 routes[HOME_INDEX] = {
-  name: 'Home',
+  name: '',
   to: '/',
   isNested: false,
   synapseConfigArray: [

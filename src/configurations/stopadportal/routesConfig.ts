@@ -2,7 +2,7 @@ import { GenericRoute } from 'types/portal-config'
 
 const routes: GenericRoute[] = [
   {
-    name: 'Home',
+    name: '',
     to: '/',
     isNested: false,
     synapseConfigArray: [
