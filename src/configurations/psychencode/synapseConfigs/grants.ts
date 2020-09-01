@@ -11,8 +11,8 @@ import { studyDetailPageProps } from './studies'
 import { publicationDetailPageProps } from './publications'
 import { peopleDetailPageProps } from './people'
 import { Project } from 'synapse-react-client/dist/assets/themed_icons/Project'
-export const grantSql = 'SELECT * FROM syn22096130'
-const sql = grantSql
+import { grantSql } from '../resources'
+
 const rgbIndex = 2
 
 export const grantSchema: GenericCardSchema = {
@@ -45,7 +45,7 @@ export const grants: SynapseConfig = {
   props: {
     rgbIndex,
     cardConfiguration: grantCardConfiguration,
-    sql,
+    sql: grantSql,
     shouldDeepLink: true,
     hideDownload: true,
     name: 'Grants',
@@ -74,7 +74,7 @@ export const grants: SynapseConfig = {
 }
 
 const details: DetailsPageProps = {
-  sql,
+  sql: grantSql,
   sqlOperator: 'LIKE',
   synapseConfigArray: [
     {
@@ -101,7 +101,7 @@ const details: DetailsPageProps = {
     {
       name: 'CardContainerLogic',
       props: {
-        sql,
+        sql: grantSql,
         ...grantCardConfiguration,
       },
       columnName: 'relatedGrants',
@@ -123,7 +123,7 @@ export const grantsDetailPage: SynapseConfigArray = [
       titleLinkConfig: undefined,
       genericCardSchema: grantSchema,
       rgbIndex,
-      sql,
+      sql: grantSql,
     },
   },
   {

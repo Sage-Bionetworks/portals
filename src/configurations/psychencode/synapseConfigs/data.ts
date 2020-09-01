@@ -1,8 +1,7 @@
 import { SynapseConfig } from 'types/portal-config'
 import loadingScreen from '../loadingScreen'
+import { dataSql } from '../resources'
 
-const sql = 'SELECT * FROM syn20821313'
-export const dataSql = sql
 export const dataEntityId = 'syn20821313'
 
 const facetAliases = {
@@ -17,7 +16,7 @@ export const data: SynapseConfig = {
   props: {
     rgbIndex,
     unitDescription,
-    sql,
+    sql: dataSql,
     tableConfiguration: {
       showAccessColumn: true,
       columnLinks: [
