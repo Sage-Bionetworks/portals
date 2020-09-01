@@ -157,6 +157,7 @@ type Metadata = {
   className?: string
   // applied to outer most container of the object
   containerClassName?: string
+  outsideContainerClassName?: string
 }
 
 type NewsFeedMenu = {

@@ -106,31 +106,35 @@ const RouteResolver: React.FunctionComponent<RouteComponentProps> = ({
   return (
     <React.Fragment>
       {synapseConfigArray!.map((el: SynapseConfig) => {
-        const { containerClassName } = el
+        const {
+          containerClassName,
+          outsideContainerClassName,
+          isOutsideContainer,
+          title,
+          centerTitle,
+          props,
+        } = el
         return (
           <React.Fragment key={JSON.stringify(el.props)}>
-            {el.isOutsideContainer ? (
+            {isOutsideContainer ? (
               <div className={containerClassName}>
-                {el.title && (
-                  <h2
-                    className={`title ${el.centerTitle ? 'center-title' : ''}`}
-                  >
-                    {el.title}
+                {title && (
+                  <h2 className={`title ${centerTitle ? 'center-title' : ''}`}>
+                    {title}
                   </h2>
                 )}
                 {generateSynapseObject(el, searchParamsProps)}
               </div>
             ) : (
               <Layout
-                key={JSON.stringify(el.props)}
+                key={JSON.stringify(props)}
                 containerClassName={containerClassName}
+                outsideContainerClassName={outsideContainerClassName}
               >
                 {/* re-think how this renders! remove specific styling */}
-                {el.title && (
-                  <h2
-                    className={`title ${el.centerTitle ? 'center-title' : ''}`}
-                  >
-                    {el.title}
+                {title && (
+                  <h2 className={`title ${centerTitle ? 'center-title' : ''}`}>
+                    {title}
                   </h2>
                 )}
                 {generateSynapseObject(el, searchParamsProps)}

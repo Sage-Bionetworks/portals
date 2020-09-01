@@ -67,6 +67,9 @@ User-agent: *
 Allow: /
 EOL
   aws s3 cp --cache-control max-age=3000 ./robots.txt $S3_PRODUCTION_BUCK_LOCATION
+  date +"%D %T" > ./deploy_date.txt
+  aws s3 cp --cache-control max-age=3000 ./deploy_date.txt $S3_PRODUCTION_BUCK_LOCATION
+
 elif [ "$1" = "push-staging" ]; then
   # sync current with staging
   yarn && yarn build
@@ -76,6 +79,7 @@ cat > ./build/robots.txt <<EOL
 User-agent: * 
 Disallow: /
 EOL
+  date +"%D %T" > ./build/deploy_date.txt
   aws s3 sync --delete --cache-control max-age=0 ./build $S3_STAGING_BUCKET_LOCATION
 fi
 echo 'Success - finished!'
