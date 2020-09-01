@@ -13,6 +13,9 @@ function fail(message: string): never {
   throw new Error(message)
 }
 
+/*
+  Given a pathname find the appropriate route
+*/
 export const getRouteFromParams = (pathname: string) => {
   // e.g. pathname = /Explore/Programs
   // special case the home page path
@@ -77,6 +80,9 @@ export const generateSynapseObject = (
   )
 }
 
+/*
+  Given a location piece join with the routesConfig to render the appropriate component.
+*/
 const RouteResolver: React.FunctionComponent<RouteComponentProps> = ({
   location,
 }) => {

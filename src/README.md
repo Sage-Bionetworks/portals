@@ -44,3 +44,14 @@ test-configuration/
     ├── _overides.scss                      # contains main theme colors
     └── header.svg                          # OPTIONAL: File that will be used for background-img on home page header
 </pre>
+
+# Key Portal Components
+
+## RouteResolver
+
+The route resolver handles taking a URL and matching it the config. Read more in the [component](./RouteResolver.tsx). This component is also responsible for injecting the session token into the react component.
+
+## DetailsPages
+
+The detail pages ([e.g.](https://staging.adknowledgeportal.synapse.org/Explore/Studies/DetailsPage?Study=syn5550404])) give
+a deeper dive into a particular portal section. Read more in the [component](./portal-components/DetailsPage.tsx).

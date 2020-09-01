@@ -31,7 +31,24 @@ type State = {
 }
 
 const COMPONENT_ID_PREFIX = 'src-component-'
-
+/**
+ * The details pages give a deeper dive into a particular portal section.
+ *
+ * It operates by puling in a row of data and then using that row to piece together
+ * information for the page.
+ *
+ * There are three ways the details page pulls in data.
+ *
+ * 1. Using a column's value and joining it with another table
+ * 2. Resolving a column's value and joining it with another table
+ * 3. Static data, data which is fixed across detail pages, the props for the component are
+ * hardcoded in the config
+ *
+ *
+ * @export
+ * @class DetailsPage
+ * @extends {React.Component<DetailsPageProps, State>}
+ */
 export default class DetailsPage extends React.Component<
   DetailsPageProps,
   State
