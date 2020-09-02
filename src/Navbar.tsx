@@ -82,7 +82,7 @@ class Navbar extends React.Component<any, any> {
     const node = e.target as HTMLElement
     if (this.openBtnRef &&
         !((this.openBtnRef.current === node) ||
-            (node?.classList.contains("dropdown-toggle")))) {
+            (node?.closest(".dropdown-toggle")))) {
       this.setState({ showMenu: false })
     }
   }
@@ -167,7 +167,7 @@ class Navbar extends React.Component<any, any> {
               </div>
             )}
             {userProfile && isSynapseSubdomainOrLocal && (
-              <Dropdown>
+              <Dropdown className="user-loggedIn">
                 <Dropdown.Toggle variant="light" id="user-menu-button">
                   <UserCard
                     userProfile={userProfile}
@@ -176,12 +176,16 @@ class Navbar extends React.Component<any, any> {
                     hideText={true}
                     link="javascript:void(0)"
                   />
-                  <SvgIcon>
+                  <SvgIcon className="arrow-down">
                     {
                       // Material expand more svg https://material.io/tools/icons/?icon=expand_more&style=baseline
                     }
                     <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
                   </SvgIcon>
+                  <div className="mb-user-extra">
+                    <div className="user-fullname">{userProfile.firstName} {userProfile.lastName}</div>
+                    <div><u>View Account</u></div>
+                  </div>
                 </Dropdown.Toggle>
                 <Dropdown.Menu className="nav-user-menu portal-nav-menu">
                   <Dropdown.Item className="SRC-primary-background-color-hover SRC-nested-color border-bottom-1">
