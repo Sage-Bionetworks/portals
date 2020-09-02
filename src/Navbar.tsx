@@ -47,7 +47,6 @@ class Navbar extends React.Component<any, any> {
   ]
 
   private openBtnRef = React.createRef<HTMLDivElement>()
-  // private showMenu: boolean = false
 
   constructor(props: any) {
     super(props)
@@ -95,7 +94,7 @@ class Navbar extends React.Component<any, any> {
       getSession,
       resetSession,
       userProfile,
-    } = this.props as SignInProps   // TODO: Emma double-check signin
+    } = this.props as SignInProps
     const { name, icon, hideLogin = false } = logoHeaderConfig
     const token = this.context
     const imageElement = icon ? (
