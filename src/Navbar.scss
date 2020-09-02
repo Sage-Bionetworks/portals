@@ -9,7 +9,7 @@
 
 .nav {
   .mb-user-extra,
-  .nav-mobile-menu-btn{
+  .nav-mobile-menu-btn {
     display: none;
   }
 }
@@ -54,12 +54,11 @@
       flex-basis: 100%;
       flex-direction: column-reverse;
       padding-right: 0;
-      //display: none;
       display: flex;
       height: 0;
       overflow-y: hidden;
 
-      .top-nav-button{
+      .top-nav-button {
         display: block;
         width: 100%;
         padding: 20px $mb-menu-item-padding;
@@ -132,7 +131,6 @@
 
         &:hover {
           color: unset;
-          //border-bottom-color: transparent;
         }
       }
       #user-menu-button > * {
@@ -153,7 +151,6 @@
 
     &.mb-active {
       .nav-link-container {
-        //display: flex;
         height: auto;
         overflow-y: visible;
 
@@ -165,7 +162,6 @@
         }
         .show #user-menu-button {
           color: unset;
-          //border-bottom-color: transparent;
         }
 
       }
