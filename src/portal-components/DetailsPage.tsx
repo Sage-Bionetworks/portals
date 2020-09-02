@@ -34,7 +34,7 @@ const COMPONENT_ID_PREFIX = 'src-component-'
 /**
  * The details pages give a deeper dive into a particular portal section.
  *
- * It operates by puling in a row of data and then using that row to piece together
+ * It operates by pulling in a row of data and then using that row to piece together
  * information for the page.
  *
  * There are three ways the details page pulls in data.

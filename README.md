@@ -48,6 +48,8 @@ $ ./linkConfig <portal-name>
 
 # Build/Deploy Process
 
+Note - Jenkins is accessible only through VPN, reach out to IT for setting this up.
+
 ## Jenkins build script
 
 The code that is run on jenkins is in `run.sh`
@@ -80,4 +82,4 @@ Making a new staging job
 - Change the `Build/Execute Shell` section to build the portal
 
 Building Production:
-Run `deploy-portal-production` with parameters, using the portal's folder name
+Run `deploy-portal-production` with parameters, using the portal's folder name, e.g. 'nf' or 'cancercomplexity'
