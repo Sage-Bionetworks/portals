@@ -35,6 +35,7 @@ const routes: GenericRoute[] = [
       {
         name: 'Markdown',
         title: 'Featured Data',
+        outsideContainerClassName: 'home home__even',
         centerTitle: true,
         props: {
           ownerId: 'syn21557271',
