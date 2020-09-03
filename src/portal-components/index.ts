@@ -11,6 +11,7 @@ import DevelopedBySage from './csbc-home-page/DevelopedBySage'
 import ParticipantsBarPlot from './crc-researcher/ParticipantsBarPlot'
 import StatusLineChart from './crc-researcher/StatusLineChart'
 import SurveysCompletedPlots from './crc-researcher/SurveysCompletedPlots'
+import Image from './Image'
 
 const PortalComponents = {
   StatefulButtonControlWrapper,
@@ -26,6 +27,7 @@ const PortalComponents = {
   ParticipantsBarPlot,
   StatusLineChart,
   SurveysCompletedPlots,
+  Image,
 }
 
 export default PortalComponents

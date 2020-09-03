@@ -177,8 +177,9 @@ class Navbar extends React.Component {
               routesConfig
                 .slice()
                 .reverse()
+                .filter((el) => el.to !== '/')
                 .map((el) => {
-                  const displayName = el.displayName ? el.displayName : el.name
+                  let displayName = el.displayName ? el.displayName : el.name
                   const icon = (
                     <img style={{ padding: '0px 4px' }} src={el.icon} />
                   )
@@ -263,6 +264,15 @@ class Navbar extends React.Component {
                   )
                 })
             }
+            <Link
+              key={'Home'}
+              className={`nav-button nav-button-container center-content ${this.getBorder(
+                '',
+              )}`}
+              to={'/'}
+            >
+              Home
+            </Link>
           </div>
         </nav>
         <div className="spacer" />
