@@ -41,6 +41,14 @@ $primary-bgcolor-rgba: unset; // TODO: need to remove in src
   }
 }
 
+// Home page container description text, fed by wiki markdown.  Centered text should have a smaller max-width based on design.
+.home-container-description {
+  .text-align-center {
+    max-width: 750px;
+    margin: auto;
+  }
+}
+
 .home-bg-dark {
   @extend %home-bg-util;
 }
