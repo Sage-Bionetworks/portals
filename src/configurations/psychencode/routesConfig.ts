@@ -24,8 +24,26 @@ const routes: GenericRoute[] = [
         },
       },
       {
-        name: 'UpsetPlot',
+        name: 'Markdown',
+        title: 'About the Portal',
+        centerTitle: true,
+        props: {
+          ownerId: 'syn21557271',
+          wikiId: '605319',
+        },
+      },
+      {
+        name: 'Markdown',
         title: 'Featured Data',
+        outsideContainerClassName: 'home home__even',
+        centerTitle: true,
+        props: {
+          ownerId: 'syn21557271',
+          wikiId: '605308',
+        },
+      },
+      {
+        name: 'UpsetPlot',
         className: 'whatThePlot',
         outsideContainerClassName: 'home home__odd',
         centerTitle: true,
