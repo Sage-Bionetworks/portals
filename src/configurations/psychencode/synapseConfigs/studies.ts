@@ -127,6 +127,7 @@ export const details: DetailsPageProps = {
         },
         rgbIndex,
         title: 'Metadata',
+        sqlOperator: 'HAS',
       },
       resolveSynId: {
         value: true,
@@ -141,6 +142,7 @@ export const details: DetailsPageProps = {
         sql: dataSql,
         rgbIndex,
         title: 'Data',
+        sqlOperator: 'HAS',
       },
       resolveSynId: {
         value: true,
@@ -155,6 +157,7 @@ export const details: DetailsPageProps = {
       props: {
         ...studyCardConfiguration,
         sql: studiesSql,
+        sqlOperator: 'HAS',
       },
       columnName: 'relatedStudies',
       tableSqlKeys: ['study'],
