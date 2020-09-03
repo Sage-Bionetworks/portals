@@ -1,9 +1,9 @@
 import { HomeExploreConfig } from 'types/portal-config'
 import loadingScreen from '../loadingScreen'
+import { dataSql } from '../resources'
 
 const unitDescription = 'data files'
 const rgbIndex = 1
-const sql = 'SELECT * FROM syn11346063'
 
 const data: HomeExploreConfig = {
   homePageSynapseObject: {
@@ -15,7 +15,7 @@ const data: HomeExploreConfig = {
       facet: 'study',
       link: 'Explore/Data',
       linkText: 'Explore Data',
-      sql,
+      sql: dataSql,
     },
   },
   explorePageSynapseObject: {
@@ -36,7 +36,7 @@ const data: HomeExploreConfig = {
         ],
       },
       loadingScreen,
-      sql,
+      sql: dataSql,
       shouldDeepLink: true,
     },
   },

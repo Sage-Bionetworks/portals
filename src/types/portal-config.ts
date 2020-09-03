@@ -282,9 +282,3 @@ export type LogoConfig = {
   hideLogin?: boolean
 }
 // LogoConfig end
-
-export type BetaBanner = {
-  name?: string
-  originalSite?: string
-  backgroundColor?: string
-}

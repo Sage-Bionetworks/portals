@@ -13,12 +13,8 @@ import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
 import {
   studyCardConfiguration,
   studiesProgrammaticRouteConfig,
-  studiesSql,
 } from './synapseConfigs/studies'
-import {
-  projectCardConfiguration,
-  projectsSql,
-} from './synapseConfigs/projects'
+import { projectCardConfiguration } from './synapseConfigs/projects'
 import { results } from './synapseConfigs/results'
 import { iconHeaderOptions } from './synapseConfigs/iconOptions'
 import loadingScreen from './loadingScreen'
@@ -26,10 +22,11 @@ import { publicationProgrammatic } from './synapseConfigs/publications'
 import { programCardConfiguration } from './synapseConfigs/programs'
 import experimentalTools from './synapseConfigs/experimental_tools'
 import computationalTools from './synapseConfigs/computational_tools'
+import { projectsSql, studiesSql } from './resources'
 
 const routes: GenericRoute[] = [
   {
-    name: 'Home',
+    name: '',
     to: '/',
     isNested: false,
     synapseConfigArray: [

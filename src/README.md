@@ -51,3 +51,14 @@ To expose a new component add an entry to the [portal-config.ts](./types/portal-
 type system how to treat the component in the actual config.
 
 Note - if exposing a component from the portal side, you will need to make sure that the component is exported from [index.ts](./portal-components/index.ts).
+
+# Key Portal Components
+
+## RouteResolver
+
+The route resolver handles taking a URL and matching it the config. Read more in the [component](./RouteResolver.tsx). This component is also responsible for injecting the session token into the react component.
+
+## DetailsPages
+
+The detail pages ([e.g.](https://staging.adknowledgeportal.synapse.org/Explore/Studies/DetailsPage?Study=syn5550404])) give
+a deeper dive into a particular portal section. Read more in the [component](./portal-components/DetailsPage.tsx).

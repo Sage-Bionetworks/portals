@@ -1,47 +1,53 @@
 import { GenericRoute } from 'types/portal-config'
-import { uncategorized, potential, invited, scheduled, tested, hidden } from './synapseConfigs'
+import {
+  uncategorized,
+  potential,
+  invited,
+  scheduled,
+  tested,
+  hidden,
+} from './synapseConfigs'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
 
 const routes: GenericRoute[] = [
   {
-    name: 'Home',
+    name: '',
     to: '/',
     isNested: false,
     synapseConfigArray: [
       {
         name: 'SurveysCompletedPlots',
         isOutsideContainer: true,
-        props: {
-        }
+        props: {},
       },
       {
         name: 'ParticipantsBarPlot',
         isOutsideContainer: true,
-        props: {
-        }
+        props: {},
       },
       {
         name: 'StatusLineChart',
         isOutsideContainer: true,
         props: {
-          style: {paddingTop:10, paddingBottom: 50}
-        }
+          style: { paddingTop: 10, paddingBottom: 50 },
+        },
       },
       {
         name: 'SynapsePlot',
         isOutsideContainer: false,
         props: {
-          widgetparamsMapped:{
-              query:'SELECT "date", CONTACT as "New accounts created", survey_1 as "Completed Survey 1", survey_2 as "Completed Survey 2", survey_3 as "Completed Survey 3", survey_4 as "Completed Survey 4" FROM syn22314856',
-              title:'New Participants Per Survey Per Day',
-              xtitle:'Date',
-              ytitle: 'Count',
-              type: 'scatter',
-              horizontal: 'true',
-              // xaxistype:,
-              showlegend:'true',
-          }          
-        }
+          widgetparamsMapped: {
+            query:
+              'SELECT "date", CONTACT as "New accounts created", survey_1 as "Completed Survey 1", survey_2 as "Completed Survey 2", survey_3 as "Completed Survey 3", survey_4 as "Completed Survey 4" FROM syn22314856',
+            title: 'New Participants Per Survey Per Day',
+            xtitle: 'Date',
+            ytitle: 'Count',
+            type: 'scatter',
+            horizontal: 'true',
+            // xaxistype:,
+            showlegend: 'true',
+          },
+        },
       },
     ],
   },

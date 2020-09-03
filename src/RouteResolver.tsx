@@ -13,17 +13,18 @@ function fail(message: string): never {
   throw new Error(message)
 }
 
+/*
+  Given a pathname find the appropriate route
+*/
 export const getRouteFromParams = (pathname: string) => {
   // e.g. pathname = /Explore/Programs
-  // special case the home page path
-  const pathWithName = pathname === '/' ? '/Home' : pathname
   // e.g. split = '', 'Explore', 'Programs
-  const split = pathWithName.split('/')
+  const split = pathname.split('/')
   let route = routesConfig.find((el) => split[1] === el.name)!
   // search the route configs for the pathname
   for (let i = 2; i < split.length; i += 1) {
     if (!route) {
-      return fail(`Error: url at ${pathWithName} has no route mapping`)
+      return fail(`Error: url at ${pathname} has no route mapping`)
     }
     if (route.isNested) {
       route = route.routes.find((el) => split[i] === el.name)!
@@ -77,12 +78,18 @@ export const generateSynapseObject = (
   )
 }
 
+/*
+  Given a location join with the routesConfig to render the appropriate component.
+*/
 const RouteResolver: React.FunctionComponent<RouteComponentProps> = ({
   location,
 }) => {
   // Map this to route in configuration files
   const { pathname, search } = location
+  // get the route object
   const route = getRouteFromParams(pathname)
+  // If url has search params transform into key-value dictionary that can be passed into
+  // the component which is rendered
   let searchParamsProps: any = undefined
   if (search) {
     searchParamsProps = {}
@@ -97,6 +104,8 @@ const RouteResolver: React.FunctionComponent<RouteComponentProps> = ({
   if (search && programmaticRouteConfig) {
     synapseConfigArray = programmaticRouteConfig
   }
+
+  // get page title and set document title to it
   const pageName: string = route.displayName ? route.displayName : route.name
   const newTitle: string = `${docTitleConfig.name} - ${pageName}`
   if (document.title !== newTitle) {
