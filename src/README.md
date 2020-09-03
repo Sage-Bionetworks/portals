@@ -45,6 +45,13 @@ test-configuration/
     └── header.svg                          # OPTIONAL: File that will be used for background-img on home page header
 </pre>
 
+# Adding new components from SRC or the portal
+
+To expose a new component add an entry to the [portal-config.ts](./types/portal-config.ts), this tells the
+type system how to treat the component in the actual config.
+
+Note - if exposing a component from the portal side, you will need to make sure that the component is exported from [index.ts](./portal-components/index.ts).
+
 # Key Portal Components
 
 ## RouteResolver
