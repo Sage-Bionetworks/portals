@@ -112,6 +112,7 @@ const RouteResolver: React.FunctionComponent<RouteComponentProps> = ({
           isOutsideContainer,
           title,
           centerTitle,
+          subtitle,
           props,
         } = el
         return (
@@ -122,6 +123,11 @@ const RouteResolver: React.FunctionComponent<RouteComponentProps> = ({
                   <h2 className={`title ${centerTitle ? 'center-title' : ''}`}>
                     {title}
                   </h2>
+                )}
+                {subtitle && (
+                  <p className={`${centerTitle ? 'center-title' : ''}`}>
+                    {subtitle}
+                  </p>
                 )}
                 {generateSynapseObject(el, searchParamsProps)}
               </div>
@@ -136,6 +142,11 @@ const RouteResolver: React.FunctionComponent<RouteComponentProps> = ({
                   <h2 className={`title ${centerTitle ? 'center-title' : ''}`}>
                     {title}
                   </h2>
+                )}
+                {subtitle && (
+                  <p className={`${centerTitle ? 'center-title' : ''}`}>
+                    {subtitle}
+                  </p>
                 )}
                 {generateSynapseObject(el, searchParamsProps)}
               </Layout>

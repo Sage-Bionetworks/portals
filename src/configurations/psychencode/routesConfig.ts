@@ -7,6 +7,7 @@ import { people } from './synapseConfigs/people'
 import { data } from './synapseConfigs/data'
 import loadingScreen from './loadingScreen'
 import { peopleSql } from './resources'
+import { ReactComponent as ArcDiagram } from './style/ArcDiagramFinal.svg'
 
 const routes: GenericRoute[] = [
   {
@@ -21,6 +22,18 @@ const routes: GenericRoute[] = [
         outsideContainerClassName: 'home home__odd',
         props: {
           entityId: 'syn22315959',
+        },
+      },
+      {
+        name: 'Image',
+        title: 'About The Portal',
+        centerTitle: true,
+        subtitle:
+          'The PsychENCODE Consortium (PEC) is studying genomic influences on neuropsychiatric diseases. Our goal is to create a comprehensive resource of mechanistic insights. ',
+        outsideContainerClassName: 'home home__odd',
+        props: {
+          Svg: ArcDiagram,
+          className: 'arc-diagram',
         },
       },
       {
