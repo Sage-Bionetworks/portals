@@ -28,6 +28,7 @@ const routes: GenericRoute[] = [
         title: 'About the Portal',
         centerTitle: true,
         outsideContainerClassName: 'home-bg-dark home-spacer',
+        className: 'home-container-description',
         props: {
           ownerId: 'syn21557271',
           wikiId: '605319',
@@ -37,6 +38,7 @@ const routes: GenericRoute[] = [
         name: 'Markdown',
         title: 'Featured Data',
         outsideContainerClassName: '',
+        className: 'home-container-description',
         centerTitle: true,
         props: {
           ownerId: 'syn21557271',
