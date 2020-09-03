@@ -7,7 +7,6 @@ import { people } from './synapseConfigs/people'
 import { data } from './synapseConfigs/data'
 import loadingScreen from './loadingScreen'
 import { peopleSql } from './resources'
-import { ReactComponent as ArcDiagram } from './style/ArcDiagramFinal.svg'
 
 const routes: GenericRoute[] = [
   {
@@ -28,19 +27,10 @@ const routes: GenericRoute[] = [
         name: 'Markdown',
         title: 'About the Portal',
         centerTitle: true,
-        outsideContainerClassName: 'home-bg-dark',
+        outsideContainerClassName: 'home-bg-dark home-spacer',
         props: {
           ownerId: 'syn21557271',
           wikiId: '605319',
-        },
-      },
-      {
-        name: 'Image',
-        centerTitle: true,
-        outsideContainerClassName: 'home-bg-dark home-spacer',
-        props: {
-          Svg: ArcDiagram,
-          className: 'arc-diagram',
         },
       },
       {
