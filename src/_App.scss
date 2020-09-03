@@ -41,6 +41,14 @@ $primary-bgcolor-rgba: unset; // TODO: need to remove in src
   }
 }
 
+.home-bg-dark {
+  @extend %home-bg-util;
+}
+
+.home-spacer {
+  padding-bottom: 50px;
+}
+
 // this pushes the footer to the bottom of the screen
 .main {
   min-height: 100vh; /* will cover the 100% of viewport */

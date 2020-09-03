@@ -25,6 +25,7 @@ import { StatefulButtonControlWrapperProps } from 'portal-components/StatefulBut
 import { ParticipantsBarPlotProps } from '../portal-components/crc-researcher/ParticipantsBarPlot'
 import { StatusLineChartProps } from '../portal-components/crc-researcher/StatusLineChart'
 import { SurveysCompletedPlotsProps } from 'portal-components/crc-researcher/SurveysCompletedPlots'
+import { ImageProps } from 'portal-components/Image'
 
 // For styling the header on the home page -- the main title and the summary text
 export type HomePageHeaderConfig = {
@@ -147,9 +148,15 @@ type UserCardListRotate = {
   props: UserCardListRotateProps
 }
 
+type Image = {
+  name: 'Image'
+  props: ImageProps
+}
+
 type Metadata = {
   title?: string
   centerTitle?: boolean
+  subtitle?: string
   link?: string
   style?: React.CSSProperties
   isOutsideContainer?: boolean
@@ -226,6 +233,7 @@ export type SynapseConfig = (
   | UpsetPlot
   | UserCardListRotate
   | SynapsePlot
+  | Image
 ) &
   Metadata
 export type SynapseConfigArray = SynapseConfig[]

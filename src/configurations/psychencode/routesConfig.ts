@@ -7,6 +7,7 @@ import { people } from './synapseConfigs/people'
 import { data } from './synapseConfigs/data'
 import loadingScreen from './loadingScreen'
 import { peopleSql } from './resources'
+import { ReactComponent as ArcDiagram } from './style/ArcDiagramFinal.svg'
 
 const routes: GenericRoute[] = [
   {
@@ -18,16 +19,44 @@ const routes: GenericRoute[] = [
         name: 'Goals',
         title: 'Portal Goals',
         centerTitle: true,
-        outsideContainerClassName: 'home home__odd',
+        outsideContainerClassName: 'home-spacer',
         props: {
           entityId: 'syn22315959',
         },
       },
       {
-        name: 'UpsetPlot',
+        name: 'Markdown',
+        title: 'About the Portal',
+        centerTitle: true,
+        outsideContainerClassName: 'home-bg-dark',
+        props: {
+          ownerId: 'syn21557271',
+          wikiId: '605319',
+        },
+      },
+      {
+        name: 'Image',
+        centerTitle: true,
+        outsideContainerClassName: 'home-bg-dark home-spacer',
+        props: {
+          Svg: ArcDiagram,
+          className: 'arc-diagram',
+        },
+      },
+      {
+        name: 'Markdown',
         title: 'Featured Data',
+        outsideContainerClassName: '',
+        centerTitle: true,
+        props: {
+          ownerId: 'syn21557271',
+          wikiId: '605308',
+        },
+      },
+      {
+        name: 'UpsetPlot',
         className: 'whatThePlot',
-        outsideContainerClassName: 'home home__odd',
+        outsideContainerClassName: 'home-spacer',
         centerTitle: true,
         props: {
           sql:
@@ -44,7 +73,7 @@ const routes: GenericRoute[] = [
       {
         name: 'UserCardListRotate',
         title: 'Our People and Institutions',
-        outsideContainerClassName: 'home home__odd',
+        outsideContainerClassName: 'home-spacer home-bg-dark',
         centerTitle: true,
         props: {
           sql: `${peopleSql} where feature=true`,
@@ -57,7 +86,7 @@ const routes: GenericRoute[] = [
       },
       {
         name: 'Resources',
-        outsideContainerClassName: 'home home__odd',
+        outsideContainerClassName: 'home-spacer',
         title: 'Related Resources',
         centerTitle: true,
         props: {
