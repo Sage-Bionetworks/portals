@@ -2,12 +2,10 @@ import { HomeExploreConfig, SynapseConfig } from 'types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
 import { DetailsPageProps } from 'types/portal-util-types'
 import loadingScreen from '../loadingScreen'
-import { projectsSql } from './projects'
+import { projectsSql, publicationsSql } from '../resources'
 
 const rgbIndex = 5
 const unitDescription = 'Publications'
-
-const sql = 'SELECT * FROM syn20448807'
 
 export const publicationCardProps = {
   type: SynapseConstants.GENERIC_CARD,
@@ -47,14 +45,14 @@ const publications: HomeExploreConfig = {
       facetAliases: {
         consortium: 'Program',
       },
-      sql,
+      sql: publicationsSql,
     },
   },
   explorePageSynapseObject: {
     name: 'QueryWrapperPlotNav',
     props: {
       rgbIndex,
-      sql,
+      sql: publicationsSql,
       name: 'Publications',
       shouldDeepLink: true,
       facetsToPlot: ['consortium', 'year', 'long_amp_ad_grants', 'journal'],
@@ -75,7 +73,7 @@ const publicationsFromRowProps: DetailsPageProps = {
       showTitleSeperator: false,
       tableSqlKeys: ['long_amp_ad_grants'],
       props: {
-        sql,
+        sql: publicationsSql,
         ...publicationCardProps,
       },
     },

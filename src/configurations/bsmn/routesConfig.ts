@@ -16,7 +16,7 @@ import people from './synapseConfigs/people'
 
 const routes: GenericRoute[] = [
   {
-    name: 'Home',
+    name: '',
     to: '/',
     isNested: false,
     synapseConfigArray: [
