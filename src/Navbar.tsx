@@ -311,7 +311,7 @@ class Navbar extends React.Component<any, any> {
             }
             <Link
               key={'Home'}
-              className={`nav-button nav-button-container center-content ${this.getBorder(
+              className={`top-nav-button nav-button-container center-content ${this.getBorder(
                 '',
               )}`}
               to={'/'}
