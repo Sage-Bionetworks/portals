@@ -7,7 +7,7 @@ import { toolsDetailsLandingPage } from './synapseConfigs/tools'
 
 const routes: GenericRoute[] = [
   {
-    name: 'Home',
+    name: '',
     to: '/',
     isNested: false,
     synapseConfigArray: [

@@ -29,7 +29,7 @@ import computationalTools from './synapseConfigs/computational_tools'
 
 const routes: GenericRoute[] = [
   {
-    name: 'Home',
+    name: '',
     to: '/',
     isNested: false,
     synapseConfigArray: [

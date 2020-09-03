@@ -29,7 +29,7 @@ const limit = 3
 
 const routes: GenericRoute[] = [
   {
-    name: 'Home',
+    name: '',
     to: '/',
     isNested: false,
     synapseConfigArray: [
