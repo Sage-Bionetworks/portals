@@ -13,6 +13,9 @@ function fail(message: string): never {
   throw new Error(message)
 }
 
+/*
+  Given a pathname find the appropriate route
+*/
 export const getRouteFromParams = (pathname: string) => {
   // e.g. pathname = /Explore/Programs
   // e.g. split = '', 'Explore', 'Programs
@@ -75,12 +78,18 @@ export const generateSynapseObject = (
   )
 }
 
+/*
+  Given a location join with the routesConfig to render the appropriate component.
+*/
 const RouteResolver: React.FunctionComponent<RouteComponentProps> = ({
   location,
 }) => {
   // Map this to route in configuration files
   const { pathname, search } = location
+  // get the route object
   const route = getRouteFromParams(pathname)
+  // If url has search params transform into key-value dictionary that can be passed into
+  // the component which is rendered
   let searchParamsProps: any = undefined
   if (search) {
     searchParamsProps = {}
@@ -95,6 +104,8 @@ const RouteResolver: React.FunctionComponent<RouteComponentProps> = ({
   if (search && programmaticRouteConfig) {
     synapseConfigArray = programmaticRouteConfig
   }
+
+  // get page title and set document title to it
   const pageName: string = route.displayName ? route.displayName : route.name
   const newTitle: string = `${docTitleConfig.name} - ${pageName}`
   if (document.title !== newTitle) {

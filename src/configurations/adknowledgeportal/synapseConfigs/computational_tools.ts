@@ -3,6 +3,7 @@ import loadingScreen from '../loadingScreen'
 import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from 'types/portal-config'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
+import { computationalSql } from '../resources'
 
 const computationalSchema: GenericCardSchema = {
   type: SynapseConstants.COMPUTATIONAL,
@@ -19,7 +20,6 @@ const cardConfiguration: CardConfiguration = {
   genericCardSchema: computationalSchema,
 }
 
-const sql = 'Select * from syn20337467'
 const rgbIndex = 7
 const unitDescription = 'Tools'
 
@@ -33,14 +33,14 @@ const computationalTools: HomeExploreConfig = {
       link: 'Explore/Computational Tools',
       linkText: 'Explore Computational Tools',
       facet: 'softwareType',
-      sql,
+      sql: computationalSql,
     },
   },
   explorePageSynapseObject: {
     name: 'QueryWrapperPlotNav',
     props: {
       rgbIndex,
-      sql,
+      sql: computationalSql,
       cardConfiguration,
       shouldDeepLink: true,
       name: 'Computational Tools',

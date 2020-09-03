@@ -3,6 +3,7 @@ import loadingScreen from '../loadingScreen'
 import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from 'types/portal-config'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
+import { toolSql } from '../resources'
 
 const experimentalSchema: GenericCardSchema = {
   type: SynapseConstants.EXPERIMENTAL,
@@ -44,7 +45,6 @@ const cardConfiguration: CardConfiguration = {
   ],
 }
 
-const sql = 'select * from syn22219805'
 const rgbIndex = 6
 const unitDescription = 'Tools'
 
@@ -58,14 +58,14 @@ const experimentalTools: HomeExploreConfig = {
       link: 'Explore/Experimental Tools',
       linkText: 'Explore Experimental Tools',
       facet: 'toolType',
-      sql,
+      sql: toolSql,
     },
   },
   explorePageSynapseObject: {
     name: 'QueryWrapperPlotNav',
     props: {
       rgbIndex,
-      sql,
+      sql: toolSql,
       name: 'Experimental Tools',
       shouldDeepLink: true,
       cardConfiguration,
