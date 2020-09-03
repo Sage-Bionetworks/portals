@@ -4,11 +4,10 @@ import { SynapseConstants } from 'synapse-react-client'
 import loadingScreen from '../loadingScreen'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import studyHeaderSvg from '../style/study-header.svg'
+import { studiesSql } from '../resources'
 
 const unitDescription = 'studies'
 const rgbIndex = 0
-export const studiesSql = 'SELECT * FROM syn17083367 ORDER BY isFeatured DESC'
-const sql = studiesSql
 const facet = 'Species'
 export const studyCardConfiguration: CardConfiguration = {
   type: SynapseConstants.GENERIC_CARD,
@@ -59,7 +58,7 @@ const studies: HomeExploreConfig = {
       facet,
       link: 'Explore/Studies',
       linkText: 'Explore Studies',
-      sql,
+      sql: studiesSql,
     },
   },
   explorePageSynapseObject: {
@@ -68,7 +67,7 @@ const studies: HomeExploreConfig = {
       rgbIndex,
       facetAliases,
       loadingScreen,
-      sql,
+      sql: studiesSql,
       name: 'Studies',
       shouldDeepLink: true,
       cardConfiguration: studyCardConfiguration,
@@ -188,7 +187,7 @@ export const studiesDetailsPageProps: DetailsPageProps = {
       tableSqlKeys: ['Study'],
       props: {
         sqlOperator: '=',
-        sql,
+        sql: studiesSql,
         ...studyCardConfiguration,
       },
     },
@@ -202,7 +201,7 @@ export const studiesProgrammaticRouteConfig: SynapseConfig[] = [
     props: {
       isHeader: true,
       ...studyCardConfiguration,
-      sql,
+      sql: studiesSql,
       facetAliases,
       isAlignToLeftNav: true,
       secondaryLabelLimit: Infinity,

@@ -23,7 +23,7 @@ import facetAliases from './facetAliases'
 
 const routes: GenericRoute[] = [
   {
-    name: 'Home',
+    name: '',
     to: '/',
     isNested: false,
     synapseConfigArray: [

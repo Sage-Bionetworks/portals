@@ -6,7 +6,6 @@ import '@fortawesome/fontawesome-free/css/all.css'
 import { Footer } from './Footer'
 import AppInitializer from './AppInitializer'
 import Navbar from './Navbar'
-import BetaBanner from './BetaBanner'
 import CookiesNotification from './CookiesNotification'
 import { CookiesProvider } from 'react-cookie'
 import '@fortawesome/fontawesome-free/css/all.css'
@@ -19,7 +18,6 @@ const App: React.SFC = () => {
     <CookiesProvider>
       <BrowserRouter>
         <AppInitializer>
-          <BetaBanner />
           <Navbar />
           <CookiesNotification />
           <main className="main">

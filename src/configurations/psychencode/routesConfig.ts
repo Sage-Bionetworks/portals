@@ -10,7 +10,7 @@ import { peopleSql } from './resources'
 
 const routes: GenericRoute[] = [
   {
-    name: 'Home',
+    name: '',
     to: '/',
     isNested: false,
     synapseConfigArray: [
