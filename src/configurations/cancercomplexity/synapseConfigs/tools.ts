@@ -3,8 +3,7 @@ import { HomeExploreConfig } from 'types/portal-config'
 import loadingScreen from '../loadingScreen'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import facetAliases from '../facetAliases'
-export const toolsSql = 'SELECT * FROM syn21930566'
-const sql = toolsSql
+import { toolsSql } from '../resources'
 const unitDescription = 'Tools'
 const rgbIndex = 6
 
@@ -52,7 +51,7 @@ export const tools: HomeExploreConfig = {
       facet: 'consortium',
       link: 'Explore/Tools',
       linkText: 'Explore Tools',
-      sql,
+      sql: toolsSql,
     },
   },
   explorePageSynapseObject: {
@@ -60,7 +59,7 @@ export const tools: HomeExploreConfig = {
     props: {
       rgbIndex,
       loadingScreen,
-      sql,
+      sql: toolsSql,
       cardConfiguration: toolsConfiguration,
       shouldDeepLink: true,
       name: 'Tools',

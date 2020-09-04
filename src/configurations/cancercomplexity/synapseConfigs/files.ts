@@ -1,10 +1,7 @@
 import { HomeExploreConfig } from 'types/portal-config'
 import loadingScreen from '../loadingScreen'
 import facetAliases from '../facetAliases'
-
-const sql =
-  'SELECT fileName, title, species, dataFormat, assay, tumorType, gender, tissue, grantName, grantType, consortium FROM syn9630847'
-export const filesSql = sql
+import { filesSql } from '../resources'
 
 const rgbIndex = 8
 const unitDescription = 'files'
@@ -20,7 +17,7 @@ export const files: HomeExploreConfig = {
       loadingScreen,
       link: 'Explore/Files',
       linkText: 'Explore Files',
-      sql,
+      sql: filesSql,
     },
   },
   explorePageSynapseObject: {
@@ -28,7 +25,7 @@ export const files: HomeExploreConfig = {
     props: {
       rgbIndex,
       shouldDeepLink: true,
-      sql,
+      sql: filesSql,
       name: 'Files',
       loadingScreen,
       visibleColumnCount: Infinity,
