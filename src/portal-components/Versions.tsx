@@ -15,8 +15,8 @@ const Versions: React.FunctionComponent = () => {
     let isDeployDateFetchCancelled: boolean = false
     const getDeployDate = async () => {
       try {
-        fetch('/deploy_date.txt').then(v => {
-          v?.text().then(txt => {
+        fetch('/deploy_date.txt').then((v) => {
+          v?.text().then((txt) => {
             // if file does not exist, the main html page might be returned.  version should not contain '<'
             if (!isDeployDateFetchCancelled && txt.indexOf('<') === -1) {
               setDeployDate(moment(txt).format('L LT'))
@@ -33,14 +33,14 @@ const Versions: React.FunctionComponent = () => {
     return () => {
       isDeployDateFetchCancelled = true
     }
-  })
+  }, [])
 
   useEffect(() => {
     let isBuildDateFetchCancelled: boolean = false
-    const getBuildDate = async () => {      
+    const getBuildDate = async () => {
       try {
-        fetch('/build-date.txt').then(v => {
-          v?.text().then(txt => {
+        fetch('/build-date.txt').then((v) => {
+          v?.text().then((txt) => {
             if (!isBuildDateFetchCancelled) {
               setBuildDate(moment(txt).format('L LT'))
             }
@@ -56,28 +56,33 @@ const Versions: React.FunctionComponent = () => {
     return () => {
       isBuildDateFetchCancelled = true
     }
-  })
+  }, [])
 
   return (
     <>
-      {deployDate && buildDate &&
+      {deployDate && buildDate && (
         <span
-          data-for='versions'
-          data-tip={`Built: ${buildDate},<br>Deployed: ${deployDate},<br>SRC Version: ${packageJson.dependencies["synapse-react-client"]}`}
+          data-for="versions"
+          data-tip={`Built: ${buildDate},<br>Deployed: ${deployDate},<br>SRC Version: ${packageJson.dependencies['synapse-react-client']}`}
         >
-          <a className='Versions footer-item' target='_blank' rel='noopener noreferrer' href='https://github.com/Sage-Bionetworks/portals'>
+          <a
+            className="Versions footer-item"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://github.com/Sage-Bionetworks/portals"
+          >
             VERSION
           </a>
-          <ReactTooltip 
-              delayShow={500}
-              id='versions' 
-              multiline={true}
-              place="top"
-              type="dark"
-              effect="solid"
+          <ReactTooltip
+            delayShow={500}
+            id="versions"
+            multiline={true}
+            place="top"
+            type="dark"
+            effect="solid"
           />
         </span>
-      }      
+      )}
     </>
   )
 }

@@ -273,6 +273,7 @@ export type FooterConfig = {
   contactUs?: string
   termsOfService: string
   forum?: string
+  about?: string
 }
 // Footer end
 

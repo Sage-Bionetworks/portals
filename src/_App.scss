@@ -207,7 +207,8 @@ body {
   padding: 0px 25px !important;
   margin: 0px !important;
   min-width: 100px;
-  white-space: nowrap;
+  max-width: 150px;
+  white-space: normal;
   @extend %fillerBorder;
 }
 
