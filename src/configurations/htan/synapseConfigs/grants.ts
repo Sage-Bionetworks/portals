@@ -7,8 +7,7 @@ import {
 } from 'synapse-react-client/dist/containers/GenericCard'
 import { Project } from 'synapse-react-client/dist/assets/themed_icons/Project'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
-export const grantsSql = `SELECT * FROM syn21918972`
-const sql = grantsSql
+import { grantsSql } from '../resources'
 const unitDescription = 'Grants'
 const rgbIndex = 3
 
@@ -54,14 +53,14 @@ export const grants: HomeExploreConfig = {
       facet: 'grantType',
       link: 'Explore/Grants',
       linkText: 'Explore Grants',
-      sql,
+      sql: grantsSql,
     },
   },
   explorePageSynapseObject: {
     name: 'QueryWrapperPlotNav',
     props: {
       rgbIndex,
-      sql,
+      sql: grantsSql,
       cardConfiguration: grantsCardConfiguration,
       shouldDeepLink: true,
       name: 'Grants',
