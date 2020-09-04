@@ -268,14 +268,20 @@ class Navbar extends React.Component {
                   )
                 })
             }
-            <NavLink
-              key={'Home'}
-              className={`nav-button nav-button-container center-content ${this.getBorder(
-                '',
-              )}`}
-              to={'/'}
-              text={'Home'}
-            />
+            {
+              // if theres less than 7 navbar items show the home page button
+              routesConfig.filter((el) => !el.hideRouteFromNavbar).length <
+                7 && (
+                <NavLink
+                  key={'Home'}
+                  className={`nav-button nav-button-container center-content ${this.getBorder(
+                    '',
+                  )}`}
+                  to={'/'}
+                  text={'Home'}
+                />
+              )
+            }
           </div>
         </nav>
         <div className="spacer" />
