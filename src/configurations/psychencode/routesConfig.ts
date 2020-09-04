@@ -85,6 +85,15 @@ const routes: GenericRoute[] = [
           entityId: 'syn22311127',
         },
       },
+      {
+        name: 'Markdown',
+        outsideContainerClassName: '',
+        className: '',
+        props: {
+          ownerId: 'syn21557271',
+          wikiId: '605340',
+        },
+      },
     ],
   },
   {
