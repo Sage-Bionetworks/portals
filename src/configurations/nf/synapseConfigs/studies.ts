@@ -8,13 +8,16 @@ import studyCompleteHeaderSvg from '../style/study-completed-header.svg'
 import studyActiveHeaderSvg from '../style/study-active-header.svg'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import { DetailsPageProps } from 'types/portal-util-types'
-import { datasetsSql } from './datasets'
-import { toolsSql, toolsCardConfiguration } from './tools'
-import { publicationsSql, publicationsCardConfiguration } from './publications'
+import { toolsCardConfiguration } from './tools'
+import { publicationsCardConfiguration } from './publications'
+import {
+  studiesSql,
+  toolsSql,
+  datasetsSql,
+  publicationsSql,
+} from '../resources'
 
-const sql = 'SELECT * FROM syn16787123'
-export const studiesSql = sql
-export const newStudiesSql = `${sql} order by ROW_ID desc limit 3`
+export const newStudiesSql = `${studiesSql} order by ROW_ID desc limit 3`
 const type = SynapseConstants.GENERIC_CARD
 const unitDescription = 'Studies'
 const rgbIndex = 5
@@ -65,14 +68,14 @@ const studies: HomeExploreConfig = {
       link: 'Explore/Studies',
       linkText: 'Explore Studies',
       facet: 'diseaseFocus',
-      sql,
+      sql: studiesSql,
     },
   },
   explorePageSynapseObject: {
     name: 'QueryWrapperPlotNav',
     props: {
       rgbIndex,
-      sql,
+      sql: studiesSql,
       name: 'Studies',
       shouldDeepLink: true,
       cardConfiguration: studyCardConfiguration,

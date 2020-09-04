@@ -6,9 +6,7 @@ import {
   CardConfiguration,
   CardContainerLogicProps,
 } from 'synapse-react-client/dist/containers/CardContainerLogic'
-
-const sql = 'SELECT * FROM syn22017695 ORDER BY "Year" DESC, "Title" ASC'
-export const publicationSql = sql
+import { publicationSql } from '../resources'
 
 const rgbIndex = 7
 const unitDescription = 'Publications'
@@ -59,7 +57,7 @@ export const publications: HomeExploreConfig = {
       loadingScreen,
       link: 'Explore/Files',
       linkText: 'Explore Files',
-      sql,
+      sql: publicationSql,
     },
   },
   explorePageSynapseObject: {
@@ -68,7 +66,7 @@ export const publications: HomeExploreConfig = {
       rgbIndex,
       shouldDeepLink: true,
       hideDownload: true,
-      sql,
+      sql: publicationSql,
       name: 'Publications',
       cardConfiguration: publicationCardConfiguration,
       loadingScreen,

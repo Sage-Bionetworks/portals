@@ -1,25 +1,23 @@
 import { GenericRoute } from 'types/portal-config'
 import { publications, files, datasets, grants, tools } from './synapseConfigs'
-import {
-  projectsSql,
-  projectCardConfiguration,
-} from './synapseConfigs/projects'
-import {
-  datasetsSql,
-  datasetCardConfiguration,
-} from './synapseConfigs/datasets'
+import { projectCardConfiguration } from './synapseConfigs/projects'
+import { datasetCardConfiguration } from './synapseConfigs/datasets'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
 import loadingScreen from './loadingScreen'
-import { toolsSql, toolsConfiguration } from './synapseConfigs/tools'
-import { filesSql } from './synapseConfigs/files'
 import DatasetSvg from './style/Dataset.svg'
-import {
-  publicationsCardConfiguration,
-  publicationSql,
-} from './synapseConfigs/publications'
-import { grantsCardConfiguration, grantsSql } from './synapseConfigs/grants'
+import { publicationsCardConfiguration } from './synapseConfigs/publications'
+import { grantsCardConfiguration } from './synapseConfigs/grants'
 import { onPointClick } from './synapseConfigs/onPointClick'
 import facetAliases from './facetAliases'
+import { toolsConfiguration } from './synapseConfigs/tools'
+import {
+  grantsSql,
+  publicationSql,
+  projectsSql,
+  datasetsSql,
+  toolsSql,
+  filesSql,
+} from './resources'
 
 const routes: GenericRoute[] = [
   {

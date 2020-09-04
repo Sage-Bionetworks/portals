@@ -1,10 +1,12 @@
-import { toolsSql } from './tools'
-import { datasetsSql } from './datasets'
-import { publicationSql } from './publications'
-import { grantsSql } from './grants'
-import { projectsSql } from './projects'
-import { filesSql } from './files'
 import { Query } from 'synapse-react-client/dist/utils/synapseTypes'
+import {
+  projectsSql,
+  toolsSql,
+  datasetsSql,
+  publicationSql,
+  grantsSql,
+  filesSql,
+} from '../resources'
 
 const sqlAndEntityMap: {
   [value: string]: string

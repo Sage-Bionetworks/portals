@@ -3,11 +3,10 @@ import facetAliases from '../facetAliases'
 import loadingScreen from '../loadingScreen'
 import { LabelLinkConfig } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import { StandaloneQueryWrapperProps } from 'portal-components/StandaloneQueryWrapper'
+import { dataSql } from '../resources'
 
 const unitDescription = 'Data'
 const rgbIndex = 0
-export const dataSql = `SELECT id, studyOrProject, numberParticipants,reportedOutcome,dataCollectionMethod,deviceType,devicePlatform,deviceLocation,sensorType,diagnosis,digitalAssessmentCategory,digitalAssessmentDetails,dataType,dataSubtype,dataDescriptionLocation, dataAccessInstructions FROM syn21994970 where dhPortalIndex = 'TRUE'`
-const sql = dataSql
 const facet = 'Program'
 export const dataColumnLinks: LabelLinkConfig = [
   {
@@ -34,7 +33,7 @@ const data: HomeExploreConfig = {
       loadingScreen,
       link: 'Explore/Studies',
       linkText: 'Explore Studies',
-      sql,
+      sql: dataSql,
     },
   },
   explorePageSynapseObject: {
@@ -44,7 +43,7 @@ const data: HomeExploreConfig = {
       shouldDeepLink: true,
       hideDownload: true,
       loadingScreen,
-      sql,
+      sql: dataSql,
       name: 'Data',
       facetAliases,
       tableConfiguration: {
