@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import * as React from 'react'
 import routesConfig from './config/routesConfig'
 import logoHeaderConfig from './config/logoHeaderConfig'
@@ -9,6 +8,7 @@ import UserCard from 'synapse-react-client/dist/containers/UserCard'
 import { TokenContext, SignInProps } from './AppInitializer'
 import SvgIcon from '@material-ui/core/SvgIcon'
 import './Navbar.scss'
+import NavLink from 'portal-components/NavLink'
 
 type SynapseSettingLink = {
   text: string
@@ -91,14 +91,17 @@ class Navbar extends React.Component {
       <React.Fragment>
         <nav className="flex-display nav">
           <div className="nav-logo-container">
-            <Link
+            <NavLink
               onClick={this.goToTop}
               style={{ display: 'flex', alignItems: 'center' }}
               to="/"
               id="home-link"
-            >
-              {imageElement} {nameElement}
-            </Link>
+              text={
+                <>
+                  {imageElement} {nameElement}
+                </>
+              }
+            />
           </div>
           <div className="nav-link-container">
             {!userProfile && isSynapseSubdomainOrLocal && (
@@ -223,12 +226,11 @@ class Navbar extends React.Component {
                                 route.displayName || route.name
                               return (
                                 <Dropdown.Item key={route.name} as="li">
-                                  <Link
+                                  <NavLink
                                     className="dropdown-item SRC-primary-background-color-hover SRC-nested-color"
                                     to={route.to!}
-                                  >
-                                    {routeDisplayName}
-                                  </Link>
+                                    text={routeDisplayName}
+                                  />
                                 </Dropdown.Item>
                               )
                             })}
@@ -240,39 +242,40 @@ class Navbar extends React.Component {
                   // treat it as standard anchor tag
                   if (el.synapseConfigArray!.length === 0) {
                     return (
-                      <Link
+                      <NavLink
                         key={el.name}
                         className={`nav-button nav-button-container center-content ${this.getBorder(
                           el.name,
                         )}`}
                         to={el.to!}
-                      >
-                        {icon} {displayName}
-                      </Link>
+                        text={
+                          <>
+                            {icon} {displayName}
+                          </>
+                        }
+                      />
                     )
                   }
                   return (
-                    <Link
+                    <NavLink
                       key={el.name}
                       className={`nav-button nav-button-container center-content ${this.getBorder(
                         el.name,
                       )}`}
                       to={el.to!}
-                    >
-                      {displayName}
-                    </Link>
+                      text={displayName}
+                    />
                   )
                 })
             }
-            <Link
+            <NavLink
               key={'Home'}
               className={`nav-button nav-button-container center-content ${this.getBorder(
                 '',
               )}`}
               to={'/'}
-            >
-              Home
-            </Link>
+              text={'Home'}
+            />
           </div>
         </nav>
         <div className="spacer" />

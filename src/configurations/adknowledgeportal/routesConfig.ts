@@ -320,6 +320,21 @@ const routes: GenericRoute[] = [
     ],
   },
   {
+    name: 'Analytical Workspace',
+    displayName: 'Analytical Workspace',
+    isNested: false,
+    to: '/Analytical Workspace',
+    synapseConfigArray: [
+      {
+        name: 'Markdown',
+        props: {
+          ownerId: 'syn22300949',
+          wikiId: '604940',
+        },
+      },
+    ],
+  },
+  {
     name: 'DataAccess',
     displayName: 'Data Access',
     isNested: true,
@@ -368,6 +383,22 @@ const routes: GenericRoute[] = [
             props: {
               ownerId: 'syn2580853',
               wikiId: '584597',
+            },
+          },
+        ],
+      },
+      {
+        name: 'DataUseProposals',
+        displayName: 'Data Use Proposals',
+        isNested: false,
+        to: '/DataAccess/DataUseProposals',
+        synapseConfigArray: [
+          {
+            name: 'Markdown',
+            title: 'DATA USE PROPOSALS',
+            props: {
+              ownerId: 'syn2580853',
+              wikiId: '409843',
             },
           },
         ],
@@ -424,6 +455,7 @@ const routes: GenericRoute[] = [
     name: 'About',
     isNested: false,
     to: '/About',
+    hideRouteFromNavbar: true,
     synapseConfigArray: [
       {
         name: 'Markdown',
@@ -440,7 +472,41 @@ const routes: GenericRoute[] = [
     to: '/News',
     isNested: false,
     synapseConfigArray: news,
-    programmaticRouteConfig: news,
+  },
+  {
+    name: 'Help',
+    to: '/Help',
+    isNested: true,
+    synapseConfigArray: news,
+    routes: [
+      {
+        isNested: false,
+        name: 'FAQ',
+        to: '/Help/FAQ',
+        synapseConfigArray: [
+          {
+            name: 'Markdown',
+            title: 'FAQ',
+            props: {
+              ownerId: 'syn12666371',
+              wikiId: '605050',
+            },
+          },
+        ],
+      },
+      {
+        isNested: false,
+        name: 'Forum',
+        to: 'https://www.synapse.org/#!Synapse:syn2580853/discussion/default',
+        synapseConfigArray: [],
+      },
+      {
+        isNested: false,
+        name: 'ContactUs',
+        to: 'mailto:ampadportal@sagebionetworks.org',
+        synapseConfigArray: [],
+      },
+    ],
   },
 ]
 
