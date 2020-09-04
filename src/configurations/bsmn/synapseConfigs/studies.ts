@@ -3,12 +3,11 @@ import { SynapseConstants } from 'synapse-react-client'
 import loadingScreen from '../loadingScreen'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import { DetailsPageProps } from 'types/portal-util-types'
-import { publicationsSql, publicationsCardConfiguration } from './publications'
+import { publicationsCardConfiguration } from './publications'
+import { publicationsSql, studiesSql } from '../resources'
 
 const unitDescription = 'Studies'
 const rgbIndex = 0
-export const studiesSql = 'SELECT * FROM syn21438231'
-const sql = studiesSql
 const facet = 'Program'
 
 export const studyCardConfiguration: CardConfiguration = {
@@ -61,7 +60,7 @@ const studies: HomeExploreConfig = {
       loadingScreen,
       link: 'Explore/Studies',
       linkText: 'Explore Studies',
-      sql,
+      sql: studiesSql,
     },
   },
   explorePageSynapseObject: {
@@ -69,7 +68,7 @@ const studies: HomeExploreConfig = {
     props: {
       rgbIndex,
       shouldDeepLink: true,
-      sql,
+      sql: studiesSql,
       hideDownload: true,
       name: 'Studies',
       cardConfiguration: studyCardConfiguration,
@@ -118,7 +117,7 @@ const studies: HomeExploreConfig = {
 
 export const studiesDetailPageConfiguration: DetailsPageProps = {
   showMenu: true,
-  sql,
+  sql: studiesSql,
   synapseConfigArray: [
     {
       name: 'Markdown',

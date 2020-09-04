@@ -2,12 +2,10 @@ import { HomeExploreConfig } from 'types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
 import loadingScreen from '../loadingScreen'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
+import { publicationsSql } from '../resources'
 
 const unitDescription = 'Publications'
 const rgbIndex = 5
-export const publicationsSql = 'SELECT * FROM syn21438195'
-export const publicationsEntityId = 'syn21438195'
-const sql = publicationsSql
 const facet = 'Program'
 
 export const publicationsCardConfiguration: CardConfiguration = {
@@ -32,7 +30,7 @@ const publications: HomeExploreConfig = {
       loadingScreen,
       link: 'Explore/Publications',
       linkText: 'Explore Publications',
-      sql,
+      sql: publicationsSql,
     },
   },
   explorePageSynapseObject: {
@@ -43,7 +41,7 @@ const publications: HomeExploreConfig = {
       hideDownload: true,
       name: 'Publications',
       cardConfiguration: publicationsCardConfiguration,
-      sql,
+      sql: publicationsSql,
       facetsToPlot: ['grantNumber', 'year', 'journal'],
       searchConfiguration: {
         searchable: [
