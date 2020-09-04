@@ -8,9 +8,8 @@ import { DetailsPageProps } from 'types/portal-util-types'
 import { dataDetailPageProps } from './data'
 import { toolsDetailPageProps } from './tools'
 import { publicationDetailPageProps } from './publications'
-export const studySql =
-  "SELECT * FROM syn21994974 WHERE ((isDHProject IS NULL) OR (isDHProject <> 'TRUE')) AND (dhPortalIndex = 'TRUE') ORDER BY 'study'"
-const sql = studySql
+import { studySql } from '../resources'
+
 const unitDescription = 'Studies'
 const rgbIndex = 9
 
@@ -58,7 +57,7 @@ export const studies: HomeExploreConfig = {
       facet: 'theme',
       link: 'Explore/Studies',
       linkText: 'Explore Studies',
-      sql,
+      sql: studySql,
     },
   },
   explorePageSynapseObject: {
@@ -66,7 +65,7 @@ export const studies: HomeExploreConfig = {
     props: {
       rgbIndex,
       cardConfiguration: studiesCardConfiguration,
-      sql,
+      sql: studySql,
       shouldDeepLink: true,
       hideDownload: true,
       name: 'Studies',
@@ -115,7 +114,7 @@ export const studies: HomeExploreConfig = {
 }
 
 export const details: DetailsPageProps = {
-  sql,
+  sql: studySql,
   synapseConfigArray: [
     {
       name: 'Markdown',
@@ -178,7 +177,7 @@ export const studyDetailPage: SynapseConfigArray = [
         title: 'study',
         link: 'id',
       },
-      sql,
+      sql: studySql,
     },
   },
   {
