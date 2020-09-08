@@ -8,12 +8,11 @@ export const EXPLORE_INDEX = 1
 export const ORGANIZATION_INDEX = 2
 export const HOME_INDEX = 0
 
-const routes: GenericRoute[] = []
+const routes: GenericRoute[] = new Array(4).fill(undefined)
 
 routes[ABOUT_INDEX] = {
   isNested: false,
-  name: 'About',
-  to: '/About',
+  to: 'About',
   synapseConfigArray: [
     {
       title: 'About',
@@ -27,32 +26,29 @@ routes[ABOUT_INDEX] = {
 }
 
 routes[EXPLORE_INDEX] = {
-  name: 'Explore',
+  to: 'Explore',
   isNested: true,
   routes: [
     {
-      name: 'Data',
       isNested: false,
-      to: '/Explore/Data',
+      to: 'Data',
       synapseConfigArray: [studies.explorePageSynapseObject],
     },
     {
-      name: 'Publications',
       isNested: false,
-      to: '/Explore/Publications',
+      to: 'Publications',
       synapseConfigArray: [publications.explorePageSynapseObject],
     },
   ],
 }
 
 routes[ORGANIZATION_INDEX] = {
-  name: 'Organizations',
+  to: 'Organizations',
   isNested: true,
   routes: [
     {
-      name: 'Content',
       isNested: true,
-      to: '/Organizations/Content',
+      to: 'Content',
       synapseConfigArray: [
         {
           title: 'Grants',
@@ -78,9 +74,8 @@ routes[ORGANIZATION_INDEX] = {
       ],
       routes: [
         {
-          name: 'Subcontent',
+          to: 'Subcontent',
           isNested: false,
-          to: '/Organizations/Content/Subcontent',
           synapseConfigArray: [
             {
               name: 'Markdown',
@@ -97,8 +92,7 @@ routes[ORGANIZATION_INDEX] = {
 }
 
 routes[HOME_INDEX] = {
-  name: '',
-  to: '/',
+  to: '',
   isNested: false,
   synapseConfigArray: [
     {

@@ -18,16 +18,16 @@ function fail(message: string): never {
 */
 export const getRouteFromParams = (pathname: string) => {
   // e.g. pathname = /Explore/Programs
-  // e.g. split = '', 'Explore', 'Programs
-  const split = pathname.split('/')
-  let route = routesConfig.find((el) => split[1] === el.name)!
+  const split = pathname.split('/').slice(1)
+  // e.g. split = 'Explore', 'Programs
+  let route = routesConfig.find((el) => split[0] === el.to)!
   // search the route configs for the pathname
-  for (let i = 2; i < split.length; i += 1) {
+  for (let i = 1; i < split.length; i += 1) {
     if (!route) {
       return fail(`Error: url at ${pathname} has no route mapping`)
     }
     if (route.isNested) {
-      route = route.routes.find((el) => split[i] === el.name)!
+      route = route.routes.find((el) => el.to!.includes(split[i]))!
     } else {
       fail(`Route at ${pathname} has no SynapseConfigArray mapping`)
     }
@@ -106,7 +106,7 @@ const RouteResolver: React.FunctionComponent<RouteComponentProps> = ({
   }
 
   // get page title and set document title to it
-  const pageName: string = route.displayName ? route.displayName : route.name
+  const pageName: string = route.displayName ? route.displayName : route.to!
   const newTitle: string = `${docTitleConfig.name} - ${pageName}`
   if (document.title !== newTitle) {
     document.title = newTitle

@@ -11,8 +11,7 @@ import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
 
 const routes: GenericRoute[] = [
   {
-    name: '',
-    to: '/',
+    to: '',
     isNested: false,
     synapseConfigArray: [
       {
@@ -52,13 +51,11 @@ const routes: GenericRoute[] = [
     ],
   },
   {
-    name: 'Explore',
     isNested: true,
-    to: '/',
+    to: 'Explore',
     routes: [
       {
-        name: '1. Uncategorized',
-        to: '/Explore/1. Uncategorized',
+        to: '1. Uncategorized',
         isNested: false,
         synapseConfigArray: [
           {
@@ -72,8 +69,7 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        name: '2. Potential',
-        to: '/Explore/2. Potential',
+        to: '2. Potential',
         isNested: false,
         synapseConfigArray: [
           {
@@ -87,8 +83,7 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        name: '3. Invited',
-        to: '/Explore/3. Invited',
+        to: '3. Invited',
         isNested: false,
         synapseConfigArray: [
           {
@@ -102,8 +97,7 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        name: '4. Scheduled',
-        to: '/Explore/4. Scheduled',
+        to: '4. Scheduled',
         isNested: false,
         synapseConfigArray: [
           {
@@ -117,8 +111,7 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        name: '5. Tested',
-        to: '/Explore/5. Tested',
+        to: '5. Tested',
         isNested: false,
         synapseConfigArray: [
           {
@@ -132,8 +125,7 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        name: 'Hidden',
-        to: '/Explore/Hidden',
+        to: 'Hidden',
         isNested: false,
         synapseConfigArray: [
           {

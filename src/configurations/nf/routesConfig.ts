@@ -29,8 +29,7 @@ const limit = 3
 
 const routes: GenericRoute[] = [
   {
-    name: '',
-    to: '/',
+    to: '',
     isNested: false,
     synapseConfigArray: [
       {
@@ -120,13 +119,12 @@ const routes: GenericRoute[] = [
     ],
   },
   {
-    name: 'Explore',
+    to: 'Explore',
     isNested: true,
     routes: [
       {
-        name: 'Studies',
         isNested: true,
-        to: '/Explore/Studies',
+        to: 'Studies',
         synapseConfigArray: [
           {
             name: 'RouteButtonControlWrapper',
@@ -139,8 +137,7 @@ const routes: GenericRoute[] = [
         ],
         routes: [
           {
-            name: 'DetailsPage',
-            to: 'Explore/Studies/DetailsPage',
+            to: 'DetailsPage',
             isNested: false,
             synapseConfigArray: [
               {
@@ -167,9 +164,8 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        name: 'Datasets',
         isNested: false,
-        to: '/Explore/Datasets',
+        to: 'Datasets',
         synapseConfigArray: [
           {
             name: 'RouteButtonControlWrapper',
@@ -182,9 +178,8 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        name: 'Files',
         isNested: false,
-        to: '/Explore/Files',
+        to: 'Files',
         synapseConfigArray: [
           {
             name: 'RouteButtonControlWrapper',
@@ -197,9 +192,8 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        name: 'Publications',
         isNested: false,
-        to: '/Explore/Publications',
+        to: 'Publications',
         synapseConfigArray: [
           {
             name: 'RouteButtonControlWrapper',
@@ -212,9 +206,8 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        name: 'Tools',
         isNested: false,
-        to: '/Explore/Tools',
+        to: 'Tools',
         synapseConfigArray: [
           {
             name: 'RouteButtonControlWrapper',
@@ -229,56 +222,49 @@ const routes: GenericRoute[] = [
     ],
   },
   {
-    name: 'Organizations',
+    to: 'Organizations',
     isNested: true,
     routes: [
       {
         displayName: 'CTF',
-        name: 'DetailsPage',
-        to: '/Organizations/DetailsPage?abbreviation=CTF',
+        to: 'DetailsPage?abbreviation=CTF',
         isNested: false,
-        programmaticRouteConfig: organizationDetailsPage,
+        synapseConfigArray: organizationDetailsPage,
       },
       {
         displayName: 'NTAP',
-        name: 'DetailsPage',
-        to: '/Organizations/DetailsPage?abbreviation=NTAP',
+        to: 'DetailsPage?abbreviation=NTAP',
         isNested: false,
-        programmaticRouteConfig: organizationDetailsPage,
+        synapseConfigArray: organizationDetailsPage,
       },
       {
         displayName: 'GFF',
-        name: 'DetailsPage',
-        to: '/Organizations/DetailsPage?abbreviation=GFF',
+        to: 'DetailsPage?abbreviation=GFF',
         isNested: false,
-        programmaticRouteConfig: organizationDetailsPage,
+        synapseConfigArray: organizationDetailsPage,
       },
       {
         displayName: 'NCI DHART SPORE',
-        name: 'DetailsPage',
-        to: '/Organizations/DetailsPage?fundingAgency=NIH-NCI',
+        to: 'DetailsPage?fundingAgency=NIH-NCI',
         isNested: false,
-        programmaticRouteConfig: organizationDetailsPage,
+        synapseConfigArray: organizationDetailsPage,
       },
       {
         displayName: 'CDMRP NFRP',
-        name: 'DetailsPage',
-        to: '/Organizations/DetailsPage?abbreviation=CDMRP',
+        to: 'DetailsPage?abbreviation=CDMRP',
         isNested: false,
-        programmaticRouteConfig: organizationDetailsPage,
+        synapseConfigArray: organizationDetailsPage,
       },
       {
         displayName: 'NFRI',
-        name: 'DetailsPage',
-        to: '/Organizations/DetailsPage?abbreviation=NFRI',
+        to: 'DetailsPage?abbreviation=NFRI',
         isNested: false,
-        programmaticRouteConfig: organizationDetailsPage,
+        synapseConfigArray: organizationDetailsPage,
       },
     ],
   },
   {
-    name: 'About',
-    to: '/About',
+    to: 'About',
     isNested: false,
     synapseConfigArray: [
       {

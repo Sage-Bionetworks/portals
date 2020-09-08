@@ -46,7 +46,7 @@ class Navbar extends React.Component {
   ]
 
   // given the hash, decide if the link should have a bottom border
-  getBorder = (name: string) => {
+  getBorder = (name: string = '') => {
     if (name === '') {
       // special case the home page
       return
@@ -180,10 +180,11 @@ class Navbar extends React.Component {
               routesConfig
                 .slice()
                 .reverse()
-                .filter((el) => el.to !== '/')
+                .filter((el) => el.to !== '')
                 .map((el) => {
-                  let displayName = el.displayName ? el.displayName : el.name
-                  const icon = (
+                  const topLevelTo = el.link ?? el.to
+                  let displayName = el.displayName ? el.displayName : topLevelTo
+                  const icon = el.icon && (
                     <img style={{ padding: '0px 4px' }} src={el.icon} />
                   )
                   if (el.hideRouteFromNavbar) {
@@ -193,23 +194,24 @@ class Navbar extends React.Component {
                     return (
                       <>
                         {el.routes.map((route) => {
+                          const { to, link } = route
                           // Add anchors to the DOM for a crawler to find.  This is an attempt to fix an issue where all routes are Excluded from the index.
                           if (route.hideRouteFromNavbar) {
                             return false
                           }
-                          const routeDisplayName =
-                            route.displayName || route.name
+                          const routeDisplayName = route.displayName ?? to
+                          const linkDisplay = link ?? `/${topLevelTo}/${to}`
                           return (
                             <a
-                              key={`${route.name}-seo-anchor`}
+                              key={`${to}-seo-anchor`}
                               className="crawler-link"
-                              href={`${route.to}`}
+                              href={linkDisplay}
                             >
                               {routeDisplayName}
                             </a>
                           )
                         })}
-                        <Dropdown className={this.getBorder(el.name)}>
+                        <Dropdown className={this.getBorder(topLevelTo)}>
                           <Dropdown.Toggle
                             variant="light"
                             id={displayName}
@@ -219,16 +221,17 @@ class Navbar extends React.Component {
                           </Dropdown.Toggle>
                           <Dropdown.Menu className="portal-nav-menu">
                             {el.routes.map((route) => {
+                              const { to, link } = route
                               if (route.hideRouteFromNavbar) {
                                 return false
                               }
-                              const routeDisplayName =
-                                route.displayName || route.name
+                              const routeDisplayName = route.displayName ?? to!
+                              const linkDisplay = link ?? `/${topLevelTo}/${to}`
                               return (
-                                <Dropdown.Item key={route.name} as="li">
+                                <Dropdown.Item key={to} as="li">
                                   <NavLink
                                     className="dropdown-item SRC-primary-background-color-hover SRC-nested-color"
-                                    to={route.to!}
+                                    to={linkDisplay}
                                     text={routeDisplayName}
                                   />
                                 </Dropdown.Item>
@@ -239,31 +242,18 @@ class Navbar extends React.Component {
                       </>
                     )
                   }
-                  // treat it as standard anchor tag
-                  if (el.synapseConfigArray!.length === 0) {
-                    return (
-                      <NavLink
-                        key={el.name}
-                        className={`nav-button nav-button-container center-content ${this.getBorder(
-                          el.name,
-                        )}`}
-                        to={el.to!}
-                        text={
-                          <>
-                            {icon} {displayName}
-                          </>
-                        }
-                      />
-                    )
-                  }
                   return (
                     <NavLink
-                      key={el.name}
+                      key={topLevelTo}
                       className={`nav-button nav-button-container center-content ${this.getBorder(
-                        el.name,
+                        topLevelTo,
                       )}`}
-                      to={el.to!}
-                      text={displayName}
+                      to={`/${topLevelTo!}`}
+                      text={
+                        <>
+                          {icon} {displayName}
+                        </>
+                      }
                     />
                   )
                 })
