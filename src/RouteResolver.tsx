@@ -29,7 +29,7 @@ export const getRouteFromParams = (pathname: string) => {
       split.push('')
     }
   }
-  let route = routesConfig.find((el) => split[1] === el.name)!
+  let route = routesConfig.find((el) => split[1] === el.to)!
   // search the route configs for the pathname
   for (let i = 1; i < split.length; i += 1) {
     if (!route) {
