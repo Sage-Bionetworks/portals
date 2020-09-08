@@ -3,11 +3,10 @@ import { SynapseConstants } from 'synapse-react-client'
 import loadingScreen from '../loadingScreen'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import { MEDIUM_USER_CARD } from 'synapse-react-client/dist/utils/SynapseConstants'
+import { peopleSql } from '../resources'
 
 const unitDescription = 'People'
 const rgbIndex = 3
-export const peopleSql = 'SELECT * FROM syn21781196'
-const sql = peopleSql
 const facet = 'project'
 
 export const peopleCardConfiguration: CardConfiguration = {
@@ -39,7 +38,7 @@ const individuals: HomeExploreConfig = {
       loadingScreen,
       link: 'Explore/Individuals',
       linkText: 'Explore Individuals',
-      sql,
+      sql: peopleSql,
     },
   },
   explorePageSynapseObject: {
@@ -49,7 +48,7 @@ const individuals: HomeExploreConfig = {
       shouldDeepLink: true,
       hideDownload: true,
       name: 'People',
-      sql,
+      sql: peopleSql,
       loadingScreen,
       cardConfiguration: {
         type: MEDIUM_USER_CARD,

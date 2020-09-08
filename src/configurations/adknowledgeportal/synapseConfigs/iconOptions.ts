@@ -7,6 +7,7 @@ import resilienceadSvgHeader from './icons/resilience-icon-header.svg'
 import circleSvg from './icons/amp-icon.svg'
 import circleSvgHeader from './icons/amp-icon-header.svg'
 import psychIconSvg from './icons/Psych-AD-icon.svg'
+import psychHeaderSvg from './icons/PsychAD-Header.svg'
 
 export const iconOptions = {
   'AMP-AD': circleSvg,
@@ -21,5 +22,5 @@ export const iconHeaderOptions = {
   'M2OVE-AD': brainSvgHeader,
   'MODEL-AD': mouseSvgHeader,
   'Resilience-AD': resilienceadSvgHeader,
-  'Psych-AD': psychIconSvg,
+  'Psych-AD': psychHeaderSvg,
 }

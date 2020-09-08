@@ -3,9 +3,8 @@ import { HomeExploreConfig } from 'types/portal-config'
 import loadingScreen from '../loadingScreen'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
+import { projectsSql } from '../resources'
 const unitDescription = 'projects'
-export const projectsSql = `SELECT * FROM syn21868602`
-const sql = projectsSql
 const rgbIndex = 1
 
 export const projectsSchema: GenericCardSchema = {
@@ -35,7 +34,7 @@ export const projects: HomeExploreConfig = {
       facet: 'grantName',
       link: 'Explore/Projects',
       linkText: 'Explore Projects',
-      sql,
+      sql: projectsSql,
     },
   },
   explorePageSynapseObject: {
@@ -46,7 +45,7 @@ export const projects: HomeExploreConfig = {
       shouldDeepLink: true,
       name: 'Projects',
       loadingScreen,
-      sql,
+      sql: projectsSql,
     },
   },
 }

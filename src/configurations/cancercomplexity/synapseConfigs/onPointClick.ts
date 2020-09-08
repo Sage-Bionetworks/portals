@@ -1,9 +1,11 @@
-import { toolsSql } from './tools'
-import { datasetsSql } from './datasets'
-import { publicationSql } from './publications'
-import { grantsSql } from './grants'
-import { projectsSql } from './projects'
-import { filesSql } from './files'
+import {
+  publicationSql,
+  datasetsSql,
+  filesSql,
+  grantsSql,
+  toolsSql,
+  projectsSql,
+} from '../resources'
 import { Query } from 'synapse-react-client/dist/utils/synapseTypes'
 import { ClickCallbackParams } from 'synapse-react-client/dist/containers/widgets/themes-plot/types'
 

@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import * as React from 'react'
 import routesConfig from './config/routesConfig'
 import logoHeaderConfig from './config/logoHeaderConfig'
@@ -10,6 +9,7 @@ import UserCard from 'synapse-react-client/dist/containers/UserCard'
 import { TokenContext, SignInProps } from './AppInitializer'
 import SvgIcon from '@material-ui/core/SvgIcon'
 import './Navbar.scss'
+import NavLink from 'portal-components/NavLink'
 
 type SynapseSettingLink = {
   text: string
@@ -119,14 +119,17 @@ class Navbar extends React.Component<any, any> {
       <React.Fragment>
         <nav className={ !this.state.showMenu ? "flex-display nav" : "flex-display nav mb-active" }>
           <div className="nav-logo-container">
-            <Link
+            <NavLink
               onClick={this.goToTop}
               style={{ display: 'flex', alignItems: 'center' }}
               to="/"
               id="home-link"
-            >
-              {imageElement} {nameElement}
-            </Link>
+              text={
+                <>
+                  {imageElement} {nameElement}
+                </>
+              }
+            />
           </div>
           <div
             className="nav-mobile-menu-btn mb-open"
@@ -268,12 +271,11 @@ class Navbar extends React.Component<any, any> {
                                 route.displayName || route.name
                               return (
                                 <Dropdown.Item key={route.name} as="li">
-                                  <Link
+                                  <NavLink
                                     className="dropdown-item SRC-primary-background-color-hover SRC-nested-color"
                                     to={route.to!}
-                                  >
-                                    {routeDisplayName}
-                                  </Link>
+                                    text={routeDisplayName}
+                                  />
                                 </Dropdown.Item>
                               )
                             })}
@@ -285,39 +287,46 @@ class Navbar extends React.Component<any, any> {
                   // treat it as standard anchor tag
                   if (el.synapseConfigArray!.length === 0) {
                     return (
-                      <Link
+                      <NavLink
                         key={el.name}
                         className={`top-nav-button nav-button-container center-content ${this.getBorder(
                           el.name,
                         )}`}
                         to={el.to!}
-                      >
-                        {icon} {displayName}
-                      </Link>
+                        text={
+                          <>
+                            {icon} {displayName}
+                          </>
+                        }
+                      />
                     )
                   }
                   return (
-                    <Link
+                    <NavLink
                       key={el.name}
                       className={`top-nav-button nav-button-container center-content ${this.getBorder(
                         el.name,
                       )}`}
                       to={el.to!}
-                    >
-                      {displayName}
-                    </Link>
+                      text={displayName}
+                    />
                   )
                 })
             }
-            <Link
-              key={'Home'}
-              className={`top-nav-button nav-button-container center-content ${this.getBorder(
-                '',
-              )}`}
-              to={'/'}
-            >
-              Home
-            </Link>
+            {
+              // if theres less than 7 navbar items show the home page button
+              routesConfig.filter((el) => !el.hideRouteFromNavbar).length <
+                7 && (
+                <NavLink
+                  key={'Home'}
+                  className={`top-nav-button nav-button-container center-content ${this.getBorder(
+                    '',
+                  )}`}
+                  to={'/'}
+                  text={'Home'}
+                />
+              )
+            }
           </div>
         </nav>
         <div className="spacer" />

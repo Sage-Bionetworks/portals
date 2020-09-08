@@ -7,8 +7,8 @@ import {
   CardContainerLogicProps,
 } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import facetAliases from '../facetAliases'
-export const toolsSql = 'SELECT * FROM syn22014091 ORDER BY "softwareName"'
-const sql = toolsSql
+import { toolsSql } from '../resources'
+
 const unitDescription = 'Tools'
 const rgbIndex = 3
 
@@ -43,7 +43,7 @@ export const tools: HomeExploreConfig = {
       facet: 'theme',
       link: 'Explore/Studies',
       linkText: 'Explore Studies',
-      sql,
+      sql: toolsSql,
     },
   },
   explorePageSynapseObject: {
@@ -51,7 +51,7 @@ export const tools: HomeExploreConfig = {
     props: {
       rgbIndex,
       cardConfiguration: toolsCardConfiguration,
-      sql,
+      sql: toolsSql,
       hideDownload: true,
       shouldDeepLink: true,
       defaultColumn: 'softwareType',
@@ -89,7 +89,7 @@ export const tools: HomeExploreConfig = {
 }
 
 export const toolsDetailPageProps: CardContainerLogicProps = {
-  sql,
+  sql: toolsSql,
   ...toolsCardConfiguration,
   sqlOperator: 'LIKE',
   facetAliases,
@@ -108,13 +108,13 @@ export const toolsDetailsLandingPage: SynapseConfigArray = [
       facetAliases,
       genericCardSchema: toolsSchema,
       rgbIndex,
-      sql,
+      sql: toolsSql,
     },
   },
   {
     name: 'DetailsPage',
     props: {
-      sql,
+      sql: toolsSql,
       synapseConfigArray: [],
     },
   },
