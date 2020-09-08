@@ -207,12 +207,12 @@ body {
   padding: 0px 25px !important;
   margin: 0px !important;
   min-width: 100px;
-  // max-width: 150px;
   white-space: normal;
   @extend %fillerBorder;
 }
 
-.top-nav-button, a.top-nav-button {
+.top-nav-button,
+a.top-nav-button {
   text-transform: uppercase;
   font-weight: bold;
   height: -webkit-fill-available;
@@ -565,5 +565,3 @@ div.SRC-marginBottomTen {
     }
   }
 }
-
-

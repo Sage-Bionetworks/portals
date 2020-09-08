@@ -8,7 +8,7 @@ export const EXPLORE_INDEX = 1
 export const ORGANIZATION_INDEX = 2
 export const HOME_INDEX = 0
 
-const routes: GenericRoute[] = new Array(4).fill(undefined)
+const routes: GenericRoute[] = []
 
 routes[ABOUT_INDEX] = {
   isNested: false,

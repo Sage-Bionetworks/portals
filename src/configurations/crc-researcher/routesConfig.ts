@@ -52,10 +52,7 @@ const routes: GenericRoute[] = [
   },
   {
     isNested: true,
-<<<<<<< HEAD
     to: 'Explore',
-=======
->>>>>>> 91451f633e515aadfd8e4a692c3d051b47696351
     routes: [
       {
         to: '1. Uncategorized',
