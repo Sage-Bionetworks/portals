@@ -54,7 +54,6 @@ const routes: GenericRoute[] = [
   {
     name: 'Explore',
     isNested: true,
-    to: '/',
     routes: [
       {
         name: '1. Uncategorized',
