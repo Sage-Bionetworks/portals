@@ -17,7 +17,11 @@ type SynapseSettingLink = {
   settingSubPath?: string
 }
 
-class Navbar extends React.Component<any, any> {
+type State = {
+  showMenu: boolean
+}
+
+class Navbar extends React.Component<any, State> {
   synapseQuickLinks: SynapseSettingLink[] = [
     {
       text: 'Profile',
