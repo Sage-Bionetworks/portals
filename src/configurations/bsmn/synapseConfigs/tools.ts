@@ -2,11 +2,10 @@ import { HomeExploreConfig } from 'types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
 import loadingScreen from '../loadingScreen'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
+import { toolsSql } from '../resources'
 
 const unitDescription = 'Tools'
 const rgbIndex = 8
-export const toolsSql = 'SELECT * FROM syn21438237'
-const sql = toolsSql
 const facet = 'Project'
 
 export const toolCardConfiguration: CardConfiguration = {
@@ -37,14 +36,14 @@ const tools: HomeExploreConfig = {
       loadingScreen,
       link: 'Explore/Tools',
       linkText: 'Explore Tools',
-      sql,
+      sql: toolsSql,
     },
   },
   explorePageSynapseObject: {
     name: 'QueryWrapperPlotNav',
     props: {
       rgbIndex,
-      sql,
+      sql: toolsSql,
       shouldDeepLink: true,
       hideDownload: true,
       facetsToPlot: ['contributor', 'institutions'],

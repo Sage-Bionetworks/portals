@@ -212,6 +212,24 @@ body {
   @extend %fillerBorder;
 }
 
+.top-nav-button, a.top-nav-button {
+  text-transform: uppercase;
+  font-weight: bold;
+  height: -webkit-fill-available;
+  // fallback for mozilla and ie11
+  height: 100%;
+  font-size: 16px;
+  text-align: center;
+  justify-content: center;
+  color: #404b63;
+  text-decoration: none;
+  padding: 0px 25px;
+  margin: 0px;
+  min-width: 100px;
+  white-space: nowrap;
+  @extend %fillerBorder;
+}
+
 %bottomBorderNav {
   @extend %borderStyle;
   border-bottom-color: $primary-action-color;
@@ -227,6 +245,18 @@ button.dropdown-toggle.nav-button:hover {
   background: unset !important;
   color: unset;
   @extend %bottomBorderNav;
+}
+
+// Adjustment for desktop version after adding mobile topnav bar
+.nav-link-container button.dropdown-toggle,
+.nav-link-container button.dropdown-toggle:hover {
+  background: none;
+  color: #404b63;
+  box-shadow: none;
+  outline: none;
+}
+.nav-link-container .show button.dropdown-toggle {
+  border-bottom-color: $primary-action-color;
 }
 
 #home-link {
@@ -535,3 +565,5 @@ div.SRC-marginBottomTen {
     }
   }
 }
+
+

@@ -2,17 +2,16 @@ import { GenericRoute } from 'types/portal-config'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
 import projects, {
   projectCardConfiguration,
-  projectsSql,
   projectsDetailsPageConfiguration,
 } from './synapseConfigs/projects'
 import studies, {
   studyCardConfiguration,
-  studiesSql,
   studiesDetailPageConfiguration,
 } from './synapseConfigs/studies'
 import publications from './synapseConfigs/publications'
 import tools from './synapseConfigs/tools'
 import people from './synapseConfigs/people'
+import { studiesSql, projectsSql } from './resources'
 
 const routes: GenericRoute[] = [
   {

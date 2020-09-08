@@ -4,8 +4,7 @@ import loadingScreen from '../loadingScreen'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import facetAliases from '../facetAliases'
-export const datasetsSql = `SELECT * FROM syn21897968`
-const sql = datasetsSql
+import { datasetsSql } from '../resources'
 const unitDescription = 'Datasets'
 const rgbIndex = 0
 
@@ -65,7 +64,7 @@ export const datasets: HomeExploreConfig = {
       facet: 'tumorType',
       link: 'Explore/Datasets',
       linkText: 'Explore Datasets',
-      sql,
+      sql: datasetsSql,
     },
   },
   explorePageSynapseObject: {
@@ -75,7 +74,7 @@ export const datasets: HomeExploreConfig = {
       cardConfiguration: datasetCardConfiguration,
       shouldDeepLink: true,
       name: 'Datasets',
-      sql,
+      sql: datasetsSql,
       loadingScreen,
       facetAliases,
       searchConfiguration: {

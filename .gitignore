@@ -4,3 +4,4 @@ src/config/
 *.css
 .DS_Store
 .vscode/
+.idea/

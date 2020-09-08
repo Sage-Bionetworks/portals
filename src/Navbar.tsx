@@ -3,6 +3,7 @@ import routesConfig from './config/routesConfig'
 import logoHeaderConfig from './config/logoHeaderConfig'
 import Dialog from '@material-ui/core/Dialog'
 import Dropdown from 'react-bootstrap/Dropdown'
+// import Drawer from "@material-ui/core/Drawer";
 import { SynapseComponents, SynapseConstants } from 'synapse-react-client'
 import UserCard from 'synapse-react-client/dist/containers/UserCard'
 import { TokenContext, SignInProps } from './AppInitializer'
@@ -16,7 +17,11 @@ type SynapseSettingLink = {
   settingSubPath?: string
 }
 
-class Navbar extends React.Component {
+type State = {
+  showMenu: boolean
+}
+
+class Navbar extends React.Component<any, State> {
   synapseQuickLinks: SynapseSettingLink[] = [
     {
       text: 'Profile',
@@ -45,6 +50,15 @@ class Navbar extends React.Component {
     },
   ]
 
+  private openBtnRef = React.createRef<HTMLDivElement>()
+
+  constructor(props: any) {
+    super(props)
+    this.state = {
+      showMenu: false,
+    }
+  }
+
   // given the hash, decide if the link should have a bottom border
   getBorder = (name: string = '') => {
     if (name === '') {
@@ -57,6 +71,24 @@ class Navbar extends React.Component {
 
   goToTop = () => {
     window.scroll({ top: 0 })
+  }
+
+  componentDidMount() {
+    document.addEventListener('click', this.handleClickOutside.bind(this))
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('click', this.handleClickOutside)
+  }
+
+  handleClickOutside(e: Event) {
+    const node = e.target as HTMLElement
+    if (
+      this.openBtnRef &&
+      !(this.openBtnRef.current === node || node?.closest('.dropdown-toggle'))
+    ) {
+      this.setState({ showMenu: false })
+    }
   }
 
   render() {
@@ -87,9 +119,16 @@ class Navbar extends React.Component {
         hostname.includes('127.0.0.1') ||
         hostname.includes('localhost')) &&
       !hideLogin
+
     return (
       <React.Fragment>
-        <nav className="flex-display nav">
+        <nav
+          className={
+            !this.state.showMenu
+              ? 'flex-display nav'
+              : 'flex-display nav mb-active'
+          }
+        >
           <div className="nav-logo-container">
             <NavLink
               onClick={this.goToTop}
@@ -103,9 +142,26 @@ class Navbar extends React.Component {
               }
             />
           </div>
+          <div
+            className="nav-mobile-menu-btn mb-open"
+            onClick={() => {
+              this.setState({ showMenu: true })
+            }}
+            ref={this.openBtnRef}
+          >
+            MENU
+          </div>
+          <div
+            className="nav-mobile-menu-btn mb-close"
+            onClick={() => {
+              this.setState({ showMenu: false })
+            }}
+          >
+            <span>&#10005;</span>
+          </div>
           <div className="nav-link-container">
             {!userProfile && isSynapseSubdomainOrLocal && (
-              <div className="center-content nav-button">
+              <div className="center-content top-nav-button nav-button-signin">
                 <button
                   id="signin-button"
                   className="SRC-primary-text-color-background"
@@ -128,7 +184,7 @@ class Navbar extends React.Component {
               </div>
             )}
             {userProfile && isSynapseSubdomainOrLocal && (
-              <Dropdown>
+              <Dropdown className="user-loggedIn">
                 <Dropdown.Toggle variant="light" id="user-menu-button">
                   <UserCard
                     userProfile={userProfile}
@@ -137,12 +193,20 @@ class Navbar extends React.Component {
                     hideText={true}
                     link="javascript:void(0)"
                   />
-                  <SvgIcon>
+                  <SvgIcon className="arrow-down">
                     {
                       // Material expand more svg https://material.io/tools/icons/?icon=expand_more&style=baseline
                     }
                     <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
                   </SvgIcon>
+                  <div className="mb-user-extra">
+                    <div className="user-fullname">
+                      {userProfile.firstName} {userProfile.lastName}
+                    </div>
+                    <div>
+                      <u>View Account</u>
+                    </div>
+                  </div>
                 </Dropdown.Toggle>
                 <Dropdown.Menu className="nav-user-menu portal-nav-menu">
                   <Dropdown.Item className="SRC-primary-background-color-hover SRC-nested-color border-bottom-1">
@@ -215,7 +279,7 @@ class Navbar extends React.Component {
                           <Dropdown.Toggle
                             variant="light"
                             id={displayName}
-                            className="nav-button-container nav-button"
+                            className="nav-button-container top-nav-button"
                           >
                             {displayName}
                           </Dropdown.Toggle>
@@ -245,7 +309,7 @@ class Navbar extends React.Component {
                   return (
                     <NavLink
                       key={topLevelTo}
-                      className={`nav-button nav-button-container center-content ${this.getBorder(
+                      className={`top-nav-button nav-button nav-button-container center-content ${this.getBorder(
                         topLevelTo,
                       )}`}
                       to={`/${topLevelTo!}`}
@@ -264,7 +328,7 @@ class Navbar extends React.Component {
                 7 && (
                 <NavLink
                   key={'Home'}
-                  className={`nav-button nav-button-container center-content ${this.getBorder(
+                  className={`top-nav-button nav-button-container center-content ${this.getBorder(
                     '',
                   )}`}
                   to={'/'}

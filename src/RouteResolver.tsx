@@ -18,9 +18,18 @@ function fail(message: string): never {
 */
 export const getRouteFromParams = (pathname: string) => {
   // e.g. pathname = /Explore/Programs
-  const split = pathname.split('/').slice(1)
+  const split: string[] = pathname.split('/').slice(1)
   // e.g. split = 'Explore', 'Programs
-  let route = routesConfig.find((el) => split[0] === el.to)!
+  // if the last element is index.html (case insensitive, 'l' optional)
+  if (split[split.length - 1].match(/index\.html?/gim)) {
+    // remove index.html
+    split.pop()
+    if (split.length == 1) {
+      // need to have at least 2 items
+      split.push('')
+    }
+  }
+  let route = routesConfig.find((el) => split[1] === el.name)!
   // search the route configs for the pathname
   for (let i = 1; i < split.length; i += 1) {
     if (!route) {

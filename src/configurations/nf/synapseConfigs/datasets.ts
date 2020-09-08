@@ -1,10 +1,9 @@
 import { HomeExploreConfig } from 'types/portal-config'
 import loadingScreen from '../loadingScreen'
 import { facetAliases } from './commonProps'
+import { datasetsSql } from '../resources'
 
-const sql = 'SELECT * FROM syn16859580'
-export const datasetsSql = sql
-export const newDatasetsSql = `${sql} order by ROW_ID desc limit 3`
+export const newDatasetsSql = `${datasetsSql} order by ROW_ID desc limit 3`
 const type = 'dataset'
 const unitDescription = 'datasets'
 const rgbIndex = 8
@@ -20,7 +19,7 @@ const datasets: HomeExploreConfig = {
       link: 'Explore/Datasets',
       linkText: 'Explore Datasets',
       facet: 'diseaseFocus',
-      sql,
+      sql: datasetsSql,
     },
   },
   explorePageSynapseObject: {
@@ -28,7 +27,7 @@ const datasets: HomeExploreConfig = {
     props: {
       rgbIndex,
       shouldDeepLink: true,
-      sql,
+      sql: datasetsSql,
       cardConfiguration: {
         type,
       },

@@ -3,15 +3,19 @@ import { SynapseConstants } from 'synapse-react-client'
 import loadingScreen from '../loadingScreen'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import { DetailsPageProps } from 'types/portal-util-types'
-import { studiesSql, studyCardConfiguration } from './studies'
-import { toolsSql, toolCardConfiguration } from './tools'
-import { publicationsSql, publicationsCardConfiguration } from './publications'
-import { peopleSql } from './people'
+import { studyCardConfiguration } from './studies'
+import { toolCardConfiguration } from './tools'
+import { publicationsCardConfiguration } from './publications'
+import {
+  peopleSql,
+  projectsSql,
+  studiesSql,
+  toolsSql,
+  publicationsSql,
+} from '../resources'
 
 const unitDescription = 'Projects'
 const rgbIndex = 7
-export const projectsSql = 'SELECT * FROM syn21438208 ORDER BY ndaCollection'
-const sql = projectsSql
 const facet = 'Program'
 
 export const projectCardConfiguration: CardConfiguration = {
@@ -54,14 +58,14 @@ const projects: HomeExploreConfig = {
       loadingScreen,
       link: 'Explore/Projects',
       linkText: 'Explore Projects',
-      sql,
+      sql: projectsSql,
     },
   },
   explorePageSynapseObject: {
     name: 'QueryWrapperPlotNav',
     props: {
       rgbIndex,
-      sql,
+      sql: projectsSql,
       name: 'Projects',
       cardConfiguration: projectCardConfiguration,
       shouldDeepLink: true,
@@ -101,7 +105,7 @@ const projects: HomeExploreConfig = {
 
 export const projectsDetailsPageConfiguration: DetailsPageProps = {
   showMenu: true,
-  sql,
+  sql: projectsSql,
   synapseConfigArray: [
     {
       name: 'CardContainerLogic',
