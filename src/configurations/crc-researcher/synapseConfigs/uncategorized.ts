@@ -31,7 +31,7 @@ export const baseDataSqlColumns = `symptom,
     allSurveysComplete`
 
 export const baseDataSqlFrom = ` FROM syn22154087 `
-export const baseDataSqlWhere = ` WHERE testLocation IN ('lab', 'home', 'noTest') AND dataGroups NOT HAS ('test_user') AND WorkflowState = `
+export const baseDataSqlWhere = ` WHERE testLocation IN ('lab', 'home', 'noTest') AND dataGroups NOT HAS ('test_user') AND allSurveysComplete = 'TRUE' AND WorkflowState = `
 
 export const baseDataSql = `SELECT ${baseDataSqlColumns} ${baseDataSqlFrom} ${baseDataSqlWhere}  `
 
@@ -41,8 +41,7 @@ export const allFacetsToPlot = [
   'testType',
   'zipcode',
   'symptom',
-  'testLocation',
-  'allSurveysComplete'
+  'testLocation'
 ]
 export const dataSql = `${baseDataSql} 'Uncategorized'`
 const sql = dataSql
