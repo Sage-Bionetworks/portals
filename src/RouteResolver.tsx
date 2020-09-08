@@ -24,12 +24,8 @@ export const getRouteFromParams = (pathname: string) => {
   if (split[split.length - 1].match(/index\.html?/gim)) {
     // remove index.html
     split.pop()
-    if (split.length == 1) {
-      // need to have at least 2 items
-      split.push('')
-    }
   }
-  let route = routesConfig.find((el) => split[1] === el.to)!
+  let route = routesConfig.find((el) => split[0] === el.to)!
   // search the route configs for the pathname
   for (let i = 1; i < split.length; i += 1) {
     if (!route) {
