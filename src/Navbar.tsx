@@ -55,12 +55,12 @@ class Navbar extends React.Component<any, State> {
   constructor(props: any) {
     super(props)
     this.state = {
-      showMenu: false
+      showMenu: false,
     }
   }
 
   // given the hash, decide if the link should have a bottom border
-  getBorder = (name: string) => {
+  getBorder = (name: string = '') => {
     if (name === '') {
       // special case the home page
       return
@@ -81,11 +81,12 @@ class Navbar extends React.Component<any, State> {
     document.removeEventListener('click', this.handleClickOutside)
   }
 
-  handleClickOutside(e:Event) {
+  handleClickOutside(e: Event) {
     const node = e.target as HTMLElement
-    if (this.openBtnRef &&
-        !((this.openBtnRef.current === node) ||
-            (node?.closest(".dropdown-toggle")))) {
+    if (
+      this.openBtnRef &&
+      !(this.openBtnRef.current === node || node?.closest('.dropdown-toggle'))
+    ) {
       this.setState({ showMenu: false })
     }
   }
@@ -121,7 +122,13 @@ class Navbar extends React.Component<any, State> {
 
     return (
       <React.Fragment>
-        <nav className={ !this.state.showMenu ? "flex-display nav" : "flex-display nav mb-active" }>
+        <nav
+          className={
+            !this.state.showMenu
+              ? 'flex-display nav'
+              : 'flex-display nav mb-active'
+          }
+        >
           <div className="nav-logo-container">
             <NavLink
               onClick={this.goToTop}
@@ -137,14 +144,18 @@ class Navbar extends React.Component<any, State> {
           </div>
           <div
             className="nav-mobile-menu-btn mb-open"
-            onClick={() => { this.setState({showMenu: true})}}
+            onClick={() => {
+              this.setState({ showMenu: true })
+            }}
             ref={this.openBtnRef}
           >
             MENU
           </div>
           <div
             className="nav-mobile-menu-btn mb-close"
-            onClick={() => { this.setState({showMenu: false})}}
+            onClick={() => {
+              this.setState({ showMenu: false })
+            }}
           >
             <span>&#10005;</span>
           </div>
@@ -189,8 +200,12 @@ class Navbar extends React.Component<any, State> {
                     <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
                   </SvgIcon>
                   <div className="mb-user-extra">
-                    <div className="user-fullname">{userProfile.firstName} {userProfile.lastName}</div>
-                    <div><u>View Account</u></div>
+                    <div className="user-fullname">
+                      {userProfile.firstName} {userProfile.lastName}
+                    </div>
+                    <div>
+                      <u>View Account</u>
+                    </div>
                   </div>
                 </Dropdown.Toggle>
                 <Dropdown.Menu className="nav-user-menu portal-nav-menu">
@@ -229,10 +244,11 @@ class Navbar extends React.Component<any, State> {
               routesConfig
                 .slice()
                 .reverse()
-                .filter((el) => el.to !== '/')
+                .filter((el) => el.to !== '')
                 .map((el) => {
-                  let displayName = el.displayName ? el.displayName : el.name
-                  const icon = (
+                  const topLevelTo = el.link ?? el.to
+                  let displayName = el.displayName ? el.displayName : topLevelTo
+                  const icon = el.icon && (
                     <img style={{ padding: '0px 4px' }} src={el.icon} />
                   )
                   if (el.hideRouteFromNavbar) {
@@ -242,23 +258,24 @@ class Navbar extends React.Component<any, State> {
                     return (
                       <>
                         {el.routes.map((route) => {
+                          const { to, link } = route
                           // Add anchors to the DOM for a crawler to find.  This is an attempt to fix an issue where all routes are Excluded from the index.
                           if (route.hideRouteFromNavbar) {
                             return false
                           }
-                          const routeDisplayName =
-                            route.displayName || route.name
+                          const routeDisplayName = route.displayName ?? to
+                          const linkDisplay = link ?? `/${topLevelTo}/${to}`
                           return (
                             <a
-                              key={`${route.name}-seo-anchor`}
+                              key={`${to}-seo-anchor`}
                               className="crawler-link"
-                              href={`${route.to}`}
+                              href={linkDisplay}
                             >
                               {routeDisplayName}
                             </a>
                           )
                         })}
-                        <Dropdown className={this.getBorder(el.name)}>
+                        <Dropdown className={this.getBorder(topLevelTo)}>
                           <Dropdown.Toggle
                             variant="light"
                             id={displayName}
@@ -268,16 +285,17 @@ class Navbar extends React.Component<any, State> {
                           </Dropdown.Toggle>
                           <Dropdown.Menu className="portal-nav-menu">
                             {el.routes.map((route) => {
+                              const { to, link } = route
                               if (route.hideRouteFromNavbar) {
                                 return false
                               }
-                              const routeDisplayName =
-                                route.displayName || route.name
+                              const routeDisplayName = route.displayName ?? to!
+                              const linkDisplay = link ?? `/${topLevelTo}/${to}`
                               return (
-                                <Dropdown.Item key={route.name} as="li">
+                                <Dropdown.Item key={to} as="li">
                                   <NavLink
                                     className="dropdown-item SRC-primary-background-color-hover SRC-nested-color"
-                                    to={route.to!}
+                                    to={linkDisplay}
                                     text={routeDisplayName}
                                   />
                                 </Dropdown.Item>
@@ -288,31 +306,18 @@ class Navbar extends React.Component<any, State> {
                       </>
                     )
                   }
-                  // treat it as standard anchor tag
-                  if (el.synapseConfigArray!.length === 0) {
-                    return (
-                      <NavLink
-                        key={el.name}
-                        className={`top-nav-button nav-button-container center-content ${this.getBorder(
-                          el.name,
-                        )}`}
-                        to={el.to!}
-                        text={
-                          <>
-                            {icon} {displayName}
-                          </>
-                        }
-                      />
-                    )
-                  }
                   return (
                     <NavLink
-                      key={el.name}
-                      className={`top-nav-button nav-button-container center-content ${this.getBorder(
-                        el.name,
+                      key={topLevelTo}
+                      className={`top-nav-button nav-button nav-button-container center-content ${this.getBorder(
+                        topLevelTo,
                       )}`}
-                      to={el.to!}
-                      text={displayName}
+                      to={`/${topLevelTo!}`}
+                      text={
+                        <>
+                          {icon} {displayName}
+                        </>
+                      }
                     />
                   )
                 })

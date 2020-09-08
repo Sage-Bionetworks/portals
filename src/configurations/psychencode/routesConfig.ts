@@ -10,8 +10,7 @@ import { peopleSql } from './resources'
 
 const routes: GenericRoute[] = [
   {
-    name: '',
-    to: '/',
+    to: '',
     isNested: false,
     synapseConfigArray: [
       {
@@ -97,12 +96,11 @@ const routes: GenericRoute[] = [
     ],
   },
   {
-    name: 'Explore',
+    to: 'Explore',
     isNested: true,
     routes: [
       {
-        name: 'Studies',
-        to: '/Explore/Studies',
+        to: 'Studies',
         isNested: true,
         synapseConfigArray: [
           {
@@ -116,16 +114,14 @@ const routes: GenericRoute[] = [
         ],
         routes: [
           {
-            name: 'DetailsPage',
-            to: 'Explore/Studies/DetailsPage',
+            to: 'DetailsPage',
             isNested: false,
             synapseConfigArray: studyDetailPage,
           },
         ],
       },
       {
-        name: 'Data',
-        to: '/Explore/Data',
+        to: 'Data',
         isNested: false,
         synapseConfigArray: [
           {
@@ -139,8 +135,7 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        name: 'Grants',
-        to: '/Explore/Grants',
+        to: 'Grants',
         isNested: true,
         synapseConfigArray: [
           {
@@ -154,16 +149,14 @@ const routes: GenericRoute[] = [
         ],
         routes: [
           {
-            name: 'DetailsPage',
-            to: 'Explore/Grants/DetailsPage',
+            to: 'DetailsPage',
             isNested: false,
             synapseConfigArray: grantsDetailPage,
           },
         ],
       },
       {
-        name: 'Publications',
-        to: '/Explore/Publications',
+        to: 'Publications',
         isNested: false,
         synapseConfigArray: [
           {
@@ -177,8 +170,7 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        name: 'People',
-        to: '/Explore/People',
+        to: 'People',
         isNested: false,
         synapseConfigArray: [
           {
@@ -194,9 +186,8 @@ const routes: GenericRoute[] = [
     ],
   },
   {
-    name: 'DataAccess',
     displayName: 'Data Access',
-    to: '/DataAccess',
+    to: 'DataAccess',
     isNested: false,
     synapseConfigArray: [
       {
@@ -209,8 +200,7 @@ const routes: GenericRoute[] = [
     ],
   },
   {
-    name: 'About',
-    to: '/About',
+    to: 'About',
     isNested: false,
     synapseConfigArray: [
       {
