@@ -313,7 +313,7 @@ class Navbar extends React.Component<any, State> {
                   return (
                     <NavLink
                       key={topLevelTo}
-                      className={`top-nav-button nav-button nav-button-container center-content ${this.getBorder(
+                      className={`top-nav-button nav-button-container center-content ${this.getBorder(
                         topLevelTo,
                       )}`}
                       to={`/${topLevelTo!}`}
