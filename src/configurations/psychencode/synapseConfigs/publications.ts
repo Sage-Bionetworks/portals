@@ -4,6 +4,7 @@ import loadingScreen from '../loadingScreen'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import { publicationSql } from '../resources'
+import { SQLOperator } from 'synapse-react-client/dist/utils/functions/sqlFunctions'
 const rgbIndex = 1
 
 export const publicationSchema: GenericCardSchema = {
@@ -18,6 +19,14 @@ export const publicationsCardConfiguration: CardConfiguration = {
   type: SynapseConstants.GENERIC_CARD,
   genericCardSchema: publicationSchema,
   loadingScreen,
+  labelLinkConfig: [
+    {
+      URLColumnName: 'studyName',
+      matchColumnName: 'study',
+      isMarkdown: false,
+      baseURL: 'Explore/Studies/DetailsPage',
+    },
+  ],
   secondaryLabelLimit: 5,
 }
 
@@ -28,6 +37,7 @@ export const publications: SynapseConfig = {
     sql: publicationSql,
     shouldDeepLink: true,
     hideDownload: true,
+    loadingScreen,
     cardConfiguration: publicationsCardConfiguration,
     searchConfiguration: {
       searchable: [
@@ -64,5 +74,6 @@ export const publications: SynapseConfig = {
 
 export const publicationDetailPageProps = {
   sql: publicationSql,
+  sqlOperator: 'HAS' as SQLOperator,
   ...publicationsCardConfiguration,
 }

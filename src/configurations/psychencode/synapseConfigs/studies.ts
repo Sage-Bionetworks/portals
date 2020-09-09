@@ -5,7 +5,10 @@ import { CardConfiguration } from 'synapse-react-client/dist/containers/CardCont
 import { SynapseConfig, SynapseConfigArray } from 'types/portal-config'
 import { DetailsPageProps } from 'types/portal-util-types'
 import { studiesSql, dataSql } from '../resources'
-import { parseEntityIdFromSqlStatement } from 'synapse-react-client/dist/utils/functions/sqlFunctions'
+import {
+  parseEntityIdFromSqlStatement,
+  SQLOperator,
+} from 'synapse-react-client/dist/utils/functions/sqlFunctions'
 import { publicationDetailPageProps } from './publications'
 const rgbIndex = 1
 
@@ -87,6 +90,7 @@ export const studies: SynapseConfig = {
 
 export const details: DetailsPageProps = {
   sql: studiesSql,
+  sqlOperator: '=',
   synapseConfigArray: [
     {
       name: 'Markdown',
@@ -187,6 +191,7 @@ export const studyDetailPage: SynapseConfigArray = [
       rgbIndex,
       genericCardSchema: studySchema,
       sql: studiesSql,
+      sqlOperator: '=',
     },
   },
   {
@@ -197,5 +202,6 @@ export const studyDetailPage: SynapseConfigArray = [
 
 export const studyDetailPageProps = {
   sql: studiesSql,
+  sqlOperator: '=' as SQLOperator,
   ...studyCardConfiguration,
 }

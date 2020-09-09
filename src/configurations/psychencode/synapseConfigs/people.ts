@@ -2,6 +2,7 @@ import { SynapseConfig } from 'types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
 import loadingScreen from '../loadingScreen'
 import { peopleSql } from '../resources'
+import { SQLOperator } from 'synapse-react-client/dist/utils/functions/sqlFunctions'
 
 const name = 'PEOPLE'
 const sql = 'SELECT * FROM syn22096112'
@@ -25,5 +26,6 @@ export const people: SynapseConfig = {
 export const peopleDetailPageProps = {
   sql,
   type: SynapseConstants.MEDIUM_USER_CARD,
+  sqlOperator: 'HAS' as SQLOperator,
   loadingScreen,
 }
