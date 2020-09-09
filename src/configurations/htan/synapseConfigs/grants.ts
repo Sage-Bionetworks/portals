@@ -66,7 +66,6 @@ export const grants: HomeExploreConfig = {
       name: 'Grants',
       loadingScreen,
       facetsToPlot: ['consortium', 'grantType'],
-      unitDescription,
       searchConfiguration: {
         searchable: [
           {

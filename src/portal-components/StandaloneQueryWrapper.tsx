@@ -28,6 +28,8 @@ type OwnProps = {
   sql: string
   rgbIndex: number
   unitDescription?: string
+  facetAliases?: {}
+  facet?: string
 }
 
 export type StandaloneQueryWrapperProps = Partial<StackedBarChartProps> &
