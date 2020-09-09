@@ -68,7 +68,6 @@ const routes: GenericRoute[] = [
         centerTitle: true,
         props: {
           sql: `${peopleSql} where feature=true`,
-          rgbIndex: 0,
           count: 3,
           loadingScreen,
           summaryLink: 'Explore/People',

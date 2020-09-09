@@ -9,13 +9,11 @@ const facetAliases = {
 }
 
 const rgbIndex = 8
-const unitDescription = 'files'
 
 export const data: SynapseConfig = {
   name: 'QueryWrapperPlotNav',
   props: {
     rgbIndex,
-    unitDescription,
     sql: dataSql,
     tableConfiguration: {
       showAccessColumn: true,
