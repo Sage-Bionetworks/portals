@@ -1,30 +1,27 @@
 import { GenericRoute } from 'types/portal-config'
 import { publications, files, datasets, grants, tools } from './synapseConfigs'
-import {
-  projectsSql,
-  projectCardConfiguration,
-} from './synapseConfigs/projects'
-import {
-  datasetsSql,
-  datasetCardConfiguration,
-} from './synapseConfigs/datasets'
+import { projectCardConfiguration } from './synapseConfigs/projects'
+import { datasetCardConfiguration } from './synapseConfigs/datasets'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
 import loadingScreen from './loadingScreen'
-import { toolsSql, toolsConfiguration } from './synapseConfigs/tools'
-import { filesSql } from './synapseConfigs/files'
 import DatasetSvg from './style/Dataset.svg'
-import {
-  publicationsCardConfiguration,
-  publicationSql,
-} from './synapseConfigs/publications'
-import { grantsCardConfiguration, grantsSql } from './synapseConfigs/grants'
+import { publicationsCardConfiguration } from './synapseConfigs/publications'
+import { grantsCardConfiguration } from './synapseConfigs/grants'
 import { onPointClick } from './synapseConfigs/onPointClick'
 import facetAliases from './facetAliases'
+import { toolsConfiguration } from './synapseConfigs/tools'
+import {
+  grantsSql,
+  publicationSql,
+  projectsSql,
+  datasetsSql,
+  toolsSql,
+  filesSql,
+} from './resources'
 
 const routes: GenericRoute[] = [
   {
-    name: 'Home',
-    to: '/',
+    to: '',
     isNested: false,
     synapseConfigArray: [
       {
@@ -148,12 +145,11 @@ const routes: GenericRoute[] = [
     ],
   },
   {
-    name: 'Explore',
+    to: 'Explore',
     isNested: true,
     routes: [
       {
-        name: 'Grants',
-        to: '/Explore/Grants',
+        to: 'Grants',
         isNested: true,
         synapseConfigArray: [
           {
@@ -167,8 +163,7 @@ const routes: GenericRoute[] = [
         ],
         routes: [
           {
-            name: 'DetailsPage',
-            to: '/Explore/Grants/DetailsPage',
+            to: 'DetailsPage',
             isNested: false,
             synapseConfigArray: [
               {
@@ -244,8 +239,7 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        name: 'Publications',
-        to: '/Explore/Publications',
+        to: 'Publications',
         isNested: true,
         synapseConfigArray: [
           {
@@ -259,8 +253,7 @@ const routes: GenericRoute[] = [
         ],
         routes: [
           {
-            name: 'DetailsPage',
-            to: '/Explore/Publications/DetailsPage',
+            to: 'DetailsPage',
             isNested: false,
             synapseConfigArray: [
               {
@@ -313,8 +306,7 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        name: 'Datasets',
-        to: '/Explore/Datasets',
+        to: 'Datasets',
         isNested: true,
         synapseConfigArray: [
           {
@@ -328,8 +320,7 @@ const routes: GenericRoute[] = [
         ],
         routes: [
           {
-            name: 'DetailsPage',
-            to: '/Explore/Datasets/DetailsPage',
+            to: 'DetailsPage',
             isNested: false,
             synapseConfigArray: [
               {
@@ -376,8 +367,7 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        name: 'Files',
-        to: '/Explore/Files',
+        to: 'Files',
         isNested: false,
         synapseConfigArray: [
           {
@@ -391,8 +381,7 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        name: 'Tools',
-        to: '/Explore/Tools',
+        to: 'Tools',
         isNested: false,
         synapseConfigArray: [
           {
@@ -408,8 +397,7 @@ const routes: GenericRoute[] = [
     ],
   },
   {
-    name: 'About',
-    to: '/About',
+    to: 'About',
     isNested: false,
     synapseConfigArray: [
       {

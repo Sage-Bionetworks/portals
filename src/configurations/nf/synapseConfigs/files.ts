@@ -1,6 +1,7 @@
 import { HomeExploreConfig } from 'types/portal-config'
 import loadingScreen from '../loadingScreen'
 import { facetAliases } from './commonProps'
+import { filesSql } from '../resources'
 
 const rgbIndex = 1
 const unitDescription = 'Files'
@@ -25,7 +26,7 @@ const files: HomeExploreConfig = {
     props: {
       rgbIndex,
       name: 'Files',
-      sql: `SELECT id AS "File ID", assay, dataType, diagnosis, tumorType,  species, individualID,  fileFormat, dataSubtype, nf1Genotype as "NF1 Genotype", nf2Genotype as "NF2 Genotype", studyName, fundingAgency, consortium, name AS "File Name", accessType, accessTeam  FROM syn16858331 WHERE resourceType = 'experimentalData'`,
+      sql: filesSql,
       visibleColumnCount,
       loadingScreen,
       tableConfiguration: {

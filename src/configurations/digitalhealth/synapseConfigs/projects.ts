@@ -7,9 +7,7 @@ import facetAliases from '../facetAliases'
 import { DetailsPageProps } from 'types/portal-util-types'
 import { dataDetailPageProps } from './data'
 import { publicationDetailPageProps } from './publications'
-export const projectsSql =
-  "SELECT * FROM syn21994974 WHERE  dhPortalIndex = 'TRUE' and isDHProject = 'TRUE' ORDER BY 'study'"
-const sql = projectsSql
+import { projectsSql } from '../resources'
 const unitDescription = 'Projects'
 const rgbIndex = 2
 
@@ -64,7 +62,7 @@ export const projects: HomeExploreConfig = {
       facet: 'theme',
       link: 'Explore/Projects',
       linkText: 'Explore Projects',
-      sql,
+      sql: projectsSql,
     },
   },
   explorePageSynapseObject: {
@@ -72,7 +70,7 @@ export const projects: HomeExploreConfig = {
     props: {
       rgbIndex,
       cardConfiguration: projectsCardConfiguration,
-      sql,
+      sql: projectsSql,
       shouldDeepLink: true,
       hideDownload: true,
       name: 'Projects',
@@ -124,7 +122,7 @@ export const projects: HomeExploreConfig = {
 }
 
 export const details: DetailsPageProps = {
-  sql,
+  sql: projectsSql,
   synapseConfigArray: [
     {
       name: 'Markdown',
@@ -169,7 +167,7 @@ export const projectDetailPage: SynapseConfigArray = [
         link: 'id',
       },
       rgbIndex,
-      sql,
+      sql: projectsSql,
     },
   },
   {

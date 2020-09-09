@@ -5,6 +5,7 @@ import { QueryWrapperMenuProps } from 'synapse-react-client/dist/containers/Quer
 import { UserCardProps } from 'synapse-react-client/dist/containers/UserCard'
 import { ExternalFileHandleLinkProps } from 'synapse-react-client/dist/containers/ExternalFileHandleLink'
 import { UpsetPlotProps } from 'synapse-react-client/dist/containers/UpsetPlot'
+import { SynapsePlotProps } from 'synapse-react-client/dist/containers/widgets/SynapsePlot'
 import { MarkdownSynapseProps } from 'synapse-react-client/dist/containers/MarkdownSynapse'
 import { NewsFeedMenuProps } from 'synapse-react-client/dist/containers/NewsFeedMenu'
 import { GoalsProps } from 'synapse-react-client/dist/containers/Goals'
@@ -24,6 +25,7 @@ import { StatefulButtonControlWrapperProps } from 'portal-components/StatefulBut
 import { ParticipantsBarPlotProps } from '../portal-components/crc-researcher/ParticipantsBarPlot'
 import { StatusLineChartProps } from '../portal-components/crc-researcher/StatusLineChart'
 import { SurveysCompletedPlotsProps } from 'portal-components/crc-researcher/SurveysCompletedPlots'
+import { ImageProps } from 'portal-components/Image'
 
 // For styling the header on the home page -- the main title and the summary text
 export type HomePageHeaderConfig = {
@@ -137,15 +139,24 @@ type UpsetPlot = {
   name: 'UpsetPlot'
   props: UpsetPlotProps
 }
-
+type SynapsePlot = {
+  name: 'SynapsePlot'
+  props: SynapsePlotProps
+}
 type UserCardListRotate = {
   name: 'UserCardListRotate'
   props: UserCardListRotateProps
 }
 
+type Image = {
+  name: 'Image'
+  props: ImageProps
+}
+
 type Metadata = {
   title?: string
   centerTitle?: boolean
+  subtitle?: string
   link?: string
   style?: React.CSSProperties
   isOutsideContainer?: boolean
@@ -153,6 +164,7 @@ type Metadata = {
   className?: string
   // applied to outer most container of the object
   containerClassName?: string
+  outsideContainerClassName?: string
 }
 
 type NewsFeedMenu = {
@@ -220,6 +232,8 @@ export type SynapseConfig = (
   | Resources
   | UpsetPlot
   | UserCardListRotate
+  | SynapsePlot
+  | Image
 ) &
   Metadata
 export type SynapseConfigArray = SynapseConfig[]
@@ -231,11 +245,10 @@ export type HomeExploreConfig = {
 }
 
 interface RouteOptions {
-  name: string
   displayName?: string
   isNested: boolean
   hideRouteFromNavbar?: boolean
-  to?: string
+  to: string | undefined
   link?: string
   icon?: string
   synapseConfigArray?: SynapseConfigArray
@@ -258,6 +271,7 @@ export type FooterConfig = {
   contactUs?: string
   termsOfService: string
   forum?: string
+  about?: string
 }
 // Footer end
 
@@ -275,9 +289,3 @@ export type LogoConfig = {
   hideLogin?: boolean
 }
 // LogoConfig end
-
-export type BetaBanner = {
-  name?: string
-  originalSite?: string
-  backgroundColor?: string
-}

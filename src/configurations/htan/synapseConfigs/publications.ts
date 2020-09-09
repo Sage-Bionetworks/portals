@@ -4,8 +4,7 @@ import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericC
 import { HomeExploreConfig } from 'types/portal-config'
 import facetAliases from '../facetAliases'
 import loadingScreen from '../loadingScreen'
-export const publicationSql = 'SELECT * FROM syn21868591'
-const sql = publicationSql
+import { publicationSql } from '../resources'
 const unitDescription = 'Publications'
 const rgbIndex = 1
 
@@ -70,7 +69,7 @@ export const publications: HomeExploreConfig = {
       facet: 'theme',
       link: 'Explore/Publications',
       linkText: 'Explore Publications',
-      sql,
+      sql: publicationSql,
     },
   },
   explorePageSynapseObject: {
@@ -78,7 +77,7 @@ export const publications: HomeExploreConfig = {
     props: {
       rgbIndex,
       cardConfiguration: publicationsCardConfiguration,
-      sql,
+      sql: publicationSql,
       shouldDeepLink: true,
       name: 'Publications',
       loadingScreen,

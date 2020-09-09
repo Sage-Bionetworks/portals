@@ -6,63 +6,101 @@ import { grants, grantsDetailPage } from './synapseConfigs/grants'
 import { people } from './synapseConfigs/people'
 import { data } from './synapseConfigs/data'
 import loadingScreen from './loadingScreen'
+import { peopleSql } from './resources'
 
 const routes: GenericRoute[] = [
   {
-    name: 'Home',
-    to: '/',
+    to: '',
     isNested: false,
     synapseConfigArray: [
       {
         name: 'Goals',
-        title: 'Goals',
+        title: 'Portal Goals',
         centerTitle: true,
+        outsideContainerClassName: 'home-spacer',
         props: {
           entityId: 'syn22315959',
         },
       },
       {
-        name: 'UpsetPlot',
+        name: 'Markdown',
+        title: 'About the Portal',
+        centerTitle: true,
+        outsideContainerClassName: 'home-bg-dark home-spacer',
+        className: 'home-container-description',
+        props: {
+          ownerId: 'syn21557271',
+          wikiId: '605319',
+        },
+      },
+      {
+        name: 'Markdown',
         title: 'Featured Data',
+        outsideContainerClassName: '',
+        className: 'home-container-description',
+        centerTitle: true,
+        props: {
+          ownerId: 'syn21557271',
+          wikiId: '605308',
+        },
+      },
+      {
+        name: 'UpsetPlot',
         className: 'whatThePlot',
+        outsideContainerClassName: 'home-spacer',
         centerTitle: true,
         props: {
           sql:
-            'SELECT distinct individualID, assay FROM syn20821313 where individualID is not null',
+            'SELECT unnest(individualID), assay FROM syn20821313 WHERE individualID is not null GROUP BY assay, unnest(individualID)',
           rgbIndex: 0,
           maxBarCount: 20,
-          setName: 'Individuals (#) per Assay',
-          combinationName: 'Individuals (#)',
+          setName: '# Individuals per assay',
+          combinationName: '# Individuals',
           loadingScreen: loadingScreen,
+          summaryLinkText: 'EXPLORE ALL DATA',
+          summaryLink: '/Explore/Data',
         },
       },
       {
         name: 'UserCardListRotate',
         title: 'Our People and Institutions',
+        outsideContainerClassName: 'home-spacer home-bg-dark',
         centerTitle: true,
         props: {
-          sql: 'SELECT * FROM syn22096112 where feature=true',
+          sql: `${peopleSql} where feature=true`,
           rgbIndex: 0,
           count: 3,
+          loadingScreen,
+          summaryLink: 'Explore/People',
+          summaryLinkText: 'EXPLORE ALL PEOPLE',
         },
       },
       {
         name: 'Resources',
-        title: 'Resources',
+        outsideContainerClassName: 'home-spacer',
+        title: 'Related Resources',
         centerTitle: true,
         props: {
           entityId: 'syn22311127',
         },
       },
+      {
+        name: 'Markdown',
+        outsideContainerClassName: '',
+        className: '',
+        props: {
+          ownerId: 'syn21557271',
+          wikiId: '605340',
+        },
+      },
     ],
   },
   {
-    name: 'Explore',
+    to: 'Explore',
     isNested: true,
     routes: [
       {
-        name: 'Studies',
-        to: '/Explore/Studies',
+        to: 'Studies',
         isNested: true,
         synapseConfigArray: [
           {
@@ -76,16 +114,14 @@ const routes: GenericRoute[] = [
         ],
         routes: [
           {
-            name: 'DetailsPage',
-            to: 'Explore/Studies/DetailsPage',
+            to: 'DetailsPage',
             isNested: false,
             synapseConfigArray: studyDetailPage,
           },
         ],
       },
       {
-        name: 'Data',
-        to: '/Explore/Data',
+        to: 'Data',
         isNested: false,
         synapseConfigArray: [
           {
@@ -99,8 +135,7 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        name: 'Grants',
-        to: '/Explore/Grants',
+        to: 'Grants',
         isNested: true,
         synapseConfigArray: [
           {
@@ -114,16 +149,14 @@ const routes: GenericRoute[] = [
         ],
         routes: [
           {
-            name: 'DetailsPage',
-            to: 'Explore/Grants/DetailsPage',
+            to: 'DetailsPage',
             isNested: false,
             synapseConfigArray: grantsDetailPage,
           },
         ],
       },
       {
-        name: 'Publications',
-        to: '/Explore/Publications',
+        to: 'Publications',
         isNested: false,
         synapseConfigArray: [
           {
@@ -137,8 +170,7 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        name: 'People',
-        to: '/Explore/People',
+        to: 'People',
         isNested: false,
         synapseConfigArray: [
           {
@@ -154,9 +186,8 @@ const routes: GenericRoute[] = [
     ],
   },
   {
-    name: 'DataAccess',
     displayName: 'Data Access',
-    to: '/DataAccess',
+    to: 'DataAccess',
     isNested: false,
     synapseConfigArray: [
       {
@@ -169,8 +200,7 @@ const routes: GenericRoute[] = [
     ],
   },
   {
-    name: 'About',
-    to: '/About',
+    to: 'About',
     isNested: false,
     synapseConfigArray: [
       {

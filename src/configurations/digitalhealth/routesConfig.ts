@@ -7,8 +7,7 @@ import { toolsDetailsLandingPage } from './synapseConfigs/tools'
 
 const routes: GenericRoute[] = [
   {
-    name: 'Home',
-    to: '/',
+    to: '',
     isNested: false,
     synapseConfigArray: [
       {
@@ -20,12 +19,11 @@ const routes: GenericRoute[] = [
     ],
   },
   {
-    name: 'Explore',
+    to: 'Explore',
     isNested: true,
     routes: [
       {
-        name: 'Studies',
-        to: '/Explore/Studies',
+        to: 'Studies',
         isNested: true,
         synapseConfigArray: [
           {
@@ -39,16 +37,14 @@ const routes: GenericRoute[] = [
         ],
         routes: [
           {
-            name: 'DetailsPage',
-            to: 'Explore/Studies/DetailsPage',
+            to: 'DetailsPage',
             isNested: false,
             synapseConfigArray: studyDetailPage,
           },
         ],
       },
       {
-        name: 'Projects',
-        to: '/Explore/Projects',
+        to: 'Projects',
         isNested: true,
         synapseConfigArray: [
           {
@@ -62,16 +58,14 @@ const routes: GenericRoute[] = [
         ],
         routes: [
           {
-            name: 'DetailsPage',
-            to: '/Explore/Projects/DetailsPage',
+            to: 'DetailsPage',
             isNested: false,
             synapseConfigArray: projectDetailPage,
           },
         ],
       },
       {
-        name: 'Data',
-        to: '/Explore/Data',
+        to: 'Data',
         isNested: false,
         synapseConfigArray: [
           {
@@ -85,8 +79,7 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        name: 'Tools',
-        to: '/Explore/Tools',
+        to: 'Tools',
         isNested: true,
         synapseConfigArray: [
           {
@@ -100,16 +93,14 @@ const routes: GenericRoute[] = [
         ],
         routes: [
           {
-            name: 'DetailsPage',
-            to: '/Explore/Tools/DetailsPage',
+            to: 'DetailsPage',
             isNested: false,
             synapseConfigArray: toolsDetailsLandingPage,
           },
         ],
       },
       {
-        name: 'Publications',
-        to: '/Explore/Publications',
+        to: 'Publications',
         isNested: false,
         synapseConfigArray: [
           {
@@ -125,8 +116,7 @@ const routes: GenericRoute[] = [
     ],
   },
   {
-    name: 'About',
-    to: '/About',
+    to: 'About',
     isNested: false,
     synapseConfigArray: [
       {

@@ -3,10 +3,9 @@ import { HomeExploreConfig } from 'types/portal-config'
 import { facetAliases } from './commonProps'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import loadingScreen from '../loadingScreen'
+import { publicationsSql } from '../resources'
 
-const sql = 'SELECT * FROM syn16857542'
-export const publicationsSql = sql
-export const newPublicationsSql = `${sql} order by ROW_ID desc limit 3`
+export const newPublicationsSql = `${publicationsSql} order by ROW_ID desc limit 3`
 const type = SynapseConstants.GENERIC_CARD
 const unitDescription = 'Publications'
 const rgbIndex = 0
@@ -48,7 +47,7 @@ const publications: HomeExploreConfig = {
       rgbIndex,
       link: 'Explore/Publications',
       linkText: 'Explore Publications',
-      sql,
+      sql: publicationsSql,
       facet: 'diseaseFocus',
     },
   },
@@ -57,7 +56,7 @@ const publications: HomeExploreConfig = {
     props: {
       rgbIndex,
       loadingScreen,
-      sql,
+      sql: publicationsSql,
       shouldDeepLink: true,
       name: 'Publications',
       cardConfiguration: publicationsCardConfiguration,

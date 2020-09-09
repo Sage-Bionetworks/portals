@@ -13,12 +13,8 @@ import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
 import {
   studyCardConfiguration,
   studiesProgrammaticRouteConfig,
-  studiesSql,
 } from './synapseConfigs/studies'
-import {
-  projectCardConfiguration,
-  projectsSql,
-} from './synapseConfigs/projects'
+import { projectCardConfiguration } from './synapseConfigs/projects'
 import { results } from './synapseConfigs/results'
 import { iconHeaderOptions } from './synapseConfigs/iconOptions'
 import loadingScreen from './loadingScreen'
@@ -26,11 +22,11 @@ import { publicationProgrammatic } from './synapseConfigs/publications'
 import { programCardConfiguration } from './synapseConfigs/programs'
 import experimentalTools from './synapseConfigs/experimental_tools'
 import computationalTools from './synapseConfigs/computational_tools'
+import { projectsSql, studiesSql } from './resources'
 
 const routes: GenericRoute[] = [
   {
-    name: 'Home',
-    to: '/',
+    to: '',
     isNested: false,
     synapseConfigArray: [
       {
@@ -97,13 +93,12 @@ const routes: GenericRoute[] = [
     ],
   },
   {
-    name: 'Explore',
+    to: 'Explore',
     isNested: true,
     routes: [
       {
-        name: 'Programs',
         isNested: true,
-        to: '/Explore/Programs',
+        to: 'Programs',
         synapseConfigArray: [
           {
             name: 'RouteButtonControlWrapper',
@@ -122,9 +117,8 @@ const routes: GenericRoute[] = [
         ],
         routes: [
           {
-            name: 'DetailsPage',
             isNested: false,
-            to: '/Explore/Programs/DetailsPage',
+            to: 'DetailsPage',
             synapseConfigArray: [
               {
                 name: 'CardContainerLogic',
@@ -155,13 +149,11 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        name: 'Projects',
         isNested: true,
-        to: '/Explore/Projects',
+        to: 'Projects',
         routes: [
           {
-            name: 'DetailsPage',
-            to: 'Explore/Projects/DetailsPage',
+            to: 'DetailsPage',
             isNested: false,
             synapseConfigArray: [
               {
@@ -208,9 +200,8 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        name: 'Studies',
         isNested: true,
-        to: '/Explore/Studies',
+        to: 'Studies',
         synapseConfigArray: [
           {
             name: 'RouteButtonControlWrapper',
@@ -223,17 +214,15 @@ const routes: GenericRoute[] = [
         ],
         routes: [
           {
-            name: 'DetailsPage',
-            to: 'Explore/Studies/DetailsPage',
+            to: 'DetailsPage',
             isNested: false,
             synapseConfigArray: studiesProgrammaticRouteConfig,
           },
         ],
       },
       {
-        name: 'Data',
         isNested: false,
-        to: '/Explore/Data',
+        to: 'Data',
         synapseConfigArray: [
           {
             name: 'RouteButtonControlWrapper',
@@ -246,9 +235,8 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        name: 'Publications',
         isNested: false,
-        to: '/Explore/Publications',
+        to: 'Publications',
         synapseConfigArray: [
           {
             name: 'RouteButtonControlWrapper',
@@ -261,9 +249,8 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        name: 'People',
         isNested: false,
-        to: '/Explore/People',
+        to: 'People',
         synapseConfigArray: [
           {
             name: 'RouteButtonControlWrapper',
@@ -276,9 +263,8 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        name: 'Experimental Tools',
         isNested: false,
-        to: '/Explore/Experimental Tools',
+        to: 'Experimental Tools',
         synapseConfigArray: [
           {
             name: 'RouteButtonControlWrapper',
@@ -291,9 +277,8 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        name: 'Computational Tools',
         isNested: false,
-        to: '/Explore/Computational Tools',
+        to: 'Computational Tools',
         synapseConfigArray: [
           {
             name: 'RouteButtonControlWrapper',
@@ -306,9 +291,8 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        name: 'Results',
         isNested: false,
-        to: '/Explore/Results',
+        to: 'Results',
         synapseConfigArray: [
           {
             name: 'RouteButtonControlWrapper',
@@ -323,15 +307,27 @@ const routes: GenericRoute[] = [
     ],
   },
   {
-    name: 'DataAccess',
+    isNested: false,
+    to: 'Analytical Workspace',
+    synapseConfigArray: [
+      {
+        name: 'Markdown',
+        props: {
+          ownerId: 'syn22300949',
+          wikiId: '604940',
+        },
+      },
+    ],
+  },
+  {
+    to: 'DataAccess',
     displayName: 'Data Access',
     isNested: true,
     routes: [
       {
-        name: 'Instructions',
         displayName: 'Getting Access to Data',
         isNested: false,
-        to: '/DataAccess/Instructions',
+        to: 'Instructions',
         synapseConfigArray: [
           {
             name: 'Markdown',
@@ -344,8 +340,7 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        name: 'DataUseCertificates',
-        to: '/DataAccess/DataUseCertificates',
+        to: 'DataUseCertificates',
         displayName: 'Data Use Certificates',
         isNested: false,
         synapseConfigArray: [
@@ -360,10 +355,9 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        name: 'AcknowledgementStatements',
         displayName: 'Acknowledging Data Use',
         isNested: false,
-        to: '/DataAccess/AcknowledgementStatements',
+        to: 'AcknowledgementStatements',
         synapseConfigArray: [
           {
             name: 'Markdown',
@@ -375,13 +369,27 @@ const routes: GenericRoute[] = [
           },
         ],
       },
+      {
+        displayName: 'Data Use Proposals',
+        isNested: false,
+        to: 'DataUseProposals',
+        synapseConfigArray: [
+          {
+            name: 'Markdown',
+            title: 'DATA USE PROPOSALS',
+            props: {
+              ownerId: 'syn2580853',
+              wikiId: '409843',
+            },
+          },
+        ],
+      },
     ],
   },
   // Uncomment to expose Contribute route (once research team is monitoring submissions)
   {
-    name: 'Contribute',
     isNested: true,
-    to: '/Contribute',
+    to: 'Contribute',
     synapseConfigArray: [
       {
         name: 'Markdown',
@@ -404,9 +412,8 @@ const routes: GenericRoute[] = [
     routes: [
       {
         isNested: false,
-        to: '/Contribute/FormSubmission',
+        to: 'FormSubmission',
         hideRouteFromNavbar: true,
-        name: 'FormSubmission',
         synapseConfigArray: [
           {
             name: 'Markdown',
@@ -432,9 +439,9 @@ const routes: GenericRoute[] = [
     ],
   },
   {
-    name: 'About',
     isNested: false,
-    to: '/About',
+    to: 'About',
+    hideRouteFromNavbar: true,
     synapseConfigArray: [
       {
         name: 'Markdown',
@@ -447,10 +454,44 @@ const routes: GenericRoute[] = [
     ],
   },
   {
-    name: 'News',
-    to: '/News',
+    to: 'News',
     isNested: false,
     synapseConfigArray: news,
+  },
+  {
+    to: 'Help',
+    isNested: true,
+    synapseConfigArray: news,
+    routes: [
+      {
+        isNested: false,
+        to: 'FAQ',
+        synapseConfigArray: [
+          {
+            name: 'Markdown',
+            title: 'FAQ',
+            props: {
+              ownerId: 'syn12666371',
+              wikiId: '605050',
+            },
+          },
+        ],
+      },
+      {
+        isNested: false,
+        displayName: 'Forum',
+        to: undefined,
+        link: 'https://www.synapse.org/#!Synapse:syn2580853/discussion/default',
+        synapseConfigArray: [],
+      },
+      {
+        isNested: false,
+        displayName: 'ContactUs',
+        to: undefined,
+        link: 'mailto:ampadportal@sagebionetworks.org',
+        synapseConfigArray: [],
+      },
+    ],
   },
 ]
 
