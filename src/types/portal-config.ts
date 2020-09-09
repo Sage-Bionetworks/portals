@@ -247,7 +247,6 @@ export type HomeExploreConfig = {
 interface RouteOptions {
   displayName?: string
   isNested: boolean
-  programmaticRouteConfig?: SynapseConfigArray
   hideRouteFromNavbar?: boolean
   to: string | undefined
   link?: string

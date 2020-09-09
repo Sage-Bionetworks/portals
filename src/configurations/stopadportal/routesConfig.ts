@@ -17,7 +17,7 @@ const routes: GenericRoute[] = [
   },
   {
     to: 'Apply',
-    isNested: false,
+    isNested: true,
     synapseConfigArray: [
       {
         name: 'Markdown',
@@ -29,24 +29,31 @@ const routes: GenericRoute[] = [
       {
         name: 'SynapseFormSubmissionsGrid',
         props: {
-          pathpart: '/Apply',
+          pathpart: '/Apply/FormSubmission',
           formGroupId: '9',
           itemNoun: 'Compound',
           formClass: 'drug-upload-tool',
         },
       },
     ],
-    programmaticRouteConfig: [
+    routes: [
       {
-        name: 'SynapseFormWrapper',
-        props: {
-          formSchemaEntityId: 'syn20680102',
-          fileNamePath: 'naming.compound_name',
-          formUiSchemaEntityId: 'syn20693568',
-          formNavSchemaEntityId: 'syn20680027',
-          formTitle: 'Your Submission',
-          formClass: 'drug-upload-tool',
-        },
+        isNested: false,
+        hideRouteFromNavbar: true,
+        to: 'FormSubmission',
+        synapseConfigArray: [
+          {
+            name: 'SynapseFormWrapper',
+            props: {
+              formSchemaEntityId: 'syn20680102',
+              fileNamePath: 'naming.compound_name',
+              formUiSchemaEntityId: 'syn20693568',
+              formNavSchemaEntityId: 'syn20680027',
+              formTitle: 'Your Submission',
+              formClass: 'drug-upload-tool',
+            },
+          },
+        ],
       },
     ],
   },
