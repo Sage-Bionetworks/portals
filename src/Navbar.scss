@@ -1,5 +1,5 @@
-// Import the global variables
-@import 'node_modules/synapse-react-client/dist/style/abstracts/variables';
+// Import the theme css
+@import 'config/style/_overides.scss';
 
 .crawler-link {
   position: absolute;
