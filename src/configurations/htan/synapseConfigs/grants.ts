@@ -8,6 +8,7 @@ import {
 import { Project } from 'synapse-react-client/dist/assets/themed_icons/Project'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import { grantsSql } from '../resources'
+const unitDescription = 'Grants'
 const rgbIndex = 3
 
 export const grantsSchema: GenericCardSchema = {
@@ -46,6 +47,7 @@ export const grants: HomeExploreConfig = {
   homePageSynapseObject: {
     name: 'StandaloneQueryWrapper',
     props: {
+      unitDescription,
       loadingScreen,
       rgbIndex: 3,
       facet: 'grantType',
@@ -64,7 +66,6 @@ export const grants: HomeExploreConfig = {
       name: 'Grants',
       loadingScreen,
       facetsToPlot: ['consortium', 'grantType'],
-      // unitDescription,
       searchConfiguration: {
         searchable: [
           {
