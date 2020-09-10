@@ -35,10 +35,8 @@ export const studyCardConfiguration: CardConfiguration = {
       isMarkdown: true,
     },
     {
-      isMarkdown: false,
+      isMarkdown: true,
       matchColumnName: 'project',
-      URLColumnName: 'id',
-      baseURL: 'Explore/Projects/DetailsPage',
     },
   ],
   secondaryLabelLimit: 4,
