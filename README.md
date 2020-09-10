@@ -46,6 +46,8 @@ $ ./linkConfig <portal-name>
 # can continue to run as you make changes.
 ```
 
+To unlink synapse react-client run `rm -r node_modules` and `yarn install`. You can also manually unlink the packages by using [yarn unlink](https://classic.yarnpkg.com/en/docs/cli/unlink/).
+
 # Build/Deploy Process
 
 Note - Jenkins is accessible only through VPN, reach out to IT for setting this up.
