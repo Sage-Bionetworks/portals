@@ -120,12 +120,12 @@ export const details: DetailsPageProps = {
     {
       name: 'StandaloneQueryWrapper',
       props: {
-        sql: `SELECT id, dataSubtype, dataType, assay FROM ${parseEntityIdFromSqlStatement(
+        sql: `SELECT id, metadataType, dataType, assay FROM ${parseEntityIdFromSqlStatement(
           dataSql,
         )} WHERE "dataSubtype" = 'metadata'`,
         facetAliases: {
           id: 'File Name',
-          dataSubtype: 'Metadata Type',
+          metadataType: 'Metadata Type',
           dataType: 'Data Type',
           assay: 'Assay',
         },
