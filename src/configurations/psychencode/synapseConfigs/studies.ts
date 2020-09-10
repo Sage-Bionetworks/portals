@@ -161,7 +161,6 @@ export const details: DetailsPageProps = {
       props: {
         ...studyCardConfiguration,
         sql: studiesSql,
-        sqlOperator: 'HAS',
       },
       columnName: 'relatedStudies',
       tableSqlKeys: ['study'],
