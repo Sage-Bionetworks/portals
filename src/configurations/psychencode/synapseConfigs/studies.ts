@@ -4,9 +4,9 @@ import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericC
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import { SynapseConfig, SynapseConfigArray } from 'types/portal-config'
 import { DetailsPageProps } from 'types/portal-util-types'
-import { studiesSql, dataSql } from '../resources'
+import { studiesSql, dataSql, metadataSql } from '../resources'
 import {
-  SQLOperator,
+  SQLOperator
 } from 'synapse-react-client/dist/utils/functions/sqlFunctions'
 import { publicationDetailPageProps } from './publications'
 const rgbIndex = 1
@@ -119,7 +119,7 @@ export const details: DetailsPageProps = {
     {
       name: 'StandaloneQueryWrapper',
       props: {
-        sql: "SELECT `dataType`, `assay`, COUNT(`id`) AS `Files` FROM syn20821313 WHERE (`dataSubtype` <> 'metadata' OR `dataSubtype` IS NULL) GROUP BY 1, 2 ORDER BY 3 DESC",
+        sql: metadataSql,
         facetAliases: {
           id: 'File Name',
           dataSubtype: 'Metadata Type',
@@ -128,7 +128,7 @@ export const details: DetailsPageProps = {
         },
         rgbIndex,
         title: 'Metadata',
-        // sqlOperator: 'HAS',
+        sqlOperator: 'HAS',
       },
       resolveSynId: {
         value: true,
@@ -143,7 +143,7 @@ export const details: DetailsPageProps = {
         sql: dataSql,
         rgbIndex,
         title: 'Data',
-        sqlOperator: 'HAS',
+        // sqlOperator: 'HAS',
       },
       resolveSynId: {
         value: true,
