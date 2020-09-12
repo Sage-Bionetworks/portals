@@ -143,7 +143,7 @@ export const details: DetailsPageProps = {
         sql: dataSql,
         rgbIndex,
         title: 'Data',
-        // sqlOperator: 'HAS',
+        sqlOperator: 'HAS',
       },
       resolveSynId: {
         value: true,
