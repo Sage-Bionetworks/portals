@@ -122,7 +122,7 @@ export const details: DetailsPageProps = {
         sql: metadataSql,
         facetAliases: {
           id: 'File Name',
-          dataSubtype: 'Metadata Type',
+          metadataType: 'Metadata Type',
           dataType: 'Data Type',
           assay: 'Assay',
         },
