@@ -8,7 +8,7 @@ import {
 } from './uncategorized'
 
 const rgbIndex = 0
-export const dataSql = `SELECT scheduledLabDrawOn, ${baseDataSqlColumns} ${baseDataSqlFrom} ${baseDataSqlWhere} 'Scheduled'`
+export const dataSql = `SELECT scheduledLabDrawOn, ${baseDataSqlColumns}, noShow ${baseDataSqlFrom} ${baseDataSqlWhere} 'Scheduled'`
 const sql = dataSql
 
 export const scheduled: SynapseConfig = {
