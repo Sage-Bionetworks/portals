@@ -9,7 +9,7 @@
 
 .nav {
   .mb-user-extra,
-  .nav-mobile-menu-btn{
+  .nav-mobile-menu-btn {
     display: none;
   }
 }
@@ -28,7 +28,6 @@
   }
   .nav {
     display: grid;
-    //grid-template-columns: auto 200px;
     grid-template-rows: auto;
     grid-template-areas:
       "header-logo mobile-topnav-btn"
