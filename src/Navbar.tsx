@@ -158,8 +158,8 @@ class Navbar extends React.Component<any, State> {
             <span>&#10005;</span>
           </div>
           <div className="nav-link-container">
-            <div className="center-content top-nav-button nav-button-signin">
-              {userProfile && isSynapseSubdomainOrLocal && (  // mobile sign out
+            {userProfile && isSynapseSubdomainOrLocal && (  // mobile sign out
+              <div className="center-content top-nav-button nav-button-signin">
                 <button
                   id="signin-button"
                   className="SRC-primary-text-color-background signout-button-mb"
@@ -168,31 +168,31 @@ class Navbar extends React.Component<any, State> {
                 >
                   SIGN OUT
                 </button>
-              )}
-              {!userProfile && isSynapseSubdomainOrLocal && (  // desktop sign in
-                <>
-                  <button
-                    id="signin-button"
-                    className="SRC-primary-text-color-background"
-                    // @ts-ignore
-                    onClick={onSignIn}
-                  >
-                    SIGN&nbsp;IN
-                  </button>
-                  <Dialog
-                    // @ts-ignore
-                    onClose={handleCloseLoginDialog}
-                    open={showLoginDialog}
-                  >
-                    <SynapseComponents.Login
-                      sessionCallback={() => getSession()}
-                      theme={'light'}
-                      icon={true}
-                    />
-                  </Dialog>
-                </>
-              )}
-            </div>
+              </div>
+            )}
+            {!userProfile && isSynapseSubdomainOrLocal && (  // desktop sign in
+              <div className="center-content top-nav-button nav-button-signin">
+                <button
+                  id="signin-button"
+                  className="SRC-primary-text-color-background"
+                  // @ts-ignore
+                  onClick={onSignIn}
+                >
+                  SIGN&nbsp;IN
+                </button>
+                <Dialog
+                  // @ts-ignore
+                  onClose={handleCloseLoginDialog}
+                  open={showLoginDialog}
+                >
+                  <SynapseComponents.Login
+                    sessionCallback={() => getSession()}
+                    theme={'light'}
+                    icon={true}
+                  />
+                </Dialog>
+              </div>
+            )}
 
             {userProfile && isSynapseSubdomainOrLocal && (  // desktop version, show dropdown
               <>
@@ -231,7 +231,7 @@ class Navbar extends React.Component<any, State> {
                 </Dropdown>
 
                 <a className="user-loggedIn-mb"  // mobile version, shows the user icon and name, no dropdown
-                   href={`https://www.synapse.org/#!Profile:${userProfile.ownerId}/projects/all`}
+                  href={`https://www.synapse.org/#!Profile:${userProfile.ownerId}/projects/all`}
                 >
                   <NavUserLink userProfile={ userProfile } />
                 </a>
