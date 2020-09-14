@@ -3,13 +3,11 @@ import routesConfig from './config/routesConfig'
 import logoHeaderConfig from './config/logoHeaderConfig'
 import Dialog from '@material-ui/core/Dialog'
 import Dropdown from 'react-bootstrap/Dropdown'
-// import Drawer from "@material-ui/core/Drawer";
-import { SynapseComponents, SynapseConstants } from 'synapse-react-client'
-import UserCard from 'synapse-react-client/dist/containers/UserCard'
+import { SynapseComponents } from 'synapse-react-client'
 import { TokenContext, SignInProps } from './AppInitializer'
-import SvgIcon from '@material-ui/core/SvgIcon'
 import './Navbar.scss'
 import NavLink from 'portal-components/NavLink'
+import NavUserLink from "./portal-components/NavUserLink";
 
 type SynapseSettingLink = {
   text: string
@@ -160,83 +158,84 @@ class Navbar extends React.Component<any, State> {
             <span>&#10005;</span>
           </div>
           <div className="nav-link-container">
-            {!userProfile && isSynapseSubdomainOrLocal && (
-              <div className="center-content top-nav-button nav-button-signin">
+            <div className="center-content top-nav-button nav-button-signin">
+              {userProfile && isSynapseSubdomainOrLocal && (  // mobile sign out
                 <button
                   id="signin-button"
-                  className="SRC-primary-text-color-background"
+                  className="SRC-primary-text-color-background signout-button-mb"
                   // @ts-ignore
-                  onClick={onSignIn}
+                  onClick={() => resetSession()}
                 >
-                  SIGN&nbsp;IN
+                  SIGN OUT
                 </button>
-                <Dialog
-                  // @ts-ignore
-                  onClose={handleCloseLoginDialog}
-                  open={showLoginDialog}
-                >
-                  <SynapseComponents.Login
-                    sessionCallback={() => getSession()}
-                    theme={'light'}
-                    icon={true}
-                  />
-                </Dialog>
-              </div>
-            )}
-            {userProfile && isSynapseSubdomainOrLocal && (
-              <Dropdown className="user-loggedIn">
-                <Dropdown.Toggle variant="light" id="user-menu-button">
-                  <UserCard
-                    userProfile={userProfile}
-                    size={SynapseConstants.SMALL_USER_CARD}
-                    preSignedURL={userProfile.clientPreSignedURL}
-                    hideText={true}
-                    link="javascript:void(0)"
-                  />
-                  <SvgIcon className="arrow-down">
-                    {
-                      // Material expand more svg https://material.io/tools/icons/?icon=expand_more&style=baseline
-                    }
-                    <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
-                  </SvgIcon>
-                  <div className="mb-user-extra">
-                    <div className="user-fullname">
-                      {userProfile.firstName} {userProfile.lastName}
-                    </div>
-                    <div>
-                      <u>View Account</u>
-                    </div>
-                  </div>
-                </Dropdown.Toggle>
-                <Dropdown.Menu className="nav-user-menu portal-nav-menu">
-                  <Dropdown.Item className="SRC-primary-background-color-hover SRC-nested-color border-bottom-1">
-                    Signed in as&nbsp;<strong>{userProfile.userName}</strong>
-                  </Dropdown.Item>
-                  {this.synapseQuickLinks.map((el) => {
-                    const borderBottomClass = el.hasBorder
-                      ? 'border-bottom-1'
-                      : ''
-                    return (
-                      <Dropdown.Item
-                        key={el.text}
-                        className={`SRC-primary-background-color-hover SRC-nested-color ${borderBottomClass}`}
-                        href={`https://www.synapse.org/#!Profile:${
-                          userProfile.ownerId
-                        }${el.settingSubPath ? `/${el.settingSubPath}` : ''}`}
-                      >
-                        {el.text}
-                      </Dropdown.Item>
-                    )
-                  })}
-                  <Dropdown.Item
-                    className="SRC-primary-background-color-hover SRC-nested-color"
+              )}
+              {!userProfile && isSynapseSubdomainOrLocal && (  // desktop sign in
+                <>
+                  <button
+                    id="signin-button"
+                    className="SRC-primary-text-color-background"
                     // @ts-ignore
-                    onClick={() => resetSession()}
+                    onClick={onSignIn}
                   >
-                    Sign Out
-                  </Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
+                    SIGN&nbsp;IN
+                  </button>
+                  <Dialog
+                    // @ts-ignore
+                    onClose={handleCloseLoginDialog}
+                    open={showLoginDialog}
+                  >
+                    <SynapseComponents.Login
+                      sessionCallback={() => getSession()}
+                      theme={'light'}
+                      icon={true}
+                    />
+                  </Dialog>
+                </>
+              )}
+            </div>
+
+            {userProfile && isSynapseSubdomainOrLocal && (  // desktop version, show dropdown
+              <>
+                <Dropdown className="user-loggedIn">
+                  <Dropdown.Toggle variant="light" id="user-menu-button">
+                    <NavUserLink userProfile={ userProfile } />
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu className="nav-user-menu portal-nav-menu">
+                    <Dropdown.Item className="SRC-primary-background-color-hover SRC-nested-color border-bottom-1">
+                      Signed in as&nbsp;<strong>{userProfile.userName}</strong>
+                    </Dropdown.Item>
+                    {this.synapseQuickLinks.map((el) => {
+                      const borderBottomClass = el.hasBorder
+                        ? 'border-bottom-1'
+                        : ''
+                      return (
+                        <Dropdown.Item
+                          key={el.text}
+                          className={`SRC-primary-background-color-hover SRC-nested-color ${borderBottomClass}`}
+                          href={`https://www.synapse.org/#!Profile:${
+                            userProfile.ownerId
+                          }${el.settingSubPath ? `/${el.settingSubPath}` : ''}`}
+                        >
+                          {el.text}
+                        </Dropdown.Item>
+                      )
+                    })}
+                    <Dropdown.Item  // desktop sign out
+                      className="SRC-primary-background-color-hover SRC-nested-color"
+                      // @ts-ignore
+                      onClick={() => resetSession()}
+                    >
+                      Sign Out
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+
+                <a className="user-loggedIn-mb"  // mobile version, shows the user icon and name, no dropdown
+                   href={`https://www.synapse.org/#!Profile:${userProfile.ownerId}/projects/all`}
+                >
+                  <NavUserLink userProfile={ userProfile } />
+                </a>
+              </>
             )}
             <SynapseComponents.ShowDownload token={token} />
             {
