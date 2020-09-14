@@ -14,7 +14,7 @@ export const baseDataSqlColumns = `symptom,
     testType,
     feverHighest, 
     otherSpecify, 
-    howWasItTreated, 
+    howWasItTreated,     
     gender, 
     age, 
     ethnicity, 
@@ -28,6 +28,7 @@ export const baseDataSqlColumns = `symptom,
     recordId,
     testLocation,
     dataGroups,
+    how_heard,
     allSurveysComplete`
 
 export const baseDataSqlFrom = ` FROM syn22154087 `

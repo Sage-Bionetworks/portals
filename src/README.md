@@ -20,7 +20,7 @@ Structure of the codebase
 └── types                 # types used throughout the project
 </pre>
 
-# Configuartion Example
+# Configuration Example
 
 For full code see [test-configuration](https://github.com/portals/app-template/src/test-configuration)
 

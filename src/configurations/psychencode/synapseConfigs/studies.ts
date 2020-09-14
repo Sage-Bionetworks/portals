@@ -4,10 +4,9 @@ import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericC
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import { SynapseConfig, SynapseConfigArray } from 'types/portal-config'
 import { DetailsPageProps } from 'types/portal-util-types'
-import { studiesSql, dataSql } from '../resources'
+import { studiesSql, dataSql, metadataSql } from '../resources'
 import {
-  parseEntityIdFromSqlStatement,
-  SQLOperator,
+  SQLOperator
 } from 'synapse-react-client/dist/utils/functions/sqlFunctions'
 import { publicationDetailPageProps } from './publications'
 const rgbIndex = 1
@@ -120,12 +119,10 @@ export const details: DetailsPageProps = {
     {
       name: 'StandaloneQueryWrapper',
       props: {
-        sql: `SELECT id, dataSubtype, dataType, assay FROM ${parseEntityIdFromSqlStatement(
-          dataSql,
-        )} WHERE "dataSubtype" = 'metadata'`,
+        sql: metadataSql,
         facetAliases: {
           id: 'File Name',
-          dataSubtype: 'Metadata Type',
+          metadataType: 'Metadata Type',
           dataType: 'Data Type',
           assay: 'Assay',
         },
