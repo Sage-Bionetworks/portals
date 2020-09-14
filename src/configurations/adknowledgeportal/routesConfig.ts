@@ -486,7 +486,7 @@ const routes: GenericRoute[] = [
       },
       {
         isNested: false,
-        displayName: 'ContactUs',
+        displayName: 'Contact Us',
         to: undefined,
         link: 'mailto:ampadportal@sagebionetworks.org',
         synapseConfigArray: [],
