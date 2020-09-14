@@ -204,6 +204,7 @@ const routes: GenericRoute[] = [
     synapseConfigArray: [
       {
         name: 'Markdown',
+        title: 'About',
         props: {
           ownerId: 'syn4921369',
           wikiId: '235539',
