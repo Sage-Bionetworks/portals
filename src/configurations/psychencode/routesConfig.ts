@@ -5,7 +5,6 @@ import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
 import { grants, grantsDetailPage } from './synapseConfigs/grants'
 import { people } from './synapseConfigs/people'
 import { data } from './synapseConfigs/data'
-import loadingScreen from './loadingScreen'
 import { peopleSql } from './resources'
 
 const routes: GenericRoute[] = [
@@ -56,7 +55,6 @@ const routes: GenericRoute[] = [
           maxBarCount: 20,
           setName: '# Individuals per assay',
           combinationName: '# Individuals',
-          loadingScreen: loadingScreen,
           summaryLinkText: 'EXPLORE ALL DATA',
           summaryLink: '/Explore/Data',
         },
@@ -69,7 +67,6 @@ const routes: GenericRoute[] = [
         props: {
           sql: `${peopleSql} where feature=true`,
           count: 3,
-          loadingScreen,
           summaryLink: 'Explore/People',
           summaryLinkText: 'EXPLORE ALL PEOPLE',
         },

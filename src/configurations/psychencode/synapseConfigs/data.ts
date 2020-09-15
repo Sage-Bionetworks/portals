@@ -1,5 +1,5 @@
 import { SynapseConfig } from 'types/portal-config'
-import loadingScreen from '../loadingScreen'
+
 import { dataSql } from '../resources'
 
 export const dataEntityId = 'syn20821313'
@@ -27,7 +27,6 @@ export const data: SynapseConfig = {
       ],
     },
     visibleColumnCount: 10,
-    loadingScreen,
     shouldDeepLink: true,
     name: 'Data',
     facetAliases,

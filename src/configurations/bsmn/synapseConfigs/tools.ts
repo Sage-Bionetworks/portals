@@ -1,6 +1,5 @@
 import { HomeExploreConfig } from 'types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
-import loadingScreen from '../loadingScreen'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import { toolsSql } from '../resources'
 
@@ -10,7 +9,6 @@ const facet = 'Project'
 
 export const toolCardConfiguration: CardConfiguration = {
   type: SynapseConstants.GENERIC_CARD,
-  loadingScreen,
   genericCardSchema: {
     type: SynapseConstants.COMPUTATIONAL,
     title: 'title',
@@ -33,7 +31,6 @@ const tools: HomeExploreConfig = {
       unitDescription,
       rgbIndex,
       facet,
-      loadingScreen,
       link: 'Explore/Tools',
       linkText: 'Explore Tools',
       sql: toolsSql,

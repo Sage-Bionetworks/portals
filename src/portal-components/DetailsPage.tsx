@@ -14,13 +14,14 @@ import {
   ReferenceList,
   EntityColumnType,
 } from 'synapse-react-client/dist/utils/synapseTypes/'
-import loadingScreen from 'test-configuration/loadingScreen'
 import { SynapseConfig } from 'types/portal-config'
 import { DetailsPageProps, RowSynapseConfig } from 'types/portal-util-types'
 import './DetailsPage.scss'
 import injectPropsIntoConfig from './injectPropsIntoConfig'
 import { cloneDeep } from 'lodash'
 import { ExternalFileHandleLink } from 'synapse-react-client/dist/containers/ExternalFileHandleLink'
+import { BarLoader } from 'react-spinners'
+
 const pluralize = require('pluralize')
 
 type State = {
@@ -241,7 +242,7 @@ export default class DetailsPage extends React.Component<
     }
     const synapseConfigContent = (
       <>
-        {isLoading && loadingScreen}
+        {isLoading && <BarLoader color="#878787" loading={true} height={5}/>}
         {!isLoading && this.renderSynapseConfigArray()}
       </>
     )

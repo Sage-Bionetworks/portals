@@ -1,6 +1,5 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from 'types/portal-config'
-import loadingScreen from '../loadingScreen'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import facetAliases from '../facetAliases'
@@ -59,7 +58,6 @@ export const datasets: HomeExploreConfig = {
     name: 'StandaloneQueryWrapper',
     props: {
       unitDescription,
-      loadingScreen,
       rgbIndex: 0,
       facet: 'tumorType',
       link: 'Explore/Datasets',
@@ -75,7 +73,6 @@ export const datasets: HomeExploreConfig = {
       shouldDeepLink: true,
       name: 'Datasets',
       sql: datasetsSql,
-      loadingScreen,
       facetAliases,
       searchConfiguration: {
         searchable: [

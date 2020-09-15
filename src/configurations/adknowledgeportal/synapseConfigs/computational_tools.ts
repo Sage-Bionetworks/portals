@@ -1,5 +1,4 @@
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
-import loadingScreen from '../loadingScreen'
 import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from 'types/portal-config'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
@@ -16,7 +15,6 @@ const computationalSchema: GenericCardSchema = {
 
 const cardConfiguration: CardConfiguration = {
   type: SynapseConstants.GENERIC_CARD,
-  loadingScreen,
   genericCardSchema: computationalSchema,
 }
 
@@ -29,7 +27,6 @@ const computationalTools: HomeExploreConfig = {
     props: {
       unitDescription,
       rgbIndex,
-      loadingScreen,
       link: 'Explore/Computational Tools',
       linkText: 'Explore Computational Tools',
       facet: 'softwareType',

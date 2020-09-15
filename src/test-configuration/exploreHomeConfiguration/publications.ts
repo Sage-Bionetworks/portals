@@ -1,5 +1,5 @@
 import { SynapseConstants } from 'synapse-react-client'
-import loadingScreen from '../loadingScreen'
+
 import { HomeExploreConfig } from 'types/portal-config'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 
@@ -30,8 +30,7 @@ export const publications: HomeExploreConfig = {
     props: {
       unitDescription,
       stackedBarChartConfiguration: {
-        loadingScreen,
-      },
+        },
       name: 'Publications',
       cardConfiguration: {
         type: SynapseConstants.GENERIC_CARD,

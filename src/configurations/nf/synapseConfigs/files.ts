@@ -1,5 +1,5 @@
 import { HomeExploreConfig } from 'types/portal-config'
-import loadingScreen from '../loadingScreen'
+
 import { facetAliases } from './commonProps'
 import { filesSql } from '../resources'
 
@@ -13,7 +13,6 @@ const files: HomeExploreConfig = {
     props: {
       rgbIndex,
       unitDescription,
-      loadingScreen,
       link: 'Explore/Files',
       linkText: 'Explore Files',
       sql: "SELECT * FROM syn16858331 WHERE resourceType = 'experimentalData'",
@@ -28,7 +27,6 @@ const files: HomeExploreConfig = {
       name: 'Files',
       sql: filesSql,
       visibleColumnCount,
-      loadingScreen,
       tableConfiguration: {
         showAccessColumn: true,
       },

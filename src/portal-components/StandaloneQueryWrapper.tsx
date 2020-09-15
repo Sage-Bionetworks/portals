@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { SynapseComponents, SynapseConstants } from 'synapse-react-client'
-import loadingScreen from '../config/loadingScreen'
 import { StackedBarChartProps } from 'synapse-react-client/dist/containers/StackedBarChart'
 import { SynapseTableProps } from 'synapse-react-client/dist/containers/table/SynapseTable'
 import { cloneDeep } from 'lodash'
@@ -86,7 +85,6 @@ const StandaloneQueryWrapper: React.FunctionComponent<StandaloneQueryWrapperProp
     >
       {link && linkText ? (
         <SynapseComponents.StackedBarChart
-          loadingScreen={loadingScreen}
           link={link}
           linkText={linkText}
         />
@@ -95,7 +93,6 @@ const StandaloneQueryWrapper: React.FunctionComponent<StandaloneQueryWrapperProp
       )}
       {title ? (
         <SynapseComponents.SynapseTable
-          loadingScreen={loadingScreen}
           enableLeftFacetFilter={enableLeftFacetFilter}
           showAccessColumn={showAccessColumn}
           title={title}

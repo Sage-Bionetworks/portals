@@ -3,7 +3,6 @@ import { publications, files, datasets, grants, tools } from './synapseConfigs'
 import { projectCardConfiguration } from './synapseConfigs/projects'
 import { datasetCardConfiguration } from './synapseConfigs/datasets'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
-import loadingScreen from './loadingScreen'
 import { toolsConfiguration } from './synapseConfigs/tools'
 import DatasetSvg from './style/Dataset.svg'
 import { publicationsCardConfiguration } from './synapseConfigs/publications'
@@ -189,7 +188,6 @@ const routes: GenericRoute[] = [
                       tableSqlKeys: ['grantName'],
                       props: {
                         sqlOperator: 'LIKE',
-                        loadingScreen,
                         sql: `${projectsSql} where grantType LIKE '%U54%'`,
                         ...projectCardConfiguration,
                       },
@@ -352,7 +350,6 @@ const routes: GenericRoute[] = [
                       tableSqlKeys: ['datasets'],
                       props: {
                         sql: filesSql,
-                        loadingScreen,
                         sqlOperator: '=',
                         rgbIndex: 0,
                         title: 'Dataset Files',

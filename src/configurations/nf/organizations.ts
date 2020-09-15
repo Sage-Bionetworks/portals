@@ -4,7 +4,6 @@ import { SynapseConfig } from 'types/portal-config'
 import { facetAliases } from './synapseConfigs/commonProps'
 import { publicationsCardConfiguration } from './synapseConfigs/publications'
 import { studyCardConfiguration } from './synapseConfigs/studies'
-import loadingScreen from './loadingScreen'
 
 const studiesSql = `SELECT * FROM syn16787123`
 const datasetsSql = `SELECT * FROM syn16859580`
@@ -17,8 +16,7 @@ export const organizationDetailsPageConfig: DetailsPageProps = {
     {
       name: 'CardContainerLogic',
       props: {
-        loadingScreen,
-        sql: studiesSql,
+          sql: studiesSql,
         ...studyCardConfiguration,
       },
       title: 'Funded Studies',
@@ -28,8 +26,7 @@ export const organizationDetailsPageConfig: DetailsPageProps = {
     {
       name: 'CardContainerLogic',
       props: {
-        loadingScreen,
-        sql: datasetsSql,
+          sql: datasetsSql,
         type: SynapseConstants.DATASET,
       },
       columnName: 'fundingAgency',
@@ -52,8 +49,7 @@ export const organizationDetailsPageConfig: DetailsPageProps = {
     {
       name: 'CardContainerLogic',
       props: {
-        loadingScreen,
-        sql: publicationsSql,
+          sql: publicationsSql,
         ...publicationsCardConfiguration,
         sqlOperator: 'LIKE',
       },

@@ -1,7 +1,6 @@
 import { HomeExploreConfig, SynapseConfig } from 'types/portal-config'
 import { DetailsPageProps } from 'types/portal-util-types'
 import { SynapseConstants } from 'synapse-react-client'
-import loadingScreen from '../loadingScreen'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import studyHeaderSvg from '../style/study-header.svg'
 import { studiesSql } from '../resources'
@@ -12,7 +11,6 @@ const facet = 'Species'
 export const studyCardConfiguration: CardConfiguration = {
   type: SynapseConstants.GENERIC_CARD,
   secondaryLabelLimit: 4,
-  loadingScreen,
   titleLinkConfig: {
     isMarkdown: false,
     baseURL: 'Explore/Studies/DetailsPage',
@@ -54,7 +52,6 @@ const studies: HomeExploreConfig = {
     props: {
       unitDescription,
       rgbIndex,
-      loadingScreen,
       facet,
       link: 'Explore/Studies',
       linkText: 'Explore Studies',
@@ -66,7 +63,6 @@ const studies: HomeExploreConfig = {
     props: {
       rgbIndex,
       facetAliases,
-      loadingScreen,
       sql: studiesSql,
       name: 'Studies',
       shouldDeepLink: true,
@@ -146,7 +142,6 @@ export const studiesDetailsPageProps: DetailsPageProps = {
       props: {
         sql:
           "SELECT id, metadataType, dataType, assay FROM syn11346063 WHERE `dataSubtype` = 'metadata'",
-        loadingScreen,
         facetAliases,
         rgbIndex,
         unitDescription: 'Files',
@@ -164,7 +159,6 @@ export const studiesDetailsPageProps: DetailsPageProps = {
       props: {
         sql:
           "SELECT `resourceType`,`dataType`, `assay`, COUNT(`id`) AS `Files` FROM syn11346063 WHERE  (`dataSubtype` <> 'metadata' OR `dataSubtype` IS NULL) GROUP BY 1, 2,3 ORDER BY 4 DESC",
-        loadingScreen,
         facetAliases,
         rgbIndex,
         title: 'Data Files',
