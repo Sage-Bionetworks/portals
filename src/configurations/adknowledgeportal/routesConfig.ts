@@ -390,6 +390,7 @@ const routes: GenericRoute[] = [
     synapseConfigArray: [
       {
         name: 'Markdown',
+        title: 'Contribute',
         className: 'amp-project-component',
         props: {
           ownerId: 'syn12666371',
