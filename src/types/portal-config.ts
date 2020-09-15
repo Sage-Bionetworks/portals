@@ -26,6 +26,7 @@ import { ParticipantsBarPlotProps } from '../portal-components/crc-researcher/Pa
 import { StatusLineChartProps } from '../portal-components/crc-researcher/StatusLineChart'
 import { SurveysCompletedPlotsProps } from 'portal-components/crc-researcher/SurveysCompletedPlots'
 import { ImageProps } from 'portal-components/Image'
+import { RssFeedCardsProps } from 'synapse-react-client/dist/containers/RssFeedCards'
 
 // For styling the header on the home page -- the main title and the summary text
 export type HomePageHeaderConfig = {
@@ -139,6 +140,10 @@ type UpsetPlot = {
   name: 'UpsetPlot'
   props: UpsetPlotProps
 }
+type RssFeedCards = {
+  name: 'RssFeedCards'
+  props: RssFeedCardsProps
+}
 type SynapsePlot = {
   name: 'SynapsePlot'
   props: SynapsePlotProps
@@ -234,6 +239,7 @@ export type SynapseConfig = (
   | UserCardListRotate
   | SynapsePlot
   | Image
+  | RssFeedCards
 ) &
   Metadata
 export type SynapseConfigArray = SynapseConfig[]

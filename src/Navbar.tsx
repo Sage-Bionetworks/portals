@@ -246,7 +246,7 @@ class Navbar extends React.Component<any, State> {
                 .reverse()
                 .filter((el) => el.to !== '')
                 .map((el) => {
-                  const topLevelTo = el.link ?? el.to
+                  const topLevelTo = el.to
                   let displayName = el.displayName ? el.displayName : topLevelTo
                   const icon = el.icon && (
                     <img style={{ padding: '0px 4px' }} src={el.icon} />
@@ -310,13 +310,14 @@ class Navbar extends React.Component<any, State> {
                       </>
                     )
                   }
+                  const linkOrTo = el.link ?? `/${topLevelTo}`
                   return (
                     <NavLink
                       key={topLevelTo}
                       className={`top-nav-button nav-button-container center-content ${this.getBorder(
                         topLevelTo,
                       )}`}
-                      to={`/${topLevelTo!}`}
+                      to={linkOrTo}
                       text={
                         <>
                           {icon} {displayName}
