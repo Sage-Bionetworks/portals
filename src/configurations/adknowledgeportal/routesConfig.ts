@@ -6,8 +6,7 @@ import {
   data,
   people,
   programs,
-  publications,
-  news,
+  publications
 } from './synapseConfigs'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
 import {
@@ -81,13 +80,14 @@ const routes: GenericRoute[] = [
         },
       },
       {
-        name: 'Markdown',
-        title: "WHAT'S NEW",
-        className: 'whats-new',
+        name: 'RssFeedCards',
         props: {
-          ownerId: 'syn12666371',
-          wikiId: '582408',
-        },
+          url: 'https://news.adknowledgeportal.org/?feed=rss2',
+          itemsToShow:3,
+          allowCategories: ['Data Release', 'News', 'Webinar','rosMAP'],
+          mailChimpListName: 'AMP-AD quarterly newsletter',
+          mailChimpUrl:'https://sagebase.us7.list-manage.com/subscribe/post?u=b146de537186191a9d2110f3a&amp;id=96b614587a'
+        }
       },
     ],
   },
@@ -452,14 +452,15 @@ const routes: GenericRoute[] = [
     ],
   },
   {
-    to: 'News',
     isNested: false,
-    synapseConfigArray: news,
+    displayName: 'News',
+    to: undefined,
+    link: 'https://news.adknowledgeportal.org/',
+    synapseConfigArray: [],
   },
   {
     to: 'Help',
     isNested: true,
-    synapseConfigArray: news,
     routes: [
       {
         isNested: false,
