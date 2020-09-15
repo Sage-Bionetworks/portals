@@ -14,6 +14,11 @@
   }
 }
 
+.signout-button-mb,
+.user-loggedIn-mb {
+  display: none;
+}
+
 @media screen and (max-width: 768px) {
 
   $mb-menu-item-padding: 42px;
@@ -23,7 +28,6 @@
   }
   .nav {
     display: grid;
-    grid-template-columns: auto 200px;
     grid-template-rows: auto;
     grid-template-areas:
       "header-logo mobile-topnav-btn"
@@ -86,6 +90,9 @@
       #signin-button {
         width: 100%;
       }
+      .signout-button-mb {
+        display: block;
+      }
       .dropdown-toggle {
         padding-right: 18px;
 
@@ -115,37 +122,40 @@
     }
 
     .user-loggedIn {
+      display: none;
+    }
+
+    .user-loggedIn-mb {
+      display: block;
       order: 1;
+      padding: 18px 42px;
+      border-bottom: 1px solid #B2B3B6;
 
-      .arrow-down,
-      .dropdown-toggle::after {
-        display: none;
-      }
-      #user-menu-button {
-        display: block;
-        width: 100%;
-        text-align: left;
-        margin-left: 0;
-        padding: 0 $mb-menu-item-padding;
-        border-bottom: 1px solid #B2B3B6;
-
-        &:hover {
-          color: unset;
-        }
-      }
-      #user-menu-button > * {
+      & > * {
         vertical-align: middle;
       }
+
+      &:link, &:hover, &:visited, &:active{
+        color: #404b63; // text color
+      }
+
+      .arrow-down {
+        display: none;
+      }
+
       .user-fullname {
         font-size: 16px;
         font-weight: bold;
+        line-height: 19px;
+      }
+      .user-account {
+        font-size: 14px;
+        line-height: 21px;
+        text-decoration: $primary-action-color underline;
       }
       .mb-user-extra {
         display: inline-block;
         margin-left: 20px;
-      }
-      .dropdown-item {
-        padding: 0.55rem $mb-menu-item-padding;
       }
     }
 
