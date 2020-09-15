@@ -1,7 +1,7 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from 'types/portal-config'
 import { facetAliases } from './commonProps'
-import loadingScreen from '../loadingScreen'
+
 import studyActiveSvg from '../style/study-active.svg'
 import studyCompleteSvg from '../style/study-complete.svg'
 import studyCompleteHeaderSvg from '../style/study-completed-header.svg'
@@ -53,8 +53,7 @@ export const studyCardConfiguration: CardConfiguration = {
     baseURL: 'Explore/Studies/DetailsPage',
     URLColumnName: 'studyId',
     matchColumnName: 'studyId',
-  },
-  loadingScreen,
+  }
 }
 
 const studies: HomeExploreConfig = {
@@ -64,7 +63,6 @@ const studies: HomeExploreConfig = {
       facetAliases,
       unitDescription,
       rgbIndex,
-      loadingScreen,
       link: 'Explore/Studies',
       linkText: 'Explore Studies',
       facet: 'diseaseFocus',
@@ -152,8 +150,7 @@ export const studiesDetailPage: DetailsPageProps = {
       props: {
         visibleColumnCount: 7,
         sql: `SELECT id, dataType, assay, diagnosis, tumorType, species, individualID, fileFormat, dataSubtype, nf1Genotype, nf2Genotype, fundingAgency, consortium FROM syn16858331 where resourceType = 'experimentalData'`,
-        loadingScreen,
-        rgbIndex,
+          rgbIndex,
         title: 'Data Files',
       },
     },
@@ -165,8 +162,7 @@ export const studiesDetailPage: DetailsPageProps = {
       props: {
         visibleColumnCount: 7,
         sql: `SELECT id, dataType, assay, diagnosis, tumorType, species, individualID, fileFormat, dataSubtype, nf1Genotype, nf2Genotype, fundingAgency, consortium FROM syn16858331 where resourceType ='report'`,
-        loadingScreen,
-        rgbIndex,
+          rgbIndex,
         title: 'Metadata Files',
       },
     },

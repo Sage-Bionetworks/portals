@@ -1,6 +1,5 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig, SynapseConfigArray } from 'types/portal-config'
-import loadingScreen from '../loadingScreen'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import {
   CardConfiguration,
@@ -30,7 +29,6 @@ export const toolsSchema: GenericCardSchema = {
 export const toolsCardConfiguration: CardConfiguration = {
   type: SynapseConstants.GENERIC_CARD,
   genericCardSchema: toolsSchema,
-  loadingScreen,
 }
 
 export const tools: HomeExploreConfig = {
@@ -39,7 +37,6 @@ export const tools: HomeExploreConfig = {
     props: {
       rgbIndex,
       unitDescription,
-      loadingScreen,
       facet: 'theme',
       link: 'Explore/Studies',
       linkText: 'Explore Studies',
@@ -56,7 +53,6 @@ export const tools: HomeExploreConfig = {
       shouldDeepLink: true,
       defaultColumn: 'softwareType',
       name: 'Tools',
-      loadingScreen,
       facetAliases,
       facetsToPlot: [
         'digitalAssessmentCategory',

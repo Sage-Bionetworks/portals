@@ -1,6 +1,5 @@
 import { HomeExploreConfig } from 'types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
-import loadingScreen from '../loadingScreen'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import { publicationsSql } from '../resources'
 
@@ -10,7 +9,6 @@ const facet = 'Program'
 
 export const publicationsCardConfiguration: CardConfiguration = {
   type: SynapseConstants.GENERIC_CARD,
-  loadingScreen,
   genericCardSchema: {
     type: 'Publication',
     title: 'title',
@@ -27,7 +25,6 @@ const publications: HomeExploreConfig = {
       unitDescription,
       rgbIndex,
       facet,
-      loadingScreen,
       link: 'Explore/Publications',
       linkText: 'Explore Publications',
       sql: publicationsSql,

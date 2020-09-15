@@ -1,6 +1,6 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from 'types/portal-config'
-import loadingScreen from '../loadingScreen'
+
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 
 const sql = 'SELECT * FROM syn18483791'
@@ -40,8 +40,7 @@ export const studies: HomeExploreConfig = {
       rgbIndex,
       unitDescription,
       stackedBarChartConfiguration: {
-        loadingScreen,
-      },
+        },
       cardConfiguration: {
         type: SynapseConstants.GENERIC_CARD,
         genericCardSchema: studySchema,

@@ -1,6 +1,5 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig, SynapseConfigArray } from 'types/portal-config'
-import loadingScreen from '../loadingScreen'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import facetAliases from '../facetAliases'
@@ -44,7 +43,6 @@ export const studiesCardConfiguration: CardConfiguration = {
     URLColumnName: 'study',
     matchColumnName: 'study',
   },
-  loadingScreen,
 }
 
 export const studies: HomeExploreConfig = {
@@ -53,7 +51,6 @@ export const studies: HomeExploreConfig = {
     props: {
       rgbIndex,
       unitDescription,
-      loadingScreen,
       facet: 'theme',
       link: 'Explore/Studies',
       linkText: 'Explore Studies',
@@ -69,7 +66,6 @@ export const studies: HomeExploreConfig = {
       shouldDeepLink: true,
       hideDownload: true,
       name: 'Studies',
-      loadingScreen,
       facetAliases,
       facetsToPlot: [
         'deviceLocation',

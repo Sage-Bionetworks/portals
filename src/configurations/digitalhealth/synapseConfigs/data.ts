@@ -1,6 +1,5 @@
 import { HomeExploreConfig } from 'types/portal-config'
 import facetAliases from '../facetAliases'
-import loadingScreen from '../loadingScreen'
 import { LabelLinkConfig } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import { StandaloneQueryWrapperProps } from 'portal-components/StandaloneQueryWrapper'
 import { dataSql } from '../resources'
@@ -30,7 +29,6 @@ const data: HomeExploreConfig = {
       unitDescription,
       rgbIndex,
       facet,
-      loadingScreen,
       link: 'Explore/Studies',
       linkText: 'Explore Studies',
       sql: dataSql,
@@ -42,7 +40,6 @@ const data: HomeExploreConfig = {
       rgbIndex,
       shouldDeepLink: true,
       hideDownload: true,
-      loadingScreen,
       sql: dataSql,
       name: 'Data',
       facetAliases,

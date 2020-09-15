@@ -1,5 +1,5 @@
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
-import loadingScreen from '../loadingScreen'
+
 import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from 'types/portal-config'
 import { facetAliases } from './commonProps'
@@ -41,7 +41,6 @@ export const toolsCardConfiguration: CardConfiguration = {
     ],
     link: 'link',
   },
-  loadingScreen,
 }
 
 const searchConfiguration = {

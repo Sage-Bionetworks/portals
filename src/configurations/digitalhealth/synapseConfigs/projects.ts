@@ -1,6 +1,5 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig, SynapseConfigArray } from 'types/portal-config'
-import loadingScreen from '../loadingScreen'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import facetAliases from '../facetAliases'
@@ -49,7 +48,6 @@ export const projectsCardConfiguration: CardConfiguration = {
     //   matchColumnName: 'externalDataUsed',
     // },
   ],
-  loadingScreen,
 }
 
 export const projects: HomeExploreConfig = {
@@ -58,7 +56,6 @@ export const projects: HomeExploreConfig = {
     props: {
       rgbIndex,
       unitDescription,
-      loadingScreen,
       facet: 'theme',
       link: 'Explore/Projects',
       linkText: 'Explore Projects',
@@ -74,7 +71,6 @@ export const projects: HomeExploreConfig = {
       shouldDeepLink: true,
       hideDownload: true,
       name: 'Projects',
-      loadingScreen,
       facetAliases: {
         ...facetAliases,
         studyDescriptionLocation: 'Project Description',

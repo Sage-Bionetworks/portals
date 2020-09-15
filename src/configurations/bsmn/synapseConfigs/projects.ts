@@ -1,6 +1,5 @@
 import { HomeExploreConfig } from 'types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
-import loadingScreen from '../loadingScreen'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import { DetailsPageProps } from 'types/portal-util-types'
 import { studyCardConfiguration } from './studies'
@@ -20,7 +19,6 @@ const facet = 'Program'
 
 export const projectCardConfiguration: CardConfiguration = {
   type: SynapseConstants.GENERIC_CARD,
-  loadingScreen,
   genericCardSchema: {
     type: 'Project',
     title: 'title',
@@ -55,7 +53,6 @@ const projects: HomeExploreConfig = {
       unitDescription,
       rgbIndex,
       facet,
-      loadingScreen,
       link: 'Explore/Projects',
       linkText: 'Explore Projects',
       sql: projectsSql,

@@ -2,7 +2,7 @@ import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from 'types/portal-config'
 import { facetAliases } from './commonProps'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
-import loadingScreen from '../loadingScreen'
+
 import { publicationsSql } from '../resources'
 
 export const newPublicationsSql = `${publicationsSql} order by ROW_ID desc limit 3`
@@ -36,7 +36,6 @@ export const publicationsCardConfiguration: CardConfiguration = {
       'doi',
     ],
   },
-  loadingScreen,
 }
 
 const publications: HomeExploreConfig = {
@@ -55,7 +54,6 @@ const publications: HomeExploreConfig = {
     name: 'QueryWrapperPlotNav',
     props: {
       rgbIndex,
-      loadingScreen,
       sql: publicationsSql,
       shouldDeepLink: true,
       name: 'Publications',

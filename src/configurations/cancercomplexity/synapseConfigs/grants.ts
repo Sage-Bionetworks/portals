@@ -1,6 +1,5 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from 'types/portal-config'
-import loadingScreen from '../loadingScreen'
 import {
   GenericCardSchema,
   IconOptions,
@@ -48,7 +47,6 @@ export const grants: HomeExploreConfig = {
     name: 'StandaloneQueryWrapper',
     props: {
       unitDescription,
-      loadingScreen,
       rgbIndex: 3,
       facet: 'grantType',
       link: 'Explore/Grants',
@@ -64,7 +62,6 @@ export const grants: HomeExploreConfig = {
       cardConfiguration: grantsCardConfiguration,
       shouldDeepLink: true,
       name: 'Grants',
-      loadingScreen,
       facetsToPlot: ['consortium', 'grantType'],
       searchConfiguration: {
         searchable: [

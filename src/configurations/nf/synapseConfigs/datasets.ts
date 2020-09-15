@@ -1,5 +1,5 @@
 import { HomeExploreConfig } from 'types/portal-config'
-import loadingScreen from '../loadingScreen'
+
 import { facetAliases } from './commonProps'
 import { datasetsSql } from '../resources'
 
@@ -15,7 +15,6 @@ const datasets: HomeExploreConfig = {
       unitDescription,
       rgbIndex,
       facetAliases,
-      loadingScreen,
       link: 'Explore/Datasets',
       linkText: 'Explore Datasets',
       facet: 'diseaseFocus',
@@ -31,7 +30,6 @@ const datasets: HomeExploreConfig = {
       cardConfiguration: {
         type,
       },
-      loadingScreen,
       name: 'Datasets',
       facetAliases,
       searchConfiguration: {

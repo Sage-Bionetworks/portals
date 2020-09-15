@@ -20,7 +20,6 @@ import {
   newPublicationsSql,
 } from './synapseConfigs/publications'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
-import loadingScreen from './loadingScreen'
 import { buttonColors, facetAliases } from './synapseConfigs/commonProps'
 import { toolsCardConfiguration, newToolsSql } from './synapseConfigs/tools'
 import { organizationDetailsPage } from './organizations'
@@ -90,8 +89,7 @@ const routes: GenericRoute[] = [
         props: {
           limit,
           facetAliases,
-          loadingScreen,
-          sql: newDatasetsSql,
+              sql: newDatasetsSql,
           type: SynapseConstants.DATASET,
         },
       },
@@ -110,8 +108,7 @@ const routes: GenericRoute[] = [
         name: 'CardContainerLogic',
         title: 'ORGANIZATIONS',
         props: {
-          loadingScreen,
-          facetAliases,
+              facetAliases,
           sql: funders.sql,
           type: funders.type,
         },

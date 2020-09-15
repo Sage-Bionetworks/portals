@@ -1,6 +1,5 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from 'types/portal-config'
-import loadingScreen from '../loadingScreen'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import facetAliases from '../facetAliases'
@@ -31,7 +30,6 @@ export const publicationSchema: GenericCardSchema = {
 export const publicationsCardConfiguration: CardConfiguration = {
   type: SynapseConstants.GENERIC_CARD,
   genericCardSchema: publicationSchema,
-  loadingScreen,
   secondaryLabelLimit: 5,
   titleLinkConfig: {
     isMarkdown: false,
@@ -65,7 +63,6 @@ export const publications: HomeExploreConfig = {
     props: {
       rgbIndex,
       unitDescription,
-      loadingScreen,
       facet: 'theme',
       link: 'Explore/Publications',
       linkText: 'Explore Publications',
@@ -80,7 +77,6 @@ export const publications: HomeExploreConfig = {
       sql: publicationSql,
       shouldDeepLink: true,
       name: 'Publications',
-      loadingScreen,
       facetAliases,
       searchConfiguration: {
         searchable: [
