@@ -1,6 +1,5 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from 'types/portal-config'
-import loadingScreen from '../loadingScreen'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import facetAliases from '../facetAliases'
 import { toolsSql } from '../resources'
@@ -47,7 +46,6 @@ export const tools: HomeExploreConfig = {
     props: {
       rgbIndex,
       unitDescription,
-      loadingScreen,
       facet: 'consortium',
       link: 'Explore/Tools',
       linkText: 'Explore Tools',
@@ -58,7 +56,6 @@ export const tools: HomeExploreConfig = {
     name: 'QueryWrapperPlotNav',
     props: {
       rgbIndex,
-      loadingScreen,
       sql: toolsSql,
       cardConfiguration: toolsConfiguration,
       shouldDeepLink: true,

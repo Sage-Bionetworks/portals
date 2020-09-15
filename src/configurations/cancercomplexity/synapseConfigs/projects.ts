@@ -1,6 +1,5 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from 'types/portal-config'
-import loadingScreen from '../loadingScreen'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import { projectsSql } from '../resources'
@@ -30,7 +29,6 @@ export const projects: HomeExploreConfig = {
     props: {
       rgbIndex,
       unitDescription,
-      loadingScreen,
       facet: 'grantName',
       link: 'Explore/Projects',
       linkText: 'Explore Projects',
@@ -44,7 +42,6 @@ export const projects: HomeExploreConfig = {
       cardConfiguration: projectCardConfiguration,
       shouldDeepLink: true,
       name: 'Projects',
-      loadingScreen,
       sql: projectsSql,
     },
   },

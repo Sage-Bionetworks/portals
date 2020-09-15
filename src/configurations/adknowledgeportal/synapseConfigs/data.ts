@@ -1,5 +1,4 @@
 import { HomeExploreConfig } from 'types/portal-config'
-import loadingScreen from '../loadingScreen'
 import { dataSql } from '../resources'
 
 const unitDescription = 'data files'
@@ -11,7 +10,6 @@ const data: HomeExploreConfig = {
     props: {
       unitDescription,
       rgbIndex,
-      loadingScreen,
       facet: 'study',
       link: 'Explore/Data',
       linkText: 'Explore Data',
@@ -35,7 +33,6 @@ const data: HomeExploreConfig = {
           },
         ],
       },
-      loadingScreen,
       sql: dataSql,
       shouldDeepLink: true,
     },

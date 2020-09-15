@@ -1,6 +1,5 @@
 import { HomeExploreConfig } from 'types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
-import loadingScreen from '../loadingScreen'
 import { peopleSql } from '../resources'
 
 const unitDescription = 'people'
@@ -12,7 +11,6 @@ const people: HomeExploreConfig = {
     props: {
       unitDescription,
       rgbIndex,
-      loadingScreen,
       link: 'Explore/People',
       linkText: 'Explore People',
       facet: 'Program',
@@ -24,7 +22,6 @@ const people: HomeExploreConfig = {
     props: {
       rgbIndex,
       sql: peopleSql,
-      loadingScreen,
       name: 'People',
       shouldDeepLink: true,
       cardConfiguration: {

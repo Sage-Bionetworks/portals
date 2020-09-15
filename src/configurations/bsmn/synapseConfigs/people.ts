@@ -1,6 +1,5 @@
 import { HomeExploreConfig } from 'types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
-import loadingScreen from '../loadingScreen'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import { MEDIUM_USER_CARD } from 'synapse-react-client/dist/utils/SynapseConstants'
 import { peopleSql } from '../resources'
@@ -11,7 +10,6 @@ const facet = 'project'
 
 export const peopleCardConfiguration: CardConfiguration = {
   type: SynapseConstants.GENERIC_CARD,
-  loadingScreen,
   genericCardSchema: {
     type: 'People',
     title: 'name',
@@ -35,7 +33,6 @@ const individuals: HomeExploreConfig = {
       unitDescription,
       rgbIndex,
       facet,
-      loadingScreen,
       link: 'Explore/Individuals',
       linkText: 'Explore Individuals',
       sql: peopleSql,
@@ -49,7 +46,6 @@ const individuals: HomeExploreConfig = {
       hideDownload: true,
       name: 'People',
       sql: peopleSql,
-      loadingScreen,
       cardConfiguration: {
         type: MEDIUM_USER_CARD,
       },

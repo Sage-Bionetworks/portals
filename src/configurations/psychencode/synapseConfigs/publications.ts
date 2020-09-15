@@ -1,6 +1,6 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { SynapseConfig } from 'types/portal-config'
-import loadingScreen from '../loadingScreen'
+
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import { publicationSql } from '../resources'
@@ -18,7 +18,6 @@ export const publicationSchema: GenericCardSchema = {
 export const publicationsCardConfiguration: CardConfiguration = {
   type: SynapseConstants.GENERIC_CARD,
   genericCardSchema: publicationSchema,
-  loadingScreen,
   labelLinkConfig: [
     {
       URLColumnName: 'studyName',
@@ -37,7 +36,6 @@ export const publications: SynapseConfig = {
     sql: publicationSql,
     shouldDeepLink: true,
     hideDownload: true,
-    loadingScreen,
     cardConfiguration: publicationsCardConfiguration,
     searchConfiguration: {
       searchable: [

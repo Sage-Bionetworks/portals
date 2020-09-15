@@ -1,5 +1,5 @@
 import { SynapseConstants } from 'synapse-react-client'
-import loadingScreen from '../loadingScreen'
+
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import { SynapseConfig, SynapseConfigArray } from 'types/portal-config'
@@ -52,7 +52,6 @@ export const studies: SynapseConfig = {
   props: {
     rgbIndex,
     sql: studiesSql,
-    loadingScreen,
     shouldDeepLink: true,
     cardConfiguration: studyCardConfiguration,
     name: 'Studies',

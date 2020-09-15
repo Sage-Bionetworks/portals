@@ -1,5 +1,4 @@
 import { HomeExploreConfig } from 'types/portal-config'
-import loadingScreen from '../loadingScreen'
 import facetAliases from '../facetAliases'
 import { filesSql } from '../resources'
 
@@ -14,7 +13,6 @@ export const files: HomeExploreConfig = {
       rgbIndex,
       facet,
       unitDescription,
-      loadingScreen,
       link: 'Explore/Files',
       linkText: 'Explore Files',
       sql: filesSql,
@@ -27,7 +25,6 @@ export const files: HomeExploreConfig = {
       shouldDeepLink: true,
       sql: filesSql,
       name: 'Files',
-      loadingScreen,
       visibleColumnCount: Infinity,
       tableConfiguration: {},
       facetAliases,

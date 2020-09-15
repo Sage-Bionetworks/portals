@@ -17,7 +17,6 @@ import {
 import { projectCardConfiguration } from './synapseConfigs/projects'
 import { results } from './synapseConfigs/results'
 import { iconHeaderOptions } from './synapseConfigs/iconOptions'
-import loadingScreen from './loadingScreen'
 import { publicationProgrammatic } from './synapseConfigs/publications'
 import { programCardConfiguration } from './synapseConfigs/programs'
 import experimentalTools from './synapseConfigs/experimental_tools'
@@ -124,7 +123,6 @@ const routes: GenericRoute[] = [
                 name: 'CardContainerLogic',
                 isOutsideContainer: true,
                 props: {
-                  loadingScreen,
                   sql: 'SELECT  * FROM syn17024173',
                   isHeader: true,
                   ...programCardConfiguration,
@@ -180,7 +178,6 @@ const routes: GenericRoute[] = [
                 title: 'STUDIES',
                 props: {
                   ...studyCardConfiguration,
-                  loadingScreen,
                   sql: studiesSql,
                 },
               },

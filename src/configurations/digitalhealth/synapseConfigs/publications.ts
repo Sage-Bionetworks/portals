@@ -1,6 +1,5 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from 'types/portal-config'
-import loadingScreen from '../loadingScreen'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import {
   CardConfiguration,
@@ -44,7 +43,6 @@ export const publicationCardConfiguration: CardConfiguration = {
       isMarkdown: true,
     },
   ],
-  loadingScreen,
 }
 
 export const publications: HomeExploreConfig = {
@@ -54,7 +52,6 @@ export const publications: HomeExploreConfig = {
       rgbIndex,
       facet,
       unitDescription,
-      loadingScreen,
       link: 'Explore/Files',
       linkText: 'Explore Files',
       sql: publicationSql,
@@ -69,7 +66,6 @@ export const publications: HomeExploreConfig = {
       sql: publicationSql,
       name: 'Publications',
       cardConfiguration: publicationCardConfiguration,
-      loadingScreen,
       visibleColumnCount: Infinity,
       searchConfiguration: {
         searchable: [

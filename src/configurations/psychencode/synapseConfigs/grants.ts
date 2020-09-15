@@ -1,6 +1,6 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { SynapseConfigArray, SynapseConfig } from 'types/portal-config'
-import loadingScreen from '../loadingScreen'
+
 import {
   GenericCardSchema,
   IconOptions,
@@ -36,7 +36,6 @@ export const grantCardConfiguration: CardConfiguration = {
     URLColumnName: 'grants',
     baseURL: 'Explore/Grants/DetailsPage',
   },
-  loadingScreen,
   iconOptions,
 }
 
@@ -49,7 +48,6 @@ export const grants: SynapseConfig = {
     shouldDeepLink: true,
     hideDownload: true,
     name: 'Grants',
-    loadingScreen,
     facetsToPlot: ['grants', 'phase'],
     searchConfiguration: {
       searchable: [

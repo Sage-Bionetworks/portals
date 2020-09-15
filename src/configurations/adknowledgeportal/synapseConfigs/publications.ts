@@ -1,7 +1,6 @@
 import { HomeExploreConfig, SynapseConfig } from 'types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
 import { DetailsPageProps } from 'types/portal-util-types'
-import loadingScreen from '../loadingScreen'
 import { projectsSql, publicationsSql } from '../resources'
 
 const rgbIndex = 5
@@ -38,7 +37,6 @@ const publications: HomeExploreConfig = {
     props: {
       unitDescription,
       rgbIndex,
-      loadingScreen,
       link: 'Explore/Publications',
       linkText: 'Explore Publications',
       facet: 'consortium',

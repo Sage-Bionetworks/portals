@@ -1,5 +1,4 @@
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
-import loadingScreen from '../loadingScreen'
 import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from 'types/portal-config'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
@@ -25,7 +24,6 @@ const experimentalSchema: GenericCardSchema = {
 
 const cardConfiguration: CardConfiguration = {
   type: SynapseConstants.GENERIC_CARD,
-  loadingScreen,
   genericCardSchema: experimentalSchema,
   labelLinkConfig: [
     {
@@ -54,7 +52,6 @@ const experimentalTools: HomeExploreConfig = {
     props: {
       unitDescription,
       rgbIndex,
-      loadingScreen,
       link: 'Explore/Experimental Tools',
       linkText: 'Explore Experimental Tools',
       facet: 'toolType',
