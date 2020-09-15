@@ -317,6 +317,7 @@ class Navbar extends React.Component<any, State> {
                         topLevelTo,
                       )}`}
                       to={linkOrTo}
+                      target={el.target}
                       text={
                         <>
                           {icon} {displayName}
