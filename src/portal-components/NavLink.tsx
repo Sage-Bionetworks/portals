@@ -15,7 +15,7 @@ type Props = LinkProps & {
 }
 export default function NavLink(props: Props) {
   const link = props.to as string
-
+  const target = props.target ?? '_self' // default to open in the same window, if this is an external link
   const isExternal = () => {
     if (link.includes('http')) {
       return true
@@ -26,7 +26,7 @@ export default function NavLink(props: Props) {
   }
 
   return isExternal() ? (
-    <a href={link} {...props}>
+    <a href={link} target={target} rel='noreferrer noopener' {...props}>
       {props.text}
     </a>
   ) : (

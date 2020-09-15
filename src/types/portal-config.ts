@@ -255,6 +255,7 @@ interface RouteOptions {
   isNested: boolean
   hideRouteFromNavbar?: boolean
   to: string | undefined
+  target?: string | undefined
   link?: string
   icon?: string
   synapseConfigArray?: SynapseConfigArray

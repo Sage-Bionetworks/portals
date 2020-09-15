@@ -455,6 +455,7 @@ const routes: GenericRoute[] = [
     isNested: false,
     displayName: 'News',
     to: undefined,
+    target: '_blank',
     link: 'https://news.adknowledgeportal.org/',
     synapseConfigArray: [],
   },
