@@ -20,7 +20,7 @@ import { publicationProgrammatic } from './synapseConfigs/publications'
 import { programCardConfiguration } from './synapseConfigs/programs'
 import experimentalTools from './synapseConfigs/experimental_tools'
 import computationalTools from './synapseConfigs/computational_tools'
-import { projectsSql, studiesSql } from './resources'
+import { projectsSql, studiesSql, peopleSql } from './resources'
 
 const routes: GenericRoute[] = [
   {
@@ -80,7 +80,21 @@ const routes: GenericRoute[] = [
         },
       },
       {
+        name: 'UserCardListRotate',
+        title: 'Our People and Institutions',
+        outsideContainerClassName: 'home-spacer home-bg-dark',
+        centerTitle: true,
+        props: {
+          sql: `${peopleSql} where feature=true`,
+          count: 3,
+          summaryLink: 'Explore/People',
+          summaryLinkText: 'EXPLORE ALL PEOPLE',
+        },
+      },
+      {
         name: 'RssFeedCards',
+        title: 'What\'s New',
+        centerTitle: true,
         props: {
           url: 'https://news.adknowledgeportal.org/?feed=rss2',
           itemsToShow:3,
