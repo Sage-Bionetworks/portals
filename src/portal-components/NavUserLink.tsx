@@ -21,7 +21,7 @@ const NavUserLink: React.FunctionComponent<NavUserLinkProps> = ({
         hideText={true}
         link="javascript:void(0)"
       />
-      <ExpandMoreIcon />
+      <ExpandMoreIcon className="user-expand" />
       <div className="mb-user-extra">
         <div className="user-fullname">
           {userProfile?.firstName} {userProfile?.lastName}
