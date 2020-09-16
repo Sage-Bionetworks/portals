@@ -197,6 +197,6 @@ export const studyDetailPage: SynapseConfigArray = [
 
 export const studyDetailPageProps = {
   sql: studiesSql,
-  sqlOperator: '=' as SQLOperator,
+  sqlOperator: 'HAS' as SQLOperator,
   ...studyCardConfiguration,
 }
