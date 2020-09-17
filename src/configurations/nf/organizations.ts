@@ -4,6 +4,7 @@ import { SynapseConfig } from 'types/portal-config'
 import { facetAliases } from './synapseConfigs/commonProps'
 import { publicationsCardConfiguration } from './synapseConfigs/publications'
 import { studyCardConfiguration } from './synapseConfigs/studies'
+import { iconOptions } from './synapseConfigs/iconOptions'
 
 const studiesSql = `SELECT * FROM syn16787123`
 const datasetsSql = `SELECT * FROM syn16859580`
@@ -81,9 +82,10 @@ export const organizationDetailsPage: SynapseConfig[] = [
         title: 'organizationName',
         type: SynapseConstants.ORGANIZATION,
         description: 'summary',
-        icon: 'logo',
+        icon: 'abbreviation',
         link: 'website',
       },
+      iconOptions,
       isHeader: true,
       backgroundColor: '#125E81',
     },
