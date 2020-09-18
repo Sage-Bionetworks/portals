@@ -85,8 +85,10 @@ const routes: GenericRoute[] = [
         outsideContainerClassName: 'home-spacer home-bg-dark',
         centerTitle: true,
         props: {
-          sql: `${peopleSql} where feature=true`,
+          sql: `${peopleSql} where isFeatured=true`,
           count: 3,
+          size: SynapseConstants.MEDIUM_USER_CARD,
+          useQueryResultUserData: true,
           summaryLink: 'Explore/People',
           summaryLinkText: 'EXPLORE ALL PEOPLE',
         },
