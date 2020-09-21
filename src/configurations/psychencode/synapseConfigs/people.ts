@@ -19,6 +19,19 @@ export const people: SynapseConfig = {
     name,
     shouldDeepLink: true,
     hideDownload: true,
+    searchConfiguration: {
+      searchable: [
+        {
+          columnName: 'grants',
+        },
+        {
+          columnName: 'firstName',
+        },
+        {
+          columnName: 'lastName',
+        },
+      ],
+    },
   },
 }
 
