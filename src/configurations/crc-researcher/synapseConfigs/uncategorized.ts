@@ -42,7 +42,9 @@ export const allFacetsToPlot = [
   'testType',
   'zipcode',
   'symptom',
-  'testLocation'
+  'testLocation',
+  'nasalSwabResult',
+  'serumTestResult',
 ]
 export const dataSql = `${baseDataSql} 'Uncategorized'`
 const sql = dataSql
