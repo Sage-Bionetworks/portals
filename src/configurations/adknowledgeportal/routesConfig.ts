@@ -105,7 +105,7 @@ const routes: GenericRoute[] = [
             }
           },
           {
-            title: 'Mouse Studies',
+            title: 'Animal Model Studies',
             icon: 'MOUSE',
             exploreFacetColumnName: 'species',
             exploreFacetColumnValue: 'Mouse',
