@@ -73,6 +73,15 @@ const routes: GenericRoute[] = [
         },
       },
       {
+        name: 'CardContainerLogic',
+        title: 'PROGRAMS',
+        centerTitle: true,
+        props: {
+          ...programs,
+          sql: 'SELECT * FROM syn17024173',
+        },
+      },
+      {
         name: 'FeaturedDataTabs',
         title: 'FEATURED DATA',
         centerTitle: true,
@@ -127,15 +136,6 @@ const routes: GenericRoute[] = [
               }
             ]}
           }]        
-        },
-      },
-      {
-        name: 'CardContainerLogic',
-        title: 'PROGRAMS',
-        centerTitle: true,
-        props: {
-          ...programs,
-          sql: 'SELECT * FROM syn17024173',
         },
       },
       {
