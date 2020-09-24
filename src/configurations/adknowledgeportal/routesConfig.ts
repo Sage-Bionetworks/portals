@@ -100,7 +100,7 @@ const routes: GenericRoute[] = [
               {
                 facetsToPlot:['dataType', 'assay'],
                 selectFacetColumnName:'study',
-                selectFacetColumnValue:'MCSA',
+                selectFacetColumnValue:'MayoRNAseq',
               }]
             }
           },
@@ -118,12 +118,12 @@ const routes: GenericRoute[] = [
               {
                 facetsToPlot:['dataType', 'assay'],
                 selectFacetColumnName:'study',
-                selectFacetColumnValue:'APOE-TR',
+                selectFacetColumnValue:'Jax.IU.Pitt_PrimaryScreen',
               },
               {
                 facetsToPlot:['dataType', 'assay'],
                 selectFacetColumnName:'study',
-                selectFacetColumnValue:'TAUAPPms',
+                selectFacetColumnValue:'Jax.IU.Pitt_5XFAD',
               }
             ]}
           }]        
