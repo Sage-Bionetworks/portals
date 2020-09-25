@@ -132,7 +132,7 @@ const routes: GenericRoute[] = [
               {
                 facetsToPlot:['dataType', 'assay'],
                 selectFacetColumnName:'study',
-                selectFacetColumnValue:'Jax.IU.Pitt_5XFAD',
+                selectFacetColumnValue:'Jax.IU.Pitt_APOE4.Trem2.R47H',
               }
             ]}
           }]        
