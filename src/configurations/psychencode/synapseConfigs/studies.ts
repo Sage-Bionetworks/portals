@@ -89,6 +89,7 @@ export const studies: SynapseConfig = {
 export const details: DetailsPageProps = {
   sql: studiesSql,
   sqlOperator: '=',
+  tabLayout: true,
   synapseConfigArray: [
     {
       name: 'Markdown',
@@ -96,6 +97,7 @@ export const details: DetailsPageProps = {
       injectMarkdown: false,
       columnName: 'study',
       title: 'Study Description',
+      tabIndex: 0,
     },
     {
       name: 'Markdown',
@@ -105,12 +107,14 @@ export const details: DetailsPageProps = {
       },
       title: 'Access Requirements',
       standalone: true,
+      tabIndex: 0,
     },
     {
       name: 'Markdown',
       props: {},
       columnName: 'methods',
       title: 'Methods',
+      tabIndex: 0,
       resolveSynId: {
         title: true,
       },
@@ -135,6 +139,7 @@ export const details: DetailsPageProps = {
       tableSqlKeys: ['study'],
       columnName: 'study',
       title: 'Metadata',
+      tabIndex: 1,
     },
     {
       name: 'StandaloneQueryWrapper',
@@ -150,6 +155,7 @@ export const details: DetailsPageProps = {
       tableSqlKeys: ['study'],
       columnName: 'study',
       title: 'Data',
+      tabIndex: 2,
     },
     {
       name: 'CardContainerLogic',
@@ -160,6 +166,7 @@ export const details: DetailsPageProps = {
       },
       columnName: 'relatedStudies',
       tableSqlKeys: ['study'],
+      tabIndex: 0,
     },
     {
       name: 'CardContainerLogic',
@@ -170,6 +177,7 @@ export const details: DetailsPageProps = {
       resolveSynId: {
         value: true,
       },
+      tabIndex: 0,
     },
   ],
 }

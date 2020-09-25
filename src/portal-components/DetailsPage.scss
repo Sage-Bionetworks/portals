@@ -6,7 +6,13 @@ $marginTop: 40px;
   align-items: center;
 }
 
+.SRC-portalCardHeader {
+  padding-bottom: 80px;
+}
+
 .DetailsPage {
+  display: flex;
+
   // keeps h2 in markdown and in this component the same
   .h2,
   h2 {
@@ -16,45 +22,10 @@ $marginTop: 40px;
     color: #515359;
     margin-top: 42px;
   }
-
-  display: flex;
-  .menu-row-button {
-    @extend %alignContent;
-    span {
-      height: 25px;
-      @extend %alignContent;
-    }
-    background: rgba(60, 74, 99, 0.1);
-    height: 40px;
-    width: 180px;
-    text-align: left;
-    padding-left: 20px;
-    color: #515359;
-    border: 1px solid rgba(26, 28, 41, 0.1);
-    border-top: none;
-  }
-  .menu-row-button:nth-child(1) {
-    border-top: 1px solid rgba(26, 28, 41, 0.1);
-  }
-  .menu-row-button:nth-child(1) {
-    background: rgba(60, 74, 99, 0.1);
-    height: 40px;
-    width: 180px;
-    text-align: left;
-    padding-left: 20px;
-    color: #515359;
-  }
-  .button-container {
-    top: 100px;
-    height: fit-content;
-    margin-right: 30px;
-    position: sticky;
-    flex: 1;
-    margin-top: $marginTop;
-  }
   .component-container {
     flex: 4;
     overflow: hidden;
+    margin-top: -50px;
   }
   hr {
     margin: 0px;
@@ -72,4 +43,39 @@ $marginTop: 40px;
       font-weight: bold;
     }
   }
+
+  .tab-groups {
+    display: flex;
+    font-size: 16px;
+    justify-content: center;
+
+    .tab-item,
+    .tab-item-active{
+      cursor: pointer;
+      display: inline-block;
+      padding: 8px 90px;
+      margin: 0 4px;
+      border-radius: 4px 4px 0 0;
+    }
+    .tab-item {
+      background: rgba(0, 0, 0, 0.4);
+      color: #fff
+    }
+    .tab-item-active {
+      background-color: #fff;
+    }
+  }
+
+  .tab-content-group {
+    //.tab-content {
+    //  display: none;
+    //}
+    //.tab-content-active {
+    //  display: block;
+    //}
+  }
+
+
+
+
 }

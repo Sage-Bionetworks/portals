@@ -1,37 +1,37 @@
-import { Dictionary } from 'lodash'
 import * as React from 'react'
-import { generateSynapseObject } from 'RouteResolver'
-import { SynapseClient, SynapseConstants } from 'synapse-react-client'
-import {
-  insertConditionsFromSearchParams,
-  parseEntityIdFromSqlStatement,
-} from 'synapse-react-client/dist/utils/functions/sqlFunctions'
 import {
   EntityHeader,
   PaginatedResults,
-  QueryBundleRequest,
   QueryResultBundle,
-  ReferenceList,
-  EntityColumnType,
+
 } from 'synapse-react-client/dist/utils/synapseTypes/'
-import { SynapseConfig } from 'types/portal-config'
-import { DetailsPageProps, RowSynapseConfig } from 'types/portal-util-types'
+
+import {DetailsPageProps, RowSynapseConfig} from 'types/portal-util-types'
 import './DetailsPage.scss'
-import injectPropsIntoConfig from './injectPropsIntoConfig'
-import { cloneDeep } from 'lodash'
+import {
+  insertConditionsFromSearchParams,
+  parseEntityIdFromSqlStatement
+} from "synapse-react-client/dist/utils/functions/sqlFunctions";
+import {EntityColumnType, QueryBundleRequest, ReferenceList} from "synapse-react-client/dist/utils/synapseTypes";
+import {SynapseClient, SynapseConstants} from "synapse-react-client";
+import {cloneDeep, Dictionary} from "lodash";
 import { ExternalFileHandleLink } from 'synapse-react-client/dist/containers/ExternalFileHandleLink'
-import { BarLoader } from 'react-spinners'
+import {BarLoader} from "react-spinners";
+import injectPropsIntoConfig from "./injectPropsIntoConfig";
+import {SynapseConfig} from "../types/portal-config";
+import {generateSynapseObject} from "../RouteResolver";
 
 const pluralize = require('pluralize')
+const COMPONENT_ID_PREFIX = 'src-component-'
 
 type State = {
   queryResultBundle: QueryResultBundle | undefined
   entityHeaders: PaginatedResults<EntityHeader> | undefined
   isLoading: boolean
   hasError: boolean
+  tabIndex: number
 }
 
-const COMPONENT_ID_PREFIX = 'src-component-'
 /**
  * The details pages give a deeper dive into a particular portal section.
  *
@@ -63,6 +63,7 @@ export default class DetailsPage extends React.Component<
       entityHeaders: undefined,
       isLoading: true,
       hasError: false,
+      tabIndex: 0
     }
     this.ref = React.createRef()
   }
@@ -130,7 +131,7 @@ export default class DetailsPage extends React.Component<
         synapseConfigArray.forEach((el: RowSynapseConfig) => {
           if (el.resolveSynId && el.columnName) {
             const { index, columnType } =
-              mapColumnHeaderToRowIndex[el.columnName] ?? {}
+            mapColumnHeaderToRowIndex[el.columnName] ?? {}
             let value: string = row[index]
             if (
               columnType === EntityColumnType.STRING_LIST ||
@@ -144,7 +145,7 @@ export default class DetailsPage extends React.Component<
               }
             }
             if (typeof value === 'object') {
-              ;(value as string[])?.forEach((val) => {
+              (value as string[])?.forEach((val) => {
                 if (!references.find((el) => el.targetId === val)) {
                   references.push({
                     targetId: val,
@@ -184,6 +185,76 @@ export default class DetailsPage extends React.Component<
     )
   }
 
+  goToExplorePage = () => {
+    /*
+      Below assumes that going from the details page url up one level will work,
+      for the current set of portals this assumption will hold true.
+    */
+    const lastLocation = window.location.href.split('/')
+    const lastPlace = lastLocation.slice(0, lastLocation.length - 1).join('/')
+    window.location.assign(lastPlace)
+  }
+
+  render() {
+    const { isLoading, hasError } = this.state
+    const { showMenu = true, tabLayout = false, synapseConfigArray } = this.props
+    if (hasError) {
+      const currentLocation = window.location.href.split('/')
+      const name = currentLocation[currentLocation.length - 2]
+      return (
+        <div className="DetailsPage__ComingSoon">
+          <h2> Coming Soon! </h2>
+          <p>
+            {/*
+                pluralize is used to convert the detail of interest e.g. studies/publications/etc
+                to a singular form like study/publication/etc
+            */}
+            This {pluralize.singular(name).toLowerCase()} is not yet available,
+            please check back soon.
+          </p>
+          <button
+            onClick={this.goToExplorePage}
+            className="SRC-standard-button-shape SRC-primary-background-color SRC-whiteText"
+          >
+            CONTINUE EXPLORING
+          </button>
+        </div>
+      )
+    }
+
+    if (tabLayout) {
+      return (
+        <div className="DetailsPage">
+          <div className="component-container" ref={this.ref}>
+            {this.renderTabs()}
+            {isLoading && <BarLoader color="#878787" loading={true} height={5}/>}
+            {!isLoading && this.renderTabContent()}
+          </div>
+        </div>
+      )
+    } else {
+      const synapseConfigContent = (
+        <>
+          {isLoading && <BarLoader color="#878787" loading={true} height={5}/>}
+          {!isLoading && this.renderSynapseConfigArray(synapseConfigArray)}
+        </>
+      )
+      if (showMenu) {
+        return (
+          <div className="DetailsPage">
+            <div className="button-container">{this.renderMenu()}</div>
+            <div className="component-container" ref={this.ref}>
+              {synapseConfigContent}
+            </div>
+          </div>
+        )
+      } else {
+        return synapseConfigContent
+      }
+    }
+
+  }  // end render()
+
   handleMenuClick = (index: number) => {
     const wrapper = this.ref.current?.querySelector<HTMLDivElement>(
       `#${COMPONENT_ID_PREFIX}${index}`,
@@ -201,62 +272,6 @@ export default class DetailsPage extends React.Component<
       })
     } else {
       console.error('Could not scroll to element with index ', index)
-    }
-  }
-
-  goToExplorePage = () => {
-    /*
-      Below assumes that going from the details page url up one level will work,
-      for the current set of portals this assumption will hold true.
-    */
-    const lastLocation = window.location.href.split('/')
-    const lastPlace = lastLocation.slice(0, lastLocation.length - 1).join('/')
-    window.location.assign(lastPlace)
-  }
-
-  render() {
-    const { isLoading, hasError } = this.state
-    const { showMenu = true } = this.props
-    if (hasError) {
-      const currentLocation = window.location.href.split('/')
-      const name = currentLocation[currentLocation.length - 2]
-      return (
-        <div className="DetailsPage__ComingSoon">
-          <h2> Coming Soon! </h2>
-          <p>
-            {/* 
-                pluralize is used to convert the detail of interest e.g. studies/publications/etc
-                to a singular form like study/publication/etc
-            */}
-            This {pluralize.singular(name).toLowerCase()} is not yet available,
-            please check back soon.
-          </p>
-          <button
-            onClick={this.goToExplorePage}
-            className="SRC-standard-button-shape SRC-primary-background-color SRC-whiteText"
-          >
-            CONTINUE EXPLORING
-          </button>
-        </div>
-      )
-    }
-    const synapseConfigContent = (
-      <>
-        {isLoading && <BarLoader color="#878787" loading={true} height={5}/>}
-        {!isLoading && this.renderSynapseConfigArray()}
-      </>
-    )
-    if (showMenu) {
-      return (
-        <div className="DetailsPage">
-          <div className="button-container">{this.renderMenu()}</div>
-          <div className="component-container" ref={this.ref}>
-            {synapseConfigContent}
-          </div>
-        </div>
-      )
-    } else {
-      return synapseConfigContent
     }
   }
 
@@ -309,8 +324,57 @@ export default class DetailsPage extends React.Component<
     })
   }
 
-  renderSynapseConfigArray = () => {
+  renderTabs() {
+    const { tabIndex } = this.state
+    return(
+      <div className="tab-groups">
+        <span className={tabIndex === 0 ? "tab-item-active" : "tab-item"} onClick={(e) => {
+          this.setState({tabIndex: 0})
+        }}>Study Details</span>
+        <span className={tabIndex === 1 ? "tab-item-active" : "tab-item"} onClick={(e) => {
+          this.setState({tabIndex: 1})
+        }}>Data Summary</span>
+        <span className={tabIndex === 2 ? "tab-item-active" : "tab-item"} onClick={(e) => {
+          this.setState({tabIndex: 2})
+        }}>Explore Data</span>
+      </div>
+    )
+  }
+
+  renderTabContent() {
+    const { tabIndex } = this.state
+    return(
+      <div className="tab-content-group">
+        <div style={{display: tabIndex === 0 ? "block" : "none"}}>
+          {(this.renderTabContentByIndex(0))}
+        </div>
+        <div style={{display: tabIndex === 1 ? "block" : "none"}}>
+          {(this.renderTabContentByIndex(1))}
+        </div>
+        <div style={{display: tabIndex === 2 ? "block" : "none"}}>
+          {(this.renderTabContentByIndex(2))}
+        </div>
+      </div>
+    )
+  }
+
+  /**
+   * Separate details page content to different tabs
+   * tab index 0: Study Details
+   * tab index 1: Data Summary
+   * tab index 2: Explore Data
+   * @param i: accept the tab index starting from 0
+   */
+  renderTabContentByIndex(i: number) {
     const { synapseConfigArray } = this.props
+    const tabContentConfig = synapseConfigArray.filter(
+      (el: RowSynapseConfig, index) => el.tabIndex === i
+    )
+    return (<div>{this.renderSynapseConfigArray(tabContentConfig)}</div>)
+  }
+
+  renderSynapseConfigArray = (synapseConfigArray:RowSynapseConfig[]) => {
+    // const { synapseConfigArray } = this.props
     return synapseConfigArray.map((el: RowSynapseConfig, index) => {
       const id = COMPONENT_ID_PREFIX + index
       const { standalone, resolveSynId, showTitleSeperator = true } = el
@@ -383,8 +447,8 @@ export default class DetailsPage extends React.Component<
       to construct a sql statement with a chain of OR statements rather than having N different queries.
 
       But this doesn't work for a component like MarkdownSynapse where there is a desire to have
-      N different markdown components. 
-      
+      N different markdown components.
+
       For simplicity's sake this will be left as is, but this could be revisited if performance is an issue.
     */
     return split.map((splitString) => {
@@ -443,4 +507,5 @@ export default class DetailsPage extends React.Component<
       return generateSynapseObject(synapseConfigWithInjectedProps, searchParams)
     })
   }
+
 }
