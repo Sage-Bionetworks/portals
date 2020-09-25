@@ -27,6 +27,7 @@ import { StatusLineChartProps } from '../portal-components/crc-researcher/Status
 import { SurveysCompletedPlotsProps } from 'portal-components/crc-researcher/SurveysCompletedPlots'
 import { ImageProps } from 'portal-components/Image'
 import { RssFeedCardsProps } from 'synapse-react-client/dist/containers/RssFeedCards'
+import { FeaturedDataTabsProps } from 'synapse-react-client/dist/containers/home_page/featured-data/FeaturedDataTabs'
 
 // For styling the header on the home page -- the main title and the summary text
 export type HomePageHeaderConfig = {
@@ -158,6 +159,12 @@ type Image = {
   props: ImageProps
 }
 
+type FeaturedDataTabs = {
+  name: 'FeaturedDataTabs'
+  props: FeaturedDataTabsProps
+}
+
+
 type Metadata = {
   title?: string
   centerTitle?: boolean
@@ -240,6 +247,7 @@ export type SynapseConfig = (
   | SynapsePlot
   | Image
   | RssFeedCards
+  | FeaturedDataTabs
 ) &
   Metadata
 export type SynapseConfigArray = SynapseConfig[]
