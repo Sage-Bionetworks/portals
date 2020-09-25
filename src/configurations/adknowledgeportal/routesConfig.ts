@@ -30,6 +30,7 @@ const routes: GenericRoute[] = [
       {
         name: 'StatefulButtonControlWrapper',
         title: 'EXPLORE CONTENT',
+        centerTitle: true,
         props: {
           configs: [
             {
@@ -74,9 +75,67 @@ const routes: GenericRoute[] = [
       {
         name: 'CardContainerLogic',
         title: 'PROGRAMS',
+        centerTitle: true,
         props: {
           ...programs,
           sql: 'SELECT * FROM syn17024173',
+        },
+      },
+      {
+        name: 'FeaturedDataTabs',
+        title: 'FEATURED DATA',
+        centerTitle: true,
+        outsideContainerClassName: 'home-spacer',
+        props: {
+          rgbIndex: 3,
+          exploreSql: 'select * from syn11346063',
+          explorePagePath: '/Explore/Data',
+          configs: [{
+            title: 'Human Studies',
+            icon: 'PERSON',
+            exploreFacetColumnName: 'species',
+            exploreFacetColumnValue: 'Human',
+            plotsConfig: {
+              configs: [{
+                facetsToPlot:['dataType', 'assay'],
+                selectFacetColumnName:'study',
+                selectFacetColumnValue:'ROSMAP',
+              },
+              {
+                facetsToPlot:['dataType', 'assay'],
+                selectFacetColumnName:'study',
+                selectFacetColumnValue:'MSBB',
+              },
+              {
+                facetsToPlot:['dataType', 'assay'],
+                selectFacetColumnName:'study',
+                selectFacetColumnValue:'rnaSeqReprocessing',
+              }]
+            }
+          },
+          {
+            title: 'Animal Model Studies',
+            icon: 'MOUSE',
+            exploreFacetColumnName: 'species',
+            exploreFacetColumnValue: 'Mouse',
+            plotsConfig: {
+              configs: [{
+                facetsToPlot:['dataType', 'assay'],
+                selectFacetColumnName:'study',
+                selectFacetColumnValue:'UCI_5XFAD',
+              },
+              {
+                facetsToPlot:['dataType', 'assay'],
+                selectFacetColumnName:'study',
+                selectFacetColumnValue:'Jax.IU.Pitt_PrimaryScreen',
+              },
+              {
+                facetsToPlot:['dataType', 'assay'],
+                selectFacetColumnName:'study',
+                selectFacetColumnValue:'Jax.IU.Pitt_APOE4.Trem2.R47H',
+              }
+            ]}
+          }]        
         },
       },
       {
