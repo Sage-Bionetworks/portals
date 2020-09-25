@@ -109,7 +109,7 @@ const routes: GenericRoute[] = [
               {
                 facetsToPlot:['dataType', 'assay'],
                 selectFacetColumnName:'study',
-                selectFacetColumnValue:'MayoRNAseq',
+                selectFacetColumnValue:'rnaSeqReprocessing',
               }]
             }
           },
