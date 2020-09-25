@@ -1,4 +1,10 @@
+// Import the theme css
+@import '../config/style/_overides.scss';
+
+// local variable for study page
+
 $marginTop: 40px;
+$study-page-tab-height: 50px;
 
 %alignContent {
   display: flex;
@@ -48,31 +54,41 @@ $marginTop: 40px;
     display: flex;
     font-size: 16px;
     justify-content: center;
+    height:  $study-page-tab-height;
+    line-height:  $study-page-tab-height;
 
     .tab-item,
     .tab-item-active{
       cursor: pointer;
       display: inline-block;
-      padding: 8px 90px;
+      padding: 0 90px;
       margin: 0 4px;
       border-radius: 4px 4px 0 0;
+      svg {
+        padding-right: 6px;
+        font-size: 32px;
+        vertical-align: middle;
+      }
     }
     .tab-item {
       background: rgba(0, 0, 0, 0.4);
-      color: #fff
+      color: #fff;
     }
     .tab-item-active {
       background-color: #fff;
+      svg {
+        color: $primary-action-color
+      }
     }
   }
 
   .tab-content-group {
-    //.tab-content {
-    //  display: none;
-    //}
-    //.tab-content-active {
-    //  display: block;
-    //}
+    .tab-content {
+      display: none;
+    }
+    .tab-content-active {
+      display: block;
+    }
   }
 
 

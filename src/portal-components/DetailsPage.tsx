@@ -20,6 +20,8 @@ import {BarLoader} from "react-spinners";
 import injectPropsIntoConfig from "./injectPropsIntoConfig";
 import {SynapseConfig} from "../types/portal-config";
 import {generateSynapseObject} from "../RouteResolver";
+import SvgIcon from "@material-ui/icons/ExploreOutlined";
+import ExploreOutlinedIcon from '@material-ui/icons/ExploreOutlined';
 
 const pluralize = require('pluralize')
 const COMPONENT_ID_PREFIX = 'src-component-'
@@ -330,13 +332,13 @@ export default class DetailsPage extends React.Component<
       <div className="tab-groups">
         <span className={tabIndex === 0 ? "tab-item-active" : "tab-item"} onClick={(e) => {
           this.setState({tabIndex: 0})
-        }}>Study Details</span>
+        }}><SvgIcon component={ExploreOutlinedIcon}></SvgIcon> Study Details</span>
         <span className={tabIndex === 1 ? "tab-item-active" : "tab-item"} onClick={(e) => {
           this.setState({tabIndex: 1})
-        }}>Data Summary</span>
+        }}><SvgIcon component={ExploreOutlinedIcon}></SvgIcon> Data Summary</span>
         <span className={tabIndex === 2 ? "tab-item-active" : "tab-item"} onClick={(e) => {
           this.setState({tabIndex: 2})
-        }}>Explore Data</span>
+        }}><SvgIcon component={ExploreOutlinedIcon}></SvgIcon> Explore Data</span>
       </div>
     )
   }
@@ -345,13 +347,13 @@ export default class DetailsPage extends React.Component<
     const { tabIndex } = this.state
     return(
       <div className="tab-content-group">
-        <div style={{display: tabIndex === 0 ? "block" : "none"}}>
+        <div className={tabIndex === 0 ? "tab-content-active" : "tab-content"}>
           {(this.renderTabContentByIndex(0))}
         </div>
-        <div style={{display: tabIndex === 1 ? "block" : "none"}}>
+        <div className={tabIndex === 1 ? "tab-content-active" : "tab-content"}>
           {(this.renderTabContentByIndex(1))}
         </div>
-        <div style={{display: tabIndex === 2 ? "block" : "none"}}>
+        <div className={tabIndex === 2 ? "tab-content-active" : "tab-content"}>
           {(this.renderTabContentByIndex(2))}
         </div>
       </div>
