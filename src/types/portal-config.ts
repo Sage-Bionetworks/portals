@@ -9,6 +9,7 @@ import { SynapsePlotProps } from 'synapse-react-client/dist/containers/widgets/S
 import { MarkdownSynapseProps } from 'synapse-react-client/dist/containers/MarkdownSynapse'
 import { NewsFeedMenuProps } from 'synapse-react-client/dist/containers/NewsFeedMenu'
 import { GoalsProps } from 'synapse-react-client/dist/containers/home_page/goals/Goals'
+import { ProgramsProps } from 'synapse-react-client/dist/containers/home_page/programs/Programs'
 import { ResourcesProps } from 'synapse-react-client/dist/containers/home_page/resources/Resources'
 import { UserCardListRotateProps } from 'synapse-react-client/dist/containers/UserCardListRotate'
 import { SynapseFormSubmissionGridProps } from 'synapse-react-client/dist/containers/synapse_form_wrapper/SynapseFormSubmissionsGrid'
@@ -81,6 +82,11 @@ type ThemesPlot = {
 type Goals = {
   name: 'Goals'
   props: GoalsProps
+}
+
+type Programs = {
+  name: 'Programs'
+  props: ProgramsProps
 }
 
 type Resources = {
@@ -241,6 +247,7 @@ export type SynapseConfig = (
   | SurveysCompletedPlots
   | ExternalFileHandleLink
   | Goals
+  | Programs
   | Resources
   | UpsetPlot
   | UserCardListRotate
