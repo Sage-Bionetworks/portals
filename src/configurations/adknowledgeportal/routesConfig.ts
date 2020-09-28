@@ -40,7 +40,7 @@ const routes: GenericRoute[] = [
         name: 'FeaturedDataTabs',
         title: 'FEATURED DATA',
         centerTitle: true,
-        outsideContainerClassName: 'home-spacer',
+        outsideContainerClassName: 'home-spacer home-bg-dark',
         props: {
           rgbIndex: 3,
           exploreSql: 'select * from syn11346063',
@@ -96,7 +96,7 @@ const routes: GenericRoute[] = [
       {
         name: 'UserCardListRotate',
         title: 'Our People and Institutions',
-        outsideContainerClassName: 'home-spacer home-bg-dark',
+        outsideContainerClassName: 'home-spacer',
         centerTitle: true,
         props: {
           sql: `${peopleSql} where isFeatured=true`,
@@ -111,6 +111,7 @@ const routes: GenericRoute[] = [
         name: 'RssFeedCards',
         title: 'What\'s New',
         centerTitle: true,
+        outsideContainerClassName: 'home-spacer home-bg-dark',
         props: {
           url: 'https://news.adknowledgeportal.org/?feed=rss2',
           itemsToShow:3,
