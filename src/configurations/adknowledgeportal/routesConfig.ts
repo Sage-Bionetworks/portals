@@ -52,16 +52,19 @@ const routes: GenericRoute[] = [
             exploreFacetColumnValue: 'Human',
             plotsConfig: {
               configs: [{
+                title:'The Religious Orders Study and Memory and Aging Project (ROSMAP)',
                 facetsToPlot:['dataType', 'assay'],
                 selectFacetColumnName:'study',
                 selectFacetColumnValue:'ROSMAP',
               },
               {
+                title:'The Mount Sinai Brain Bank (MSBB)',
                 facetsToPlot:['dataType', 'assay'],
                 selectFacetColumnName:'study',
                 selectFacetColumnValue:'MSBB',
               },
               {
+                title:'RNAseq Reprocessing',
                 facetsToPlot:['dataType', 'assay'],
                 selectFacetColumnName:'study',
                 selectFacetColumnValue:'rnaSeqReprocessing',
