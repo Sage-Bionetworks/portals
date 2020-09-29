@@ -120,6 +120,45 @@ export const details: DetailsPageProps = {
       },
     },
     {
+      name: "QueryWrapperPlotNav",
+      tabIndex: 2,
+      props: {
+        rgbIndex: 8,
+        sql: dataSql,
+        sqlOperator: 'HAS',
+        tableConfiguration: {
+          showAccessColumn: true,
+          columnLinks: [
+            {
+              matchColumnName: 'study',
+              URLColumnName: 'studyName',
+              baseURL: 'Explore/Studies/DetailsPage',
+              isMarkdown: false,
+            },
+          ],
+        },
+        visibleColumnCount: 10,
+        shouldDeepLink: true,
+        name: 'Data',
+        facetAliases: {
+          id: 'File',
+        },
+        facetsToPlot: [
+          'study',
+          'dataType',
+          'species',
+          'tissue',
+          'referenceSet',
+          'fileFormat',
+        ],
+      },
+      resolveSynId: {
+        value: true,
+      },
+      tableSqlKeys: ['study'],
+      columnName: 'study'
+    },
+    {
       name: 'StandaloneQueryWrapper',
       props: {
         sql: metadataSql,
@@ -140,22 +179,6 @@ export const details: DetailsPageProps = {
       columnName: 'study',
       title: 'Metadata',
       tabIndex: 1,
-    },
-    {
-      name: 'StandaloneQueryWrapper',
-      props: {
-        sql: dataSql,
-        rgbIndex,
-        title: 'Data',
-        sqlOperator: 'HAS',
-      },
-      resolveSynId: {
-        value: true,
-      },
-      tableSqlKeys: ['study'],
-      columnName: 'study',
-      title: 'Data',
-      tabIndex: 2,
     },
     {
       name: 'CardContainerLogic',
