@@ -52,19 +52,19 @@ const routes: GenericRoute[] = [
             exploreFacetColumnValue: 'Human',
             plotsConfig: {
               configs: [{
-                title:'The Religious Orders Study and Memory and Aging Project (ROSMAP)',
+                title:'The Religious Orders and Memory and Aging Project Study',
                 facetsToPlot:['dataType', 'assay'],
                 selectFacetColumnName:'study',
                 selectFacetColumnValue:'ROSMAP',
               },
               {
-                title:'The Mount Sinai Brain Bank (MSBB)',
+                title:'The Mount Sinai Brain Bank Study',
                 facetsToPlot:['dataType', 'assay'],
                 selectFacetColumnName:'study',
                 selectFacetColumnValue:'MSBB',
               },
               {
-                title:'RNAseq Reprocessing',
+                title:'The RNAseq Harmonization Study',
                 facetsToPlot:['dataType', 'assay'],
                 selectFacetColumnName:'study',
                 selectFacetColumnValue:'rnaSeqReprocessing',
@@ -78,16 +78,19 @@ const routes: GenericRoute[] = [
             exploreFacetColumnValue: 'Mouse',
             plotsConfig: {
               configs: [{
+                title:'The UCI MODEL-AD 5XFAD Study',
                 facetsToPlot:['dataType', 'assay'],
                 selectFacetColumnName:'study',
                 selectFacetColumnValue:'UCI_5XFAD',
               },
               {
+                title:'The IU/Jax/Pitt MODEL-AD Primary Screen Study',
                 facetsToPlot:['dataType', 'assay'],
                 selectFacetColumnName:'study',
                 selectFacetColumnValue:'Jax.IU.Pitt_PrimaryScreen',
               },
               {
+                title:'The IU/Jax/Pit MODEL-AD APOE/TREM2 Study',
                 facetsToPlot:['dataType', 'assay'],
                 selectFacetColumnName:'study',
                 selectFacetColumnValue:'Jax.IU.Pitt_APOE4.Trem2.R47H',
