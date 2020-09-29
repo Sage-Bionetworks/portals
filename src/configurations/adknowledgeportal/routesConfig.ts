@@ -6,7 +6,7 @@ import {
   data,
   people,
   programs,
-  publications
+  publications,
 } from './synapseConfigs'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
 import {
@@ -18,6 +18,7 @@ import { results } from './synapseConfigs/results'
 import { iconHeaderOptions } from './synapseConfigs/iconOptions'
 import { publicationProgrammatic } from './synapseConfigs/publications'
 import { programCardConfiguration } from './synapseConfigs/programs'
+import { programsHomePageConfig } from './synapseConfigs/programsHomePage'
 import experimentalTools from './synapseConfigs/experimental_tools'
 import computationalTools from './synapseConfigs/computational_tools'
 import { projectsSql, studiesSql, peopleSql } from './resources'
@@ -28,64 +29,18 @@ const routes: GenericRoute[] = [
     isNested: false,
     synapseConfigArray: [
       {
-        name: 'StatefulButtonControlWrapper',
-        title: 'EXPLORE CONTENT',
-        centerTitle: true,
-        props: {
-          configs: [
-            {
-              name: 'Projects',
-              synapseConfigArray: [projects.homePageSynapseObject],
-            },
-            {
-              name: 'Studies',
-              synapseConfigArray: [studies.homePageSynapseObject],
-            },
-            { name: 'Data', synapseConfigArray: [data.homePageSynapseObject] },
-            {
-              name: 'Publications',
-              synapseConfigArray: [publications.homePageSynapseObject],
-            },
-            {
-              name: 'People',
-              synapseConfigArray: [people.homePageSynapseObject],
-            },
-            {
-              name: 'Experimental Tools',
-              synapseConfigArray: [experimentalTools.homePageSynapseObject],
-            },
-            {
-              name: 'Computational Tools',
-              synapseConfigArray: [computationalTools.homePageSynapseObject],
-            },
-            { name: 'Results', synapseConfigArray: [results] },
-          ],
-          colors: [
-            '#E5AE4C',
-            '#5BB0B5',
-            '#407BA0',
-            '#0F9488',
-            '#D4689A',
-            '#3C4A63',
-            '#D46D1E',
-            '#407BA0',
-          ],
-        },
-      },
-      {
-        name: 'CardContainerLogic',
+        name: 'Programs',
         title: 'PROGRAMS',
         centerTitle: true,
         props: {
-          ...programs,
-          sql: 'SELECT * FROM syn17024173',
+          ...programsHomePageConfig,
         },
       },
       {
         name: 'FeaturedDataTabs',
         title: 'FEATURED DATA',
         centerTitle: true,
-        outsideContainerClassName: 'home-spacer',
+        outsideContainerClassName: 'home-spacer home-bg-dark',
         props: {
           rgbIndex: 3,
           exploreSql: 'select * from syn11346063',
@@ -97,16 +52,19 @@ const routes: GenericRoute[] = [
             exploreFacetColumnValue: 'Human',
             plotsConfig: {
               configs: [{
+                title:'The Religious Orders Study and Memory and Aging Project (ROSMAP)',
                 facetsToPlot:['dataType', 'assay'],
                 selectFacetColumnName:'study',
                 selectFacetColumnValue:'ROSMAP',
               },
               {
+                title:'The Mount Sinai Brain Bank (MSBB)',
                 facetsToPlot:['dataType', 'assay'],
                 selectFacetColumnName:'study',
                 selectFacetColumnValue:'MSBB',
               },
               {
+                title:'RNAseq Reprocessing',
                 facetsToPlot:['dataType', 'assay'],
                 selectFacetColumnName:'study',
                 selectFacetColumnValue:'rnaSeqReprocessing',
@@ -141,7 +99,7 @@ const routes: GenericRoute[] = [
       {
         name: 'UserCardListRotate',
         title: 'Our People and Institutions',
-        outsideContainerClassName: 'home-spacer home-bg-dark',
+        outsideContainerClassName: 'home-spacer',
         centerTitle: true,
         props: {
           sql: `${peopleSql} where isFeatured=true`,
@@ -156,6 +114,7 @@ const routes: GenericRoute[] = [
         name: 'RssFeedCards',
         title: 'What\'s New',
         centerTitle: true,
+        outsideContainerClassName: 'home-spacer home-bg-dark',
         props: {
           url: 'https://news.adknowledgeportal.org/?feed=rss2',
           itemsToShow:3,
