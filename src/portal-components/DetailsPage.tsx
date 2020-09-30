@@ -23,6 +23,8 @@ import {generateSynapseObject} from "../RouteResolver";
 import SvgIcon from "@material-ui/icons/ExploreOutlined";
 import ExploreOutlinedIcon from '@material-ui/icons/ExploreOutlined';
 import {LockedFacet} from "synapse-react-client/dist/containers/QueryWrapper";
+import {ReactComponent as StudySVG} from "synapse-react-client/dist/assets/icons/study2.svg";
+import {ReactComponent as DataSummarySVG} from "synapse-react-client/dist/assets/icons/Data2.svg";
 
 const pluralize = require('pluralize')
 const COMPONENT_ID_PREFIX = 'src-component-'
@@ -333,13 +335,13 @@ export default class DetailsPage extends React.Component<
       <div className="tab-groups">
         <span className={tabIndex === 0 ? "tab-item-active" : "tab-item"} onClick={(e) => {
           this.setState({tabIndex: 0})
-        }}><SvgIcon component={ExploreOutlinedIcon}></SvgIcon> Study Details</span>
+        }}><StudySVG></StudySVG>Study Details</span>
         <span className={tabIndex === 1 ? "tab-item-active" : "tab-item"} onClick={(e) => {
           this.setState({tabIndex: 1})
-        }}><SvgIcon component={ExploreOutlinedIcon}></SvgIcon> Data Summary</span>
+        }}><DataSummarySVG></DataSummarySVG>Data Summary</span>
         <span className={tabIndex === 2 ? "tab-item-active" : "tab-item"} onClick={(e) => {
           this.setState({tabIndex: 2})
-        }}><SvgIcon component={ExploreOutlinedIcon}></SvgIcon> Explore Data</span>
+        }}><SvgIcon component={ExploreOutlinedIcon}></SvgIcon>Explore Data</span>
       </div>
     )
   }

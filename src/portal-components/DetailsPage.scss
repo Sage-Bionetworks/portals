@@ -5,6 +5,17 @@
 
 $marginTop: 40px;
 $study-page-tab-height: 50px;
+$svg-icon-height: 30px;
+
+%svg-icon {
+  color: #fff;
+  fill: #fff;
+}
+
+%svg-icon-active {
+  color: $primary-action-color;
+  fill: $primary-action-color;
+}
 
 %alignContent {
   display: flex;
@@ -77,7 +88,7 @@ $study-page-tab-height: 50px;
   }
 
   hr {
-    margin: 0px;
+    margin: 14px 0;
   }
   h2 {
     padding-top: 0px;
@@ -111,19 +122,23 @@ $study-page-tab-height: 50px;
       margin: 0 4px;
       border-radius: 4px 4px 0 0;
       svg {
-        padding-right: 6px;
-        font-size: 32px;
+        padding-right: 10px;
+        font-size: 34px;
         vertical-align: middle;
+        height: $svg-icon-height
       }
     }
     .tab-item {
       background: rgba(0, 0, 0, 0.4);
       color: #fff;
+      svg, path {
+        @extend %svg-icon;
+      }
     }
     .tab-item-active {
       background-color: #fff;
-      svg {
-        color: $primary-action-color
+      svg, path {
+        @extend %svg-icon-active;
       }
     }
   }

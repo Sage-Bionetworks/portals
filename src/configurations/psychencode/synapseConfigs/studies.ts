@@ -100,26 +100,6 @@ export const details: DetailsPageProps = {
       tabIndex: 0,
     },
     {
-      name: 'Markdown',
-      props: {
-        ownerId: 'syn4921369',
-        wikiId: '477467',
-      },
-      title: 'Access Requirements',
-      standalone: true,
-      tabIndex: 0,
-    },
-    {
-      name: 'Markdown',
-      props: {},
-      columnName: 'methods',
-      title: 'Methods',
-      tabIndex: 0,
-      resolveSynId: {
-        title: true,
-      },
-    },
-    {
       name: "QueryWrapperPlotNav",
       tabIndex: 2,
       props: {
@@ -179,6 +159,26 @@ export const details: DetailsPageProps = {
       columnName: 'study',
       title: 'Metadata',
       tabIndex: 1,
+    },
+    {
+      name: 'Markdown',
+      props: {
+        ownerId: 'syn4921369',
+        wikiId: '477467',
+      },
+      title: 'Access Requirements',
+      standalone: true,
+      tabIndex: 1,
+    },
+    {
+      name: 'Markdown',
+      props: {},
+      columnName: 'methods',
+      title: 'Methods',
+      tabIndex: 0,
+      resolveSynId: {
+        title: true,
+      },
     },
     {
       name: 'CardContainerLogic',
