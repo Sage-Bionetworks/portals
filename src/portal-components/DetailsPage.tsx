@@ -22,6 +22,7 @@ import {SynapseConfig} from "../types/portal-config";
 import {generateSynapseObject} from "../RouteResolver";
 import SvgIcon from "@material-ui/icons/ExploreOutlined";
 import ExploreOutlinedIcon from '@material-ui/icons/ExploreOutlined';
+import {LockedFacet} from "synapse-react-client/dist/containers/QueryWrapper";
 
 const pluralize = require('pluralize')
 const COMPONENT_ID_PREFIX = 'src-component-'
@@ -456,6 +457,7 @@ export default class DetailsPage extends React.Component<
     return split.map((splitString) => {
       let value = splitString.trim()
       let entityTitle = ''
+      let lockedFacet: LockedFacet = {}
       if (resolveSynId) {
         // use entity name as either title or value according to resolveSynId
         const entity = entityHeaders?.results.find(
@@ -469,8 +471,14 @@ export default class DetailsPage extends React.Component<
         if (resolveSynId.title) {
           entityTitle = name
         }
+
+        // use entity name according to resolveSynId
         if (resolveSynId.value) {
           value = name
+
+          // For explorer 2.0, construct an object to contain the locked facet name and facet value
+          lockedFacet.facet = columnName
+          lockedFacet.value = name
         }
       }
       let searchParams: Dictionary<string> | undefined = undefined
@@ -484,6 +492,13 @@ export default class DetailsPage extends React.Component<
       const injectedProps = injectPropsIntoConfig(value, el, {
         ...deepCloneOfProps,
       })
+
+      // For explorer 2.0, cannot assign key `lockedFacet` to deepCloneOfProps due to type errors,
+      // assign lockedFacet value directly to injectedProps only if resolveSynId.value is true
+      if (resolveSynId && resolveSynId.value) {
+        injectedProps['lockedFacet'] = lockedFacet
+      }
+
       const synapseConfigWithInjectedProps: SynapseConfig = {
         ...el,
         props: injectedProps,
