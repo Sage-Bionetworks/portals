@@ -28,16 +28,62 @@ $study-page-tab-height: 50px;
     color: #515359;
     margin-top: 42px;
   }
+
+  // Jump menu css
+  .menu-row-button {
+    @extend %alignContent;
+    span {
+      height: 25px;
+      @extend %alignContent;
+    }
+    background: rgba(60, 74, 99, 0.1);
+    height: 40px;
+    width: 180px;
+    text-align: left;
+    padding-left: 20px;
+    color: #515359;
+    border: 1px solid rgba(26, 28, 41, 0.1);
+    border-top: none;
+  }
+  .menu-row-button:nth-child(1) {
+    border-top: 1px solid rgba(26, 28, 41, 0.1);
+  }
+  .menu-row-button:nth-child(1) {
+    background: rgba(60, 74, 99, 0.1);
+    height: 40px;
+    width: 180px;
+    text-align: left;
+    padding-left: 20px;
+    color: #515359;
+  }
+  .button-container {
+    top: 100px;
+    height: fit-content;
+    margin-right: 30px;
+    position: sticky;
+    flex: 1;
+    margin-top: $marginTop;
+  }
+
   .component-container {
     flex: 4;
     overflow: hidden;
-    margin-top: -50px;
   }
+
+  &.tab-layout {
+    .component-container {
+      margin-top: -50px;
+    }
+  }
+
   hr {
     margin: 0px;
   }
   h2 {
     padding-top: 0px;
+  }
+  div.SRC-overflowAuto {
+    min-height: 150px !important; // Overwrite javascript injected css
   }
   .first-title {
     margin-top: $marginTop;

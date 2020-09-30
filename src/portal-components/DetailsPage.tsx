@@ -227,7 +227,7 @@ export default class DetailsPage extends React.Component<
 
     if (tabLayout) {
       return (
-        <div className="DetailsPage">
+        <div className="DetailsPage tab-layout">
           <div className="component-container" ref={this.ref}>
             {this.renderTabs()}
             {isLoading && <BarLoader color="#878787" loading={true} height={5}/>}
