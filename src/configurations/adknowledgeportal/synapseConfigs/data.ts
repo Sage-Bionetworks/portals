@@ -30,6 +30,7 @@ const data: HomeExploreConfig = {
             isMarkdown: false,
             baseURL: 'Explore/Studies/DetailsPage',
             URLColumnName: 'Study_Name',
+            wrapValueWithParens: true,
           },
         ],
       },
