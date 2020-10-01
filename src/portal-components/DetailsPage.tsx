@@ -1,33 +1,32 @@
+import { cloneDeep, Dictionary } from 'lodash'
 import * as React from 'react'
+import { generateSynapseObject } from 'RouteResolver'
+import { SynapseClient, SynapseConstants } from 'synapse-react-client'
+import {
+  insertConditionsFromSearchParams,
+  parseEntityIdFromSqlStatement,
+} from 'synapse-react-client/dist/utils/functions/sqlFunctions'
 import {
   EntityHeader,
   PaginatedResults,
+  QueryBundleRequest,
   QueryResultBundle,
-
+  ReferenceList,
+  EntityColumnType,
 } from 'synapse-react-client/dist/utils/synapseTypes/'
-
-import {DetailsPageProps, RowSynapseConfig} from 'types/portal-util-types'
+import { SynapseConfig } from 'types/portal-config'
+import { DetailsPageProps, RowSynapseConfig } from 'types/portal-util-types'
 import './DetailsPage.scss'
-import {
-  insertConditionsFromSearchParams,
-  parseEntityIdFromSqlStatement
-} from "synapse-react-client/dist/utils/functions/sqlFunctions";
-import {EntityColumnType, QueryBundleRequest, ReferenceList} from "synapse-react-client/dist/utils/synapseTypes";
-import {SynapseClient, SynapseConstants} from "synapse-react-client";
-import {cloneDeep, Dictionary} from "lodash";
+import injectPropsIntoConfig from './injectPropsIntoConfig'
 import { ExternalFileHandleLink } from 'synapse-react-client/dist/containers/ExternalFileHandleLink'
-import {BarLoader} from "react-spinners";
-import injectPropsIntoConfig from "./injectPropsIntoConfig";
-import {SynapseConfig} from "../types/portal-config";
-import {generateSynapseObject} from "../RouteResolver";
-import SvgIcon from "@material-ui/icons/ExploreOutlined";
-import ExploreOutlinedIcon from '@material-ui/icons/ExploreOutlined';
-import {LockedFacet} from "synapse-react-client/dist/containers/QueryWrapper";
-import {ReactComponent as StudySVG} from "synapse-react-client/dist/assets/icons/study2.svg";
-import {ReactComponent as DataSummarySVG} from "synapse-react-client/dist/assets/icons/Data2.svg";
+import { BarLoader } from 'react-spinners'
+import SvgIcon from "@material-ui/icons/ExploreOutlined"
+import ExploreOutlinedIcon from '@material-ui/icons/ExploreOutlined'
+import {LockedFacet} from "synapse-react-client/dist/containers/QueryWrapper"
+import {ReactComponent as StudySVG} from "synapse-react-client/dist/assets/icons/study2.svg"
+import {ReactComponent as DataSummarySVG} from "synapse-react-client/dist/assets/icons/Data2.svg"
 
-const pluralize = require('pluralize')
-const COMPONENT_ID_PREFIX = 'src-component-'
+
 
 type State = {
   queryResultBundle: QueryResultBundle | undefined
@@ -37,6 +36,8 @@ type State = {
   tabIndex: number
 }
 
+const pluralize = require('pluralize')
+const COMPONENT_ID_PREFIX = 'src-component-'
 /**
  * The details pages give a deeper dive into a particular portal section.
  *
@@ -136,7 +137,7 @@ export default class DetailsPage extends React.Component<
         synapseConfigArray.forEach((el: RowSynapseConfig) => {
           if (el.resolveSynId && el.columnName) {
             const { index, columnType } =
-            mapColumnHeaderToRowIndex[el.columnName] ?? {}
+              mapColumnHeaderToRowIndex[el.columnName] ?? {}
             let value: string = row[index]
             if (
               columnType === EntityColumnType.STRING_LIST ||
@@ -188,6 +189,26 @@ export default class DetailsPage extends React.Component<
         )
       },
     )
+  }
+
+  handleMenuClick = (index: number) => {
+    const wrapper = this.ref.current?.querySelector<HTMLDivElement>(
+      `#${COMPONENT_ID_PREFIX}${index}`,
+    )
+    if (wrapper) {
+      // https://stackoverflow.com/a/49924496
+      const offset = 85
+      const bodyRect = document.body.getBoundingClientRect().top
+      const elementRect = wrapper.getBoundingClientRect().top
+      const elementPosition = elementRect - bodyRect
+      const offsetPosition = elementPosition - offset
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth',
+      })
+    } else {
+      console.error('Could not scroll to element with index ', index)
+    }
   }
 
   goToExplorePage = () => {
@@ -259,26 +280,6 @@ export default class DetailsPage extends React.Component<
     }
 
   }  // end render()
-
-  handleMenuClick = (index: number) => {
-    const wrapper = this.ref.current?.querySelector<HTMLDivElement>(
-      `#${COMPONENT_ID_PREFIX}${index}`,
-    )
-    if (wrapper) {
-      // https://stackoverflow.com/a/49924496
-      const offset = 85
-      const bodyRect = document.body.getBoundingClientRect().top
-      const elementRect = wrapper.getBoundingClientRect().top
-      const elementPosition = elementRect - bodyRect
-      const offsetPosition = elementPosition - offset
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth',
-      })
-    } else {
-      console.error('Could not scroll to element with index ', index)
-    }
-  }
 
   renderMenu = () => {
     const { synapseConfigArray, token } = this.props
@@ -379,7 +380,6 @@ export default class DetailsPage extends React.Component<
   }
 
   renderSynapseConfigArray = (synapseConfigArray:RowSynapseConfig[]) => {
-    // const { synapseConfigArray } = this.props
     return synapseConfigArray.map((el: RowSynapseConfig, index) => {
       const id = COMPONENT_ID_PREFIX + index
       const { standalone, resolveSynId, showTitleSeperator = true } = el
@@ -526,5 +526,4 @@ export default class DetailsPage extends React.Component<
       return generateSynapseObject(synapseConfigWithInjectedProps, searchParams)
     })
   }
-
 }
