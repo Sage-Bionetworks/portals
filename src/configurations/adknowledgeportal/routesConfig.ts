@@ -71,7 +71,7 @@ const routes: GenericRoute[] = [
                 facetsToPlot:['dataType', 'assay'],
                 selectFacetColumnName:'study',
                 selectFacetColumnValue:'rnaSeqReprocessing',
-                detailsPagePath:'/Explore/Studies/DetailsPage?Study=syn5550404'
+                detailsPagePath:'/Explore/Studies/DetailsPage?Study=syn9702085'
               }]
             }
           },
