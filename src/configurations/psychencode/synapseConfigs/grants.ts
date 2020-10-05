@@ -58,9 +58,6 @@ export const grants: SynapseConfig = {
           columnName: 'keyInvestigators',
         },
         {
-          columnName: 'abstract',
-        },
-        {
           columnName: 'institutions',
         },
         {

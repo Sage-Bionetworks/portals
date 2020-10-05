@@ -76,9 +76,6 @@ export const studies: SynapseConfig = {
           columnName: 'species',
         },
         {
-          columnName: 'studyDescription',
-        },
-        {
           columnName: 'studyName',
         },
       ],
