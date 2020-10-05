@@ -20,13 +20,8 @@ import './DetailsPage.scss'
 import injectPropsIntoConfig from './injectPropsIntoConfig'
 import { ExternalFileHandleLink } from 'synapse-react-client/dist/containers/ExternalFileHandleLink'
 import { BarLoader } from 'react-spinners'
-import SvgIcon from "@material-ui/icons/ExploreOutlined"
-import ExploreOutlinedIcon from '@material-ui/icons/ExploreOutlined'
 import {LockedFacet} from "synapse-react-client/dist/containers/QueryWrapper"
-import {ReactComponent as StudySVG} from "synapse-react-client/dist/assets/icons/study2.svg"
-import {ReactComponent as DataSummarySVG} from "synapse-react-client/dist/assets/icons/Data2.svg"
-
-
+import DetailsPageTabs from "./DetailsPageTabs";
 
 type State = {
   queryResultBundle: QueryResultBundle | undefined
@@ -223,7 +218,7 @@ export default class DetailsPage extends React.Component<
 
   render() {
     const { isLoading, hasError } = this.state
-    const { showMenu = true, tabLayout = false, synapseConfigArray } = this.props
+    const { showMenu = true, tabLayout, synapseConfigArray } = this.props
     if (hasError) {
       const currentLocation = window.location.href.split('/')
       const name = currentLocation[currentLocation.length - 2]
@@ -248,13 +243,15 @@ export default class DetailsPage extends React.Component<
       )
     }
 
-    if (tabLayout) {
+    if (tabLayout?.length) {
       return (
         <div className="DetailsPage tab-layout">
           <div className="component-container" ref={this.ref}>
-            {this.renderTabs()}
-            {isLoading && <BarLoader color="#878787" loading={true} height={5}/>}
-            {!isLoading && this.renderTabContent()}
+            {<DetailsPageTabs
+              tabConfigs={tabLayout}
+              loading={isLoading}
+              tabContents={!isLoading && this.buildTabContent()}>
+            </DetailsPageTabs>}
           </div>
         </div>
       )
@@ -330,53 +327,23 @@ export default class DetailsPage extends React.Component<
     })
   }
 
-  renderTabs() {
-    const { tabIndex } = this.state
-    return(
-      <div className="tab-groups">
-        <span className={tabIndex === 0 ? "tab-item-active" : "tab-item"} onClick={(e) => {
-          this.setState({tabIndex: 0})
-        }}><StudySVG></StudySVG>Study Details</span>
-        <span className={tabIndex === 1 ? "tab-item-active" : "tab-item"} onClick={(e) => {
-          this.setState({tabIndex: 1})
-        }}><DataSummarySVG></DataSummarySVG>Data Summary</span>
-        <span className={tabIndex === 2 ? "tab-item-active" : "tab-item"} onClick={(e) => {
-          this.setState({tabIndex: 2})
-        }}><SvgIcon component={ExploreOutlinedIcon}></SvgIcon>Explore Data</span>
-      </div>
-    )
-  }
-
-  renderTabContent() {
-    const { tabIndex } = this.state
-    return(
-      <div className="tab-content-group">
-        <div className={tabIndex === 0 ? "tab-content-active" : "tab-content"}>
-          {(this.renderTabContentByIndex(0))}
-        </div>
-        <div className={tabIndex === 1 ? "tab-content-active" : "tab-content"}>
-          {(this.renderTabContentByIndex(1))}
-        </div>
-        <div className={tabIndex === 2 ? "tab-content-active" : "tab-content"}>
-          {(this.renderTabContentByIndex(2))}
-        </div>
-      </div>
-    )
-  }
-
   /**
-   * Separate details page content to different tabs
-   * tab index 0: Study Details
-   * tab index 1: Data Summary
-   * tab index 2: Explore Data
-   * @param i: accept the tab index starting from 0
+   * Build a list of tab contents based on the synapseConfig's tabIndex setting.
+   * 1st tab content has index 0
+   * @return {JSX.Element[]} An array of tab contents
    */
-  renderTabContentByIndex(i: number) {
+  buildTabContent() {
     const { synapseConfigArray } = this.props
-    const tabContentConfig = synapseConfigArray.filter(
-      (el: RowSynapseConfig, index) => el.tabIndex === i
-    )
-    return (<div>{this.renderSynapseConfigArray(tabContentConfig)}</div>)
+    // Get sorted unique tab index from synapseConfigArray
+    const tabIndexes = Array.from(new Set(synapseConfigArray.map(el => el.tabIndex))).sort()
+    // For each tab, build its content
+    return tabIndexes.map(i => {
+      const tabContentConfig:RowSynapseConfig[] = synapseConfigArray.filter(
+        (el: RowSynapseConfig, index) => el.tabIndex === i
+      )
+      const tabContent = this.renderSynapseConfigArray(tabContentConfig)
+      return (<div key={`detailPage-tabItem-${i}`}>{tabContent}</div>)
+    })
   }
 
   renderSynapseConfigArray = (synapseConfigArray:RowSynapseConfig[]) => {
@@ -497,7 +464,7 @@ export default class DetailsPage extends React.Component<
 
       // For explorer 2.0, cannot assign key `lockedFacet` to deepCloneOfProps due to type errors,
       // assign lockedFacet value directly to injectedProps only if resolveSynId.value is true
-      if (resolveSynId && resolveSynId.value) {
+      if (resolveSynId?.value) {
         injectedProps['lockedFacet'] = lockedFacet
       }
 

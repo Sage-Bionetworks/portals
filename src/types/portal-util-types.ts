@@ -34,5 +34,14 @@ export type DetailsPageProps = {
   token?: string
   synapseConfigArray: RowSynapseConfig[]
   sqlOperator?: SQLOperator
-  tabLayout?: boolean
+  tabLayout?: DetailsPageTabProps[]
+}
+
+export type DetailsPageTabProps = {
+  title: string,
+  tabIconConfigs: {
+    componentName: "mui" | "icon",
+    iconName: string,
+    iconClass?: string
+  }
 }

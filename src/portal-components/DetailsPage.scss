@@ -125,7 +125,8 @@ $svg-icon-height: 30px;
         padding-right: 10px;
         font-size: 34px;
         vertical-align: middle;
-        height: $svg-icon-height
+        height: $svg-icon-height;
+        width: auto;
       }
     }
     .tab-item {

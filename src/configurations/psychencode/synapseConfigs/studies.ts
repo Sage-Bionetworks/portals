@@ -89,7 +89,29 @@ export const studies: SynapseConfig = {
 export const details: DetailsPageProps = {
   sql: studiesSql,
   sqlOperator: '=',
-  tabLayout: true,
+  tabLayout: [
+    {
+      title: "Study Details",
+      tabIconConfigs: {
+        componentName: "icon",
+        iconName: "study"
+      }
+    },
+    {
+      title: "Data Summary",
+      tabIconConfigs: {
+        componentName: "icon",
+        iconName: "database"
+      }
+    },
+    {
+      title: "Explore Data",
+      tabIconConfigs: {
+        componentName: "mui",
+        iconName: "ExploreOutlinedIcon"
+      }
+    }
+  ],
   synapseConfigArray: [
     {
       name: 'Markdown',
