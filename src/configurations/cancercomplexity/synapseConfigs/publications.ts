@@ -80,42 +80,18 @@ export const publications: HomeExploreConfig = {
       facetAliases,
       searchConfiguration: {
         searchable: [
-          {
-            columnName: 'publicationTitle',
-          },
-          {
-            columnName: 'authors',
-          },
-          {
-            columnName: 'journal',
-          },
-          {
-            columnName: 'doi',
-          },
-          {
-            columnName: 'pubMedId',
-          },
-          {
-            columnName: 'keywords',
-          },
-          {
-            columnName: 'tummorType',
-          },
-          {
-            columnName: 'tissue',
-          },
-          {
-            columnName: 'assay',
-          },
-          {
-            columnName: 'grantName',
-          },
-          {
-            columnName: 'grantNumber',
-          },
-          {
-            columnName: 'dataset',
-          },
+          'publicationTitle',
+          'authors',
+          'journal',
+          'doi',
+          'pubMedId',
+          'keywords',
+          'tummorType',
+          'tissue',
+          'assay',
+          'grantName',
+          'grantNumber',
+          'dataset',
         ],
       },
     },

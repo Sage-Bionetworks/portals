@@ -65,21 +65,11 @@ export const grants: HomeExploreConfig = {
       facetsToPlot: ['consortium', 'grantType'],
       searchConfiguration: {
         searchable: [
-          {
-            columnName: 'grantName',
-          },
-          {
-            columnName: 'abstract',
-          },
-          {
-            columnName: 'grantInstitution',
-          },
-          {
-            columnName: 'investigator',
-          },
-          {
-            columnName: 'grantNumber',
-          },
+          'grantName',
+          'abstract',
+          'grantInstitution',
+          'investigator',
+          'grantNumber',
         ],
       },
     },

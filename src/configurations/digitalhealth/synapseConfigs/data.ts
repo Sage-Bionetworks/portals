@@ -60,24 +60,12 @@ const data: HomeExploreConfig = {
       ],
       searchConfiguration: {
         searchable: [
-          {
-            columnName: 'studyOrProject',
-          },
-          {
-            columnName: 'reportedOutcome',
-          },
-          {
-            columnName: 'devicePlatform',
-          },
-          {
-            columnName: 'diagnosis',
-          },
-          {
-            columnName: 'digitalAssessmentCategory',
-          },
-          {
-            columnName: 'digitalAssessmentDetails',
-          },
+          'studyOrProject',
+          'reportedOutcome',
+          'devicePlatform',
+          'diagnosis',
+          'digitalAssessmentCategory',
+          'digitalAssessmentDetails',          
         ],
       },
     },

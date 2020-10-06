@@ -30,30 +30,14 @@ export const files: HomeExploreConfig = {
       facetAliases,
       searchConfiguration: {
         searchable: [
-          {
-            columnName: 'tummorType',
-          },
-          {
-            columnName: 'tissue',
-          },
-          {
-            columnName: 'assay',
-          },
-          {
-            columnName: 'dataFormat',
-          },
-          {
-            columnName: 'species',
-          },
-          {
-            columnName: 'gender',
-          },
-          {
-            columnName: 'grantName',
-          },
-          {
-            columnName: 'grant',
-          },
+          'tummorType',
+          'tissue',
+          'assay',
+          'dataFormat',
+          'species',
+          'gender',
+          'grantName',
+          'grant',
         ],
       },
     },

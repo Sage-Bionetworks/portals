@@ -77,33 +77,15 @@ const studies: HomeExploreConfig = {
       ],
       searchConfiguration: {
         searchable: [
-          {
-            columnName: 'studyName',
-          },
-          {
-            columnName: 'institutions',
-          },
-          {
-            columnName: 'studyDescription',
-          },
-          {
-            columnName: 'diagnosis',
-          },
-          {
-            columnName: 'organs',
-          },
-          {
-            columnName: 'tissues',
-          },
-          {
-            columnName: 'tissueFraction',
-          },
-          {
-            columnName: 'dataTypes',
-          },
-          {
-            columnName: 'methods',
-          },
+          'studyName',
+          'institutions',
+          'studyDescription',
+          'diagnosis',
+          'organs',
+          'tissues',
+          'tissueFraction',
+          'dataTypes',
+          'methods',          
         ],
       },
     },

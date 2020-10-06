@@ -29,21 +29,11 @@ const people: HomeExploreConfig = {
       },
       searchConfiguration: {
         searchable: [
-          {
-            columnName: 'firstName',
-          },
-          {
-            columnName: 'lastName',
-          },
-          {
-            columnName: 'institution',
-          },
-          {
-            columnName: 'Program',
-          },
-          {
-            columnName: 'Grant Number',
-          },
+          'firstName',
+          'lastName',
+          'institution',
+          'Program',
+          'Grant Number',          
         ],
       },
     },

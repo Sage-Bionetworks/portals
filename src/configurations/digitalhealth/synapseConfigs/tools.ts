@@ -63,21 +63,11 @@ export const tools: HomeExploreConfig = {
       ],
       searchConfiguration: {
         searchable: [
-          {
-            columnName: 'digitalAssessmentCategory',
-          },
-          {
-            columnName: 'inputDataType',
-          },
-          {
-            columnName: 'outputDataType',
-          },
-          {
-            columnName: 'softwareAuthor',
-          },
-          {
-            columnName: 'softwareName',
-          },
+          'digitalAssessmentCategory',
+          'inputDataType',
+          'outputDataType',
+          'softwareAuthor',
+          'softwareName',
         ],
       },
     },

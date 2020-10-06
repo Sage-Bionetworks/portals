@@ -73,27 +73,13 @@ const projects: HomeExploreConfig = {
       },
       searchConfiguration: {
         searchable: [
-          {
-            columnName: 'title',
-          },
-          {
-            columnName: 'primaryInvestigators',
-          },
-          {
-            columnName: 'abstract',
-          },
-          {
-            columnName: 'grantNumber',
-          },
-          {
-            columnName: 'institution',
-          },
-          {
-            columnName: 'contributors',
-          },
-          {
-            columnName: 'ndaCollection',
-          },
+          'title',
+          'primaryInvestigators',
+          'abstract',
+          'grantNumber',
+          'institution',
+          'contributors',
+          'ndaCollection',
         ],
       },
     },

@@ -42,21 +42,11 @@ const publications: HomeExploreConfig = {
       facetsToPlot: ['grantNumber', 'year', 'journal'],
       searchConfiguration: {
         searchable: [
-          {
-            columnName: 'title',
-          },
-          {
-            columnName: 'authors',
-          },
-          {
-            columnName: 'year',
-          },
-          {
-            columnName: 'journal',
-          },
-          {
-            columnName: 'grantNumber',
-          },
+          'title',
+          'authors',
+          'year',
+          'journal',
+          'grantNumber',          
         ],
       },
     },
