@@ -186,6 +186,15 @@ const routes: GenericRoute[] = [
                   sql: projectsSql,
                 },
               },
+              {
+                name: 'CardContainerLogic',
+                title: 'Explore Studies',
+                props: {
+                  ...studyCardConfiguration,
+                  sql: studiesSql,
+                },
+              },
+
             ],
           },
         ],

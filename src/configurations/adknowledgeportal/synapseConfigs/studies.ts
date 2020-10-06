@@ -20,7 +20,7 @@ export const studyCardConfiguration: CardConfiguration = {
   labelLinkConfig: [
     {
       isMarkdown: false,
-      matchColumnName: 'Consortium',
+      matchColumnName: 'Program',
       URLColumnName: 'Program',
       baseURL: 'Explore/Programs/DetailsPage',
     },
@@ -39,13 +39,13 @@ export const studyCardConfiguration: CardConfiguration = {
       'Species',
       'Cohort_Type',
       'Study_Status',
-      'Consortium',
+      'Program',
       'Grant',
     ],
   },
 }
 const facetAliases = {
-  Consortium: 'Program',
+  Program: 'Program',
   DataType_All: 'Data Types',
   Data_Contributor: 'Data Contributor',
   Study_Description: 'Study Description',
@@ -85,7 +85,7 @@ const studies: HomeExploreConfig = {
           'Sample_Type',
           'Species',
           'Grant',
-          'Consortium',          
+          'Program',          
         ],
       },
     },
