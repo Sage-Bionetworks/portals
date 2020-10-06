@@ -92,24 +92,16 @@ export const details: DetailsPageProps = {
   tabLayout: [
     {
       title: "Study Details",
-      tabIconConfigs: {
-        componentName: "icon",
-        iconName: "study"
-      }
+      iconName: "study",
     },
     {
       title: "Data Summary",
-      tabIconConfigs: {
-        componentName: "icon",
-        iconName: "database"
-      }
+      iconName: "database",
+      cssClass: "tab-database"
     },
     {
       title: "Explore Data",
-      tabIconConfigs: {
-        componentName: "mui",
-        iconName: "ExploreOutlinedIcon"
-      }
+      iconName: "explore"
     }
   ],
   synapseConfigArray: [

@@ -39,9 +39,6 @@ export type DetailsPageProps = {
 
 export type DetailsPageTabProps = {
   title: string,
-  tabIconConfigs: {
-    componentName: "mui" | "icon",
-    iconName: string,
-    iconClass?: string
-  }
+  iconName: string,
+  cssClass?: string
 }

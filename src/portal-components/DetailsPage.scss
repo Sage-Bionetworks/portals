@@ -142,6 +142,9 @@ $svg-icon-height: 30px;
         @extend %svg-icon-active;
       }
     }
+    .tab-database svg{
+      height: 26px;
+    }
   }
 
   .tab-content-group {
