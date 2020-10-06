@@ -61,33 +61,15 @@ const publications: HomeExploreConfig = {
       facetAliases,
       searchConfiguration: {
         searchable: [
-          {
-            columnName: 'title',
-          },
-          {
-            columnName: 'author',
-          },
-          {
-            columnName: 'journal',
-          },
-          {
-            columnName: 'pmid',
-          },
-          {
-            columnName: 'year',
-          },
-          {
-            columnName: 'fundingAgency',
-          },
-          {
-            columnName: 'studyName',
-          },
-          {
-            columnName: 'diseaseFocus',
-          },
-          {
-            columnName: 'manifestation',
-          },
+          'title',
+          'author',
+          'journal',
+          'pmid',
+          'year',
+          'fundingAgency',
+          'studyName',
+          'diseaseFocus',
+          'manifestation',
         ],
       },
     },

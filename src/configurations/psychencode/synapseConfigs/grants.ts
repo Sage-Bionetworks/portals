@@ -51,18 +51,10 @@ export const grants: SynapseConfig = {
     facetsToPlot: ['grants', 'phase'],
     searchConfiguration: {
       searchable: [
-        {
-          columnName: 'title',
-        },
-        {
-          columnName: 'keyInvestigators',
-        },
-        {
-          columnName: 'institutions',
-        },
-        {
-          columnName: 'grants',
-        },
+        'title',
+        'keyInvestigators',
+        'institutions',
+        'grants',
       ],
     },
   },

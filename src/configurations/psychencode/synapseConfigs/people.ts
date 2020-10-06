@@ -21,15 +21,9 @@ export const people: SynapseConfig = {
     hideDownload: true,
     searchConfiguration: {
       searchable: [
-        {
-          columnName: 'grants',
-        },
-        {
-          columnName: 'firstName',
-        },
-        {
-          columnName: 'lastName',
-        },
+        'grants',
+        'firstName',
+        'lastName',
       ],
     },
   },

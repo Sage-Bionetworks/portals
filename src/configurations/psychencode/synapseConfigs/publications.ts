@@ -39,30 +39,14 @@ export const publications: SynapseConfig = {
     cardConfiguration: publicationsCardConfiguration,
     searchConfiguration: {
       searchable: [
-        {
-          columnName: 'title',
-        },
-        {
-          columnName: 'authors',
-        },
-        {
-          columnName: 'year',
-        },
-        {
-          columnName: 'journal',
-        },
-        {
-          columnName: 'study',
-        },
-        {
-          columnName: 'grants',
-        },
-        {
-          columnName: 'DOI',
-        },
-        {
-          columnName: 'pubmedId',
-        },
+        'title',
+        'authors',
+        'year',
+        'journal',
+        'study',
+        'grants',
+        'DOI',
+        'pubmedId',        
       ],
     },
     facetsToPlot: ['study', 'grants'],

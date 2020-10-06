@@ -57,27 +57,13 @@ export const studies: SynapseConfig = {
     name: 'Studies',
     searchConfiguration: {
       searchable: [
-        {
-          columnName: 'dataContributor',
-        },
-        {
-          columnName: 'dataTypes',
-        },
-        {
-          columnName: 'diagnosis',
-        },
-        {
-          columnName: 'grants',
-        },
-        {
-          columnName: 'tissue',
-        },
-        {
-          columnName: 'species',
-        },
-        {
-          columnName: 'studyName',
-        },
+        'dataContributor',
+        'dataTypes',
+        'diagnosis',
+        'grants',
+        'tissue',
+        'species',
+        'studyName',
       ],
     },
   },

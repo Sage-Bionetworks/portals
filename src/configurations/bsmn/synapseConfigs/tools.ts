@@ -48,18 +48,10 @@ const tools: HomeExploreConfig = {
       cardConfiguration: toolCardConfiguration,
       searchConfiguration: {
         searchable: [
-          {
-            columnName: 'title',
-          },
-          {
-            columnName: 'toolDescription',
-          },
-          {
-            columnName: 'contributor',
-          },
-          {
-            columnName: 'institutions',
-          },
+          'title',
+          'toolDescription',
+           'contributor',
+          'institutions',
         ],
       },
     },

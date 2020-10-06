@@ -34,24 +34,12 @@ const datasets: HomeExploreConfig = {
       facetAliases,
       searchConfiguration: {
         searchable: [
-          {
-            columnName: 'datasetName',
-          },
-          {
-            columnName: 'summary',
-          },
-          {
-            columnName: 'studyName',
-          },
-          {
-            columnName: 'diseaseFocus',
-          },
-          {
-            columnName: 'manifestation',
-          },
-          {
-            columnName: 'fundingAgency',
-          },
+          'datasetName',
+          'summary',
+          'studyName',
+          'diseaseFocus',
+          'manifestation',
+          'fundingAgency',
         ],
       },
     },

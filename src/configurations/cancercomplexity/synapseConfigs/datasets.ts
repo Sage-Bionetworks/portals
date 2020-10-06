@@ -76,39 +76,17 @@ export const datasets: HomeExploreConfig = {
       facetAliases,
       searchConfiguration: {
         searchable: [
-          {
-            columnName: 'datasetName',
-          },
-          {
-            columnName: 'description',
-          },
-          {
-            columnName: 'overallDesign',
-          },
-          {
-            columnName: 'publicationTitle',
-          },
-          {
-            columnName: 'tummorType',
-          },
-          {
-            columnName: 'species',
-          },
-          {
-            columnName: 'assay',
-          },
-          {
-            columnName: 'grantName',
-          },
-          {
-            columnName: 'grantNumber',
-          },
-          {
-            columnName: 'datasetAlias',
-          },
-          {
-            columnName: 'externalLink',
-          },
+          'datasetName',
+          'description',
+          'overallDesign',
+          'publicationTitle',
+          'tummorType',
+          'species',
+          'assay',
+          'grantName',
+          'grantNumber',
+          'datasetAlias',
+          'externalLink',
         ],
       },
     },
