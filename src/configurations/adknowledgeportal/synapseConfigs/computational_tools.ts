@@ -44,24 +44,12 @@ const computationalTools: HomeExploreConfig = {
       facetsToPlot: ['grant', 'program', 'softwareType'],
       searchConfiguration: {
         searchable: [
-          {
-            columnName: 'contributor',
-          },
-          {
-            columnName: 'name',
-          },
-          {
-            columnName: 'grant',
-          },
-          {
-            columnName: 'program',
-          },
-          {
-            columnName: 'softwareType',
-          },
-          {
-            columnName: 'summary',
-          },
+          'contributor',
+          'name',
+          'grant',
+          'program',
+          'softwareType',
+          'summary',          
         ],
       },
     },

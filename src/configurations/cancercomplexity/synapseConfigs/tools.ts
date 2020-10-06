@@ -63,27 +63,13 @@ export const tools: HomeExploreConfig = {
       facetAliases,
       searchConfiguration: {
         searchable: [
-          {
-            columnName: 'toolName',
-          },
-          {
-            columnName: 'description',
-          },
-          {
-            columnName: 'publicationTitle',
-          },
-          {
-            columnName: 'inputDataType',
-          },
-          {
-            columnName: 'outputDataType',
-          },
-          {
-            columnName: 'grantName',
-          },
-          {
-            columnName: 'grantNumber',
-          },
+          'toolName',
+          'description',
+          'publicationTitle',
+          'inputDataType',
+          'outputDataType',
+          'grantName',
+          'grantNumber',          
         ],
       },
     },

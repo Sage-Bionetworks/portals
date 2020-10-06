@@ -17,6 +17,14 @@ export const studyCardConfiguration: CardConfiguration = {
     URLColumnName: 'Study',
     matchColumnName: 'Study',
   },
+  labelLinkConfig: [
+    {
+      isMarkdown: false,
+      matchColumnName: 'Program',
+      URLColumnName: 'Program',
+      baseURL: 'Explore/Programs/DetailsPage',
+    },
+  ],
   genericCardSchema: {
     type: SynapseConstants.STUDY,
     title: 'Study_Name',
@@ -31,13 +39,13 @@ export const studyCardConfiguration: CardConfiguration = {
       'Species',
       'Cohort_Type',
       'Study_Status',
-      'Consortium',
+      'Program',
       'Grant',
     ],
   },
 }
 const facetAliases = {
-  Consortium: 'Program',
+  Program: 'Program',
   DataType_All: 'Data Types',
   Data_Contributor: 'Data Contributor',
   Study_Description: 'Study Description',
@@ -69,33 +77,15 @@ const studies: HomeExploreConfig = {
       cardConfiguration: studyCardConfiguration,
       searchConfiguration: {
         searchable: [
-          {
-            columnName: 'Study_Name',
-          },
-          {
-            columnName: 'Study_Description',
-          },
-          {
-            columnName: 'DataType_All',
-          },
-          {
-            columnName: 'Diagnosis_or_Model_System',
-          },
-          {
-            columnName: 'Data_Contributor',
-          },
-          {
-            columnName: 'Sample_Type',
-          },
-          {
-            columnName: 'Species',
-          },
-          {
-            columnName: 'Grant',
-          },
-          {
-            columnName: 'Consortium',
-          },
+          'Study_Name',
+          'Study_Description',
+          'DataType_All',
+          'Diagnosis_or_Model_System',
+          'Data_Contributor',
+          'Sample_Type',
+          'Species',
+          'Grant',
+          'Program',          
         ],
       },
     },

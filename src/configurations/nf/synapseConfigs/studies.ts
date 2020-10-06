@@ -80,33 +80,15 @@ const studies: HomeExploreConfig = {
       facetAliases,
       searchConfiguration: {
         searchable: [
-          {
-            columnName: 'studyName',
-          },
-          {
-            columnName: 'summary',
-          },
-          {
-            columnName: 'studyLeads',
-          },
-          {
-            columnName: 'studyStatus',
-          },
-          {
-            columnName: 'dataStatus',
-          },
-          {
-            columnName: 'institutions',
-          },
-          {
-            columnName: 'diseaseFocus',
-          },
-          {
-            columnName: 'manifestation',
-          },
-          {
-            columnName: 'fundingAgency',
-          },
+          'studyName',
+          'summary',
+          'studyLeads',
+          'studyStatus',
+          'dataStatus',
+          'institutions',
+          'diseaseFocus',
+          'manifestation',
+          'fundingAgency',
         ],
       },
     },

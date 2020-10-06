@@ -27,6 +27,15 @@ const people: HomeExploreConfig = {
       cardConfiguration: {
         type: SynapseConstants.MEDIUM_USER_CARD,
       },
+      searchConfiguration: {
+        searchable: [
+          'firstName',
+          'lastName',
+          'institution',
+          'Program',
+          'Grant Number',          
+        ],
+      },
     },
   },
 }

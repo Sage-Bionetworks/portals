@@ -69,30 +69,14 @@ export const publications: HomeExploreConfig = {
       visibleColumnCount: Infinity,
       searchConfiguration: {
         searchable: [
-          {
-            columnName: 'Author',
-          },
-          {
-            columnName: 'Diagnosis',
-          },
-          {
-            columnName: 'Journal',
-          },
-          {
-            columnName: 'Title',
-          },
-          {
-            columnName: 'Year',
-          },
-          {
-            columnName: 'digitalAssessmentCategory',
-          },
-          {
-            columnName: 'sensorType',
-          },
-          {
-            columnName: 'Tools',
-          },
+          'Author',
+          'Diagnosis',
+          'Journal',
+          'Title',
+          'Year',
+          'digitalAssessmentCategory',
+          'sensorType',
+          'Tools',
         ],
       },
     },

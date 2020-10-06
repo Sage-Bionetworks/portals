@@ -87,30 +87,14 @@ export const projects: HomeExploreConfig = {
       ],
       searchConfiguration: {
         searchable: [
-          {
-            columnName: 'diagnosis',
-          },
-          {
-            columnName: 'digitalAssessmentCategory',
-          },
-          {
-            columnName: 'digitalAssessmentDetails',
-          },
-          {
-            columnName: 'intervention',
-          },
-          {
-            columnName: 'investigator',
-          },
-          {
-            columnName: 'keywords',
-          },
-          {
-            columnName: 'reportedOutcome',
-          },
-          {
-            columnName: 'study',
-          },
+          'diagnosis',
+          'digitalAssessmentCategory',
+          'digitalAssessmentDetails',
+          'intervention',
+          'investigator',
+          'keywords',
+          'reportedOutcome',
+          'study',
         ],
       },
     },
