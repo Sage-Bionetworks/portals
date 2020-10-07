@@ -115,7 +115,7 @@ export const details: DetailsPageProps = {
           ],
         },
         visibleColumnCount: 10,
-        shouldDeepLink: true,
+        shouldDeepLink: false,
         name: 'Data',
         facetAliases: {
           id: 'File',

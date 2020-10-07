@@ -118,15 +118,25 @@ $svg-icon-height: 30px;
     .tab-item-active{
       cursor: pointer;
       display: inline-block;
-      padding: 0 90px;
+      padding: 0 8%;
       margin: 0 4px;
       border-radius: 4px 4px 0 0;
+      white-space: nowrap;
+
+      @media screen and (max-width: 800px) {
+        padding: 0 2%;
+      }
+
       svg {
         padding-right: 10px;
         font-size: 34px;
         vertical-align: middle;
         height: $svg-icon-height;
         width: auto;
+
+        @media screen and (max-width: 600px) {
+          display: none;
+        }
       }
     }
     .tab-item {
@@ -155,8 +165,4 @@ $svg-icon-height: 30px;
       display: block;
     }
   }
-
-
-
-
 }

@@ -183,7 +183,9 @@ export default class DetailsPage extends React.Component<
           },
         )
       },
-    )
+    ).catch((e) => {
+      console.log("getQueryTableResults: Error getting data", e)
+    })
   }
 
   handleMenuClick = (index: number) => {
