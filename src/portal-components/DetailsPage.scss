@@ -1,4 +1,21 @@
+// Import the theme css
+@import '../config/style/_overides.scss';
+
+// local variable for study page
+
 $marginTop: 40px;
+$study-page-tab-height: 50px;
+$svg-icon-height: 30px;
+
+%svg-icon {
+  color: #fff;
+  fill: #fff;
+}
+
+%svg-icon-active {
+  color: $primary-action-color;
+  fill: $primary-action-color;
+}
 
 %alignContent {
   display: flex;
@@ -6,7 +23,13 @@ $marginTop: 40px;
   align-items: center;
 }
 
+.SRC-portalCardHeader {
+  padding-bottom: 80px;
+}
+
 .DetailsPage {
+  display: flex;
+
   // keeps h2 in markdown and in this component the same
   .h2,
   h2 {
@@ -17,7 +40,7 @@ $marginTop: 40px;
     margin-top: 42px;
   }
 
-  display: flex;
+  // Jump menu css
   .menu-row-button {
     @extend %alignContent;
     span {
@@ -52,15 +75,26 @@ $marginTop: 40px;
     flex: 1;
     margin-top: $marginTop;
   }
+
   .component-container {
     flex: 4;
     overflow: hidden;
   }
+
+  &.tab-layout {
+    .component-container {
+      margin-top: -50px;
+    }
+  }
+
   hr {
-    margin: 0px;
+    margin: 14px 0;
   }
   h2 {
     padding-top: 0px;
+  }
+  div.SRC-overflowAuto {
+    min-height: 150px !important; // Overwrite javascript injected css
   }
   .first-title {
     margin-top: $marginTop;
@@ -70,6 +104,65 @@ $marginTop: 40px;
     text-align: center;
     h2 {
       font-weight: bold;
+    }
+  }
+
+  .tab-groups {
+    display: flex;
+    font-size: 16px;
+    justify-content: center;
+    height:  $study-page-tab-height;
+    line-height:  $study-page-tab-height;
+
+    .tab-item,
+    .tab-item-active{
+      cursor: pointer;
+      display: inline-block;
+      padding: 0 8%;
+      margin: 0 4px;
+      border-radius: 4px 4px 0 0;
+      white-space: nowrap;
+
+      @media screen and (max-width: 800px) {
+        padding: 0 2%;
+      }
+
+      svg {
+        padding-right: 10px;
+        font-size: 34px;
+        vertical-align: middle;
+        height: $svg-icon-height;
+        width: auto;
+
+        @media screen and (max-width: 600px) {
+          display: none;
+        }
+      }
+    }
+    .tab-item {
+      background: rgba(0, 0, 0, 0.4);
+      color: #fff;
+      svg, path {
+        @extend %svg-icon;
+      }
+    }
+    .tab-item-active {
+      background-color: #fff;
+      svg, path {
+        @extend %svg-icon-active;
+      }
+    }
+    .tab-database svg{
+      height: 26px;
+    }
+  }
+
+  .tab-content-group {
+    .tab-content {
+      display: none;
+    }
+    .tab-content-active {
+      display: block;
     }
   }
 }

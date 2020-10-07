@@ -1,4 +1,4 @@
-import { Dictionary } from 'lodash'
+import { cloneDeep, Dictionary } from 'lodash'
 import * as React from 'react'
 import { generateSynapseObject } from 'RouteResolver'
 import { SynapseClient, SynapseConstants } from 'synapse-react-client'
@@ -18,19 +18,20 @@ import { SynapseConfig } from 'types/portal-config'
 import { DetailsPageProps, RowSynapseConfig } from 'types/portal-util-types'
 import './DetailsPage.scss'
 import injectPropsIntoConfig from './injectPropsIntoConfig'
-import { cloneDeep } from 'lodash'
 import { ExternalFileHandleLink } from 'synapse-react-client/dist/containers/ExternalFileHandleLink'
 import { BarLoader } from 'react-spinners'
-
-const pluralize = require('pluralize')
+import {LockedFacet} from "synapse-react-client/dist/containers/QueryWrapper"
+import DetailsPageTabs from "./DetailsPageTabs";
 
 type State = {
   queryResultBundle: QueryResultBundle | undefined
   entityHeaders: PaginatedResults<EntityHeader> | undefined
   isLoading: boolean
   hasError: boolean
+  tabIndex: number
 }
 
+const pluralize = require('pluralize')
 const COMPONENT_ID_PREFIX = 'src-component-'
 /**
  * The details pages give a deeper dive into a particular portal section.
@@ -63,6 +64,7 @@ export default class DetailsPage extends React.Component<
       entityHeaders: undefined,
       isLoading: true,
       hasError: false,
+      tabIndex: 0
     }
     this.ref = React.createRef()
   }
@@ -144,7 +146,7 @@ export default class DetailsPage extends React.Component<
               }
             }
             if (typeof value === 'object') {
-              ;(value as string[])?.forEach((val) => {
+              (value as string[])?.forEach((val) => {
                 if (!references.find((el) => el.targetId === val)) {
                   references.push({
                     targetId: val,
@@ -181,7 +183,9 @@ export default class DetailsPage extends React.Component<
           },
         )
       },
-    )
+    ).catch((e) => {
+      console.log("getQueryTableResults: Error getting data", e)
+    })
   }
 
   handleMenuClick = (index: number) => {
@@ -216,7 +220,7 @@ export default class DetailsPage extends React.Component<
 
   render() {
     const { isLoading, hasError } = this.state
-    const { showMenu = true } = this.props
+    const { showMenu = true, tabLayout, synapseConfigArray } = this.props
     if (hasError) {
       const currentLocation = window.location.href.split('/')
       const name = currentLocation[currentLocation.length - 2]
@@ -224,7 +228,7 @@ export default class DetailsPage extends React.Component<
         <div className="DetailsPage__ComingSoon">
           <h2> Coming Soon! </h2>
           <p>
-            {/* 
+            {/*
                 pluralize is used to convert the detail of interest e.g. studies/publications/etc
                 to a singular form like study/publication/etc
             */}
@@ -240,25 +244,41 @@ export default class DetailsPage extends React.Component<
         </div>
       )
     }
-    const synapseConfigContent = (
-      <>
-        {isLoading && <BarLoader color="#878787" loading={true} height={5}/>}
-        {!isLoading && this.renderSynapseConfigArray()}
-      </>
-    )
-    if (showMenu) {
+
+    if (tabLayout?.length) {
       return (
-        <div className="DetailsPage">
-          <div className="button-container">{this.renderMenu()}</div>
+        <div className="DetailsPage tab-layout">
           <div className="component-container" ref={this.ref}>
-            {synapseConfigContent}
+            {<DetailsPageTabs
+              tabConfigs={tabLayout}
+              loading={isLoading}
+              tabContents={!isLoading && this.buildTabContent()}>
+            </DetailsPageTabs>}
           </div>
         </div>
       )
     } else {
-      return synapseConfigContent
+      const synapseConfigContent = (
+        <>
+          {isLoading && <BarLoader color="#878787" loading={true} height={5}/>}
+          {!isLoading && this.renderSynapseConfigArray(synapseConfigArray)}
+        </>
+      )
+      if (showMenu) {
+        return (
+          <div className="DetailsPage">
+            <div className="button-container">{this.renderMenu()}</div>
+            <div className="component-container" ref={this.ref}>
+              {synapseConfigContent}
+            </div>
+          </div>
+        )
+      } else {
+        return synapseConfigContent
+      }
     }
-  }
+
+  }  // end render()
 
   renderMenu = () => {
     const { synapseConfigArray, token } = this.props
@@ -309,8 +329,26 @@ export default class DetailsPage extends React.Component<
     })
   }
 
-  renderSynapseConfigArray = () => {
+  /**
+   * Build a list of tab contents based on the synapseConfig's tabIndex setting.
+   * 1st tab content has index 0
+   * @return {JSX.Element[]} An array of tab contents
+   */
+  buildTabContent() {
     const { synapseConfigArray } = this.props
+    // Get sorted unique tab index from synapseConfigArray
+    const tabIndexes = Array.from(new Set(synapseConfigArray.map(el => el.tabIndex))).sort()
+    // For each tab, build its content
+    return tabIndexes.map(i => {
+      const tabContentConfig:RowSynapseConfig[] = synapseConfigArray.filter(
+        (el: RowSynapseConfig, index) => el.tabIndex === i
+      )
+      const tabContent = this.renderSynapseConfigArray(tabContentConfig)
+      return (<div key={`detailPage-tabItem-${i}`}>{tabContent}</div>)
+    })
+  }
+
+  renderSynapseConfigArray = (synapseConfigArray:RowSynapseConfig[]) => {
     return synapseConfigArray.map((el: RowSynapseConfig, index) => {
       const id = COMPONENT_ID_PREFIX + index
       const { standalone, resolveSynId, showTitleSeperator = true } = el
@@ -383,13 +421,14 @@ export default class DetailsPage extends React.Component<
       to construct a sql statement with a chain of OR statements rather than having N different queries.
 
       But this doesn't work for a component like MarkdownSynapse where there is a desire to have
-      N different markdown components. 
-      
+      N different markdown components.
+
       For simplicity's sake this will be left as is, but this could be revisited if performance is an issue.
     */
     return split.map((splitString) => {
       let value = splitString.trim()
       let entityTitle = ''
+      let lockedFacet: LockedFacet = {}
       if (resolveSynId) {
         // use entity name as either title or value according to resolveSynId
         const entity = entityHeaders?.results.find(
@@ -403,8 +442,14 @@ export default class DetailsPage extends React.Component<
         if (resolveSynId.title) {
           entityTitle = name
         }
+
+        // use entity name according to resolveSynId
         if (resolveSynId.value) {
           value = name
+
+          // For explorer 2.0, construct an object to contain the locked facet name and facet value
+          lockedFacet.facet = columnName
+          lockedFacet.value = name
         }
       }
       let searchParams: Dictionary<string> | undefined = undefined
@@ -418,6 +463,13 @@ export default class DetailsPage extends React.Component<
       const injectedProps = injectPropsIntoConfig(value, el, {
         ...deepCloneOfProps,
       })
+
+      // For explorer 2.0, cannot assign key `lockedFacet` to deepCloneOfProps due to type errors,
+      // assign lockedFacet value directly to injectedProps only if resolveSynId.value is true
+      if (resolveSynId?.value) {
+        injectedProps['lockedFacet'] = lockedFacet
+      }
+
       const synapseConfigWithInjectedProps: SynapseConfig = {
         ...el,
         props: injectedProps,

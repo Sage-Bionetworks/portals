@@ -21,6 +21,7 @@ type RowToPropTransform = {
   columnName?: string
   injectMarkdown?: boolean
   showTitleSeperator?: boolean
+  tabIndex?: number
 }
 
 export type RowSynapseConfig = SynapseConfig & RowToPropTransform
@@ -33,4 +34,11 @@ export type DetailsPageProps = {
   token?: string
   synapseConfigArray: RowSynapseConfig[]
   sqlOperator?: SQLOperator
+  tabLayout?: DetailsPageTabProps[]
+}
+
+export type DetailsPageTabProps = {
+  title: string,
+  iconName: string,
+  cssClass?: string
 }

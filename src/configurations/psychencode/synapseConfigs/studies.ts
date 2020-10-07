@@ -72,6 +72,21 @@ export const studies: SynapseConfig = {
 export const details: DetailsPageProps = {
   sql: studiesSql,
   sqlOperator: '=',
+  tabLayout: [
+    {
+      title: "Study Details",
+      iconName: "study",
+    },
+    {
+      title: "Data Summary",
+      iconName: "database",
+      cssClass: "tab-database"
+    },
+    {
+      title: "Explore Data",
+      iconName: "explore"
+    }
+  ],
   synapseConfigArray: [
     {
       name: 'Markdown',
@@ -79,24 +94,46 @@ export const details: DetailsPageProps = {
       injectMarkdown: false,
       columnName: 'study',
       title: 'Study Description',
+      tabIndex: 0,
     },
     {
-      name: 'Markdown',
+      name: "QueryWrapperPlotNav",
+      tabIndex: 2,
       props: {
-        ownerId: 'syn4921369',
-        wikiId: '477467',
+        rgbIndex: 8,
+        sql: dataSql,
+        sqlOperator: 'HAS',
+        tableConfiguration: {
+          showAccessColumn: true,
+          columnLinks: [
+            {
+              matchColumnName: 'study',
+              URLColumnName: 'studyName',
+              baseURL: 'Explore/Studies/DetailsPage',
+              isMarkdown: false,
+            },
+          ],
+        },
+        visibleColumnCount: 10,
+        shouldDeepLink: false,
+        name: 'Data',
+        facetAliases: {
+          id: 'File',
+        },
+        facetsToPlot: [
+          'study',
+          'dataType',
+          'species',
+          'tissue',
+          'referenceSet',
+          'fileFormat',
+        ],
       },
-      title: 'Access Requirements',
-      standalone: true,
-    },
-    {
-      name: 'Markdown',
-      props: {},
-      columnName: 'methods',
-      title: 'Methods',
       resolveSynId: {
-        title: true,
+        value: true,
       },
+      tableSqlKeys: ['study'],
+      columnName: 'study'
     },
     {
       name: 'StandaloneQueryWrapper',
@@ -118,21 +155,27 @@ export const details: DetailsPageProps = {
       tableSqlKeys: ['study'],
       columnName: 'study',
       title: 'Metadata',
+      tabIndex: 1,
     },
     {
-      name: 'StandaloneQueryWrapper',
+      name: 'Markdown',
       props: {
-        sql: dataSql,
-        rgbIndex,
-        title: 'Data',
-        sqlOperator: 'HAS',
+        ownerId: 'syn4921369',
+        wikiId: '477467',
       },
+      title: 'Access Requirements',
+      standalone: true,
+      tabIndex: 1,
+    },
+    {
+      name: 'Markdown',
+      props: {},
+      columnName: 'methods',
+      title: 'Methods',
+      tabIndex: 0,
       resolveSynId: {
-        value: true,
+        title: true,
       },
-      tableSqlKeys: ['study'],
-      columnName: 'study',
-      title: 'Data',
     },
     {
       name: 'CardContainerLogic',
@@ -143,6 +186,7 @@ export const details: DetailsPageProps = {
       },
       columnName: 'relatedStudies',
       tableSqlKeys: ['study'],
+      tabIndex: 0,
     },
     {
       name: 'CardContainerLogic',
@@ -153,6 +197,7 @@ export const details: DetailsPageProps = {
       resolveSynId: {
         value: true,
       },
+      tabIndex: 0,
     },
   ],
 }
