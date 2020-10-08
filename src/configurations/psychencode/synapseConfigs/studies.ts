@@ -156,6 +156,7 @@ export const details: DetailsPageProps = {
       columnName: 'study',
       title: 'Metadata',
       tabIndex: 1,
+      className: 'metadata-table'
     },
     {
       name: 'Markdown',
