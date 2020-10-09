@@ -25,17 +25,12 @@ const routes: GenericRoute[] = [
         },
       },
       {
-        name: 'RouteButtonControlWrapper',
-        title: 'EXPLORE',
+        name: 'Goals',
+        title: 'Portal Goals',
+        centerTitle: true,
+        outsideContainerClassName: 'home-spacer',
         props: {
-          customRoutes: [
-            'Projects',
-            'Studies',
-            'Tools',
-            'People',
-            'Publications',
-          ],
-          colors: ['#D46D1E', '#5BB0B5', '#58A148', '#47337D', '#109488'],
+          entityId: 'syn23021143',
         },
       },
     ],
