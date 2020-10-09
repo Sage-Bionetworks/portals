@@ -19,6 +19,8 @@ const routes: GenericRoute[] = [
     isNested: false,
     synapseConfigArray: [
       {
+        title: 'About the Portal',
+        centerTitle: true,
         name: 'Markdown',
         props: {
           ownerId: 'syn21645000',
@@ -26,8 +28,6 @@ const routes: GenericRoute[] = [
       },
       {
         name: 'Goals',
-        title: 'Portal Goals',
-        centerTitle: true,
         outsideContainerClassName: 'home-spacer',
         props: {
           entityId: 'syn23021143',
