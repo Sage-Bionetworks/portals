@@ -21,6 +21,10 @@ export const toolCardConfiguration: CardConfiguration = {
       isMarkdown: true,
       matchColumnName: 'toolLink',
     },
+    {
+      isMarkdown: true,
+      matchColumnName: 'project',      
+    },
   ],
 }
 
