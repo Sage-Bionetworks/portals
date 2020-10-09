@@ -19,23 +19,18 @@ const routes: GenericRoute[] = [
     isNested: false,
     synapseConfigArray: [
       {
+        title: 'About the Portal',
+        centerTitle: true,
         name: 'Markdown',
         props: {
           ownerId: 'syn21645000',
         },
       },
       {
-        name: 'RouteButtonControlWrapper',
-        title: 'EXPLORE',
+        name: 'Goals',
+        outsideContainerClassName: 'home-spacer',
         props: {
-          customRoutes: [
-            'Projects',
-            'Studies',
-            'Tools',
-            'People',
-            'Publications',
-          ],
-          colors: ['#D46D1E', '#5BB0B5', '#58A148', '#47337D', '#109488'],
+          entityId: 'syn23021143',
         },
       },
     ],
