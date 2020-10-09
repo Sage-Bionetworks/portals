@@ -13,7 +13,7 @@ export const toolCardConfiguration: CardConfiguration = {
     type: SynapseConstants.COMPUTATIONAL,
     title: 'title',
     description: 'toolDescription',
-    secondaryLabels: ['toolLink', 'contributor', 'institutions', 'projectEntity'],
+    secondaryLabels: ['toolLink', 'contributor', 'institutions', 'project'],
   },
   secondaryLabelLimit: 4,
   labelLinkConfig: [
