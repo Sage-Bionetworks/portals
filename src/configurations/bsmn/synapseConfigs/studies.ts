@@ -40,7 +40,7 @@ export const studyCardConfiguration: CardConfiguration = {
   secondaryLabelLimit: 4,
   titleLinkConfig: {
     isMarkdown: false,
-    baseURL: 'Explore/Studies/DetailsPage',
+    baseURL: 'Explore/Data/DetailsPage',
     URLColumnName: 'id',
     matchColumnName: 'id',
   },
@@ -53,7 +53,7 @@ const studies: HomeExploreConfig = {
       unitDescription,
       rgbIndex,
       facet,
-      link: 'Explore/Studies',
+      link: 'Explore/Data',
       linkText: 'Explore Studies',
       sql: studiesSql,
     },
@@ -65,7 +65,7 @@ const studies: HomeExploreConfig = {
       shouldDeepLink: true,
       sql: studiesSql,
       hideDownload: true,
-      name: 'Studies',
+      name: 'Data',
       cardConfiguration: studyCardConfiguration,
       facetsToPlot: [
         'studyStatus',

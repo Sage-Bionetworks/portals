@@ -105,7 +105,7 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        to: 'Studies',
+        to: 'Data',
         isNested: true,
         synapseConfigArray: [
           {
