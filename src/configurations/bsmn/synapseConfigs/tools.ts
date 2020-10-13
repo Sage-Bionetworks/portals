@@ -47,7 +47,7 @@ const tools: HomeExploreConfig = {
       sql: toolsSql,
       shouldDeepLink: true,
       hideDownload: true,
-      facetsToPlot: ['contributor', 'institutions'],
+      facetsToPlot: ['contributor', 'institutions', 'projectTitle'],
       name: 'Tools',
       cardConfiguration: toolCardConfiguration,
       searchConfiguration: {
