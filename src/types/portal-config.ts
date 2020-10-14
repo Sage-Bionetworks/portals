@@ -29,6 +29,7 @@ import { SurveysCompletedPlotsProps } from 'portal-components/crc-researcher/Sur
 import { ImageProps } from 'portal-components/Image'
 import { RssFeedCardsProps } from 'synapse-react-client/dist/containers/RssFeedCards'
 import { FeaturedDataTabsProps } from 'synapse-react-client/dist/containers/home_page/featured-data/FeaturedDataTabs'
+import { UserCardListGroupsProps } from 'synapse-react-client/dist/containers/home_page/people/UserCardListGroups'
 
 // For styling the header on the home page -- the main title and the summary text
 export type HomePageHeaderConfig = {
@@ -169,6 +170,10 @@ type FeaturedDataTabs = {
   name: 'FeaturedDataTabs'
   props: FeaturedDataTabsProps
 }
+type UserCardListGroups = {
+  name: 'UserCardListGroups'
+  props: UserCardListGroupsProps
+}
 
 
 type Metadata = {
@@ -255,6 +260,7 @@ export type SynapseConfig = (
   | Image
   | RssFeedCards
   | FeaturedDataTabs
+  | UserCardListGroups
 ) &
   Metadata
 export type SynapseConfigArray = SynapseConfig[]

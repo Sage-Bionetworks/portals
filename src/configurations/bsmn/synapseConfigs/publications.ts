@@ -39,7 +39,7 @@ const publications: HomeExploreConfig = {
       name: 'Publications',
       cardConfiguration: publicationsCardConfiguration,
       sql: publicationsSql,
-      facetsToPlot: ['grantNumber', 'year', 'journal'],
+      facetsToPlot: ['grantNumber', 'year', 'journal', 'projectTitle'],
       searchConfiguration: {
         searchable: [
           'title',
