@@ -36,7 +36,7 @@ const routes: GenericRoute[] = [
       },
       {
         name: 'UserCardListGroups',
-        title: 'Our Grants and People',
+        title: 'GRANTS AND PRINCIPAL INVESTIGATORS',
         centerTitle: true,
         outsideContainerClassName: 'home-spacer home-bg-dark',
         props: {
@@ -47,11 +47,11 @@ const routes: GenericRoute[] = [
             'Somatic Mosaicism in Schizophrenia and Control Brains',
             '1/3-Schizophrenia Genetics and Brain Somatic Mosaicism',
             '2/3-Schizophrenia Genetics and Brain Somatic Mosaicism',
+            '3/3-Schizophrenia Genetics and Brain Somatic Mosaicism',
             'Role of brain somatic mosaicism in autism, schizophrenia, and bipolar disorder',
             'Mosaicism in focal cortical dysplasias spectrum seen in neuropsychiatric disease',
             '1/2-Somatic mosaicism and autism spectrum disorder',
             '2/2-Somatic mosaicism and autism spectrum disorder',
-            '3/3-Schizophrenia Genetics and Brain Somatic Mosaicism',
           ],
           size: SynapseConstants.MEDIUM_USER_CARD,
           useQueryResultUserData: true,
