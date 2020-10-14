@@ -182,7 +182,7 @@ export const studiesDetailsPageProps: DetailsPageProps = {
       tabIndex: 1,
       props: {
         rgbIndex,
-        name: 'Data',
+        name: 'Study Data',
         visibleColumnCount: 10,
         tableConfiguration: {
           showAccessColumn: true,
