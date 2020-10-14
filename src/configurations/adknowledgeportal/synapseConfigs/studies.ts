@@ -181,6 +181,7 @@ export const studiesDetailsPageProps: DetailsPageProps = {
       name: "QueryWrapperPlotNav",
       tabIndex: 1,
       props: {
+        sqlOperator: 'HAS',
         rgbIndex,
         name: 'Study Data',
         visibleColumnCount: 10,
