@@ -59,7 +59,15 @@ const routes: GenericRoute[] = [
           summaryLink: '/Explore/People',
           count: 6
         }
-      }
+      },
+      {
+        title: 'Acknowledgement',
+        centerTitle: true,
+        name: 'Markdown',
+        props: {
+          ownerId: 'syn23308351',
+        },
+      },
     ],
   },
   {
