@@ -181,10 +181,9 @@ export const studiesDetailsPageProps: DetailsPageProps = {
       name: "QueryWrapperPlotNav",
       tabIndex: 1,
       props: {
-        rgbIndex: 1,
+        rgbIndex,
         name: 'Data',
         visibleColumnCount: 10,
-        // sqlOperator: 'HAS',
         tableConfiguration: {
           showAccessColumn: true,
           columnLinks: [
@@ -199,23 +198,12 @@ export const studiesDetailsPageProps: DetailsPageProps = {
         },
         sql: dataSql,
         shouldDeepLink: false,
-        // facetAliases: {
-        //   id: 'File',
-        // },
-        // facetsToPlot: [
-        //   'study',
-        //   'dataType',
-        //   'species',
-        //   'tissue',
-        //   'referenceSet',
-        //   'fileFormat',
-        // ],
       },
       resolveSynId: {
         value: true,
       },
       tableSqlKeys: ['study'],
-      columnName: 'study'
+      columnName: 'Study'
     },
   ],
 }
