@@ -3,7 +3,7 @@ import { DetailsPageProps } from 'types/portal-util-types'
 import { SynapseConstants } from 'synapse-react-client'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import studyHeaderSvg from '../style/study-header.svg'
-import { studiesSql } from '../resources'
+import { studiesSql, dataSql } from '../resources'
 
 const unitDescription = 'studies'
 const rgbIndex = 0
@@ -95,12 +95,46 @@ const studies: HomeExploreConfig = {
 export const studiesDetailsPageProps: DetailsPageProps = {
   sql: studiesSql,
   sqlOperator: 'LIKE',
+  tabLayout: [
+    {
+      title: "Study Details",
+      iconName: "study",
+    },
+    {
+      title: "Study Data",
+      iconName: "database",
+      cssClass: "tab-database"
+    },
+  ],
   synapseConfigArray: [
     {
       name: 'Markdown',
       columnName: 'Study',
       title: 'Study Description',
       props: {},
+      tabIndex: 0,
+    },
+    {
+      name: 'Markdown',
+      columnName: 'Methods',
+      title: 'Methods',
+      props: {},
+      resolveSynId: {
+        title: true,
+      },
+      tabIndex: 0,
+    },
+    {
+      name: 'CardContainerLogic',
+      columnName: 'Related_Studies',
+      title: 'Related Studies',
+      tableSqlKeys: ['Study'],
+      props: {
+        sqlOperator: '=',
+        sql: studiesSql,
+        ...studyCardConfiguration,
+      },
+      tabIndex: 0,
     },
     {
       name: 'Markdown',
@@ -111,15 +145,18 @@ export const studiesDetailsPageProps: DetailsPageProps = {
         ownerId: 'syn12666371',
         wikiId: '595380',
       },
+      tabIndex: 1,
     },
     {
       name: 'Markdown',
-      columnName: 'Methods',
-      title: 'Methods',
-      props: {},
-      resolveSynId: {
-        title: true,
+      // https://www.synapse.org/#!Synapse:syn12666371/wiki/595381
+      title: 'Data Updates',
+      standalone: true,
+      props: {
+        ownerId: 'syn12666371',
+        wikiId: '595381',
       },
+      tabIndex: 1,
     },
     {
       name: 'StandaloneQueryWrapper',
@@ -137,43 +174,37 @@ export const studiesDetailsPageProps: DetailsPageProps = {
         unitDescription: 'Files',
         title: 'Metadata Files',
       },
+      tabIndex: 1,
+      className: 'metadata-table'
     },
     {
-      name: 'StandaloneQueryWrapper',
-      title: 'Study Data',
-      columnName: 'Study',
+      name: "QueryWrapperPlotNav",
+      tabIndex: 1,
+      props: {
+        sqlOperator: 'HAS',
+        rgbIndex,
+        name: 'Study Data',
+        visibleColumnCount: 10,
+        tableConfiguration: {
+          showAccessColumn: true,
+          columnLinks: [
+            {
+              matchColumnName: 'study',
+              isMarkdown: false,
+              baseURL: 'Explore/Studies/DetailsPage',
+              URLColumnName: 'Study_Name',
+              wrapValueWithParens: true,
+            },
+          ],
+        },
+        sql: dataSql,
+        shouldDeepLink: false,
+      },
       resolveSynId: {
         value: true,
       },
       tableSqlKeys: ['study'],
-      props: {
-        sql:
-          "SELECT `resourceType`,`dataType`, `assay`, COUNT(`id`) AS `Files` FROM syn11346063 WHERE  (`dataSubtype` <> 'metadata' OR `dataSubtype` IS NULL) GROUP BY 1, 2,3 ORDER BY 4 DESC",
-        facetAliases,
-        rgbIndex,
-        title: 'Data Files',
-      },
-    },
-    {
-      name: 'Markdown',
-      // https://www.synapse.org/#!Synapse:syn12666371/wiki/595381
-      title: 'Data Updates',
-      standalone: true,
-      props: {
-        ownerId: 'syn12666371',
-        wikiId: '595381',
-      },
-    },
-    {
-      name: 'CardContainerLogic',
-      columnName: 'Related_Studies',
-      title: 'Related Studies',
-      tableSqlKeys: ['Study'],
-      props: {
-        sqlOperator: '=',
-        sql: studiesSql,
-        ...studyCardConfiguration,
-      },
+      columnName: 'Study'
     },
   ],
 }

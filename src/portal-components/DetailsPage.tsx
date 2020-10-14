@@ -448,7 +448,8 @@ export default class DetailsPage extends React.Component<
           value = name
 
           // For explorer 2.0, construct an object to contain the locked facet name and facet value
-          lockedFacet.facet = columnName
+          // Make sure locked facet name is lowercase 
+          lockedFacet.facet = columnName.toLowerCase()
           lockedFacet.value = name
         }
       }
