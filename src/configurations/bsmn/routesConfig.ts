@@ -54,7 +54,7 @@ const routes: GenericRoute[] = [
             '3/3-Schizophrenia Genetics and Brain Somatic Mosaicism',
           ],
           size: SynapseConstants.MEDIUM_USER_CARD,
-          useQueryResultUserData: false,
+          useQueryResultUserData: true,
           summaryLinkText:'EXPLORE ALL PEOPLE',
           summaryLink: '/Explore/People',
           count: 6
