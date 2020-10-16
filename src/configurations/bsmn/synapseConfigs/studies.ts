@@ -5,14 +5,14 @@ import { DetailsPageProps } from 'types/portal-util-types'
 import { publicationsCardConfiguration } from './publications'
 import { publicationsSql, studiesSql } from '../resources'
 
-const unitDescription = 'Studies'
+const unitDescription = 'Datasets'
 const rgbIndex = 0
 const facet = 'Program'
 
 export const studyCardConfiguration: CardConfiguration = {
   type: SynapseConstants.GENERIC_CARD,
   genericCardSchema: {
-    type: SynapseConstants.STUDY,
+    type: SynapseConstants.DATASET,
     title: 'studyName',
     subTitle: 'institutions',
     description: 'studyDescription',
