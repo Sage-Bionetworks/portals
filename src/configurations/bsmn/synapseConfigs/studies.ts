@@ -24,12 +24,12 @@ export const studyCardConfiguration: CardConfiguration = {
       'tissueFraction',
       'dataTypes',
       'project',
-      'ndaStudy',
+      'ndaLink',
     ],
   },
   labelLinkConfig: [
     {
-      matchColumnName: 'ndaStudy',
+      matchColumnName: 'ndaLink',
       isMarkdown: true,
     },
     {
