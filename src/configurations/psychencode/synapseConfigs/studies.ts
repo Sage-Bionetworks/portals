@@ -78,13 +78,9 @@ export const details: DetailsPageProps = {
       iconName: "study",
     },
     {
-      title: "Data Summary",
+      title: "Study Data",
       iconName: "database",
       cssClass: "tab-database"
-    },
-    {
-      title: "Explore Data",
-      iconName: "explore"
     }
   ],
   synapseConfigArray: [
@@ -95,78 +91,6 @@ export const details: DetailsPageProps = {
       columnName: 'study',
       title: 'Study Description',
       tabIndex: 0,
-    },
-    {
-      name: "QueryWrapperPlotNav",
-      tabIndex: 2,
-      props: {
-        rgbIndex: 8,
-        sql: dataSql,
-        sqlOperator: 'HAS',
-        tableConfiguration: {
-          showAccessColumn: true,
-          columnLinks: [
-            {
-              matchColumnName: 'study',
-              URLColumnName: 'studyName',
-              baseURL: 'Explore/Studies/DetailsPage',
-              isMarkdown: false,
-            },
-          ],
-        },
-        visibleColumnCount: 10,
-        shouldDeepLink: false,
-        name: 'Data',
-        facetAliases: {
-          id: 'File',
-        },
-        facetsToPlot: [
-          'study',
-          'dataType',
-          'species',
-          'tissue',
-          'referenceSet',
-          'fileFormat',
-        ],
-      },
-      resolveSynId: {
-        value: true,
-      },
-      tableSqlKeys: ['study'],
-      columnName: 'study'
-    },
-    {
-      name: 'StandaloneQueryWrapper',
-      props: {
-        sql: metadataSql,
-        facetAliases: {
-          id: 'File Name',
-          metadataType: 'Metadata Type',
-          dataType: 'Data Type',
-          assay: 'Assay',
-        },
-        rgbIndex,
-        title: 'Metadata',
-        sqlOperator: 'HAS',
-      },
-      resolveSynId: {
-        value: true,
-      },
-      tableSqlKeys: ['study'],
-      columnName: 'study',
-      title: 'Metadata',
-      tabIndex: 1,
-      className: 'metadata-table'
-    },
-    {
-      name: 'Markdown',
-      props: {
-        ownerId: 'syn4921369',
-        wikiId: '477467',
-      },
-      title: 'Access Requirements',
-      standalone: true,
-      tabIndex: 1,
     },
     {
       name: 'Markdown',
@@ -199,6 +123,78 @@ export const details: DetailsPageProps = {
         value: true,
       },
       tabIndex: 0,
+    },
+    {
+      name: 'Markdown',
+      props: {
+        ownerId: 'syn4921369',
+        wikiId: '477467',
+      },
+      title: 'Access Requirements',
+      standalone: true,
+      tabIndex: 1,
+    },
+    {
+      name: 'StandaloneQueryWrapper',
+      props: {
+        sql: metadataSql,
+        facetAliases: {
+          id: 'File Name',
+          metadataType: 'Metadata Type',
+          dataType: 'Data Type',
+          assay: 'Assay',
+        },
+        rgbIndex,
+        title: 'Metadata',
+        sqlOperator: 'HAS',
+      },
+      resolveSynId: {
+        value: true,
+      },
+      tableSqlKeys: ['study'],
+      columnName: 'study',
+      title: 'Study Metadata',
+      tabIndex: 1,
+      className: 'metadata-table'
+    },
+    {
+      name: "QueryWrapperPlotNav",
+      tabIndex: 1,
+      props: {
+        rgbIndex: 8,
+        sql: dataSql,
+        sqlOperator: 'HAS',
+        tableConfiguration: {
+          showAccessColumn: true,
+          columnLinks: [
+            {
+              matchColumnName: 'study',
+              URLColumnName: 'studyName',
+              baseURL: 'Explore/Studies/DetailsPage',
+              isMarkdown: false,
+            },
+          ],
+        },
+        visibleColumnCount: 10,
+        shouldDeepLink: false,
+        name: 'Study Data',
+        facetAliases: {
+          id: 'File',
+        },
+        facetsToPlot: [
+          'study',
+          'dataType',
+          'species',
+          'tissue',
+          'referenceSet',
+          'fileFormat',
+        ],
+      },
+      resolveSynId: {
+        value: true,
+      },
+      tableSqlKeys: ['study'],
+      columnName: 'study'
     },
   ],
 }
