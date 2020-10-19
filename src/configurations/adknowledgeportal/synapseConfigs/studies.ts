@@ -139,8 +139,12 @@ export const studiesDetailsPageProps: DetailsPageProps = {
     {
       name: 'RssFeedCards',
       title: 'Recent Data Updates',
+      columnName: 'Study',
+      resolveSynId: {
+        value: true,
+      },
       props: {
-        url: 'https://news.adknowledgeportal.org/?feed=rss2',
+        url: 'https://news.adknowledgeportal.org',
         itemsToShow:3,
         allowCategories: ['Data Release', 'News', 'Webinar'],
         // mailChimpListName: 'study specific list name????',
