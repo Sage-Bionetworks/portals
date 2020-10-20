@@ -9,15 +9,16 @@ import { toolsDetailPageProps } from './tools'
 import { publicationDetailPageProps } from './publications'
 import { studySql } from '../resources'
 
-const unitDescription = 'Studies'
+const unitDescription = 'Collections'
 const rgbIndex = 9
 
 export const studySchema: GenericCardSchema = {
-  type: SynapseConstants.STUDY,
+  type: SynapseConstants.DATASET,
   title: 'study',
   subTitle: 'investigator',
   description: 'studyDescription',
   secondaryLabels: [
+    'collectionType',
     'diagnosis',
     'intervention',
     'numberParticipants',
@@ -39,7 +40,7 @@ export const studiesCardConfiguration: CardConfiguration = {
   genericCardSchema: studySchema,
   titleLinkConfig: {
     isMarkdown: false,
-    baseURL: 'Explore/Studies/DetailsPage',
+    baseURL: 'Explore/Collections/DetailsPage',
     URLColumnName: 'study',
     matchColumnName: 'study',
   },
@@ -52,8 +53,8 @@ export const studies: HomeExploreConfig = {
       rgbIndex,
       unitDescription,
       facet: 'theme',
-      link: 'Explore/Studies',
-      linkText: 'Explore Studies',
+      link: 'Explore/Collections',
+      linkText: 'Explore Collections',
       sql: studySql,
     },
   },
@@ -65,9 +66,10 @@ export const studies: HomeExploreConfig = {
       sql: studySql,
       shouldDeepLink: true,
       hideDownload: true,
-      name: 'Studies',
+      name: 'Collections',
       facetAliases,
       facetsToPlot: [
+        'collectionType',
         'deviceLocation',
         'devicePlatform',
         'deviceType',
