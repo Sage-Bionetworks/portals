@@ -137,6 +137,23 @@ export const studiesDetailsPageProps: DetailsPageProps = {
       tabIndex: 0,
     },
     {
+      name: 'RssFeedCards',
+      title: 'Recent Data Updates',
+      columnName: 'Study',
+      resolveSynId: {
+        value: true,
+      },
+      props: {
+        url: 'https://news.adknowledgeportal.org',
+        itemsToShow:3,
+        allowCategories: ['Data Release', 'News', 'Webinar'],
+        // mailChimpListName: 'study specific list name????',
+        // mailChimpUrl:'https://study specific url????'
+        viewAllNewsButtonText: 'VIEW ALL DATA UPDATES',
+      },
+      tabIndex: 1,
+    },
+    {
       name: 'Markdown',
       // https://www.synapse.org/#!Synapse:syn12666371/wiki/595380
       title: 'Access Requirements',
@@ -144,17 +161,6 @@ export const studiesDetailsPageProps: DetailsPageProps = {
       props: {
         ownerId: 'syn12666371',
         wikiId: '595380',
-      },
-      tabIndex: 1,
-    },
-    {
-      name: 'Markdown',
-      // https://www.synapse.org/#!Synapse:syn12666371/wiki/595381
-      title: 'Data Updates',
-      standalone: true,
-      props: {
-        ownerId: 'syn12666371',
-        wikiId: '595381',
       },
       tabIndex: 1,
     },
