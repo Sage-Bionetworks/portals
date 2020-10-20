@@ -1,8 +1,7 @@
 import { GenericRoute } from 'types/portal-config'
-import { publications, studies, data, tools, projects } from './synapseConfigs'
+import { publications, studies, data, tools } from './synapseConfigs'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
 import { studyDetailPage } from './synapseConfigs/studies'
-import { projectDetailPage } from './synapseConfigs/projects'
 import { toolsDetailsLandingPage } from './synapseConfigs/tools'
 
 const routes: GenericRoute[] = [
@@ -23,7 +22,7 @@ const routes: GenericRoute[] = [
     isNested: true,
     routes: [
       {
-        to: 'Studies',
+        to: 'Collections',
         isNested: true,
         synapseConfigArray: [
           {
@@ -40,27 +39,6 @@ const routes: GenericRoute[] = [
             to: 'DetailsPage',
             isNested: false,
             synapseConfigArray: studyDetailPage,
-          },
-        ],
-      },
-      {
-        to: 'Projects',
-        isNested: true,
-        synapseConfigArray: [
-          {
-            name: 'RouteButtonControlWrapper',
-            title: 'EXPLORE',
-            props: {
-              ...routeButtonControlWrapperProps,
-              synapseConfig: projects.explorePageSynapseObject,
-            },
-          },
-        ],
-        routes: [
-          {
-            to: 'DetailsPage',
-            isNested: false,
-            synapseConfigArray: projectDetailPage,
           },
         ],
       },
