@@ -13,7 +13,7 @@ const unitDescription = 'Collections'
 const rgbIndex = 9
 
 export const studySchema: GenericCardSchema = {
-  type: SynapseConstants.DATASET,
+  type: 'Collection',
   title: 'study',
   subTitle: 'investigator',
   description: 'studyDescription',

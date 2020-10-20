@@ -1,4 +1,5 @@
 export default {
+  study: 'Collection',
   reportedOutcome: 'Clinical or Phenotypic Assessment',
   softwareAuthor: 'Author(s)',
   id: 'File Name',

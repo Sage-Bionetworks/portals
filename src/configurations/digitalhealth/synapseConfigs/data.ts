@@ -17,7 +17,7 @@ export const dataColumnLinks: LabelLinkConfig = [
     isMarkdown: true,
   },  
   {
-    matchColumnName: 'Collection',
+    matchColumnName: 'study',
     isMarkdown: false,
     baseURL: 'Explore/Collections/DetailsPage',
     URLColumnName: 'study',
@@ -62,6 +62,7 @@ const data: HomeExploreConfig = {
       ],
       searchConfiguration: {
         searchable: [
+          'collection',
           'reportedOutcome',
           'devicePlatform',
           'diagnosis',
