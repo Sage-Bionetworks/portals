@@ -149,6 +149,7 @@ export const studiesDetailsPageProps: DetailsPageProps = {
         allowCategories: ['Data Release', 'News', 'Webinar'],
         // mailChimpListName: 'study specific list name????',
         // mailChimpUrl:'https://study specific url????'
+        viewAllNewsButtonText: 'VIEW ALL DATA UPDATES',
       },
       tabIndex: 1,
     },
