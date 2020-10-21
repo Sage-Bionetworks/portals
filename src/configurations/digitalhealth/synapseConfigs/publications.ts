@@ -9,7 +9,7 @@ import { publicationSql } from '../resources'
 
 const rgbIndex = 7
 const unitDescription = 'Publications'
-const facet = 'study'
+const facet = 'Study'
 
 export const publicationSchema: GenericCardSchema = {
   type: SynapseConstants.PUBLICATION,
@@ -20,7 +20,7 @@ export const publicationSchema: GenericCardSchema = {
     'Journal',
     'doi',
     'PMID',
-    'studyOrProject',
+    'Study',
     'Tools',
     'sensorType',
     'digitalAssessmentCategory',
@@ -41,6 +41,12 @@ export const publicationCardConfiguration: CardConfiguration = {
     {
       matchColumnName: 'studyOrProject',
       isMarkdown: true,
+    },
+    {
+      matchColumnName: 'Study',
+      isMarkdown: false,
+      baseURL: 'Explore/Collections/DetailsPage',
+      URLColumnName: 'study',
     },
   ],
 }
@@ -77,6 +83,7 @@ export const publications: HomeExploreConfig = {
           'digitalAssessmentCategory',
           'sensorType',
           'Tools',
+          'Study',
         ],
       },
     },
