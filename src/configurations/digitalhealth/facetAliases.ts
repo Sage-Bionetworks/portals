@@ -6,6 +6,6 @@ export default {
   numberParticipants: 'Individuals',
   dataAccessInstructions: 'Data Access',
   studyDataDescriptionLocation: 'Data Description',
-  studyDescriptionLocation: 'Study Description',
+  studyDescriptionLocation: 'Collection Description',
   dataDescriptionLocation: 'Data Description',
 }
