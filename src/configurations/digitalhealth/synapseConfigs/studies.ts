@@ -31,6 +31,7 @@ export const studySchema: GenericCardSchema = {
     'digitalAssessmentCategory',
     'digitalAssessmentDetails',
     'sensorDataType',
+    'dataUsed',
     'keywords',
   ],
 }
@@ -44,6 +45,12 @@ export const studiesCardConfiguration: CardConfiguration = {
     URLColumnName: 'study',
     matchColumnName: 'study',
   },
+  labelLinkConfig: [
+    {
+      matchColumnName: 'dataUsed',
+      isMarkdown: true,
+    },
+  ],
 }
 
 export const studies: HomeExploreConfig = {
