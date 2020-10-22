@@ -122,7 +122,7 @@ const routes: GenericRoute[] = [
         centerTitle: true,
         outsideContainerClassName: 'home-spacer home-bg-dark',
         props: {
-          url: 'https://news.adknowledgeportal.org/?feed=rss2',
+          url: 'https://news.adknowledgeportal.org',
           itemsToShow:3,
           allowCategories: ['Data Release', 'News', 'Webinar','rosMAP'],
           mailChimpListName: 'AMP-AD quarterly newsletter',

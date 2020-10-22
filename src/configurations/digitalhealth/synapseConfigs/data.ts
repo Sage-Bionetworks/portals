@@ -15,10 +15,12 @@ export const dataColumnLinks: LabelLinkConfig = [
   {
     matchColumnName: 'dataAccessInstructions',
     isMarkdown: true,
-  },
+  },  
   {
-    matchColumnName: 'studyOrProject',
-    isMarkdown: true,
+    matchColumnName: 'study',
+    isMarkdown: false,
+    baseURL: 'Explore/Collections/DetailsPage',
+    URLColumnName: 'study',
   },
 ]
 
@@ -29,8 +31,8 @@ const data: HomeExploreConfig = {
       unitDescription,
       rgbIndex,
       facet,
-      link: 'Explore/Studies',
-      linkText: 'Explore Studies',
+      link: 'Explore/Collections',
+      linkText: 'Explore Collections',
       sql: dataSql,
     },
   },
@@ -60,7 +62,7 @@ const data: HomeExploreConfig = {
       ],
       searchConfiguration: {
         searchable: [
-          'studyOrProject',
+          'collection',
           'reportedOutcome',
           'devicePlatform',
           'diagnosis',

@@ -30,6 +30,7 @@ import { ImageProps } from 'portal-components/Image'
 import { RssFeedCardsProps } from 'synapse-react-client/dist/containers/RssFeedCards'
 import { FeaturedDataTabsProps } from 'synapse-react-client/dist/containers/home_page/featured-data/FeaturedDataTabs'
 import { UserCardListGroupsProps } from 'synapse-react-client/dist/containers/home_page/people/UserCardListGroups'
+import { TableFeedCardsProps } from 'synapse-react-client/dist/containers/TableFeedCards'
 
 // For styling the header on the home page -- the main title and the summary text
 export type HomePageHeaderConfig = {
@@ -152,6 +153,10 @@ type RssFeedCards = {
   name: 'RssFeedCards'
   props: RssFeedCardsProps
 }
+type TableFeedCards = {
+  name: 'TableFeedCards'
+  props: TableFeedCardsProps
+}
 type SynapsePlot = {
   name: 'SynapsePlot'
   props: SynapsePlotProps
@@ -261,6 +266,7 @@ export type SynapseConfig = (
   | RssFeedCards
   | FeaturedDataTabs
   | UserCardListGroups
+  | TableFeedCards
 ) &
   Metadata
 export type SynapseConfigArray = SynapseConfig[]
