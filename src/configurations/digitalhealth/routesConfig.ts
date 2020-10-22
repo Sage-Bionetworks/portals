@@ -21,7 +21,7 @@ const routes: GenericRoute[] = [
       //   props: {
       //     tableEntityId: 'syn23519444',
       //   },
-      // },      
+      // },
     ],
   },
   {
