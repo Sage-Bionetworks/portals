@@ -20,7 +20,7 @@ import {
   newPublicationsSql,
 } from './synapseConfigs/publications'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
-import { buttonColors, facetAliases } from './synapseConfigs/commonProps'
+import { facetAliases } from './synapseConfigs/commonProps'
 import { toolsCardConfiguration, newToolsSql } from './synapseConfigs/tools'
 import { organizationDetailsPage } from './organizations'
 
@@ -32,32 +32,12 @@ const routes: GenericRoute[] = [
     isNested: false,
     synapseConfigArray: [
       {
-        name: 'StatefulButtonControlWrapper',
-        title: 'EXPLORE PORTAL',
+        name: 'Goals',
+        title: 'Portal Programs and Goals',
+        // centerTitle: true,
+        outsideContainerClassName: 'home-spacer',
         props: {
-          ...buttonColors,
-          configs: [
-            {
-              name: 'Studies',
-              synapseConfigArray: [studies.homePageSynapseObject],
-            },
-            {
-              name: 'Datasets',
-              synapseConfigArray: [datasets.homePageSynapseObject],
-            },
-            {
-              name: 'Files',
-              synapseConfigArray: [files.homePageSynapseObject],
-            },
-            {
-              name: 'Publications',
-              synapseConfigArray: [publications.homePageSynapseObject],
-            },
-            {
-              name: 'Tools',
-              synapseConfigArray: [tools.homePageSynapseObject],
-            },
-          ],
+          entityId: 'syn23516796',
         },
       },
       {
@@ -117,7 +97,7 @@ const routes: GenericRoute[] = [
         name: 'Ecosystem',
         isOutsideContainer: true,
         props: {
-          title: 'NF Grant Opportunities',
+          title: 'NF GRANT OPPORTUNITIES',
           subtitle:
             '',
           config: [
