@@ -10,7 +10,17 @@ const routes: GenericRoute[] = [
     isNested: false,
     synapseConfigArray: [
       {
+        name: 'Goals',
+        title: ' ',
+        centerTitle: true,
+        outsideContainerClassName: 'home-spacer',
+        props: {
+          entityId: 'syn23518009',
+        },
+      },
+      {
         name: 'Markdown',
+        outsideContainerClassName: 'home-bg-dark home-spacer',
         props: {
           ownerId: 'syn22151275',
         },
