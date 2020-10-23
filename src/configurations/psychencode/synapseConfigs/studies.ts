@@ -217,6 +217,7 @@ export const studyDetailPage: SynapseConfigArray = [
   {
     name: 'DetailsPage',
     props: details,
+    containerClassName: 'container-full-width'
   },
 ]
 

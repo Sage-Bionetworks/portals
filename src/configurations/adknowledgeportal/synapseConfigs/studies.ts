@@ -236,6 +236,7 @@ export const studiesProgrammaticRouteConfig: SynapseConfig[] = [
     name: 'DetailsPage',
     isOutsideContainer: false,
     props: studiesDetailsPageProps,
+    containerClassName: 'container-full-width',
   },
 ]
 export default studies

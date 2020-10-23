@@ -35,6 +35,7 @@ const routes: GenericRoute[] = [
           {
             name: 'RouteButtonControlWrapper',
             title: 'EXPLORE',
+            containerClassName: 'container-full-width',
             props: {
               ...routeButtonControlWrapperProps,
               synapseConfig: studies.explorePageSynapseObject,
@@ -56,6 +57,7 @@ const routes: GenericRoute[] = [
           {
             name: 'RouteButtonControlWrapper',
             title: 'EXPLORE',
+            containerClassName: 'container-full-width',
             props: {
               ...routeButtonControlWrapperProps,
               synapseConfig: data.explorePageSynapseObject,
@@ -70,6 +72,7 @@ const routes: GenericRoute[] = [
           {
             name: 'RouteButtonControlWrapper',
             title: 'EXPLORE',
+            containerClassName: 'container-full-width',
             props: {
               ...routeButtonControlWrapperProps,
               synapseConfig: tools.explorePageSynapseObject,
@@ -91,6 +94,7 @@ const routes: GenericRoute[] = [
           {
             name: 'RouteButtonControlWrapper',
             title: 'EXPLORE',
+            containerClassName: 'container-full-width',
             props: {
               ...routeButtonControlWrapperProps,
               synapseConfig: publications.explorePageSynapseObject,
