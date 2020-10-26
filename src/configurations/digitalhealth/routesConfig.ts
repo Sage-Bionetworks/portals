@@ -25,13 +25,14 @@ const routes: GenericRoute[] = [
           ownerId: 'syn22151275',
         },
       },
-      // {
-      //   name: 'TableFeedCards',
-      //   title: 'What\'s New',
-      //   props: {
-      //     tableEntityId: 'syn23519444',
-      //   },
-      // },
+      {
+        name: 'TableFeedCards',
+        title: 'What\'s New',
+        centerTitle: true,
+        props: {
+          tableEntityId: 'syn23520190',
+        },
+      },
     ],
   },
   {
