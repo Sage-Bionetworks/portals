@@ -13,10 +13,9 @@ import {
   studyCardConfiguration,
   studiesProgrammaticRouteConfig,
 } from './synapseConfigs/studies'
-import { projectCardConfiguration } from './synapseConfigs/projects'
+import { projectCardConfiguration, projectsDetailsPageConfiguration } from './synapseConfigs/projects'
 import { results } from './synapseConfigs/results'
 import { iconHeaderOptions } from './synapseConfigs/iconOptions'
-import { publicationProgrammatic } from './synapseConfigs/publications'
 import { programCardConfiguration } from './synapseConfigs/programs'
 import { programsHomePageConfig } from './synapseConfigs/programsHomePage'
 import experimentalTools from './synapseConfigs/experimental_tools'
@@ -215,23 +214,9 @@ const routes: GenericRoute[] = [
                 },
               },
               {
-                name: 'CardContainerLogic',
-                props: {
-                  title: 'PEOPLE',
-                  sql:
-                    'SELECT ownerID as ownerId, firstName, lastName, institution FROM syn13897207',
-                  type: SynapseConstants.MEDIUM_USER_CARD,
-                },
+                name: 'DetailsPage',
+                props: projectsDetailsPageConfiguration,
               },
-              {
-                name: 'CardContainerLogic',
-                title: 'STUDIES',
-                props: {
-                  ...studyCardConfiguration,
-                  sql: studiesSql,
-                },
-              },
-              publicationProgrammatic,
             ],
           },
         ],

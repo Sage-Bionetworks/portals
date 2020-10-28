@@ -1,7 +1,10 @@
 import { HomeExploreConfig } from 'types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
-import { projectsSql } from '../resources'
+import { projectsSql, publicationsSql, studiesSql } from '../resources'
+import { DetailsPageProps } from 'types/portal-util-types'
+import { studyCardConfiguration } from './studies'
+import { publicationCardProps } from './publications'
 
 const unitDescription = 'Projects'
 const rgbIndex = 4
@@ -27,6 +30,45 @@ export const projectCardConfiguration: CardConfiguration = {
     URLColumnName: 'Grant Number',
     matchColumnName: 'Grant Number',
   },
+}
+
+export const projectsDetailsPageConfiguration: DetailsPageProps = {
+  showMenu: true,
+  sql: projectsSql,
+  synapseConfigArray: [
+    {
+      name: 'CardContainerLogic',
+      title: 'People',
+      columnName: 'Grant Number',
+      tableSqlKeys: ['Grant Number'],
+      props: {        
+        sql:
+          'SELECT ownerID as ownerId, firstName, lastName, institution FROM syn13897207',
+        type: SynapseConstants.MEDIUM_USER_CARD,
+      },
+    },
+    {
+      name: 'CardContainerLogic',
+      columnName: 'Grant Number',
+      title: 'Studies',
+      tableSqlKeys: ['Grant Number'],
+      props: {
+        ...studyCardConfiguration,
+        sql: studiesSql,
+      },
+    },
+    {
+      name: 'CardContainerLogic',
+      columnName: 'Grant Number',
+      title: 'Publications',
+      showTitleSeperator: false,
+      tableSqlKeys: ['long_amp_ad_grants'],
+      props: {
+        sql: publicationsSql,
+        ...publicationCardProps,
+      },
+    },
+  ],
 }
 
 const projects: HomeExploreConfig = {
