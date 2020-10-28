@@ -125,6 +125,13 @@ export const studiesDetailsPageProps: DetailsPageProps = {
       tabIndex: 0,
     },
     {
+      name: 'Markdown',
+      title: 'Acknowledgement',
+      columnName: 'Acknowledgement',
+      props: {},
+      tabIndex: 0,
+    },
+    {
       name: 'CardContainerLogic',
       columnName: 'Related_Studies',
       title: 'Related Studies',
