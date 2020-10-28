@@ -50,6 +50,16 @@ const projects: HomeExploreConfig = {
       name: 'Projects',
       cardConfiguration: projectCardConfiguration,
       // unitDescription: 'Projects',
+      searchConfiguration: {
+        searchable: [
+          'Name',
+          'Grant Number',
+          'Program',
+          'Principal Investigators',
+          'Institutions',
+          'Abstract'
+        ],
+      },
     },
   },
 }
