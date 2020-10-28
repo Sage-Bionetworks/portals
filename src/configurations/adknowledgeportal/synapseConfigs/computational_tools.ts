@@ -10,12 +10,18 @@ const computationalSchema: GenericCardSchema = {
   description: 'summary',
   subTitle: 'softwareType',
   secondaryLabels: ['contributor', 'program', 'grant', 'documentation'],
-  link: 'url',
+  link: 'url',  
 }
 
 const cardConfiguration: CardConfiguration = {
   type: SynapseConstants.GENERIC_CARD,
-  genericCardSchema: computationalSchema,
+  genericCardSchema: computationalSchema,  
+  labelLinkConfig: [{
+    isMarkdown: false,
+    matchColumnName: 'grant',
+    URLColumnName: 'Grant Number',
+    baseURL: 'Explore/Projects/DetailsPage',
+  }]
 }
 
 const rgbIndex = 7

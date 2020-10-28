@@ -1,7 +1,6 @@
-import { HomeExploreConfig, SynapseConfig } from 'types/portal-config'
+import { HomeExploreConfig } from 'types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
-import { DetailsPageProps } from 'types/portal-util-types'
-import { projectsSql, publicationsSql } from '../resources'
+import { publicationsSql } from '../resources'
 
 const rgbIndex = 5
 const unitDescription = 'Publications'
@@ -60,26 +59,6 @@ const publications: HomeExploreConfig = {
   },
 }
 
-const publicationsFromRowProps: DetailsPageProps = {
-  sql: projectsSql,
-  showMenu: false,
-  synapseConfigArray: [
-    {
-      name: 'CardContainerLogic',
-      columnName: 'Grant Number',
-      title: 'Publications',
-      showTitleSeperator: false,
-      tableSqlKeys: ['long_amp_ad_grants'],
-      props: {
-        sql: publicationsSql,
-        ...publicationCardProps,
-      },
-    },
-  ],
-}
-export const publicationProgrammatic: SynapseConfig = {
-  name: 'DetailsPage',
-  props: publicationsFromRowProps,
-}
+
 
 export default publications

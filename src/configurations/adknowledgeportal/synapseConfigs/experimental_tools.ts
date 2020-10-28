@@ -40,6 +40,12 @@ const cardConfiguration: CardConfiguration = {
       isMarkdown: true,
       matchColumnName: 'supplementaryInformation',
     },
+    {
+      isMarkdown: false,
+      matchColumnName: 'grant',
+      URLColumnName: 'Grant Number',
+      baseURL: 'Explore/Projects/DetailsPage',
+    },
   ],
 }
 
