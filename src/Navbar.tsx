@@ -90,9 +90,14 @@ class Navbar extends React.Component<any, State> {
     }
   }
 
-  getLinkHref = (route: GenericRoute, topLevelTo?: string) => {
+  getLinkHref = (route: GenericRoute, topLevelTo?: string, includeQueryParams?: boolean) => {
     const { to, link } = route    
-    return link ?? `/${topLevelTo}/${to}`
+    let href = link ?? `/${topLevelTo}/${to}`
+    const indexOfQuestionMark = href.indexOf('?')
+    if (!includeQueryParams && indexOfQuestionMark > -1) {
+      href = href.slice(0, indexOfQuestionMark)
+    }
+    return href
   }
 
   render() {
@@ -123,7 +128,7 @@ class Navbar extends React.Component<any, State> {
         hostname.includes('127.0.0.1') ||
         hostname.includes('localhost')) &&
       !hideLogin
-
+    const isHomeSelectedCssClassName = window.location.pathname.replace('/', '') === '' ? 'isSelected' : ''
     return (
       <React.Fragment>
         <nav
@@ -264,7 +269,7 @@ class Navbar extends React.Component<any, State> {
                     el.isNested &&
                     el.routes.some((route) => route.hideRouteFromNavbar)
                   if (el.isNested && !hideChildren) {
-                    const isSelected = el.routes.some((route) => this.getLinkHref(route, topLevelTo) === decodeURIComponent(window.location.pathname))
+                    const isSelected = el.routes.some((route) => this.getLinkHref(route, topLevelTo, false) === decodeURIComponent(window.location.pathname))
                     const isSelectedCssClassName = isSelected ? 'isSelected' : ''
                     return (
                       <>
@@ -301,7 +306,7 @@ class Navbar extends React.Component<any, State> {
                                 return false
                               }
                               const routeDisplayName = route.displayName ?? to!
-                              const linkDisplay = this.getLinkHref(route, topLevelTo)
+                              const linkDisplay = this.getLinkHref(route, topLevelTo, true)
                               return (
                                 <Dropdown.Item key={to} as="li">
                                   <NavLink
@@ -342,7 +347,7 @@ class Navbar extends React.Component<any, State> {
                 7 && (
                 <NavLink
                   key={'Home'}
-                  className={`top-nav-button nav-button-container center-content ${this.getBorder(
+                  className={`top-nav-button nav-button-container center-content ${isHomeSelectedCssClassName} ${this.getBorder(
                     '',
                   )}`}
                   to={'/'}
