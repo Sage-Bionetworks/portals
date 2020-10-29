@@ -234,7 +234,7 @@ a.top-nav-button {
   @extend %borderStyle;
   border-bottom-color: $primary-action-color;
 }
-.nav-button-container:hover {
+.nav-button-container:hover, .nav-button-container.isSelected {
   @extend %hoverFade;
   @extend %bottomBorderNav;
 }
