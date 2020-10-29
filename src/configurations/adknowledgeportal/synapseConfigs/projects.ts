@@ -1,10 +1,12 @@
 import { HomeExploreConfig } from 'types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
-import { projectsSql, publicationsSql, studiesSql } from '../resources'
+import { computationalSql, projectsSql, publicationsSql, studiesSql, toolSql } from '../resources'
 import { DetailsPageProps } from 'types/portal-util-types'
 import { studyCardConfiguration } from './studies'
 import { publicationCardProps } from './publications'
+import { experimentalToolsCardConfiguration } from './experimental_tools'
+import { computationalCardConfiguration } from './computational_tools'
 
 const unitDescription = 'Projects'
 const rgbIndex = 4
@@ -68,6 +70,29 @@ export const projectsDetailsPageConfiguration: DetailsPageProps = {
         ...publicationCardProps,
       },
     },
+    {
+      name: 'CardContainerLogic',
+      columnName: 'Grant Number',
+      title: 'Experimental Tools',
+      showTitleSeperator: false,
+      tableSqlKeys: ['grant'],
+      props: {
+        sql: toolSql,
+        ...experimentalToolsCardConfiguration,
+      },
+    },
+    {
+      name: 'CardContainerLogic',
+      columnName: 'Grant Number',
+      title: 'Computational Tools',
+      showTitleSeperator: false,
+      tableSqlKeys: ['grant'],
+      props: {
+        sql: computationalSql,
+        ...computationalCardConfiguration,
+      },
+    },
+
   ],
 }
 
