@@ -8,6 +8,7 @@ import { TokenContext, SignInProps } from './AppInitializer'
 import './Navbar.scss'
 import NavLink from 'portal-components/NavLink'
 import NavUserLink from "./portal-components/NavUserLink";
+import { GenericRoute } from 'types/portal-config'
 
 type SynapseSettingLink = {
   text: string
@@ -87,6 +88,11 @@ class Navbar extends React.Component<any, State> {
     ) {
       this.setState({ showMenu: false })
     }
+  }
+
+  getLinkHref = (route: GenericRoute, topLevelTo?: string) => {
+    const { to, link } = route    
+    return link ?? `/${topLevelTo}/${to}`
   }
 
   render() {
@@ -258,6 +264,8 @@ class Navbar extends React.Component<any, State> {
                     el.isNested &&
                     el.routes.some((route) => route.hideRouteFromNavbar)
                   if (el.isNested && !hideChildren) {
+                    const isSelected = el.routes.some((route) => this.getLinkHref(route, topLevelTo) === decodeURIComponent(window.location.pathname))
+                    const isSelectedCssClassName = isSelected ? 'isSelected' : ''
                     return (
                       <>
                         {el.routes.map((route) => {
@@ -282,18 +290,18 @@ class Navbar extends React.Component<any, State> {
                           <Dropdown.Toggle
                             variant="light"
                             id={displayName}
-                            className="nav-button-container top-nav-button"
+                            className={`nav-button-container top-nav-button ${isSelectedCssClassName}`}
                           >
                             {displayName}
                           </Dropdown.Toggle>
                           <Dropdown.Menu className="portal-nav-menu">
                             {el.routes.map((route) => {
-                              const { to, link } = route
+                              const { to } = route
                               if (route.hideRouteFromNavbar) {
                                 return false
                               }
                               const routeDisplayName = route.displayName ?? to!
-                              const linkDisplay = link ?? `/${topLevelTo}/${to}`
+                              const linkDisplay = this.getLinkHref(route, topLevelTo)
                               return (
                                 <Dropdown.Item key={to} as="li">
                                   <NavLink
@@ -310,10 +318,11 @@ class Navbar extends React.Component<any, State> {
                     )
                   }
                   const linkOrTo = el.link ?? `/${topLevelTo}`
+                  const isSelectedCssClassName = decodeURIComponent(window.location.pathname) === linkOrTo ? 'isSelected' : ''
                   return (
                     <NavLink
                       key={topLevelTo}
-                      className={`top-nav-button nav-button-container center-content ${this.getBorder(
+                      className={`top-nav-button nav-button-container center-content ${isSelectedCssClassName} ${this.getBorder(
                         topLevelTo,
                       )}`}
                       to={linkOrTo}
