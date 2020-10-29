@@ -22,7 +22,7 @@ const experimentalSchema: GenericCardSchema = {
   ],
 }
 
-const cardConfiguration: CardConfiguration = {
+export const experimentalToolsCardConfiguration: CardConfiguration = {
   type: SynapseConstants.GENERIC_CARD,
   genericCardSchema: experimentalSchema,
   labelLinkConfig: [
@@ -71,7 +71,7 @@ const experimentalTools: HomeExploreConfig = {
       sql: toolSql,
       name: 'Experimental Tools',
       shouldDeepLink: true,
-      cardConfiguration,
+      cardConfiguration: experimentalToolsCardConfiguration,
       facetsToPlot: [
         'toolType',
         'modelType',

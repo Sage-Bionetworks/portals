@@ -13,7 +13,7 @@ const computationalSchema: GenericCardSchema = {
   link: 'url',  
 }
 
-const cardConfiguration: CardConfiguration = {
+export const computationalCardConfiguration: CardConfiguration = {
   type: SynapseConstants.GENERIC_CARD,
   genericCardSchema: computationalSchema,  
   labelLinkConfig: [{
@@ -44,7 +44,7 @@ const computationalTools: HomeExploreConfig = {
     props: {
       rgbIndex,
       sql: computationalSql,
-      cardConfiguration,
+      cardConfiguration: computationalCardConfiguration,
       shouldDeepLink: true,
       name: 'Computational Tools',
       facetsToPlot: ['grant', 'program', 'softwareType'],
