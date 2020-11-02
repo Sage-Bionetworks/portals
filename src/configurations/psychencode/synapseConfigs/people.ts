@@ -4,7 +4,7 @@ import { SynapseConstants } from 'synapse-react-client'
 import { peopleSql } from '../resources'
 import { SQLOperator } from 'synapse-react-client/dist/utils/functions/sqlFunctions'
 
-const name = 'PEOPLE'
+const name = 'People'
 const sql = 'SELECT * FROM syn22096112'
 const rgbIndex = 4
 
