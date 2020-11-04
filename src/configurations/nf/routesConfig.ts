@@ -41,6 +41,23 @@ const routes: GenericRoute[] = [
         },
       },
       {
+        name: 'RssFeedCards',
+        title: 'What\'s New',
+        centerTitle: true,
+        outsideContainerClassName: 'home-spacer home-bg-dark',
+        props: {
+          url: 'https://news.nfdataportal.org',
+          itemsToShow:3,
+          allowCategories: ['Newsletter', 'Hackathon'],
+          // mailChimpListName: 'NF quarterly newsletter',
+          // mailChimpUrl:'https://sagebase.us7.list-manage.com/subscribe/post?u=abcdefghi...',
+          // lockedFacet: {
+          //   value: 'what\'s-new'
+          // }
+        }
+      },
+
+      {
         name: 'CardContainerLogic',
         link: '/Explore/Studies',
         props: {
