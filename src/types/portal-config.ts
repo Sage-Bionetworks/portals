@@ -7,7 +7,6 @@ import { ExternalFileHandleLinkProps } from 'synapse-react-client/dist/container
 import { UpsetPlotProps } from 'synapse-react-client/dist/containers/UpsetPlot'
 import { SynapsePlotProps } from 'synapse-react-client/dist/containers/widgets/SynapsePlot'
 import { MarkdownSynapseProps } from 'synapse-react-client/dist/containers/MarkdownSynapse'
-import { NewsFeedMenuProps } from 'synapse-react-client/dist/containers/NewsFeedMenu'
 import { GoalsProps } from 'synapse-react-client/dist/containers/home_page/goals/Goals'
 import { ProgramsProps } from 'synapse-react-client/dist/containers/home_page/programs/Programs'
 import { ResourcesProps } from 'synapse-react-client/dist/containers/home_page/resources/Resources'
@@ -195,11 +194,6 @@ type Metadata = {
   outsideContainerClassName?: string
 }
 
-type NewsFeedMenu = {
-  name: 'NewsFeedMenu'
-  props: NewsFeedMenuProps
-}
-
 type SynapseFormWrapper = {
   name: 'SynapseFormWrapper'
   props: SynapseFormWrapperProps
@@ -240,7 +234,6 @@ export type SynapseConfig = (
   | UserCard
   | Markdown
   | DetailsPage
-  | NewsFeedMenu
   | SynapseFormWrapper
   | SynapseFormSubmissionsGrid
   | ConsortiaGoals
