@@ -312,6 +312,15 @@ const routes: GenericRoute[] = [
       },
     ],
   },
+  {
+    isNested: false,
+    displayName: 'News',
+    to: undefined,
+    target: '_blank',
+    link: 'https://news.nfdataportal.org/',
+    synapseConfigArray: [],
+  },
+
 ]
 
 export default routes
