@@ -22,6 +22,7 @@ type RowToPropTransform = {
   injectMarkdown?: boolean
   showTitleSeperator?: boolean
   tabIndex?: number
+  lockFacetColumnName?: string
 }
 
 export type RowSynapseConfig = SynapseConfig & RowToPropTransform

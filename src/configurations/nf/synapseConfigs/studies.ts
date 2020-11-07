@@ -98,6 +98,17 @@ const studies: HomeExploreConfig = {
 export const studiesDetailPage: DetailsPageProps = {
   showMenu: true,
   sql: studiesSql,
+  tabLayout: [
+    {
+      title: "Study Details",
+      iconName: "study",
+    },
+    {
+      title: "Study Data",
+      iconName: "database",
+      cssClass: "tab-database"
+    }
+  ],
   synapseConfigArray: [
     {
       name: 'Markdown',
@@ -105,6 +116,7 @@ export const studiesDetailPage: DetailsPageProps = {
       title: 'Access Requirements',
       injectMarkdown: true,
       props: {},
+      tabIndex: 0,
     },
     {
       name: 'Markdown',
@@ -112,6 +124,41 @@ export const studiesDetailPage: DetailsPageProps = {
       title: 'Acknowledgement Statements',
       injectMarkdown: true,
       props: {},
+      tabIndex: 0,
+    },
+    {
+      name: 'CardContainerLogic',
+      title: 'Tools',
+      columnName: 'studyId',
+      tableSqlKeys: ['studyId'],
+      props: {
+        sql: toolsSql,
+        ...toolsCardConfiguration,
+      },
+      tabIndex: 0,
+    },
+    {
+      name: 'CardContainerLogic',
+      title: 'Publications',
+      columnName: 'studyId',
+      tableSqlKeys: ['studyId'],
+      props: {
+        sql: publicationsSql,
+        ...publicationsCardConfiguration,
+      },
+      tabIndex: 0,
+    },
+    {
+      name: 'CardContainerLogic',
+      title: 'Related Studies',
+      columnName: 'relatedStudies',
+      tableSqlKeys: ['studyId'],
+      props: {
+        sqlOperator: 'LIKE',
+        sql: studiesSql,
+        ...studyCardConfiguration,
+      },
+      tabIndex: 0,
     },
     {
       name: 'CardContainerLogic',
@@ -123,21 +170,42 @@ export const studiesDetailPage: DetailsPageProps = {
         sqlOperator: '=',
         type: 'dataset',
       },
+      tabIndex: 1,
     },
     {
-      name: 'StandaloneQueryWrapper',
-      title: 'Data Files',
-      columnName: 'studyId',
-      tableSqlKeys: ['studyId'],
+      name: 'QueryWrapperPlotNav',
+      tabIndex: 1,
       props: {
-        visibleColumnCount: 7,
-        sql: `SELECT id, dataType, assay, diagnosis, tumorType, species, individualID, fileFormat, dataSubtype, nf1Genotype, nf2Genotype, fundingAgency, consortium FROM syn16858331 where resourceType = 'experimentalData'`,
-          rgbIndex,
-        title: 'Data Files',
+        rgbIndex: 8,
+        shouldDeepLink: false,
+        sql: datasetsSql,
+        sqlOperator: '=',
+        cardConfiguration: {
+          type,
+        },
+        name: 'Data Files',
+        facetAliases,
+        searchConfiguration: {
+          searchable: [
+            'datasetName',
+            'summary',
+            'studyName',
+            'diseaseFocus',
+            'manifestation',
+            'fundingAgency',
+          ],
+        },
       },
+      resolveSynId: {
+        value: true,
+      },
+      tableSqlKeys: ['studyName'],
+      // columnName: 'studyName',
+      lockFacetColumnName: 'study'
     },
     {
       name: 'StandaloneQueryWrapper',
+      tabIndex: 1,
       title: 'Metadata Files',
       columnName: 'studyId',
       tableSqlKeys: ['studyId'],
@@ -146,37 +214,6 @@ export const studiesDetailPage: DetailsPageProps = {
         sql: `SELECT id, dataType, assay, diagnosis, tumorType, species, individualID, fileFormat, dataSubtype, nf1Genotype, nf2Genotype, fundingAgency, consortium FROM syn16858331 where resourceType ='report'`,
           rgbIndex,
         title: 'Metadata Files',
-      },
-    },
-    {
-      name: 'CardContainerLogic',
-      title: 'Tools',
-      columnName: 'studyId',
-      tableSqlKeys: ['studyId'],
-      props: {
-        sql: toolsSql,
-        ...toolsCardConfiguration,
-      },
-    },
-    {
-      name: 'CardContainerLogic',
-      title: 'Publications',
-      columnName: 'studyId',
-      tableSqlKeys: ['studyId'],
-      props: {
-        sql: publicationsSql,
-        ...publicationsCardConfiguration,
-      },
-    },
-    {
-      name: 'CardContainerLogic',
-      title: 'Related Studies',
-      columnName: 'relatedStudies',
-      tableSqlKeys: ['studyId'],
-      props: {
-        sqlOperator: 'LIKE',
-        sql: studiesSql,
-        ...studyCardConfiguration,
       },
     },
   ],
