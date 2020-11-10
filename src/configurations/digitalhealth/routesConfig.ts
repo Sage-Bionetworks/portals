@@ -57,14 +57,6 @@ const routes: GenericRoute[] = [
           },
       },
       {
-        name: 'Markdown',
-        outsideContainerClassName: 'home-spacer',
-        props: {
-          ownerId: 'syn22151275',
-        },
-      },
-
-      {
         name: 'TableFeedCards',
         title: 'What\'s New',
         centerTitle: true,
