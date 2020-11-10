@@ -3,6 +3,7 @@ import { publications, studies, data, tools } from './synapseConfigs'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
 import { studyDetailPage } from './synapseConfigs/studies'
 import { toolsDetailsLandingPage } from './synapseConfigs/tools'
+import { SynapseConstants } from 'synapse-react-client'
 
 const routes: GenericRoute[] = [
   {
@@ -19,12 +20,50 @@ const routes: GenericRoute[] = [
         },
       },
       {
-        name: 'Markdown',
+        name: 'FeaturedDataTabs',
+        title: 'Collections',
+        centerTitle: true,
         outsideContainerClassName: 'home-bg-dark home-spacer',
+        props: {
+          sql:'SELECT * FROM syn21994974',
+          rgbIndex: 3,
+          configs:
+            [
+              {
+                title: 'Studies',
+                icon: SynapseConstants.FILE,
+                explorePagePath:'/Explore/Collections',
+                exploreObjectType:'Collections',
+                plotsConfig: {
+                  sql: 'SELECT * FROM syn21994974 WHERE ( ( "collectionType" = \'Validation Study\' OR "collectionType" = \'Interventional Study\' OR "collectionType" = \'Observational Study\' ) )',
+                  configs: [{
+                    facetsToPlot:['diagnosis', 'dataCollectionMethod','digitalAssessmentCategory', 'sensorType', 'devicePlatform' ],
+                  },]
+                },
+              },
+              {
+                title: 'Analysis',
+                icon: SynapseConstants.CHART2,
+                explorePagePath:'/Explore/Collections',
+                exploreObjectType:'Collections',
+                plotsConfig: {
+                  sql: 'SELECT * FROM syn21994974 WHERE ( ( "collectionType" = \'Analysis\' OR "collectionType" = \'Challenge\' ) )',
+                  configs: [{
+                    facetsToPlot:['diagnosis', 'dataCollectionMethod','digitalAssessmentCategory', 'sensorType', 'devicePlatform' ],
+                  },]
+                },
+              }
+            ]  
+          },
+      },
+      {
+        name: 'Markdown',
+        outsideContainerClassName: 'home-spacer',
         props: {
           ownerId: 'syn22151275',
         },
       },
+
       {
         name: 'TableFeedCards',
         title: 'What\'s New',
