@@ -43,11 +43,11 @@ const routes: GenericRoute[] = [
         props: {
           sql:'select * from syn11346063',
           rgbIndex: 3,
-          explorePagePath:'/Explore/Studies',
-          exploreObjectType:'Studies',
           configs: [{
             title: 'Human Studies',
             icon: 'PERSON',
+            explorePagePath:'/Explore/Studies',
+            exploreObjectType:'Studies',
             plotsConfig: {
               configs: [{
                 title:'The Religious Orders and Memory and Aging Project Study',
@@ -75,6 +75,8 @@ const routes: GenericRoute[] = [
           {
             title: 'Animal Model Studies',
             icon: 'MOUSE',
+            explorePagePath:'/Explore/Studies',
+            exploreObjectType:'Studies',
             plotsConfig: {
               configs: [{
                 title:'The UCI MODEL-AD 5XFAD Study',
