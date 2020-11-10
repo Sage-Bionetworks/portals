@@ -14,7 +14,7 @@ import {
   studiesSql,
   toolsSql,
   datasetsSql,
-  publicationsSql,
+  publicationsSql, filesSql,
 } from '../resources'
 
 export const newStudiesSql = `${studiesSql} order by ROW_ID desc limit 3`
@@ -178,10 +178,11 @@ export const studiesDetailPage: DetailsPageProps = {
       props: {
         rgbIndex: 8,
         shouldDeepLink: false,
-        sql: datasetsSql,
+        sql: filesSql,
+        visibleColumnCount: 7,
         sqlOperator: '=',
-        cardConfiguration: {
-          type,
+        tableConfiguration: {
+          showAccessColumn: true,
         },
         name: 'Data Files',
         facetAliases,
@@ -197,11 +198,10 @@ export const studiesDetailPage: DetailsPageProps = {
         },
       },
       resolveSynId: {
-        value: true,
+        value: false,
       },
-      tableSqlKeys: ['studyName'],
-      // columnName: 'studyName',
-      lockFacetColumnName: 'study'
+      tableSqlKeys: ['studyId'],
+      columnName: 'studyId',
     },
     {
       name: 'StandaloneQueryWrapper',

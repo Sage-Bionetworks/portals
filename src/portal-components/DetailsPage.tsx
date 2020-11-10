@@ -428,7 +428,12 @@ export default class DetailsPage extends React.Component<
     return split.map((splitString) => {
       let value = splitString.trim()
       let entityTitle = ''
-      let lockedFacet: LockedFacet = {}
+
+      // For explorer 2.0, construct an object to contain the locked facet name and facet value
+      const lockedFacet: LockedFacet = {
+        facet: columnName
+      }
+
       if (resolveSynId) {
         // use entity name as either title or value according to resolveSynId
         const entity = entityHeaders?.results.find(
@@ -446,13 +451,10 @@ export default class DetailsPage extends React.Component<
         // use entity name according to resolveSynId
         if (resolveSynId.value) {
           value = name
-
-          // For explorer 2.0, construct an object to contain the locked facet name and facet value
-          // Make sure locked facet name is lowercase 
-          lockedFacet.facet = columnName.toLowerCase()
           lockedFacet.value = name
         }
       }
+
       let searchParams: Dictionary<string> | undefined = undefined
       if (el.tableSqlKeys) {
         // create component's query according to keys and value
@@ -467,9 +469,7 @@ export default class DetailsPage extends React.Component<
 
       // For explorer 2.0, cannot assign key `lockedFacet` to deepCloneOfProps due to type errors,
       // assign lockedFacet value directly to injectedProps only if resolveSynId.value is true
-      if (resolveSynId?.value) {
-        injectedProps['lockedFacet'] = lockedFacet
-      }
+      injectedProps['lockedFacet'] = lockedFacet
 
       const synapseConfigWithInjectedProps: SynapseConfig = {
         ...el,
