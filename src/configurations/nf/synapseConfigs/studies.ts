@@ -14,7 +14,8 @@ import {
   studiesSql,
   toolsSql,
   datasetsSql,
-  publicationsSql, filesSql,
+  publicationsSql,
+  filesSql,
 } from '../resources'
 
 export const newStudiesSql = `${studiesSql} order by ROW_ID desc limit 3`
@@ -180,7 +181,7 @@ export const studiesDetailPage: DetailsPageProps = {
         shouldDeepLink: false,
         sql: filesSql,
         visibleColumnCount: 7,
-        sqlOperator: '=',
+        sqlOperator: 'LIKE',
         tableConfiguration: {
           showAccessColumn: true,
         },
@@ -197,9 +198,6 @@ export const studiesDetailPage: DetailsPageProps = {
           ],
         },
       },
-      resolveSynId: {
-        value: false,
-      },
       tableSqlKeys: ['studyId'],
       columnName: 'studyId',
     },
@@ -215,6 +213,7 @@ export const studiesDetailPage: DetailsPageProps = {
           rgbIndex,
         title: 'Metadata Files',
       },
+      className: 'metadata-table',
     },
   ],
 }
