@@ -113,7 +113,6 @@ $svg-icon-height: 30px;
     justify-content: center;
     height:  $study-page-tab-height;
     line-height:  $study-page-tab-height;
-    padding: 0 5%;
 
     .tab-item,
     .tab-item-active{
@@ -149,6 +148,15 @@ $svg-icon-height: 30px;
     .tab-database svg{
       height: 26px;
     }
+    .tab-item:first-child,
+    .tab-item-active:first-child {
+      margin-left: 0;
+    }
+
+    .tab-item:last-child,
+    .tab-item-active:last-child {
+      margin-right: 0;
+    }
   }
 
   .tab-content-group {
@@ -166,7 +174,6 @@ $svg-icon-height: 30px;
 
   @media screen and (max-width: 800px) {
     .tab-groups {
-
       .tab-item,
       .tab-item-active {
         padding: 0 2%;
@@ -176,7 +183,6 @@ $svg-icon-height: 30px;
 
   @media screen and (max-width: 600px) {
     .tab-groups {
-      padding: 0 1%;
       overflow-x: auto;
       justify-content: left;
 
