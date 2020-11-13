@@ -48,11 +48,11 @@ const routes: GenericRoute[] = [
         props: {
           url: 'https://news.nfdataportal.org',
           itemsToShow:3,
-          allowCategories: ['Newsletter', 'Hackathon', 'Publication'],
+          allowCategories: ['Newsletter', 'Hackathon', 'Publication', 'Funding'],
           // mailChimpListName: 'NF quarterly newsletter',
           // mailChimpUrl:'https://sagebase.us7.list-manage.com/subscribe/post?u=abcdefghi...',
           lockedFacet: {
-            value: 'new'
+            value: 'featured'
           }
         }
       },
@@ -313,6 +313,15 @@ const routes: GenericRoute[] = [
       },
     ],
   },
+  {
+    isNested: false,
+    displayName: 'News',
+    to: undefined,
+    target: '_blank',
+    link: 'https://news.nfdataportal.org/',
+    synapseConfigArray: [],
+  },
+
 ]
 
 export default routes

@@ -1979,10 +1979,10 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@16.9.34", "@types/react@^16.9.11", "@types/react@^16.9.35", "@types/react@^16.9.38":
-  version "16.9.34"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.9.34.tgz#f7d5e331c468f53affed17a8a4d488cd44ea9349"
-  integrity sha512-8AJlYMOfPe1KGLKyHpflCg5z46n0b5DbRfqDksxBLBTUpB75ypDBAO9eCUcjNwE6LCUslwTz00yyG/X9gaVtow==
+"@types/react@*", "@types/react@16.9.35", "@types/react@^16.9.11", "@types/react@^16.9.35", "@types/react@^16.9.38":
+  version "16.9.35"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.9.35.tgz#a0830d172e8aadd9bd41709ba2281a3124bbd368"
+  integrity sha512-q0n0SsWcGc8nDqH2GJfWQWUOmZSJhXV64CjVN5SvcNti3TdEaA3AH0D8DwNmMdzjMAC/78tB8nAZIlV8yTz+zQ==
   dependencies:
     "@types/prop-types" "*"
     csstype "^2.2.0"
@@ -12165,10 +12165,10 @@ symbol-tree@^3.2.2:
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.4.tgz#430637d248ba77e078883951fb9aa0eed7c63fa2"
   integrity sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==
 
-synapse-react-client@1.15.38:
-  version "1.15.38"
-  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-1.15.38.tgz#9dc4dd34b69b95d32f4d8fd3b11046c6772e4f5d"
-  integrity sha512-qDBV9C5d0LA4+L4axhqoNoRh2Xi6B0iBCv/Uux0D2fWKxx9y9wKIy8itj0dfatX4iOex1WWi59KVRTc+gfSIdg==
+synapse-react-client@1.15.41:
+  version "1.15.41"
+  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-1.15.41.tgz#dc71a5ee4ecdfa8c9b0f694e63be7cf31adb3708"
+  integrity sha512-Yjk8Wfb9IKz1bKj5KaEvga84TuhxJhFUJRahNW6xksIb67cL7Osffjpkb2jr0w3sLD33sJw2+C8x7sGTzcTUew==
   dependencies:
     "@fortawesome/fontawesome-free" "^5.13.0"
     "@fortawesome/fontawesome-svg-core" "^1.2.4"
