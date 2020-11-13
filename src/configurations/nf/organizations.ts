@@ -5,10 +5,10 @@ import { facetAliases } from './synapseConfigs/commonProps'
 import { publicationsCardConfiguration } from './synapseConfigs/publications'
 import { studyCardConfiguration } from './synapseConfigs/studies'
 import { iconOptions } from './synapseConfigs/iconOptions'
+import { filesSql } from './resources'
 
 const studiesSql = `SELECT * FROM syn16787123`
 const datasetsSql = `SELECT * FROM syn16859580`
-const filesSql = `SELECT id AS "File ID", fundingAgency, studyName, consortium, dataType, assay, diagnosis, tumorType, species, fileFormat, individualID, dataSubtype AS "Data Subtype", nf1Genotype AS "NF1 Genotype", nf2Genotype AS "NF2 Genotype", name AS "File Name" FROM syn16858331`
 const publicationsSql = `SELECT * FROM syn16857542`
 
 export const organizationDetailsPageConfig: DetailsPageProps = {
