@@ -8,6 +8,7 @@ import { dataDetailPageProps } from './data'
 import { toolsDetailPageProps } from './tools'
 import { publicationDetailPageProps } from './publications'
 import { studySql } from '../resources'
+import { iconOptions } from './iconOptions'
 
 const unitDescription = 'Collections'
 const rgbIndex = 9
@@ -16,6 +17,7 @@ export const studySchema: GenericCardSchema = {
   type: '',
   title: 'study',
   subTitle: 'investigator',
+  icon: 'collectionType',
   description: 'studyDescription',
   secondaryLabels: [
     'collectionType',
@@ -39,6 +41,7 @@ export const studySchema: GenericCardSchema = {
 export const studiesCardConfiguration: CardConfiguration = {
   type: SynapseConstants.GENERIC_CARD,
   genericCardSchema: studySchema,
+  iconOptions,
   titleLinkConfig: {
     isMarkdown: false,
     baseURL: 'Explore/Collections/DetailsPage',
