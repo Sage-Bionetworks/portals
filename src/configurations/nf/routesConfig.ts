@@ -189,6 +189,7 @@ const routes: GenericRoute[] = [
                 name: 'DetailsPage',
                 isOutsideContainer: false,
                 props: studiesDetailPage,
+                containerClassName: 'container-full-width',
               },
             ],
           },

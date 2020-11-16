@@ -1,6 +1,6 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from 'types/portal-config'
-import { facetAliases } from './commonProps'
+import { facetAliases, searchConfiguration } from './commonProps'
 
 import studyActiveSvg from '../style/study-active.svg'
 import studyCompleteSvg from '../style/study-complete.svg'
@@ -15,6 +15,7 @@ import {
   toolsSql,
   datasetsSql,
   publicationsSql,
+  filesSql,
 } from '../resources'
 
 export const newStudiesSql = `${studiesSql} order by ROW_ID desc limit 3`
@@ -98,6 +99,17 @@ const studies: HomeExploreConfig = {
 export const studiesDetailPage: DetailsPageProps = {
   showMenu: true,
   sql: studiesSql,
+  tabLayout: [
+    {
+      title: "Study Details",
+      iconName: "study",
+    },
+    {
+      title: "Study Data",
+      iconName: "database",
+      cssClass: "tab-database"
+    }
+  ],
   synapseConfigArray: [
     {
       name: 'Markdown',
@@ -105,6 +117,7 @@ export const studiesDetailPage: DetailsPageProps = {
       title: 'Access Requirements',
       injectMarkdown: true,
       props: {},
+      tabIndex: 0,
     },
     {
       name: 'Markdown',
@@ -112,41 +125,7 @@ export const studiesDetailPage: DetailsPageProps = {
       title: 'Acknowledgement Statements',
       injectMarkdown: true,
       props: {},
-    },
-    {
-      name: 'CardContainerLogic',
-      columnName: 'studyId',
-      title: 'Datasets',
-      tableSqlKeys: ['studyId'],
-      props: {
-        sql: datasetsSql,
-        sqlOperator: '=',
-        type: 'dataset',
-      },
-    },
-    {
-      name: 'StandaloneQueryWrapper',
-      title: 'Data Files',
-      columnName: 'studyId',
-      tableSqlKeys: ['studyId'],
-      props: {
-        visibleColumnCount: 7,
-        sql: `SELECT id, dataType, assay, diagnosis, tumorType, species, individualID, fileFormat, dataSubtype, nf1Genotype, nf2Genotype, fundingAgency, consortium FROM syn16858331 where resourceType = 'experimentalData'`,
-          rgbIndex,
-        title: 'Data Files',
-      },
-    },
-    {
-      name: 'StandaloneQueryWrapper',
-      title: 'Metadata Files',
-      columnName: 'studyId',
-      tableSqlKeys: ['studyId'],
-      props: {
-        visibleColumnCount: 7,
-        sql: `SELECT id, dataType, assay, diagnosis, tumorType, species, individualID, fileFormat, dataSubtype, nf1Genotype, nf2Genotype, fundingAgency, consortium FROM syn16858331 where resourceType ='report'`,
-          rgbIndex,
-        title: 'Metadata Files',
-      },
+      tabIndex: 0,
     },
     {
       name: 'CardContainerLogic',
@@ -157,6 +136,7 @@ export const studiesDetailPage: DetailsPageProps = {
         sql: toolsSql,
         ...toolsCardConfiguration,
       },
+      tabIndex: 0,
     },
     {
       name: 'CardContainerLogic',
@@ -167,6 +147,7 @@ export const studiesDetailPage: DetailsPageProps = {
         sql: publicationsSql,
         ...publicationsCardConfiguration,
       },
+      tabIndex: 0,
     },
     {
       name: 'CardContainerLogic',
@@ -178,6 +159,52 @@ export const studiesDetailPage: DetailsPageProps = {
         sql: studiesSql,
         ...studyCardConfiguration,
       },
+      tabIndex: 0,
+    },
+    {
+      name: 'CardContainerLogic',
+      columnName: 'studyId',
+      title: 'Datasets',
+      tableSqlKeys: ['studyId'],
+      props: {
+        sql: datasetsSql,
+        sqlOperator: '=',
+        type: 'dataset',
+      },
+      tabIndex: 1,
+    },
+    {
+      name: 'QueryWrapperPlotNav',
+      tabIndex: 1,
+      props: {
+        rgbIndex: 8,
+        shouldDeepLink: false,
+        sql: filesSql,
+        visibleColumnCount: 7,
+        sqlOperator: 'LIKE',
+        tableConfiguration: {
+          showAccessColumn: true,
+        },
+        name: 'Data Files',
+        facetAliases,
+        searchConfiguration,
+      },
+      tableSqlKeys: ['studyId'],
+      columnName: 'studyId',
+    },
+    {
+      name: 'StandaloneQueryWrapper',
+      tabIndex: 1,
+      title: 'Metadata Files',
+      columnName: 'studyId',
+      tableSqlKeys: ['studyId'],
+      props: {
+        visibleColumnCount: 7,
+        sql: `SELECT id, dataType, assay, diagnosis, tumorType, species, individualID, fileFormat, dataSubtype, nf1Genotype, nf2Genotype, fundingAgency, consortium FROM syn16858331 where resourceType ='report'`,
+          rgbIndex,
+        title: 'Metadata Files',
+      },
+      className: 'metadata-table',
     },
   ],
 }
