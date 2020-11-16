@@ -1,7 +1,7 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { DetailsPageProps } from 'types/portal-util-types'
 import { SynapseConfig } from 'types/portal-config'
-import { facetAliases } from './synapseConfigs/commonProps'
+import { facetAliases, searchConfiguration } from './synapseConfigs/commonProps'
 import { publicationsCardConfiguration } from './synapseConfigs/publications'
 import { studyCardConfiguration } from './synapseConfigs/studies'
 import { iconOptions } from './synapseConfigs/iconOptions'
@@ -83,16 +83,7 @@ export const organizationDetailsPageConfig: DetailsPageProps = {
         },
         name: 'Data Files',
         facetAliases,
-        searchConfiguration: {
-          searchable: [
-            'datasetName',
-            'summary',
-            'studyName',
-            'diseaseFocus',
-            'manifestation',
-            'fundingAgency',
-          ],
-        },
+        searchConfiguration,
       },
       tableSqlKeys: ['fundingAgency'],
       columnName: 'fundingAgency',

@@ -1,6 +1,6 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from 'types/portal-config'
-import { facetAliases } from './commonProps'
+import { facetAliases, searchConfiguration } from './commonProps'
 
 import studyActiveSvg from '../style/study-active.svg'
 import studyCompleteSvg from '../style/study-complete.svg'
@@ -187,16 +187,7 @@ export const studiesDetailPage: DetailsPageProps = {
         },
         name: 'Data Files',
         facetAliases,
-        searchConfiguration: {
-          searchable: [
-            'datasetName',
-            'summary',
-            'studyName',
-            'diseaseFocus',
-            'manifestation',
-            'fundingAgency',
-          ],
-        },
+        searchConfiguration,
       },
       tableSqlKeys: ['studyId'],
       columnName: 'studyId',

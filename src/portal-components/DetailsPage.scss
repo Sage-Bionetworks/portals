@@ -160,8 +160,9 @@ $svg-icon-height: 30px;
     }
   }
 
-  .metadata-table table{
+  &.tab-layout table.grip-flex{
     width: 100% !important; // Override !important from js library
+    table-layout: auto;
   }
 
   @media screen and (max-width: 800px) {

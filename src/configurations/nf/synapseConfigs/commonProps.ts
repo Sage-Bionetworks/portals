@@ -8,3 +8,17 @@ export const facetAliases = {
   nf1Genotype: 'NF1 Genotype',
   nf2Genotype: 'NF2 Genotype',
 }
+
+export const searchConfiguration = {
+  searchable: [
+    'studyName',
+    'summary',
+    'studyLeads',
+    'studyStatus',
+    'dataStatus',
+    'institutions',
+    'diseaseFocus',
+    'manifestation',
+    'fundingAgency',
+  ],
+}

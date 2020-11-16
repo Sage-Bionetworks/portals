@@ -12,12 +12,3 @@ $primary-action-color: #404B63;
   background-color: #125E81;
   background-blend-mode: multiply;
 }
-
-// Customized for nf.
-// Per design, the table should extend to full page width but there aren't enough columns to fill the empty space.
-.DetailsPage.tab-layout .QueryWrapperPlotNav{
-  table.grip-flex {
-    width: 100% !important;
-    table-layout: auto;
-  }
-}
