@@ -162,18 +162,6 @@ export const studiesDetailPage: DetailsPageProps = {
       tabIndex: 0,
     },
     {
-      name: 'CardContainerLogic',
-      columnName: 'studyId',
-      title: 'Datasets',
-      tableSqlKeys: ['studyId'],
-      props: {
-        sql: datasetsSql,
-        sqlOperator: '=',
-        type: 'dataset',
-      },
-      tabIndex: 1,
-    },
-    {
       name: 'QueryWrapperPlotNav',
       tabIndex: 1,
       props: {
@@ -191,6 +179,18 @@ export const studiesDetailPage: DetailsPageProps = {
       },
       tableSqlKeys: ['studyId'],
       columnName: 'studyId',
+    },
+    {
+      name: 'CardContainerLogic',
+      columnName: 'studyId',
+      title: 'Datasets',
+      tableSqlKeys: ['studyId'],
+      props: {
+        sql: datasetsSql,
+        sqlOperator: '=',
+        type: 'dataset',
+      },
+      tabIndex: 1,
     },
     {
       name: 'StandaloneQueryWrapper',
