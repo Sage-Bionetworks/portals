@@ -59,17 +59,6 @@ export const organizationDetailsPageConfig: DetailsPageProps = {
       tabIndex: 0,
     },
     {
-      name: 'CardContainerLogic',
-      props: {
-          sql: datasetsSql,
-        type: SynapseConstants.DATASET,
-      },
-      columnName: 'fundingAgency',
-      title: 'Datasets',
-      tableSqlKeys: ['fundingAgency'],
-      tabIndex: 1,
-    },
-    {
       name: 'QueryWrapperPlotNav',
       tabIndex: 1,
       props: {
@@ -87,6 +76,17 @@ export const organizationDetailsPageConfig: DetailsPageProps = {
       },
       tableSqlKeys: ['fundingAgency'],
       columnName: 'fundingAgency',
+    },
+    {
+      name: 'CardContainerLogic',
+      props: {
+          sql: datasetsSql,
+        type: SynapseConstants.DATASET,
+      },
+      columnName: 'fundingAgency',
+      title: 'Datasets',
+      tableSqlKeys: ['fundingAgency'],
+      tabIndex: 1,
     },
   ],
 }
