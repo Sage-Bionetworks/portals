@@ -1,7 +1,6 @@
 import { CardContainerLogicProps } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import { QueryWrapperProps } from 'synapse-react-client/dist/containers/QueryWrapper'
 import { StackedBarChartProps } from 'synapse-react-client/dist/containers/StackedBarChart'
-import { QueryWrapperMenuProps } from 'synapse-react-client/dist/containers/QueryWrapperMenu'
 import { UserCardProps } from 'synapse-react-client/dist/containers/UserCard'
 import { ExternalFileHandleLinkProps } from 'synapse-react-client/dist/containers/ExternalFileHandleLink'
 import { UpsetPlotProps } from 'synapse-react-client/dist/containers/UpsetPlot'
@@ -54,10 +53,6 @@ type QueryWrapper = {
 type StackedBarChart = {
   name: 'StackedBarChart'
   props: StackedBarChartProps
-}
-type QueryWrapperMenu = {
-  name: 'QueryWrapperMenu'
-  props: QueryWrapperMenuProps
 }
 
 type QueryWrapperPlotNav = {
@@ -230,7 +225,6 @@ export type SynapseConfig = (
   | CardContainerLogic
   | StackedBarChart
   | QueryWrapper
-  | QueryWrapperMenu
   | UserCard
   | Markdown
   | DetailsPage

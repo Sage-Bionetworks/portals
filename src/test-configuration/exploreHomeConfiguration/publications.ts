@@ -26,27 +26,32 @@ export const publications: HomeExploreConfig = {
     },
   },
   explorePageSynapseObject: {
-    name: 'QueryWrapperMenu',
+    name: 'QueryWrapperPlotNav',
     props: {
-      unitDescription,
-      stackedBarChartConfiguration: {
-        },
-      name: 'Publications',
+      rgbIndex,
       cardConfiguration: {
         type: SynapseConstants.GENERIC_CARD,
         genericCardSchema: publicationSchema,
       },
-      menuConfig: [
-        {
-          sql,
-          facet: 'Theme',
-        },
-        {
-          sql,
-          facet: 'diseaseType',
-        },
-      ],
-      rgbIndex: 1,
+      sql,
+      shouldDeepLink: true,
+      name: 'Publications',      
+      searchConfiguration: {
+        searchable: [
+          'publicationTitle',
+          'authors',
+          'journal',
+          'doi',
+          'pubMedId',
+          'keywords',
+          'tummorType',
+          'tissue',
+          'assay',
+          'grantName',
+          'grantNumber',
+          'dataset',
+        ],
+      },
     },
-  },
+  }
 }

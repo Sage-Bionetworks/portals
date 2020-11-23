@@ -1,64 +1,70 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig } from 'types/portal-config'
+import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 
-import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
+const studiesSql = 'SELECT * FROM syn16787123'
+const type = SynapseConstants.GENERIC_CARD
+const unitDescription = 'Studies'
+const rgbIndex = 5
 
-const sql = 'SELECT * FROM syn18483791'
-const unitDescription = 'studies'
-
-const rgbIndex = 0
-const facet = 'tumorType'
-
-const studySchema: GenericCardSchema = {
-  type: SynapseConstants.STUDY,
-  title: 'name',
-  subTitle: 'centerName',
-  description: 'description',
-  secondaryLabels: [
-    'Theme',
-    'tumorType',
-    'experimentalStrategy',
-    'consortium',
-    'grantType',
-  ],
-  link: 'id',
+const studyCardConfiguration: CardConfiguration = {
+  type,
+  genericCardSchema: {
+    title: 'studyName',
+    type: SynapseConstants.STUDY,
+    description: 'summary',
+    subTitle: 'studyLeads',
+    icon: 'studyStatus',
+    secondaryLabels: [
+      'dataStatus',
+      'diseaseFocus',
+      'manifestation',
+      'fundingAgency',
+      'institutions',
+      'studyStatus',
+    ],
+  },
+  titleLinkConfig: {
+    isMarkdown: false,
+    baseURL: 'Explore/Studies/DetailsPage',
+    URLColumnName: 'studyId',
+    matchColumnName: 'studyId',
+  }
 }
 
 export const studies: HomeExploreConfig = {
   homePageSynapseObject: {
     name: 'StandaloneQueryWrapper',
     props: {
-      rgbIndex,
-      facet,
       unitDescription,
-      sql,
+      rgbIndex,
+      link: 'Explore/Studies',
+      linkText: 'Explore Studies',
+      facet: 'diseaseFocus',
+      sql: studiesSql,
     },
   },
   explorePageSynapseObject: {
-    name: 'QueryWrapperMenu',
+    name: 'QueryWrapperPlotNav',
     props: {
       rgbIndex,
-      unitDescription,
-      stackedBarChartConfiguration: {
-        },
-      cardConfiguration: {
-        type: SynapseConstants.GENERIC_CARD,
-        genericCardSchema: studySchema,
+      sql: studiesSql,
+      name: 'Studies',
+      shouldDeepLink: true,
+      cardConfiguration: studyCardConfiguration,
+      searchConfiguration: {
+        searchable: [
+          'studyName',
+          'summary',
+          'studyLeads',
+          'studyStatus',
+          'dataStatus',
+          'institutions',
+          'diseaseFocus',
+          'manifestation',
+          'fundingAgency',
+        ],
       },
-      name: 'Data',
-      facetAliases: {
-        consortium: 'Program',
-      },
-      menuConfig: [
-        {
-          sql,
-          facet: 'grantType',
-        },
-        {
-          sql,
-          facet: 'consortium',
-        },
-      ],
     },
   },
 }
