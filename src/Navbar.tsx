@@ -131,6 +131,8 @@ class Navbar extends React.Component<any, State> {
       !hideLogin
     const isHomeSelectedCssClassName = window.location.pathname.replace('/', '') === '' ? 'isSelected' : ''
     const homeRouteConfig:GenericRoute = routesConfig.filter(r => { return r.to === '' })[0]
+    // On clicking an item in the Home menu (if items exist), scroll to the element that has the same ID.
+    // This special code is to account for the fixed top nav bar height:
     const scrollToWithOffset = (el:any) => {
       const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
       const yOffset = -90; 
@@ -353,13 +355,13 @@ class Navbar extends React.Component<any, State> {
               // if theres less than 7 navbar items show the home page button
               routesConfig.filter((el) => !el.hideRouteFromNavbar).length <
                 7 && (
-
                 <Dropdown className={this.getBorder('')}>
                   <Dropdown.Toggle
                     variant="light"
-                    id={'Home'}
+                    id={'Navbar-dropdown-Home'}
                     className={`nav-button-container top-nav-button ${isHomeSelectedCssClassName}`}                    
                   >
+                    {/* Clicking the Home item immediately brings you to the Home page (and opens the dropdown, if there are items) */}
                     <NavLink to='/' text='Home' />
                   </Dropdown.Toggle>
                   <Dropdown.Menu className="portal-nav-menu">
