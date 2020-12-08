@@ -116,7 +116,6 @@ const RouteResolver: React.FunctionComponent<RouteComponentProps> = ({
   if (document.title !== newTitle) {
     document.title = newTitle
   }
-
   return (
     <React.Fragment>
       {synapseConfigArray!.map((el: SynapseConfig) => {
@@ -129,6 +128,7 @@ const RouteResolver: React.FunctionComponent<RouteComponentProps> = ({
           subtitle,
           props,
         } = el
+        
         return (
           <React.Fragment key={JSON.stringify(el.props)}>
             {isOutsideContainer ? (
@@ -153,7 +153,7 @@ const RouteResolver: React.FunctionComponent<RouteComponentProps> = ({
               >
                 {/* re-think how this renders! remove specific styling */}
                 {title && (
-                  <h2 className={`title ${centerTitle ? 'center-title' : ''}`}>
+                  <h2 id={encodeURI(title)} className={`title ${centerTitle ? 'center-title' : ''}`}>
                     {title}
                   </h2>
                 )}

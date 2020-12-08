@@ -33,7 +33,7 @@ const routes: GenericRoute[] = [
     synapseConfigArray: [
       {
         name: 'Goals',
-        title: 'Portal Programs and Goals',
+        title: 'Programs and Goals',
         // centerTitle: true,
         outsideContainerClassName: 'home-spacer',
         props: {
@@ -59,18 +59,18 @@ const routes: GenericRoute[] = [
 
       {
         name: 'CardContainerLogic',
+        title: 'New Studies',
         link: '/Explore/Studies',
         props: {
           limit,
           facetAliases,
-          sql: newStudiesSql,
-          title: 'NEW STUDIES',
+          sql: newStudiesSql,          
           ...studyCardConfiguration,
         },
       },
       {
         name: 'CardContainerLogic',
-        title: 'NEW PUBLICATIONS',
+        title: 'New Publications',
         link: '/Explore/Publications',
         props: {
           limit,
@@ -92,7 +92,7 @@ const routes: GenericRoute[] = [
       },
       {
         name: 'CardContainerLogic',
-        title: 'TOOLS',
+        title: 'Tools',
         link: '/Explore/Tools',
         props: {
           limit,
@@ -103,7 +103,7 @@ const routes: GenericRoute[] = [
       },
       {
         name: 'CardContainerLogic',
-        title: 'ORGANIZATIONS',
+        title: 'Organizations',
         props: {
               facetAliases,
           sql: funders.sql,
@@ -112,9 +112,9 @@ const routes: GenericRoute[] = [
       },
       {
         name: 'Ecosystem',
-        isOutsideContainer: true,
+        title: 'NF Grant Opportunities',
+        outsideContainerClassName: 'home-spacer home-bg-dark',
         props: {
-          title: 'NF GRANT OPPORTUNITIES',
           subtitle:
             '',
           config: [

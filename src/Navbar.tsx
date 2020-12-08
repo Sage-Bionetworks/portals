@@ -1,5 +1,6 @@
 import * as React from 'react'
 import routesConfig from './config/routesConfig'
+import { NavHashLink } from 'react-router-hash-link'
 import logoHeaderConfig from './config/logoHeaderConfig'
 import Dialog from '@material-ui/core/Dialog'
 import Dropdown from 'react-bootstrap/Dropdown'
@@ -129,6 +130,13 @@ class Navbar extends React.Component<any, State> {
         hostname.includes('localhost')) &&
       !hideLogin
     const isHomeSelectedCssClassName = window.location.pathname.replace('/', '') === '' ? 'isSelected' : ''
+    const homeRouteConfig:GenericRoute = routesConfig.filter(r => { return r.to === '' })[0]
+    const scrollToWithOffset = (el:any) => {
+      const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
+      const yOffset = -90; 
+      window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' }); 
+    }
+  
     return (
       <React.Fragment>
         <nav
@@ -345,14 +353,36 @@ class Navbar extends React.Component<any, State> {
               // if theres less than 7 navbar items show the home page button
               routesConfig.filter((el) => !el.hideRouteFromNavbar).length <
                 7 && (
-                <NavLink
-                  key={'Home'}
-                  className={`top-nav-button nav-button-container center-content ${isHomeSelectedCssClassName} ${this.getBorder(
-                    '',
-                  )}`}
-                  to={'/'}
-                  text={'Home'}
-                />
+
+                <Dropdown className={this.getBorder('')}>
+                  <Dropdown.Toggle
+                    variant="light"
+                    id={'Home'}
+                    className={`nav-button-container top-nav-button ${isHomeSelectedCssClassName}`}                    
+                  >
+                    <NavLink to='/' text='Home' />
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu className="portal-nav-menu">
+                    {homeRouteConfig.synapseConfigArray!.map((config, index) => {
+                      const { title } = config
+                      if (!title)
+                        return
+                      
+                      return (
+                        <Dropdown.Item key={title} as="li">
+                          <NavHashLink smooth
+                            className="dropdown-item SRC-primary-background-color-hover SRC-nested-color"
+                            to={`/#${encodeURI(title)}`}
+                            scroll={scrollToWithOffset}
+                          >
+                            {title}
+                          </NavHashLink>
+                          
+                        </Dropdown.Item>
+                      )
+                    })}
+                  </Dropdown.Menu>
+                </Dropdown>                
               )
             }
           </div>

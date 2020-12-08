@@ -91,7 +91,7 @@ const routes: GenericRoute[] = [
       },
       {
         name: 'Ecosystem',
-        isOutsideContainer: true,
+        title: 'The Cancer Resource Information Ecosystem',
         props: {
           config: [
             {
@@ -119,8 +119,7 @@ const routes: GenericRoute[] = [
               ownerId: 'syn21498902',
               wikiId: '601576',
             },
-          ],
-          title: 'The Cancer Resource Information Ecosystem',
+          ],          
           subtitle:
             'The Cancer Resource Information ecosystem contains a growing list of tools and resources. Explore some of them below.',
         },
