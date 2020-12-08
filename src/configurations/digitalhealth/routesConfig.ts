@@ -12,7 +12,7 @@ const routes: GenericRoute[] = [
     synapseConfigArray: [
       {
         name: 'Goals',
-        title: ' ',
+        title: '',
         centerTitle: true,
         outsideContainerClassName: 'home-spacer',
         props: {

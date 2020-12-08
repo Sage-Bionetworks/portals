@@ -33,7 +33,7 @@ const routes: GenericRoute[] = [
     synapseConfigArray: [
       {
         name: 'Goals',
-        title: 'Programs and Goals',
+        title: 'Portal Programs and Goals',
         // centerTitle: true,
         outsideContainerClassName: 'home-spacer',
         props: {
@@ -115,8 +115,6 @@ const routes: GenericRoute[] = [
         title: 'NF Grant Opportunities',
         outsideContainerClassName: 'home-spacer home-bg-dark',
         props: {
-          subtitle:
-            '',
           config: [
             {
               title: 'Children\'s Tumor Foundation',

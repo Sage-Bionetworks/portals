@@ -30,13 +30,16 @@ const routes: GenericRoute[] = [
       },
       {
         name: 'ConsortiaGoals',
-        props: undefined,
-        isOutsideContainer: true,
+        title: 'Consortia Activity',
+        centerTitle: true,
+        outsideContainerClassName: 'home-spacer home-bg-dark',
+        props: undefined,        
       },
       {
         name: 'ThemesPlot',
         containerClassName: 'CSBC-ThemesPlot',
         title: 'What Research Themes are Scientists Currently Focusing On?',
+        centerTitle: true,
         props: {
           onPointClick,
           topBarPlot: {
@@ -92,6 +95,10 @@ const routes: GenericRoute[] = [
       {
         name: 'Ecosystem',
         title: 'The Cancer Resource Information Ecosystem',
+        centerTitle: true,
+        subtitle:
+            'The Cancer Resource Information ecosystem contains a growing list of tools and resources. Explore some of them below.',
+        outsideContainerClassName: 'home-spacer home-bg-dark',
         props: {
           config: [
             {
@@ -119,17 +126,15 @@ const routes: GenericRoute[] = [
               ownerId: 'syn21498902',
               wikiId: '601576',
             },
-          ],          
-          subtitle:
-            'The Cancer Resource Information ecosystem contains a growing list of tools and resources. Explore some of them below.',
+          ],
         },
       },
       {
         name: 'AboutPortal',
-        props: {
-          title: 'About the Cancer Complexity Knowledge Portal',
-          ownerId: 'syn21498902',
-          wikiId: '601366',
+        title: 'About the Cancer Complexity Knowledge Portal',
+        subtitle: 'The portal is built to disseminate resources to accelerate discovery and collaboration in the cancer research community. We aim to provide rich context about and access to activities and contributors that have produced the resources hosted within this and other repositories.',
+        centerTitle: true,
+        props: {          
           cardProps: [
             { ownerId: 'syn21498902', wikiId: '601369' },
             { ownerId: 'syn21498902', wikiId: '601370' },

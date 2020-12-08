@@ -302,7 +302,7 @@ class Navbar extends React.Component<any, State> {
                         <Dropdown className={this.getBorder(topLevelTo)}>
                           <Dropdown.Toggle
                             variant="light"
-                            id={displayName}
+                            id={`Navbar-dropdown-${displayName}`}
                             className={`nav-button-container top-nav-button ${isSelectedCssClassName}`}
                           >
                             {displayName}

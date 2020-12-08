@@ -11,15 +11,13 @@ type Config = {
 export type EcosystemProps = {
   config: Config[]
   token?: string
-  subtitle: string
 }
 
 const Ecosystem = (props: EcosystemProps) => {
   const [index, setIndex] = React.useState(0)
-  const { config, subtitle, token } = props
+  const { config, token } = props
   return (
     <div className="Ecosystem">
-        <p className="subtitle">{subtitle}</p>
         <div className="control-container">
           <div className="button-container">
             {config.map((el, curIndex) => {
