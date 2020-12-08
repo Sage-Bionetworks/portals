@@ -159,10 +159,10 @@ const RouteResolver: React.FunctionComponent<RouteComponentProps> = ({
                 containerClassName={containerClassName}
                 outsideContainerClassName={outsideContainerClassName}
               >
-                {/* re-think how this renders! remove specific styling */}
                 {scrollToJsx}
+                {/* re-think how this renders! remove specific styling */}
                 {title && (
-                  <h2 id={encodeURI(title)} className={`title ${centerTitle ? 'center-title' : ''}`}>
+                  <h2 className={`title ${centerTitle ? 'center-title' : ''}`}>
                     {title}
                   </h2>
                 )}                
