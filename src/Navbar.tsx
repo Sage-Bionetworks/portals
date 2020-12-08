@@ -1,6 +1,5 @@
 import * as React from 'react'
 import routesConfig from './config/routesConfig'
-import { NavHashLink } from 'react-router-hash-link'
 import logoHeaderConfig from './config/logoHeaderConfig'
 import Dialog from '@material-ui/core/Dialog'
 import Dropdown from 'react-bootstrap/Dropdown'
@@ -131,14 +130,6 @@ class Navbar extends React.Component<any, State> {
       !hideLogin
     const isHomeSelectedCssClassName = window.location.pathname.replace('/', '') === '' ? 'isSelected' : ''
     const homeRouteConfig:GenericRoute = routesConfig.filter(r => { return r.to === '' })[0]
-    // On clicking an item in the Home menu (if items exist), scroll to the element that has the same ID.
-    // This special code is to account for the fixed top nav bar height:
-    const scrollToWithOffset = (el:any) => {
-      const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
-      const yOffset = -90; 
-      window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' }); 
-    }
-  
     return (
       <React.Fragment>
         <nav
@@ -372,14 +363,10 @@ class Navbar extends React.Component<any, State> {
                       
                       return (
                         <Dropdown.Item key={title} as="li">
-                          <NavHashLink smooth
-                            className="dropdown-item SRC-primary-background-color-hover SRC-nested-color"
-                            to={`/#${encodeURI(title)}`}
-                            scroll={scrollToWithOffset}
-                          >
-                            {title}
-                          </NavHashLink>
-                          
+                          <NavLink
+                          className="dropdown-item SRC-primary-background-color-hover SRC-nested-color"
+                          text={title}
+                          to={`/#${encodeURI(title)}`} />                          
                         </Dropdown.Item>
                       )
                     })}

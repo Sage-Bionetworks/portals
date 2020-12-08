@@ -7,6 +7,7 @@ import { TokenContext } from './AppInitializer'
 import PortalComponents from './portal-components/'
 import Layout from './portal-components/Layout'
 import docTitleConfig from './config/docTitleConfig'
+import { scrollToWithOffset } from 'utils'
 
 // https://basarat.gitbooks.io/typescript/docs/types/never.html
 function fail(message: string): never {
@@ -94,7 +95,7 @@ const RouteResolver: React.FunctionComponent<RouteComponentProps> = ({
   location,
 }) => {
   // Map this to route in configuration files
-  const { pathname, search } = location
+  const { pathname, search, hash } = location
   // get the route object
   const route = getRouteFromParams(pathname)
   // If url has search params transform into key-value dictionary that can be passed into
@@ -116,6 +117,13 @@ const RouteResolver: React.FunctionComponent<RouteComponentProps> = ({
   if (document.title !== newTitle) {
     document.title = newTitle
   }
+  const scrollToRef = React.useRef<HTMLElement>(null)
+  // this delay is here to improve the location of the element, since it's position depends on the layout of other components on the page (that also need to load)
+  setTimeout(() => {
+    if (scrollToRef.current) {
+      scrollToWithOffset(scrollToRef.current)
+    }
+  }, 500);
   return (
     <React.Fragment>
       {synapseConfigArray!.map((el: SynapseConfig) => {
@@ -128,7 +136,7 @@ const RouteResolver: React.FunctionComponent<RouteComponentProps> = ({
           subtitle,
           props,
         } = el
-        
+        const scrollToJsx = title && hash && hash == `#${encodeURI(title)}` ? <span ref={scrollToRef} /> : <></>
         return (
           <React.Fragment key={JSON.stringify(el.props)}>
             {isOutsideContainer ? (
@@ -152,11 +160,12 @@ const RouteResolver: React.FunctionComponent<RouteComponentProps> = ({
                 outsideContainerClassName={outsideContainerClassName}
               >
                 {/* re-think how this renders! remove specific styling */}
+                {scrollToJsx}
                 {title && (
                   <h2 id={encodeURI(title)} className={`title ${centerTitle ? 'center-title' : ''}`}>
                     {title}
                   </h2>
-                )}
+                )}                
                 {subtitle && (
                   <p className={`${centerTitle ? 'center-title' : ''}`}>
                     {subtitle}

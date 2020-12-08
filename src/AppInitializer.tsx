@@ -101,7 +101,7 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
     // But it's best practice to clean up the global listener on component unmount.
     window.addEventListener('click', this.updateSynapseCallbackCookie)
     // on first time, also check for the SSO code
-    SynapseClient.detectSSOCode()
+    SynapseClient.detectSSOCode()    
   }
 
   componentWillUnmount() {
