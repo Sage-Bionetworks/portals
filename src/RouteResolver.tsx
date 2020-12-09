@@ -165,7 +165,7 @@ const RouteResolver: React.FunctionComponent<RouteComponentProps> = ({
                   <h2 className={`title ${centerTitle ? 'center-title' : ''}`}>
                     {title}
                   </h2>
-                )}                
+                )}
                 {subtitle && (
                   <p className={`${centerTitle ? 'center-title' : ''}`}>
                     {subtitle}
