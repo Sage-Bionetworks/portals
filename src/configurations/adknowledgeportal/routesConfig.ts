@@ -29,7 +29,7 @@ const routes: GenericRoute[] = [
     synapseConfigArray: [
       {
         name: 'Programs',
-        title: 'PROGRAMS',
+        title: 'Programs',
         centerTitle: true,
         props: {
           ...programsHomePageConfig,
@@ -37,7 +37,7 @@ const routes: GenericRoute[] = [
       },
       {
         name: 'FeaturedDataTabs',
-        title: 'FEATURED DATA',
+        title: 'Featured Data',
         centerTitle: true,
         outsideContainerClassName: 'home-spacer home-bg-dark',
         props: {

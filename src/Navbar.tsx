@@ -129,6 +129,7 @@ class Navbar extends React.Component<any, State> {
         hostname.includes('localhost')) &&
       !hideLogin
     const isHomeSelectedCssClassName = window.location.pathname.replace('/', '') === '' ? 'isSelected' : ''
+    const homeRouteConfig:GenericRoute = routesConfig.filter(r => { return r.to === '' })[0]
     return (
       <React.Fragment>
         <nav
@@ -294,7 +295,7 @@ class Navbar extends React.Component<any, State> {
                         <Dropdown className={this.getBorder(topLevelTo)}>
                           <Dropdown.Toggle
                             variant="light"
-                            id={displayName}
+                            id={`Navbar-dropdown-${displayName}`}
                             className={`nav-button-container top-nav-button ${isSelectedCssClassName}`}
                           >
                             {displayName}
@@ -345,14 +346,32 @@ class Navbar extends React.Component<any, State> {
               // if theres less than 7 navbar items show the home page button
               routesConfig.filter((el) => !el.hideRouteFromNavbar).length <
                 7 && (
-                <NavLink
-                  key={'Home'}
-                  className={`top-nav-button nav-button-container center-content ${isHomeSelectedCssClassName} ${this.getBorder(
-                    '',
-                  )}`}
-                  to={'/'}
-                  text={'Home'}
-                />
+                <Dropdown className={this.getBorder('')}>
+                  <Dropdown.Toggle
+                    variant="light"
+                    id={'Navbar-dropdown-Home'}
+                    className={`nav-button-container top-nav-button ${isHomeSelectedCssClassName}`}                    
+                  >
+                    {/* Clicking the Home item immediately brings you to the Home page (and opens the dropdown, if there are items) */}
+                    <NavLink to='/' text='Home' />
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu className="portal-nav-menu">
+                    {homeRouteConfig.synapseConfigArray!.map((config, index) => {
+                      const { title } = config
+                      if (!title)
+                        return
+                      
+                      return (
+                        <Dropdown.Item key={title} as="li">
+                          <NavLink
+                          className="dropdown-item SRC-primary-background-color-hover SRC-nested-color"
+                          text={title}
+                          to={`/#${encodeURI(title)}`} />                          
+                        </Dropdown.Item>
+                      )
+                    })}
+                  </Dropdown.Menu>
+                </Dropdown>                
               )
             }
           </div>

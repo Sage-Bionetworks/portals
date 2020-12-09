@@ -36,7 +36,7 @@ const routes: GenericRoute[] = [
       },
       {
         name: 'UserCardListGroups',
-        title: 'GRANTS AND PRINCIPAL INVESTIGATORS',
+        title: 'Grants and Principal Investigators',
         centerTitle: true,
         outsideContainerClassName: 'home-spacer home-bg-dark',
         props: {

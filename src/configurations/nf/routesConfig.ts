@@ -41,82 +41,10 @@ const routes: GenericRoute[] = [
         },
       },
       {
-        name: 'RssFeedCards',
-        title: 'What\'s New',
-        centerTitle: true,
+        name: 'Ecosystem',
+        title: 'NF Grant Opportunities',
         outsideContainerClassName: 'home-spacer home-bg-dark',
         props: {
-          url: 'https://news.nfdataportal.org',
-          itemsToShow:3,
-          allowCategories: ['Newsletter', 'Hackathon', 'Publication', 'Funding'],
-          // mailChimpListName: 'NF quarterly newsletter',
-          // mailChimpUrl:'https://sagebase.us7.list-manage.com/subscribe/post?u=abcdefghi...',
-          lockedFacet: {
-            value: 'featured'
-          }
-        }
-      },
-
-      {
-        name: 'CardContainerLogic',
-        link: '/Explore/Studies',
-        props: {
-          limit,
-          facetAliases,
-          sql: newStudiesSql,
-          title: 'NEW STUDIES',
-          ...studyCardConfiguration,
-        },
-      },
-      {
-        name: 'CardContainerLogic',
-        title: 'NEW PUBLICATIONS',
-        link: '/Explore/Publications',
-        props: {
-          limit,
-          facetAliases,
-          sql: newPublicationsSql,
-          ...publicationsCardConfiguration,
-        },
-      },
-      {
-        name: 'CardContainerLogic',
-        title: 'New Datasets',
-        link: '/Explore/Datasets',
-        props: {
-          limit,
-          facetAliases,
-              sql: newDatasetsSql,
-          type: SynapseConstants.DATASET,
-        },
-      },
-      {
-        name: 'CardContainerLogic',
-        title: 'TOOLS',
-        link: '/Explore/Tools',
-        props: {
-          limit,
-          facetAliases,
-          ...toolsCardConfiguration,
-          sql: newToolsSql,
-        },
-      },
-      {
-        name: 'CardContainerLogic',
-        title: 'ORGANIZATIONS',
-        props: {
-              facetAliases,
-          sql: funders.sql,
-          type: funders.type,
-        },
-      },
-      {
-        name: 'Ecosystem',
-        isOutsideContainer: true,
-        props: {
-          title: 'NF GRANT OPPORTUNITIES',
-          subtitle:
-            '',
           config: [
             {
               title: 'Children\'s Tumor Foundation',
@@ -145,6 +73,77 @@ const routes: GenericRoute[] = [
             },
           ],
         },
+      },
+      {
+        name: 'CardContainerLogic',
+        title: 'New Studies',
+        link: '/Explore/Studies',
+        props: {
+          limit,
+          facetAliases,
+          sql: newStudiesSql,          
+          ...studyCardConfiguration,
+        },
+      },
+      {
+        name: 'CardContainerLogic',
+        title: 'New Publications',
+        link: '/Explore/Publications',
+        outsideContainerClassName: 'home-spacer home-bg-dark',
+        props: {
+          limit,
+          facetAliases,
+          sql: newPublicationsSql,
+          ...publicationsCardConfiguration,
+        },
+      },
+      {
+        name: 'CardContainerLogic',
+        title: 'New Datasets',
+        link: '/Explore/Datasets',
+        props: {
+          limit,
+          facetAliases,
+              sql: newDatasetsSql,
+          type: SynapseConstants.DATASET,
+        },
+      },
+      {
+        name: 'CardContainerLogic',
+        title: 'Tools',
+        link: '/Explore/Tools',
+        outsideContainerClassName: 'home-spacer home-bg-dark',
+        props: {
+          limit,
+          facetAliases,
+          ...toolsCardConfiguration,
+          sql: newToolsSql,
+        },
+      },
+      {
+        name: 'CardContainerLogic',
+        title: 'Organizations',
+        props: {
+              facetAliases,
+          sql: funders.sql,
+          type: funders.type,
+        },
+      },
+      {
+        name: 'RssFeedCards',
+        title: 'What\'s New',
+        // centerTitle: true,
+        outsideContainerClassName: 'home-spacer home-bg-dark',
+        props: {
+          url: 'https://news.nfdataportal.org',
+          itemsToShow:3,
+          allowCategories: ['Newsletter', 'Hackathon', 'Publication', 'Funding'],
+          // mailChimpListName: 'NF quarterly newsletter',
+          // mailChimpUrl:'https://sagebase.us7.list-manage.com/subscribe/post?u=abcdefghi...',
+          lockedFacet: {
+            value: 'featured'
+          }
+        }
       },
     ],    
   },
