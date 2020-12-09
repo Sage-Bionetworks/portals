@@ -81,6 +81,15 @@ const routes: GenericRoute[] = [
         },
       },
       {
+        name: 'TableFeedCards',
+        title: 'What\'s New',
+        centerTitle: true,
+        outsideContainerClassName: 'home-spacer home-bg-dark',
+        props: {
+          tableEntityId: 'syn23629036',
+        },
+      },
+      {
         name: 'Markdown',
         outsideContainerClassName: '',
         className: '',
