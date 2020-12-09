@@ -228,6 +228,10 @@ a.top-nav-button {
   min-width: 100px;
   white-space: nowrap;
   @extend %fillerBorder;
+  a {
+    color: unset; 
+    padding: 18px; // increase click area
+  }
 }
 
 %bottomBorderNav {
