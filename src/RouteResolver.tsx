@@ -136,7 +136,7 @@ const RouteResolver: React.FunctionComponent<RouteComponentProps> = ({
           subtitle,
           props,
         } = el
-        const scrollToJsx = title && hash && hash == `#${encodeURI(title)}` ? <span ref={scrollToRef} /> : <></>
+        const scrollToJsx = title && hash && hash === `#${encodeURI(title)}` ? <span ref={scrollToRef} /> : <></>
         return (
           <React.Fragment key={JSON.stringify(el.props)}>
             {isOutsideContainer ? (
