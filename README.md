@@ -50,18 +50,7 @@ To unlink synapse react-client run `rm -r node_modules` and `yarn install`. You 
 
 # Build/Deploy Process
 
-Note - Jenkins is accessible only through VPN, reach out to IT for setting this up.
-
-## Jenkins build script
-
-The code that is run on jenkins is in `run.sh`
-
-Usage:
-Sync current with staging:
-`$ ./run.sh push-staging [portal-name]`
-
-Sync production with production:
-`$ ./run.sh WARNING-push-production [portal-name]`
+Note - [Jenkins](http://build-system-portals.sagebase.org:8080/login) is accessible only through VPN, reach out to IT to set this up.
 
 ## Automatic Updates to Staging
 
@@ -83,5 +72,19 @@ Making a new staging job
 - Change the `Source Code Management/Additional Behaviours/Included Regions` section to only include that portal's configuration folder.
 - Change the `Build/Execute Shell` section to build the portal
 
-Building Production:
+## Deploy the Staging version to Production
+
 Run `deploy-portal-production` with parameters, using the portal's folder name, e.g. 'nf' or 'cancercomplexity'
+This will copy everything from the staging bucket to the production bucket for that portal.  Approval from the portal owner must be obtained before running this job.
+
+## Jenkins build script
+
+The code that is run on jenkins is in `run.sh`
+
+Usage:
+Sync current with staging:
+`$ ./run.sh push-staging [portal-name]`
+
+Sync production with production:
+`$ ./run.sh WARNING-push-production [portal-name]`
+
