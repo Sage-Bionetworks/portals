@@ -320,7 +320,14 @@ const routes: GenericRoute[] = [
     link: 'https://news.nfdataportal.org/',
     synapseConfigArray: [],
   },
-
+  {
+    isNested: false,
+    displayName: 'Docs',
+    to: undefined,
+    target: '_blank',
+    link: 'https://nf-osi.github.io/',
+    synapseConfigArray: [],
+  },
 ]
 
 export default routes
