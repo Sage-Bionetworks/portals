@@ -350,10 +350,9 @@ class Navbar extends React.Component<any, State> {
                   <Dropdown.Toggle
                     variant="light"
                     id={'Navbar-dropdown-Home'}
-                    className={`nav-button-container top-nav-button ${isHomeSelectedCssClassName}`}                    
+                    className={`nav-button-container top-nav-button ${isHomeSelectedCssClassName}`}
                   >
-                    {/* Clicking the Home item immediately brings you to the Home page (and opens the dropdown, if there are items) */}
-                    <NavLink to='/' text='Home' />
+                    Home
                   </Dropdown.Toggle>
                   <Dropdown.Menu className="portal-nav-menu">
                     {homeRouteConfig.synapseConfigArray!.map((config, index) => {
