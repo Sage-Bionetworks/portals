@@ -1,5 +1,4 @@
 import { GenericRoute } from 'types/portal-config'
-import { SynapseConstants } from 'synapse-react-client'
 import {
   datasets,
   files,
@@ -14,14 +13,8 @@ import {
   studyCardConfiguration,
   studiesDetailPage,
 } from './synapseConfigs/studies'
-import { newDatasetsSql } from './synapseConfigs/datasets'
-import {
-  publicationsCardConfiguration,
-  newPublicationsSql,
-} from './synapseConfigs/publications'
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
 import { facetAliases } from './synapseConfigs/commonProps'
-import { toolsCardConfiguration, newToolsSql } from './synapseConfigs/tools'
 import { organizationDetailsPage } from './organizations'
 
 const limit = 3
@@ -34,16 +27,30 @@ const routes: GenericRoute[] = [
       {
         name: 'Goals',
         title: 'Portal Programs and Goals',
-        // centerTitle: true,
+        centerTitle: true,
         outsideContainerClassName: 'home-spacer',
         props: {
           entityId: 'syn23516796',
         },
       },
       {
+        name: 'CardContainerLogic',
+        title: 'New Studies',
+        centerTitle: true,
+        outsideContainerClassName: 'home-spacer home-bg-dark',
+        link: '/Explore/Studies',
+        props: {
+          limit,
+          facetAliases,
+          sql: newStudiesSql,          
+          ...studyCardConfiguration,
+        },
+      },
+      {
         name: 'Ecosystem',
         title: 'NF Grant Opportunities',
-        outsideContainerClassName: 'home-spacer home-bg-dark',
+        centerTitle: true,
+        outsideContainerClassName: 'home-spacer',
         props: {
           config: [
             {
@@ -76,53 +83,9 @@ const routes: GenericRoute[] = [
       },
       {
         name: 'CardContainerLogic',
-        title: 'New Studies',
-        link: '/Explore/Studies',
-        props: {
-          limit,
-          facetAliases,
-          sql: newStudiesSql,          
-          ...studyCardConfiguration,
-        },
-      },
-      {
-        name: 'CardContainerLogic',
-        title: 'New Publications',
-        link: '/Explore/Publications',
+        title: 'Our Partners',
         outsideContainerClassName: 'home-spacer home-bg-dark',
-        props: {
-          limit,
-          facetAliases,
-          sql: newPublicationsSql,
-          ...publicationsCardConfiguration,
-        },
-      },
-      {
-        name: 'CardContainerLogic',
-        title: 'New Datasets',
-        link: '/Explore/Datasets',
-        props: {
-          limit,
-          facetAliases,
-              sql: newDatasetsSql,
-          type: SynapseConstants.DATASET,
-        },
-      },
-      {
-        name: 'CardContainerLogic',
-        title: 'Tools',
-        link: '/Explore/Tools',
-        outsideContainerClassName: 'home-spacer home-bg-dark',
-        props: {
-          limit,
-          facetAliases,
-          ...toolsCardConfiguration,
-          sql: newToolsSql,
-        },
-      },
-      {
-        name: 'CardContainerLogic',
-        title: 'Organizations',
+        centerTitle: true,
         props: {
               facetAliases,
           sql: funders.sql,
@@ -132,8 +95,8 @@ const routes: GenericRoute[] = [
       {
         name: 'RssFeedCards',
         title: 'What\'s New',
-        // centerTitle: true,
-        outsideContainerClassName: 'home-spacer home-bg-dark',
+        centerTitle: true,
+        outsideContainerClassName: 'home-spacer',
         props: {
           url: 'https://news.nfdataportal.org',
           itemsToShow:3,
