@@ -1,7 +1,7 @@
 import { HomeExploreConfig } from 'types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
-import { computationalSql, projectsSql, publicationsSql, studiesSql, toolSql } from '../resources'
+import { computationalSql, projectsSql, publicationsSql, studiesSql, toolSql, peopleSql } from '../resources'
 import { DetailsPageProps } from 'types/portal-util-types'
 import { studyCardConfiguration } from './studies'
 import { publicationCardProps } from './publications'
@@ -44,8 +44,7 @@ export const projectsDetailsPageConfiguration: DetailsPageProps = {
       columnName: 'Grant Number',
       tableSqlKeys: ['Grant Number'],
       props: {        
-        sql:
-          'SELECT ownerID as ownerId, firstName, lastName, institution FROM syn13897207',
+        sql: peopleSql,
         type: SynapseConstants.MEDIUM_USER_CARD,
       },
     },
