@@ -1163,6 +1163,11 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
+"@brainhubeu/react-carousel@1.19.26":
+  version "1.19.26"
+  resolved "https://registry.yarnpkg.com/@brainhubeu/react-carousel/-/react-carousel-1.19.26.tgz#57de7b934596ede7a42ab07c46e5942574180447"
+  integrity sha512-+YO8cJrJEk+QDZTQM+i7ct5Ouy0LyoVHQD4fomdsV+3AQmWUkMVZNBYmxFMvhRQVFKreTTzyKuGPkhDKilL/CQ==
+
 "@cnakazawa/watch@^1.0.3":
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@cnakazawa/watch/-/watch-1.0.4.tgz"
@@ -8265,6 +8270,18 @@ mixin-object@^2.0.1:
   dependencies:
     minimist "^1.2.5"
 
+moment-timezone@^0.5.32:
+  version "0.5.32"
+  resolved "https://registry.yarnpkg.com/moment-timezone/-/moment-timezone-0.5.32.tgz#db7677cc3cc680fd30303ebd90b0da1ca0dfecc2"
+  integrity sha512-Z8QNyuQHQAmWucp8Knmgei8YNo28aLjJq6Ma+jy1ZSpSk5nyfRT8xgUbSQvD2+2UajISfenndwvFuH3NGS+nvA==
+  dependencies:
+    moment ">= 2.9.0"
+
+"moment@>= 2.9.0":
+  version "2.29.1"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.1.tgz#b2be769fa31940be9eeea6469c075e35006fa3d3"
+  integrity sha512-kHmoybcPV8Sqy59DwNDY3Jefr64lK/by/da0ViFcuA4DH0vQg5Q6Ze5VimxkfQNSC+Mls/Kx53s7TjP1RhFEDQ==
+
 moment@^2.24.0:
   version "2.28.0"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.28.0.tgz"
@@ -11976,11 +11993,12 @@ symbol-tree@^3.2.2:
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.4.tgz"
   integrity sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==
 
-synapse-react-client@1.15.48:
-  version "1.15.48"
-  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-1.15.48.tgz"
-  integrity sha512-13klYRiWInfRw+OameWfdWZdzabfgAdbq/Tg/1fW8zVpZ36vmKyKstlpFv5gaFG3s6evjzl+cg7sqYvWRuzZRg==
+synapse-react-client@1.15.52:
+  version "1.15.52"
+  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-1.15.52.tgz#125ff1d000f6ae5bc60fd69b058cca4e9639c88c"
+  integrity sha512-x5s3poVP1bw1mno9MnYMV8gL38YM8JdD3neM6DguWXY1doCuKdE2i5galSAT+YRSJJD9RkD/dBfeViiocmqW6g==
   dependencies:
+    "@brainhubeu/react-carousel" "1.19.26"
     "@fortawesome/fontawesome-free" "^5.13.0"
     "@fortawesome/fontawesome-svg-core" "^1.2.4"
     "@fortawesome/free-solid-svg-icons" "^5.3.1"
@@ -12023,6 +12041,7 @@ synapse-react-client@1.15.48:
     markdown-it-synapse-math "^3.0.4"
     markdown-it-synapse-table "^1.0.6"
     moment "^2.24.0"
+    moment-timezone "^0.5.32"
     node-sass "^4.14.1"
     plotly.js-basic-dist "^1.54.7"
     raf "^3.4.1"
