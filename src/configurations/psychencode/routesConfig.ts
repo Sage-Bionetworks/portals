@@ -5,7 +5,7 @@ import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
 import { grants, grantsDetailPage } from './synapseConfigs/grants'
 import { people } from './synapseConfigs/people'
 import { data } from './synapseConfigs/data'
-import { peopleSql } from './resources'
+import { peopleSql, upsetplotSql } from './resources'
 
 const routes: GenericRoute[] = [
   {
@@ -49,8 +49,7 @@ const routes: GenericRoute[] = [
         outsideContainerClassName: 'home-spacer',
         centerTitle: true,
         props: {
-          sql:
-            'SELECT unnest(individualID), assay FROM syn20821313 WHERE individualID is not null GROUP BY assay, unnest(individualID)',
+          sql: upsetplotSql, // 'SELECT unnest(individualID), assay FROM syn20821313 WHERE individualID is not null GROUP BY assay, unnest(individualID)',
           rgbIndex: 0,
           maxBarCount: 20,
           setName: '# Individuals per assay',
