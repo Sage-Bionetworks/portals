@@ -49,7 +49,7 @@ const routes: GenericRoute[] = [
         outsideContainerClassName: 'home-spacer',
         centerTitle: true,
         props: {
-          sql: upsetplotSql, // 'SELECT unnest(individualID), assay FROM syn20821313 WHERE individualID is not null GROUP BY assay, unnest(individualID)',
+          sql: upsetplotSql,
           rgbIndex: 0,
           maxBarCount: 20,
           setName: '# Individuals per assay',
