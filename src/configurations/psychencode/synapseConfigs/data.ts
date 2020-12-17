@@ -2,8 +2,6 @@ import { SynapseConfig } from 'types/portal-config'
 
 import { dataSql } from '../resources'
 
-export const dataEntityId = 'syn20821313'
-
 const facetAliases = {
   id: 'File',
 }
