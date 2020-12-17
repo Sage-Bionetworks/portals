@@ -172,8 +172,15 @@ export const studiesDetailsPageProps: DetailsPageProps = {
       tabIndex: 1,
     },
     {
-      name: 'StandaloneQueryWrapper',
+      name: 'Markdown',
       title: 'Study Metadata',
+      columnName: 'studyMetadata',
+      props: {},
+      tabIndex: 1,
+    },
+    {
+      name: 'StandaloneQueryWrapper',
+      showTitleSeperator: false,
       columnName: 'Study',
       resolveSynId: {
         value: true,
