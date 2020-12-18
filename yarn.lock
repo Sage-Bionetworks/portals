@@ -8552,10 +8552,10 @@ node@^10.3.0:
   dependencies:
     node-bin-setup "^1.0.0"
 
-node@^12.3.1:
-  version "12.18.4"
-  resolved "https://registry.yarnpkg.com/node/-/node-12.18.4.tgz"
-  integrity sha512-OVPcgkPrBHdXcb5JqV3tOv5rj7Zckx3p5IhhuxlZsLUfUw5+sRYl6iKkOWJpi9J3AR9jZMvhSHeaNyDJVEUBFg==
+node@^14.15.2:
+  version "14.15.2"
+  resolved "https://registry.yarnpkg.com/node/-/node-14.15.2.tgz#01c539eac9acfffa09f59936270ba7d83e10c8b4"
+  integrity sha512-C7UenccBeBiHlK1Aqq6d8PrAPu8jPON/h1nAQJrEsjViDhY9PPy2P5LbmHhQf0f0r7oX9bPVQYyBuIUMrgjDDw==
   dependencies:
     node-bin-setup "^1.0.0"
 
