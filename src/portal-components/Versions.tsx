@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import moment from 'moment'
-import './Versions.scss'
+import './Versions.css'
 import ReactTooltip from 'react-tooltip'
 import packageJson from '../../package.json'
 

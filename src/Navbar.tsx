@@ -5,7 +5,7 @@ import Dialog from '@material-ui/core/Dialog'
 import Dropdown from 'react-bootstrap/Dropdown'
 import { SynapseComponents } from 'synapse-react-client'
 import { TokenContext, SignInProps } from './AppInitializer'
-import './Navbar.scss'
+import './Navbar.css'
 import NavLink from 'portal-components/NavLink'
 import NavUserLink from "./portal-components/NavUserLink";
 import { GenericRoute } from 'types/portal-config'
