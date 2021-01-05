@@ -70,6 +70,7 @@
         text-align: left;
         margin: 0;
         text-transform: unset;
+        height: auto;
 
         &:hover {
           background-color: $primary-action-color;
@@ -119,10 +120,24 @@
       .dropdown-menu>li>a {
         padding: 3px $mb-menu-item-padding
       }
+
+      .Download-Link {
+        text-align: left;
+        padding: 20px 42px;
+
+        // Download size
+        .position-by-button {
+          position: relative;
+          display: inline-block;
+          top: -14px;
+          right: 16px;
+        }
+      }
+
     }
 
     .user-loggedIn {
-      display: none;
+      display: none !important; // to override another important
     }
 
     .user-loggedIn-mb {
