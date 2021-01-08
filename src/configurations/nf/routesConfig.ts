@@ -1,4 +1,5 @@
 import { GenericRoute } from 'types/portal-config'
+import { SynapseConstants } from 'synapse-react-client'
 import {
   datasets,
   files,
@@ -16,6 +17,7 @@ import {
 import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
 import { facetAliases } from './synapseConfigs/commonProps'
 import { organizationDetailsPage } from './organizations'
+import { peopleSql } from './resources'
 
 const limit = 3
 
@@ -47,10 +49,24 @@ const routes: GenericRoute[] = [
         },
       },
       {
+        name: 'UserCardListRotate',
+        title: 'Data Contributor Spotlight',
+        outsideContainerClassName: 'home-spacer',
+        centerTitle: true,
+        props: {
+          sql: `${peopleSql} where isFeatured=true`,
+          count: 3,
+          size: SynapseConstants.LARGE_USER_CARD,
+          useQueryResultUserData: true,
+          // summaryLink: 'Explore/People',
+          // summaryLinkText: 'EXPLORE ALL PEOPLE',
+        },
+      },
+      {
         name: 'Ecosystem',
         title: 'NF Grant Opportunities',
         centerTitle: true,
-        outsideContainerClassName: 'home-spacer',
+        outsideContainerClassName: 'home-spacer home-bg-dark',
         props: {
           config: [
             {
@@ -84,7 +100,7 @@ const routes: GenericRoute[] = [
       {
         name: 'CardContainerLogic',
         title: 'Our Partners',
-        outsideContainerClassName: 'home-spacer home-bg-dark',
+        outsideContainerClassName: 'home-spacer',
         centerTitle: true,
         props: {
               facetAliases,
@@ -96,7 +112,7 @@ const routes: GenericRoute[] = [
         name: 'RssFeedCards',
         title: 'What\'s New',
         centerTitle: true,
-        outsideContainerClassName: 'home-spacer',
+        outsideContainerClassName: 'home-spacer home-bg-dark',
         props: {
           url: 'https://news.nfdataportal.org',
           itemsToShow:3,
