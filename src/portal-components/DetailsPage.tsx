@@ -16,7 +16,7 @@ import {
 } from 'synapse-react-client/dist/utils/synapseTypes/'
 import { SynapseConfig } from 'types/portal-config'
 import { DetailsPageProps, RowSynapseConfig } from 'types/portal-util-types'
-import './DetailsPage.scss'
+import './DetailsPage.css'
 import injectPropsIntoConfig from './injectPropsIntoConfig'
 import { ExternalFileHandleLink } from 'synapse-react-client/dist/containers/ExternalFileHandleLink'
 import { BarLoader } from 'react-spinners'
