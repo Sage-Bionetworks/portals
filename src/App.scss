@@ -1,8 +1,8 @@
-$primary-bgcolor-rgba: unset; // TODO: need to remove in src
 @use 'config/style/_overrides.scss' as Overrides;
 @use 'node_modules/synapse-react-client/dist/style/main.scss' with (
   $primary-action-color: Overrides.$primary-action-color, 
-  $secondary-action-color: Overrides.$secondary-action-color
+  $secondary-action-color: Overrides.$secondary-action-color,
+  $primary-bgcolor-rgba: unset,
 );
 @use 'node_modules/synapse-react-client/dist/template_style/Index.scss';
 @use './portal-components/csbc-home-page/style/all.scss';
@@ -330,7 +330,7 @@ button.dropdown-toggle.nav-button:hover {
 }
 
 #footer {
-  background-image: getFooter('config/style/');
+  background-image: Overrides.getFooter('config/style/');
   background-repeat: no-repeat;
   background-size: cover;
   color: white;
@@ -348,9 +348,10 @@ button.dropdown-toggle.nav-button:hover {
 
 #signin-button {
   font-weight: bold;
+  font-size: 16px;
   height: 39px;
   border-radius: 30px;
-  padding: 8px 37px;
+  padding: 5px 38px;
   border: none;
   &:hover {
     @extend %hoverFade;

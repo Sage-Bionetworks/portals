@@ -6,6 +6,11 @@ $secondary-action-color: #404b63;
   @return url('config/style/molecule-back.svg');
 }
 
+// Currently no footer--just needed for SCSS to compile.
+@function getFooter($path) {
+  @return url();
+}
+
 #header,
 #footer {
   background-color: #125e81;
