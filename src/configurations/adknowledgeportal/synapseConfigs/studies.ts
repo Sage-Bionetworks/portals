@@ -162,13 +162,9 @@ export const studiesDetailsPageProps: DetailsPageProps = {
     },
     {
       name: 'Markdown',
-      // https://www.synapse.org/#!Synapse:syn12666371/wiki/595380
       title: 'Access Requirements',
-      standalone: true,
-      props: {
-        ownerId: 'syn12666371',
-        wikiId: '595380',
-      },
+      columnName: 'accessReqs',
+      props: {},
       tabIndex: 1,
     },
     {
