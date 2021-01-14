@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import * as React from 'react'
 import './App.css'
-// import './Markdown.css'
+import './Markdown.css'
 import '@fortawesome/fontawesome-free/css/all.css'
 import { Footer } from './Footer'
 import AppInitializer from './AppInitializer'
