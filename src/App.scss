@@ -1,8 +1,11 @@
 $primary-bgcolor-rgba: unset; // TODO: need to remove in src
-@import 'config/style/_overides.scss';
-@import 'node_modules/synapse-react-client/dist/template_style/Index.scss';
-@import './portal-components/csbc-home-page/style/all.scss';
-@import 'node_modules/synapse-react-client/dist/style/main.scss';
+@use 'config/style/_overrides.scss' as Overrides;
+@use 'node_modules/synapse-react-client/dist/style/main.scss' with (
+  $primary-action-color: Overrides.$primary-action-color, 
+  $secondary-action-color: Overrides.$secondary-action-color
+);
+@use 'node_modules/synapse-react-client/dist/template_style/Index.scss';
+@use './portal-components/csbc-home-page/style/all.scss';
 
 .nav-logo {
   height: 50px;
@@ -84,7 +87,7 @@ body {
   font-family: 'Lato', sans-serif;
   button:focus {
     // bootstrap override
-    outline: $primary-action-color;
+    outline: Overrides.$primary-action-color;
   }
 }
 
@@ -229,16 +232,17 @@ a.top-nav-button {
   white-space: nowrap;
   @extend %fillerBorder;
   a {
-    color: unset; 
+    color: unset;
     padding: 18px; // increase click area
   }
 }
 
 %bottomBorderNav {
   @extend %borderStyle;
-  border-bottom-color: $primary-action-color;
+  border-bottom-color: Overrides.$secondary-action-color;
 }
-.nav-button-container:hover, .nav-button-container.isSelected {
+.nav-button-container:hover,
+.nav-button-container.isSelected {
   @extend %hoverFade;
   @extend %bottomBorderNav;
 }
@@ -260,7 +264,7 @@ button.dropdown-toggle.nav-button:hover {
   outline: none;
 }
 .nav-link-container .show button.dropdown-toggle {
-  border-bottom-color: $primary-action-color;
+  border-bottom-color: Overrides.$secondary-action-color;
 }
 
 #home-link {
@@ -298,7 +302,7 @@ button.dropdown-toggle.nav-button:hover {
 .show #user-menu-button,
 #user-menu-button:hover {
   background: unset !important;
-  color: $primary-action-color;
+  color: Overrides.$primary-action-color;
   @extend %bottomBorderNav;
 }
 
@@ -338,11 +342,12 @@ button.dropdown-toggle.nav-button:hover {
 }
 
 .SRC-primary-text-color-background {
-  background-color: $primary-action-color;
+  background-color: Overrides.$primary-action-color;
   color: white;
 }
 
 #signin-button {
+  font-weight: bold;
   height: 39px;
   border-radius: 30px;
   padding: 8px 37px;
@@ -365,7 +370,7 @@ button.dropdown-toggle.nav-button:hover {
 
 // header
 #header {
-  background-image: getHeader('config/style');
+  background-image: Overrides.getHeader('config/style');
   background-repeat: no-repeat;
   background-size: cover;
   height: fit-content;
@@ -495,7 +500,7 @@ div.SRC-marginBottomTen {
 }
 
 .cookiesBanner {
-  background: $primary-action-color;
+  background: Overrides.$primary-action-color;
   height: 50px;
   color: white;
   display: flex;
@@ -516,7 +521,7 @@ div.SRC-marginBottomTen {
     color: white;
   }
   button {
-    color: $primary-action-color;
+    color: Overrides.$primary-action-color;
   }
 }
 

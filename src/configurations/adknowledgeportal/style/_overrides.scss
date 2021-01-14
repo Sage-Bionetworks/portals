@@ -1,5 +1,5 @@
-$primary-text-color: #4d5491;
 $primary-action-color: #4d5491;
+$secondary-action-color: #2f8e94;
 
 #header,
 #footer {
@@ -33,13 +33,13 @@ footer {
 
 // Since scss breaks if a file is missing in a local url link these functinons must get manually overwitten
 @function getHeader($path) {
-  @return url($path+'/header.svg');
+  @return url($path + '/header.svg');
 }
 
 @function getFooter($path) {
-  @return url($path+'/header.svg');
+  @return url($path + '/header.svg');
 }
 
-.stop-ad-home-page {
-  margin-top: 20px;
+.amp-project-component {
+  margin-top: 30px;
 }

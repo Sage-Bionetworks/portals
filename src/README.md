@@ -40,7 +40,7 @@ test-configuration/
 │   ├── exportS3ProductionBucketName.sh     
 │   └── exportS3StagingBucketName.sh        
 └── style                                   
-    ├── _overides.scss                      # contains main theme colors
+    ├── _overrides.scss                      # contains main theme colors
     └── header.svg                          # OPTIONAL: File that will be used for background-img on home page header
 </pre>
 

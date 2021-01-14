@@ -1,3 +1,5 @@
+@use 'src/config/style/_overrides.scss' as Overrides;
+
 .FunderCards {
   margin-top: 63px;
   margin-bottom: 63px;
@@ -35,7 +37,7 @@
   }
   &__link {
     align-self: flex-start;
-    color: $primary-action-color;
+    color: Overrides.$primary-action-color;
     display: block;
     font-weight: bold;
   }

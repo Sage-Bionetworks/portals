@@ -1,5 +1,5 @@
-$primary-text-color: #154c9a;
-$primary-action-color: #154c9a;
+$primary-action-color: #00255c;
+$secondary-action-color: #2699a7;
 
 // Since scss breaks if a file is missing in a local url link these functinons must get manually overwitten
 @function getHeader($path) {
@@ -12,5 +12,5 @@ $primary-action-color: #154c9a;
 
 #header,
 #footer {
-  background-color: $primary-text-color;
+  background-color: #154c9a;
 }

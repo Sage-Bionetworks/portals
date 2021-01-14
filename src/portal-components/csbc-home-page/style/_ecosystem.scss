@@ -1,3 +1,5 @@
+@use 'src/config/style/_overrides.scss' as Overrides;
+
 .Ecosystem {
   padding-bottom: 50px;
   .header,
@@ -30,9 +32,9 @@
         padding: 10px;
         &.isSelected,
         &:hover {
-          color: $primary-action-color;
+          color: Overrides.$primary-action-color;
           background-color: rgba(71, 51, 125, 0.1);
-          border-right: 2px solid $primary-action-color;
+          border-right: 2px solid Overrides.$primary-action-color;
         }
         border-right: 2px solid #dcdcdc;
         font-weight: bold;

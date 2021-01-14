@@ -1,5 +1,5 @@
 // Import the theme css
-@import 'config/style/_overides.scss';
+@use 'config/style/_overrides.scss' as Overrides;
 
 .crawler-link {
   position: absolute;
@@ -20,7 +20,6 @@
 }
 
 @media screen and (max-width: 768px) {
-
   $mb-menu-item-padding: 42px;
 
   .nav + .spacer {
@@ -30,8 +29,8 @@
     display: grid;
     grid-template-rows: auto;
     grid-template-areas:
-      "header-logo mobile-topnav-btn"
-      "mobile-topnav mobile-topnav";
+      'header-logo mobile-topnav-btn'
+      'mobile-topnav mobile-topnav';
     position: static;
     height: auto;
 
@@ -42,7 +41,8 @@
     .nav-logo-container {
       grid-area: header-logo;
     }
-    .mb-open, .mb-close {
+    .mb-open,
+    .mb-close {
       grid-area: mobile-topnav-btn;
       text-align: right;
       padding: 24px 18px;
@@ -73,14 +73,14 @@
         height: auto;
 
         &:hover {
-          background-color: $primary-action-color;
+          background-color: Overrides.$secondary-action-color;
           color: #fff;
           border-bottom: 0;
         }
       }
       .nav-button-signin {
         padding: 48px 26px;
-        border-top: 1px solid #B2B3B6;
+        border-top: 1px solid #b2b3b6;
         margin-top: 30px;
         box-sizing: border-box;
 
@@ -99,7 +99,7 @@
 
         &::after {
           float: right;
-          content: "+";
+          content: '+';
           font-size: 30px;
           line-height: 16px;
           font-weight: normal;
@@ -117,8 +117,8 @@
       .dropdown-item {
         width: 100%;
       }
-      .dropdown-menu>li>a {
-        padding: 3px $mb-menu-item-padding
+      .dropdown-menu > li > a {
+        padding: 3px $mb-menu-item-padding;
       }
 
       .Download-Link {
@@ -133,7 +133,6 @@
           right: 16px;
         }
       }
-
     }
 
     .user-loggedIn {
@@ -144,13 +143,16 @@
       display: block;
       order: 1;
       padding: 18px 42px;
-      border-bottom: 1px solid #B2B3B6;
+      border-bottom: 1px solid #b2b3b6;
 
       & > * {
         vertical-align: middle;
       }
 
-      &:link, &:hover, &:visited, &:active{
+      &:link,
+      &:hover,
+      &:visited,
+      &:active {
         color: #404b63; // text color
       }
 
@@ -166,7 +168,7 @@
       .user-account {
         font-size: 14px;
         line-height: 21px;
-        text-decoration: $primary-action-color underline;
+        text-decoration: Overrides.$primary-action-color underline;
       }
       .mb-user-extra {
         display: inline-block;
@@ -181,14 +183,13 @@
 
         .show .dropdown-toggle {
           &::after {
-            content: "—";
+            content: '—';
             font-size: 22px;
           }
         }
         .show #user-menu-button {
           color: unset;
         }
-
       }
       .mb-open {
         display: none;
@@ -199,7 +200,5 @@
         font-size: 24px;
       }
     }
-
   }
 }
-
