@@ -29,6 +29,7 @@ const files: HomeExploreConfig = {
       visibleColumnCount,
       tableConfiguration: {
         showAccessColumn: true,
+        showDownloadColumn: true,
       },
       shouldDeepLink: true,
       facetAliases,

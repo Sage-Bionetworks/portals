@@ -15,6 +15,7 @@ export const data: SynapseConfig = {
     sql: dataSql,
     tableConfiguration: {
       showAccessColumn: true,
+      showDownloadColumn: true,
       columnLinks: [
         {
           matchColumnName: 'study',

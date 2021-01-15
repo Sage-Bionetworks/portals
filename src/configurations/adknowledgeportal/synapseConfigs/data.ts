@@ -24,6 +24,7 @@ const data: HomeExploreConfig = {
       visibleColumnCount: 10,
       tableConfiguration: {
         showAccessColumn: true,
+        showDownloadColumn: true,
         columnLinks: [
           {
             matchColumnName: 'study',

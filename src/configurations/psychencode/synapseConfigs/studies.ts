@@ -166,6 +166,7 @@ export const details: DetailsPageProps = {
         sqlOperator: 'HAS',
         tableConfiguration: {
           showAccessColumn: true,
+          showDownloadColumn: true,
           columnLinks: [
             {
               matchColumnName: 'study',
