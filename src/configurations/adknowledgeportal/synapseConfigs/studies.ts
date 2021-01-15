@@ -203,6 +203,7 @@ export const studiesDetailsPageProps: DetailsPageProps = {
         visibleColumnCount: 10,
         tableConfiguration: {
           showAccessColumn: true,
+          showDownloadColumn: true,
           columnLinks: [
             {
               matchColumnName: 'study',

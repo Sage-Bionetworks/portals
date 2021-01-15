@@ -69,6 +69,7 @@ export const organizationDetailsPageConfig: DetailsPageProps = {
         sqlOperator: 'LIKE',
         tableConfiguration: {
           showAccessColumn: true,
+          showDownloadColumn: true,
         },
         name: 'Data Files',
         facetAliases,

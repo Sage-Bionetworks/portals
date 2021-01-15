@@ -26,7 +26,9 @@ export const files: HomeExploreConfig = {
       sql: filesSql,
       name: 'Files',
       visibleColumnCount: Infinity,
-      tableConfiguration: {},
+      tableConfiguration: {
+        showDownloadColumn: true,
+      },
       facetAliases,
       searchConfiguration: {
         searchable: [
