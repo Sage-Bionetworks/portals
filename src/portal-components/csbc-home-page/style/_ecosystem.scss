@@ -1,4 +1,5 @@
-@use 'src/config/style/_overrides.scss' as Overrides;
+@use 'src/variables' as Portal;
+
 @use 'sass:color';
 
 .Ecosystem {
@@ -33,12 +34,12 @@
         padding: 10px;
         &.isSelected,
         &:hover {
-          color: Overrides.$primary-action-color;
+          color: Portal.$primary-action-color;
           background-color: color.change(
-            Overrides.$primary-action-color,
+            Portal.$primary-action-color,
             $alpha: 0.08
           );
-          border-right: 2px solid Overrides.$primary-action-color;
+          border-right: 2px solid Portal.$primary-action-color;
         }
         border-right: 2px solid #dcdcdc;
         font-weight: bold;

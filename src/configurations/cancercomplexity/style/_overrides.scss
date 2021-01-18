@@ -1,5 +1,9 @@
-$primary-action-color: #38568e;
-$secondary-action-color: #47337d;
+@use 'variables' with (
+  $primary-action-color:  #38568e,
+  $secondary-action-color:  #47337d,
+  $header-url: 'config/style/dna_header.svg',
+  $footer-url: 'config/style/dna.svg'
+);
 
 #header,
 #footer {
@@ -18,13 +22,4 @@ $secondary-action-color: #47337d;
 
 .CSBC-ThemesPlot {
   margin-bottom: 63px;
-}
-
-// Since scss breaks if a file is missing in a local url link these functinons must get manually overwitten
-@function getHeader($path) {
-  @return url($path + '/dna_header.svg');
-}
-
-@function getFooter($path) {
-  @return url($path + '/dna.svg');
 }

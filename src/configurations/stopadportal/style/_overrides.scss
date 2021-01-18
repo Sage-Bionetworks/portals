@@ -1,5 +1,9 @@
-$primary-action-color: #4d5491;
-$secondary-action-color: #4d5491;
+@use 'variables' with (
+  $primary-action-color:  #4d5491,
+  $secondary-action-color:  #4d5491,
+  $header-url: 'config/style/header.svg',
+  $footer-url: 'config/style/header.svg'
+);
 
 #header,
 #footer {
@@ -29,15 +33,6 @@ footer {
   a {
     background: $primary-action-color !important;
   }
-}
-
-// Since scss breaks if a file is missing in a local url link these functinons must get manually overwitten
-@function getHeader($path) {
-  @return url($path+'/header.svg');
-}
-
-@function getFooter($path) {
-  @return url($path+'/header.svg');
 }
 
 .stop-ad-home-page {

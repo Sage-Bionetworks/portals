@@ -1,7 +1,8 @@
-@use 'config/style/_overrides.scss' as Overrides;
+@use 'variables' as Portal;
+
 @use 'node_modules/synapse-react-client/dist/style/main.scss' with (
-  $primary-action-color: Overrides.$primary-action-color, 
-  $secondary-action-color: Overrides.$secondary-action-color,
+  $primary-action-color: Portal.$primary-action-color, 
+  $secondary-action-color: Portal.$secondary-action-color,
   $primary-bgcolor-rgba: unset,
 );
 @use 'node_modules/synapse-react-client/dist/template_style/Index.scss';
@@ -87,7 +88,7 @@ body {
   font-family: 'Lato', sans-serif;
   button:focus {
     // bootstrap override
-    outline: Overrides.$primary-action-color;
+    outline: Portal.$primary-action-color;
   }
 }
 
@@ -239,7 +240,7 @@ a.top-nav-button {
 
 %bottomBorderNav {
   @extend %borderStyle;
-  border-bottom-color: Overrides.$secondary-action-color;
+  border-bottom-color: Portal.$secondary-action-color;
 }
 .nav-button-container:hover,
 .nav-button-container.isSelected {
@@ -264,7 +265,7 @@ button.dropdown-toggle.nav-button:hover {
   outline: none;
 }
 .nav-link-container .show button.dropdown-toggle {
-  border-bottom-color: Overrides.$secondary-action-color;
+  border-bottom-color: Portal.$secondary-action-color;
 }
 
 #home-link {
@@ -302,7 +303,7 @@ button.dropdown-toggle.nav-button:hover {
 .show #user-menu-button,
 #user-menu-button:hover {
   background: unset !important;
-  color: Overrides.$primary-action-color;
+  color: Portal.$primary-action-color;
   @extend %bottomBorderNav;
 }
 
@@ -330,7 +331,7 @@ button.dropdown-toggle.nav-button:hover {
 }
 
 #footer {
-  background-image: Overrides.getFooter('config/style/');
+  background-image: Portal.getFooter('config/style/');
   background-repeat: no-repeat;
   background-size: cover;
   color: white;
@@ -342,7 +343,7 @@ button.dropdown-toggle.nav-button:hover {
 }
 
 .SRC-primary-text-color-background {
-  background-color: Overrides.$primary-action-color;
+  background-color: Portal.$primary-action-color;
   color: white;
 }
 
@@ -371,7 +372,7 @@ button.dropdown-toggle.nav-button:hover {
 
 // header
 #header {
-  background-image: Overrides.getHeader('config/style');
+  background-image: getHeader('config/style');
   background-repeat: no-repeat;
   background-size: cover;
   height: fit-content;
@@ -501,7 +502,7 @@ div.SRC-marginBottomTen {
 }
 
 .cookiesBanner {
-  background: Overrides.$primary-action-color;
+  background: Portal.$primary-action-color;
   height: 50px;
   color: white;
   display: flex;
@@ -522,7 +523,7 @@ div.SRC-marginBottomTen {
     color: white;
   }
   button {
-    color: Overrides.$primary-action-color;
+    color: Portal.$primary-action-color;
   }
 }
 

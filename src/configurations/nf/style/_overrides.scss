@@ -1,15 +1,9 @@
-$primary-action-color: #125e81;
-$secondary-action-color: #404b63;
-
-// Since scss breaks if a file is missing in a local url link these functinons must get manually overwitten
-@function getHeader($path) {
-  @return url('config/style/molecule-back.svg');
-}
-
-// Currently no footer--just needed for SCSS to compile.
-@function getFooter($path) {
-  @return url();
-}
+@use 'src/variables' with (
+  $primary-action-color:  #125e81,
+  $secondary-action-color:  #404b63,
+  $header-url: 'config/style/molecule-back.svg',
+  $footer-url: ''
+);
 
 #header,
 #footer {

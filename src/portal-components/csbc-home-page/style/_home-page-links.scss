@@ -1,4 +1,4 @@
-@use 'src/config/style/_overrides.scss' as Overrides;
+$primary-action-color: rgb(64, 123, 160) !default;
 
 .HomePageLinks {
   margin-top: -6px;
@@ -23,7 +23,7 @@
         align-items: center;
       }
       .link {
-        color: Overrides.$primary-action-color;
+        color: $primary-action-color;
       }
     }
   }

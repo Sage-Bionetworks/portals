@@ -1,6 +1,4 @@
-// Import the theme css
-@use 'src/config/style/_overrides.scss' as Overrides;
-
+@use 'src/variables' as Portal;
 // local variable for study page
 
 $marginTop: 40px;
@@ -13,8 +11,8 @@ $svg-icon-height: 30px;
 }
 
 %svg-icon-active {
-  color: Overrides.$primary-action-color;
-  fill: Overrides.$primary-action-color;
+  color: Portal.$primary-action-color;
+  fill: Portal.$primary-action-color;
 }
 
 %alignContent {

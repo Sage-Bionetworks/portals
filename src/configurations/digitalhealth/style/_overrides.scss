@@ -1,5 +1,9 @@
-$primary-action-color: #3e7293;
-$secondary-action-color: #164767;
+@use 'variables' with (
+  $primary-action-color:  #3e7293,
+  $secondary-action-color:  #164767,
+  $header-url: 'config/style/dna_header.svg',
+  $footer-url: 'config/style/dna.svg'
+);
 
 #footer,
 #header {
@@ -82,13 +86,4 @@ td.SRC_noBorderTop:nth-child(n + 4) {
 
 .AboutPage {
   margin-top: 25px;
-}
-
-// Since scss breaks if a file is missing in a local url link these functinons must get manually overwitten
-@function getHeader($path) {
-  @return url($path + '/dna_header.svg');
-}
-
-@function getFooter($path) {
-  @return url($path + '/dna.svg');
 }
