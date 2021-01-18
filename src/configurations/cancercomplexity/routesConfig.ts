@@ -175,6 +175,7 @@ const routes: GenericRoute[] = [
                 isOutsideContainer: true,
                 props: {
                   isHeader: true,
+                  backgroundColor: 'rgb(71, 51, 125)',
                   ...grantsCardConfiguration,
                   secondaryLabelLimit: Infinity,
                   sql: grantsSql,
