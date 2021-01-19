@@ -1,9 +1,4 @@
-@use 'variables' with (
-  $primary-action-color:  #00565e,
-  $secondary-action-color:  #f7a700,
-  $header-url: 'config/style/molecule-back.svg',
-  $footer-url: ''
-);
+@use 'variables' as Portal;
 
 #header,
 #footer {

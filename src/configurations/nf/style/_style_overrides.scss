@@ -1,0 +1,7 @@
+@use 'variables' as Portal;
+
+#header,
+#footer {
+  background-color: Portal.$primary-action-color;
+  background-blend-mode: multiply;
+}

@@ -1,9 +1,4 @@
-@use 'variables' with (
-  $primary-action-color:  #0085ff,
-  $secondary-action-color:  #0085ff,
-  $header-url: 'config/style/dna-header.svg',
-  $footer-url: 'config/style/dna.svg'
-);
+@use 'variables' as Portal;
 
 #header,
 #footer {
@@ -29,7 +24,7 @@
 
 .SRC-chart-link {
   a {
-    background: $primary-action-color !important;
+    background: Portal.$primary-action-color !important;
   }
 }
 

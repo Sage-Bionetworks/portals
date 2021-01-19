@@ -1,4 +1,4 @@
-@use 'overrides';
+@use 'variable_overrides';
 @use 'variables' as Portal;
 
 @use 'node_modules/synapse-react-client/dist/style/main.scss' with (
@@ -373,7 +373,7 @@ button.dropdown-toggle.nav-button:hover {
 
 // header
 #header {
-  background-image: getHeader('config/style');
+  background-image: Portal.getHeader('config/style/');
   background-repeat: no-repeat;
   background-size: cover;
   height: fit-content;
@@ -570,3 +570,5 @@ div.SRC-marginBottomTen {
     }
   }
 }
+
+@import 'style_overrides';

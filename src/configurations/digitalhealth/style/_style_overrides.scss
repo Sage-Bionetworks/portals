@@ -1,9 +1,4 @@
-@use 'variables' with (
-  $primary-action-color:  #3e7293,
-  $secondary-action-color:  #164767,
-  $header-url: 'config/style/dna_header.svg',
-  $footer-url: 'config/style/dna.svg'
-);
+@use 'variables' as Portal;
 
 #footer,
 #header {
@@ -40,7 +35,7 @@
 
 .SRC-chart-link {
   a {
-    background: $primary-action-color !important;
+    background: Portal.$primary-action-color !important;
   }
 }
 
@@ -85,5 +80,5 @@ td.SRC_noBorderTop:nth-child(n + 4) {
 }
 
 .AboutPage {
-  margin-top: 25px;
+  margin-top: 25px !important;
 }
