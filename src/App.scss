@@ -1,3 +1,4 @@
+@use 'overrides';
 @use 'variables' as Portal;
 
 @use 'node_modules/synapse-react-client/dist/style/main.scss' with (
@@ -6,7 +7,7 @@
   $primary-bgcolor-rgba: unset,
 );
 @use 'node_modules/synapse-react-client/dist/template_style/Index.scss';
-@use './portal-components/csbc-home-page/style/all.scss';
+@use '../portal-components/csbc-home-page/style/all.scss';
 
 .nav-logo {
   height: 50px;

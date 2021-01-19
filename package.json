@@ -39,8 +39,8 @@
     ]
   },
   "scripts": {
-    "build-css": "sass src/:src/ --load-path=.",
-    "watch-css": "yarn run build-css && sass src/ --watch --load-path=.",
+    "build-css": "sass src/:src/ --load-path=src/config/style --load-path=src/style --load-path=.",
+    "watch-css": "yarn run build-css && sass src/ --watch --load-path=src/config/style --load-path=src/style --load-path=.",
     "start-js": "react-scripts start",
     "copy-favicon": "cp src/config/style/favicon* public/",
     "save-build-date": "date > public/build-date.txt",
