@@ -7,9 +7,17 @@ $footer-url: '' !default;
 
 // Since scss breaks if a file is missing in a local url link these functinons must get manually overwitten
 @function getHeader($path) {
-  @return url($path + $header-url);
+  @if $header-url == '' {
+    @return none;
+  } @else {
+    @return url($path + $header-url);
+  }
 }
 
 @function getFooter($path) {
-  @return url($path + $footer-url);
+  @if $footer-url == '' {
+    @return none;
+  } @else {
+    @return url($path + $footer-url);
+  }
 }
