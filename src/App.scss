@@ -9,6 +9,12 @@
 @use 'node_modules/synapse-react-client/dist/template_style/Index.scss';
 @use '../portal-components/csbc-home-page/style/all.scss';
 
+.bootstrap-4-backport {
+  .btn {
+    font-weight: bold;
+  }
+}
+
 .nav-logo {
   height: 50px;
   button {
