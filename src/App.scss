@@ -14,4 +14,5 @@
 @use 'Navbar';
 @use '../portal-components/DetailsPage';
 
+// style_overrides should be last to ensure its styles have higher priority
 @use 'style_overrides';
