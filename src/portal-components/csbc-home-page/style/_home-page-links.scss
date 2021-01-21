@@ -1,4 +1,4 @@
-$primary-action-color: rgb(64, 123, 160) !default;
+@use 'variables' as Portal;
 
 .HomePageLinks {
   margin-top: -6px;
@@ -23,7 +23,7 @@ $primary-action-color: rgb(64, 123, 160) !default;
         align-items: center;
       }
       .link {
-        color: $primary-action-color;
+        color: Portal.$primary-action-color;
       }
     }
   }
