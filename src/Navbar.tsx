@@ -180,40 +180,39 @@ class Navbar extends React.Component<any, State> {
           <div className="nav-link-container">
             {userProfile &&
               isSynapseSubdomainOrLocal && ( // mobile sign out
-                <div className="center-content top-nav-button nav-button-signin">
-                  <button
+                <div className="center-content top-nav-button nav-button-signin bootstrap-4-backport mobile-signout-container">
+                  <Button
                     id="signin-button"
-                    className="SRC-primary-text-color-background signout-button-mb"
+                    variant="secondary"
+                    className="pill signout-button-mb"
                     // @ts-ignore
                     onClick={() => resetSession()}
                   >
                     SIGN OUT
-                  </button>
+                  </Button>
                 </div>
               )}
             {!userProfile &&
               isSynapseSubdomainOrLocal && ( // desktop sign in
-                <div className="bootstrap-4-backport">
-                  <div className="center-content top-nav-button nav-button-signin">
-                    <Button
-                      id="signin-button"
-                      variant="secondary"
-                      className="pill"
-                      // @ts-ignore
-                      onClick={onSignIn}
-                    >
-                      SIGN&nbsp;IN
-                    </Button>
-                    <Dialog
-                      // @ts-ignore
-                      onClose={handleCloseLoginDialog}
-                      open={showLoginDialog}
-                    >
-                      <SynapseComponents.Login
-                        sessionCallback={() => getSession()}
-                      />
-                    </Dialog>
-                  </div>
+                <div className="center-content top-nav-button nav-button-signin bootstrap-4-backport">
+                  <Button
+                    id="signin-button"
+                    variant="secondary"
+                    className="pill"
+                    // @ts-ignore
+                    onClick={onSignIn}
+                  >
+                    SIGN&nbsp;IN
+                  </Button>
+                  <Dialog
+                    // @ts-ignore
+                    onClose={handleCloseLoginDialog}
+                    open={showLoginDialog}
+                  >
+                    <SynapseComponents.Login
+                      sessionCallback={() => getSession()}
+                    />
+                  </Dialog>
                 </div>
               )}
 
