@@ -1,3 +1,5 @@
+@use 'variables' as Portal;
+
 .HomePageLinks {
   margin-top: -6px;
 
@@ -21,7 +23,7 @@
         align-items: center;
       }
       .link {
-        color: $primary-action-color;
+        color: Portal.$primary-action-color;
       }
     }
   }

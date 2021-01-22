@@ -1,5 +1,4 @@
-$primary-text-color: #90CCCC;
-$primary-action-color: #0085ff;
+@use 'variables' as Portal;
 
 #header,
 #footer {
@@ -25,7 +24,7 @@ $primary-action-color: #0085ff;
 
 .SRC-chart-link {
   a {
-    background: $primary-action-color !important;
+    background: Portal.$primary-action-color !important;
   }
 }
 
@@ -39,13 +38,4 @@ td.SRC_noBorderTop {
       content: '\f35d';
     }
   }
-}
-
-// Since scss breaks if a file is missing in a local url link these functinons must get manually overwitten
-@function getHeader($path) {
-  @return url($path + '/dna_header.svg');
-}
-
-@function getFooter($path) {
-  @return url($path + '/dna.svg');
 }

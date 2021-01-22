@@ -1,3 +1,7 @@
+@use 'variables' as Portal;
+
+@use 'sass:color';
+
 .Ecosystem {
   padding-bottom: 50px;
   .header,
@@ -30,9 +34,12 @@
         padding: 10px;
         &.isSelected,
         &:hover {
-          color: $primary-action-color;
-          background-color: rgba(71, 51, 125, 0.1);
-          border-right: 2px solid $primary-action-color;
+          color: Portal.$primary-action-color;
+          background-color: color.change(
+            Portal.$primary-action-color,
+            $alpha: 0.08
+          );
+          border-right: 2px solid Portal.$primary-action-color;
         }
         border-right: 2px solid #dcdcdc;
         font-weight: bold;
