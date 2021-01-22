@@ -5,10 +5,10 @@ import Dialog from '@material-ui/core/Dialog'
 import Dropdown from 'react-bootstrap/Dropdown'
 import { SynapseComponents } from 'synapse-react-client'
 import { TokenContext, SignInProps } from './AppInitializer'
-import './Navbar.css'
 import NavLink from 'portal-components/NavLink'
-import NavUserLink from "./portal-components/NavUserLink";
+import NavUserLink from './portal-components/NavUserLink'
 import { GenericRoute } from 'types/portal-config'
+import Button from 'react-bootstrap/esm/Button'
 
 type SynapseSettingLink = {
   text: string
@@ -90,8 +90,12 @@ class Navbar extends React.Component<any, State> {
     }
   }
 
-  getLinkHref = (route: GenericRoute, topLevelTo?: string, includeQueryParams?: boolean) => {
-    const { to, link } = route    
+  getLinkHref = (
+    route: GenericRoute,
+    topLevelTo?: string,
+    includeQueryParams?: boolean,
+  ) => {
+    const { to, link } = route
     let href = link ?? `/${topLevelTo}/${to}`
     const indexOfQuestionMark = href.indexOf('?')
     if (!includeQueryParams && indexOfQuestionMark > -1) {
@@ -128,8 +132,11 @@ class Navbar extends React.Component<any, State> {
         hostname.includes('127.0.0.1') ||
         hostname.includes('localhost')) &&
       !hideLogin
-    const isHomeSelectedCssClassName = window.location.pathname.replace('/', '') === '' ? 'isSelected' : ''
-    const homeRouteConfig:GenericRoute = routesConfig.filter(r => { return r.to === '' })[0]
+    const isHomeSelectedCssClassName =
+      window.location.pathname.replace('/', '') === '' ? 'isSelected' : ''
+    const homeRouteConfig: GenericRoute = routesConfig.filter((r) => {
+      return r.to === ''
+    })[0]
     return (
       <React.Fragment>
         <nav
@@ -170,85 +177,92 @@ class Navbar extends React.Component<any, State> {
             <span>&#10005;</span>
           </div>
           <div className="nav-link-container">
-            {userProfile && isSynapseSubdomainOrLocal && (  // mobile sign out
-              <div className="center-content top-nav-button nav-button-signin">
-                <button
-                  id="signin-button"
-                  className="SRC-primary-text-color-background signout-button-mb"
-                  // @ts-ignore
-                  onClick={() => resetSession()}
-                >
-                  SIGN OUT
-                </button>
-              </div>
-            )}
-            {!userProfile && isSynapseSubdomainOrLocal && (  // desktop sign in
-              <div className="center-content top-nav-button nav-button-signin">
-                <button
-                  id="signin-button"
-                  className="SRC-primary-text-color-background"
-                  // @ts-ignore
-                  onClick={onSignIn}
-                >
-                  SIGN&nbsp;IN
-                </button>
-                <Dialog
-                  // @ts-ignore
-                  onClose={handleCloseLoginDialog}
-                  open={showLoginDialog}
-                >
-                  <SynapseComponents.Login
-                    sessionCallback={() => getSession()}
-                    theme={'light'}
-                    icon={true}
-                  />
-                </Dialog>
-              </div>
-            )}
+            {userProfile &&
+              isSynapseSubdomainOrLocal && ( // mobile sign out
+                <div className="center-content top-nav-button nav-button-signin bootstrap-4-backport mobile-signout-container">
+                  <Button
+                    id="signin-button"
+                    variant="secondary"
+                    className="pill signout-button-mb"
+                    // @ts-ignore
+                    onClick={() => resetSession()}
+                  >
+                    SIGN OUT
+                  </Button>
+                </div>
+              )}
+            {!userProfile &&
+              isSynapseSubdomainOrLocal && ( // desktop sign in
+                <div className="center-content top-nav-button nav-button-signin bootstrap-4-backport">
+                  <Button
+                    id="signin-button"
+                    variant="secondary"
+                    className="pill"
+                    // @ts-ignore
+                    onClick={onSignIn}
+                  >
+                    SIGN&nbsp;IN
+                  </Button>
+                  <Dialog
+                    // @ts-ignore
+                    onClose={handleCloseLoginDialog}
+                    open={showLoginDialog}
+                  >
+                    <SynapseComponents.Login
+                      sessionCallback={() => getSession()}
+                    />
+                  </Dialog>
+                </div>
+              )}
 
-            {userProfile && isSynapseSubdomainOrLocal && (  // desktop version, show dropdown
-              <>
-                <Dropdown className="user-loggedIn">
-                  <Dropdown.Toggle variant="light" id="user-menu-button">
-                    <NavUserLink userProfile={ userProfile } />
-                  </Dropdown.Toggle>
-                  <Dropdown.Menu className="nav-user-menu portal-nav-menu">
-                    <Dropdown.Item className="SRC-primary-background-color-hover SRC-nested-color border-bottom-1">
-                      Signed in as&nbsp;<strong>{userProfile.userName}</strong>
-                    </Dropdown.Item>
-                    {this.synapseQuickLinks.map((el) => {
-                      const borderBottomClass = el.hasBorder
-                        ? 'border-bottom-1'
-                        : ''
-                      return (
-                        <Dropdown.Item
-                          key={el.text}
-                          className={`SRC-primary-background-color-hover SRC-nested-color ${borderBottomClass}`}
-                          href={`https://www.synapse.org/#!Profile:${
-                            userProfile.ownerId
-                          }${el.settingSubPath ? `/${el.settingSubPath}` : ''}`}
-                        >
-                          {el.text}
-                        </Dropdown.Item>
-                      )
-                    })}
-                    <Dropdown.Item  // desktop sign out
-                      className="SRC-primary-background-color-hover SRC-nested-color"
-                      // @ts-ignore
-                      onClick={() => resetSession()}
-                    >
-                      Sign Out
-                    </Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown>
+            {userProfile &&
+              isSynapseSubdomainOrLocal && ( // desktop version, show dropdown
+                <>
+                  <Dropdown className="user-loggedIn">
+                    <Dropdown.Toggle variant="light" id="user-menu-button">
+                      <NavUserLink userProfile={userProfile} />
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu className="nav-user-menu portal-nav-menu">
+                      <Dropdown.Item className="SRC-primary-background-color-hover SRC-nested-color border-bottom-1">
+                        Signed in as&nbsp;
+                        <strong>{userProfile.userName}</strong>
+                      </Dropdown.Item>
+                      {this.synapseQuickLinks.map((el) => {
+                        const borderBottomClass = el.hasBorder
+                          ? 'border-bottom-1'
+                          : ''
+                        return (
+                          <Dropdown.Item
+                            key={el.text}
+                            className={`SRC-primary-background-color-hover SRC-nested-color ${borderBottomClass}`}
+                            href={`https://www.synapse.org/#!Profile:${
+                              userProfile.ownerId
+                            }${
+                              el.settingSubPath ? `/${el.settingSubPath}` : ''
+                            }`}
+                          >
+                            {el.text}
+                          </Dropdown.Item>
+                        )
+                      })}
+                      <Dropdown.Item // desktop sign out
+                        className="SRC-primary-background-color-hover SRC-nested-color"
+                        // @ts-ignore
+                        onClick={() => resetSession()}
+                      >
+                        Sign Out
+                      </Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
 
-                <a className="user-loggedIn-mb"  // mobile version, shows the user icon and name, no dropdown
-                  href={`https://www.synapse.org/#!Profile:${userProfile.ownerId}/projects/all`}
-                >
-                  <NavUserLink userProfile={ userProfile } />
-                </a>
-              </>
-            )}
+                  <a
+                    className="user-loggedIn-mb" // mobile version, shows the user icon and name, no dropdown
+                    href={`https://www.synapse.org/#!Profile:${userProfile.ownerId}/projects/all`}
+                  >
+                    <NavUserLink userProfile={userProfile} />
+                  </a>
+                </>
+              )}
             <SynapseComponents.ShowDownload token={token} />
             {
               // we have to loop backwards due to css rendering of flex-direction: row-reverse
@@ -270,8 +284,14 @@ class Navbar extends React.Component<any, State> {
                     el.isNested &&
                     el.routes.some((route) => route.hideRouteFromNavbar)
                   if (el.isNested && !hideChildren) {
-                    const isSelected = el.routes.some((route) => this.getLinkHref(route, topLevelTo, false) === decodeURIComponent(window.location.pathname))
-                    const isSelectedCssClassName = isSelected ? 'isSelected' : ''
+                    const isSelected = el.routes.some(
+                      (route) =>
+                        this.getLinkHref(route, topLevelTo, false) ===
+                        decodeURIComponent(window.location.pathname),
+                    )
+                    const isSelectedCssClassName = isSelected
+                      ? 'isSelected'
+                      : ''
                     return (
                       <>
                         {el.routes.map((route) => {
@@ -307,7 +327,11 @@ class Navbar extends React.Component<any, State> {
                                 return false
                               }
                               const routeDisplayName = route.displayName ?? to!
-                              const linkDisplay = this.getLinkHref(route, topLevelTo, true)
+                              const linkDisplay = this.getLinkHref(
+                                route,
+                                topLevelTo,
+                                true,
+                              )
                               return (
                                 <Dropdown.Item key={to} as="li">
                                   <NavLink
@@ -324,7 +348,10 @@ class Navbar extends React.Component<any, State> {
                     )
                   }
                   const linkOrTo = el.link ?? `/${topLevelTo}`
-                  const isSelectedCssClassName = decodeURIComponent(window.location.pathname) === linkOrTo ? 'isSelected' : ''
+                  const isSelectedCssClassName =
+                    decodeURIComponent(window.location.pathname) === linkOrTo
+                      ? 'isSelected'
+                      : ''
                   return (
                     <NavLink
                       key={topLevelTo}
@@ -355,22 +382,24 @@ class Navbar extends React.Component<any, State> {
                     Home
                   </Dropdown.Toggle>
                   <Dropdown.Menu className="portal-nav-menu">
-                    {homeRouteConfig.synapseConfigArray!.map((config, index) => {
-                      const { title } = config
-                      if (!title)
-                        return
-                      
-                      return (
-                        <Dropdown.Item key={title} as="li">
-                          <NavLink
-                          className="dropdown-item SRC-primary-background-color-hover SRC-nested-color"
-                          text={title}
-                          to={`/#${encodeURI(title)}`} />                          
-                        </Dropdown.Item>
-                      )
-                    })}
+                    {homeRouteConfig.synapseConfigArray!.map(
+                      (config, index) => {
+                        const { title } = config
+                        if (!title) return
+
+                        return (
+                          <Dropdown.Item key={title} as="li">
+                            <NavLink
+                              className="dropdown-item SRC-primary-background-color-hover SRC-nested-color"
+                              text={title}
+                              to={`/#${encodeURI(title)}`}
+                            />
+                          </Dropdown.Item>
+                        )
+                      },
+                    )}
                   </Dropdown.Menu>
-                </Dropdown>                
+                </Dropdown>
               )
             }
           </div>

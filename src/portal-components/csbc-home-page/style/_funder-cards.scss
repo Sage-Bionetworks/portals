@@ -1,3 +1,5 @@
+@use 'variables' as Portal;
+
 .FunderCards {
   margin-top: 63px;
   margin-bottom: 63px;
@@ -35,7 +37,7 @@
   }
   &__link {
     align-self: flex-start;
-    color: $primary-action-color;
+    color: Portal.$primary-action-color;
     display: block;
     font-weight: bold;
   }

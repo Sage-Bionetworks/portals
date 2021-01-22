@@ -1,6 +1,4 @@
-// Import the theme css
-@import '../config/style/_overides.scss';
-
+@use 'variables' as Portal;
 // local variable for study page
 
 $marginTop: 40px;
@@ -13,8 +11,8 @@ $svg-icon-height: 30px;
 }
 
 %svg-icon-active {
-  color: $primary-action-color;
-  fill: $primary-action-color;
+  color: Portal.$primary-action-color;
+  fill: Portal.$primary-action-color;
 }
 
 %alignContent {
@@ -111,11 +109,11 @@ $svg-icon-height: 30px;
     display: flex;
     font-size: 16px;
     justify-content: center;
-    height:  $study-page-tab-height;
-    line-height:  $study-page-tab-height;
+    height: $study-page-tab-height;
+    line-height: $study-page-tab-height;
 
     .tab-item,
-    .tab-item-active{
+    .tab-item-active {
       cursor: pointer;
       display: inline-block;
       margin: 0 4px;
@@ -135,17 +133,19 @@ $svg-icon-height: 30px;
     .tab-item {
       background: rgba(0, 0, 0, 0.4);
       color: #fff;
-      svg, path {
+      svg,
+      path {
         @extend %svg-icon;
       }
     }
     .tab-item-active {
       background-color: #fff;
-      svg, path {
+      svg,
+      path {
         @extend %svg-icon-active;
       }
     }
-    .tab-database svg{
+    .tab-database svg {
       height: 26px;
     }
     .tab-item:first-child,
@@ -168,7 +168,7 @@ $svg-icon-height: 30px;
     }
   }
 
-  .metadata-table table{
+  .metadata-table table {
     width: 100% !important; // Override !important from js library
   }
 

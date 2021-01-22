@@ -1,0 +1,20 @@
+@use 'variables' as Portal;
+
+#header,
+#footer {
+  background-blend-mode: multiply;
+}
+
+.nav-logo {
+  height: 65px !important;
+}
+
+.SRC-chart-link {
+  a {
+    background: Portal.$primary-action-color !important;
+  }
+}
+
+.CSBC-ThemesPlot {
+  margin-bottom: 63px;
+}

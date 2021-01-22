@@ -1,4 +1,4 @@
-@import 'config/style/overides';
+@use 'variables' as Portal;
 
 // TODO: This styling should eventually be part of the standard markdown rendering across the portals and synapse.org
 // Its starting to diverge from synapse.org markdown styling, since there has been a lot of wikis made specifically
@@ -34,10 +34,11 @@
     padding: 0;
   }
 
+
   a,
   details > summary {
     font-weight: 700;
-    color: $primary-action-color;
+    color: Portal.$primary-action-color;
   }
 
   // PORTALS-700
@@ -49,7 +50,7 @@
     border-bottom: 1px solid transparent;
   }
   details > summary:hover {
-    border-bottom: 1px solid $primary-action-color;
+    border-bottom: 1px solid Portal.$primary-action-color;
   }
   details > summary::-webkit-details-marker {
     display: none;
@@ -82,7 +83,7 @@
 }
 
 .markdown p a {
-  color: $primary-action-color; /* action color */
+  color: Portal.$primary-action-color; /* action color */
   font-weight: 700;
 }
 
