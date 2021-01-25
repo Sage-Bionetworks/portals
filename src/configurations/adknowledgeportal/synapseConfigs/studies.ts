@@ -175,25 +175,27 @@ export const studiesDetailsPageProps: DetailsPageProps = {
       tabIndex: 1,
     },
     {
-      name: 'StandaloneQueryWrapper',
-      showTitleSeperator: false,
-      columnName: 'Study',
+      name: "QueryWrapperPlotNav",
+      tabIndex: 1,
+      props: {
+        sqlOperator: 'HAS',
+        showColumnSelection: false,
+        rgbIndex,
+        name: 'Metadata Files',
+        visibleColumnCount: 10,
+        tableConfiguration: {
+          showAccessColumn: true,
+          showDownloadColumn: true,
+        },
+        sql: "SELECT id, metadataType, dataType, assay FROM syn11346063 WHERE `dataSubtype` = 'metadata'",
+        shouldDeepLink: false,
+      },
       resolveSynId: {
         value: true,
       },
       tableSqlKeys: ['study'],
-      props: {
-        sql:
-          "SELECT id, metadataType, dataType, assay FROM syn11346063 WHERE `dataSubtype` = 'metadata'",
-        facetAliases,
-        rgbIndex,
-        unitDescription: 'Files',
-        title: 'Metadata Files',
-        sqlOperator: 'HAS'
-      },
-      tabIndex: 1,
-      className: 'metadata-table'
-    },
+      columnName: 'Study'
+    },    
     {
       name: "QueryWrapperPlotNav",
       tabIndex: 1,
