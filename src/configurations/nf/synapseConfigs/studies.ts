@@ -37,12 +37,12 @@ export const studyCardConfiguration: CardConfiguration = {
     subTitle: 'studyLeads',
     icon: 'studyStatus',
     secondaryLabels: [
+      'studyStatus',
       'dataStatus',
       'diseaseFocus',
       'manifestation',
       'fundingAgency',
       'institutions',
-      'studyStatus',
     ],
   },
   iconOptions: {
@@ -56,15 +56,18 @@ export const studyCardConfiguration: CardConfiguration = {
     matchColumnName: 'studyId',
   },
   columnIconOptions: {
-    'dataStatus': {
-      'Available': { icon: 'data', color: '#28A745', size: 'sm', },
-      'Partially Available': { icon: 'data', color: '#DE9A1F', size: 'sm', },
-      'Under Embargo': { icon: 'dataLocked', color: '#D46D1E', size: 'sm', },
-      'None': { icon: 'data', color: '#BBBBBC', size: 'sm', },
-    },
-    'studyStatus': {
-      'Active': { icon: 'reload', color: '#28A745', size: 'sm', },
-      'Completed': { icon: 'checkMark', color: '#B2242A', size: 'sm', },
+    iconBasePath: "/icons/",
+    columns: {
+      'dataStatus': {
+        'Available': { icon: 'data', color: '#28A745', size: 'sm', },
+        'Partially Available': { icon: 'data', color: '#DE9A1F', size: 'sm', },
+        'Under Embargo': { icon: 'dataLocked', color: '#D46D1E', size: 'sm', },
+        'None': { icon: 'data', color: '#BBBBBC', size: 'sm', },
+      },
+      'studyStatus': {
+        'Active': { icon: 'reload', color: '#28A745', size: 'sm', },
+        'Completed': { icon: 'checkMark', color: '#B2242A', size: 'sm', },
+      }
     }
   }
 }
