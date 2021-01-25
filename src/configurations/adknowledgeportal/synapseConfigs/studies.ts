@@ -189,6 +189,7 @@ export const studiesDetailsPageProps: DetailsPageProps = {
         rgbIndex,
         unitDescription: 'Files',
         title: 'Metadata Files',
+        sqlOperator: 'HAS'
       },
       tabIndex: 1,
       className: 'metadata-table'
