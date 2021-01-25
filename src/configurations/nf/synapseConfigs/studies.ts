@@ -17,6 +17,7 @@ import {
   publicationsSql,
   filesSql,
 } from '../resources'
+import { SVGBASEPATH } from "utils/PortalsConstants";
 
 export const newStudiesSql = `${studiesSql} order by ROW_ID desc limit 3`
 const type = SynapseConstants.GENERIC_CARD
@@ -56,7 +57,7 @@ export const studyCardConfiguration: CardConfiguration = {
     matchColumnName: 'studyId',
   },
   columnIconOptions: {
-    iconBasePath: "/icons/",
+    iconBasePath: SVGBASEPATH,
     columns: {
       'dataStatus': {
         'Available': { icon: 'data', color: '#28A745', size: 'sm', },
