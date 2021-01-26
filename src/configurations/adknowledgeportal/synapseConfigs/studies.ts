@@ -179,7 +179,7 @@ export const studiesDetailsPageProps: DetailsPageProps = {
       tabIndex: 1,
       props: {
         sqlOperator: 'HAS',
-        showColumnSelection: false,
+        showColumnSelection: true,
         rgbIndex,
         name: 'Metadata Files',
         visibleColumnCount: 10,
@@ -187,8 +187,10 @@ export const studiesDetailsPageProps: DetailsPageProps = {
           showAccessColumn: true,
           showDownloadColumn: true,
         },
+        facetsToFilter:['tissue'],
         sql: "SELECT id, metadataType, dataType, assay FROM syn11346063 WHERE `dataSubtype` = 'metadata'",
         shouldDeepLink: false,
+        defaultShowFacetVisualization: false,
       },
       resolveSynId: {
         value: true,
