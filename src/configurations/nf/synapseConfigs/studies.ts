@@ -60,14 +60,14 @@ export const studyCardConfiguration: CardConfiguration = {
     iconBasePath: SVGBASEPATH,
     columns: {
       'dataStatus': {
-        'Available': { icon: 'data', color: '#28A745', size: 'sm', },
-        'Partially Available': { icon: 'data', color: '#DE9A1F', size: 'sm', },
-        'Under Embargo': { icon: 'dataLocked', color: '#D46D1E', size: 'sm', },
-        'None': { icon: 'data', color: '#BBBBBC', size: 'sm', },
+        'Available': { icon: 'data', color: '#28A745', size: 'md', },
+        'Partially Available': { icon: 'data', color: '#DE9A1F', size: 'md', },
+        'Under Embargo': { icon: 'dataLocked', color: '#D46D1E', size: 'md', },
+        'None': { icon: 'data', color: '#BBBBBC', size: 'md', },
       },
       'studyStatus': {
-        'Active': { icon: 'reload', color: '#28A745', size: 'sm', },
-        'Completed': { icon: 'checkMark', color: '#B2242A', size: 'sm', },
+        'Active': { icon: 'reload', color: '#28A745', size: 'md', },
+        'Completed': { icon: 'checkMark', color: '#B2242A', size: 'md', },
       }
     }
   }
