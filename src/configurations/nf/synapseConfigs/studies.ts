@@ -17,7 +17,6 @@ import {
   publicationsSql,
   filesSql,
 } from '../resources'
-import { SVGBASEPATH } from "utils/PortalsConstants";
 
 export const newStudiesSql = `${studiesSql} order by ROW_ID desc limit 3`
 const type = SynapseConstants.GENERIC_CARD
@@ -57,17 +56,16 @@ export const studyCardConfiguration: CardConfiguration = {
     matchColumnName: 'studyId',
   },
   columnIconOptions: {
-    iconBasePath: SVGBASEPATH,
     columns: {
       'dataStatus': {
-        'Available': { icon: 'data', color: '#28A745', size: 'sm', },
-        'Partially Available': { icon: 'data', color: '#DE9A1F', size: 'sm', },
-        'Under Embargo': { icon: 'dataLocked', color: '#D46D1E', size: 'sm', },
-        'None': { icon: 'data', color: '#BBBBBC', size: 'sm', },
+        'Available': { icon: 'data', color: '#28A745' },
+        'Partially Available': { icon: 'data', color: '#DE9A1F' },
+        'Under Embargo': { icon: 'dataLocked', color: '#D46D1E' },
+        'None': { icon: 'data', color: '#BBBBBC' },
       },
       'studyStatus': {
-        'Active': { icon: 'reload', color: '#28A745', size: 'sm', },
-        'Completed': { icon: 'checkMark', color: '#B2242A', size: 'sm', },
+        'Active': { icon: 'reload', color: '#28A745' },
+        'Completed': { icon: 'check', color: '#B2242A' },
       }
     }
   }
