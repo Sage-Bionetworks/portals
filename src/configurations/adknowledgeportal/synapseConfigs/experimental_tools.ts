@@ -8,7 +8,7 @@ const experimentalSchema: GenericCardSchema = {
   type: SynapseConstants.EXPERIMENTAL,
   title: 'name',
   description: 'summary',
-  link: 'dataFileHandleId',
+  link: 'url',
   secondaryLabels: [
     'toolType',
     'modelType',
