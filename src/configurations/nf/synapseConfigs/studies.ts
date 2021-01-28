@@ -58,14 +58,14 @@ export const studyCardConfiguration: CardConfiguration = {
   columnIconOptions: {
     columns: {
       'dataStatus': {
-        'Available': { icon: 'data', color: '#28A745', size: 'md', },
-        'Partially Available': { icon: 'data', color: '#DE9A1F', size: 'md', },
-        'Under Embargo': { icon: 'dataLocked', color: '#D46D1E', size: 'md', },
-        'None': { icon: 'data', color: '#BBBBBC', size: 'md', },
+        'Available': { icon: 'data', color: '#28A745' },
+        'Partially Available': { icon: 'data', color: '#DE9A1F' },
+        'Under Embargo': { icon: 'dataLocked', color: '#D46D1E' },
+        'None': { icon: 'data', color: '#BBBBBC' },
       },
       'studyStatus': {
-        'Active': { icon: 'reload', color: '#28A745', size: 'md', },
-        'Completed': { icon: 'check', color: '#B2242A', size: 'md', },
+        'Active': { icon: 'reload', color: '#28A745' },
+        'Completed': { icon: 'check', color: '#B2242A' },
       }
     }
   }
