@@ -187,7 +187,7 @@ export const studiesDetailsPageProps: DetailsPageProps = {
           showAccessColumn: true,
           showDownloadColumn: true,
         },
-        facetsToFilter:['tissue'],
+        facetsToFilter:['metadataType', 'dataType', 'assay'],
         sql: "SELECT id, metadataType, dataType, assay FROM syn11346063 WHERE `dataSubtype` = 'metadata'",
         shouldDeepLink: false,
         defaultShowFacetVisualization: false,
