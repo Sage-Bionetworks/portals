@@ -83,6 +83,7 @@ const routes: GenericRoute[] = [
             plotsConfig: {
               configs: [{
                 title:'The UCI MODEL-AD 5XFAD Study',
+                description:'This study provides deep phenotyping data on the early onset Alzheimer\'s disease 5XFAD mouse model.',
                 facetsToPlot:['dataType', 'assay'],
                 selectFacetColumnName:'study',
                 selectFacetColumnValue:'UCI_5XFAD',
@@ -90,6 +91,7 @@ const routes: GenericRoute[] = [
               },
               {
                 title:'The IU/Jax/Pitt MODEL-AD Primary Screen Study',
+                description:'This study provides an initial molecular and behavioral characterization of mouse models of Late-Onset Alzheimer\'s disease.',
                 facetsToPlot:['dataType', 'assay'],
                 selectFacetColumnName:'study',
                 selectFacetColumnValue:'Jax.IU.Pitt_PrimaryScreen',
@@ -97,6 +99,7 @@ const routes: GenericRoute[] = [
               },
               {
                 title:'The IU/Jax/Pit MODEL-AD APOE/TREM2 Study',
+                description:'This study provides deep phenotyping data on a late onset Alzheimer\'s disease model with humanized APOE and TREM2.',
                 facetsToPlot:['dataType', 'assay'],
                 selectFacetColumnName:'study',
                 selectFacetColumnValue:'Jax.IU.Pitt_APOE4.Trem2.R47H',
