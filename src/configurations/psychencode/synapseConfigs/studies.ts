@@ -14,7 +14,7 @@ const rgbIndex = 1
 export const studySchema: GenericCardSchema = {
   type: SynapseConstants.STUDY,
   title: 'studyName',
-  subTitle: 'dataContributor',
+  subTitle: 'contributingInstitution',
   description: 'studyDescription',
   secondaryLabels: [
     'dataTypes',
@@ -57,7 +57,7 @@ export const studies: SynapseConfig = {
     name: 'Studies',
     searchConfiguration: {
       searchable: [
-        'dataContributor',
+        'contributingInstitution',
         'dataTypes',
         'diagnosis',
         'grants',
