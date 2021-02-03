@@ -218,7 +218,7 @@ const routes: GenericRoute[] = [
         title: 'About',
         props: {
           ownerId: 'syn4921369',
-          wikiId: '235539',
+          wikiId: '607829',
         },
       },
     ],
