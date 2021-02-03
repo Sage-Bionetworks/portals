@@ -368,6 +368,11 @@ export default class DetailsPage extends React.Component<
       const component = standalone
         ? generateSynapseObject(el)
         : this.renderSynapseObjectFromData(el)
+      
+      if (this.isReactFragment(component)) {
+          return <></>
+      }
+      
       return (
         <div id={id} key={key}>
           {title}
@@ -375,6 +380,13 @@ export default class DetailsPage extends React.Component<
         </div>
       )
     })
+  }
+
+  private isReactFragment(variableToInspect:any): boolean {
+    if (variableToInspect.type) {
+      return variableToInspect.type === React.Fragment;
+    }
+    return variableToInspect === React.Fragment;
   }
 
   private renderSynapseObjectFromData(el: RowSynapseConfig): React.ReactNode {
