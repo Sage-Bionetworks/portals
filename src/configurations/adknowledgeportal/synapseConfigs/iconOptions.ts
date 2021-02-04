@@ -9,6 +9,7 @@ import circleSvgHeader from './icons/amp-icon-header.svg'
 import psychIconSvg from './icons/Psych-AD-icon.svg'
 import psychHeaderSvg from './icons/PsychAD-Header.svg'
 import cdcpSvg from './icons/CommunityContributionLogo-FNL.svg'
+import longevitySvg from './icons/ExceptionalLongevityFNL.svg'
 
 export const iconOptions = {
   'AMP-AD': circleSvg,
@@ -17,6 +18,7 @@ export const iconOptions = {
   'Resilience-AD': resilienceadSvg,
   'Psych-AD': psychIconSvg,
   'CDCP': cdcpSvg,
+  'HLTP': longevitySvg,
 }
 
 export const iconHeaderOptions = {
@@ -26,4 +28,5 @@ export const iconHeaderOptions = {
   'Resilience-AD': resilienceadSvgHeader,
   'Psych-AD': psychHeaderSvg,
   'CDCP': cdcpSvg,
+  'HLTP': longevitySvg,
 }
