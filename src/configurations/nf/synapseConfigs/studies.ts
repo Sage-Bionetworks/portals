@@ -43,6 +43,7 @@ export const studyCardConfiguration: CardConfiguration = {
       'manifestation',
       'fundingAgency',
       'institutions',
+      'studyId',
     ],
   },
   iconOptions: {
@@ -171,6 +172,7 @@ export const studiesDetailPage: DetailsPageProps = {
       props: {
         sqlOperator: 'LIKE',
         sql: studiesSql,
+        facetAliases,
         ...studyCardConfiguration,
       },
       tabIndex: 0,
