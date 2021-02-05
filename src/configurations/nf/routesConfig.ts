@@ -7,6 +7,7 @@ import {
   publications,
   tools,
   funders,
+  initiatives,
 } from './synapseConfigs'
 import {
   newStudiesSql,
@@ -130,6 +131,21 @@ const routes: GenericRoute[] = [
     to: 'Explore',
     isNested: true,
     routes: [
+      {
+        isNested: false,
+        to: 'Initiatives',
+        synapseConfigArray: [
+          {
+            name: 'RouteButtonControlWrapper',
+            title: 'Explore',
+            containerClassName: 'container-full-width',
+            props: {
+              ...routeButtonControlWrapperProps,
+              synapseConfig: initiatives.explorePageSynapseObject,
+            },
+          },
+        ],
+      },
       {
         isNested: true,
         to: 'Studies',
