@@ -16,11 +16,7 @@ export const cardConfiguration: CardConfiguration = {
     title: 'initiative',    
     description: 'summary',    
     link: 'website',
-    icon: 'image',
-    secondaryLabels: [
-      'fundingAgency',
-      'abbreviation',
-    ],
+    imageFileHandleColumnName: 'image',
   },
 }
 
