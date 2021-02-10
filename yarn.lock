@@ -10122,10 +10122,10 @@ react-error-overlay@^6.0.7:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.7.tgz"
   integrity sha512-TAv1KJFh3RhqxNvhzxj6LeT5NWklP6rDr2a0jaTfsZ5wSZWHOGeqQyejUp3xxLfPt2UpyJEcVQB/zyPcmonNFA==
 
-react-intersection-observer@3.0.2:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/react-intersection-observer/-/react-intersection-observer-3.0.2.tgz"
-  integrity sha512-ryMe7DKmm21D25MmmaQdNDg+ONs/yWwFpn4vD6xeMigOZfV1ovHYDWpgnF4vwoV+MdNxkiqmTVOHbPyNpH3WZQ==
+react-intersection-observer@^8.31.0:
+  version "8.31.0"
+  resolved "https://registry.yarnpkg.com/react-intersection-observer/-/react-intersection-observer-8.31.0.tgz#0ed21aaf93c4c0475b22b0ccaba6169076d01605"
+  integrity sha512-XraIC/tkrD9JtrmVA7ypEN1QIpKc52mXBH1u/bz/aicRLo8QQEJQAMUTb8mz4B6dqpPwyzgjrr7Ljv/2ACDtqw==
 
 react-is@^16.12.0, react-is@^16.13.1, react-is@^16.3.2, react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.0, react-is@^16.8.1, react-is@^16.8.4, react-is@^16.8.6:
   version "16.13.1"
@@ -11676,10 +11676,10 @@ symbol-tree@^3.2.2:
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.4.tgz"
   integrity sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==
 
-synapse-react-client@1.15.68:
-  version "1.15.68"
-  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-1.15.68.tgz#63efdc7a89638a699869966a80fe9e67dbc796be"
-  integrity sha512-Ky2V+bxgoqEzUWMW1x0jA3+k14q2g5CInj+JmuNsvcR+qq/LHigpekLDX5ndRsZABduAmpIZan2PG4T0iurGGQ==
+synapse-react-client@1.15.69:
+  version "1.15.69"
+  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-1.15.69.tgz#af794f04ad7663e40b18a40de23ae493086b57f4"
+  integrity sha512-mlfBJ3H2/iYnT4yYtTpxk4cb1wyWAHGokYi6O+N6YVS8KcZ3c2x6nq4btn8O51tyGdAClg9LbvNzE4rqsf8NXg==
   dependencies:
     "@brainhubeu/react-carousel" "1.19.26"
     "@fortawesome/fontawesome-free" "^5.13.0"
@@ -11736,7 +11736,7 @@ synapse-react-client@1.15.68:
     react-datetime "^3.0.4"
     react-dom "16.13.1"
     react-error-boundary "^3.0.2"
-    react-intersection-observer "3.0.2"
+    react-intersection-observer "^8.31.0"
     react-jsonschema-form "^1.7.0"
     react-mailchimp-subscribe "^2.1.0"
     react-measure "^2.1.2"
