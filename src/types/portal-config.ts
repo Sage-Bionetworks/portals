@@ -14,6 +14,7 @@ import { SynapseFormSubmissionGridProps } from 'synapse-react-client/dist/contai
 import { QueryWrapperPlotNavProps } from 'synapse-react-client/dist/containers/query_wrapper_plot_nav/QueryWrapperPlotNav'
 import { SynapseFormWrapperProps } from 'synapse-react-client/dist/containers/synapse_form_wrapper/SynapseFormWrapper'
 import { ThemesPlotProps } from 'synapse-react-client/dist/containers/widgets/themes-plot/ThemesPlot'
+import { StatefulButtonControlWrapperProps } from 'portal-components/StatefulButtonControlWrapper'
 import { RouteControlWrapperProps } from '../portal-components/RouteControlWrapper'
 import { HomePageCardContainerProps } from '../portal-components/csbc-home-page/HomePageCardContainer'
 import { AboutPortalProps } from '../portal-components/csbc-home-page/AboutPortal'
@@ -87,6 +88,11 @@ type Programs = {
 type Resources = {
   name: 'Resources'
   props: ResourcesProps
+}
+
+type StatefulButtonControl = {
+  name: 'StatefulButtonControlWrapper'
+  props: StatefulButtonControlWrapperProps
 }
 
 type RouteControl = {
@@ -214,6 +220,7 @@ type SurveysCompletedPlots = {
 }
 
 export type SynapseConfig = (
+  | StatefulButtonControl
   | RouteControl
   | CardContainerLogic
   | StackedBarChart

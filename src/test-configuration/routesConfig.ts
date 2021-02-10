@@ -1,7 +1,6 @@
 import { GenericRoute } from 'types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
 import { publications, studies } from './exploreHomeConfiguration'
-import RouteControlWrapperProps from './routeControlWrapperProps'
 
 // Constants used for testing
 export const ABOUT_INDEX = 3
@@ -96,13 +95,19 @@ routes[HOME_INDEX] = {
   isNested: false,
   synapseConfigArray: [
     {
-
-      name: 'RouteControlWrapper',
-      title: 'EXPLORE PORTAL',
-      isOutsideContainer: true,
+      title: 'Explore Portal',
+      name: 'StatefulButtonControlWrapper',
       props: {
-        ...RouteControlWrapperProps,
-        synapseConfig: studies.homePageSynapseObject,
+        configs: [
+          {
+            name: 'testroute',
+            synapseConfigArray: [
+              studies.homePageSynapseObject,
+              publications.homePageSynapseObject,
+            ],
+          },
+        ],
+        colors: ['green', 'blue'],
       },
     },
     {

@@ -1,3 +1,4 @@
+import StatefulButtonControlWrapper from './StatefulButtonControlWrapper'
 import RouteControlWrapper from './RouteControlWrapper'
 import StandaloneQueryWrapper from './StandaloneQueryWrapper'
 import DetailsPage from './DetailsPage'
@@ -13,6 +14,7 @@ import SurveysCompletedPlots from './crc-researcher/SurveysCompletedPlots'
 import Image from './Image'
 
 const PortalComponents = {
+  StatefulButtonControlWrapper,
   RouteControlWrapper,
   StandaloneQueryWrapper,
   DetailsPage,
