@@ -1,14 +1,14 @@
 import * as React from 'react'
 import { mount } from 'enzyme'
-import RouteButtonControlWrapper, {
-  RouteButtonControlWrapperProps,
-} from '../../portal-components/RouteButtonControlWrapper'
+import RouteControlWrapper, {
+  RouteControlWrapperProps,
+} from '../../portal-components/RouteControlWrapper'
 import { MemoryRouter } from 'react-router'
 import CardContainerLogic from 'synapse-react-client/dist/containers/CardContainerLogic'
 
-describe('RouteButtonControlWrapper works', () => {
+describe('RouteControlWrapper works', () => {
   const routeName = 'custom route'
-  const props: RouteButtonControlWrapperProps = {
+  const props: RouteControlWrapperProps = {
     synapseConfig: {
       name: 'CardContainerLogic',
       props: {
@@ -17,14 +17,13 @@ describe('RouteButtonControlWrapper works', () => {
         entityId: '',
       },
     },
-    colors: ['red'],
     customRoutes: [routeName],
   }
 
   it('renders correctly', () => {
     const component = mount(
       <MemoryRouter>
-        <RouteButtonControlWrapper {...props} />
+        <RouteControlWrapper {...props} />
       </MemoryRouter>,
     )
     // check its defined

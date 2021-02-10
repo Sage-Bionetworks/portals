@@ -1,4 +1,3 @@
-import * as React from 'react'
 import {
   getRouteFromParams,
   generateSynapseObjectHelper,
@@ -11,8 +10,6 @@ import routesConfig, {
 import { NestedRoute, SynapseConfig } from 'types/portal-config'
 import CardContainerLogic from 'synapse-react-client/dist/containers/CardContainerLogic'
 import { mount } from 'enzyme'
-import StatefulButtonControlWrapper from '../portal-components/StatefulButtonControlWrapper'
-import { MemoryRouter } from 'react-router'
 
 describe('getRouteFromParams works', () => {
   // The home page route is a special case that we have to handle
@@ -52,34 +49,5 @@ describe('RouteResolver works', () => {
     }
     const synObj = mount(generateSynapseObjectHelper(mockedSynObject))
     expect(synObj.find(CardContainerLogic)).toHaveLength(1)
-  })
-
-  it('renders portal specific components correctly', () => {
-    const mockedSynObject: SynapseConfig = {
-      name: 'StatefulButtonControlWrapper',
-      props: {
-        configs: [
-          {
-            name: 'mock2',
-            synapseConfigArray: [
-              {
-                name: 'CardContainerLogic',
-                props: {
-                  sql: '',
-                  type: '',
-                },
-              },
-            ],
-          },
-        ],
-        colors: ['red'],
-      },
-    }
-    const synObj = mount(
-      <MemoryRouter>
-        {generateSynapseObjectHelper(mockedSynObject)}
-      </MemoryRouter>,
-    )
-    expect(synObj.find(StatefulButtonControlWrapper)).toHaveLength(1)
   })
 })
