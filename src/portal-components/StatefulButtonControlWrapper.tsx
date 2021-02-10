@@ -1,8 +1,8 @@
 import * as React from 'react'
-import { ButtonControl, ButtonControlProps } from '../ButtonControl'
 import { SynapseConfigArray } from 'types/portal-config'
 import { generateSynapseObject } from '../RouteResolver'
 import QueryCount from 'synapse-react-client/dist/containers/QueryCount'
+import { RouteControl, RouteControlProps } from 'RouteControl'
 
 export type StatefulButtonControlConfigs = {
   synapseConfigArray: SynapseConfigArray
@@ -13,7 +13,6 @@ export type StatefulButtonControlConfigs = {
 
 export type StatefulButtonControlWrapperProps = {
   configs: StatefulButtonControlConfigs[]
-  colors: string[]
 }
 
 export type ButtonControlState = {
@@ -49,19 +48,18 @@ class StatefulButtonControl extends React.Component<
   }
 
   render() {
-    const { configs, colors } = this.props
+    const { configs } = this.props
     const { name, synapseConfigArray, sql, entityId } = configs[
       this.state.index
     ]
-    const buttonControlProps: ButtonControlProps = {
-      colors,
+    const buttonControlProps: RouteControlProps = {
       customRoutes: configs.map((el) => el.name),
       handleChanges: this.handleChange,
       isSelected: (val: string) => val === name,
     }
     return (
       <React.Fragment>
-        <ButtonControl {...buttonControlProps} />
+        <RouteControl {...buttonControlProps} />
         {name && sql && entityId && (
           <h3 className="SRC-boldText queryCountHeader">
             <QueryCount name={name} sql={sql} />
