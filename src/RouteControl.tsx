@@ -22,7 +22,7 @@ export const RouteControl: React.FunctionComponent<RouteControlProps> = ({
       {customRoutes.map((name, index) => {
         const handleClick = () => handleChanges(name, index)
         return (
-          <button onClick={handleClick} key={name} className={`top-nav-button nav-button-container center-content ${setActiveClass(isSelected(name))}`}>
+          <button onClick={handleClick} key={name} className={`nav-button nav-button-container center-content ${setActiveClass(isSelected(name))}`}>
             {name}
           </button>
         )
