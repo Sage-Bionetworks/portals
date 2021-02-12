@@ -7,7 +7,7 @@ import {
   tested,
   hidden,
 } from './synapseConfigs'
-import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
+import RouteControlWrapperProps from './routeControlWrapperProps'
 
 const routes: GenericRoute[] = [
   {
@@ -59,10 +59,10 @@ const routes: GenericRoute[] = [
         isNested: false,
         synapseConfigArray: [
           {
-            name: 'RouteButtonControlWrapper',
-            title: 'EXPLORE',
+            name: 'RouteControlWrapper',
+            isOutsideContainer: true,
             props: {
-              ...routeButtonControlWrapperProps,
+              ...RouteControlWrapperProps,
               synapseConfig: uncategorized,
             },
           },
@@ -73,10 +73,10 @@ const routes: GenericRoute[] = [
         isNested: false,
         synapseConfigArray: [
           {
-            name: 'RouteButtonControlWrapper',
-            title: 'EXPLORE',
+            name: 'RouteControlWrapper',
+            isOutsideContainer: true,
             props: {
-              ...routeButtonControlWrapperProps,
+              ...RouteControlWrapperProps,
               synapseConfig: potential,
             },
           },
@@ -87,10 +87,10 @@ const routes: GenericRoute[] = [
         isNested: false,
         synapseConfigArray: [
           {
-            name: 'RouteButtonControlWrapper',
-            title: 'EXPLORE',
+            name: 'RouteControlWrapper',
+            isOutsideContainer: true,
             props: {
-              ...routeButtonControlWrapperProps,
+              ...RouteControlWrapperProps,
               synapseConfig: invited,
             },
           },
@@ -101,10 +101,10 @@ const routes: GenericRoute[] = [
         isNested: false,
         synapseConfigArray: [
           {
-            name: 'RouteButtonControlWrapper',
-            title: 'EXPLORE',
+            name: 'RouteControlWrapper',
+            isOutsideContainer: true,
             props: {
-              ...routeButtonControlWrapperProps,
+              ...RouteControlWrapperProps,
               synapseConfig: scheduled,
             },
           },
@@ -115,10 +115,10 @@ const routes: GenericRoute[] = [
         isNested: false,
         synapseConfigArray: [
           {
-            name: 'RouteButtonControlWrapper',
-            title: 'EXPLORE',
+            name: 'RouteControlWrapper',
+            isOutsideContainer: true,
             props: {
-              ...routeButtonControlWrapperProps,
+              ...RouteControlWrapperProps,
               synapseConfig: tested,
             },
           },
@@ -129,10 +129,10 @@ const routes: GenericRoute[] = [
         isNested: false,
         synapseConfigArray: [
           {
-            name: 'RouteButtonControlWrapper',
-            title: 'EXPLORE',
+            name: 'RouteControlWrapper',
+            isOutsideContainer: true,
             props: {
-              ...routeButtonControlWrapperProps,
+              ...RouteControlWrapperProps,
               synapseConfig: hidden,
             },
           },

@@ -2,7 +2,7 @@ import { GenericRoute } from 'types/portal-config'
 import { publications, files, datasets, grants, tools } from './synapseConfigs'
 import { projectCardConfiguration } from './synapseConfigs/projects'
 import { datasetCardConfiguration } from './synapseConfigs/datasets'
-import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
+import RouteControlWrapperProps from './routeControlWrapperProps'
 import { toolsConfiguration } from './synapseConfigs/tools'
 import DatasetSvg from './style/Dataset.svg'
 import { publicationsCardConfiguration } from './synapseConfigs/publications'
@@ -156,11 +156,10 @@ const routes: GenericRoute[] = [
         isNested: true,
         synapseConfigArray: [
           {
-            name: 'RouteButtonControlWrapper',
-            title: 'EXPLORE',
-            containerClassName: 'container-full-width',
+            name: 'RouteControlWrapper',
+            isOutsideContainer: true,
             props: {
-              ...routeButtonControlWrapperProps,
+              ...RouteControlWrapperProps,
               synapseConfig: grants.explorePageSynapseObject,
             },
           },
@@ -246,11 +245,10 @@ const routes: GenericRoute[] = [
         isNested: true,
         synapseConfigArray: [
           {
-            name: 'RouteButtonControlWrapper',
-            title: 'EXPLORE',
-            containerClassName: 'container-full-width',
+            name: 'RouteControlWrapper',
+            isOutsideContainer: true,
             props: {
-              ...routeButtonControlWrapperProps,
+              ...RouteControlWrapperProps,
               synapseConfig: publications.explorePageSynapseObject,
             },
           },
@@ -314,11 +312,10 @@ const routes: GenericRoute[] = [
         isNested: true,
         synapseConfigArray: [
           {
-            name: 'RouteButtonControlWrapper',
-            title: 'EXPLORE',
-            containerClassName: 'container-full-width',
+            name: 'RouteControlWrapper',
+            isOutsideContainer: true,
             props: {
-              ...routeButtonControlWrapperProps,
+              ...RouteControlWrapperProps,
               synapseConfig: datasets.explorePageSynapseObject,
             },
           },
@@ -375,11 +372,10 @@ const routes: GenericRoute[] = [
         isNested: false,
         synapseConfigArray: [
           {
-            name: 'RouteButtonControlWrapper',
-            title: 'EXPLORE',
-            containerClassName: 'container-full-width',
+            name: 'RouteControlWrapper',
+            isOutsideContainer: true,
             props: {
-              ...routeButtonControlWrapperProps,
+              ...RouteControlWrapperProps,
               synapseConfig: files.explorePageSynapseObject,
             },
           },
@@ -390,11 +386,10 @@ const routes: GenericRoute[] = [
         isNested: false,
         synapseConfigArray: [
           {
-            name: 'RouteButtonControlWrapper',
-            title: 'EXPLORE',
-            containerClassName: 'container-full-width',
+            name: 'RouteControlWrapper',
+            isOutsideContainer: true,
             props: {
-              ...routeButtonControlWrapperProps,
+              ...RouteControlWrapperProps,
               synapseConfig: tools.explorePageSynapseObject,
             },
           },

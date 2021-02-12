@@ -14,13 +14,13 @@ import { SynapseFormSubmissionGridProps } from 'synapse-react-client/dist/contai
 import { QueryWrapperPlotNavProps } from 'synapse-react-client/dist/containers/query_wrapper_plot_nav/QueryWrapperPlotNav'
 import { SynapseFormWrapperProps } from 'synapse-react-client/dist/containers/synapse_form_wrapper/SynapseFormWrapper'
 import { ThemesPlotProps } from 'synapse-react-client/dist/containers/widgets/themes-plot/ThemesPlot'
-import { RouteButtonControlWrapperProps } from '../portal-components/RouteButtonControlWrapper'
+import { StatefulButtonControlWrapperProps } from 'portal-components/StatefulButtonControlWrapper'
+import { RouteControlWrapperProps } from '../portal-components/RouteControlWrapper'
 import { HomePageCardContainerProps } from '../portal-components/csbc-home-page/HomePageCardContainer'
 import { AboutPortalProps } from '../portal-components/csbc-home-page/AboutPortal'
 import { EcosystemProps } from '../portal-components/csbc-home-page/Ecosystem'
 import { DetailsPageProps } from './portal-util-types'
 import { StandaloneQueryWrapperProps } from '../portal-components/StandaloneQueryWrapper'
-import { StatefulButtonControlWrapperProps } from 'portal-components/StatefulButtonControlWrapper'
 import { ParticipantsBarPlotProps } from '../portal-components/crc-researcher/ParticipantsBarPlot'
 import { StatusLineChartProps } from '../portal-components/crc-researcher/StatusLineChart'
 import { SurveysCompletedPlotsProps } from 'portal-components/crc-researcher/SurveysCompletedPlots'
@@ -95,9 +95,9 @@ type StatefulButtonControl = {
   props: StatefulButtonControlWrapperProps
 }
 
-type RouteButtonControl = {
-  name: 'RouteButtonControlWrapper'
-  props: RouteButtonControlWrapperProps
+type RouteControl = {
+  name: 'RouteControlWrapper'
+  props: RouteControlWrapperProps
 }
 
 type DetailsPage = {
@@ -221,7 +221,7 @@ type SurveysCompletedPlots = {
 
 export type SynapseConfig = (
   | StatefulButtonControl
-  | RouteButtonControl
+  | RouteControl
   | CardContainerLogic
   | StackedBarChart
   | QueryWrapper

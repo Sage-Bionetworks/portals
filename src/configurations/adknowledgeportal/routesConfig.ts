@@ -8,7 +8,7 @@ import {
   programs,
   publications,
 } from './synapseConfigs'
-import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
+import RouteControlWrapperProps from './routeControlWrapperProps'
 import {
   studyCardConfiguration,
   studiesProgrammaticRouteConfig,
@@ -150,11 +150,10 @@ const routes: GenericRoute[] = [
         to: 'Programs',
         synapseConfigArray: [
           {
-            name: 'RouteButtonControlWrapper',
-            title: 'Explore',
-            containerClassName: 'container-full-width',
+            name: 'RouteControlWrapper',
+            isOutsideContainer: true,
             props: {
-              ...routeButtonControlWrapperProps,
+              ...RouteControlWrapperProps,
               synapseConfig: {
                 name: 'CardContainerLogic',
                 props: {
@@ -233,11 +232,10 @@ const routes: GenericRoute[] = [
         ],
         synapseConfigArray: [
           {
-            name: 'RouteButtonControlWrapper',
-            title: 'Explore',
-            containerClassName: 'container-full-width',
+            name: 'RouteControlWrapper',
+            isOutsideContainer: true,
             props: {
-              ...routeButtonControlWrapperProps,
+              ...RouteControlWrapperProps,
               synapseConfig: projects.explorePageSynapseObject,
             },
           },
@@ -248,11 +246,10 @@ const routes: GenericRoute[] = [
         to: 'Studies',
         synapseConfigArray: [
           {
-            name: 'RouteButtonControlWrapper',
-            title: 'Explore',
-            containerClassName: 'container-full-width',
+            name: 'RouteControlWrapper',
+            isOutsideContainer: true,
             props: {
-              ...routeButtonControlWrapperProps,
+              ...RouteControlWrapperProps,
               synapseConfig: studies.explorePageSynapseObject,
             },
           },
@@ -270,11 +267,10 @@ const routes: GenericRoute[] = [
         to: 'Data',
         synapseConfigArray: [
           {
-            name: 'RouteButtonControlWrapper',
-            title: 'Explore',
-            containerClassName: 'container-full-width',
+            name: 'RouteControlWrapper',
+            isOutsideContainer: true,
             props: {
-              ...routeButtonControlWrapperProps,
+              ...RouteControlWrapperProps,
               synapseConfig: data.explorePageSynapseObject,
             },
           },
@@ -285,11 +281,10 @@ const routes: GenericRoute[] = [
         to: 'Publications',
         synapseConfigArray: [
           {
-            name: 'RouteButtonControlWrapper',
-            title: 'Explore',
-            containerClassName: 'container-full-width',
+            name: 'RouteControlWrapper',
+            isOutsideContainer: true,
             props: {
-              ...routeButtonControlWrapperProps,
+              ...RouteControlWrapperProps,
               synapseConfig: publications.explorePageSynapseObject,
             },
           },
@@ -300,11 +295,10 @@ const routes: GenericRoute[] = [
         to: 'People',
         synapseConfigArray: [
           {
-            name: 'RouteButtonControlWrapper',
-            title: 'Explore',
-            containerClassName: 'container-full-width',
+            name: 'RouteControlWrapper',
+            isOutsideContainer: true,
             props: {
-              ...routeButtonControlWrapperProps,
+              ...RouteControlWrapperProps,
               synapseConfig: people.explorePageSynapseObject,
             },
           },
@@ -315,11 +309,10 @@ const routes: GenericRoute[] = [
         to: 'Experimental Tools',
         synapseConfigArray: [
           {
-            name: 'RouteButtonControlWrapper',
-            title: 'Explore',
-            containerClassName: 'container-full-width',
+            name: 'RouteControlWrapper',
+            isOutsideContainer: true,
             props: {
-              ...routeButtonControlWrapperProps,
+              ...RouteControlWrapperProps,
               synapseConfig: experimentalTools.explorePageSynapseObject,
             },
           },
@@ -330,11 +323,10 @@ const routes: GenericRoute[] = [
         to: 'Computational Tools',
         synapseConfigArray: [
           {
-            name: 'RouteButtonControlWrapper',
-            title: 'Explore',
-            containerClassName: 'container-full-width',
+            name: 'RouteControlWrapper',
+            isOutsideContainer: true,
             props: {
-              ...routeButtonControlWrapperProps,
+              ...RouteControlWrapperProps,
               synapseConfig: computationalTools.explorePageSynapseObject,
             },
           },
@@ -345,11 +337,10 @@ const routes: GenericRoute[] = [
         to: 'Results',
         synapseConfigArray: [
           {
-            name: 'RouteButtonControlWrapper',
-            title: 'Explore',
-            containerClassName: 'container-full-width',
+            name: 'RouteControlWrapper',
+            isOutsideContainer: true,
             props: {
-              ...routeButtonControlWrapperProps,
+              ...RouteControlWrapperProps,
               synapseConfig: results,
             },
           },

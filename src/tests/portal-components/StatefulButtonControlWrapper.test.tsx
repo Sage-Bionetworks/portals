@@ -23,7 +23,6 @@ describe('StatefulButtonControlWrapper works', () => {
         name: 'Route 1',
       },
     ],
-    colors: ['red'],
   }
 
   it('renders correctly', async () => {

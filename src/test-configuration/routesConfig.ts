@@ -106,8 +106,7 @@ routes[HOME_INDEX] = {
               publications.homePageSynapseObject,
             ],
           },
-        ],
-        colors: ['green', 'blue'],
+        ],        
       },
     },
     {

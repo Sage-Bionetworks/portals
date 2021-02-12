@@ -142,8 +142,8 @@ class Navbar extends React.Component<any, State> {
         <nav
           className={
             !this.state.showMenu
-              ? 'flex-display nav'
-              : 'flex-display nav mb-active'
+              ? 'flex-display nav top-nav'
+              : 'flex-display nav top-nav mb-active'
           }
         >
           <div className="nav-logo-container">

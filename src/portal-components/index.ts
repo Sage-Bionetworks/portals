@@ -1,5 +1,5 @@
 import StatefulButtonControlWrapper from './StatefulButtonControlWrapper'
-import RouteButtonControlWrapper from './RouteButtonControlWrapper'
+import RouteControlWrapper from './RouteControlWrapper'
 import StandaloneQueryWrapper from './StandaloneQueryWrapper'
 import DetailsPage from './DetailsPage'
 import ConsortiaGoals from './csbc-home-page/ConsortiaGoals'
@@ -15,7 +15,7 @@ import Image from './Image'
 
 const PortalComponents = {
   StatefulButtonControlWrapper,
-  RouteButtonControlWrapper,
+  RouteControlWrapper,
   StandaloneQueryWrapper,
   DetailsPage,
   ConsortiaGoals,

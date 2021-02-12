@@ -1,7 +1,7 @@
 import { GenericRoute } from 'types/portal-config'
 import { studies, studyDetailPage } from './synapseConfigs/studies'
 import { publications } from './synapseConfigs/publications'
-import routeButtonControlWrapperProps from './routeButtonControlWrapperProps'
+import RouteControlWrapperProps from './routeControlWrapperProps'
 import { grants, grantsDetailPage } from './synapseConfigs/grants'
 import { people } from './synapseConfigs/people'
 import { data } from './synapseConfigs/data'
@@ -108,11 +108,10 @@ const routes: GenericRoute[] = [
         isNested: true,
         synapseConfigArray: [
           {
-            name: 'RouteButtonControlWrapper',
-            title: 'EXPLORE',
-            containerClassName: 'container-full-width',
+            name: 'RouteControlWrapper',
+            isOutsideContainer: true,
             props: {
-              ...routeButtonControlWrapperProps,
+              ...RouteControlWrapperProps,
               synapseConfig: studies,
             },
           },
@@ -130,11 +129,10 @@ const routes: GenericRoute[] = [
         isNested: false,
         synapseConfigArray: [
           {
-            name: 'RouteButtonControlWrapper',
-            title: 'EXPLORE',
-            containerClassName: 'container-full-width',
+            name: 'RouteControlWrapper',
+            isOutsideContainer: true,
             props: {
-              ...routeButtonControlWrapperProps,
+              ...RouteControlWrapperProps,
               synapseConfig: data,
             },
           },
@@ -145,11 +143,10 @@ const routes: GenericRoute[] = [
         isNested: true,
         synapseConfigArray: [
           {
-            name: 'RouteButtonControlWrapper',
-            title: 'EXPLORE',
-            containerClassName: 'container-full-width',
+            name: 'RouteControlWrapper',
+            isOutsideContainer: true,
             props: {
-              ...routeButtonControlWrapperProps,
+              ...RouteControlWrapperProps,
               synapseConfig: grants,
             },
           },
@@ -167,11 +164,10 @@ const routes: GenericRoute[] = [
         isNested: false,
         synapseConfigArray: [
           {
-            name: 'RouteButtonControlWrapper',
-            title: 'EXPLORE',
-            containerClassName: 'container-full-width',
+            name: 'RouteControlWrapper',
+            isOutsideContainer: true,
             props: {
-              ...routeButtonControlWrapperProps,
+              ...RouteControlWrapperProps,
               synapseConfig: publications,
             },
           },
@@ -182,11 +178,10 @@ const routes: GenericRoute[] = [
         isNested: false,
         synapseConfigArray: [
           {
-            name: 'RouteButtonControlWrapper',
-            title: 'EXPLORE',
-            containerClassName: 'container-full-width',
+            name: 'RouteControlWrapper',
+            isOutsideContainer: true,
             props: {
-              ...routeButtonControlWrapperProps,
+              ...RouteControlWrapperProps,
               synapseConfig: people,
             },
           },
