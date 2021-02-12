@@ -179,7 +179,7 @@ class Navbar extends React.Component<any, State> {
           <div className="nav-link-container">
             {userProfile &&
               isSynapseSubdomainOrLocal && ( // mobile sign out
-                <div className="center-content top-nav-button nav-button-signin bootstrap-4-backport mobile-signout-container">
+                <div className="center-content nav-button nav-button-signin bootstrap-4-backport mobile-signout-container">
                   <Button
                     id="signin-button"
                     variant="secondary"
@@ -193,7 +193,7 @@ class Navbar extends React.Component<any, State> {
               )}
             {!userProfile &&
               isSynapseSubdomainOrLocal && ( // desktop sign in
-                <div className="center-content top-nav-button nav-button-signin bootstrap-4-backport">
+                <div className="center-content nav-button nav-button-signin bootstrap-4-backport">
                   <Button
                     id="signin-button"
                     variant="secondary"
@@ -316,7 +316,7 @@ class Navbar extends React.Component<any, State> {
                           <Dropdown.Toggle
                             variant="light"
                             id={`Navbar-dropdown-${displayName}`}
-                            className={`nav-button-container top-nav-button ${isSelectedCssClassName}`}
+                            className={`nav-button-container nav-button ${isSelectedCssClassName}`}
                           >
                             {displayName}
                           </Dropdown.Toggle>
@@ -355,7 +355,7 @@ class Navbar extends React.Component<any, State> {
                   return (
                     <NavLink
                       key={topLevelTo}
-                      className={`top-nav-button nav-button-container center-content ${isSelectedCssClassName} ${this.getBorder(
+                      className={`nav-button nav-button-container center-content ${isSelectedCssClassName} ${this.getBorder(
                         topLevelTo,
                       )}`}
                       to={linkOrTo}
@@ -377,7 +377,7 @@ class Navbar extends React.Component<any, State> {
                   <Dropdown.Toggle
                     variant="light"
                     id={'Navbar-dropdown-Home'}
-                    className={`nav-button-container top-nav-button ${isHomeSelectedCssClassName}`}
+                    className={`nav-button-container nav-button ${isHomeSelectedCssClassName}`}
                   >
                     Home
                   </Dropdown.Toggle>

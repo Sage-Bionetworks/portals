@@ -190,9 +190,18 @@ body {
     position: fixed;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
     background: rgba(256, 256, 256, 0.9);
+    .nav-button {
+      color: #1A1C29;
+    }
   }
   &.explore-nav {
     margin-left: -24px;
+    .nav-button {
+      color: #515359;
+      &.isSelected {
+        color: #1A1C29;
+      }
+    }
   }
 }
 
@@ -215,7 +224,6 @@ body {
   font-size: 16px;
   text-align: center;
   justify-content: center;
-  color: #404b63 !important;
   text-decoration: none;
   padding: 0px 25px !important;
   margin: 0px !important;
@@ -224,8 +232,8 @@ body {
   @extend %fillerBorder;
 }
 
-.top-nav-button,
-a.top-nav-button {
+.nav-button,
+a.nav-button {
   text-transform: uppercase;
   font-weight: bold;
   height: -webkit-fill-available;
