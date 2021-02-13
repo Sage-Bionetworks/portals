@@ -21,7 +21,7 @@ const SynapseRedirectDialog = (props: SynapseRedirectDialogProps) => {
       }, 1000)
     }     
   }, [synapseRedirectUrl, countdownSeconds])
-  
+
   return ( 
     <>
       {synapseRedirectUrl && (<Dialog
