@@ -5,10 +5,12 @@ import { SynapseClient, SynapseConstants } from 'synapse-react-client'
 import { withCookies, ReactCookieProps } from 'react-cookie'
 import { DOWNLOAD_FILES_MENU_TEXT } from 'synapse-react-client/dist/containers/table/SynapseTableConstants'
 import { UserProfile } from 'synapse-react-client/dist/utils/synapseTypes'
+import SynapseRedirectDialog from 'portal-components/SynapseRedirectDialog'
 
 export type AppInitializerState = {
   token: string
   showLoginDialog: boolean
+  synapseRedirectUrl?: string
   userProfile: UserProfile | undefined
   // delay render until get session is called, o.w. theres an uneccessary refresh right
   // after page load
@@ -38,6 +40,7 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
       hasCalledGetSession: false,
       userProfile: undefined,
       showLoginDialog: false,
+      synapseRedirectUrl: undefined,
     }
     this.updateSynapseCallbackCookie = this.updateSynapseCallbackCookie.bind(
       this,
@@ -160,6 +163,7 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
             return React.cloneElement(child, props)
           }
         })}
+        <SynapseRedirectDialog synapseRedirectUrl={this.state.synapseRedirectUrl} />
       </TokenContext.Provider>
     )
   }
@@ -177,6 +181,12 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
     if (ev.target instanceof HTMLAnchorElement) {
       const anchorElement = ev.target as HTMLAnchorElement
       isInvokingDownloadTable = anchorElement.text === DOWNLOAD_FILES_MENU_TEXT
+      if (anchorElement.href.includes('www.synapse.org')) {
+        ev.preventDefault()
+        if (!this.state.synapseRedirectUrl) {
+          this.setState({ synapseRedirectUrl: anchorElement.href })
+        }
+      }
     }
     if (ev.target instanceof HTMLButtonElement) {
       const buttonElement = ev.target as HTMLButtonElement
