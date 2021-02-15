@@ -181,8 +181,8 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
     if (ev.target instanceof HTMLAnchorElement) {
       const anchorElement = ev.target as HTMLAnchorElement
       isInvokingDownloadTable = anchorElement.text === DOWNLOAD_FILES_MENU_TEXT
-      const { hostname } = new URL(anchorElement.href)
-      if (hostname.toLowerCase() === 'www.synapse.org') {
+      const { hostname } = new URL(anchorElement.href)      
+      if (hostname.toLowerCase() === 'www.synapse.org' && anchorElement.target !== '_blank') {
         ev.preventDefault()
         if (!this.state.synapseRedirectUrl) {
           this.setState({ synapseRedirectUrl: anchorElement.href })
