@@ -41,9 +41,9 @@ const RouteControlWrapper: React.FunctionComponent<Props> = ({
         <div className='container-fluid'>
           <h2 className='title'>Explore</h2>
           <RouteControl {...routeControlProps} />
-        </div>        
+        </div>
       </div>
-      <div className='container-fluid'>
+      <div>
         {synapseConfig && generateSynapseObject(synapseConfig, searchParams)}
       </div>      
     </>

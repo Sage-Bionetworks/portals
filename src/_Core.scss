@@ -171,6 +171,10 @@ body {
 .explore-nav-container {
   background-color: #F9F9F9;
   border-bottom: 4px solid #DCDCDC;
+  padding: 30px 30px 0px 30px;
+  .title {
+    margin-top: 0px;
+  }
 }
 
 .nav {

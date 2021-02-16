@@ -62,8 +62,7 @@ const StandaloneQueryWrapper: React.FunctionComponent<StandaloneQueryWrapperProp
     linkText,
     title,
     searchParams,
-    sqlOperator,
-    enableLeftFacetFilter,
+    sqlOperator,    
     showAccessColumn,
     sql,
     ...rest
@@ -92,8 +91,7 @@ const StandaloneQueryWrapper: React.FunctionComponent<StandaloneQueryWrapperProp
         <React.Fragment />
       )}
       {title ? (
-        <SynapseComponents.SynapseTable
-          enableLeftFacetFilter={enableLeftFacetFilter}
+        <SynapseComponents.SynapseTable          
           showAccessColumn={showAccessColumn}
           title={title}
         />
