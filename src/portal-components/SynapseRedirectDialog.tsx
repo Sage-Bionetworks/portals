@@ -33,7 +33,7 @@ const SynapseRedirectDialog = (props: SynapseRedirectDialogProps) => {
               You will be redirected in <strong>{countdownSeconds} seconds</strong><br />
               <button className="btn btn-link" onClick={() => {
                 window.location.assign(synapseRedirectUrl!)
-              }}>Go now</button>
+              }}>Go to Synapse now</button>
               </p>
             </div>
             <div className="redirect-dialog-footer">
