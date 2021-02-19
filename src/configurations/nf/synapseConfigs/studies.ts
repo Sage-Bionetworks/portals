@@ -45,6 +45,7 @@ export const studyCardConfiguration: CardConfiguration = {
       'institutions',
       'studyId',
     ],
+    dataTypeIconNames: 'dataType'
   },
   iconOptions: {
     Active: studyActiveSvg,
@@ -67,6 +68,18 @@ export const studyCardConfiguration: CardConfiguration = {
       'studyStatus': {
         'Active': { icon: 'reload', color: '#28A745' },
         'Completed': { icon: 'check', color: '#B2242A' },
+      },
+      'dataType': {
+        'genomicVariants': { icon: 'gene1', label: 'Genomic Variants Data Available' },
+        'geneExpression': { icon: 'gene2', label: 'Gene Expression Data Available' },
+        'image': { icon: 'imaging', label: 'Image Data Available' },
+        'drugScreen': { icon: 'lineGraph', label: 'Drug Screen (Cell) Data Available' },
+        'drugCombinationScreen': { icon: 'rat', label: 'Drug Combination Screen (Animals) Data Available' },
+        'chromatinActivity': { icon: 'chromatin', label: 'Chromatin Activity Data Available' },
+        'proteomics': { icon: 'proteomics', label: 'Proteomics Data Available' },
+        'kinomics': { icon: 'kinomics', label: 'Kinomics Data Available' },
+        'clinical': { icon: 'clinical', label: 'Clinical Data Available' },
+        'other': { icon: 'other', label: 'Other Data Available' },
       }
     }
   }
