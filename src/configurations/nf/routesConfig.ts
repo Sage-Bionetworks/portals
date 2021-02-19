@@ -15,10 +15,14 @@ import {
   studyCardConfiguration,
   studiesDetailPage,
 } from './synapseConfigs/studies'
+import {  
+  initiativeCardConfiguration,
+  initiativeDetailsPageConfiguration,
+} from './synapseConfigs/initiatives'
 import routeControlWrapperProps from './routeControlWrapperProps'
 import { facetAliases } from './synapseConfigs/commonProps'
 import { organizationDetailsPage } from './organizations'
-import { peopleSql } from './resources'
+import { initiativesSql, peopleSql, studiesSql } from './resources'
 
 const limit = 3
 
@@ -132,7 +136,7 @@ const routes: GenericRoute[] = [
     isNested: true,
     routes: [
       {
-        isNested: false,
+        isNested: true,
         to: 'Initiatives',
         synapseConfigArray: [
           {
@@ -143,6 +147,32 @@ const routes: GenericRoute[] = [
               ...routeControlWrapperProps,
               synapseConfig: initiatives.explorePageSynapseObject,
             },
+          },
+        ],
+        routes: [
+          {
+            to: 'DetailsPage',
+            isNested: false,
+            synapseConfigArray: [
+              {
+                name: 'CardContainerLogic',
+                isOutsideContainer: true,
+                props: {
+                  sqlOperator: '=',
+                  isHeader: true,
+                  backgroundColor: '#119488',
+                  ...initiativeCardConfiguration,
+                  facetAliases,                  
+                  sql: initiativesSql,
+                },
+              },
+              {
+                name: 'DetailsPage',
+                isOutsideContainer: false,
+                props: initiativeDetailsPageConfiguration,
+                containerClassName: 'container-full-width',
+              },
+            ],
           },
         ],
       },
@@ -175,7 +205,7 @@ const routes: GenericRoute[] = [
                   facetAliases,
                   iconOptions: studyHeaderIconOptions,
                   secondaryLabelLimit: Infinity,
-                  sql: 'SELECT * FROM syn16787123',
+                  sql: studiesSql,
                 },
               },
               {

@@ -1,15 +1,17 @@
 import { HomeExploreConfig } from 'types/portal-config'
 
 import { facetAliases } from './commonProps'
-import { initiativesSql } from '../resources'
+import { initiativesSql, studiesSql } from '../resources'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import { SynapseConstants } from 'synapse-react-client'
+import { DetailsPageProps } from 'types/portal-util-types'
+import { studyCardConfiguration } from './studies'
 
 export const newSql = `${initiativesSql} order by ROW_ID desc limit 3`
 const unitDescription = 'initiatives'
 const rgbIndex = 8
 
-export const cardConfiguration: CardConfiguration = {
+export const initiativeCardConfiguration: CardConfiguration = {
   type: SynapseConstants.GENERIC_CARD,
   genericCardSchema: {
     type: 'Initiative',
@@ -39,7 +41,17 @@ const initiatives: HomeExploreConfig = {
       defaultShowFacetVisualization: false,
       shouldDeepLink: true,
       sql: initiativesSql,
-      cardConfiguration,
+      cardConfiguration: {
+        ...initiativeCardConfiguration,
+        ctaButtonLinkConfig: {
+          buttonText: 'Explore Studies',
+          linkConfig: {
+            matchColumnName: 'initiative',
+            isMarkdown: false,
+            baseURL: 'Explore/Initiatives/DetailsPage',
+            URLColumnName: 'initiative',
+          }
+        },},
       name: 'Initiatives',
       facetAliases,
       searchConfiguration: {
@@ -47,9 +59,27 @@ const initiatives: HomeExploreConfig = {
           'initiative',
           'summary',          
         ],
-      },
+      },  
     },
   },
+}
+
+export const initiativeDetailsPageConfiguration: DetailsPageProps = {
+  showMenu: false,
+  sql: initiativesSql,
+  synapseConfigArray: [
+    {
+      name: 'CardContainerLogic',
+      columnName: 'initiative',
+      title: 'Studies',
+      showTitleSeperator: false,
+      tableSqlKeys: ['initiative'],
+      props: {
+        sql: studiesSql,
+        ...studyCardConfiguration,
+      },
+    },
+  ],
 }
 
 export default initiatives
