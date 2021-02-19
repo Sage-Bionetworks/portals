@@ -41,7 +41,17 @@ const initiatives: HomeExploreConfig = {
       defaultShowFacetVisualization: false,
       shouldDeepLink: true,
       sql: initiativesSql,
-      cardConfiguration: initiativeCardConfiguration,
+      cardConfiguration: {
+        ...initiativeCardConfiguration,
+        ctaButtonLinkConfig: {
+          buttonText: 'Explore Studies',
+          linkConfig: {
+            matchColumnName: 'initiative',
+            isMarkdown: false,
+            baseURL: 'Explore/Initiatives/DetailsPage',
+            URLColumnName: 'initiative',
+          }
+        },},
       name: 'Initiatives',
       facetAliases,
       searchConfiguration: {
@@ -49,7 +59,7 @@ const initiatives: HomeExploreConfig = {
           'initiative',
           'summary',          
         ],
-      },
+      },  
     },
   },
 }
