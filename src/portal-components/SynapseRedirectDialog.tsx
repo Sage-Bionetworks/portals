@@ -13,9 +13,9 @@ const SynapseRedirectDialog = (props: SynapseRedirectDialogProps) => {
       // You would expect that we should redirect when countdownSeconds reaches 0,
       // but it actually takes about a second to perform the redirect. 
       // So let's start the process when we get to 1.
-      // if (countdownSeconds <= 1) {
-      //   window.location.assign(synapseRedirectUrl!)
-      // }
+      if (countdownSeconds <= 1) {
+        window.location.assign(synapseRedirectUrl!)
+      }
       setTimeout(() => {
         setCountdownSeconds(countdownSeconds => countdownSeconds - 1)
       }, 1000)
