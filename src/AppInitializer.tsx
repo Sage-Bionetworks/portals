@@ -200,22 +200,19 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
         }
       }
     }
-    let color = 'white'
-    let background = '#4db7ad'
+    let color = '#4db7ad'
+    let background = 'white'
     let name = ''
     let icon = ''
     const footerElement = document.querySelector('#footer')
     if (footerElement) {
       color = window
         .getComputedStyle(footerElement, null)
-        .getPropertyValue('color')
-      background = window
-        .getComputedStyle(footerElement, null)
         .getPropertyValue('background-color')
     }
-    const footerLinkImgElement = document.querySelector('#footer-logo-link img')
-    if (footerLinkImgElement) {
-      let imageSrc = footerLinkImgElement.getAttribute('src')
+    const logoImgElement = document.querySelector('#header-logo-image')
+    if (logoImgElement) {
+      let imageSrc = logoImgElement.getAttribute('src')
       if (imageSrc) {
         if (!imageSrc.toLowerCase().startsWith('http')) {
           imageSrc = SynapseClient.getRootURL() + imageSrc.substring(1)
