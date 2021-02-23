@@ -116,7 +116,7 @@ class Navbar extends React.Component<any, State> {
     const { name, icon, hideLogin = false } = logoHeaderConfig
     const token = this.context
     const imageElement = icon ? (
-      <img alt="navigation logo" className="nav-logo" src={icon} />
+      <img id="header-logo-image" alt="navigation logo" className="nav-logo" src={icon} />
     ) : (
       <></>
     )
