@@ -200,16 +200,8 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
         }
       }
     }
-    let color = '#4db7ad'
-    let background = 'white'
     let name = ''
     let icon = ''
-    const footerElement = document.querySelector('#footer')
-    if (footerElement) {
-      color = window
-        .getComputedStyle(footerElement, null)
-        .getPropertyValue('background-color')
-    }
     const logoImgElement = document.querySelector('#header-logo-image')
     if (logoImgElement) {
       let imageSrc = logoImgElement.getAttribute('src')
@@ -226,8 +218,6 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
     }
     const cookieValue = {
       isInvokingDownloadTable,
-      foregroundColor: color,
-      backgroundColor: background,
       callbackUrl: window.location.href,
       logoUrl: icon,
       portalName: name,
