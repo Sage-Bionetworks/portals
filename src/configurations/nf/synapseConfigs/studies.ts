@@ -70,7 +70,7 @@ export const studyCardConfiguration: CardConfiguration = {
         'Completed': { icon: 'check', color: '#B2242A' },
       },
       'dataType': {
-        'genomicVariants': { icon: 'genomicVariants', label: 'Genomic Variants Data Available' },
+        'genomicVariants': { icon: 'geneVariants', label: 'Genomic Variants Data Available' },
         'geneExpression': { icon: 'geneExpression', label: 'Gene Expression Data Available' },
         'image': { icon: 'imaging', label: 'Image Data Available' },
         'drugScreen': { icon: 'lineGraph', label: 'Drug Screen (Cell) Data Available' },
