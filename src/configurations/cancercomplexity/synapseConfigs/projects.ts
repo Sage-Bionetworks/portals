@@ -18,7 +18,7 @@ export const projectCardConfiguration: CardConfiguration = {
   type: SynapseConstants.GENERIC_CARD,
   genericCardSchema: projectsSchema,
   secondaryLabelLimit: 4,
-  descriptionLinkConfig: {
+  descriptionConfig: {
     isMarkdown: true,
   },
 }
