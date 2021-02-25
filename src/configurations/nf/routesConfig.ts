@@ -5,8 +5,7 @@ import {
   files,
   studies,
   publications,
-  tools,
-  funders,
+  tools,  
   initiatives,
 } from './synapseConfigs'
 import {
@@ -21,8 +20,8 @@ import {
 } from './synapseConfigs/initiatives'
 import routeControlWrapperProps from './routeControlWrapperProps'
 import { facetAliases } from './synapseConfigs/commonProps'
-import { organizationDetailsPage } from './organizations'
-import { initiativesSql, peopleSql, studiesSql } from './resources'
+import { organizationCardSchema, organizationDetailsPage, organizationDetailsPageLinkConfig } from './organizations'
+import { fundersSql, initiativesSql, peopleSql, studiesSql } from './resources'
 
 const limit = 3
 
@@ -108,10 +107,21 @@ const routes: GenericRoute[] = [
         outsideContainerClassName: 'home-spacer',
         centerTitle: true,
         props: {
-              facetAliases,
-          sql: funders.sql,
-          type: funders.type,
-        },
+            facetAliases,
+            sql: fundersSql,
+            type: SynapseConstants.GENERIC_CARD,
+            genericCardSchema: {
+              ...organizationCardSchema,
+              imageFileHandleColumnName: 'cardLogo',
+            },
+            descriptionConfig: {
+              showFullDescriptionByDefault: true
+            },
+            ctaButtonLinkConfig: {
+              buttonText: 'View Funded Research',
+              linkConfig: organizationDetailsPageLinkConfig
+            }
+          },
       },
       {
         name: 'RssFeedCards',

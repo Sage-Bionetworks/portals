@@ -4,8 +4,9 @@ import { SynapseConfig } from 'types/portal-config'
 import { facetAliases, searchConfiguration } from './synapseConfigs/commonProps'
 import { publicationsCardConfiguration } from './synapseConfigs/publications'
 import { studyCardConfiguration } from './synapseConfigs/studies'
-import { iconOptions } from './synapseConfigs/iconOptions'
-import { filesSql } from './resources'
+import { filesSql, fundersSql } from './resources'
+import { CardLink } from 'synapse-react-client/dist/containers/CardContainerLogic'
+import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 
 const studiesSql = `SELECT * FROM syn16787123`
 const datasetsSql = `SELECT * FROM syn16859580`
@@ -92,22 +93,33 @@ export const organizationDetailsPageConfig: DetailsPageProps = {
   ],
 }
 
+export const organizationDetailsPageLinkConfig: CardLink = {
+  matchColumnName: 'abbreviation',
+  isMarkdown: false,
+  baseURL: 'Organizations/DetailsPage',
+  URLColumnName: 'abbreviation',
+}
+
+export const organizationCardSchema: GenericCardSchema = {
+  title: 'organizationName',
+  type: SynapseConstants.ORGANIZATION,
+  description: 'summary',
+  icon: 'abbreviation',
+  link: 'website',
+  thumbnailRequiresPadding: true
+}
+
 export const organizationDetailsPage: SynapseConfig[] = [
   {
     name: 'CardContainerLogic',
     isOutsideContainer: true,
     props: {
       limit: 1,
-      sql: 'SELECT * FROM syn16858699',
+      sql: fundersSql,
       type: SynapseConstants.GENERIC_CARD,
-      genericCardSchema: {
-        title: 'organizationName',
-        type: SynapseConstants.ORGANIZATION,
-        description: 'summary',
-        icon: 'abbreviation',
-        link: 'website',
+      genericCardSchema: { ...organizationCardSchema,        
+        imageFileHandleColumnName: 'headerLogo',      
       },
-      iconOptions,
       isHeader: true,
       backgroundColor: '#125E81',
     },
