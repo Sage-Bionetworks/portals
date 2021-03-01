@@ -171,7 +171,7 @@ export default class DetailsPage extends React.Component<
           })
           return
         }
-        SynapseClient.getEntityHeader(references, token).then(
+        SynapseClient.getEntityHeaders(references, token).then(
           (entityHeaders) => {
             this.setState({
               queryResultBundle: data,
