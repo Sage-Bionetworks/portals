@@ -18,7 +18,7 @@ export const iconOptions = {
   'Resilience-AD': resilienceadSvg,
   'Psych-AD': psychIconSvg,
   'CDCP': cdcpSvg,
-  'HLTP': longevitySvg,
+  'ELP': longevitySvg,
 }
 
 export const iconHeaderOptions = {
@@ -28,5 +28,5 @@ export const iconHeaderOptions = {
   'Resilience-AD': resilienceadSvgHeader,
   'Psych-AD': psychHeaderSvg,
   'CDCP': cdcpSvg,
-  'HLTP': longevitySvg,
+  'ELP': longevitySvg,
 }
