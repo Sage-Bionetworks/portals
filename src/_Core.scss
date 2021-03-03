@@ -522,29 +522,111 @@ div.SRC-marginBottomTen {
   @extend %fillerBorder;
 }
 
-.cookiesBanner {
-  background: Portal.$primary-action-color;
-  height: 50px;
-  color: white;
-  display: flex;
-  flex-direction: row;
-  align-content: center;
-  align-items: center;
-  font-size: 15px;
-  padding-left: 20px;
-  padding-right: 20px;
-  // stick to bottom
-  position: fixed;
-  bottom: 15px;
-  z-index: 6;
-  width: 100%;
 
-  a {
-    margin: 0px 10px;
-    color: white;
+.synapseAlert {
+	&.global {
+		width: 100%;
+		position: fixed;
+		bottom: 0px;
+		left: 0px;
+	}
+	padding: 14px;
+	z-index: 500;
+	display: grid;
+	grid-template-columns: 50px auto 150px 200px;
+	column-gap: 10px;
+	align-items: center;
+	justify-items: start;
+	.iconArea {
+		grid-column: 1 / span 1;
+		grid-row: 1 / span 1;
+		min-width: 50px;
+	}
+	.messageArea {
+		max-width: 700px;
+		grid-row: 1 / span 1;
+	}
+	.iconForeground {
+		color: white;
+	}
+	@media (min-width: 992px) {
+		grid-template-rows: auto;
+		.messageArea {
+			grid-column: 2 / span 1;
+		}
+		.secondaryButton {
+			grid-column: 3 / span 1;
+			grid-row: 1 / span 1;
+			justify-self: end;
+		}
+		.primaryButton {
+			grid-column: 4 / span 1;
+			grid-row: 1 / span 1;
+			justify-self: end;
+		}
+	}
+	@media (max-width: 992px) {
+		grid-template-rows: auto 75px;
+		.messageArea {
+			grid-column: 2 / span 3;
+		}
+		.secondaryButton {
+			grid-column: 4 / span 1;
+			grid-row: 2 / span 1;
+		}
+		.primaryButton {
+			grid-column: 2 / span 2;
+			grid-row: 2 / span 1;
+		}
+	}
+}
+
+// Bootstrap Alert overrides
+
+.alert {
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: white;
+    z-index: -1;
+    opacity: 93%;
   }
-  button {
-    color: Portal.$primary-action-color;
+  color: #323131;
+  border-radius: 0px;
+  box-shadow: none;
+  .alert-link {
+    color: inherit;
+  }
+  border: none;
+  &.alert-info {
+    background-color: Portal.$primary-action-color;
+    border-left: 10px solid Portal.$primary-action-color;
+    .iconBackground {
+      color: Portal.$primary-action-color;
+    }
+  }
+  &.alert-danger {
+    background: #F5DAD9;
+    border-left: 10px solid #CD453F;
+    .iconBackground {
+      color: #CD453F;
+    }
+  }
+  &.alert-warning {
+    background: #FAEEDC;
+    border-left: 10px solid #E4AA52;
+    .iconBackground {
+      color: #E4AA52;
+    }
+  }
+  &.alert-success {
+    background: #DAE7E1;
+    border-left: 10px solid #48896B;
+    .iconBackground {
+      color: #48896B;
+    }
   }
 }
 
