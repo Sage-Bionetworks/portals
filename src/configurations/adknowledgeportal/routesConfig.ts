@@ -181,7 +181,6 @@ const routes: GenericRoute[] = [
                     description: 'Long Description',
                   },
                   iconOptions: iconHeaderOptions,
-                  backgroundColor: '#5960A5',
                 },
               },
               {
@@ -220,7 +219,7 @@ const routes: GenericRoute[] = [
                   sql: projectsSql,
                   isHeader: true,
                   ...projectCardConfiguration,
-                  backgroundColor: '#DE9A1F',
+                  
                 },
               },
               {

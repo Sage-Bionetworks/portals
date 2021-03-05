@@ -242,7 +242,7 @@ export const studiesProgrammaticRouteConfig: SynapseConfig[] = [
       facetAliases,
       isAlignToLeftNav: true,
       secondaryLabelLimit: Infinity,
-      backgroundColor: '#5bb0b5',
+      
       iconOptions: {
         study: studyHeaderSvg,
       },
