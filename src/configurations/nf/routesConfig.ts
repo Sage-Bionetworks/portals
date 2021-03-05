@@ -170,7 +170,7 @@ const routes: GenericRoute[] = [
                 props: {
                   sqlOperator: '=',
                   isHeader: true,
-                  backgroundColor: '#119488',
+                  
                   ...initiativeCardConfiguration,
                   facetAliases,                  
                   sql: initiativesSql,
@@ -210,7 +210,7 @@ const routes: GenericRoute[] = [
                 props: {
                   sqlOperator: '=',
                   isHeader: true,
-                  backgroundColor: '#119488',
+                  
                   ...studyCardConfiguration,
                   facetAliases,
                   iconOptions: studyHeaderIconOptions,

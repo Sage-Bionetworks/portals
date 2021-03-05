@@ -105,7 +105,7 @@ export const grantsDetailPage: SynapseConfigArray = [
     props: {
       isHeader: true,
       isAlignToLeftNav: true,
-      backgroundColor: '#5bb0b5',
+      
       ...grantCardConfiguration,
       titleLinkConfig: undefined,
       genericCardSchema: grantSchema,

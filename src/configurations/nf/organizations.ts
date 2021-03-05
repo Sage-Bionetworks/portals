@@ -121,7 +121,7 @@ export const organizationDetailsPage: SynapseConfig[] = [
         imageFileHandleColumnName: 'headerLogo',      
       },
       isHeader: true,
-      backgroundColor: '#125E81',
+      
     },
   },
   {
