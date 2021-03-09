@@ -404,8 +404,8 @@ const routes: GenericRoute[] = [
             name: 'Markdown',
             title: 'ACKNOWLEDGEMENT STATEMENTS',
             props: {
-              ownerId: 'syn2580853',
-              wikiId: '584597',
+              ownerId: 'syn12666371',
+              wikiId: '602387',
             },
           },
         ],
@@ -419,8 +419,8 @@ const routes: GenericRoute[] = [
             name: 'Markdown',
             title: 'DATA USE PROPOSALS',
             props: {
-              ownerId: 'syn2580853',
-              wikiId: '409843',
+              ownerId: 'syn12666371',
+              wikiId: '608698',
             },
           },
         ],
