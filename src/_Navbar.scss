@@ -22,9 +22,13 @@
 
 @media screen and (max-width: 768px) {
   $mb-menu-item-padding: 46px;
+  $mb-menu-divider: 1px solid #b2b3b6;
 
   .nav + .spacer {
     display: none;
+  }
+  .nav.top-nav {
+    background: rgba(255, 255, 255, 1);
   }
   .nav {
     display: grid;
@@ -80,7 +84,7 @@
 
       .nav-button-signin {
         padding: 20px 22px;
-        border-top: 1px solid #b2b3b6;
+        border-top: $mb-menu-divider;
         margin-top: 30px;
         box-sizing: border-box;
 
@@ -130,6 +134,7 @@
         text-align: left;
         padding: 20px 42px;
         order: 1;
+        border-bottom: $mb-menu-divider;
 
         // Download size
         .position-by-button {

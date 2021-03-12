@@ -270,7 +270,7 @@ class Navbar extends React.Component<any, State> {
                 .slice()
                 .reverse()
                 .filter((el) => el.to !== '')
-                .map((el) => {
+                .map((el, index) => {
                   const topLevelTo = el.to
                   let displayName = el.displayName ? el.displayName : topLevelTo
                   const icon = el.icon && (
@@ -354,7 +354,7 @@ class Navbar extends React.Component<any, State> {
                       : ''
                   return (
                     <NavLink
-                      key={topLevelTo}
+                      key={`${topLevelTo}-${index}`}
                       className={`nav-button nav-button-container center-content ${isSelectedCssClassName} ${this.getBorder(
                         topLevelTo,
                       )}`}
