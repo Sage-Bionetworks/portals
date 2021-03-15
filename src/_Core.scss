@@ -195,7 +195,7 @@ body {
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
     background: rgba(256, 256, 256, 0.9);
     .nav-button {
-      color: #1A1C29;
+      color: Portal.$dark-gray;
     }
   }
   &.explore-nav {
@@ -203,7 +203,7 @@ body {
     .nav-button {
       color: #515359;
       &.isSelected {
-        color: #1A1C29;
+        color: Portal.$dark-gray;
       }
     }
   }
