@@ -195,7 +195,7 @@ body {
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
     background: rgba(256, 256, 256, 0.9);
     .nav-button {
-      color: #1A1C29;
+      color: Portal.$dark-gray;
     }
   }
   &.explore-nav {
@@ -203,7 +203,7 @@ body {
     .nav-button {
       color: #515359;
       &.isSelected {
-        color: #1A1C29;
+        color: Portal.$dark-gray;
       }
     }
   }
@@ -229,8 +229,8 @@ body {
   text-align: center;
   justify-content: center;
   text-decoration: none;
-  padding: 0px 25px !important;
-  margin: 0px !important;
+  padding: 0px 25px;
+  margin: 0px;
   min-width: 100px;
   white-space: normal;
   @extend %fillerBorder;
@@ -272,7 +272,7 @@ a.nav-button {
 // override src behavior
 .show button.dropdown-toggle.nav-button,
 button.dropdown-toggle.nav-button:hover {
-  background: unset !important;
+  background: unset;
   color: unset;
   @extend %bottomBorderNav;
 }
