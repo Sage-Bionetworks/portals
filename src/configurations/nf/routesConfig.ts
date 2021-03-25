@@ -110,6 +110,7 @@ const routes: GenericRoute[] = [
             facetAliases,
             sql: fundersSql,
             type: SynapseConstants.GENERIC_CARD,
+            titleLinkConfig: organizationDetailsPageLinkConfig,
             genericCardSchema: {
               ...organizationCardSchema,
               imageFileHandleColumnName: 'cardLogo',
@@ -117,9 +118,9 @@ const routes: GenericRoute[] = [
             descriptionConfig: {
               showFullDescriptionByDefault: true
             },
-            ctaButtonLinkConfig: {
-              buttonText: 'View Funded Research',
-              linkConfig: organizationDetailsPageLinkConfig
+            ctaLinkConfig: {
+              text: 'Visit Website',
+              link: 'website'
             }
           },
       },
