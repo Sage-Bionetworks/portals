@@ -43,15 +43,17 @@ const initiatives: HomeExploreConfig = {
       sql: initiativesSql,
       cardConfiguration: {
         ...initiativeCardConfiguration,
-        ctaButtonLinkConfig: {
-          buttonText: 'Explore Studies',
-          linkConfig: {
-            matchColumnName: 'initiative',
-            isMarkdown: false,
-            baseURL: 'Explore/Initiatives/DetailsPage',
-            URLColumnName: 'initiative',
-          }
-        },},
+        titleLinkConfig: {
+          matchColumnName: 'initiative',
+          isMarkdown: false,
+          baseURL: 'Explore/Initiatives/DetailsPage',
+          URLColumnName: 'initiative',
+        },
+        ctaLinkConfig: {
+          text: 'Visit Website',
+          link: 'website'
+        },
+      },
       name: 'Initiatives',
       facetAliases,
       searchConfiguration: {
