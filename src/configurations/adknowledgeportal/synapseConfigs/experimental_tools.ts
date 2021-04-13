@@ -15,6 +15,7 @@ const experimentalSchema: GenericCardSchema = {
     'AlzForum',
     'modelSystemName',
     'data',
+    'mouseModelReport',
     'supplementaryInformation',
     'contributor',
     'grant',
@@ -39,6 +40,10 @@ export const experimentalToolsCardConfiguration: CardConfiguration = {
     {
       isMarkdown: true,
       matchColumnName: 'supplementaryInformation',
+    },
+    {
+      isMarkdown: true,
+      matchColumnName: 'mouseModelReport',
     },
     {
       isMarkdown: false,
