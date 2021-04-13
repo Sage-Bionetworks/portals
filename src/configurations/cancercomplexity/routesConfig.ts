@@ -263,7 +263,6 @@ const routes: GenericRoute[] = [
                 isOutsideContainer: true,
                 props: {
                   isHeader: true,
-                  
                   ...publicationsCardConfiguration,
                   secondaryLabelLimit: Infinity,
                   facetAliases,
@@ -274,15 +273,15 @@ const routes: GenericRoute[] = [
                 name: 'DetailsPage',
                 props: {
                   sql: publicationSql,
-                  sqlOperator: 'LIKE',
+                  sqlOperator: '=',
                   synapseConfigArray: [
                     {
                       name: 'CardContainerLogic',
-                      columnName: 'publicationTitle',
+                      columnName: 'pubMedId',
                       title: 'Related Datasets',
-                      tableSqlKeys: ['publicationTitle'],
+                      tableSqlKeys: ['pubMedId'],
                       props: {
-                        sqlOperator: 'LIKE',
+                        sqlOperator: 'HAS',
                         sql: datasetsSql,
                         ...datasetCardConfiguration,
                         facetAliases,
@@ -290,11 +289,11 @@ const routes: GenericRoute[] = [
                     },
                     {
                       name: 'CardContainerLogic',
-                      columnName: 'publicationTitle',
+                      columnName: 'pubMedId',
                       title: 'Related Tools',
-                      tableSqlKeys: ['publicationTitle'],
+                      tableSqlKeys: ['pubMedId'],
                       props: {
-                        sqlOperator: 'LIKE',
+                        sqlOperator: 'HAS',
                         sql: toolsSql,
                         ...toolsConfiguration,
                         facetAliases,
