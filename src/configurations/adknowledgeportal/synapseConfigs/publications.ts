@@ -11,22 +11,19 @@ export const publicationCardProps = {
     type: SynapseConstants.PUBLICATION,
     title: 'title',
     subTitle: 'authors',
-    link: 'doi',
+    link: 'DOI',
     secondaryLabels: [
       'year',
       'journal',
-      'consortium',
-      'long_amp_ad_grants',
-      'doi',
+      'Program',
+      'grant',
+      'DOI',
       'pubmed_id',
     ],
   },
 }
 
 const facetAliases = {
-  consortium: 'Program',
-  long_amp_ad_grants: 'Grant',
-  doi: 'DOI',
   pubmed_id: 'Pubmed ID',
 }
 
@@ -38,10 +35,7 @@ const publications: HomeExploreConfig = {
       rgbIndex,
       link: 'Explore/Publications',
       linkText: 'Explore Publications',
-      facet: 'consortium',
-      facetAliases: {
-        consortium: 'Program',
-      },
+      facet: 'Program',
       sql: publicationsSql,
     },
   },
@@ -52,7 +46,7 @@ const publications: HomeExploreConfig = {
       sql: publicationsSql,
       name: 'Publications',
       shouldDeepLink: true,
-      facetsToPlot: ['consortium', 'year', 'long_amp_ad_grants', 'journal'],
+      facetsToPlot: ['Program', 'year', 'grant', 'journal'],
       cardConfiguration: publicationCardProps,
       facetAliases,
     },
