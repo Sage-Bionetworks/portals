@@ -63,7 +63,7 @@ export const projectsDetailsPageConfiguration: DetailsPageProps = {
       columnName: 'Grant Number',
       title: 'Publications',
       showTitleSeperator: false,
-      tableSqlKeys: ['long_amp_ad_grants'],
+      tableSqlKeys: ['grant'],
       props: {
         sql: publicationsSql,
         ...publicationCardProps,
