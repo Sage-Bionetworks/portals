@@ -508,6 +508,7 @@ div.SRC-marginBottomTen {
 #user-menu-button {
   height: 72px;
   margin-left: 15px;
+  margin-top: 3px;
   width: inherit;
   display: inline-flex;
   align-items: center;
@@ -601,7 +602,7 @@ div.SRC-marginBottomTen {
   }
   border: none;
   &.alert-info {
-    background-color: Portal.$primary-action-color;
+    background-color: rgb(249, 249, 249);
     border-left: 10px solid Portal.$primary-action-color;
     .iconBackground {
       color: Portal.$primary-action-color;
@@ -622,7 +623,7 @@ div.SRC-marginBottomTen {
     }
   }
   &.alert-success {
-    background: #DAE7E1;
+    background: #e7e7e7;
     border-left: 10px solid #48896B;
     .iconBackground {
       color: #48896B;
