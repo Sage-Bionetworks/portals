@@ -16,9 +16,9 @@ const NavUserLink: React.FunctionComponent<NavUserLinkProps> = ({
     <>
       <UserCard
         userProfile={userProfile}
-        size={SynapseConstants.SMALL_USER_CARD}
+        size={SynapseConstants.AVATAR}
+        avatarSize="SMALL"
         preSignedURL={userProfile?.clientPreSignedURL}
-        hideText={true}
         link="javascript:void(0)"
       />
       <ExpandMoreIcon className="user-expand" />
