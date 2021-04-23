@@ -7,6 +7,7 @@ import {
   publications,
   tools,  
   initiatives,
+  hackathons,
 } from './synapseConfigs'
 import {
   newStudiesSql,
@@ -14,6 +15,11 @@ import {
   studyCardConfiguration,
   studiesDetailPage,
 } from './synapseConfigs/studies'
+import {
+  hackathonCardConfiguration,
+  hackathonsDetailPage,
+} from './synapseConfigs/hackathons'
+
 import {  
   initiativeCardConfiguration,
   initiativeDetailsPageConfiguration,
@@ -21,7 +27,7 @@ import {
 import routeControlWrapperProps from './routeControlWrapperProps'
 import { facetAliases } from './synapseConfigs/commonProps'
 import { organizationCardSchema, organizationDetailsPage, organizationDetailsPageLinkConfig } from './organizations'
-import { fundersSql, initiativesSql, peopleSql, studiesSql } from './resources'
+import { fundersSql, hackathonsSql, initiativesSql, peopleSql, studiesSql } from './resources'
 
 const limit = 3
 
@@ -173,7 +179,7 @@ const routes: GenericRoute[] = [
                   isHeader: true,
                   
                   ...initiativeCardConfiguration,
-                  facetAliases,                  
+                  facetAliases,
                   sql: initiativesSql,
                 },
               },
@@ -223,6 +229,46 @@ const routes: GenericRoute[] = [
                 name: 'DetailsPage',
                 isOutsideContainer: false,
                 props: studiesDetailPage,
+                containerClassName: 'container-full-width',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        isNested: true,
+        to: 'Hackathons',
+        synapseConfigArray: [
+          {
+            name: 'RouteControlWrapper',
+            isOutsideContainer: true,
+            props: {
+              ...routeControlWrapperProps,
+              synapseConfig: hackathons.explorePageSynapseObject,
+            },
+          },
+        ],
+        routes: [
+          {
+            to: 'DetailsPage',
+            isNested: false,
+            synapseConfigArray: [
+              {
+                name: 'CardContainerLogic',
+                isOutsideContainer: true,
+                props: {
+                  sqlOperator: '=',
+                  isHeader: true,
+                  ...hackathonCardConfiguration,
+                  facetAliases: {...facetAliases, studyStatus: 'Status'},
+                  secondaryLabelLimit: Infinity,
+                  sql: hackathonsSql,
+                },
+              },
+              {
+                name: 'DetailsPage',
+                isOutsideContainer: false,
+                props: hackathonsDetailPage,
                 containerClassName: 'container-full-width',
               },
             ],
