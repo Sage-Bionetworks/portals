@@ -116,17 +116,17 @@ export const hackathonsDetailPage: DetailsPageProps = {
   synapseConfigArray: [
     {
       name: 'Markdown',
-      columnName: 'acknowledgementStatements',
-      title: 'Acknowledgements',
-      injectMarkdown: true,
+      columnName: 'tab1wikipointer',
+      title: '',
+      injectMarkdown: false,
       props: {},
       tabIndex: 0,
     },
     {
       name: 'Markdown',
-      columnName: 'tab1wikipointer',
-      title: '',
-      injectMarkdown: false,
+      columnName: 'acknowledgementStatements',
+      title: 'Acknowledgements',
+      injectMarkdown: true,
       props: {},
       tabIndex: 0,
     },

@@ -236,46 +236,6 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        isNested: true,
-        to: 'Hackathons',
-        synapseConfigArray: [
-          {
-            name: 'RouteControlWrapper',
-            isOutsideContainer: true,
-            props: {
-              ...routeControlWrapperProps,
-              synapseConfig: hackathons.explorePageSynapseObject,
-            },
-          },
-        ],
-        routes: [
-          {
-            to: 'DetailsPage',
-            isNested: false,
-            synapseConfigArray: [
-              {
-                name: 'CardContainerLogic',
-                isOutsideContainer: true,
-                props: {
-                  sqlOperator: '=',
-                  isHeader: true,
-                  ...hackathonCardConfiguration,
-                  facetAliases: {...facetAliases, studyStatus: 'Status'},
-                  secondaryLabelLimit: Infinity,
-                  sql: hackathonsSql,
-                },
-              },
-              {
-                name: 'DetailsPage',
-                isOutsideContainer: false,
-                props: hackathonsDetailPage,
-                containerClassName: 'container-full-width',
-              },
-            ],
-          },
-        ],
-      },
-      {
         isNested: false,
         to: 'Datasets',
         synapseConfigArray: [
@@ -328,6 +288,46 @@ const routes: GenericRoute[] = [
               ...routeControlWrapperProps,
               synapseConfig: tools.explorePageSynapseObject,
             },
+          },
+        ],
+      },
+      {
+        isNested: true,
+        to: 'Hackathons',
+        synapseConfigArray: [
+          {
+            name: 'RouteControlWrapper',
+            isOutsideContainer: true,
+            props: {
+              ...routeControlWrapperProps,
+              synapseConfig: hackathons.explorePageSynapseObject,
+            },
+          },
+        ],
+        routes: [
+          {
+            to: 'DetailsPage',
+            isNested: false,
+            synapseConfigArray: [
+              {
+                name: 'CardContainerLogic',
+                isOutsideContainer: true,
+                props: {
+                  sqlOperator: '=',
+                  isHeader: true,
+                  ...hackathonCardConfiguration,
+                  facetAliases: {...facetAliases, studyStatus: 'Status'},
+                  secondaryLabelLimit: Infinity,
+                  sql: hackathonsSql,
+                },
+              },
+              {
+                name: 'DetailsPage',
+                isOutsideContainer: false,
+                props: hackathonsDetailPage,
+                containerClassName: 'container-full-width',
+              },
+            ],
           },
         ],
       },
