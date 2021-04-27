@@ -15,7 +15,7 @@
     "@types/react-dom": "16.9.6",
     "clone-deep": "^4.0.1",
     "npm-run-all": "^4.1.5",
-    "plotly.js-basic-dist": "^1.47.3",
+    "plotly.js-basic-dist-min": "^1.58.4",
     "react": "16.13.1",
     "react-app-polyfill": "^1.0.1",
     "react-bootstrap": "^1.0.0-beta.12",
@@ -26,7 +26,7 @@
     "react-scripts": "3.4.3",
     "react-spinners": "^0.8.3",
     "sass": "^1.30.0",
-    "source-map-explorer": "^1.6.0",
+    "source-map-explorer": "^2.5.2",
     "synapse-react-client": "1.15.91",
     "typescript": "3.8.3"
   },
@@ -49,7 +49,8 @@
     "copy-test-configuration": "cp -r src/test-configuration/ src/config/",
     "test": "yarn run copy-test-configuration && react-scripts test --env=jsdom --setupFiles ./src/tests/setupTests.ts",
     "generate-sitemap": "node sitemap/generate-sitemap.js",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "analyze": "yarn run copy-test-configuration && yarn build && source-map-explorer 'build/static/js/*.js'"
   },
   "devDependencies": {
     "@types/katex": "^0.5.0",
