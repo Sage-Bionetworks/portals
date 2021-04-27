@@ -399,10 +399,10 @@ const routes: GenericRoute[] = [
   },
   {
     isNested: false,
-    displayName: 'Docs',
+    displayName: 'Help',
     to: undefined,
     target: '_blank',
-    link: 'https://nf-osi.github.io/',
+    link: 'https://help.nf.synapse.org/',
     synapseConfigArray: [],
   },
 ]
