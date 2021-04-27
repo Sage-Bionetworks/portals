@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
-import Plotly from 'plotly.js-basic-dist-min'
+import Plotly from 'plotly.js-basic-dist'
 import * as PlotlyTyped from 'plotly.js'
 import createPlotlyComponent from 'react-plotly.js/factory'
 import _ from 'lodash-es'
