@@ -17,7 +17,7 @@ const NavUserLink: React.FunctionComponent<NavUserLinkProps> = ({
       <UserCard
         userProfile={userProfile}
         size={SynapseConstants.AVATAR}
-        avatarSize="SMALL"
+        avatarSize="MEDIUM"
         preSignedURL={userProfile?.clientPreSignedURL}
         link="javascript:void(0)"
       />
