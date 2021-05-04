@@ -11,7 +11,7 @@ import {
 } from '../resources'
 
 const type = SynapseConstants.GENERIC_CARD
-const unitDescription = 'Hackathons'
+const unitDescription = 'Hackathon Projects'
 const rgbIndex = 5
 
 export const hackathonCardConfiguration: CardConfiguration = {
@@ -23,6 +23,7 @@ export const hackathonCardConfiguration: CardConfiguration = {
     // subTitle: 'subTitle',
     icon: 'studyStatus',
     secondaryLabels: [
+      'studyLeads',
       'institutions',
       'studyStatus',
       'diseaseFocus',
@@ -68,8 +69,8 @@ const hackathons: HomeExploreConfig = {
       facetAliases,
       unitDescription,
       rgbIndex,
-      link: 'Explore/Hackathons',
-      linkText: 'Explore Hackathons',
+      link: 'Explore/Hackathon%20Projects',
+      linkText: 'Explore Hackathon Projects',
       facet: 'diseaseFocus',
       sql: hackathonsSql,
     },
@@ -79,7 +80,7 @@ const hackathons: HomeExploreConfig = {
     props: {
       rgbIndex,
       sql: hackathonsSql,
-      name: 'Hackathons',
+      name: 'Hackathon Projects',
       shouldDeepLink: true,
       cardConfiguration: hackathonCardConfiguration,
       facetAliases: {...facetAliases, studyStatus: 'Status'},
@@ -87,7 +88,6 @@ const hackathons: HomeExploreConfig = {
         searchable: [
           'name',
           'summary',
-          'studyLeads',
           'studyStatus',
           'institutions',
           'diseaseFocus',

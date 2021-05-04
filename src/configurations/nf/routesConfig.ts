@@ -293,7 +293,7 @@ const routes: GenericRoute[] = [
       },
       {
         isNested: true,
-        to: 'Hackathons',
+        to: 'Hackathon Projects',
         synapseConfigArray: [
           {
             name: 'RouteControlWrapper',
