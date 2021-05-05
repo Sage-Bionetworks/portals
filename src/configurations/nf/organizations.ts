@@ -30,7 +30,8 @@ export const organizationDetailsPageConfig: DetailsPageProps = {
       name: 'CardContainerLogic',
       props: {
           sql: studiesSql,
-        ...studyCardConfiguration,
+          limit: 3,
+          ...studyCardConfiguration,
       },
       title: 'Funded Studies',
       columnName: 'fundingAgency',
@@ -41,6 +42,7 @@ export const organizationDetailsPageConfig: DetailsPageProps = {
       name: 'CardContainerLogic',
       props: {
         sql: publicationsSql,
+        limit: 3,
         ...publicationsCardConfiguration,
         sqlOperator: 'LIKE',
       },
@@ -82,7 +84,8 @@ export const organizationDetailsPageConfig: DetailsPageProps = {
     {
       name: 'CardContainerLogic',
       props: {
-          sql: datasetsSql,
+        sql: datasetsSql,
+        limit: 3,
         type: SynapseConstants.DATASET,
       },
       columnName: 'fundingAgency',
@@ -114,14 +117,12 @@ export const organizationDetailsPage: SynapseConfig[] = [
     name: 'CardContainerLogic',
     isOutsideContainer: true,
     props: {
-      limit: 1,
       sql: fundersSql,
       type: SynapseConstants.GENERIC_CARD,
       genericCardSchema: { ...organizationCardSchema,        
         imageFileHandleColumnName: 'headerLogo',      
       },
       isHeader: true,
-      
     },
   },
   {
