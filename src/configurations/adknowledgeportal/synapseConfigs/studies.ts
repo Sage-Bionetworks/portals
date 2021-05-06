@@ -186,7 +186,7 @@ export const studiesDetailsPageProps: DetailsPageProps = {
           showDownloadColumn: true,
         },
         facetsToFilter:['metadataType', 'dataType', 'assay'],
-        sql: "SELECT id, metadataType, dataType, assay FROM syn11346063 WHERE `dataSubtype` = 'metadata'",
+        sql: "SELECT id, metadataType, dataType, assay FROM syn11346063 WHERE `resourceType` = 'metadata'",
         shouldDeepLink: false,
         defaultShowFacetVisualization: false,
       },
