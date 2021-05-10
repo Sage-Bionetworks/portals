@@ -43,8 +43,9 @@ export const projectsDetailsPageConfiguration: DetailsPageProps = {
       title: 'People',
       columnName: 'Grant Number',
       tableSqlKeys: ['Grant Number'],
-      props: {        
+      props: {
         sql: peopleSql,
+        limit: 6,
         type: SynapseConstants.MEDIUM_USER_CARD,
       },
     },
