@@ -5,6 +5,8 @@ $secondary-action-color: rgb(98, 172, 98) !default;
 $header-url: '' !default;
 $footer-url: '' !default;
 $dark-gray: #1A1C29;
+$header-height: 75px;
+$banner-height: 47px;
 
 // Since scss breaks if a file is missing in a local url link these functinons must get manually overwitten
 @function getHeader($path) {
