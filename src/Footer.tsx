@@ -31,9 +31,7 @@ export const Footer: React.SFC<{}> = () => {
         <div id="footer-logo-link">{logo}</div>
       </div>
       <div id="portal-contact-footer" className="center-content">
-        <span>
-          <ExperimentalMode />
-        </span>
+        <ExperimentalMode />
         <Versions />
         <a
           rel="noopener noreferrer"
