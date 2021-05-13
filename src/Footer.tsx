@@ -31,7 +31,7 @@ export const Footer: React.SFC<{}> = () => {
         <div id="footer-logo-link">{logo}</div>
       </div>
       <div id="portal-contact-footer" className="center-content">
-        <span className={"bootstrap-4-backport experimental-mode"}>
+        <span>
           <ExperimentalMode />
         </span>
         <Versions />
