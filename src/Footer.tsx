@@ -3,6 +3,7 @@ import footerConfig from './config/footerConfig'
 import logoFooterConfig from './config/logoFooterConfig'
 import { ReactComponent as PoweredBySvg } from './portal-assets/poweredbysynapse.svg'
 import Versions from 'portal-components/Versions'
+import ExperimentalMode from "synapse-react-client/dist/containers/ExperimentalMode";  // synapse-react-client/dist/utils/functions/sqlFunctions
 
 export const Footer: React.SFC<{}> = () => {
   const goToTop = () => {
@@ -30,6 +31,9 @@ export const Footer: React.SFC<{}> = () => {
         <div id="footer-logo-link">{logo}</div>
       </div>
       <div id="portal-contact-footer" className="center-content">
+        <span>
+          <ExperimentalMode />
+        </span>
         <Versions />
         <a
           rel="noopener noreferrer"
