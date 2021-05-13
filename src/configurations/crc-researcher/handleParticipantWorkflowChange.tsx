@@ -57,7 +57,7 @@ const handleParticipantWorkflowChange = async (
       },
     ],
   }
-  const token = await SynapseClient.getSessionTokenFromCookie()
+  const token = await SynapseClient.getAccessTokenFromCookie()
   SynapseClient.updateTable(request, token)
     .then(() => {
       // refresh data after successful update
