@@ -20,7 +20,9 @@ export const RouteControl: React.FunctionComponent<RouteControlProps> = ({
   return (
     <nav className="flex-display nav explore-nav">
       {customRoutes.map((name, index) => {
-        const handleClick = () => handleChanges(name, index)
+        const handleClick = () => {
+          return handleChanges(name, index)
+        }
         return (
           <button onClick={handleClick} key={name} className={`nav-button nav-button-container center-content ${setActiveClass(isSelected(name))}`}>
             {name}

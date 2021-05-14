@@ -3,6 +3,7 @@ import { RouteControl, RouteControlProps } from '../RouteControl'
 import { withRouter, RouteComponentProps } from 'react-router-dom'
 import { SynapseConfig } from 'types/portal-config'
 import { generateSynapseObject } from '../RouteResolver'
+import { useEffect, useState } from "react";
 
 export type RouteControlWrapperProps = {
   synapseConfig?: SynapseConfig
@@ -29,23 +30,33 @@ const RouteControlWrapper: React.FunctionComponent<Props> = ({
 }) => {
   const pathname = location.pathname
   const subPath = pathname.substring('/Explore/'.length)
+  const handleChangesFn = (val: string, _index: number) => {
+    setSelectedTab(val)
+    history.push(`/Explore/${val}`)
+  }
   const routeControlProps: RouteControlProps = {
     customRoutes,
-    handleChanges: (val: string, _index: number) =>
-      history.push(`/Explore/${val}`),
+    handleChanges: handleChangesFn,
     isSelected: (name: string) => name === subPath,
   }
+  const [selectedTab, setSelectedTab] = useState<string>()
+  
+  useEffect(() => {
+    setSelectedTab(subPath.toUpperCase())
+  },[subPath])
+
   return (
     <>
       <div className='explore-nav-container'>
         <div className='container-fluid'>
           <h2 className='title'>Explore</h2>
+          <h4 className={"explore-nav-selected-toggle"}>{selectedTab}</h4>
           <RouteControl {...routeControlProps} />
         </div>
       </div>
       <div>
         {synapseConfig && generateSynapseObject(synapseConfig, searchParams)}
-      </div>      
+      </div>
     </>
   )
 }

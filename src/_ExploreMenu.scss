@@ -1,14 +1,23 @@
 @use 'variables' as Portal;
 
+.explore-nav-selected-toggle {
+  display: none;
+}
+
 @media screen and (max-width: 768px) {
 
   .explore-nav-container {
-    position: relative;
-    top: Portal.$header-height;
     padding: 0;
-    
+
     .container-fluid {
       padding: 0;
+    }
+
+    .explore-nav-selected-toggle {
+      display: block;
+      text-align: center;
+      font-size: 16px;
+      font-weight: bold;
     }
 
     .title {
@@ -22,6 +31,9 @@
       display: block;
       column-count: 1;
       column-width: auto;
+      background-color: #fff;
+      border-top: 2px solid #DCDCDC;
+      padding: 1rem 0;
 
       .nav-button {
         margin: 0.6rem auto;
