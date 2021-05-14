@@ -5,10 +5,33 @@
   .explore-nav-container {
     position: relative;
     top: Portal.$header-height;
+    padding: 0;
+    
+    .container-fluid {
+      padding: 0;
+    }
+
+    .title {
+      font-size: 14px;
+      text-align: center;
+      margin: 1rem;
+    }
 
     .explore-nav {
-      grid-template-areas: none;
       margin-left: 0;
+      display: block;
+      column-count: 1;
+      column-width: auto;
+
+      .nav-button {
+        margin: 0.6rem auto;
+        &.nav-button-container {
+          padding: 0 1rem;
+          &.isSelected {
+            border-bottom-color: Portal.$primary-action-color;
+          }
+        }
+      }
     }
   }
   
