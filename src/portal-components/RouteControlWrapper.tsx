@@ -4,6 +4,7 @@ import { withRouter, RouteComponentProps } from 'react-router-dom'
 import { SynapseConfig } from 'types/portal-config'
 import { generateSynapseObject } from '../RouteResolver'
 import { useEffect, useState } from "react";
+import { ArrowDropDown, ArrowDropUp } from "@material-ui/icons";
 
 export type RouteControlWrapperProps = {
   synapseConfig?: SynapseConfig
@@ -31,7 +32,7 @@ const RouteControlWrapper: React.FunctionComponent<Props> = ({
   const pathname = location.pathname
   const subPath = pathname.substring('/Explore/'.length)
   const handleChangesFn = (val: string, _index: number) => {
-    setSelectedTab(val)
+    setSelectedTab(val.toUpperCase())
     history.push(`/Explore/${val}`)
   }
   const routeControlProps: RouteControlProps = {
@@ -40,9 +41,11 @@ const RouteControlWrapper: React.FunctionComponent<Props> = ({
     isSelected: (name: string) => name === subPath,
   }
   const [selectedTab, setSelectedTab] = useState<string>()
+  const [showSubNav, setShowSubNav] = useState<boolean>(true)
   
   useEffect(() => {
     setSelectedTab(subPath.toUpperCase())
+    setShowSubNav(false)
   },[subPath])
 
   return (
@@ -50,8 +53,14 @@ const RouteControlWrapper: React.FunctionComponent<Props> = ({
       <div className='explore-nav-container'>
         <div className='container-fluid'>
           <h2 className='title'>Explore</h2>
-          <h4 className={"explore-nav-selected-toggle"}>{selectedTab}</h4>
-          <RouteControl {...routeControlProps} />
+          <h4 className={"explore-nav-selected-toggle"}>
+            {selectedTab}
+            { showSubNav ?
+              <ArrowDropDown fontSize={"large"} onClick={() => setShowSubNav(false)} /> :
+              <ArrowDropUp fontSize={"large"} onClick={() => setShowSubNav(true)} />
+              }
+          </h4>
+          { showSubNav && <RouteControl {...routeControlProps} /> }
         </div>
       </div>
       <div>

@@ -14,10 +14,14 @@
     }
 
     .explore-nav-selected-toggle {
-      display: block;
       text-align: center;
       font-size: 16px;
       font-weight: bold;
+      padding: 0 1rem 1rem;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .title {
