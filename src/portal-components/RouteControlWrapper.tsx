@@ -53,7 +53,7 @@ const RouteControlWrapper: React.FunctionComponent<Props> = ({
       <div className='explore-nav-container'>
         <div className='container-fluid'>
           <h2 className='title'>Explore</h2>
-          <h4 className={"explore-nav-selected-toggle"}>
+          <h4 className={"mobile-explore-nav-selected"}>
             {selectedTab}
             { showSubNav ?
               <ArrowDropDown fontSize={"large"} onClick={() => setShowSubNav(false)} /> :

@@ -1,6 +1,6 @@
 @use 'variables' as Portal;
 
-.explore-nav-selected-toggle {
+.mobile-explore-nav-selected {
   display: none;
 }
 
@@ -14,7 +14,7 @@
       padding: 0;
     }
 
-    .explore-nav-selected-toggle {
+    .mobile-explore-nav-selected {
       text-align: center;
       font-size: 16px;
       font-weight: bold;
