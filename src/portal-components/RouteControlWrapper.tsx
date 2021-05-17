@@ -41,11 +41,10 @@ const RouteControlWrapper: React.FunctionComponent<Props> = ({
     isSelected: (name: string) => name === subPath,
   }
   const [selectedTab, setSelectedTab] = useState<string>()
-  const [showSubNav, setShowSubNav] = useState<boolean>(true)
+  const [showSubNav, setShowSubNav] = useState<boolean>(false)
   
   useEffect(() => {
     setSelectedTab(subPath.toUpperCase())
-    setShowSubNav(false)
   },[subPath])
 
   return (
@@ -60,7 +59,14 @@ const RouteControlWrapper: React.FunctionComponent<Props> = ({
               <ArrowDropUp fontSize={"large"} onClick={() => setShowSubNav(true)} />
               }
           </h4>
-          { showSubNav && <RouteControl {...routeControlProps} /> }
+          <div className={"route-control"}>
+            <RouteControl {...routeControlProps} />
+          </div>
+          { showSubNav &&  // default visibility for mobile sub menu is hidden
+            <div className={"mobile-route-control"}>
+              <RouteControl {...routeControlProps} />
+            </div>
+          }
         </div>
       </div>
       <div>

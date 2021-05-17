@@ -1,6 +1,7 @@
 @use 'variables' as Portal;
 
-.mobile-explore-nav-selected {
+.mobile-explore-nav-selected,
+.mobile-route-control {
   display: none;
 }
 
@@ -12,6 +13,14 @@
 
     .container-fluid {
       padding: 0;
+    }
+
+    .route-control {
+      display: none
+    }
+
+    .mobile-route-control {
+      display: block;
     }
 
     .mobile-explore-nav-selected {
