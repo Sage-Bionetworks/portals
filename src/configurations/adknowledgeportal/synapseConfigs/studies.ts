@@ -3,7 +3,7 @@ import { DetailsPageProps } from 'types/portal-util-types'
 import { SynapseConstants } from 'synapse-react-client'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import studyHeaderSvg from '../style/study-header.svg'
-import { studiesSql, dataSql } from '../resources'
+import { studiesSql, dataSql, dataOnStudiesPageSql } from '../resources'
 
 const unitDescription = 'studies'
 const rgbIndex = 0
@@ -186,7 +186,7 @@ export const studiesDetailsPageProps: DetailsPageProps = {
           showDownloadColumn: true,
         },
         facetsToFilter:['metadataType', 'dataType', 'assay'],
-        sql: "SELECT id, metadataType, dataType, assay FROM syn11346063.12 WHERE `resourceType` = 'metadata'",
+        sql: dataOnStudiesPageSql,
         shouldDeepLink: false,
         defaultShowFacetVisualization: false,
       },
