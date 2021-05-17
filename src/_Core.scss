@@ -640,6 +640,14 @@ div.SRC-marginBottomTen {
   margin-top: 15px;
 }
 
+@media screen and (max-width: 768px) {
+  .QueryWrapperPlotNav {
+    .TopLevelControls {
+      margin-bottom: 0;
+    }
+  }
+}
+
 @media print {
   footer,
   footer * {

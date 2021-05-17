@@ -8,6 +8,7 @@
 
   .explore-nav-container {
     padding: 0;
+    border-bottom-width: 2px;
 
     .container-fluid {
       padding: 0;
@@ -36,7 +37,8 @@
       column-count: 1;
       column-width: auto;
       background-color: #fff;
-      border-top: 2px solid #DCDCDC;
+      border-top: 2px solid Portal.$border-color-gray;
+      border-bottom: 1px solid Portal.$border-color-gray;
       padding: 1rem 0;
 
       .nav-button {
