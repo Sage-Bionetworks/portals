@@ -41,7 +41,7 @@ const routes: GenericRoute[] = [
         centerTitle: true,
         outsideContainerClassName: 'home-spacer home-bg-dark',
         props: {
-          sql:'select * from syn11346063',
+          sql:'select * from syn11346063.12',
           rgbIndex: 3,
           configs: [{
             title: 'Human Studies',
