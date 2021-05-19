@@ -20,7 +20,7 @@ import { programCardConfiguration } from './synapseConfigs/programs'
 import { programsHomePageConfig } from './synapseConfigs/programsHomePage'
 import experimentalTools from './synapseConfigs/experimental_tools'
 import computationalTools from './synapseConfigs/computational_tools'
-import { projectsSql, studiesSql, peopleSql } from './resources'
+import { dataSql, projectsSql, studiesSql, peopleSql, programsSql } from './resources'
 
 const routes: GenericRoute[] = [
   {
@@ -41,7 +41,7 @@ const routes: GenericRoute[] = [
         centerTitle: true,
         outsideContainerClassName: 'home-spacer home-bg-dark',
         props: {
-          sql:'select * from syn11346063.12',
+          sql:dataSql,
           rgbIndex: 3,
           configs: [{
             title: 'Human Studies',
@@ -158,7 +158,7 @@ const routes: GenericRoute[] = [
                 name: 'CardContainerLogic',
                 props: {
                   ...programs,
-                  sql: 'SELECT  * FROM syn17024173',
+                  sql: programsSql,
                 },
               },
             },
@@ -173,7 +173,7 @@ const routes: GenericRoute[] = [
                 name: 'CardContainerLogic',
                 isOutsideContainer: true,
                 props: {
-                  sql: 'SELECT  * FROM syn17024173',
+                  sql: programsSql,
                   isHeader: true,
                   ...programCardConfiguration,
                   genericCardSchema: {

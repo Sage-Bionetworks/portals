@@ -67,7 +67,7 @@ Note - if exposing a component from the portal side, you will need to make sure 
 
 ## RouteResolver
 
-The route resolver handles taking a URL and matching it the config. Read more in the [component](./RouteResolver.tsx). This component is also responsible for injecting the session token into the react component.
+The route resolver handles taking a URL and matching it the config. Read more in the [component](./RouteResolver.tsx). This component is also responsible for injecting the access token into the react component.
 
 ## DetailsPages
 

@@ -67,13 +67,11 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
 
   getSession = async () => {
     try {
-      const token = await SynapseClient.getSessionTokenFromCookie()
+      const token = await SynapseClient.getAccessTokenFromCookie()
       if (!token) {
         this.initAnonymousUserState()
         return
       }
-      // try to refresh their session for convenience
-      await SynapseClient.putRefreshSessionToken(token)
       this.setState({ token, hasCalledGetSession: true })
       // get user profile
       const userProfile = await SynapseClient.getUserProfile(token)
