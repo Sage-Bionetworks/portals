@@ -43,8 +43,6 @@ export const toolsCardConfiguration: CardConfiguration = {
   },
 }
 const rgbIndex = 6
-export const toolsEntityId = 'syn16859448'
-
 const tools: HomeExploreConfig = {
   homePageSynapseObject: {
     name: 'StandaloneQueryWrapper',
@@ -54,7 +52,7 @@ const tools: HomeExploreConfig = {
       link: 'Explore/Tools',
       linkText: 'Explore Tools',
       facet: 'type',
-      sql: 'SELECT * FROM syn16859448',
+      sql: toolsSql,
       facetAliases,
     },
   },
@@ -62,7 +60,7 @@ const tools: HomeExploreConfig = {
     name: 'QueryWrapperPlotNav',
     props: {
       rgbIndex,
-      sql: 'SELECT * FROM syn16859448',
+      sql: toolsSql,
       shouldDeepLink: true,
       name: 'Tools',
       cardConfiguration: toolsCardConfiguration,

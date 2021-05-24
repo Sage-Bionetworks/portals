@@ -16,6 +16,7 @@ import {
   datasetsSql,
   publicationsSql,
   filesSql,
+  metadataFilesSql,
 } from '../resources'
 
 export const newStudiesSql = `${studiesSql} order by ROW_ID desc limit 3`
@@ -230,7 +231,7 @@ export const studiesDetailPage: DetailsPageProps = {
       tableSqlKeys: ['studyId'],
       props: {
         visibleColumnCount: 7,
-        sql: `SELECT id, dataType, assay, diagnosis, tumorType, species, individualID, fileFormat, dataSubtype, nf1Genotype, nf2Genotype, fundingAgency, consortium FROM syn16858331 where resourceType ='report'`,
+        sql: metadataFilesSql,
           rgbIndex,
         title: 'Metadata Files',
       },
