@@ -3,11 +3,14 @@ import { withRouter, RouteComponentProps } from 'react-router'
 import routesConfig from './config/routesConfig'
 import { SynapseConfig } from 'types/portal-config'
 import { SynapseComponents } from 'synapse-react-client'
-import { TokenContext } from './AppInitializer'
 import PortalComponents from './portal-components/'
 import Layout from './portal-components/Layout'
 import docTitleConfig from './config/docTitleConfig'
 import { scrollToWithOffset } from 'utils'
+import {
+  SynapseContextConsumer,
+  SynapseContextType,
+} from 'synapse-react-client/dist/utils/SynapseContext'
 
 // https://basarat.gitbooks.io/typescript/docs/types/never.html
 function fail(message: string): never {
@@ -73,9 +76,14 @@ export const generateSynapseObject = (
   const { props, ...rest } = synapseConfig
   const key = JSON.stringify(props)
   return (
-    <TokenContext.Consumer key={key}>
-      {(value: string) => {
-        const propsWithSearchAndToken = { ...props, searchParams, token: value }
+    <SynapseContextConsumer key={key}>
+      {(ctx?: SynapseContextType) => {
+        const propsWithSearchAndToken = {
+          ...props,
+          searchParams,
+          token: ctx?.accessToken,
+          accessToken: ctx?.accessToken,
+        }
         // TODO: Understand why typescript is throwing an error below
         // @ts-ignore
         const synapseObjectWithTokenAndSearch: SynapseConfig = {
@@ -84,7 +92,7 @@ export const generateSynapseObject = (
         }
         return generateSynapseObjectHelper(synapseObjectWithTokenAndSearch)
       }}
-    </TokenContext.Consumer>
+    </SynapseContextConsumer>
   )
 }
 
