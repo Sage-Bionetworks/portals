@@ -31,7 +31,7 @@ const FunderCards = () => {
               </div>
               <div className="FunderCards__text-container">
                 <p className="FunderCards__text">{el.text}</p>
-                <a className="FunderCards__link" href={el.link}>
+                <a className="FunderCards__link" href={el.link} target="_blank" rel="noopener noreferrer">
                   Visit Website
                 </a>
               </div>

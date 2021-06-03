@@ -4,16 +4,12 @@ import { SynapseConfig } from 'types/portal-config'
 import { facetAliases, searchConfiguration } from './synapseConfigs/commonProps'
 import { publicationsCardConfiguration } from './synapseConfigs/publications'
 import { studyCardConfiguration } from './synapseConfigs/studies'
-import { filesSql, fundersSql } from './resources'
+import { filesSql, fundersSql, studiesSql, datasetsSql, publicationsSql } from './resources'
 import { CardLink } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 
-const studiesSql = `SELECT * FROM syn16787123`
-const datasetsSql = `SELECT * FROM syn16859580`
-const publicationsSql = `SELECT * FROM syn16857542`
-
 export const organizationDetailsPageConfig: DetailsPageProps = {
-  sql: 'SELECT * FROM syn16858699',
+  sql: fundersSql,
   tabLayout: [
     {
       title: "Organization Details",

@@ -15,7 +15,7 @@ const files: HomeExploreConfig = {
       unitDescription,
       link: 'Explore/Files',
       linkText: 'Explore Files',
-      sql: "SELECT * FROM syn16858331 WHERE resourceType = 'experimentalData'",
+      sql: filesSql,
       facet: 'assay',
       facetAliases,
     },
