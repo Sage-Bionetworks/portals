@@ -13,6 +13,7 @@ import CardContainerLogic from 'synapse-react-client/dist/containers/CardContain
 import { mount } from 'enzyme'
 import StatefulButtonControlWrapper from '../portal-components/StatefulButtonControlWrapper'
 import { MemoryRouter } from 'react-router'
+import { SynapseContextProvider } from 'synapse-react-client/dist/utils/SynapseContext'
 
 describe('getRouteFromParams works', () => {
   // The home page route is a special case that we have to handle
@@ -50,7 +51,17 @@ describe('RouteResolver works', () => {
         entityId: '',
       },
     }
-    const synObj = mount(generateSynapseObjectHelper(mockedSynObject))
+    const synObj = mount(
+      <SynapseContextProvider
+        synapseContext={{
+          accessToken: 'abcd',
+          utcTime: false,
+          isInExperimentalMode: false,
+        }}
+      >
+        {generateSynapseObjectHelper(mockedSynObject)}
+      </SynapseContextProvider>,
+    )
     expect(synObj.find(CardContainerLogic)).toHaveLength(1)
   })
 
@@ -76,9 +87,17 @@ describe('RouteResolver works', () => {
       },
     }
     const synObj = mount(
-      <MemoryRouter>
-        {generateSynapseObjectHelper(mockedSynObject)}
-      </MemoryRouter>,
+      <SynapseContextProvider
+        synapseContext={{
+          accessToken: 'abcd',
+          utcTime: false,
+          isInExperimentalMode: false,
+        }}
+      >
+        <MemoryRouter>
+          {generateSynapseObjectHelper(mockedSynObject)}
+        </MemoryRouter>
+      </SynapseContextProvider>,
     )
     expect(synObj.find(StatefulButtonControlWrapper)).toHaveLength(1)
   })

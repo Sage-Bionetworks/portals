@@ -5,6 +5,7 @@ import RouteControlWrapper, {
 } from '../../portal-components/RouteControlWrapper'
 import { MemoryRouter } from 'react-router'
 import CardContainerLogic from 'synapse-react-client/dist/containers/CardContainerLogic'
+import { SynapseContextProvider } from 'synapse-react-client/dist/utils/SynapseContext'
 
 describe('RouteControlWrapper works', () => {
   const routeName = 'custom route'
@@ -22,9 +23,17 @@ describe('RouteControlWrapper works', () => {
 
   it('renders correctly', () => {
     const component = mount(
-      <MemoryRouter>
-        <RouteControlWrapper {...props} />
-      </MemoryRouter>,
+      <SynapseContextProvider
+        synapseContext={{
+          accessToken: 'abcd',
+          utcTime: false,
+          isInExperimentalMode: false,
+        }}
+      >
+        <MemoryRouter>
+          <RouteControlWrapper {...props} />
+        </MemoryRouter>
+      </SynapseContextProvider>,
     )
     // check its defined
     expect(component).toBeDefined()

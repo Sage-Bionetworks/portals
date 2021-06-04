@@ -19,8 +19,9 @@ import { DetailsPageProps, RowSynapseConfig } from 'types/portal-util-types'
 import injectPropsIntoConfig from './injectPropsIntoConfig'
 import { ExternalFileHandleLink } from 'synapse-react-client/dist/containers/ExternalFileHandleLink'
 import { BarLoader } from 'react-spinners'
-import {LockedFacet} from "synapse-react-client/dist/containers/QueryWrapper"
-import DetailsPageTabs from "./DetailsPageTabs";
+import { LockedFacet } from 'synapse-react-client/dist/containers/QueryWrapper'
+import DetailsPageTabs from './DetailsPageTabs'
+import { SynapseContext } from 'synapse-react-client/dist/utils/SynapseContext'
 
 type State = {
   queryResultBundle: QueryResultBundle | undefined
@@ -55,6 +56,7 @@ export default class DetailsPage extends React.Component<
   State
 > {
   public ref: React.RefObject<HTMLDivElement>
+  static contextType = SynapseContext
 
   constructor(props: DetailsPageProps) {
     super(props)
@@ -63,7 +65,7 @@ export default class DetailsPage extends React.Component<
       entityHeaders: undefined,
       isLoading: true,
       hasError: false,
-      tabIndex: 0
+      tabIndex: 0,
     }
     this.ref = React.createRef()
   }
@@ -73,9 +75,7 @@ export default class DetailsPage extends React.Component<
   }
 
   componentDidUpdate(prevProps: DetailsPageProps) {
-    if (this.props.token !== prevProps.token) {
-      this.getData()
-    } else if (this.props.searchParams !== prevProps.searchParams) {
+    if (this.props.searchParams !== prevProps.searchParams) {
       this.getData()
     }
   }
@@ -83,7 +83,6 @@ export default class DetailsPage extends React.Component<
   getData = () => {
     const {
       sql,
-      token,
       searchParams = {},
       synapseConfigArray,
       sqlOperator,
@@ -102,8 +101,11 @@ export default class DetailsPage extends React.Component<
         sql: sqlUsed,
       },
     }
-    SynapseClient.getQueryTableResults(queryBundleRequest, token).then(
-      (data) => {
+    SynapseClient.getQueryTableResults(
+      queryBundleRequest,
+      this.context.accessToken,
+    )
+      .then((data) => {
         const rows = data.queryResult.queryResults.rows
         if (rows.length !== 1) {
           console.error(
@@ -145,7 +147,7 @@ export default class DetailsPage extends React.Component<
               }
             }
             if (typeof value === 'object') {
-              (value as string[])?.forEach((val) => {
+              ;(value as string[])?.forEach((val) => {
                 if (!references.find((el) => el.targetId === val)) {
                   references.push({
                     targetId: val,
@@ -171,20 +173,21 @@ export default class DetailsPage extends React.Component<
           })
           return
         }
-        SynapseClient.getEntityHeaders(references, token).then(
-          (entityHeaders) => {
-            this.setState({
-              queryResultBundle: data,
-              entityHeaders,
-              isLoading: false,
-              hasError: false,
-            })
-          },
-        )
-      },
-    ).catch((e) => {
-      console.log("getQueryTableResults: Error getting data", e)
-    })
+        SynapseClient.getEntityHeaders(
+          references,
+          this.context.accessToken,
+        ).then((entityHeaders) => {
+          this.setState({
+            queryResultBundle: data,
+            entityHeaders,
+            isLoading: false,
+            hasError: false,
+          })
+        })
+      })
+      .catch((e) => {
+        console.log('getQueryTableResults: Error getting data', e)
+      })
   }
 
   handleMenuClick = (index: number) => {
@@ -248,18 +251,20 @@ export default class DetailsPage extends React.Component<
       return (
         <div className="DetailsPage tab-layout">
           <div className="component-container" ref={this.ref}>
-            {<DetailsPageTabs
-              tabConfigs={tabLayout}
-              loading={isLoading}
-              tabContents={!isLoading && this.buildTabContent()}>
-            </DetailsPageTabs>}
+            {
+              <DetailsPageTabs
+                tabConfigs={tabLayout}
+                loading={isLoading}
+                tabContents={!isLoading && this.buildTabContent()}
+              ></DetailsPageTabs>
+            }
           </div>
         </div>
       )
     } else {
       const synapseConfigContent = (
         <>
-          {isLoading && <BarLoader color="#878787" loading={true} height={5}/>}
+          {isLoading && <BarLoader color="#878787" loading={true} height={5} />}
           {!isLoading && this.renderSynapseConfigArray(synapseConfigArray)}
         </>
       )
@@ -276,11 +281,10 @@ export default class DetailsPage extends React.Component<
         return synapseConfigContent
       }
     }
-
-  }  // end render()
+  } // end render()
 
   renderMenu = () => {
-    const { synapseConfigArray, token } = this.props
+    const { synapseConfigArray } = this.props
     const { queryResultBundle } = this.state
     const mapColumnHeaderToRowIndex: Dictionary<number> = {}
     let row: string[] = []
@@ -310,7 +314,6 @@ export default class DetailsPage extends React.Component<
         return (
           <ExternalFileHandleLink
             className={className}
-            token={token}
             synId={el.props.synId}
           />
         )
@@ -336,18 +339,20 @@ export default class DetailsPage extends React.Component<
   buildTabContent() {
     const { synapseConfigArray } = this.props
     // Get sorted unique tab index from synapseConfigArray
-    const tabIndexes = Array.from(new Set(synapseConfigArray.map(el => el.tabIndex))).sort()
+    const tabIndexes = Array.from(
+      new Set(synapseConfigArray.map((el) => el.tabIndex)),
+    ).sort()
     // For each tab, build its content
-    return tabIndexes.map(i => {
-      const tabContentConfig:RowSynapseConfig[] = synapseConfigArray.filter(
-        (el: RowSynapseConfig, index) => el.tabIndex === i
+    return tabIndexes.map((i) => {
+      const tabContentConfig: RowSynapseConfig[] = synapseConfigArray.filter(
+        (el: RowSynapseConfig, index) => el.tabIndex === i,
       )
       const tabContent = this.renderSynapseConfigArray(tabContentConfig)
-      return (<div key={`detailPage-tabItem-${i}`}>{tabContent}</div>)
+      return <div key={`detailPage-tabItem-${i}`}>{tabContent}</div>
     })
   }
 
-  renderSynapseConfigArray = (synapseConfigArray:RowSynapseConfig[]) => {
+  renderSynapseConfigArray = (synapseConfigArray: RowSynapseConfig[]) => {
     return synapseConfigArray.map((el: RowSynapseConfig, index) => {
       const id = COMPONENT_ID_PREFIX + index
       const { standalone, resolveSynId, showTitleSeperator = true } = el
@@ -368,11 +373,11 @@ export default class DetailsPage extends React.Component<
       const component = standalone
         ? generateSynapseObject(el)
         : this.renderSynapseObjectFromData(el)
-      
+
       if (this.isReactFragment(component)) {
-          return <></>
+        return <></>
       }
-      
+
       return (
         <div id={id} key={key}>
           {title}
@@ -382,11 +387,11 @@ export default class DetailsPage extends React.Component<
     })
   }
 
-  private isReactFragment(variableToInspect:any): boolean {
+  private isReactFragment(variableToInspect: any): boolean {
     if (variableToInspect.type) {
-      return variableToInspect.type === React.Fragment;
+      return variableToInspect.type === React.Fragment
     }
-    return variableToInspect === React.Fragment;
+    return variableToInspect === React.Fragment
   }
 
   private renderSynapseObjectFromData(el: RowSynapseConfig): React.ReactNode {
@@ -442,7 +447,7 @@ export default class DetailsPage extends React.Component<
 
       // For explorer 2.0, construct an object to contain the locked facet name and facet value
       const lockedFacet: LockedFacet = {
-        facet: columnName
+        facet: columnName,
       }
 
       if (resolveSynId) {

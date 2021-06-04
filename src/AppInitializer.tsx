@@ -6,6 +6,7 @@ import { withCookies, ReactCookieProps } from 'react-cookie'
 import { DOWNLOAD_FILES_MENU_TEXT } from 'synapse-react-client/dist/containers/table/SynapseTableConstants'
 import { UserProfile } from 'synapse-react-client/dist/utils/synapseTypes'
 import SynapseRedirectDialog from 'portal-components/SynapseRedirectDialog'
+import { SynapseContextProvider } from 'synapse-react-client/dist/utils/SynapseContext'
 
 export type AppInitializerState = {
   token: string
@@ -16,8 +17,6 @@ export type AppInitializerState = {
   // after page load
   hasCalledGetSession: boolean
 }
-
-export const TokenContext = React.createContext('')
 
 type Props = RouteComponentProps & ReactCookieProps
 
@@ -145,7 +144,14 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
       return <></>
     }
     return (
-      <TokenContext.Provider value={this.state.token}>
+      <SynapseContextProvider
+        synapseContext={{
+          accessToken: this.state.token,
+          isInExperimentalMode:
+            SynapseClient.getIsInExperimentalModeFromCookie(),
+          utcTime: SynapseClient.getUseUtcTimeFromCookie(),
+        }}
+      >
         {React.Children.map(this.props.children, (child: any) => {
           if (!child) {
             return false
@@ -161,8 +167,10 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
             return React.cloneElement(child, props)
           }
         })}
-        <SynapseRedirectDialog synapseRedirectUrl={this.state.synapseRedirectUrl} />
-      </TokenContext.Provider>
+        <SynapseRedirectDialog
+          synapseRedirectUrl={this.state.synapseRedirectUrl}
+        />
+      </SynapseContextProvider>
     )
   }
 

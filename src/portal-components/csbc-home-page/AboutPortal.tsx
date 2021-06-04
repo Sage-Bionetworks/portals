@@ -3,16 +3,15 @@ import { HomePageCardProps } from './HomePageCard'
 import HomePageCardContainer from './HomePageCardContainer'
 
 export type AboutPortalProps = {
-  token?: string
   cardProps: HomePageCardProps[]
 }
 
 const AboutPortal = (props: AboutPortalProps) => {
-  const { cardProps, token} = props
+  const { cardProps } = props
   return (
     <div className="AboutPortal">
       <div>
-        <HomePageCardContainer cardProps={cardProps} token={token} />
+        <HomePageCardContainer cardProps={cardProps} />
       </div>
     </div>
   )

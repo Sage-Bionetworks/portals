@@ -4,14 +4,13 @@ import MarkdownSynapse from 'synapse-react-client/dist/containers/MarkdownSynaps
 export type HomePageCardProps = {
   ownerId: string
   wikiId?: string
-  token?: string
 }
 
 const HomePageCard = (props: HomePageCardProps) => {
-  const { ownerId, wikiId, token } = props
+  const { ownerId, wikiId } = props
   return (
     <div className="HomePageCard">
-      <MarkdownSynapse token={token} ownerId={ownerId} wikiId={wikiId} />
+      <MarkdownSynapse ownerId={ownerId} wikiId={wikiId} />
     </div>
   )
 }
