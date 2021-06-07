@@ -106,13 +106,40 @@ const routes: GenericRoute[] = [
                 detailsPagePath:'/Explore/Studies/DetailsPage?Study=syn17095980'
               }
             ]}
-          }]        
+          }]
+        },
+      },
+      {
+        name: 'Ecosystem',
+        title: 'Related Resources',
+        centerTitle: true,
+        subtitle:
+            'The AD Knowledge Portal ecosystem contains a growing list of tools and resources. Explore some of them below.',
+        outsideContainerClassName: 'home-spacer',
+        props: {
+          config: [
+            {
+              title: 'Results Explorers',
+              ownerId: 'syn12666371',
+              wikiId: '607139',
+            },
+            {
+              title: 'Data Portals',
+              ownerId: 'syn12666371',
+              wikiId: '607138',
+            },
+            {
+              title: 'Program Websites',
+              ownerId: 'syn12666371',
+              wikiId: '607140',
+            },
+          ],
         },
       },
       {
         name: 'UserCardListRotate',
         title: 'Our People and Institutions',
-        outsideContainerClassName: 'home-spacer',
+        outsideContainerClassName: 'home-spacer home-bg-dark',
         centerTitle: true,
         props: {
           sql: `${peopleSql} where isFeatured=true`,
@@ -127,7 +154,7 @@ const routes: GenericRoute[] = [
         name: 'RssFeedCards',
         title: 'What\'s New',
         centerTitle: true,
-        outsideContainerClassName: 'home-spacer home-bg-dark',
+        outsideContainerClassName: 'home-spacer',
         props: {
           url: 'https://news.adknowledgeportal.org',
           itemsToShow:3,
