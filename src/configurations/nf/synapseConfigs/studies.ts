@@ -120,7 +120,7 @@ const studies: HomeExploreConfig = {
           'diseaseFocus',
           'manifestation',
           'fundingAgency',
-          'grantDOI'
+          'grantDOI',
         ],
       },
     },
