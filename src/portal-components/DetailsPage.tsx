@@ -147,7 +147,7 @@ export default class DetailsPage extends React.Component<
               }
             }
             if (typeof value === 'object') {
-              ;(value as string[])?.forEach((val) => {
+              (value as string[])?.forEach((val) => {
                 if (!references.find((el) => el.targetId === val)) {
                   references.push({
                     targetId: val,
