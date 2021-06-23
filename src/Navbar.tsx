@@ -263,6 +263,7 @@ class Navbar extends React.Component<any, State> {
                 </>
               )}
             <SynapseComponents.ShowDownload />
+            {userProfile && <SynapseComponents.ShowDownloadV2 to='/DownloadCart' />}
             {
               // we have to loop backwards due to css rendering of flex-direction: row-reverse
               routesConfig
