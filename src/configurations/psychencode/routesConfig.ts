@@ -218,6 +218,14 @@ const routes: GenericRoute[] = [
       },
     ],
   },
+  {
+    isNested: false,
+    displayName: 'Help',
+    to: undefined,
+    target: '_blank',
+    link: 'https://help.psychencode.synapse.org/',
+    synapseConfigArray: [],
+  },
 ]
 
 export default routes
