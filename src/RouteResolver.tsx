@@ -21,6 +21,24 @@ function fail(message: string): never {
   Given a pathname find the appropriate route
 */
 export const getRouteFromParams = (pathname: string) => {
+  // special case, all portals support the /DownloadCart route
+  if ('/DownloadCart' === pathname) {
+    const downloadCartSynapseConfig:SynapseConfig = {
+      name: 'DownloadCartPage',
+      props: {},
+      isOutsideContainer: true,
+    }
+    return {
+      to: 'DownloadCart',
+      isNested: false,
+      hideRouteFromNavbar: true,
+      displayName: 'Download Cart',
+      synapseConfigArray: [
+        downloadCartSynapseConfig
+      ],
+    }
+  }
+
   // e.g. pathname = /Explore/Programs
   const split: string[] = pathname.split('/').slice(1)
   // e.g. split = 'Explore', 'Programs

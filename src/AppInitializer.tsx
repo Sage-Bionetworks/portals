@@ -148,7 +148,7 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
         synapseContext={{
           accessToken: this.state.token,
           isInExperimentalMode:
-            SynapseClient.getIsInExperimentalModeFromCookie(),
+            SynapseClient.isInSynapseExperimentalMode(),
           utcTime: SynapseClient.getUseUtcTimeFromCookie(),
         }}
       >

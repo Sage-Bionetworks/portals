@@ -54,7 +54,7 @@ const routes: GenericRoute[] = [
         props: {
           limit,
           facetAliases,
-          sql: newStudiesSql,          
+          sql: newStudiesSql,
           ...studyCardConfiguration,
         },
       },

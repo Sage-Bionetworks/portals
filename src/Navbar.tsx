@@ -3,7 +3,7 @@ import routesConfig from './config/routesConfig'
 import logoHeaderConfig from './config/logoHeaderConfig'
 import Dialog from '@material-ui/core/Dialog'
 import Dropdown from 'react-bootstrap/Dropdown'
-import { SynapseComponents } from 'synapse-react-client'
+import { SynapseClient, SynapseComponents } from 'synapse-react-client'
 import { SignInProps } from './AppInitializer'
 import NavLink from 'portal-components/NavLink'
 import NavUserLink from './portal-components/NavUserLink'
@@ -36,16 +36,6 @@ class Navbar extends React.Component<any, State> {
     {
       text: 'Challenges',
       settingSubPath: 'challenges',
-    },
-    {
-      text: 'Downloads',
-      settingSubPath: 'downloads',
-      hasBorder: true,
-    },
-    {
-      text: 'Settings',
-      settingSubPath: 'settings',
-      hasBorder: true,
     },
   ]
 
@@ -124,6 +114,7 @@ class Navbar extends React.Component<any, State> {
     ) : (
       <></>
     )
+    const isInExperimentalMode = SynapseClient.isInSynapseExperimentalMode()
     const hostname = window.location.hostname.toLowerCase()
     // for now, we only support login in the dev environment (localstorage) or from a .synapse.org subdomain (http-only secure cookie)
     const isSynapseSubdomainOrLocal =
@@ -244,6 +235,35 @@ class Navbar extends React.Component<any, State> {
                           </Dropdown.Item>
                         )
                       })}
+                      {!isInExperimentalMode &&
+                          <Dropdown.Item
+                            key='DownloadV1'
+                            className='SRC-primary-background-color-hover SRC-nested-color border-bottom-1'
+                            href={`https://www.synapse.org/#!Profile:${
+                              userProfile.ownerId
+                            }/downloads`}
+                          >
+                            Downloads
+                          </Dropdown.Item>
+                      }
+                      {isInExperimentalMode &&
+                          <Dropdown.Item
+                            key='DownloadV2'
+                            className='SRC-primary-background-color-hover SRC-nested-color border-bottom-1'
+                            href='/DownloadCart'
+                          >
+                            Downloads
+                          </Dropdown.Item>
+                      }
+                      <Dropdown.Item
+                        key='Settings'
+                        className='SRC-primary-background-color-hover SRC-nested-color border-bottom-1'
+                        href={`https://www.synapse.org/#!Profile:${
+                          userProfile.ownerId
+                        }/settings`}
+                      >
+                        Settings
+                    </Dropdown.Item>
                       <Dropdown.Item // desktop sign out
                         className="SRC-primary-background-color-hover SRC-nested-color"
                         // @ts-ignore
@@ -263,6 +283,7 @@ class Navbar extends React.Component<any, State> {
                 </>
               )}
             <SynapseComponents.ShowDownload />
+            {userProfile && <SynapseComponents.ShowDownloadV2 to='/DownloadCart' />}
             {
               // we have to loop backwards due to css rendering of flex-direction: row-reverse
               routesConfig

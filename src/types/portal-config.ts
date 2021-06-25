@@ -29,6 +29,7 @@ import { RssFeedCardsProps } from 'synapse-react-client/dist/containers/RssFeedC
 import { FeaturedDataTabsProps } from 'synapse-react-client/dist/containers/home_page/featured-data/FeaturedDataTabs'
 import { UserCardListGroupsProps } from 'synapse-react-client/dist/containers/home_page/people/UserCardListGroups'
 import { TableFeedCardsProps } from 'synapse-react-client/dist/containers/TableFeedCards'
+import { DownloadCartPageProps } from 'synapse-react-client/dist/containers/download_list_v2/DownloadCartPage'
 
 // For styling the header on the home page -- the main title and the summary text
 export type HomePageHeaderConfig = {
@@ -118,6 +119,11 @@ type FunderCards = {
 type HomePageCardContainer = {
   name: 'HomePageCardContainer'
   props: HomePageCardContainerProps
+}
+
+type DownloadCartPage = {
+  name: 'DownloadCartPage'
+  props: DownloadCartPageProps
 }
 
 type Ecosystem = {
@@ -254,6 +260,7 @@ export type SynapseConfig = (
   | FeaturedDataTabs
   | UserCardListGroups
   | TableFeedCards
+  | DownloadCartPage
 ) &
   Metadata
 export type SynapseConfigArray = SynapseConfig[]
