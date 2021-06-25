@@ -205,6 +205,14 @@ const routes: GenericRoute[] = [
     ],
   },
   {
+    isNested: false,
+    displayName: 'News',
+    to: undefined,
+    target: '_blank',
+    link: 'https://news.psychencode.org/',
+    synapseConfigArray: [],
+  },
+  {
     to: 'About',
     isNested: false,
     synapseConfigArray: [
