@@ -42,20 +42,18 @@ class CookiesNotification extends React.Component<
 
   render() {
     // show banner if they haven't clicked okay, otherwise show nothing
-    const onSecondaryButtonClick = () => {
-      window.open("https://s3.amazonaws.com/static.synapse.org/governance/SynapsePrivacyPolicy.pdf", "_blank")
-    }
     return this.state.hasAgreedToCookies ? (
       false
     ) : (
-      <SynapseComponents.GlobalAlert 
+      <SynapseComponents.FullWidthAlert 
         variant="info" 
         title="Our site uses cookies."
         description="This website uses cookies to enhance your experience and to analyze our traffic. Using this website means that you agree with our cookie policy." 
         primaryButtonText="ACCEPT AND CONTINUE"
         onPrimaryButtonClick={this.setHasAgreedToCookies}
         secondaryButtonText="LEARN MORE"
-        onSecondaryButtonClick={onSecondaryButtonClick}
+        secondaryButtonHref='https://s3.amazonaws.com/static.synapse.org/governance/SynapsePrivacyPolicy.pdf'
+        isGlobal={true}
         />
     )
   }
