@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { withRouter, RouteComponentProps } from 'react-router-dom'
 import { withCookies, ReactCookieProps } from 'react-cookie'
-import Alert from 'react-bootstrap/Alert'
+import { SynapseComponents } from 'synapse-react-client'
 
 export type CookiesNotificationToken = {
   hasAgreedToCookies: boolean
@@ -45,31 +45,16 @@ class CookiesNotification extends React.Component<
     return this.state.hasAgreedToCookies ? (
       false
     ) : (
-      <Alert
-          variant="info"
-          show={true}
-          dismissible={false}
-          transition={false}
-          className="synapseAlert global bootstrap-4-backport"
-        >
-          <span className="fa-stack iconArea font-size-20"><i className="fa fa-circle iconBackground fa-stack-2x"></i><i className="fa iconForeground fa-stack-1x fa-info"></i></span>
-          <span className="messageArea">
-            <div><strong>Our site uses cookies.</strong></div>
-            This website uses cookies to enhance your experience and to analyze our traffic. Using this website means that you agree with our cookie policy.
-          </span>
-          <a
-            className="secondaryButton"
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://s3.amazonaws.com/static.synapse.org/governance/SynapsePrivacyPolicy.pdf"
-          >
-            {' '}
-            <u> LEARN MORE </u>
-          </a>
-          <button className="primaryButton pill btn btn-secondary" onClick={this.setHasAgreedToCookies}>
-            ACCEPT AND CONTINUE
-          </button>
-        </Alert>
+      <SynapseComponents.FullWidthAlert 
+        variant="info" 
+        title="Our site uses cookies."
+        description="This website uses cookies to enhance your experience and to analyze our traffic. Using this website means that you agree with our cookie policy." 
+        primaryButtonText="ACCEPT AND CONTINUE"
+        onPrimaryButtonClick={this.setHasAgreedToCookies}
+        secondaryButtonText="LEARN MORE"
+        secondaryButtonHref='https://s3.amazonaws.com/static.synapse.org/governance/SynapsePrivacyPolicy.pdf'
+        isGlobal={true}
+        />
     )
   }
 }
