@@ -45,6 +45,7 @@ export const studyCardConfiguration: CardConfiguration = {
       'fundingAgency',
       'institutions',
       'studyId',
+      'grantDOI',
     ],
     dataTypeIconNames: 'dataType'
   },
@@ -119,6 +120,7 @@ const studies: HomeExploreConfig = {
           'diseaseFocus',
           'manifestation',
           'fundingAgency',
+          'grantDOI',
         ],
       },
     },
