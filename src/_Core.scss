@@ -340,6 +340,13 @@ button.dropdown-toggle.nav-button:hover {
   }
 }
 
+// do not show experimental mode component in the footer if on mobile
+@media (max-width: 992px) {
+  .experimental-mode-wrapper {
+    display: none;
+  }  
+}
+
 #portal-contact-footer {
   flex-basis: 50%;
   display: flex;
