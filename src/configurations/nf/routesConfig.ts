@@ -100,6 +100,11 @@ const routes: GenericRoute[] = [
               wikiId: '606580',
             },
             {
+              title: 'DHART SPORE',
+              ownerId: 'syn5702691',
+              wikiId: '611220',
+            },
+            {
               title: 'Neurofibromatosis Research Initiative',
               ownerId: 'syn5702691',
               wikiId: '606582',
