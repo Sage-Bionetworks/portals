@@ -87,7 +87,7 @@ const routes: GenericRoute[] = [
         props: {
           url: 'https://news.psychencode.org',
           itemsToShow:3,
-          allowCategories: ['Data Releases', 'News', 'Preprint','Publication'],
+          allowCategories: ['Data Releases','Preprint','Publication'],
         }
       },
       {
