@@ -27,7 +27,7 @@
     "react-spinners": "^0.8.3",
     "sass": "^1.30.0",
     "source-map-explorer": "^2.5.2",
-    "synapse-react-client": "2.0.9",
+    "synapse-react-client": "2.0.10",
     "typescript": "3.8.3"
   },
   "jest": {

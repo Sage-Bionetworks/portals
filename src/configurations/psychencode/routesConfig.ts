@@ -88,9 +88,6 @@ const routes: GenericRoute[] = [
           url: 'https://news.psychencode.org',
           itemsToShow:3,
           allowCategories: ['Data Releases', 'News', 'Preprint','Publication'],
-          // lockedFacet: {
-          //   value: 'what\'s-new'
-          // }
         }
       },
       {
