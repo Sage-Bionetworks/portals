@@ -1,7 +1,7 @@
 // Portal owners can change the versions of the resources by modifying the
 // version of the entity used in the sql below
 
-const dataSynId = 'syn20821313.7'
+const dataSynId = 'syn20821313.8'
 export const studiesSql = 'SELECT * FROM syn21783965.6'
 export const dataSql = `SELECT * FROM ${dataSynId}`
 export const metadataSql = `SELECT id, metadataType, dataType, assay FROM ${dataSynId} WHERE "dataSubtype" = \'metadata\'`
