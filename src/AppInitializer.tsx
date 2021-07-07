@@ -228,9 +228,7 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
       logoUrl: icon,
       portalName: name,
     }
-    const expireDate = new Date()
     // expire after 10 seconds
-    expireDate.setTime(Date.now() + 1000 * 10)
     const domainValue = window.location.hostname
       .toLowerCase()
       .includes('.synapse.org')
@@ -240,7 +238,7 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
     this.props.cookies.set(COOKIE_CONFIG_KEY, JSON.stringify(cookieValue), {
       path: '/',
       domain: domainValue,
-      maxAge: 10,
+      maxAge: 20,
     })
   }
 }
