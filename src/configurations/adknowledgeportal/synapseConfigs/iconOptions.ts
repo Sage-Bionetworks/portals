@@ -19,6 +19,7 @@ export const iconOptions = {
   'Psych-AD': psychIconSvg,
   'CDCP': cdcpSvg,
   'ELP': longevitySvg,
+  'ELITE': longevitySvg,
 }
 
 export const iconHeaderOptions = {
@@ -29,4 +30,5 @@ export const iconHeaderOptions = {
   'Psych-AD': psychHeaderSvg,
   'CDCP': cdcpSvg,
   'ELP': longevitySvg,
+  'ELITE': longevitySvg,
 }
