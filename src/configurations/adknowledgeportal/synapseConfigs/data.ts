@@ -36,6 +36,9 @@ const data: HomeExploreConfig = {
         ],
       },
       sql: dataSql,
+      searchConfiguration:{
+        searchable: ['study','dataType','assay', 'organ', 'tissue', 'species', 'diagnosis', 'sex', 'consortium', 'grant', 'modelSystemName', 'treatmentType', 'specimenID', 'individualID', 'individualIdSource', 'specimenIdSource', 'resourceType', 'dataSubtype', 'metadataType', 'assayTarget', 'analysisType', 'cellType', 'nucleicAcidSource', 'fileFormat', 'group', 'name', 'isModelSystem', 'isConsortiumAnalysis', 'isMultiSpecimen', 'metaboliteType', 'chromosome'],
+      },
       shouldDeepLink: true,
     },
   },
