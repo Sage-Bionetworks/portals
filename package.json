@@ -80,7 +80,7 @@
     "markdown-it-synapse-table": "^1.0.6",
     "node": "^14.15.2",
     "pluralize": "^8.0.0",
-    "sanitize-html": "^1.18.4"
+    "sanitize-html": "^2.3.2"
   },
   "browserslist": {
     "production": [
