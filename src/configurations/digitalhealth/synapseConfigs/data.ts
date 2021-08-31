@@ -46,7 +46,7 @@ const data: HomeExploreConfig = {
       name: 'Data',
       facetAliases,
       tableConfiguration: {
-        showDownloadColumn: true,
+        showDownloadColumn: false,
         columnLinks: dataColumnLinks,
       },
       facetsToPlot: [
