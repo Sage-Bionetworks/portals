@@ -30,6 +30,7 @@ import { FeaturedDataTabsProps } from 'synapse-react-client/dist/containers/home
 import { UserCardListGroupsProps } from 'synapse-react-client/dist/containers/home_page/people/UserCardListGroups'
 import { TableFeedCardsProps } from 'synapse-react-client/dist/containers/TableFeedCards'
 import { DownloadCartPageProps } from 'synapse-react-client/dist/containers/download_list_v2/DownloadCartPage'
+import { RedirectProps } from 'react-router'
 
 // For styling the header on the home page -- the main title and the summary text
 export type HomePageHeaderConfig = {
@@ -180,7 +181,6 @@ type UserCardListGroups = {
   props: UserCardListGroupsProps
 }
 
-
 type Metadata = {
   title?: string
   centerTitle?: boolean
@@ -225,7 +225,13 @@ type SurveysCompletedPlots = {
   props: SurveysCompletedPlotsProps
 }
 
+type RedirectWithQuery = {
+  name: 'RedirectWithQuery'
+  props: RedirectProps
+}
+
 export type SynapseConfig = (
+  | RedirectWithQuery
   | StatefulButtonControl
   | RouteControl
   | CardContainerLogic

@@ -1,12 +1,19 @@
 import * as React from 'react'
-import { withRouter, RouteComponentProps } from 'react-router'
+import {
+  withRouter,
+  RouteComponentProps,
+  useLocation,
+  useHistory,
+} from 'react-router'
 import routesConfig from './config/routesConfig'
-import { SynapseConfig } from 'types/portal-config'
+import sharedRouteConfig from './shared-config/sharedRoutes'
+import { GenericRoute, SynapseConfig } from 'types/portal-config'
 import { SynapseComponents } from 'synapse-react-client'
 import PortalComponents from './portal-components/'
 import Layout from './portal-components/Layout'
 import docTitleConfig from './config/docTitleConfig'
 import { scrollToWithOffset } from 'utils'
+import { isEmpty } from 'lodash-es'
 import {
   SynapseContextConsumer,
   SynapseContextType,
@@ -17,28 +24,14 @@ function fail(message: string): never {
   throw new Error(message)
 }
 
-/*
-  Given a pathname find the appropriate route
-*/
-export const getRouteFromParams = (pathname: string) => {
-  // special case, all portals support the /DownloadCart route
-  if ('/DownloadCart' === pathname) {
-    const downloadCartSynapseConfig:SynapseConfig = {
-      name: 'DownloadCartPage',
-      props: {},
-      isOutsideContainer: true,
-    }
-    return {
-      to: 'DownloadCart',
-      isNested: false,
-      hideRouteFromNavbar: true,
-      displayName: 'Download Cart',
-      synapseConfigArray: [
-        downloadCartSynapseConfig
-      ],
-    }
-  }
-
+/**
+ * Given a pathname, return the matching route object and the route's pathname.
+ * @param pathname
+ * @returns
+ */
+export const getRouteFromParams = (
+  pathname: string,
+): [GenericRoute, string] => {
   // e.g. pathname = /Explore/Programs
   const split: string[] = pathname.split('/').slice(1)
   // e.g. split = 'Explore', 'Programs
@@ -51,19 +44,38 @@ export const getRouteFromParams = (pathname: string) => {
       split.push('')
     }
   }
-  let route = routesConfig.find((el) => split[0] === el.to)!
+  let route = ([...sharedRouteConfig, ...routesConfig] as GenericRoute[]).find(
+    (el) => split[0] === el.to,
+  )!
+  let routePathName = '/' + route.to
+
   // search the route configs for the pathname
   for (let i = 1; i < split.length; i += 1) {
     if (!route) {
       return fail(`Error: url at ${pathname} has no route mapping`)
     }
     if (route.isNested) {
-      route = route.routes.find((el) => el.to!.includes(split[i]))!
+      const nextRoute = route.routes.find((el) => el.to!.includes(split[i]))
+      if (nextRoute) {
+        route = nextRoute
+        routePathName += '/' + route.to
+      } else {
+        // If we can't find a matching nested route, return the last route that was found
+        break
+      }
     } else {
       fail(`Route at ${pathname} has no SynapseConfigArray mapping`)
     }
   }
-  return route
+
+  // If there's no SynapseConfigArray, then the route we settled on wasn't meant to be a standalone page, and we have nothing to render.
+  // This isn't typical, but just so we can load something, we (recursively) get the first child until we find a route with a SynapseConfigArray
+  while (isEmpty(route.synapseConfigArray) && route.isNested) {
+    route = route.routes[0]
+    routePathName += '/' + route.to
+  }
+
+  return [route, routePathName]
 }
 
 type SynapseComponentProps = {
@@ -128,13 +140,11 @@ export const SynapseComponentWithContext: React.FC<SynapseComponentWithContextPr
 /*
   Given a location join with the routesConfig to render the appropriate component.
 */
-const RouteResolver: React.FunctionComponent<RouteComponentProps> = ({
-  location,
-}) => {
+const RouteResolver: React.FunctionComponent<RouteComponentProps> = () => {
   // Map this to route in configuration files
-  const { pathname, search, hash } = location
-  // get the route object
-  const route = getRouteFromParams(pathname)
+  const { pathname, search, hash } = useLocation()
+  // get the route object and the typical path of the route
+  const [route, newPathname] = getRouteFromParams(pathname)
   // If url has search params transform into key-value dictionary that can be passed into
   // the component which is rendered
   let searchParamsProps: any = undefined
@@ -155,15 +165,29 @@ const RouteResolver: React.FunctionComponent<RouteComponentProps> = ({
     document.title = newTitle
   }
   const scrollToRef = React.useRef<HTMLElement>(null)
+
+  const history = useHistory()
+  React.useEffect(() => {
+    // We push the new pathname to history with one exception:
+    // If we landed on a route that redirects, then don't push the new pathname because it won't take into account the redirect
+    if (
+      (route.synapseConfigArray ?? []).filter(
+        (el) => el.name === 'RedirectWithQuery',
+      ).length === 0
+    ) {
+      history.push({ pathname: newPathname, search, hash })
+    }
+  }, [newPathname])
+
   // this delay is here to improve the location of the element, since it's position depends on the layout of other components on the page (that also need to load)
   setTimeout(() => {
     if (scrollToRef.current) {
       scrollToWithOffset(scrollToRef.current)
     }
-  }, 500);
+  }, 500)
   return (
     <React.Fragment>
-      {synapseConfigArray!.map((el: SynapseConfig) => {
+      {synapseConfigArray.map((el: SynapseConfig) => {
         const {
           containerClassName,
           outsideContainerClassName,
@@ -173,7 +197,12 @@ const RouteResolver: React.FunctionComponent<RouteComponentProps> = ({
           subtitle,
           props,
         } = el
-        const scrollToJsx = title && hash && hash === `#${encodeURI(title)}` ? <span ref={scrollToRef} /> : <></>
+        const scrollToJsx =
+          title && hash && hash === `#${encodeURI(title)}` ? (
+            <span ref={scrollToRef} />
+          ) : (
+            <></>
+          )
         return (
           <React.Fragment key={JSON.stringify(el.props)}>
             {isOutsideContainer ? (
