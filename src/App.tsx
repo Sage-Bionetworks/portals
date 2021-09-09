@@ -12,13 +12,12 @@ import { SynapseComponents } from 'synapse-react-client'
 
 const Home = React.lazy(() => import('./Home'))
 const RouteResolver = React.lazy(() => import('./RouteResolver'))
-const App: React.SFC = () => {
-  const toastContainer = React.createElement(SynapseComponents.SynapseToastContainer)
+const App: React.FC = () => {
   return (
     <CookiesProvider>
       <BrowserRouter>
         <AppInitializer>
-          {toastContainer}
+          <SynapseComponents.SynapseToastContainer />
           <Navbar />
           <CookiesNotification />
           <main className="main">
