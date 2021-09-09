@@ -66,7 +66,13 @@ export const getRouteFromParams = (pathname: string) => {
   return route
 }
 
-export const generateSynapseObjectHelper = (synapseConfig: SynapseConfig) => {
+type SynapseComponentProps = {
+  synapseConfig: SynapseConfig
+}
+
+export const SynapseComponent: React.FC<SynapseComponentProps> = ({
+  synapseConfig,
+}) => {
   const Component =
     (PortalComponents as any)[synapseConfig.name] ??
     (SynapseComponents as any)[synapseConfig.name]
@@ -86,33 +92,38 @@ export const generateSynapseObjectHelper = (synapseConfig: SynapseConfig) => {
   }
 }
 
-export const generateSynapseObject = (
-  synapseConfig: SynapseConfig,
-  searchParams?: any,
-) => {
-  // return the synapse object but with token/search params injected into its props from the context created in AppInitializer
-  const { props, ...rest } = synapseConfig
-  const key = JSON.stringify(props)
-  return (
-    <SynapseContextConsumer key={key}>
-      {(ctx?: SynapseContextType) => {
-        const propsWithSearchAndToken = {
-          ...props,
-          searchParams,
-          token: ctx?.accessToken,
-          accessToken: ctx?.accessToken,
-        }
-        // TODO: Understand why typescript is throwing an error below
-        // @ts-ignore
-        const synapseObjectWithTokenAndSearch: SynapseConfig = {
-          props: propsWithSearchAndToken,
-          ...rest,
-        }
-        return generateSynapseObjectHelper(synapseObjectWithTokenAndSearch)
-      }}
-    </SynapseContextConsumer>
-  )
+type SynapseComponentWithContextProps = {
+  synapseConfig: SynapseConfig
+  searchParams?: any
 }
+
+export const SynapseComponentWithContext: React.FC<SynapseComponentWithContextProps> =
+  ({ synapseConfig, searchParams }) => {
+    // return the synapse object but with token/search params injected into its props from the context created in AppInitializer
+    const { props, ...rest } = synapseConfig
+    const key = JSON.stringify(props)
+    return (
+      <SynapseContextConsumer key={key}>
+        {(ctx?: SynapseContextType) => {
+          const propsWithSearchAndToken = {
+            ...props,
+            searchParams,
+            token: ctx?.accessToken,
+            accessToken: ctx?.accessToken,
+          }
+          // TODO: Understand why typescript is throwing an error below
+          // @ts-ignore
+          const synapseObjectWithTokenAndSearch: SynapseConfig = {
+            props: propsWithSearchAndToken,
+            ...rest,
+          }
+          return (
+            <SynapseComponent synapseConfig={synapseObjectWithTokenAndSearch} />
+          )
+        }}
+      </SynapseContextConsumer>
+    )
+  }
 
 /*
   Given a location join with the routesConfig to render the appropriate component.
@@ -177,7 +188,10 @@ const RouteResolver: React.FunctionComponent<RouteComponentProps> = ({
                     {subtitle}
                   </p>
                 )}
-                {generateSynapseObject(el, searchParamsProps)}
+                <SynapseComponentWithContext
+                  synapseConfig={el}
+                  searchParams={searchParamsProps}
+                />
               </div>
             ) : (
               <Layout
@@ -197,7 +211,10 @@ const RouteResolver: React.FunctionComponent<RouteComponentProps> = ({
                     {subtitle}
                   </p>
                 )}
-                {generateSynapseObject(el, searchParamsProps)}
+                <SynapseComponentWithContext
+                  synapseConfig={el}
+                  searchParams={searchParamsProps}
+                />
               </Layout>
             )}
           </React.Fragment>
