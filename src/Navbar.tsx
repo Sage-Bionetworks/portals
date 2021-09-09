@@ -282,7 +282,7 @@ class Navbar extends React.Component<any, State> {
                   if (el.hideRouteFromNavbar) {
                     return false
                   }
-                  // hide children and only show top level element if there is a nested route to hide
+                  // hide children and only show top level element if all nested routes are hidden
                   const hideChildren =
                     el.isNested &&
                     el.routes.every((route) => route.hideRouteFromNavbar)
