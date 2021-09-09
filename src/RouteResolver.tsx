@@ -1,28 +1,23 @@
+import { isEmpty } from 'lodash-es'
 import * as React from 'react'
 import {
-  withRouter,
   RouteComponentProps,
-  useLocation,
   useHistory,
+  useLocation,
+  withRouter,
 } from 'react-router'
-import routesConfig from './config/routesConfig'
-import sharedRouteConfig from './shared-config/sharedRoutes'
-import { GenericRoute, SynapseConfig } from 'types/portal-config'
 import { SynapseComponents } from 'synapse-react-client'
-import PortalComponents from './portal-components/'
-import Layout from './portal-components/Layout'
-import docTitleConfig from './config/docTitleConfig'
-import { scrollToWithOffset } from 'utils'
-import { isEmpty } from 'lodash-es'
 import {
   SynapseContextConsumer,
   SynapseContextType,
 } from 'synapse-react-client/dist/utils/SynapseContext'
-
-// https://basarat.gitbooks.io/typescript/docs/types/never.html
-function fail(message: string): never {
-  throw new Error(message)
-}
+import { GenericRoute, SynapseConfig } from 'types/portal-config'
+import { scrollToWithOffset } from 'utils'
+import docTitleConfig from './config/docTitleConfig'
+import routesConfig from './config/routesConfig'
+import PortalComponents from './portal-components/'
+import Layout from './portal-components/Layout'
+import sharedRouteConfig, { homeRoute } from './shared-config/sharedRoutes'
 
 /**
  * Given a pathname, return the matching route object and the route's pathname.
@@ -47,13 +42,16 @@ export const getRouteFromParams = (
   let route = ([...sharedRouteConfig, ...routesConfig] as GenericRoute[]).find(
     (el) => split[0] === el.to,
   )!
+
+  if (route == null) {
+    console.warn(`Error: url at ${pathname} has no route mapping`)
+    return [homeRoute, '/']
+  }
+
   let routePathName = '/' + route.to
 
   // search the route configs for the pathname
   for (let i = 1; i < split.length; i += 1) {
-    if (!route) {
-      return fail(`Error: url at ${pathname} has no route mapping`)
-    }
     if (route.isNested) {
       const nextRoute = route.routes.find((el) => el.to!.includes(split[i]))
       if (nextRoute) {
@@ -63,8 +61,6 @@ export const getRouteFromParams = (
         // If we can't find a matching nested route, return the last route that was found
         break
       }
-    } else {
-      fail(`Route at ${pathname} has no SynapseConfigArray mapping`)
     }
   }
 
