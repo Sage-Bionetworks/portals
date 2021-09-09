@@ -10,7 +10,7 @@ const routeControlWrapper: RouteControlWrapperProps = {
     'Data',
     'Publications',
     'People',
-    'Experimental Tools',
+    'Experimental Models',
     'Computational Tools',
     'Results',
   ],

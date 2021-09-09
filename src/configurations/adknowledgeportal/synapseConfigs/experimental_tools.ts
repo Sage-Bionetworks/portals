@@ -63,8 +63,8 @@ const experimentalTools: HomeExploreConfig = {
     props: {
       unitDescription,
       rgbIndex,
-      link: 'Explore/Experimental Tools',
-      linkText: 'Explore Experimental Tools',
+      link: 'Explore/Experimental Models',
+      linkText: 'Explore Experimental Models',
       facet: 'toolType',
       sql: toolSql,
     },
@@ -74,7 +74,7 @@ const experimentalTools: HomeExploreConfig = {
     props: {
       rgbIndex,
       sql: toolSql,
-      name: 'Experimental Tools',
+      name: 'Experimental Models',
       shouldDeepLink: true,
       cardConfiguration: experimentalToolsCardConfiguration,
       facetsToPlot: [
