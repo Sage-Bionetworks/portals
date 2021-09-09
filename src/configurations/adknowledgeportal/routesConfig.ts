@@ -360,6 +360,7 @@ const routes: GenericRoute[] = [
       {
         isNested: false,
         to: 'Experimental Tools',
+        hideRouteFromNavbar: true,
         synapseConfigArray: [
           // PORTALS-2001 - we renamed "Experimental Tools" to "Experimental Models"
           {

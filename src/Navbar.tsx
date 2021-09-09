@@ -235,21 +235,19 @@ class Navbar extends React.Component<any, State> {
                         )
                       })}
                       <Dropdown.Item
-                        key='DownloadV2'
-                        className='SRC-primary-background-color-hover SRC-nested-color border-bottom-1'
-                        href='/DownloadCart'
+                        key="DownloadV2"
+                        className="SRC-primary-background-color-hover SRC-nested-color border-bottom-1"
+                        href="/DownloadCart"
                       >
                         Downloads
                       </Dropdown.Item>
                       <Dropdown.Item
-                        key='Settings'
-                        className='SRC-primary-background-color-hover SRC-nested-color border-bottom-1'
-                        href={`https://www.synapse.org/#!Profile:${
-                          userProfile.ownerId
-                        }/settings`}
+                        key="Settings"
+                        className="SRC-primary-background-color-hover SRC-nested-color border-bottom-1"
+                        href={`https://www.synapse.org/#!Profile:${userProfile.ownerId}/settings`}
                       >
                         Settings
-                    </Dropdown.Item>
+                      </Dropdown.Item>
                       <Dropdown.Item // desktop sign out
                         className="SRC-primary-background-color-hover SRC-nested-color"
                         // @ts-ignore
@@ -287,7 +285,7 @@ class Navbar extends React.Component<any, State> {
                   // hide children and only show top level element if there is a nested route to hide
                   const hideChildren =
                     el.isNested &&
-                    el.routes.some((route) => route.hideRouteFromNavbar)
+                    el.routes.every((route) => route.hideRouteFromNavbar)
                   if (el.isNested && !hideChildren) {
                     const isSelected = el.routes.some(
                       (route) =>
