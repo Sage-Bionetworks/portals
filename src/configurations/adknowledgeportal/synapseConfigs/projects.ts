@@ -1,7 +1,14 @@
 import { HomeExploreConfig } from 'types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
-import { computationalSql, projectsSql, publicationsSql, studiesSql, toolSql, peopleSql } from '../resources'
+import {
+  computationalSql,
+  projectsSql,
+  publicationsSql,
+  studiesSql,
+  toolSql,
+  peopleSql,
+} from '../resources'
 import { DetailsPageProps } from 'types/portal-util-types'
 import { studyCardConfiguration } from './studies'
 import { publicationCardProps } from './publications'
@@ -19,11 +26,7 @@ export const projectCardConfiguration: CardConfiguration = {
     title: 'Name',
     subTitle: 'Principal Investigators',
     description: 'Abstract',
-    secondaryLabels: [
-      'Institutions',
-      'Program',
-      'Grant Number',
-    ],
+    secondaryLabels: ['Institutions', 'Program', 'Grant Number'],
   },
   secondaryLabelLimit: 4,
   titleLinkConfig: {
@@ -73,7 +76,7 @@ export const projectsDetailsPageConfiguration: DetailsPageProps = {
     {
       name: 'CardContainerLogic',
       columnName: 'Grant Number',
-      title: 'Experimental Tools',
+      title: 'Experimental Models',
       showTitleSeperator: false,
       tableSqlKeys: ['grant'],
       props: {
@@ -92,7 +95,6 @@ export const projectsDetailsPageConfiguration: DetailsPageProps = {
         ...computationalCardConfiguration,
       },
     },
-
   ],
 }
 
@@ -124,7 +126,7 @@ const projects: HomeExploreConfig = {
           'Program',
           'Principal Investigators',
           'Institutions',
-          'Abstract'
+          'Abstract',
         ],
       },
     },

@@ -2,9 +2,9 @@ import * as React from 'react'
 import { RouteControl, RouteControlProps } from '../RouteControl'
 import { withRouter, RouteComponentProps } from 'react-router-dom'
 import { SynapseConfig } from 'types/portal-config'
-import { generateSynapseObject } from '../RouteResolver'
-import { useEffect, useState } from "react";
-import { ArrowDropDown, ArrowDropUp } from "@material-ui/icons";
+import { SynapseComponentWithContext } from '../RouteResolver'
+import { useEffect, useState } from 'react'
+import { ArrowDropDown, ArrowDropUp } from '@material-ui/icons'
 
 export type RouteControlWrapperProps = {
   synapseConfig?: SynapseConfig
@@ -42,35 +42,47 @@ const RouteControlWrapper: React.FunctionComponent<Props> = ({
   }
   const [selectedTab, setSelectedTab] = useState<string>()
   const [showSubNav, setShowSubNav] = useState<boolean>(false)
-  
+
   useEffect(() => {
     setSelectedTab(subPath.toUpperCase())
-  },[subPath])
+  }, [subPath])
 
   return (
     <>
-      <div className='explore-nav-container'>
-        <div className='container-fluid'>
-          <h2 className='title'>Explore</h2>
-          <h4 className={"mobile-explore-nav-selected"}>
+      <div className="explore-nav-container">
+        <div className="container-fluid">
+          <h2 className="title">Explore</h2>
+          <h4 className={'mobile-explore-nav-selected'}>
             {selectedTab}
-            { showSubNav ?
-              <ArrowDropDown fontSize={"large"} onClick={() => setShowSubNav(false)} /> :
-              <ArrowDropUp fontSize={"large"} onClick={() => setShowSubNav(true)} />
-              }
+            {showSubNav ? (
+              <ArrowDropDown
+                fontSize={'large'}
+                onClick={() => setShowSubNav(false)}
+              />
+            ) : (
+              <ArrowDropUp
+                fontSize={'large'}
+                onClick={() => setShowSubNav(true)}
+              />
+            )}
           </h4>
-          <div className={"route-control"}>
+          <div className={'route-control'}>
             <RouteControl {...routeControlProps} />
           </div>
-          { showSubNav &&  // default visibility for mobile sub menu is hidden
-            <div className={"mobile-route-control"}>
+          {showSubNav && ( // default visibility for mobile sub menu is hidden
+            <div className={'mobile-route-control'}>
               <RouteControl {...routeControlProps} />
             </div>
-          }
+          )}
         </div>
       </div>
       <div>
-        {synapseConfig && generateSynapseObject(synapseConfig, searchParams)}
+        {synapseConfig && (
+          <SynapseComponentWithContext
+            synapseConfig={synapseConfig}
+            searchParams={searchParams}
+          />
+        )}
       </div>
     </>
   )

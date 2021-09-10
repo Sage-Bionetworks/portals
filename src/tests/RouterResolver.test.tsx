@@ -1,12 +1,10 @@
 import * as React from 'react'
-import {
-  getRouteFromParams,
-  generateSynapseObjectHelper,
-} from '../RouteResolver'
+import { getRouteFromParams, SynapseComponent } from '../RouteResolver'
 import routesConfig, {
   HOME_INDEX,
   ABOUT_INDEX,
   ORGANIZATION_INDEX,
+  EXPLORE_INDEX,
 } from '../test-configuration/routesConfig'
 import { NestedRoute, SynapseConfig } from 'types/portal-config'
 import CardContainerLogic from 'synapse-react-client/dist/containers/CardContainerLogic'
@@ -18,26 +16,54 @@ import { SynapseContextProvider } from 'synapse-react-client/dist/utils/SynapseC
 describe('getRouteFromParams works', () => {
   // The home page route is a special case that we have to handle
   it('gets the expected route for Home', () => {
-    expect(getRouteFromParams('/')).toEqual(routesConfig[HOME_INDEX])
+    const [route, pathname] = getRouteFromParams('/')
+    expect(route).toEqual(routesConfig[HOME_INDEX])
+    expect(pathname).toEqual('/')
   })
 
   it('gets the expected route for About', () => {
-    expect(getRouteFromParams('/About')).toEqual(routesConfig[ABOUT_INDEX])
+    const [route, pathname] = getRouteFromParams('/About')
+    expect(route).toEqual(routesConfig[ABOUT_INDEX])
+    expect(pathname).toEqual('/About')
   })
 
   it('gets a Nested Route correctly', () => {
+    const [route, pathname] = getRouteFromParams('/Organizations/Content')
+
     const orgRoutes = routesConfig[ORGANIZATION_INDEX] as NestedRoute
-    expect(getRouteFromParams('/Organizations/Content')).toEqual(
-      orgRoutes.routes[0],
-    )
+    expect(route).toEqual(orgRoutes.routes[0])
+    expect(pathname).toEqual('/Organizations/Content')
   })
 
   it('gets a Double Nested Route correctly', () => {
+    const [route, pathname] = getRouteFromParams(
+      '/Organizations/Content/Subcontent',
+    )
+
     const orgRoutes = routesConfig[ORGANIZATION_INDEX] as NestedRoute
     const firstRoute = orgRoutes.routes[0] as NestedRoute
-    expect(getRouteFromParams('/Organizations/Content/Subcontent')).toEqual(
-      firstRoute.routes[0],
+    expect(route).toEqual(firstRoute.routes[0])
+    expect(pathname).toEqual('/Organizations/Content/Subcontent')
+  })
+
+  it('Falls back to the last successful route if a nested route partially fails', () => {
+    // In this case, /Organizations/Content is renderable
+    const [route, pathname] = getRouteFromParams(
+      '/Organizations/Content/Not-A-Valid-Route',
     )
+    const orgRoutes = routesConfig[ORGANIZATION_INDEX] as NestedRoute
+    const firstRoute = orgRoutes.routes[0] as NestedRoute
+    expect(route).toEqual(firstRoute)
+    expect(pathname).toEqual('/Organizations/Content')
+  })
+
+  it('Finds a render-able child route if a fallback route has no synpaseConfig', () => {
+    // In this case, /Explore is NOT renderable so we need to find a child route that is
+    const [route, pathname] = getRouteFromParams('/Explore/Not-A-Valid-Route')
+    const exploreRoutes = routesConfig[EXPLORE_INDEX] as NestedRoute
+    const firstRoute = exploreRoutes.routes[0] as NestedRoute
+    expect(route).toEqual(firstRoute)
+    expect(pathname).toEqual('/Explore/Data')
   })
 })
 
@@ -59,7 +85,7 @@ describe('RouteResolver works', () => {
           isInExperimentalMode: false,
         }}
       >
-        {generateSynapseObjectHelper(mockedSynObject)}
+        <SynapseComponent synapseConfig={mockedSynObject} />
       </SynapseContextProvider>,
     )
     expect(synObj.find(CardContainerLogic)).toHaveLength(1)
@@ -95,7 +121,7 @@ describe('RouteResolver works', () => {
         }}
       >
         <MemoryRouter>
-          {generateSynapseObjectHelper(mockedSynObject)}
+          <SynapseComponent synapseConfig={mockedSynObject} />
         </MemoryRouter>
       </SynapseContextProvider>,
     )

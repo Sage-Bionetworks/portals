@@ -12,6 +12,7 @@ import ParticipantsBarPlot from './crc-researcher/ParticipantsBarPlot'
 import StatusLineChart from './crc-researcher/StatusLineChart'
 import SurveysCompletedPlots from './crc-researcher/SurveysCompletedPlots'
 import Image from './Image'
+import RedirectWithQuery from './RedirectWithQuery'
 
 const PortalComponents = {
   StatefulButtonControlWrapper,
@@ -28,6 +29,7 @@ const PortalComponents = {
   StatusLineChart,
   SurveysCompletedPlots,
   Image,
+  RedirectWithQuery,
 }
 
 export default PortalComponents

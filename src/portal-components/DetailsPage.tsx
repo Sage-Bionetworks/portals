@@ -1,6 +1,6 @@
 import { cloneDeep, Dictionary } from 'lodash'
 import * as React from 'react'
-import { generateSynapseObject } from 'RouteResolver'
+import { SynapseComponentWithContext } from 'RouteResolver'
 import { SynapseClient, SynapseConstants } from 'synapse-react-client'
 import {
   insertConditionsFromSearchParams,
@@ -370,9 +370,11 @@ export default class DetailsPage extends React.Component<
           </>
         )
       }
-      const component = standalone
-        ? generateSynapseObject(el)
-        : this.renderSynapseObjectFromData(el)
+      const component = standalone ? (
+        <SynapseComponentWithContext synapseConfig={el} />
+      ) : (
+        this.renderSynapseObjectFromData(el)
+      )
 
       if (this.isReactFragment(component)) {
         return <></>
@@ -502,14 +504,20 @@ export default class DetailsPage extends React.Component<
                 <hr />
               </>
             )}
-            {generateSynapseObject(
-              synapseConfigWithInjectedProps,
-              searchParams,
-            )}
+            <SynapseComponentWithContext
+              synapseConfig={synapseConfigWithInjectedProps}
+              searchParams={searchParams}
+            />
           </React.Fragment>
         )
       }
-      return generateSynapseObject(synapseConfigWithInjectedProps, searchParams)
+      return (
+        <SynapseComponentWithContext
+          key={splitString}
+          synapseConfig={synapseConfigWithInjectedProps}
+          searchParams={searchParams}
+        />
+      )
     })
   }
 }
