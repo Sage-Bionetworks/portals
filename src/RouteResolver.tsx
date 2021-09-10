@@ -59,6 +59,9 @@ export const getRouteFromParams = (
         routePathName += '/' + route.to
       } else {
         // If we can't find a matching nested route, return the last route that was found
+        console.warn(
+          `Error: url at ${pathname} has no route mapping. Could not find route to ${split[i]}`,
+        )
         break
       }
     }
