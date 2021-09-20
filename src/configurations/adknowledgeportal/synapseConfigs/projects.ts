@@ -6,7 +6,7 @@ import {
   projectsSql,
   publicationsSql,
   studiesSql,
-  toolSql,
+  experimentalModelsSql,
   peopleSql,
 } from '../resources'
 import { DetailsPageProps } from 'types/portal-util-types'
@@ -14,6 +14,8 @@ import { studyCardConfiguration } from './studies'
 import { publicationCardProps } from './publications'
 import { experimentalToolsCardConfiguration } from './experimental_tools'
 import { computationalCardConfiguration } from './computational_tools'
+import { targetEnablingResourcesDetailsPageSql } from '../resources'
+import { targetEnablingResourcesCardConfiguration } from './target_enabling_resources'
 
 const unitDescription = 'Projects'
 const rgbIndex = 4
@@ -80,7 +82,7 @@ export const projectsDetailsPageConfiguration: DetailsPageProps = {
       showTitleSeperator: false,
       tableSqlKeys: ['grant'],
       props: {
-        sql: toolSql,
+        sql: experimentalModelsSql,
         ...experimentalToolsCardConfiguration,
       },
     },
@@ -93,6 +95,17 @@ export const projectsDetailsPageConfiguration: DetailsPageProps = {
       props: {
         sql: computationalSql,
         ...computationalCardConfiguration,
+      },
+    },
+    {
+      name: 'CardContainerLogic',
+      columnName: 'Grant Number',
+      title: 'Target Enabling Resources',
+      showTitleSeperator: false,
+      tableSqlKeys: ['grant'],
+      props: {
+        sql: targetEnablingResourcesDetailsPageSql,
+        ...targetEnablingResourcesCardConfiguration,
       },
     },
   ],

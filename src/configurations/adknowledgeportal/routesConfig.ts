@@ -23,6 +23,7 @@ import { programCardConfiguration } from './synapseConfigs/programs'
 import { programsHomePageConfig } from './synapseConfigs/programsHomePage'
 import experimentalTools from './synapseConfigs/experimental_tools'
 import computationalTools from './synapseConfigs/computational_tools'
+import targetEnablingResources from './synapseConfigs/target_enabling_resources'
 import {
   dataSql,
   projectsSql,
@@ -412,6 +413,20 @@ const routes: GenericRoute[] = [
             props: {
               ...RouteControlWrapperProps,
               synapseConfig: results,
+            },
+          },
+        ],
+      },
+      {
+        isNested: false,
+        to: 'Target Enabling Resources',
+        synapseConfigArray: [
+          {
+            name: 'RouteControlWrapper',
+            isOutsideContainer: true,
+            props: {
+              ...RouteControlWrapperProps,
+              synapseConfig: targetEnablingResources.explorePageSynapseObject,
             },
           },
         ],
