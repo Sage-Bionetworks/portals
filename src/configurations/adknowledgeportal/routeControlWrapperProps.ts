@@ -13,6 +13,7 @@ const routeControlWrapper: RouteControlWrapperProps = {
     'Experimental Models',
     'Computational Tools',
     'Results',
+    'Target Enabling Resources',
   ],
 }
 
