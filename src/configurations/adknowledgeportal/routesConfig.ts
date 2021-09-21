@@ -405,20 +405,6 @@ const routes: GenericRoute[] = [
       },
       {
         isNested: false,
-        to: 'Results',
-        synapseConfigArray: [
-          {
-            name: 'RouteControlWrapper',
-            isOutsideContainer: true,
-            props: {
-              ...RouteControlWrapperProps,
-              synapseConfig: results,
-            },
-          },
-        ],
-      },
-      {
-        isNested: false,
         to: 'Target Enabling Resources',
         synapseConfigArray: [
           {
@@ -427,6 +413,20 @@ const routes: GenericRoute[] = [
             props: {
               ...RouteControlWrapperProps,
               synapseConfig: targetEnablingResources.explorePageSynapseObject,
+            },
+          },
+        ],
+      },
+      {
+        isNested: false,
+        to: 'Results',
+        synapseConfigArray: [
+          {
+            name: 'RouteControlWrapper',
+            isOutsideContainer: true,
+            props: {
+              ...RouteControlWrapperProps,
+              synapseConfig: results,
             },
           },
         ],
