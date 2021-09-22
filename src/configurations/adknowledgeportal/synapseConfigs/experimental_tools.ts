@@ -62,7 +62,6 @@ export const experimentalToolsCardConfiguration: CardConfiguration = {
 export const experimentalDetailsTableConfiguration: SynapseTableProps = {
   showDownloadColumn: false,
   showAccessColumn: false,
-
   columnLinks: [
     {
       isMarkdown: false,
@@ -125,6 +124,7 @@ const experimentalTools: HomeExploreConfig = {
       sql: experimentalModelsSql,
       name: 'Experimental Models',
       shouldDeepLink: true,
+      hideDownload: true,
       tableConfiguration: experimentalDetailsTableConfiguration,
       facetsToFilter: [
         'modelType',

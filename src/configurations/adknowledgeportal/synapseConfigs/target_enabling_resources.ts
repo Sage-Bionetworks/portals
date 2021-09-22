@@ -110,6 +110,7 @@ const targetEnablingResources: HomeExploreConfig = {
       visibleColumnCount: 7,
       name: 'Target Enabling Resources',
       shouldDeepLink: true,
+      hideDownload: true,
       tableConfiguration: targetEnablingResourcesTableConfiguration,
       facetAliases: {
         related_target: 'Related Target',
