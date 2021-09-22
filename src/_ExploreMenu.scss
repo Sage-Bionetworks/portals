@@ -6,7 +6,6 @@
 }
 
 @media screen and (max-width: 768px) {
-
   .explore-nav-container {
     padding: 0;
     border-bottom-width: 2px;
@@ -16,7 +15,7 @@
     }
 
     .route-control {
-      display: none
+      display: none;
     }
 
     .mobile-route-control {
@@ -61,6 +60,4 @@
       }
     }
   }
-  
 }
-
