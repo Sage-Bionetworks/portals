@@ -22,10 +22,6 @@ export const RouteControl: React.FunctionComponent<RouteControlProps> = ({
   const setActiveClass = (isSelected: boolean) =>
     isSelected ? 'isSelected' : ''
 
-  const indexOfActiveRoute = customRoutes.findIndex((name, index) =>
-    isSelected(name),
-  )
-
   const isMobileView = !useShowDesktop()
 
   /**
@@ -35,10 +31,16 @@ export const RouteControl: React.FunctionComponent<RouteControlProps> = ({
   if (isMobileView || customRoutes.length <= MAX_ROUTES_TO_SHOW) {
     customRoutesToShow = customRoutes
   } else {
+    // We should always show the active route, so we need to get its index
+    const indexOfActiveRoute = customRoutes.findIndex((name) =>
+      isSelected(name),
+    )
     customRoutesToShow = customRoutes.filter((route, index) => {
       if (indexOfActiveRoute < MAX_ROUTES_TO_SHOW - 1) {
+        // If the active route is in the first n-1 items, then we should show the first n-1 items
         return index < MAX_ROUTES_TO_SHOW - 1
       } else {
+        // If the active route is NOT in the first n-1 items, then we should show the first n-2 items and the active route
         return index < MAX_ROUTES_TO_SHOW - 2 || isSelected(route)
       }
     })
