@@ -224,6 +224,11 @@ body {
       .dropdown-item {
         text-align: left;
         padding: 0.5em 1.5em;
+
+        &:hover {
+          background-color: Portal.$secondary-action-color;
+          color: white;
+        }
       }
     }
   }
