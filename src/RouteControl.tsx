@@ -1,5 +1,5 @@
 import * as React from 'react'
-import Dropdown from 'react-bootstrap/esm/Dropdown'
+import { Dropdown } from 'react-bootstrap'
 import { useShowDesktop } from 'utils'
 
 export type NamedRoute = {
