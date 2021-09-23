@@ -202,10 +202,19 @@ body {
   }
   &.explore-nav {
     margin-left: -24px;
+    height: unset;
     .nav-button {
-      color: #515359;
+      height: 75px;
+      .explore-nav-button-text {
+        color: #515359;
+        font-family: 'Lato', sans-serif;
+        font-weight: 700;
+        @extend %nav-button-text;
+      }
       &.isSelected {
-        color: Portal.$dark-gray;
+        .explore-nav-button-text {
+          color: Portal.$dark-gray;
+        }
       }
     }
     .dropdown {
@@ -244,39 +253,38 @@ body {
   border-bottom-color: transparent;
 }
 
-.nav-button {
+%nav-button-text {
   text-transform: uppercase;
   font-weight: bold;
-  height: -webkit-fill-available;
-  // fallback for mozilla and ie11
-  height: 100%;
   font-size: 16px;
   text-align: center;
   justify-content: center;
   text-decoration: none;
+}
+
+.nav-button {
+  height: -webkit-fill-available;
+  // fallback for mozilla and ie11
+  height: 100%;
   padding: 0px 25px;
   margin: 0px;
   min-width: 100px;
   white-space: normal;
+  @extend %nav-button-text;
   @extend %fillerBorder;
 }
 
 .nav-button,
 a.nav-button {
-  text-transform: uppercase;
-  font-weight: bold;
   height: -webkit-fill-available;
   // fallback for mozilla and ie11
   height: 100%;
-  font-size: 16px;
-  text-align: center;
-  justify-content: center;
   color: #404b63;
-  text-decoration: none;
   padding: 0px 25px;
   margin: 0px;
   min-width: 100px;
   white-space: nowrap;
+  @extend %nav-button-text;
   @extend %fillerBorder;
   a {
     color: unset;
