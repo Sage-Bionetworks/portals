@@ -39,7 +39,7 @@
       margin: 1rem;
     }
 
-    .explore-nav {
+    .nav.explore-nav {
       margin-left: 0;
       display: block;
       column-count: 1;
@@ -51,6 +51,7 @@
 
       .nav-button {
         margin: 0.6rem auto;
+        height: 50px;
         &.nav-button-container {
           padding: 0 1rem;
           &.isSelected {
