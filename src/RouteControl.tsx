@@ -30,10 +30,6 @@ export const RouteControl: React.FunctionComponent<RouteControlProps> = ({
     }, 100)
   }, [])
 
-  /**
-   * In the Desktop (non-mobile) view, we limit the number of routes to show
-   */
-
   if (isMobileView) {
     return (
       <nav className="flex-display nav explore-nav">
@@ -54,6 +50,10 @@ export const RouteControl: React.FunctionComponent<RouteControlProps> = ({
       </nav>
     )
   }
+
+  /**
+   * In the desktop view, we use Material UI tabs
+   */
   return (
     <Tabs
       value={customRoutes.find((name) => isSelected(name))}
