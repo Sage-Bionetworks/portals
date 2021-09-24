@@ -217,29 +217,6 @@ body {
         }
       }
     }
-    .dropdown {
-      .dropdown-toggle.nav-button {
-        vertical-align: middle;
-        &::after {
-          color: Portal.$secondary-action-color;
-          content: '⌄';
-          display: inline-block;
-          margin-left: 0.5em;
-          transform: scaleX(2);
-          vertical-align: middle;
-          margin-bottom: 10px;
-        }
-      }
-      .dropdown-item {
-        text-align: left;
-        padding: 0.5em 1.5em;
-
-        &:hover {
-          background-color: Portal.$secondary-action-color;
-          color: white;
-        }
-      }
-    }
   }
 }
 
