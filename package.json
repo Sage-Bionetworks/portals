@@ -54,6 +54,7 @@
     "analyze": "yarn run copy-test-configuration && react-scripts --max_old_space_size=4096 build && source-map-explorer 'build/static/js/*.js'"
   },
   "devDependencies": {
+    "@testing-library/react": "^12.1.0",
     "@types/enzyme": "^3.10.8",
     "@types/enzyme-adapter-react-16": "^1.0.6",
     "@types/katex": "^0.5.0",
