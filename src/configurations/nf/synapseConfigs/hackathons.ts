@@ -16,6 +16,10 @@ const rgbIndex = 5
 
 export const hackathonCardConfiguration: CardConfiguration = {
   type,
+  labelLinkConfig: {
+    isMarkdown: true,
+    matchColumnName: 'doi',
+  },
   genericCardSchema: {
     title: 'name',
     type: 'Hackathon',
