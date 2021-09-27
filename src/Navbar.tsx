@@ -165,7 +165,7 @@ class Navbar extends React.Component<any, State> {
           >
             <span>&#10005;</span>
           </div>
-          <div className="nav-link-container">
+          <div className="nav-link-container" key="nav-link-container">
             {userProfile &&
               isSynapseSubdomainOrLocal && ( // mobile sign out
                 <div className="center-content nav-button nav-button-signin bootstrap-4-backport mobile-signout-container">
