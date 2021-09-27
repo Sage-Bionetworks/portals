@@ -31,6 +31,10 @@ export const studyHeaderIconOptions = {
 
 export const studyCardConfiguration: CardConfiguration = {
   type,
+  labelLinkConfig: {
+    isMarkdown: true,
+    matchColumnName: 'grantDOI',
+  },
   genericCardSchema: {
     title: 'studyName',
     type: SynapseConstants.STUDY,
