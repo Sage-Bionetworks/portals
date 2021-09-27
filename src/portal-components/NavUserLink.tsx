@@ -14,13 +14,17 @@ const NavUserLink: React.FunctionComponent<NavUserLinkProps> = ({
 
   return(
     <>
-      <UserCard
-        userProfile={userProfile}
-        size={SynapseConstants.SMALL_USER_CARD}
-        preSignedURL={userProfile?.clientPreSignedURL}
-        hideText={true}
-        link="javascript:void(0)"
+      {/* this div is an overlay to capture click events (the UserCard Avatar stops propogation) */}
+      <div
+        style={{width:'50px', height:'50px', position:'absolute'}}
       />
+      <UserCard
+          userProfile={userProfile}
+          size={SynapseConstants.AVATAR}
+          avatarSize="MEDIUM"
+          preSignedURL={userProfile?.clientPreSignedURL}
+          link="javascript:void(0)"
+        />
       <ExpandMoreIcon className="user-expand" />
       <div className="mb-user-extra">
         <div className="user-fullname">

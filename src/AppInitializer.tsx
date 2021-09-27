@@ -5,17 +5,18 @@ import { SynapseClient, SynapseConstants } from 'synapse-react-client'
 import { withCookies, ReactCookieProps } from 'react-cookie'
 import { DOWNLOAD_FILES_MENU_TEXT } from 'synapse-react-client/dist/containers/table/SynapseTableConstants'
 import { UserProfile } from 'synapse-react-client/dist/utils/synapseTypes'
+import SynapseRedirectDialog from 'portal-components/SynapseRedirectDialog'
+import { SynapseContextProvider } from 'synapse-react-client/dist/utils/SynapseContext'
 
 export type AppInitializerState = {
   token: string
   showLoginDialog: boolean
+  synapseRedirectUrl?: string
   userProfile: UserProfile | undefined
   // delay render until get session is called, o.w. theres an uneccessary refresh right
   // after page load
   hasCalledGetSession: boolean
 }
-
-export const TokenContext = React.createContext('')
 
 type Props = RouteComponentProps & ReactCookieProps
 
@@ -38,6 +39,7 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
       hasCalledGetSession: false,
       userProfile: undefined,
       showLoginDialog: false,
+      synapseRedirectUrl: undefined,
     }
     this.updateSynapseCallbackCookie = this.updateSynapseCallbackCookie.bind(
       this,
@@ -64,13 +66,11 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
 
   getSession = async () => {
     try {
-      const token = await SynapseClient.getSessionTokenFromCookie()
+      const token = await SynapseClient.getAccessTokenFromCookie()
       if (!token) {
         this.initAnonymousUserState()
         return
       }
-      // try to refresh their session for convenience
-      await SynapseClient.putRefreshSessionToken(token)
       this.setState({ token, hasCalledGetSession: true })
       // get user profile
       const userProfile = await SynapseClient.getUserProfile(token)
@@ -144,7 +144,14 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
       return <></>
     }
     return (
-      <TokenContext.Provider value={this.state.token}>
+      <SynapseContextProvider
+        synapseContext={{
+          accessToken: this.state.token,
+          isInExperimentalMode:
+            SynapseClient.isInSynapseExperimentalMode(),
+          utcTime: SynapseClient.getUseUtcTimeFromCookie(),
+        }}
+      >
         {React.Children.map(this.props.children, (child: any) => {
           if (!child) {
             return false
@@ -160,7 +167,10 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
             return React.cloneElement(child, props)
           }
         })}
-      </TokenContext.Provider>
+        <SynapseRedirectDialog
+          synapseRedirectUrl={this.state.synapseRedirectUrl}
+        />
+      </SynapseContextProvider>
     )
   }
 
@@ -177,6 +187,16 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
     if (ev.target instanceof HTMLAnchorElement) {
       const anchorElement = ev.target as HTMLAnchorElement
       isInvokingDownloadTable = anchorElement.text === DOWNLOAD_FILES_MENU_TEXT
+      if (anchorElement.href) {
+        const { hostname } = new URL(anchorElement.href)
+        if (hostname.toLowerCase() === 'www.synapse.org' ) {
+          // && anchorElement.target !== '_blank') {  // should we skip the dialog if opening in a new window?
+          ev.preventDefault()
+          if (!this.state.synapseRedirectUrl) {
+            this.setState({ synapseRedirectUrl: anchorElement.href })
+          }
+        }
+      }
     }
     if (ev.target instanceof HTMLButtonElement) {
       const buttonElement = ev.target as HTMLButtonElement
@@ -188,22 +208,11 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
         }
       }
     }
-    let color = 'white'
-    let background = '#4db7ad'
     let name = ''
     let icon = ''
-    const footerElement = document.querySelector('#footer')
-    if (footerElement) {
-      color = window
-        .getComputedStyle(footerElement, null)
-        .getPropertyValue('color')
-      background = window
-        .getComputedStyle(footerElement, null)
-        .getPropertyValue('background-color')
-    }
-    const footerLinkImgElement = document.querySelector('#footer-logo-link img')
-    if (footerLinkImgElement) {
-      let imageSrc = footerLinkImgElement.getAttribute('src')
+    const logoImgElement = document.querySelector('#header-logo-image')
+    if (logoImgElement) {
+      let imageSrc = logoImgElement.getAttribute('src')
       if (imageSrc) {
         if (!imageSrc.toLowerCase().startsWith('http')) {
           imageSrc = SynapseClient.getRootURL() + imageSrc.substring(1)
@@ -217,15 +226,11 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
     }
     const cookieValue = {
       isInvokingDownloadTable,
-      foregroundColor: color,
-      backgroundColor: background,
       callbackUrl: window.location.href,
       logoUrl: icon,
       portalName: name,
     }
-    const expireDate = new Date()
     // expire after 10 seconds
-    expireDate.setTime(Date.now() + 1000 * 10)
     const domainValue = window.location.hostname
       .toLowerCase()
       .includes('.synapse.org')
@@ -235,7 +240,7 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
     this.props.cookies.set(COOKIE_CONFIG_KEY, JSON.stringify(cookieValue), {
       path: '/',
       domain: domainValue,
-      maxAge: 10,
+      maxAge: 20,
     })
   }
 }

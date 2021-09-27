@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { SynapseConfigArray } from 'types/portal-config'
-import { generateSynapseObject } from '../RouteResolver'
+import { SynapseComponentWithContext } from '../RouteResolver'
 import QueryCount from 'synapse-react-client/dist/containers/QueryCount'
 import { RouteControl, RouteControlProps } from 'RouteControl'
 
@@ -49,9 +49,8 @@ class StatefulButtonControl extends React.Component<
 
   render() {
     const { configs } = this.props
-    const { name, synapseConfigArray, sql, entityId } = configs[
-      this.state.index
-    ]
+    const { name, synapseConfigArray, sql, entityId } =
+      configs[this.state.index]
     const buttonControlProps: RouteControlProps = {
       customRoutes: configs.map((el) => el.name),
       handleChanges: this.handleChange,
@@ -71,7 +70,7 @@ class StatefulButtonControl extends React.Component<
               {config.title && (
                 <h2 className="title statefulButtonTitle"> {config.title} </h2>
               )}
-              {generateSynapseObject(config)}
+              <SynapseComponentWithContext synapseConfig={config} />
             </React.Fragment>
           )
         })}

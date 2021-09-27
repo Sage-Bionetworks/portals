@@ -31,14 +31,13 @@ export type DetailsPageProps = {
     [index: string]: string
   }
   sql: string
-  token?: string
   synapseConfigArray: RowSynapseConfig[]
   sqlOperator?: SQLOperator
   tabLayout?: DetailsPageTabProps[]
 }
 
 export type DetailsPageTabProps = {
-  title: string,
-  iconName: string,
+  title: string
+  iconName: string
   cssClass?: string
 }

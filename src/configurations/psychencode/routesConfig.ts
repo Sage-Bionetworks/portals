@@ -80,13 +80,15 @@ const routes: GenericRoute[] = [
         },
       },
       {
-        name: 'TableFeedCards',
+        name: 'RssFeedCards',
         title: 'What\'s New',
         centerTitle: true,
-        outsideContainerClassName: 'home-spacer home-bg-dark',
+        outsideContainerClassName: 'home-spacer',
         props: {
-          tableEntityId: 'syn23629036',
-        },
+          url: 'https://news.psychencode.org',
+          itemsToShow:3,
+          allowCategories: ['Data Releases','Preprint','Publication'],
+        }
       },
       {
         name: 'Markdown',
@@ -205,6 +207,14 @@ const routes: GenericRoute[] = [
     ],
   },
   {
+    isNested: false,
+    displayName: 'News',
+    to: undefined,
+    target: '_blank',
+    link: 'https://news.psychencode.org/',
+    synapseConfigArray: [],
+  },
+  {
     to: 'About',
     isNested: false,
     synapseConfigArray: [
@@ -217,6 +227,14 @@ const routes: GenericRoute[] = [
         },
       },
     ],
+  },
+  {
+    isNested: false,
+    displayName: 'Help',
+    to: undefined,
+    target: '_blank',
+    link: 'https://help.psychencode.synapse.org/',
+    synapseConfigArray: [],
   },
 ]
 

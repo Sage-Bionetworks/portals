@@ -16,6 +16,7 @@ import {
   datasetsSql,
   publicationsSql,
   filesSql,
+  metadataFilesSql,
 } from '../resources'
 
 export const newStudiesSql = `${studiesSql} order by ROW_ID desc limit 3`
@@ -44,7 +45,9 @@ export const studyCardConfiguration: CardConfiguration = {
       'fundingAgency',
       'institutions',
       'studyId',
+      'grantDOI',
     ],
+    dataTypeIconNames: 'dataType'
   },
   iconOptions: {
     Active: studyActiveSvg,
@@ -67,6 +70,18 @@ export const studyCardConfiguration: CardConfiguration = {
       'studyStatus': {
         'Active': { icon: 'reload', color: '#28A745' },
         'Completed': { icon: 'check', color: '#B2242A' },
+      },
+      'dataType': {
+        'genomicVariants': { icon: 'geneVariants', label: 'Genomic Variants Data Available' },
+        'geneExpression': { icon: 'geneExpression', label: 'Gene Expression Data Available' },
+        'image': { icon: 'imaging', label: 'Image Data Available' },
+        'drugScreen': { icon: 'lineGraph', label: 'Drug Screen (Cell) Data Available' },
+        'behavior process': { icon: 'rat', label: 'Behavior Process Data Available' },
+        'chromatinActivity': { icon: 'chromatin', label: 'Chromatin Activity Data Available' },
+        'proteomics': { icon: 'proteomics', label: 'Proteomics Data Available' },
+        'kinomics': { icon: 'kinomics', label: 'Kinomics Data Available' },
+        'clinical': { icon: 'clinical', label: 'Clinical Data Available' },
+        'other': { icon: 'other', label: 'Other Data Available' },
       }
     }
   }
@@ -105,6 +120,7 @@ const studies: HomeExploreConfig = {
           'diseaseFocus',
           'manifestation',
           'fundingAgency',
+          'grantDOI',
         ],
       },
     },
@@ -217,7 +233,7 @@ export const studiesDetailPage: DetailsPageProps = {
       tableSqlKeys: ['studyId'],
       props: {
         visibleColumnCount: 7,
-        sql: `SELECT id, dataType, assay, diagnosis, tumorType, species, individualID, fileFormat, dataSubtype, nf1Genotype, nf2Genotype, fundingAgency, consortium FROM syn16858331 where resourceType ='report'`,
+        sql: metadataFilesSql,
           rgbIndex,
         title: 'Metadata Files',
       },

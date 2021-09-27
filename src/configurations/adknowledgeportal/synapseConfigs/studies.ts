@@ -3,7 +3,7 @@ import { DetailsPageProps } from 'types/portal-util-types'
 import { SynapseConstants } from 'synapse-react-client'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import studyHeaderSvg from '../style/study-header.svg'
-import { studiesSql, dataSql } from '../resources'
+import { studiesSql, dataSql, dataOnStudiesPageSql } from '../resources'
 
 const unitDescription = 'studies'
 const rgbIndex = 0
@@ -33,26 +33,24 @@ export const studyCardConfiguration: CardConfiguration = {
     description: 'Study_Description',
     secondaryLabels: [
       'DataType_All',
-      'Diagnosis_or_Model_System',
+      'studyFocus',
       'Number_Of_Individuals',
-      'Sample_Type',
+      'specimenType',
       'Species',
       'Cohort_Type',
       'Study_Status',
       'Program',
-      'Grant',
+      'Grant Number',
     ],
   },
 }
 const facetAliases = {
-  Program: 'Program',
   DataType_All: 'Data Types',
   Data_Contributor: 'Data Contributor',
   Study_Description: 'Study Description',
-  Study_Name: 'Study Name',
-  Diagnosis_or_Model_System: 'Diagnosis',
+  Study_Name: 'Study Name',  
   Number_of_Individuals: 'Individuals',
-  Sample_Type: 'Tissue',
+  'Grant Number': 'Grant',
 }
 const studies: HomeExploreConfig = {
   homePageSynapseObject: {
@@ -80,12 +78,12 @@ const studies: HomeExploreConfig = {
           'Study_Name',
           'Study_Description',
           'DataType_All',
-          'Diagnosis_or_Model_System',
+          'studyFocus',
           'Data_Contributor',
-          'Sample_Type',
+          'specimenType',
           'Species',
-          'Grant',
-          'Program',          
+          'Grant Number',
+          'Program',
         ],
       },
     },
@@ -188,7 +186,7 @@ export const studiesDetailsPageProps: DetailsPageProps = {
           showDownloadColumn: true,
         },
         facetsToFilter:['metadataType', 'dataType', 'assay'],
-        sql: "SELECT id, metadataType, dataType, assay FROM syn11346063 WHERE `dataSubtype` = 'metadata'",
+        sql: dataOnStudiesPageSql,
         shouldDeepLink: false,
         defaultShowFacetVisualization: false,
       },
@@ -242,7 +240,7 @@ export const studiesProgrammaticRouteConfig: SynapseConfig[] = [
       facetAliases,
       isAlignToLeftNav: true,
       secondaryLabelLimit: Infinity,
-      backgroundColor: '#5bb0b5',
+      
       iconOptions: {
         study: studyHeaderSvg,
       },

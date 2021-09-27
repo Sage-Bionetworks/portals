@@ -13,14 +13,24 @@ import {
   studyCardConfiguration,
   studiesProgrammaticRouteConfig,
 } from './synapseConfigs/studies'
-import { projectCardConfiguration, projectsDetailsPageConfiguration } from './synapseConfigs/projects'
+import {
+  projectCardConfiguration,
+  projectsDetailsPageConfiguration,
+} from './synapseConfigs/projects'
 import { results } from './synapseConfigs/results'
 import { iconHeaderOptions } from './synapseConfigs/iconOptions'
 import { programCardConfiguration } from './synapseConfigs/programs'
 import { programsHomePageConfig } from './synapseConfigs/programsHomePage'
 import experimentalTools from './synapseConfigs/experimental_tools'
 import computationalTools from './synapseConfigs/computational_tools'
-import { projectsSql, studiesSql, peopleSql } from './resources'
+import targetEnablingResources from './synapseConfigs/target_enabling_resources'
+import {
+  dataSql,
+  projectsSql,
+  studiesSql,
+  peopleSql,
+  programsSql,
+} from './resources'
 
 const routes: GenericRoute[] = [
   {
@@ -41,78 +51,124 @@ const routes: GenericRoute[] = [
         centerTitle: true,
         outsideContainerClassName: 'home-spacer home-bg-dark',
         props: {
-          sql:'select * from syn11346063',
+          sql: dataSql,
           rgbIndex: 3,
-          configs: [{
-            title: 'Human Studies',
-            icon: 'PERSON',
-            explorePagePath:'/Explore/Studies',
-            exploreObjectType:'Studies',
-            plotsConfig: {
-              configs: [{
-                title:'The Religious Orders and Memory and Aging Project Study',
-                description:'This study generated genomic variants, gene expression, epigenetic, proteomics, and metabolomics data on two human cohorts: the Religious Orders Study (ROS) and the Memory and Aging Project (MAP).',
-                facetsToPlot:['dataType', 'assay'],
-                selectFacetColumnName:'study',
-                selectFacetColumnValue:'ROSMAP',
-                detailsPagePath:'/Explore/Studies/DetailsPage?Study=syn3219045'
+          configs: [
+            {
+              title: 'Human Studies',
+              icon: 'PERSON',
+              explorePagePath: '/Explore/Studies',
+              exploreObjectType: 'Studies',
+              plotsConfig: {
+                configs: [
+                  {
+                    title:
+                      'The Religious Orders and Memory and Aging Project Study',
+                    description:
+                      'This study generated genomic variants, gene expression, epigenetic, proteomics, and metabolomics data on two human cohorts: the Religious Orders Study (ROS) and the Memory and Aging Project (MAP).',
+                    facetsToPlot: ['dataType', 'assay'],
+                    selectFacetColumnName: 'study',
+                    selectFacetColumnValue: 'ROSMAP',
+                    detailsPagePath:
+                      '/Explore/Studies/DetailsPage?Study=syn3219045',
+                  },
+                  {
+                    title: 'The Mount Sinai Brain Bank Study',
+                    description:
+                      'This study generated gene expression, genomic variant and proteomic data from brain specimens obtained from the Mount Sinai/JJ Peters VA Medical Center Brain Bank (MSBB).',
+                    facetsToPlot: ['dataType', 'assay'],
+                    selectFacetColumnName: 'study',
+                    selectFacetColumnValue: 'MSBB',
+                    detailsPagePath:
+                      '/Explore/Studies/DetailsPage?Study=syn3159438',
+                  },
+                  {
+                    title: 'The RNAseq Harmonization Study',
+                    description:
+                      'The goal of this project was to create a uniformly processed RNAseq dataset across the three largest AMP-AD contributed studies (ROSMAP/MSBB/MayoRNAseq).',
+                    facetsToPlot: ['dataType', 'assay'],
+                    selectFacetColumnName: 'study',
+                    selectFacetColumnValue: 'rnaSeqReprocessing',
+                    detailsPagePath:
+                      '/Explore/Studies/DetailsPage?Study=syn9702085',
+                  },
+                ],
               },
-              {
-                title:'The Mount Sinai Brain Bank Study',
-                description:'This study generated gene expression, genomic variant and proteomic data from brain specimens obtained from the Mount Sinai/JJ Peters VA Medical Center Brain Bank (MSBB).',
-                facetsToPlot:['dataType', 'assay'],
-                selectFacetColumnName:'study',
-                selectFacetColumnValue:'MSBB',
-                detailsPagePath:'/Explore/Studies/DetailsPage?Study=syn3159438'
+            },
+            {
+              title: 'Animal Model Studies',
+              icon: 'MOUSE',
+              explorePagePath: '/Explore/Studies',
+              exploreObjectType: 'Studies',
+              plotsConfig: {
+                configs: [
+                  {
+                    title: 'The UCI MODEL-AD 5XFAD Study',
+                    description:
+                      "This study provides deep phenotyping data on the early onset Alzheimer's disease 5XFAD mouse model.",
+                    facetsToPlot: ['dataType', 'assay'],
+                    selectFacetColumnName: 'study',
+                    selectFacetColumnValue: 'UCI_5XFAD',
+                    detailsPagePath:
+                      '/Explore/Studies/DetailsPage?Study=syn16798076',
+                  },
+                  {
+                    title: 'The IU/Jax/Pitt MODEL-AD Primary Screen Study',
+                    description:
+                      "This study provides an initial molecular and behavioral characterization of mouse models of Late-Onset Alzheimer's disease.",
+                    facetsToPlot: ['dataType', 'assay'],
+                    selectFacetColumnName: 'study',
+                    selectFacetColumnValue: 'Jax.IU.Pitt_PrimaryScreen',
+                    detailsPagePath:
+                      '/Explore/Studies/DetailsPage?Study=syn21595258',
+                  },
+                  {
+                    title: 'The IU/Jax/Pit MODEL-AD APOE/TREM2 Study',
+                    description:
+                      "This study provides deep phenotyping data on a late onset Alzheimer's disease model with humanized APOE and TREM2.",
+                    facetsToPlot: ['dataType', 'assay'],
+                    selectFacetColumnName: 'study',
+                    selectFacetColumnValue: 'Jax.IU.Pitt_APOE4.Trem2.R47H',
+                    detailsPagePath:
+                      '/Explore/Studies/DetailsPage?Study=syn17095980',
+                  },
+                ],
               },
-              {
-                title:'The RNAseq Harmonization Study',
-                description:'The goal of this project was to create a uniformly processed RNAseq dataset across the three largest AMP-AD contributed studies (ROSMAP/MSBB/MayoRNAseq).',
-                facetsToPlot:['dataType', 'assay'],
-                selectFacetColumnName:'study',
-                selectFacetColumnValue:'rnaSeqReprocessing',
-                detailsPagePath:'/Explore/Studies/DetailsPage?Study=syn9702085'
-              }]
-            }
-          },
-          {
-            title: 'Animal Model Studies',
-            icon: 'MOUSE',
-            explorePagePath:'/Explore/Studies',
-            exploreObjectType:'Studies',
-            plotsConfig: {
-              configs: [{
-                title:'The UCI MODEL-AD 5XFAD Study',
-                description:'This study provides deep phenotyping data on the early onset Alzheimer\'s disease 5XFAD mouse model.',
-                facetsToPlot:['dataType', 'assay'],
-                selectFacetColumnName:'study',
-                selectFacetColumnValue:'UCI_5XFAD',
-                detailsPagePath:'/Explore/Studies/DetailsPage?Study=syn16798076'
-              },
-              {
-                title:'The IU/Jax/Pitt MODEL-AD Primary Screen Study',
-                description:'This study provides an initial molecular and behavioral characterization of mouse models of Late-Onset Alzheimer\'s disease.',
-                facetsToPlot:['dataType', 'assay'],
-                selectFacetColumnName:'study',
-                selectFacetColumnValue:'Jax.IU.Pitt_PrimaryScreen',
-                detailsPagePath:'/Explore/Studies/DetailsPage?Study=syn21595258'
-              },
-              {
-                title:'The IU/Jax/Pit MODEL-AD APOE/TREM2 Study',
-                description:'This study provides deep phenotyping data on a late onset Alzheimer\'s disease model with humanized APOE and TREM2.',
-                facetsToPlot:['dataType', 'assay'],
-                selectFacetColumnName:'study',
-                selectFacetColumnValue:'Jax.IU.Pitt_APOE4.Trem2.R47H',
-                detailsPagePath:'/Explore/Studies/DetailsPage?Study=syn17095980'
-              }
-            ]}
-          }]        
+            },
+          ],
+        },
+      },
+      {
+        name: 'Ecosystem',
+        title: 'Related Resources',
+        centerTitle: true,
+        subtitle:
+          'The AD Knowledge Portal ecosystem contains a growing list of tools and resources. Explore some of them below.',
+        outsideContainerClassName: 'home-spacer',
+        props: {
+          config: [
+            {
+              title: 'Results Explorers',
+              ownerId: 'syn12666371',
+              wikiId: '607139',
+            },
+            {
+              title: 'Data Portals',
+              ownerId: 'syn12666371',
+              wikiId: '607138',
+            },
+            {
+              title: 'Program Websites',
+              ownerId: 'syn12666371',
+              wikiId: '607140',
+            },
+          ],
         },
       },
       {
         name: 'UserCardListRotate',
         title: 'Our People and Institutions',
-        outsideContainerClassName: 'home-spacer',
+        outsideContainerClassName: 'home-spacer home-bg-dark',
         centerTitle: true,
         props: {
           sql: `${peopleSql} where isFeatured=true`,
@@ -125,19 +181,20 @@ const routes: GenericRoute[] = [
       },
       {
         name: 'RssFeedCards',
-        title: 'What\'s New',
+        title: "What's New",
         centerTitle: true,
-        outsideContainerClassName: 'home-spacer home-bg-dark',
+        outsideContainerClassName: 'home-spacer',
         props: {
           url: 'https://news.adknowledgeportal.org',
-          itemsToShow:3,
-          allowCategories: ['Data Release', 'News', 'Webinar','rosMAP'],
+          itemsToShow: 3,
+          allowCategories: ['Data Release', 'News', 'Webinar', 'rosMAP'],
           mailChimpListName: 'AMP-AD quarterly newsletter',
-          mailChimpUrl:'https://sagebase.us7.list-manage.com/subscribe/post?u=b146de537186191a9d2110f3a&amp;id=96b614587a',
+          mailChimpUrl:
+            'https://sagebase.us7.list-manage.com/subscribe/post?u=b146de537186191a9d2110f3a&amp;id=96b614587a',
           lockedFacet: {
-            value: 'what\'s-new'
-          }
-        }
+            value: "what's-new",
+          },
+        },
       },
     ],
   },
@@ -158,7 +215,7 @@ const routes: GenericRoute[] = [
                 name: 'CardContainerLogic',
                 props: {
                   ...programs,
-                  sql: 'SELECT  * FROM syn17024173',
+                  sql: programsSql,
                 },
               },
             },
@@ -173,7 +230,7 @@ const routes: GenericRoute[] = [
                 name: 'CardContainerLogic',
                 isOutsideContainer: true,
                 props: {
-                  sql: 'SELECT  * FROM syn17024173',
+                  sql: programsSql,
                   isHeader: true,
                   ...programCardConfiguration,
                   genericCardSchema: {
@@ -181,7 +238,6 @@ const routes: GenericRoute[] = [
                     description: 'Long Description',
                   },
                   iconOptions: iconHeaderOptions,
-                  backgroundColor: '#5960A5',
                 },
               },
               {
@@ -200,7 +256,6 @@ const routes: GenericRoute[] = [
                   sql: studiesSql,
                 },
               },
-
             ],
           },
         ],
@@ -220,7 +275,6 @@ const routes: GenericRoute[] = [
                   sql: projectsSql,
                   isHeader: true,
                   ...projectCardConfiguration,
-                  backgroundColor: '#DE9A1F',
                 },
               },
               {
@@ -307,6 +361,23 @@ const routes: GenericRoute[] = [
       {
         isNested: false,
         to: 'Experimental Tools',
+        hideRouteFromNavbar: true,
+        synapseConfigArray: [
+          // PORTALS-2001 - we renamed "Experimental Tools" to "Experimental Models"
+          {
+            name: 'RedirectWithQuery',
+            props: {
+              exact: false,
+              strict: false,
+              from: 'Experimental Tools',
+              to: 'Experimental Models',
+            },
+          },
+        ],
+      },
+      {
+        isNested: false,
+        to: 'Experimental Models',
         synapseConfigArray: [
           {
             name: 'RouteControlWrapper',
@@ -328,6 +399,20 @@ const routes: GenericRoute[] = [
             props: {
               ...RouteControlWrapperProps,
               synapseConfig: computationalTools.explorePageSynapseObject,
+            },
+          },
+        ],
+      },
+      {
+        isNested: false,
+        to: 'Target Enabling Resources',
+        synapseConfigArray: [
+          {
+            name: 'RouteControlWrapper',
+            isOutsideContainer: true,
+            props: {
+              ...RouteControlWrapperProps,
+              synapseConfig: targetEnablingResources.explorePageSynapseObject,
             },
           },
         ],
@@ -405,8 +490,8 @@ const routes: GenericRoute[] = [
             name: 'Markdown',
             title: 'ACKNOWLEDGEMENT STATEMENTS',
             props: {
-              ownerId: 'syn2580853',
-              wikiId: '584597',
+              ownerId: 'syn12666371',
+              wikiId: '602387',
             },
           },
         ],
@@ -420,8 +505,8 @@ const routes: GenericRoute[] = [
             name: 'Markdown',
             title: 'DATA USE PROPOSALS',
             props: {
-              ownerId: 'syn2580853',
-              wikiId: '409843',
+              ownerId: 'syn12666371',
+              wikiId: '608698',
             },
           },
         ],

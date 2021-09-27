@@ -4,7 +4,7 @@ import logoHeaderConfig from './config/logoHeaderConfig'
 import Dialog from '@material-ui/core/Dialog'
 import Dropdown from 'react-bootstrap/Dropdown'
 import { SynapseComponents } from 'synapse-react-client'
-import { TokenContext, SignInProps } from './AppInitializer'
+import { SignInProps } from './AppInitializer'
 import NavLink from 'portal-components/NavLink'
 import NavUserLink from './portal-components/NavUserLink'
 import { GenericRoute } from 'types/portal-config'
@@ -36,16 +36,6 @@ class Navbar extends React.Component<any, State> {
     {
       text: 'Challenges',
       settingSubPath: 'challenges',
-    },
-    {
-      text: 'Downloads',
-      settingSubPath: 'downloads',
-      hasBorder: true,
-    },
-    {
-      text: 'Settings',
-      settingSubPath: 'settings',
-      hasBorder: true,
     },
   ]
 
@@ -114,9 +104,8 @@ class Navbar extends React.Component<any, State> {
       userProfile,
     } = this.props as SignInProps
     const { name, icon, hideLogin = false } = logoHeaderConfig
-    const token = this.context
     const imageElement = icon ? (
-      <img alt="navigation logo" className="nav-logo" src={icon} />
+      <img id="header-logo-image" alt="navigation logo" className="nav-logo" src={icon} />
     ) : (
       <></>
     )
@@ -176,10 +165,10 @@ class Navbar extends React.Component<any, State> {
           >
             <span>&#10005;</span>
           </div>
-          <div className="nav-link-container">
+          <div className="nav-link-container" key="nav-link-container">
             {userProfile &&
               isSynapseSubdomainOrLocal && ( // mobile sign out
-                <div className="center-content top-nav-button nav-button-signin bootstrap-4-backport mobile-signout-container">
+                <div className="center-content nav-button nav-button-signin bootstrap-4-backport mobile-signout-container">
                   <Button
                     id="signin-button"
                     variant="secondary"
@@ -193,7 +182,7 @@ class Navbar extends React.Component<any, State> {
               )}
             {!userProfile &&
               isSynapseSubdomainOrLocal && ( // desktop sign in
-                <div className="center-content top-nav-button nav-button-signin bootstrap-4-backport">
+                <div className="center-content nav-button nav-button-signin bootstrap-4-backport">
                   <Button
                     id="signin-button"
                     variant="secondary"
@@ -245,6 +234,20 @@ class Navbar extends React.Component<any, State> {
                           </Dropdown.Item>
                         )
                       })}
+                      <Dropdown.Item
+                        key="DownloadV2"
+                        className="SRC-primary-background-color-hover SRC-nested-color border-bottom-1"
+                        href="/DownloadCart"
+                      >
+                        Downloads
+                      </Dropdown.Item>
+                      <Dropdown.Item
+                        key="Settings"
+                        className="SRC-primary-background-color-hover SRC-nested-color border-bottom-1"
+                        href={`https://www.synapse.org/#!Profile:${userProfile.ownerId}/settings`}
+                      >
+                        Settings
+                      </Dropdown.Item>
                       <Dropdown.Item // desktop sign out
                         className="SRC-primary-background-color-hover SRC-nested-color"
                         // @ts-ignore
@@ -263,7 +266,7 @@ class Navbar extends React.Component<any, State> {
                   </a>
                 </>
               )}
-            <SynapseComponents.ShowDownload token={token} />
+            {userProfile && <SynapseComponents.ShowDownloadV2 to='/DownloadCart' />}
             {
               // we have to loop backwards due to css rendering of flex-direction: row-reverse
               routesConfig
@@ -279,10 +282,10 @@ class Navbar extends React.Component<any, State> {
                   if (el.hideRouteFromNavbar) {
                     return false
                   }
-                  // hide children and only show top level element if there is a nested route to hide
+                  // hide children and only show top level element if all nested routes are hidden
                   const hideChildren =
                     el.isNested &&
-                    el.routes.some((route) => route.hideRouteFromNavbar)
+                    el.routes.every((route) => route.hideRouteFromNavbar)
                   if (el.isNested && !hideChildren) {
                     const isSelected = el.routes.some(
                       (route) =>
@@ -316,7 +319,7 @@ class Navbar extends React.Component<any, State> {
                           <Dropdown.Toggle
                             variant="light"
                             id={`Navbar-dropdown-${displayName}`}
-                            className={`nav-button-container top-nav-button ${isSelectedCssClassName}`}
+                            className={`nav-button-container nav-button ${isSelectedCssClassName}`}
                           >
                             {displayName}
                           </Dropdown.Toggle>
@@ -355,7 +358,7 @@ class Navbar extends React.Component<any, State> {
                   return (
                     <NavLink
                       key={topLevelTo}
-                      className={`top-nav-button nav-button-container center-content ${isSelectedCssClassName} ${this.getBorder(
+                      className={`nav-button nav-button-container center-content ${isSelectedCssClassName} ${this.getBorder(
                         topLevelTo,
                       )}`}
                       to={linkOrTo}
@@ -377,7 +380,7 @@ class Navbar extends React.Component<any, State> {
                   <Dropdown.Toggle
                     variant="light"
                     id={'Navbar-dropdown-Home'}
-                    className={`nav-button-container top-nav-button ${isHomeSelectedCssClassName}`}
+                    className={`nav-button-container nav-button ${isHomeSelectedCssClassName}`}
                   >
                     Home
                   </Dropdown.Toggle>
@@ -409,5 +412,5 @@ class Navbar extends React.Component<any, State> {
     )
   }
 }
-Navbar.contextType = TokenContext
+
 export default Navbar

@@ -47,9 +47,6 @@
     cursor: pointer;
     display: inline;
     margin-left: 2px;
-    border-bottom: 1px solid transparent;
-  }
-  details > summary:hover {
     border-bottom: 1px solid Portal.$primary-action-color;
   }
   details > summary::-webkit-details-marker {
@@ -83,7 +80,6 @@
 }
 
 .markdown p a {
-  color: Portal.$primary-action-color; /* action color */
   font-weight: 700;
 }
 

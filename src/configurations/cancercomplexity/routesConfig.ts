@@ -174,7 +174,7 @@ const routes: GenericRoute[] = [
                 isOutsideContainer: true,
                 props: {
                   isHeader: true,
-                  backgroundColor: 'rgb(71, 51, 125)',
+                  
                   ...grantsCardConfiguration,
                   secondaryLabelLimit: Infinity,
                   sql: grantsSql,
@@ -263,7 +263,7 @@ const routes: GenericRoute[] = [
                 isOutsideContainer: true,
                 props: {
                   isHeader: true,
-                  backgroundColor: '#407ba0',
+                  
                   ...publicationsCardConfiguration,
                   secondaryLabelLimit: Infinity,
                   facetAliases,
@@ -330,7 +330,7 @@ const routes: GenericRoute[] = [
                 isOutsideContainer: true,
                 props: {
                   isHeader: true,
-                  backgroundColor: '#5bb0b5',
+                  
                   sqlOperator: '=',
                   ...datasetCardConfiguration,
                   secondaryLabelLimit: Infinity,

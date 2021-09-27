@@ -101,7 +101,7 @@ const routes: GenericRoute[] = [
                   sql: projectsSql,
                   isAlignToLeftNav: true,
                   secondaryLabelLimit: Infinity,
-                  backgroundColor: '#5bb0b5',
+                  
                 },
               },
               {
@@ -140,7 +140,7 @@ const routes: GenericRoute[] = [
                   sql: studiesSql,
                   isAlignToLeftNav: true,
                   secondaryLabelLimit: Infinity,
-                  backgroundColor: '#5bb0b5',
+                  
                 },
               },
               {

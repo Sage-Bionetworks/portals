@@ -5,9 +5,9 @@ import {
   files,
   studies,
   publications,
-  tools,
-  funders,
+  tools,  
   initiatives,
+  hackathons,
 } from './synapseConfigs'
 import {
   newStudiesSql,
@@ -15,10 +15,19 @@ import {
   studyCardConfiguration,
   studiesDetailPage,
 } from './synapseConfigs/studies'
+import {
+  hackathonCardConfiguration,
+  hackathonsDetailPage,
+} from './synapseConfigs/hackathons'
+
+import {  
+  initiativeCardConfiguration,
+  initiativeDetailsPageConfiguration,
+} from './synapseConfigs/initiatives'
 import routeControlWrapperProps from './routeControlWrapperProps'
 import { facetAliases } from './synapseConfigs/commonProps'
-import { organizationDetailsPage } from './organizations'
-import { peopleSql } from './resources'
+import { organizationCardSchema, organizationDetailsPage, organizationDetailsPageLinkConfig } from './organizations'
+import { fundersSql, hackathonsSql, initiativesSql, peopleSql, studiesSql } from './resources'
 
 const limit = 3
 
@@ -45,7 +54,7 @@ const routes: GenericRoute[] = [
         props: {
           limit,
           facetAliases,
-          sql: newStudiesSql,          
+          sql: newStudiesSql,
           ...studyCardConfiguration,
         },
       },
@@ -91,6 +100,11 @@ const routes: GenericRoute[] = [
               wikiId: '606580',
             },
             {
+              title: 'DHART SPORE',
+              ownerId: 'syn5702691',
+              wikiId: '611220',
+            },
+            {
               title: 'Neurofibromatosis Research Initiative',
               ownerId: 'syn5702691',
               wikiId: '606582',
@@ -104,10 +118,22 @@ const routes: GenericRoute[] = [
         outsideContainerClassName: 'home-spacer',
         centerTitle: true,
         props: {
-              facetAliases,
-          sql: funders.sql,
-          type: funders.type,
-        },
+            facetAliases,
+            sql: fundersSql,
+            type: SynapseConstants.GENERIC_CARD,
+            titleLinkConfig: organizationDetailsPageLinkConfig,
+            genericCardSchema: {
+              ...organizationCardSchema,
+              imageFileHandleColumnName: 'cardLogo',
+            },
+            descriptionConfig: {
+              showFullDescriptionByDefault: true
+            },
+            ctaLinkConfig: {
+              text: 'Visit Website',
+              link: 'website'
+            }
+          },
       },
       {
         name: 'RssFeedCards',
@@ -132,7 +158,7 @@ const routes: GenericRoute[] = [
     isNested: true,
     routes: [
       {
-        isNested: false,
+        isNested: true,
         to: 'Initiatives',
         synapseConfigArray: [
           {
@@ -143,6 +169,32 @@ const routes: GenericRoute[] = [
               ...routeControlWrapperProps,
               synapseConfig: initiatives.explorePageSynapseObject,
             },
+          },
+        ],
+        routes: [
+          {
+            to: 'DetailsPage',
+            isNested: false,
+            synapseConfigArray: [
+              {
+                name: 'CardContainerLogic',
+                isOutsideContainer: true,
+                props: {
+                  sqlOperator: '=',
+                  isHeader: true,
+                  
+                  ...initiativeCardConfiguration,
+                  facetAliases,
+                  sql: initiativesSql,
+                },
+              },
+              {
+                name: 'DetailsPage',
+                isOutsideContainer: false,
+                props: initiativeDetailsPageConfiguration,
+                containerClassName: 'container-full-width',
+              },
+            ],
           },
         ],
       },
@@ -170,12 +222,12 @@ const routes: GenericRoute[] = [
                 props: {
                   sqlOperator: '=',
                   isHeader: true,
-                  backgroundColor: '#119488',
+                  
                   ...studyCardConfiguration,
                   facetAliases,
                   iconOptions: studyHeaderIconOptions,
                   secondaryLabelLimit: Infinity,
-                  sql: 'SELECT * FROM syn16787123',
+                  sql: studiesSql,
                 },
               },
               {
@@ -241,6 +293,46 @@ const routes: GenericRoute[] = [
               ...routeControlWrapperProps,
               synapseConfig: tools.explorePageSynapseObject,
             },
+          },
+        ],
+      },
+      {
+        isNested: true,
+        to: 'Hackathon Projects',
+        synapseConfigArray: [
+          {
+            name: 'RouteControlWrapper',
+            isOutsideContainer: true,
+            props: {
+              ...routeControlWrapperProps,
+              synapseConfig: hackathons.explorePageSynapseObject,
+            },
+          },
+        ],
+        routes: [
+          {
+            to: 'DetailsPage',
+            isNested: false,
+            synapseConfigArray: [
+              {
+                name: 'CardContainerLogic',
+                isOutsideContainer: true,
+                props: {
+                  sqlOperator: '=',
+                  isHeader: true,
+                  ...hackathonCardConfiguration,
+                  facetAliases: {...facetAliases, studyStatus: 'Status'},
+                  secondaryLabelLimit: Infinity,
+                  sql: hackathonsSql,
+                },
+              },
+              {
+                name: 'DetailsPage',
+                isOutsideContainer: false,
+                props: hackathonsDetailPage,
+                containerClassName: 'container-full-width',
+              },
+            ],
           },
         ],
       },
@@ -312,10 +404,10 @@ const routes: GenericRoute[] = [
   },
   {
     isNested: false,
-    displayName: 'Docs',
+    displayName: 'Help',
     to: undefined,
     target: '_blank',
-    link: 'https://nf-osi.github.io/',
+    link: 'https://help.nf.synapse.org/',
     synapseConfigArray: [],
   },
 ]

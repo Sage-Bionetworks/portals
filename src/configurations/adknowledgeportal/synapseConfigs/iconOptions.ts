@@ -10,6 +10,7 @@ import psychIconSvg from './icons/Psych-AD-icon.svg'
 import psychHeaderSvg from './icons/PsychAD-Header.svg'
 import cdcpSvg from './icons/CommunityContributionLogo-FNL.svg'
 import longevitySvg from './icons/ExceptionalLongevityFNL.svg'
+import treatAdPng from './icons/TreatADLogo-brain.png'
 
 export const iconOptions = {
   'AMP-AD': circleSvg,
@@ -18,7 +19,9 @@ export const iconOptions = {
   'Resilience-AD': resilienceadSvg,
   'Psych-AD': psychIconSvg,
   'CDCP': cdcpSvg,
-  'HLTP': longevitySvg,
+  'ELP': longevitySvg,
+  'ELITE': longevitySvg,
+  'TREAT-AD': treatAdPng,
 }
 
 export const iconHeaderOptions = {
@@ -28,5 +31,7 @@ export const iconHeaderOptions = {
   'Resilience-AD': resilienceadSvgHeader,
   'Psych-AD': psychHeaderSvg,
   'CDCP': cdcpSvg,
-  'HLTP': longevitySvg,
+  'ELP': longevitySvg,
+  'ELITE': longevitySvg,
+  'TREAT-AD': treatAdPng,
 }

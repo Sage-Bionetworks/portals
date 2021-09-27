@@ -29,6 +29,8 @@ import { RssFeedCardsProps } from 'synapse-react-client/dist/containers/RssFeedC
 import { FeaturedDataTabsProps } from 'synapse-react-client/dist/containers/home_page/featured-data/FeaturedDataTabs'
 import { UserCardListGroupsProps } from 'synapse-react-client/dist/containers/home_page/people/UserCardListGroups'
 import { TableFeedCardsProps } from 'synapse-react-client/dist/containers/TableFeedCards'
+import { DownloadCartPageProps } from 'synapse-react-client/dist/containers/download_list_v2/DownloadCartPage'
+import { RedirectProps } from 'react-router'
 
 // For styling the header on the home page -- the main title and the summary text
 export type HomePageHeaderConfig = {
@@ -120,6 +122,11 @@ type HomePageCardContainer = {
   props: HomePageCardContainerProps
 }
 
+type DownloadCartPage = {
+  name: 'DownloadCartPage'
+  props: DownloadCartPageProps
+}
+
 type Ecosystem = {
   name: 'Ecosystem'
   props: EcosystemProps
@@ -174,7 +181,6 @@ type UserCardListGroups = {
   props: UserCardListGroupsProps
 }
 
-
 type Metadata = {
   title?: string
   centerTitle?: boolean
@@ -219,7 +225,13 @@ type SurveysCompletedPlots = {
   props: SurveysCompletedPlotsProps
 }
 
+type RedirectWithQuery = {
+  name: 'RedirectWithQuery'
+  props: RedirectProps
+}
+
 export type SynapseConfig = (
+  | RedirectWithQuery
   | StatefulButtonControl
   | RouteControl
   | CardContainerLogic
@@ -254,6 +266,7 @@ export type SynapseConfig = (
   | FeaturedDataTabs
   | UserCardListGroups
   | TableFeedCards
+  | DownloadCartPage
 ) &
   Metadata
 export type SynapseConfigArray = SynapseConfig[]

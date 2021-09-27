@@ -8,15 +8,16 @@ import Navbar from './Navbar'
 import CookiesNotification from './CookiesNotification'
 import { CookiesProvider } from 'react-cookie'
 import '@fortawesome/fontawesome-free/css/all.css'
+import { SynapseComponents } from 'synapse-react-client'
 
 const Home = React.lazy(() => import('./Home'))
 const RouteResolver = React.lazy(() => import('./RouteResolver'))
-
-const App: React.SFC = () => {
+const App: React.FC = () => {
   return (
     <CookiesProvider>
       <BrowserRouter>
         <AppInitializer>
+          <SynapseComponents.SynapseToastContainer />
           <Navbar />
           <CookiesNotification />
           <main className="main">

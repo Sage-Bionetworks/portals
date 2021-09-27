@@ -88,7 +88,7 @@ export const toolsDetailsLandingPage: SynapseConfigArray = [
     props: {
       isHeader: true,
       isAlignToLeftNav: true,
-      backgroundColor: '#5bb0b5',
+      
       ...toolsCardConfiguration,
       titleLinkConfig: undefined,
       facetAliases,

@@ -19,6 +19,10 @@ export const publicationsCardConfiguration: CardConfiguration = {
       URLColumnName: 'studyName',
       matchColumnName: 'studyName',
     },
+    {
+      isMarkdown: true,
+      matchColumnName: 'doi',
+    },
   ],
   genericCardSchema: {
     title: 'title',

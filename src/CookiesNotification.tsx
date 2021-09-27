@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { withRouter, RouteComponentProps } from 'react-router-dom'
 import { withCookies, ReactCookieProps } from 'react-cookie'
+import { SynapseComponents } from 'synapse-react-client'
 
 export type CookiesNotificationToken = {
   hasAgreedToCookies: boolean
@@ -32,7 +33,7 @@ class CookiesNotification extends React.Component<
     }
   }
 
-  setHasAgreedToCookies(_event: React.SyntheticEvent<HTMLButtonElement>) {
+  setHasAgreedToCookies() {
     this.setState({
       hasAgreedToCookies: true,
     })
@@ -44,25 +45,16 @@ class CookiesNotification extends React.Component<
     return this.state.hasAgreedToCookies ? (
       false
     ) : (
-      <div className="cookiesBanner">
-        This site uses Cookies to enhance your experience and to analyze our
-        traffic. Using this website means that you agree with our cookie policy.
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://s3.amazonaws.com/static.synapse.org/governance/SynapsePrivacyPolicy.pdf"
-        >
-          {' '}
-          <u> LEARN MORE </u>
-        </a>
-        <button
-          className="btn btn-default btn-small"
-          onClick={this.setHasAgreedToCookies}
-        >
-          {' '}
-          OK{' '}
-        </button>
-      </div>
+      <SynapseComponents.FullWidthAlert 
+        variant="info" 
+        title="Our site uses cookies."
+        description="This website uses cookies to enhance your experience and to analyze our traffic. Using this website means that you agree with our cookie policy." 
+        primaryButtonText="ACCEPT AND CONTINUE"
+        onPrimaryButtonClick={this.setHasAgreedToCookies}
+        secondaryButtonText="LEARN MORE"
+        secondaryButtonHref='https://s3.amazonaws.com/static.synapse.org/governance/SynapsePrivacyPolicy.pdf'
+        isGlobal={true}
+        />
     )
   }
 }

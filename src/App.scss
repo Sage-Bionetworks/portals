@@ -12,6 +12,8 @@
 @use 'Core';
 @use 'Markdown';
 @use 'Navbar';
+@use 'ExploreMenu';
+@use 'SynapseRedirectDialog';
 @use '../portal-components/DetailsPage';
 
 // style_overrides should be last to ensure its styles have higher priority
