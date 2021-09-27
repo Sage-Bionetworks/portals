@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useMedia } from 'react-use'
 
 // This code scrolls an element into view, and accounts for the fixed top nav bar height.
 export const scrollToWithOffset = (el: HTMLElement) => {
@@ -7,25 +7,8 @@ export const scrollToWithOffset = (el: HTMLElement) => {
   window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' })
 }
 
-const MOBILE_VIEWPORT_MAX_WIDTH_PX = 768
+export const DESKTOP_VIEWPORT_MIN_WIDTH_PX = 768
+export const DESKTOP_VIEWPORT_MIN_WIDTH_MEDIA_QUERY = `(min-width: ${DESKTOP_VIEWPORT_MIN_WIDTH_PX}px)`
 
-export function useShowDesktop(breakpoint?: number) {
-  let usedBreakpoint = breakpoint ?? MOBILE_VIEWPORT_MAX_WIDTH_PX
-  const [showDesktop, setShowDesktop] = useState(
-    window.innerWidth > usedBreakpoint,
-  )
-  useEffect(() => {
-    const listener = () => {
-      const updatedValue = window.innerWidth > usedBreakpoint
-      if (updatedValue !== showDesktop) {
-        setShowDesktop(updatedValue)
-      }
-    }
-    window.addEventListener('resize', listener)
-    return () => {
-      window.removeEventListener('resize', listener)
-    }
-  })
-
-  return showDesktop
-}
+export const useShowDesktop = () =>
+  useMedia(DESKTOP_VIEWPORT_MIN_WIDTH_MEDIA_QUERY)
