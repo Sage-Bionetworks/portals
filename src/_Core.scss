@@ -170,8 +170,8 @@ body {
   top: Portal.$banner-height;
 }
 .explore-nav-container {
-  background-color: #F9F9F9;
-  border-bottom: 4px solid #DCDCDC;
+  background-color: #f9f9f9;
+  border-bottom: 4px solid #dcdcdc;
   padding: 30px 30px 0px 30px;
   .title {
     margin-top: 0px;
@@ -202,10 +202,19 @@ body {
   }
   &.explore-nav {
     margin-left: -24px;
+    height: unset;
     .nav-button {
-      color: #515359;
+      height: 75px;
+      .explore-nav-button-text {
+        color: #515359;
+        font-family: 'Lato', sans-serif;
+        font-weight: 700;
+        @extend %nav-button-text;
+      }
       &.isSelected {
-        color: Portal.$dark-gray;
+        .explore-nav-button-text {
+          color: Portal.$dark-gray;
+        }
       }
     }
   }
@@ -221,39 +230,38 @@ body {
   border-bottom-color: transparent;
 }
 
-.nav-button {
+%nav-button-text {
   text-transform: uppercase;
   font-weight: bold;
-  height: -webkit-fill-available;
-  // fallback for mozilla and ie11
-  height: 100%;
   font-size: 16px;
   text-align: center;
   justify-content: center;
   text-decoration: none;
+}
+
+.nav-button {
+  height: -webkit-fill-available;
+  // fallback for mozilla and ie11
+  height: 100%;
   padding: 0px 25px;
   margin: 0px;
   min-width: 100px;
   white-space: normal;
+  @extend %nav-button-text;
   @extend %fillerBorder;
 }
 
 .nav-button,
 a.nav-button {
-  text-transform: uppercase;
-  font-weight: bold;
   height: -webkit-fill-available;
   // fallback for mozilla and ie11
   height: 100%;
-  font-size: 16px;
-  text-align: center;
-  justify-content: center;
   color: #404b63;
-  text-decoration: none;
   padding: 0px 25px;
   margin: 0px;
   min-width: 100px;
   white-space: nowrap;
+  @extend %nav-button-text;
   @extend %fillerBorder;
   a {
     color: unset;
@@ -346,7 +354,7 @@ button.dropdown-toggle.nav-button:hover {
 @media (max-width: 992px) {
   .experimental-mode-wrapper {
     display: none;
-  }  
+  }
 }
 
 #portal-contact-footer {
@@ -532,73 +540,74 @@ div.SRC-marginBottomTen {
   @extend %fillerBorder;
 }
 
-
 .synapseAlert {
-	&.global {
-		width: 100%;
-		position: fixed;
-		bottom: 0px;
-		left: 0px;
-	}
-	padding: 14px;
-	z-index: 500;
-	display: grid;
-	grid-template-columns: 50px auto 150px 200px;
-	column-gap: 10px;
-	align-items: center;
-	justify-items: start;
-	.iconArea {
-		grid-column: 1 / span 1;
-		grid-row: 1 / span 1;
-		min-width: 50px;
-	}
-	.messageArea {
-		max-width: 700px;
-		grid-row: 1 / span 1;
-	}
-	.iconForeground {
-		color: white;
-	}
-	@media (min-width: 992px) {
-		grid-template-rows: auto;
-		.messageArea {
-			grid-column: 2 / span 1;
-		}
-		.secondaryButton {
-			grid-column: 3 / span 1;
-			grid-row: 1 / span 1;
-			justify-self: end;
-		}
-		.primaryButton {
-			grid-column: 4 / span 1;
-			grid-row: 1 / span 1;
-			justify-self: end;
-		}
-	}
-	@media (max-width: 992px) {
-		grid-template-rows: auto 75px;
-		.messageArea {
-			grid-column: 2 / span 3;
-		}
-		.secondaryButton {
-			grid-column: 4 / span 1;
-			grid-row: 2 / span 1;
-		}
-		.primaryButton {
-			grid-column: 2 / span 2;
-			grid-row: 2 / span 1;
-		}
-	}
+  &.global {
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+  }
+  padding: 14px;
+  z-index: 500;
+  display: grid;
+  grid-template-columns: 50px auto 150px 200px;
+  column-gap: 10px;
+  align-items: center;
+  justify-items: start;
+  .iconArea {
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 1;
+    min-width: 50px;
+  }
+  .messageArea {
+    max-width: 700px;
+    grid-row: 1 / span 1;
+  }
+  .iconForeground {
+    color: white;
+  }
+  @media (min-width: 992px) {
+    grid-template-rows: auto;
+    .messageArea {
+      grid-column: 2 / span 1;
+    }
+    .secondaryButton {
+      grid-column: 3 / span 1;
+      grid-row: 1 / span 1;
+      justify-self: end;
+    }
+    .primaryButton {
+      grid-column: 4 / span 1;
+      grid-row: 1 / span 1;
+      justify-self: end;
+    }
+  }
+  @media (max-width: 992px) {
+    grid-template-rows: auto 75px;
+    .messageArea {
+      grid-column: 2 / span 3;
+    }
+    .secondaryButton {
+      grid-column: 4 / span 1;
+      grid-row: 2 / span 1;
+    }
+    .primaryButton {
+      grid-column: 2 / span 2;
+      grid-row: 2 / span 1;
+    }
+  }
 }
 
 // Bootstrap Alert overrides
 
 .alert {
   &::before {
-    content: "";
+    content: '';
     position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background: white;
     z-index: -1;
     opacity: 0.93;
@@ -618,24 +627,24 @@ div.SRC-marginBottomTen {
     }
   }
   &.alert-danger {
-    background: #F5DAD9;
-    border-left: 10px solid #CD453F;
+    background: #f5dad9;
+    border-left: 10px solid #cd453f;
     .iconBackground {
-      color: #CD453F;
+      color: #cd453f;
     }
   }
   &.alert-warning {
-    background: #FAEEDC;
-    border-left: 10px solid #E4AA52;
+    background: #faeedc;
+    border-left: 10px solid #e4aa52;
     .iconBackground {
-      color: #E4AA52;
+      color: #e4aa52;
     }
   }
   &.alert-success {
     background: #e7e7e7;
-    border-left: 10px solid #48896B;
+    border-left: 10px solid #48896b;
     .iconBackground {
-      color: #48896B;
+      color: #48896b;
     }
   }
 }

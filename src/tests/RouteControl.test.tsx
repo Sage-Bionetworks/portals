@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { shallow } from 'enzyme'
 import { RouteControl, RouteControlProps } from '../RouteControl'
+import { render, screen } from '@testing-library/react'
 
 describe('RouteControl works', () => {
   const customRoutes = ['route1', 'route2']
@@ -9,15 +9,11 @@ describe('RouteControl works', () => {
     handleChanges: jest.fn(),
     isSelected: jest.fn(),
   }
-  it('renders the routes and colors correctly', () => {
-    const el = shallow(<RouteControl {...props} />)
-    const buttons = el.find('button')
-    expect(buttons).toHaveLength(2)
-    // test that the first button has the right background and text set
-    const buttonOne = buttons.at(0)
-    expect(buttonOne.text()).toEqual(customRoutes[0])
-    // test that the first button has the right background and text set
-    const buttonTwo = buttons.at(1)
-    expect(buttonTwo.text()).toEqual(customRoutes[1])
+  it('renders the route tabs', () => {
+    render(<RouteControl {...props} />)
+    const tabs = screen.getAllByRole('tab')
+    expect(tabs).toHaveLength(2)
+    screen.getByText(customRoutes[0])
+    screen.getByText(customRoutes[1])
   })
 })
