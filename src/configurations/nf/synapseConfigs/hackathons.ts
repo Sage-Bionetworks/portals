@@ -34,6 +34,12 @@ export const hackathonCardConfiguration: CardConfiguration = {
     ],
     dataTypeIconNames: 'dataType',
   },
+  labelLinkConfig: [
+    {
+      isMarkdown: true,
+      matchColumnName: 'doi',
+    },
+  ],
   iconOptions: {
     Active: hackathonActiveSvg,
     Completed: hackathonCompleteSvg,
