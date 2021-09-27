@@ -7,7 +7,7 @@ export const scrollToWithOffset = (el: HTMLElement) => {
   window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' })
 }
 
-export const DESKTOP_VIEWPORT_MIN_WIDTH_PX = 768
+export const DESKTOP_VIEWPORT_MIN_WIDTH_PX = 769
 export const DESKTOP_VIEWPORT_MIN_WIDTH_MEDIA_QUERY = `(min-width: ${DESKTOP_VIEWPORT_MIN_WIDTH_PX}px)`
 
 export const useShowDesktop = () =>
