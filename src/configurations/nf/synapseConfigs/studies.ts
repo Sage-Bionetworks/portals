@@ -49,6 +49,12 @@ export const studyCardConfiguration: CardConfiguration = {
     ],
     dataTypeIconNames: 'dataType'
   },
+  labelLinkConfig: [
+    {
+      isMarkdown: true,
+      matchColumnName: 'grantDOI',
+    },
+  ],
   iconOptions: {
     Active: studyActiveSvg,
     Completed: studyCompleteSvg,
