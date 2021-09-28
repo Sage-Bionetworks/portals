@@ -25,6 +25,22 @@ configure({ adapter: new Adapter() })
 // which requires a browser env and doesn't provide support for headless
 // js testing, so we shim the function below.
 // View - https://github.com/mapbox/mapbox-gl-js/issues/3436
-window.URL.createObjectURL = function() {
+window.URL.createObjectURL = function () {
   return ''
 }
+
+// JSDOM doesn't implement window.matchMedia
+// https://stackoverflow.com/a/53449595
+Object.defineProperty(window, 'matchMedia', {
+  writable: true,
+  value: (query) => ({
+    matches: true,
+    media: query,
+    onchange: null,
+    addListener: jest.fn(), // Deprecated
+    removeListener: jest.fn(), // Deprecated
+    addEventListener: jest.fn(),
+    removeEventListener: jest.fn(),
+    dispatchEvent: jest.fn(),
+  }),
+})
