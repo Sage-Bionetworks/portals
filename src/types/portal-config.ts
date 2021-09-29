@@ -303,7 +303,7 @@ export type GenericRoute = NestedRoute | BaseRoute
 // Footer - start
 export type FooterConfig = {
   contactUs?: string
-  termsOfService: string
+  termsOfService?: string
   forum?: string
   about?: string
 }

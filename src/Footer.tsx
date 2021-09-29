@@ -25,6 +25,7 @@ export const Footer: React.SFC<{}> = () => {
   ) : (
     <img alt="footer logo" className="nav-logo" src={icon} />
   )
+  const termsOfServiceUrl = footerConfig.termsOfService ?? 'https://s3.amazonaws.com/static.synapse.org/governance/SageBionetworksSynapseTermsandConditionsofUse.pdf?v=5'
   return (
     <footer id="footer" className="center-content">
       <div id="portal-title-footer">
@@ -36,9 +37,9 @@ export const Footer: React.SFC<{}> = () => {
         <a
           rel="noopener noreferrer"
           target={
-            footerConfig.termsOfService.charAt(0) === '/' ? '_self' : '_blank'
+            termsOfServiceUrl.charAt(0) === '/' ? '_self' : '_blank'
           }
-          href={footerConfig.termsOfService}
+          href={termsOfServiceUrl}
           className="footer-item"
         >
           Terms of Service
