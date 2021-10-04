@@ -24,7 +24,7 @@ export const toolsConfiguration: CardConfiguration = {
       'grantNumber',
       'consortium',
     ],
-    link: 'homepageUrl',
+    link: 'homepage',
   },
   labelLinkConfig: [
     {
