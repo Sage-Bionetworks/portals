@@ -203,7 +203,7 @@ body {
   &.explore-nav {
     margin-left: -24px;
     height: unset;
-    .MuiTabScrollButton-root .MuiSvgIcon-root {
+    .TabScrollButton svg {
       color: Portal.$secondary-action-color;
       font-size: 26px;
     }

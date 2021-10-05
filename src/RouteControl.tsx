@@ -1,5 +1,5 @@
 import React, { useLayoutEffect, useRef } from 'react'
-import { Tab, Tabs } from '@material-ui/core'
+import { Tab, Tabs, TabScrollButton } from '@material-ui/core'
 import { useShowDesktop } from 'utils'
 export type NamedRoute = {
   name: string
@@ -51,6 +51,10 @@ export const RouteControl: React.FunctionComponent<RouteControlProps> = ({
     )
   }
 
+  const CustomScrollButton = (props) => {
+    return <TabScrollButton {...props} classes={{ root: 'TabScrollButton' }} />
+  }
+
   /**
    * In the desktop view, we use Material UI tabs
    */
@@ -59,6 +63,7 @@ export const RouteControl: React.FunctionComponent<RouteControlProps> = ({
       value={customRoutes.find((name) => isSelected(name))}
       variant="scrollable"
       scrollButtons="auto"
+      ScrollButtonComponent={CustomScrollButton}
       aria-label="Explore Sections"
       className="flex-display nav explore-nav"
     >
