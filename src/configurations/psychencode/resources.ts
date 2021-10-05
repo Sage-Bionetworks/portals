@@ -2,7 +2,7 @@
 // version of the entity used in the sql below
 
 const dataSynId = 'syn20821313.11'
-export const studiesSql = 'SELECT * FROM syn21783965.7'
+export const studiesSql = 'SELECT * FROM syn21783965.9'
 export const dataSql = `SELECT * FROM ${dataSynId}`
 export const metadataSql = `SELECT id, metadataType, dataType, assay FROM ${dataSynId} WHERE "dataSubtype" = \'metadata\'`
 export const peopleSql = 'SELECT * FROM syn22096112.3'
