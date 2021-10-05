@@ -203,6 +203,10 @@ body {
   &.explore-nav {
     margin-left: -24px;
     height: unset;
+    .TabScrollButton svg {
+      color: Portal.$secondary-action-color;
+      font-size: 26px;
+    }
     .nav-button {
       height: 75px;
       .explore-nav-button-text {
