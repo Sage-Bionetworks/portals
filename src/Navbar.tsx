@@ -266,7 +266,7 @@ class Navbar extends React.Component<any, State> {
                   </a>
                 </>
               )}
-            {userProfile && <SynapseComponents.ShowDownloadV2 className="nav-button-container center-content" to='/DownloadCart' />}
+            {userProfile && <SynapseComponents.ShowDownloadV2 className="nav-button nav-button-container center-content" to='/DownloadCart' />}
             {
               // we have to loop backwards due to css rendering of flex-direction: row-reverse
               routesConfig
