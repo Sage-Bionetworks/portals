@@ -1904,24 +1904,6 @@
     "@types/yargs" "^16.0.0"
     chalk "^4.0.0"
 
-"@material-ui/core@^4.11.3":
-  version "4.11.4"
-  resolved "https://registry.yarnpkg.com/@material-ui/core/-/core-4.11.4.tgz#4fb9fe5dec5dcf780b687e3a40cff78b2b9640a4"
-  integrity sha512-oqb+lJ2Dl9HXI9orc6/aN8ZIAMkeThufA5iZELf2LQeBn2NtjVilF5D2w7e9RpntAzDb4jK5DsVhkfOvFY/8fg==
-  dependencies:
-    "@babel/runtime" "^7.4.4"
-    "@material-ui/styles" "^4.11.4"
-    "@material-ui/system" "^4.11.3"
-    "@material-ui/types" "5.1.0"
-    "@material-ui/utils" "^4.11.2"
-    "@types/react-transition-group" "^4.2.0"
-    clsx "^1.0.4"
-    hoist-non-react-statics "^3.3.2"
-    popper.js "1.16.1-lts"
-    prop-types "^15.7.2"
-    react-is "^16.8.0 || ^17.0.0"
-    react-transition-group "^4.4.0"
-
 "@material-ui/core@^4.12.3":
   version "4.12.3"
   resolved "https://registry.yarnpkg.com/@material-ui/core/-/core-4.12.3.tgz#80d665caf0f1f034e52355c5450c0e38b099d3ca"
@@ -1978,16 +1960,6 @@
     jss-plugin-props-sort "^10.5.1"
     jss-plugin-rule-value-function "^10.5.1"
     jss-plugin-vendor-prefixer "^10.5.1"
-    prop-types "^15.7.2"
-
-"@material-ui/system@^4.11.3":
-  version "4.11.3"
-  resolved "https://registry.yarnpkg.com/@material-ui/system/-/system-4.11.3.tgz#466bc14c9986798fd325665927c963eb47cc4143"
-  integrity sha512-SY7otguNGol41Mu2Sg6KbBP1ZRFIbFLHGK81y4KYbsV2yIcaEPOmsCK6zwWlp+2yTV3J/VwT6oSBARtGIVdXPw==
-  dependencies:
-    "@babel/runtime" "^7.4.4"
-    "@material-ui/utils" "^4.11.2"
-    csstype "^2.5.2"
     prop-types "^15.7.2"
 
 "@material-ui/system@^4.12.1":
@@ -7032,6 +7004,11 @@ immer@8.0.1:
   resolved "https://registry.yarnpkg.com/immer/-/immer-8.0.1.tgz#9c73db683e2b3975c424fb0572af5889877ae656"
   integrity sha512-aqXhGP7//Gui2+UrEtvxZxSquQVXTpZ7KDxfCcKAF3Vysvw0CViVaW9RZ1j1xlIYqaaaipBoqdqeibkc18PNvA==
 
+immutable@4.0.0-rc.15:
+  version "4.0.0-rc.15"
+  resolved "https://registry.yarnpkg.com/immutable/-/immutable-4.0.0-rc.15.tgz#c30056f05eaaf5650fd15230586688fdd15c54bc"
+  integrity sha512-v8+A3sNyaieoP9dHegl3tEYnIZa7vqNiSv0U6D7YddiZi34VjKy4GsIxrRHj2d8+CS3MeiVja5QyNe4JO/aEXA==
+
 import-cwd@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/import-cwd/-/import-cwd-2.1.0.tgz#aa6cf36e722761285cb371ec6519f53e2435b0a9"
@@ -11107,7 +11084,7 @@ react-overlays@^5.0.0:
     uncontrollable "^7.2.1"
     warning "^4.0.3"
 
-react-plotly.js@^2.3.0:
+react-plotly.js@^2.5.1:
   version "2.5.1"
   resolved "https://registry.yarnpkg.com/react-plotly.js/-/react-plotly.js-2.5.1.tgz#11182bf599ef11a0dbfcd171c6f5645535a2b486"
   integrity sha512-Oya14whSHvPsYXdI0nHOGs1pZhMzV2edV7HAW1xFHD58Y73m/LbG2Encvyz1tztL0vfjph0JNhiwO8cGBJnlhg==
@@ -11121,10 +11098,10 @@ react-plotlyjs-ts@^2.2.1:
   dependencies:
     lodash "^4.17.4"
 
-react-query@^3.9.8:
-  version "3.16.0"
-  resolved "https://registry.yarnpkg.com/react-query/-/react-query-3.16.0.tgz#8de1556aabb3d200d0f8eeb74ce2b0b3dd0a0a51"
-  integrity sha512-YOvI8mO9WG+r4XsyJinjlDMiV5IewUWUcTv2J7z6bIP3KOFvgT6k6HM8vQouz4hPnme7Ktq9j5e7LarUqgJXFQ==
+react-query@^3.25.1:
+  version "3.26.0"
+  resolved "https://registry.yarnpkg.com/react-query/-/react-query-3.26.0.tgz#7083a8622afdf946ee6d8f3a6d94591b980c1aa0"
+  integrity sha512-wFPnL9Y+9xf6gJHAQ8ue+vBurciJ4cfQL4dhsI0x3YyRaEXlyklUQpJzbR63CfFULVekP3iWoyFxhaNVS9RFDw==
   dependencies:
     "@babel/runtime" "^7.5.5"
     broadcast-channel "^3.4.1"
@@ -11270,13 +11247,6 @@ react-spinners@^0.8.3:
   dependencies:
     "@emotion/core" "^10.0.15"
 
-react-spinners@^0.9.0:
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/react-spinners/-/react-spinners-0.9.0.tgz#b22c38acbfce580cd6f1b04a4649e812370b1fb8"
-  integrity sha512-+x6eD8tn/aYLdxZjNW7fSR1uoAXLb9qq6TFYZR1dFweJvckcf/HfP8Pa/cy5HOvB/cvI4JgrYXTjh2Me3S6Now==
-  dependencies:
-    "@emotion/core" "^10.0.15"
-
 react-switch@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/react-switch/-/react-switch-5.0.1.tgz#449277f4c3aed5286fffd0f50d5cbc2a23330406"
@@ -11304,18 +11274,10 @@ react-test-renderer@^16.0.0-0:
     react-is "^16.8.6"
     scheduler "^0.19.1"
 
-react-tooltip@*:
+react-tooltip@*, react-tooltip@^4.2.21:
   version "4.2.21"
   resolved "https://registry.yarnpkg.com/react-tooltip/-/react-tooltip-4.2.21.tgz#840123ed86cf33d50ddde8ec8813b2960bfded7f"
   integrity sha512-zSLprMymBDowknr0KVDiJ05IjZn9mQhhg4PRsqln0OZtURAJ1snt1xi5daZfagsh6vfsziZrc9pErPTDY1ACig==
-  dependencies:
-    prop-types "^15.7.2"
-    uuid "^7.0.3"
-
-react-tooltip@4.2.1:
-  version "4.2.1"
-  resolved "https://registry.yarnpkg.com/react-tooltip/-/react-tooltip-4.2.1.tgz#7cb2ea0e32c95d4e91f6de7bc83a2b23375d4238"
-  integrity sha512-UnbPca1JJsCeJ/6bnBdivacciEFw5JjfFSALCnFbQkTfTo6kcPF0ryO+mUiMNIoaUBTI28wGlcDEQxfICQivcA==
   dependencies:
     prop-types "^15.7.2"
     uuid "^7.0.3"
@@ -12791,10 +12753,10 @@ symbol-tree@^3.2.4:
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.4.tgz#430637d248ba77e078883951fb9aa0eed7c63fa2"
   integrity sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==
 
-synapse-react-client@2.0.42:
-  version "2.0.42"
-  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-2.0.42.tgz#e6b3a11491a55eb5b066b0b68a5a57fa144aa419"
-  integrity sha512-u9sPKxTRTr8cNHHYVEF6PlkXP8SHYp+2eMc46UU+/iK0vEN+c3AxQuJ+CQdijiCjypXX93IjWcbAluLeKiDkDw==
+synapse-react-client@2.0.46:
+  version "2.0.46"
+  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-2.0.46.tgz#330d8075fdc6fff94e1970429a5f4e604a55f620"
+  integrity sha512-S1wOoFMz52jV8tEDS8YKXI8lcciaGDbuHuaMO/2cD5F/s+N65/FcuxL3gwRwEStI5kFKmtTkEP9CdKIC93wX4A==
   dependencies:
     "@brainhubeu/react-carousel" "1.19.26"
     "@fortawesome/fontawesome-free" "^5.13.0"
@@ -12802,10 +12764,11 @@ synapse-react-client@2.0.42:
     "@fortawesome/free-brands-svg-icons" "^5.15.2"
     "@fortawesome/free-solid-svg-icons" "^5.3.1"
     "@fortawesome/react-fontawesome" "^0.1.3"
-    "@material-ui/core" "^4.11.3"
+    "@material-ui/core" "^4.12.3"
     "@material-ui/icons" "^4.11.2"
     "@material-ui/lab" "^4.0.0-alpha.57"
     "@rjsf/core" "^3.0.0"
+    "@sage-bionetworks/react-base-table" "^1.12.3"
     "@sage-bionetworks/rjsf-core" "^3.1.4"
     "@upsetjs/react" "^1.6.2"
     animate.css "^4.1.1"
@@ -12814,6 +12777,7 @@ synapse-react-client@2.0.42:
     downshift "^6.1.2"
     gh-pages "^2.0.0"
     i "^0.3.6"
+    immutable "4.0.0-rc.15"
     json-rules-engine "^4.0.0"
     json-schema-ref-parser "^7.1.1"
     katex "0.11.1"
@@ -12846,18 +12810,17 @@ synapse-react-client@2.0.42:
     react-intersection-observer "^8.31.0"
     react-mailchimp-subscribe "^2.1.0"
     react-measure "^2.1.2"
-    react-plotly.js "^2.3.0"
+    react-plotly.js "^2.5.1"
     react-plotlyjs-ts "^2.2.1"
-    react-query "^3.9.8"
+    react-query "^3.25.1"
     react-reflex "^4.0.0"
     react-router-dom "5.3.0"
     react-scripts "^4.0.3"
     react-select "^4.3.1"
     react-sizeme "^2.6.12"
-    react-spinners "^0.9.0"
     react-switch "^5.0.1"
     react-test-renderer "16.13.1"
-    react-tooltip "4.2.1"
+    react-tooltip "^4.2.21"
     react-transition-group "2.6.0"
     regenerator-runtime "^0.13.2"
     rss-parser "^3.7.2"
@@ -12866,6 +12829,7 @@ synapse-react-client@2.0.42:
     shortid "^2.2.14"
     spark-md5 "^3.0.0"
     sql-parser "^0.5.0"
+    tslib "^2.3.1"
     universal-cookie "^4.0.3"
     use-deep-compare-effect "^1.3.1"
 
@@ -13160,7 +13124,7 @@ tslib@^2.0.3, tslib@^2.2.0:
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.2.0.tgz#fb2c475977e35e241311ede2693cee1ec6698f5c"
   integrity sha512-gS9GVHRU+RGn5KQM2rllAlR3dU6m7AcpJKdtH8gFvQiC4Otgk98XnmMU+nZenHt/+VhnBPWwgrJsyrdcw6i23w==
 
-tslib@^2.1.0:
+tslib@^2.1.0, tslib@^2.3.1:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.3.1.tgz#e8a335add5ceae51aa261d32a490158ef042ef01"
   integrity sha512-77EbyPPpMz+FRFRuAFlWMtmgUWGe9UOG2Z25NqCwiIjRhOf5iKGuzSe5P2w1laq+FkRy4p+PCuVkJSGkzTEKVw==
