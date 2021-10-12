@@ -165,7 +165,7 @@ class Navbar extends React.Component<any, State> {
           >
             <span>&#10005;</span>
           </div>
-          <div className="nav-link-container" key="nav-link-container">
+          <div className="nav-link-container">
             {userProfile &&
               isSynapseSubdomainOrLocal && ( // mobile sign out
                 <div className="center-content nav-button nav-button-signin bootstrap-4-backport mobile-signout-container">
@@ -266,7 +266,7 @@ class Navbar extends React.Component<any, State> {
                   </a>
                 </>
               )}
-            {userProfile && <SynapseComponents.ShowDownloadV2 to='/DownloadCart' />}
+            {userProfile && <SynapseComponents.ShowDownloadV2 className="nav-button nav-button-container center-content" to='/DownloadCart' />}
             {
               // we have to loop backwards due to css rendering of flex-direction: row-reverse
               routesConfig
