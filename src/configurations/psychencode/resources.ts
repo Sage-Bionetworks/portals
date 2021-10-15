@@ -4,7 +4,7 @@
 const dataSynId = 'syn20821313.13'
 export const studiesSql = 'SELECT * FROM syn21783965.9'
 export const dataSql = `SELECT * FROM ${dataSynId}`
-export const metadataSql = `SELECT id, metadataType, dataType, assay FROM ${dataSynId} WHERE "dataSubtype" = \'metadata\'`
+export const metadataSql = `SELECT id, metadataType, dataType, assay FROM ${dataSynId} WHERE "resourceType" = \'metadata\'`
 export const peopleSql = 'SELECT * FROM syn22096112.3'
 export const grantSql = 'SELECT * FROM syn22096130.4'
 export const publicationSql = 'SELECT * FROM syn22095937.5 order by authors asc'
