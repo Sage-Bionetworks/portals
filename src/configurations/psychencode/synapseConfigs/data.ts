@@ -3,7 +3,8 @@ import { SynapseConfig } from 'types/portal-config'
 import { dataSql } from '../resources'
 
 const facetAliases = {
-  id: 'File',
+  id: 'Id',
+  name: 'File Name'
 }
 
 const rgbIndex = 8
@@ -27,6 +28,7 @@ export const data: SynapseConfig = {
     },
     searchConfiguration: {
       searchable: [
+        'id',
         'study',
         'dataType',
         'resourceType',

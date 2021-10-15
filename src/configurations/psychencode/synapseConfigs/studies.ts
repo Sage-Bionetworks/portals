@@ -139,7 +139,8 @@ export const details: DetailsPageProps = {
       props: {
         sql: metadataSql,
         facetAliases: {
-          id: 'File Name',
+          id: 'Id',
+          name: 'File Name',
           metadataType: 'Metadata Type',
           dataType: 'Data Type',
           assay: 'Assay',
