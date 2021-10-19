@@ -590,38 +590,12 @@ const routes: GenericRoute[] = [
     synapseConfigArray: [],
   },
   {
-    to: 'Help',
-    isNested: true,
-    routes: [
-      {
-        isNested: false,
-        to: 'FAQ',
-        synapseConfigArray: [
-          {
-            name: 'Markdown',
-            title: 'FAQ',
-            props: {
-              ownerId: 'syn12666371',
-              wikiId: '605050',
-            },
-          },
-        ],
-      },
-      {
-        isNested: false,
-        displayName: 'Forum',
-        to: undefined,
-        link: 'https://www.synapse.org/#!Synapse:syn2580853/discussion/default',
-        synapseConfigArray: [],
-      },
-      {
-        isNested: false,
-        displayName: 'Contact Us',
-        to: undefined,
-        link: 'mailto:ampadportal@sagebionetworks.org',
-        synapseConfigArray: [],
-      },
-    ],
+    isNested: false,
+    displayName: 'Help',
+    to: undefined,
+    target: '_blank',
+    link: 'https://help.adknowledgeportal.org/apd/',
+    synapseConfigArray: [],
   },
 ]
 
