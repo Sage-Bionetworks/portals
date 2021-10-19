@@ -142,6 +142,11 @@ type DevelopedBySage = {
   props: undefined
 }
 
+type BrowseToolsPage = {
+  name: 'BrowseToolsPage'
+  props: undefined
+}
+
 type ExternalFileHandleLink = {
   name: 'ExternalFileHandleLink'
   props: ExternalFileHandleLinkProps
@@ -267,6 +272,7 @@ export type SynapseConfig = (
   | UserCardListGroups
   | TableFeedCards
   | DownloadCartPage
+  | BrowseToolsPage
 ) &
   Metadata
 export type SynapseConfigArray = SynapseConfig[]

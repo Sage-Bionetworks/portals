@@ -154,6 +154,17 @@ const routes: GenericRoute[] = [
     ],    
   },
   {
+    to: 'Browse Tools',
+    isNested: false,
+    synapseConfigArray: [
+      {
+        name: 'BrowseToolsPage',
+        props: undefined,
+        isOutsideContainer: true,
+      },
+    ],
+  },
+  {
     to: 'Explore',
     isNested: true,
     routes: [
@@ -380,6 +391,7 @@ const routes: GenericRoute[] = [
       },
     ],
   },
+
   {
     to: 'About',
     isNested: false,
