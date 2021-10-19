@@ -24,7 +24,7 @@
     "react-use": "^17.3.1",
     "sass": "^1.30.0",
     "source-map-explorer": "^2.5.2",
-    "synapse-react-client": "2.0.47",
+    "synapse-react-client": "2.0.48",
     "@sage-bionetworks/react-base-table": "^1.12.3",
     "typescript": "4.3.5"
   },
