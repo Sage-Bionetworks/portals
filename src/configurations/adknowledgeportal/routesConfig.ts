@@ -199,6 +199,24 @@ const routes: GenericRoute[] = [
     ],
   },
   {
+    // PORTALS-2028: redirect /ExperimentalModels to /Explore/Experimental%20Models
+    isNested: false,
+    to: 'ExperimentalModels',
+    hideRouteFromNavbar: true,
+    synapseConfigArray: [
+      {
+        name: 'RedirectWithQuery',
+        props: {
+          exact: false,
+          strict: false,
+          from: 'ExperimentalModels',
+          to: 'Explore/Experimental Models',
+        },
+      },
+    ],
+  },
+
+  {
     to: 'Explore',
     isNested: true,
     routes: [
