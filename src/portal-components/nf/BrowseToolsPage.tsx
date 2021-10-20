@@ -53,6 +53,9 @@ const BrowseToolsPage = () => {
         <p className="center-title">
           Drill-down to explore specific types of NF research tools.
         </p>
+        <div className="center-content bootstrap-4-backport" style={{marginTop: 50}}>
+          <Button className="pill-xl" variant="primary">VIEW ALL TOOLS</Button>
+        </div>
       </Layout>
       <Layout outsideContainerClassName="home-spacer">
         <h2 className="title center-title">
@@ -62,6 +65,9 @@ const BrowseToolsPage = () => {
           <p className="description">
             Check out some recently-catalogued research resources below.
           </p>
+        </div>
+        <div className="center-content bootstrap-4-backport" style={{marginTop: 50}}>
+            <Button className="pill-xl" variant="primary">VIEW ALL TOOLS</Button>
         </div>
       </Layout>
       <Layout outsideContainerClassName="home-spacer home-bg-dark">
