@@ -2,6 +2,11 @@ import Layout from 'portal-components/Layout'
 import * as React from 'react'
 import { Button, Form } from 'react-bootstrap'
 import IconSvg from 'synapse-react-client/dist/containers/IconSvg'
+import { ReactComponent as AnimalModels } from './assets/animalmodels.svg'
+import { ReactComponent as Antibodies } from './assets/antibodies.svg'
+import { ReactComponent as Biobanks } from './assets/biobanks.svg'
+import { ReactComponent as CellLines } from './assets/cell-lines.svg'
+import { ReactComponent as PlasmidsReagents } from './assets/plasmids-reagents.svg'
 
 const BrowseToolsPage = () => {
   const [searchText, setSearchText] = React.useState<string>('')
@@ -53,6 +58,28 @@ const BrowseToolsPage = () => {
         <p className="center-title">
           Drill-down to explore specific types of NF research tools.
         </p>
+        <div className="categories">
+          <button>
+            <AnimalModels />
+            <p>Animal Models</p>
+          </button>
+          <button>
+            <Antibodies />
+            <p>Antibodies</p>
+          </button>
+          <button>
+            <PlasmidsReagents />
+            <p>Plasmids/Reagents</p>
+          </button>
+          <button>
+            <CellLines />
+            <p>Cell Lines</p>
+          </button>
+          <button>
+            <Biobanks />
+            <p>Biobanks</p>
+          </button>
+        </div>
         <div className="center-content bootstrap-4-backport" style={{marginTop: 50}}>
           <Button className="pill-xl" variant="primary">VIEW ALL TOOLS</Button>
         </div>

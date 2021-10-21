@@ -22,4 +22,18 @@
   .description {
     max-width: 750px;
   }
+  .categories {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    width: 1200px;
+    p {
+      color: #fff!important;
+      border-bottom: 1px transparent;
+      position: relative;
+      top: -65px;
+      display: block;
+      font-size: 18px;
+    }
+  }
 }
