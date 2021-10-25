@@ -1,6 +1,7 @@
 import Layout from 'portal-components/Layout'
 import * as React from 'react'
 import { Button, Form } from 'react-bootstrap'
+import FeaturedToolsList from 'synapse-react-client/dist/containers/home_page/featured_tools/FeaturedToolsList'
 import IconSvg from 'synapse-react-client/dist/containers/IconSvg'
 import { ReactComponent as AnimalModels } from './assets/animalmodels.svg'
 import { ReactComponent as Antibodies } from './assets/antibodies.svg'
@@ -93,6 +94,17 @@ const BrowseToolsPage = () => {
             Check out some recently-catalogued research resources below.
           </p>
         </div>
+        <div className="center-content">
+            <FeaturedToolsList
+              entityId={'syn26344826'}
+              idColumnName={'Resource_id'}
+              nameColumnName={'Resource Name'}
+              descriptionColumnName={'Description'}
+              typeColumnName={'Resource Type'}
+              dateColumnName={'Date Added'}
+              toolDetailPageURL={'/ToolDetailsPage/resourceId='}
+            />
+          </div>
         <div className="center-content bootstrap-4-backport" style={{marginTop: 50}}>
             <Button className="pill-xl" variant="primary">VIEW ALL TOOLS</Button>
         </div>
