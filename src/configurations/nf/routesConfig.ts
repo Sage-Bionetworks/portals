@@ -28,6 +28,7 @@ import routeControlWrapperProps from './routeControlWrapperProps'
 import { facetAliases } from './synapseConfigs/commonProps'
 import { organizationCardSchema, organizationDetailsPage, organizationDetailsPageLinkConfig } from './organizations'
 import { fundersSql, hackathonsSql, initiativesSql, peopleSql, studiesSql } from './resources'
+import { toolsDetailsPage } from './synapseConfigs/tools'
 
 const limit = 3
 
@@ -294,8 +295,15 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        isNested: false,
+        isNested: true,
         to: 'Tools',
+        routes: [
+          {
+            to: 'DetailsPage',
+            isNested: false,
+            synapseConfigArray: toolsDetailsPage,
+          },
+        ],
         synapseConfigArray: [
           {
             name: 'RouteControlWrapper',
