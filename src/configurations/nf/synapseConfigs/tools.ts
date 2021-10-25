@@ -10,36 +10,33 @@ export const newToolsSql = `${toolsSql} order by ROW_ID desc limit 3`
 
 export const toolsSchema: GenericCardSchema = {
   type: 'TOOL',
-  title: 'name',
-  subTitle: 'contact',
-  description: 'summary',
-  icon: 'type',
+  title: 'Resource Name',
+  subTitle: 'Resource Type',
+  description: 'Description',
   secondaryLabels: [
-    'subtype',
-    'diseaseFocus',
-    'manifestation',
-    'fundingAgency',
-    'studyName',
+    'rrid',
+    'Synonyms',
   ],
-  link: 'link',
 }
 
 export const toolsCardConfiguration: CardConfiguration = {
   type: SynapseConstants.GENERIC_CARD,
+  titleLinkConfig: {
+    isMarkdown: false,
+    baseURL: 'Explore/Tools/DetailsPage',
+    URLColumnName: 'Resource_id',
+    matchColumnName: 'Resource_id',
+  },
   genericCardSchema: {
     type: 'TOOL',
-    title: 'name',
-    subTitle: 'contact',
-    description: 'summary',
-    icon: 'type',
+    icon: 'tool',
+    title: 'Resource Name',
+    subTitle: 'Resource Type',
+    description: 'Description',
     secondaryLabels: [
-      'subtype',
-      'diseaseFocus',
-      'manifestation',
-      'fundingAgency',
-      'studyName',
+      'rrid',
+      'Synonyms',
     ],
-    link: 'link',
   },
 }
 const rgbIndex = 6
