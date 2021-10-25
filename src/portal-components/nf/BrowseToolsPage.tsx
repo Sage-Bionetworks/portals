@@ -11,6 +11,9 @@ import { ReactComponent as PlasmidsReagents } from './assets/plasmids-reagents.s
 
 const BrowseToolsPage = () => {
   const [searchText, setSearchText] = React.useState<string>('')
+  const gotoExploreTools = () => {
+    window.location.assign('/Explore/Tools')
+  }
   return (
     <div className="browse-tools-page">
       <div className="SRC-portalCard SRC-portalCardHeader bootstrap-4-backport">
@@ -82,7 +85,7 @@ const BrowseToolsPage = () => {
           </button>
         </div>
         <div className="center-content bootstrap-4-backport" style={{marginTop: 50}}>
-          <Button className="pill-xl" variant="primary">VIEW ALL TOOLS</Button>
+          <Button className="pill-xl" variant="primary" onClick={gotoExploreTools}>VIEW ALL TOOLS</Button>
         </div>
       </Layout>
       <Layout outsideContainerClassName="home-spacer">
@@ -106,7 +109,7 @@ const BrowseToolsPage = () => {
             />
           </div>
         <div className="center-content bootstrap-4-backport" style={{marginTop: 50}}>
-            <Button className="pill-xl" variant="primary">VIEW ALL TOOLS</Button>
+            <Button className="pill-xl" variant="primary" onClick={gotoExploreTools}>VIEW ALL TOOLS</Button>
         </div>
       </Layout>
       <Layout outsideContainerClassName="home-spacer home-bg-dark">
