@@ -25,13 +25,15 @@ type RowToPropTransform = {
 }
 
 export type RowSynapseConfig = SynapseConfig & RowToPropTransform
+
+// must support rendering content OR tabs with (content OR tabs)
 export type DetailsPageProps = {
   showMenu?: boolean // default to true
   searchParams?: {
     [index: string]: string
   }
   sql: string
-  synapseConfigArray: RowSynapseConfig[]
+  synapseConfigArray?: RowSynapseConfig[]
   sqlOperator?: SQLOperator
   tabLayout?: DetailsPageTabProps[]
 }
@@ -40,4 +42,6 @@ export type DetailsPageTabProps = {
   title: string
   iconName: string
   cssClass?: string
+  tabLayout?: DetailsPageTabProps[]
+  synapseConfigArray?: RowSynapseConfig[]
 }
