@@ -4,13 +4,15 @@ import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig, SynapseConfig } from 'types/portal-config'
 import { facetAliases } from './commonProps'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
-import { toolsSql } from '../resources'
+import { filesSql, toolsSql } from '../resources'
 import { DetailsPageProps } from 'types/portal-util-types'
 
 export const newToolsSql = `${toolsSql} order by ROW_ID desc limit 3`
+const visibleColumnCount = 7
 
 export const toolsSchema: GenericCardSchema = {
   type: 'TOOL',
+  icon: 'icon', // TODO: use a column to determine what icon to show?
   title: 'Resource Name',
   subTitle: 'Resource Type',
   description: 'Description',
@@ -28,17 +30,7 @@ export const toolsCardConfiguration: CardConfiguration = {
     URLColumnName: 'Resource_id',
     matchColumnName: 'Resource_id',
   },
-  genericCardSchema: {
-    type: 'TOOL',
-    icon: 'tool',
-    title: 'Resource Name',
-    subTitle: 'Resource Type',
-    description: 'Description',
-    secondaryLabels: [
-      'rrid',
-      'Synonyms',
-    ],
-  },
+  genericCardSchema: toolsSchema,
 }
 const rgbIndex = 6
 const tools: HomeExploreConfig = {
@@ -65,24 +57,15 @@ const tools: HomeExploreConfig = {
       facetAliases,
       searchConfiguration: {
         searchable: [
-          'name',
-          'summary',
-          'studyName',
-          'fundingAgency',
-          'contact',
-          'type',
-          'subtype',
-          'diseaseFocus',
-          'manifestation',
         ],
       },
-
     },
   },
 }
 
 export const toolDetailsPageConfig: DetailsPageProps = {
   sql: toolsSql,
+  sqlOperator: '=',
   tabLayout: [
     {
       title: "Details",
@@ -121,15 +104,25 @@ export const toolDetailsPageConfig: DetailsPageProps = {
       standalone: true,
       tabIndex: 1,
     },
+    
     {
-      name: 'Markdown',
+      name: 'QueryWrapperPlotNav',
       props: {
-        ownerId: 'syn22272075',
-        wikiId: '604853',
+        sqlOperator: '=',
+        rgbIndex,
+        name: 'Files',
+        sql: filesSql,
+        visibleColumnCount,
+        tableConfiguration: {
+          showAccessColumn: true,
+          showDownloadColumn: true,
+        },
+        shouldDeepLink: false,
+        facetAliases,
       },
-      title: 'Data',
-      standalone: true,
       tabIndex: 2,
+      tableSqlKeys: ['Resource_id'], // TODO: replace with the new resource annotation key name
+      columnName: 'Resource_id'
     },
   ],
 }

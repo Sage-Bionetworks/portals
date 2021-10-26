@@ -5,7 +5,7 @@ import { filesSql } from '../resources'
 
 const rgbIndex = 1
 const unitDescription = 'Files'
-const visibleColumnCount = 7
+export const visibleColumnCount = 7
 
 const files: HomeExploreConfig = {
   homePageSynapseObject: {
