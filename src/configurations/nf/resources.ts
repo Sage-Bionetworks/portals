@@ -8,4 +8,4 @@ export const filesSql = `SELECT id AS "File ID", assay, dataType, diagnosis, tum
 export const metadataFilesSql = `SELECT id, dataType, assay, diagnosis, tumorType, species, individualID, fileFormat, dataSubtype, nf1Genotype, nf2Genotype, fundingAgency, consortium FROM syn16858331.6 where resourceType ='report'`
 export const fundersSql = 'SELECT * FROM syn16858699'
 export const hackathonsSql = 'SELECT * FROM syn25585549'
-
+export const observationsSql = 'SELECT "Observation Submitter Name" as "submitterName", Synapse_id as "submitterUserId", "Observation Time" as "time", "Observation Time Units" as "timeUnits", "Observation Text" as "text", "Observation Type" as "tag" FROM syn26344832 '

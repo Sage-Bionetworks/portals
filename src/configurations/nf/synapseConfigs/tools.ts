@@ -4,7 +4,7 @@ import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig, SynapseConfig } from 'types/portal-config'
 import { facetAliases } from './commonProps'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
-import { filesSql, toolsSql } from '../resources'
+import { filesSql, toolsSql, observationsSql } from '../resources'
 import { DetailsPageProps } from 'types/portal-util-types'
 
 export const newToolsSql = `${toolsSql} order by ROW_ID desc limit 3`
@@ -95,16 +95,29 @@ export const toolDetailsPageConfig: DetailsPageProps = {
       tabIndex: 0,
     },
     {
-      name: 'Markdown',
+      name: 'CardContainerLogic',
       props: {
-        ownerId: 'syn22272075',
-        wikiId: '604853',
+        sql: `${observationsSql} WHERE "Observation Time" IS NOT NULL ORDER BY "Observation Time" DESC`,
+        type: SynapseConstants.OBSERVATION_CARD,
+        limit: 3,
       },
-      title: 'Observed',
-      standalone: true,
+      title: 'Experimental Tool Timeline',
+      tableSqlKeys: ['Resource_id'],
+      columnName: 'Resource_id',
       tabIndex: 1,
     },
-    
+    {
+      name: 'CardContainerLogic',
+      props: {
+        sql: `${observationsSql} WHERE "Observation Time" IS NULL`,
+        type: SynapseConstants.OBSERVATION_CARD,
+        limit: 3,
+      },
+      title: 'Community Observations',
+      tableSqlKeys: ['Resource_id'],
+      columnName: 'Resource_id',
+      tabIndex: 1,
+    },
     {
       name: 'QueryWrapperPlotNav',
       props: {
