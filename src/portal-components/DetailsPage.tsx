@@ -28,7 +28,6 @@ type State = {
   entityHeaders: PaginatedResults<EntityHeader> | undefined
   isLoading: boolean
   hasError: boolean
-  tabIndex: number
 }
 
 const pluralize = require('pluralize')
@@ -65,7 +64,6 @@ export default class DetailsPage extends React.Component<
       entityHeaders: undefined,
       isLoading: true,
       hasError: false,
-      tabIndex: 0,
     }
     this.ref = React.createRef()
   }
