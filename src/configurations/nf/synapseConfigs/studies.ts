@@ -208,65 +208,51 @@ export const studiesDetailPage: DetailsPageProps = {
       title: 'Study Data',
       iconName: 'database',
       cssClass: 'tab-database',
-      tabLayout: [
+      synapseConfigArray: [
         {
-          title: 'Data Files',
-          synapseConfigArray: [
-            {
-              name: 'QueryWrapperPlotNav',
-              props: {
-                rgbIndex: 8,
-                shouldDeepLink: false,
-                sql: filesSql,
-                visibleColumnCount: 7,
-                sqlOperator: 'LIKE',
-                tableConfiguration: {
-                  showAccessColumn: true,
-                  showDownloadColumn: true,
-                },
-                name: 'Data Files',
-                facetAliases,
-                searchConfiguration,
-              },
-              tableSqlKeys: ['studyId'],
-              columnName: 'studyId',
+          name: 'QueryWrapperPlotNav',
+          props: {
+            rgbIndex: 8,
+            shouldDeepLink: false,
+            sql: filesSql,
+            visibleColumnCount: 7,
+            sqlOperator: 'LIKE',
+            tableConfiguration: {
+              showAccessColumn: true,
+              showDownloadColumn: true,
             },
-          ],
+            name: 'Data Files',
+            facetAliases,
+            searchConfiguration,
+          },
+          tableSqlKeys: ['studyId'],
+          columnName: 'studyId',
         },
+
         {
+          name: 'CardContainerLogic',
+          columnName: 'studyId',
           title: 'Datasets',
-          synapseConfigArray: [
-            {
-              name: 'CardContainerLogic',
-              columnName: 'studyId',
-              title: 'Datasets',
-              tableSqlKeys: ['studyId'],
-              props: {
-                sql: datasetsSql,
-                sqlOperator: '=',
-                type: 'dataset',
-              },
-            },
-          ],
+          tableSqlKeys: ['studyId'],
+          props: {
+            sql: datasetsSql,
+            sqlOperator: '=',
+            type: 'dataset',
+          },
         },
+
         {
+          name: 'StandaloneQueryWrapper',
           title: 'Metadata Files',
-          synapseConfigArray: [
-            {
-              name: 'StandaloneQueryWrapper',
-              tabIndex: 1,
-              title: 'Metadata Files',
-              columnName: 'studyId',
-              tableSqlKeys: ['studyId'],
-              props: {
-                visibleColumnCount: 7,
-                sql: metadataFilesSql,
-                rgbIndex,
-                title: 'Metadata Files',
-              },
-              className: 'metadata-table',
-            },
-          ],
+          columnName: 'studyId',
+          tableSqlKeys: ['studyId'],
+          props: {
+            visibleColumnCount: 7,
+            sql: metadataFilesSql,
+            rgbIndex,
+            title: 'Metadata Files',
+          },
+          className: 'metadata-table',
         },
       ],
     },
