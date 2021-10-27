@@ -40,7 +40,7 @@ export type DetailsPageProps = {
 
 export type DetailsPageTabProps = {
   title: string
-  iconName: string
+  iconName?: string
   cssClass?: string
   tabLayout?: DetailsPageTabProps[]
   synapseConfigArray?: RowSynapseConfig[]
