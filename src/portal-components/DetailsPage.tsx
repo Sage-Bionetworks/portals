@@ -469,7 +469,7 @@ const SynapseObject: React.FC<{
             searchParams={searchParams}
           />
         )
-      })}{' '}
+      })}
     </>
   )
 }
