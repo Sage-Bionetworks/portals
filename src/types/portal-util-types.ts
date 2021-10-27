@@ -25,7 +25,6 @@ type RowToPropTransform = {
 
 export type RowSynapseConfig = SynapseConfig & RowToPropTransform
 
-// must support rendering content OR tabs with (content OR tabs)
 export type DetailsPageProps = {
   showMenu?: boolean // default to true
   searchParams?: {
