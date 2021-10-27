@@ -27,19 +27,16 @@ const DetailsPageTabs: React.FunctionComponent<DetailsPageTabsProps> = (
     <>
       <div className="tab-groups">
         {tabConfigs.map((tab, index) => {
-          const tabClass =
-            selectedTabIndex === index
-              ? `tab-item-active ${tab.cssClass || ''}`
-              : `tab-item ${tab.cssClass || ''}`
           return (
             <span
               key={`detailPage-tab-${index}`}
-              className={tabClass}
+              className={'tab-item'}
+              aria-selected={selectedTabIndex === index}
               onClick={() => {
                 setSelectedTabIndex(index)
               }}
             >
-              {<Icon type={tab.iconName}></Icon>}
+              {tab.iconName && <Icon type={tab.iconName}></Icon>}
               {tab.title}
             </span>
           )
