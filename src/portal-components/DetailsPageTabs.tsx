@@ -45,6 +45,13 @@ const DetailsPageTabs: React.FunctionComponent<DetailsPageTabsProps> = (
       {loading && <BarLoader color="#878787" loading={true} height={5} />}
       <div className="tab-content-group">
         {tabConfigs.map((tabConfig, index) => {
+          if (tabConfig.tabLayout && tabConfig.synapseConfigArray) {
+            // It doesn't make sense to show both sub-tabs and Synapse components
+            console.warn(
+              'tabLayout and synapseConfigArray were both specified in the following tabConfig when only one is supported.',
+              tabConfig,
+            )
+          }
           return (
             <div
               key={index}
