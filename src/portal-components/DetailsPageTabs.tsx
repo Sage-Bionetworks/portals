@@ -55,7 +55,7 @@ const DetailsPageTabs: React.FunctionComponent<DetailsPageTabsProps> = (
               {tabConfig.tabLayout && (
                 <DetailsPageTabs
                   tabConfigs={tabConfig.tabLayout}
-                  loading={false}
+                  loading={loading}
                   queryResultBundle={queryResultBundle}
                   entityHeaders={entityHeaders}
                 ></DetailsPageTabs>
