@@ -162,7 +162,6 @@ export const studiesDetailPage: DetailsPageProps = {
           title: 'Access Requirements',
           injectMarkdown: true,
           props: {},
-          tabIndex: 0,
         },
         {
           name: 'Markdown',
@@ -170,7 +169,6 @@ export const studiesDetailPage: DetailsPageProps = {
           title: 'Acknowledgement Statements',
           injectMarkdown: true,
           props: {},
-          tabIndex: 0,
         },
         {
           name: 'CardContainerLogic',
@@ -181,7 +179,6 @@ export const studiesDetailPage: DetailsPageProps = {
             sql: toolsSql,
             ...toolsCardConfiguration,
           },
-          tabIndex: 0,
         },
         {
           name: 'CardContainerLogic',
@@ -192,7 +189,6 @@ export const studiesDetailPage: DetailsPageProps = {
             sql: publicationsSql,
             ...publicationsCardConfiguration,
           },
-          tabIndex: 0,
         },
         {
           name: 'CardContainerLogic',
@@ -205,7 +201,6 @@ export const studiesDetailPage: DetailsPageProps = {
             facetAliases,
             ...studyCardConfiguration,
           },
-          tabIndex: 0,
         },
       ],
     },
@@ -251,7 +246,6 @@ export const studiesDetailPage: DetailsPageProps = {
                 sqlOperator: '=',
                 type: 'dataset',
               },
-              tabIndex: 1,
             },
           ],
         },
