@@ -216,7 +216,6 @@ export const studiesDetailPage: DetailsPageProps = {
       tabLayout: [
         {
           title: 'Data Files',
-          iconName: 'database',
           synapseConfigArray: [
             {
               name: 'QueryWrapperPlotNav',
@@ -241,7 +240,6 @@ export const studiesDetailPage: DetailsPageProps = {
         },
         {
           title: 'Datasets',
-          iconName: 'database',
           synapseConfigArray: [
             {
               name: 'CardContainerLogic',
@@ -259,7 +257,6 @@ export const studiesDetailPage: DetailsPageProps = {
         },
         {
           title: 'Metadata Files',
-          iconName: 'database',
           synapseConfigArray: [
             {
               name: 'StandaloneQueryWrapper',
