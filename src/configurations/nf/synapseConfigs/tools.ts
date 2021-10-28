@@ -69,78 +69,127 @@ export const toolDetailsPageConfig: DetailsPageProps = {
     {
       title: "Details",
       iconName: "study",
+      synapseConfigArray: [
+        {
+          name: 'UserCardListRotate',
+          title: 'Investigator',
+          outsideContainerClassName: 'home-spacer',
+          props: {
+            sql: investigatorSql,
+            count: 1,
+            size: SynapseConstants.MEDIUM_USER_CARD,
+            useQueryResultUserData: true,
+            sqlOperator: '=',
+          },
+          tableSqlKeys: ['Resource_id'],
+          columnName: 'Resource_id',
+        }]
     },
     {
       title: "Observations",
       iconName: "database",
-      cssClass: "tab-database"
+      cssClass: "tab-database",
+      synapseConfigArray: [
+        {
+          name: 'CardContainerLogic',
+          props: {
+            sql: `${observationsSql} WHERE "Observation Time" IS NOT NULL ORDER BY "Observation Time" DESC`,
+            type: SynapseConstants.OBSERVATION_CARD,
+            limit: 3,
+          },
+          title: 'Experimental Tool Timeline',
+          tableSqlKeys: ['Resource_id'],
+          columnName: 'Resource_id',
+        },
+        {
+          name: 'CardContainerLogic',
+          props: {
+            sql: `${observationsSql} WHERE "Observation Time" IS NULL`,
+            type: SynapseConstants.OBSERVATION_CARD,
+            limit: 3,
+          },
+          title: 'Community Observations',
+          tableSqlKeys: ['Resource_id'],
+          columnName: 'Resource_id',
+        },
+      ]
     },
     {
       title: "Data",
       iconName: "database",
-      cssClass: "tab-database"
+      cssClass: "tab-database",
+      tabLayout: [
+        {
+          title: 'Data Files',
+          synapseConfigArray: [
+            // {
+            //   name: 'QueryWrapperPlotNav',
+            //   props: {
+            //     sqlOperator: '=',
+            //     rgbIndex,
+            //     name: 'Files',
+            //     sql: filesSql,
+            //     visibleColumnCount,
+            //     tableConfiguration: {
+            //       showAccessColumn: true,
+            //       showDownloadColumn: true,
+            //     },
+            //     shouldDeepLink: false,
+            //     facetAliases,
+            //   },
+            //   tableSqlKeys: ['Resource_id'], // TODO: replace with the new resource annotation key name
+            //   columnName: 'Resource_id'
+            // },
+          ],
+        },
+        {
+          title: 'Datasets',
+          synapseConfigArray: [
+            // {
+            //   name: 'QueryWrapperPlotNav',
+            //   props: {
+            //     sqlOperator: '=',
+            //     rgbIndex,
+            //     name: 'Datasets',
+            //     sql: dataSetsSql,
+            //     visibleColumnCount,
+            //     tableConfiguration: {
+            //       showAccessColumn: true,
+            //       showDownloadColumn: true,
+            //     },
+            //     shouldDeepLink: false,
+            //     facetAliases,
+            //   },
+            //   tableSqlKeys: ['Resource_id'], // TODO: replace with the new resource annotation key name
+            //   columnName: 'Resource_id'
+            // },
+          ],
+        },
+        {
+          title: 'Metadata Files',
+          synapseConfigArray: [
+            // {
+            //   name: 'QueryWrapperPlotNav',
+            //   props: {
+            //     sqlOperator: '=',
+            //     rgbIndex,
+            //     name: 'Metadata Files',
+            //     sql: metadataFilesSql,
+            //     visibleColumnCount,
+            //     tableConfiguration: {
+            //       showAccessColumn: true,
+            //       showDownloadColumn: true,
+            //     },
+            //     shouldDeepLink: false,
+            //     facetAliases,
+            //   },
+            //   tableSqlKeys: ['Resource_id'], // TODO: replace with the new resource annotation key name
+            //   columnName: 'Resource_id'
+            // },
+          ],
+        },
+      ]
     }
-
-  ],
-  synapseConfigArray: [
-    {
-      name: 'UserCardListRotate',
-      title: 'Investigator',
-      outsideContainerClassName: 'home-spacer',
-      props: {
-        sql: investigatorSql,
-        count: 1,
-        size: SynapseConstants.MEDIUM_USER_CARD,
-        useQueryResultUserData: true,
-        sqlOperator: '=',
-      },
-      tableSqlKeys: ['Resource_id'],
-      columnName: 'Resource_id',
-      tabIndex: 0,
-    },
-    {
-      name: 'CardContainerLogic',
-      props: {
-        sql: `${observationsSql} WHERE "Observation Time" IS NOT NULL ORDER BY "Observation Time" DESC`,
-        type: SynapseConstants.OBSERVATION_CARD,
-        limit: 3,
-      },
-      title: 'Experimental Tool Timeline',
-      tableSqlKeys: ['Resource_id'],
-      columnName: 'Resource_id',
-      tabIndex: 1,
-    },
-    {
-      name: 'CardContainerLogic',
-      props: {
-        sql: `${observationsSql} WHERE "Observation Time" IS NULL`,
-        type: SynapseConstants.OBSERVATION_CARD,
-        limit: 3,
-      },
-      title: 'Community Observations',
-      tableSqlKeys: ['Resource_id'],
-      columnName: 'Resource_id',
-      tabIndex: 1,
-    },
-    // {
-    //   name: 'QueryWrapperPlotNav',
-    //   props: {
-    //     sqlOperator: '=',
-    //     rgbIndex,
-    //     name: 'Files',
-    //     sql: filesSql,
-    //     visibleColumnCount,
-    //     tableConfiguration: {
-    //       showAccessColumn: true,
-    //       showDownloadColumn: true,
-    //     },
-    //     shouldDeepLink: false,
-    //     facetAliases,
-    //   },
-    //   tabIndex: 2,
-    //   tableSqlKeys: ['Resource_id'], // TODO: replace with the new resource annotation key name
-    //   columnName: 'Resource_id'
-    // },
   ],
 }
 
