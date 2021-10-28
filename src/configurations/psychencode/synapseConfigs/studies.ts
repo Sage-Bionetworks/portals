@@ -5,9 +5,7 @@ import { CardConfiguration } from 'synapse-react-client/dist/containers/CardCont
 import { SynapseConfig, SynapseConfigArray } from 'types/portal-config'
 import { DetailsPageProps } from 'types/portal-util-types'
 import { studiesSql, dataSql, metadataSql } from '../resources'
-import {
-  SQLOperator
-} from 'synapse-react-client/dist/utils/functions/sqlFunctions'
+import { SQLOperator } from 'synapse-react-client/dist/utils/functions/sqlFunctions'
 import { publicationDetailPageProps } from './publications'
 const rgbIndex = 1
 
@@ -74,128 +72,123 @@ export const details: DetailsPageProps = {
   sqlOperator: '=',
   tabLayout: [
     {
-      title: "Study Details",
-      iconName: "study",
-    },
-    {
-      title: "Study Data",
-      iconName: "database",
-      cssClass: "tab-database"
-    }
-  ],
-  synapseConfigArray: [
-    {
-      name: 'Markdown',
-      props: {},
-      injectMarkdown: false,
-      columnName: 'study',
-      title: 'Study Description',
-      tabIndex: 0,
-    },
-    {
-      name: 'Markdown',
-      props: {},
-      columnName: 'methods',
-      title: 'Methods',
-      tabIndex: 0,
-      resolveSynId: {
-        title: true,
-      },
-    },
-    {
-      name: 'CardContainerLogic',
-      title: 'Related Studies',
-      props: {
-        ...studyCardConfiguration,
-        sql: studiesSql,
-      },
-      columnName: 'relatedStudies',
-      tableSqlKeys: ['study'],
-      tabIndex: 0,
-    },
-    {
-      name: 'CardContainerLogic',
-      title: 'Publications',
-      props: publicationDetailPageProps,
-      columnName: 'study',
-      tableSqlKeys: ['study'],
-      resolveSynId: {
-        value: true,
-      },
-      tabIndex: 0,
-    },
-    {
-      name: 'Markdown',
-      props: {
-        ownerId: 'syn4921369',
-        wikiId: '477467',
-      },
-      title: 'Access Requirements',
-      standalone: true,
-      tabIndex: 1,
-    },
-    {
-      name: 'StandaloneQueryWrapper',
-      props: {
-        sql: metadataSql,
-        facetAliases: {
-          id: 'File Name',
-          metadataType: 'Metadata Type',
-          dataType: 'Data Type',
-          assay: 'Assay',
+      title: 'Study Details',
+      iconName: 'study',
+      synapseConfigArray: [
+        {
+          name: 'Markdown',
+          props: {},
+          injectMarkdown: false,
+          columnName: 'study',
+          title: 'Study Description',
         },
-        rgbIndex,
-        title: 'Metadata',
-        sqlOperator: 'HAS',
-      },
-      resolveSynId: {
-        value: true,
-      },
-      tableSqlKeys: ['study'],
-      columnName: 'study',
-      title: 'Study Metadata',
-      tabIndex: 1,
-      className: 'metadata-table'
+        {
+          name: 'Markdown',
+          props: {},
+          columnName: 'methods',
+          title: 'Methods',
+          resolveSynId: {
+            title: true,
+          },
+        },
+        {
+          name: 'CardContainerLogic',
+          title: 'Related Studies',
+          props: {
+            ...studyCardConfiguration,
+            sql: studiesSql,
+          },
+          columnName: 'relatedStudies',
+          tableSqlKeys: ['study'],
+        },
+        {
+          name: 'CardContainerLogic',
+          title: 'Publications',
+          props: publicationDetailPageProps,
+          columnName: 'study',
+          tableSqlKeys: ['study'],
+          resolveSynId: {
+            value: true,
+          },
+        },
+      ],
     },
     {
-      name: "QueryWrapperPlotNav",
-      tabIndex: 1,
-      props: {
-        rgbIndex: 8,
-        sql: dataSql,
-        sqlOperator: 'HAS',
-        tableConfiguration: {
-          showAccessColumn: true,
-          showDownloadColumn: true,
-          columnLinks: [
-            {
-              matchColumnName: 'study',
-              URLColumnName: 'studyName',
-              baseURL: 'Explore/Studies/DetailsPage',
-              isMarkdown: false,
+      title: 'Study Data',
+      iconName: 'database',
+      cssClass: 'tab-database',
+      synapseConfigArray: [
+        {
+          name: 'Markdown',
+          props: {
+            ownerId: 'syn4921369',
+            wikiId: '477467',
+          },
+          title: 'Access Requirements',
+          standalone: true,
+        },
+        {
+          name: 'StandaloneQueryWrapper',
+          props: {
+            sql: metadataSql,
+            facetAliases: {
+              id: 'File Name',
+              metadataType: 'Metadata Type',
+              dataType: 'Data Type',
+              assay: 'Assay',
             },
-          ],
+            rgbIndex,
+            title: 'Metadata',
+            sqlOperator: 'HAS',
+          },
+          resolveSynId: {
+            value: true,
+          },
+          tableSqlKeys: ['study'],
+          columnName: 'study',
+          title: 'Study Metadata',
+          className: 'metadata-table',
         },
-        visibleColumnCount: 10,
-        shouldDeepLink: false,
-        name: 'Study Data',
-        facetAliases: {
-          id: 'File',
+        {
+          name: 'QueryWrapperPlotNav',
+          props: {
+            rgbIndex: 8,
+            sql: dataSql,
+            sqlOperator: 'HAS',
+            tableConfiguration: {
+              showAccessColumn: true,
+              showDownloadColumn: true,
+              columnLinks: [
+                {
+                  matchColumnName: 'study',
+                  URLColumnName: 'studyName',
+                  baseURL: 'Explore/Studies/DetailsPage',
+                  isMarkdown: false,
+                },
+              ],
+            },
+            visibleColumnCount: 10,
+            shouldDeepLink: false,
+            name: 'Study Data',
+            facetAliases: {
+              id: 'File',
+            },
+            facetsToPlot: [
+              'study',
+              'dataType',
+              'species',
+              'tissue',
+              'referenceSet',
+              'fileFormat',
+            ],
+          },
+          resolveSynId: {
+            value: true,
+          },
+          tableSqlKeys: ['study'],
+          columnName: 'study',
         },
-        facetsToPlot: [
-          'study',
-          'dataType',
-          'species',
-          'tissue',
-          'referenceSet',
-          'fileFormat',
-        ],
-      },
-      resolveSynId: {
-        value: true,
-      },
-      tableSqlKeys: ['study'],
-      columnName: 'study'
+      ],
     },
   ],
 }
@@ -218,7 +211,7 @@ export const studyDetailPage: SynapseConfigArray = [
   {
     name: 'DetailsPage',
     props: details,
-    containerClassName: 'container-full-width'
+    containerClassName: 'container-full-width',
   },
 ]
 

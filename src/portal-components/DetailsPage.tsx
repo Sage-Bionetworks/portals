@@ -7,28 +7,29 @@ import {
   parseEntityIdFromSqlStatement,
 } from 'synapse-react-client/dist/utils/functions/sqlFunctions'
 import {
-  EntityHeader,
-  PaginatedResults,
   QueryBundleRequest,
   QueryResultBundle,
-  ReferenceList,
   EntityColumnType,
 } from 'synapse-react-client/dist/utils/synapseTypes/'
 import { SynapseConfig } from 'types/portal-config'
-import { DetailsPageProps, RowSynapseConfig } from 'types/portal-util-types'
+import {
+  DetailsPageProps,
+  ResolveSynId,
+  RowSynapseConfig,
+} from 'types/portal-util-types'
 import injectPropsIntoConfig from './injectPropsIntoConfig'
 import { ExternalFileHandleLink } from 'synapse-react-client/dist/containers/ExternalFileHandleLink'
 import { BarLoader } from 'react-spinners'
 import { LockedFacet } from 'synapse-react-client/dist/containers/QueryWrapper'
 import DetailsPageTabs from './DetailsPageTabs'
 import { SynapseContext } from 'synapse-react-client/dist/utils/SynapseContext'
+import { useGetEntityHeaders } from 'synapse-react-client/dist/utils/hooks/SynapseAPI/useGetEntityHeaders'
+import { SYNAPSE_ENTITY_ID_REGEX } from 'synapse-react-client/dist/utils/functions/RegularExpressions'
 
 type State = {
   queryResultBundle: QueryResultBundle | undefined
-  entityHeaders: PaginatedResults<EntityHeader> | undefined
   isLoading: boolean
   hasError: boolean
-  tabIndex: number
 }
 
 const pluralize = require('pluralize')
@@ -62,10 +63,8 @@ export default class DetailsPage extends React.Component<
     super(props)
     this.state = {
       queryResultBundle: undefined,
-      entityHeaders: undefined,
       isLoading: true,
       hasError: false,
-      tabIndex: 0,
     }
     this.ref = React.createRef()
   }
@@ -80,13 +79,8 @@ export default class DetailsPage extends React.Component<
     }
   }
 
-  getData = () => {
-    const {
-      sql,
-      searchParams = {},
-      synapseConfigArray,
-      sqlOperator,
-    } = this.props
+  getData = async () => {
+    const { sql, searchParams = {}, sqlOperator } = this.props
     const sqlUsed = insertConditionsFromSearchParams(
       sql,
       searchParams,
@@ -101,93 +95,19 @@ export default class DetailsPage extends React.Component<
         sql: sqlUsed,
       },
     }
-    SynapseClient.getQueryTableResults(
-      queryBundleRequest,
-      this.context.accessToken,
-    )
-      .then((data) => {
-        const rows = data.queryResult.queryResults.rows
-        if (rows.length !== 1) {
-          console.error(
-            'Error on request, expected rows to be length 1 but got ',
-            rows.length,
-          )
-          this.setState({
-            hasError: true,
-          })
-          return
-        }
-        const row = rows[0].values
-        // map column name to index
-        const mapColumnHeaderToRowIndex: Dictionary<{
-          index: number
-          columnType: EntityColumnType
-        }> = {}
-        data.queryResult.queryResults.headers.forEach((el, index) => {
-          mapColumnHeaderToRowIndex[el.name] = {
-            index,
-            columnType: el.columnType,
-          }
-        })
-        const references: ReferenceList = []
-        synapseConfigArray.forEach((el: RowSynapseConfig) => {
-          if (el.resolveSynId && el.columnName) {
-            const { index, columnType } =
-              mapColumnHeaderToRowIndex[el.columnName] ?? {}
-            let value: string = row[index]
-            if (
-              columnType === EntityColumnType.STRING_LIST ||
-              columnType === EntityColumnType.INTEGER_LIST
-            ) {
-              try {
-                value = JSON.parse(value)
-              } catch (e) {
-                console.error('value could not be parsed as string_list', e)
-                return
-              }
-            }
-            if (typeof value === 'object') {
-              (value as string[])?.forEach((val) => {
-                if (!references.find((el) => el.targetId === val)) {
-                  references.push({
-                    targetId: val,
-                  })
-                }
-              })
-            } else {
-              value?.split(',').forEach((val) => {
-                if (!references.find((el) => el.targetId === val)) {
-                  references.push({
-                    targetId: val,
-                  })
-                }
-              })
-            }
-          }
-        })
-        if (references.length === 0) {
-          this.setState({
-            queryResultBundle: data,
-            isLoading: false,
-            hasError: false,
-          })
-          return
-        }
-        SynapseClient.getEntityHeaders(
-          references,
-          this.context.accessToken,
-        ).then((entityHeaders) => {
-          this.setState({
-            queryResultBundle: data,
-            entityHeaders,
-            isLoading: false,
-            hasError: false,
-          })
-        })
+    try {
+      const data = await SynapseClient.getQueryTableResults(
+        queryBundleRequest,
+        this.context.accessToken,
+      )
+      this.setState({
+        queryResultBundle: data,
+        isLoading: false,
+        hasError: false,
       })
-      .catch((e) => {
-        console.log('getQueryTableResults: Error getting data', e)
-      })
+    } catch (e) {
+      console.log('getQueryTableResults: Error getting data', e)
+    }
   }
 
   handleMenuClick = (index: number) => {
@@ -255,7 +175,7 @@ export default class DetailsPage extends React.Component<
               <DetailsPageTabs
                 tabConfigs={tabLayout}
                 loading={isLoading}
-                tabContents={!isLoading && this.buildTabContent()}
+                queryResultBundle={this.state.queryResultBundle}
               ></DetailsPageTabs>
             }
           </div>
@@ -265,7 +185,12 @@ export default class DetailsPage extends React.Component<
       const synapseConfigContent = (
         <>
           {isLoading && <BarLoader color="#878787" loading={true} height={5} />}
-          {!isLoading && this.renderSynapseConfigArray(synapseConfigArray)}
+          {!isLoading && synapseConfigArray && (
+            <DetailsPageSynapseConfigArray
+              synapseConfigArray={synapseConfigArray}
+              queryResultBundle={this.state.queryResultBundle}
+            />
+          )}
         </>
       )
       if (showMenu) {
@@ -296,228 +221,249 @@ export default class DetailsPage extends React.Component<
       )
       row = queryResultBundle.queryResult.queryResults.rows[0].values
     }
-    return synapseConfigArray.map((el: RowSynapseConfig, index) => {
-      const style: React.CSSProperties = {}
-      const { columnName = '' } = el
-      const isDisabled =
-        queryResultBundle &&
-        !row[mapColumnHeaderToRowIndex[columnName]] &&
-        !el.standalone
-      if (isDisabled) {
-        style.color = '#BBBBBC'
-        style.cursor = 'not-allowed'
-      }
-      const className = `menu-row-button ${
-        isDisabled ? '' : 'SRC-primary-background-color-hover'
-      }`
-      if (el.name === 'ExternalFileHandleLink') {
+    return (
+      synapseConfigArray &&
+      synapseConfigArray.map((el: RowSynapseConfig, index) => {
+        const style: React.CSSProperties = {}
+        const { columnName = '' } = el
+        const isDisabled =
+          queryResultBundle &&
+          !row[mapColumnHeaderToRowIndex[columnName]] &&
+          !el.standalone
+        if (isDisabled) {
+          style.color = '#BBBBBC'
+          style.cursor = 'not-allowed'
+        }
+        const className = `menu-row-button ${
+          isDisabled ? '' : 'SRC-primary-background-color-hover'
+        }`
+        if (el.name === 'ExternalFileHandleLink') {
+          return (
+            <ExternalFileHandleLink
+              className={className}
+              synId={el.props.synId}
+            />
+          )
+        }
         return (
-          <ExternalFileHandleLink
+          <button
+            style={style}
+            key={JSON.stringify(el)}
+            onClick={isDisabled ? undefined : () => this.handleMenuClick(index)}
             className={className}
-            synId={el.props.synId}
-          />
+          >
+            {el.title}
+          </button>
         )
-      }
-      return (
-        <button
-          style={style}
-          key={JSON.stringify(el)}
-          onClick={isDisabled ? undefined : () => this.handleMenuClick(index)}
-          className={className}
-        >
-          {el.title}
-        </button>
-      )
-    })
+      })
+    )
   }
+}
 
-  /**
-   * Build a list of tab contents based on the synapseConfig's tabIndex setting.
-   * 1st tab content has index 0
-   * @return {JSX.Element[]} An array of tab contents
-   */
-  buildTabContent() {
-    const { synapseConfigArray } = this.props
-    // Get sorted unique tab index from synapseConfigArray
-    const tabIndexes = Array.from(
-      new Set(synapseConfigArray.map((el) => el.tabIndex)),
-    ).sort()
-    // For each tab, build its content
-    return tabIndexes.map((i) => {
-      const tabContentConfig: RowSynapseConfig[] = synapseConfigArray.filter(
-        (el: RowSynapseConfig, index) => el.tabIndex === i,
-      )
-      const tabContent = this.renderSynapseConfigArray(tabContentConfig)
-      return <div key={`detailPage-tabItem-${i}`}>{tabContent}</div>
-    })
-  }
-
-  renderSynapseConfigArray = (synapseConfigArray: RowSynapseConfig[]) => {
-    return synapseConfigArray.map((el: RowSynapseConfig, index) => {
-      const id = COMPONENT_ID_PREFIX + index
-      const { standalone, resolveSynId, showTitleSeperator = true } = el
-      const key = JSON.stringify(el)
-      const headerClassName =
-        index === 0 && showTitleSeperator ? 'first-title' : 'title'
-      const hasTitleFromSynId = resolveSynId && resolveSynId.title
-      // don't show this title if component is rendering entity names adjacet to the title
-      let title: any = ''
-      if (!hasTitleFromSynId) {
-        title = (
-          <>
-            <h2 className={headerClassName}> {el.title}</h2>
-            {showTitleSeperator && <hr />}
-          </>
-        )
-      }
-      const component = standalone ? (
-        <SynapseComponentWithContext synapseConfig={el} />
-      ) : (
-        this.renderSynapseObjectFromData(el)
-      )
-
-      if (this.isReactFragment(component)) {
-        return <></>
-      }
-
-      return (
-        <div id={id} key={key}>
-          {title}
-          {component}
-        </div>
-      )
-    })
-  }
-
-  private isReactFragment(variableToInspect: any): boolean {
-    if (variableToInspect.type) {
-      return variableToInspect.type === React.Fragment
+const SynapseObject: React.FC<{
+  el: RowSynapseConfig
+  queryResultBundle: QueryResultBundle
+}> = ({ el, queryResultBundle }) => {
+  const { columnName = '', resolveSynId, props } = el
+  const deepCloneOfProps = cloneDeep(props)
+  const row = queryResultBundle!.queryResult.queryResults.rows[0].values
+  // map column name to index
+  const mapColumnHeaderToRowIndex: Dictionary<{
+    index: number
+    columnType: EntityColumnType
+  }> = {}
+  queryResultBundle!.queryResult.queryResults.headers.forEach((el, index) => {
+    mapColumnHeaderToRowIndex[el.name] = { index, columnType: el.columnType }
+  })
+  const { index, columnType } = mapColumnHeaderToRowIndex[columnName] ?? {}
+  let rawValue: string = row[index]
+  if (!rawValue) {
+    console.error('No value mapped for ', columnName)
+    return <></>
+  } else if (
+    columnType === EntityColumnType.STRING_LIST ||
+    columnType === EntityColumnType.INTEGER_LIST
+  ) {
+    try {
+      rawValue = JSON.parse(rawValue)
+    } catch (e) {
+      console.error('Error on parsing value ', e)
+      return <></>
     }
-    return variableToInspect === React.Fragment
   }
 
-  private renderSynapseObjectFromData(el: RowSynapseConfig): React.ReactNode {
-    const { queryResultBundle, entityHeaders } = this.state
-    const { columnName = '', resolveSynId, props } = el
-    const deepCloneOfProps = cloneDeep(props)
-    const row = queryResultBundle!.queryResult.queryResults.rows[0].values
-    // map column name to index
-    const mapColumnHeaderToRowIndex: Dictionary<{
-      index: number
-      columnType: EntityColumnType
-    }> = {}
-    queryResultBundle!.queryResult.queryResults.headers.forEach((el, index) => {
-      mapColumnHeaderToRowIndex[el.name] = { index, columnType: el.columnType }
-    })
-    const { index, columnType } = mapColumnHeaderToRowIndex[columnName] ?? {}
-    let rawValue: string = row[index]
-    if (!rawValue) {
+  let split: string[] = ['']
+  if (el.injectMarkdown) {
+    split = [rawValue]
+  } else if (typeof rawValue === 'object') {
+    split = rawValue
+  } else {
+    split = rawValue.split(',')
+  }
+  /*
+    There's a known ineffeciency here, we have components like CardContainer where it makes sense
+    to construct a sql statement with a chain of OR statements rather than having N different queries.
+
+    But this doesn't work for a component like MarkdownSynapse where there is a desire to have
+    N different markdown components.
+
+    For simplicity's sake this will be left as is, but this could be revisited if performance is an issue.
+  */
+  return (
+    <>
+      {split.map((splitString) => (
+        <SplitStringToComponent
+          key={splitString}
+          splitString={splitString}
+          resolveSynId={resolveSynId}
+          columnName={columnName}
+          el={el}
+          deepCloneOfProps={deepCloneOfProps}
+        />
+      ))}
+    </>
+  )
+}
+
+const SplitStringToComponent: React.FC<{
+  splitString: string
+  resolveSynId?: ResolveSynId
+  columnName: string
+  el: RowSynapseConfig
+  deepCloneOfProps: any
+}> = ({ splitString, resolveSynId, columnName, el, deepCloneOfProps }) => {
+  let value = splitString.trim()
+
+  const valueIsSynId = React.useMemo(
+    () => !!SYNAPSE_ENTITY_ID_REGEX.exec(value),
+    [value],
+  )
+
+  let entityTitle = ''
+
+  // For explorer 2.0, construct an object to contain the locked facet name and facet value
+  const lockedFacet: LockedFacet = {
+    facet: columnName,
+  }
+
+  const { data: entityHeaders } = useGetEntityHeaders([{ targetId: value }], {
+    enabled: valueIsSynId,
+  })
+
+  if (resolveSynId) {
+    // use entity name as either title or value according to resolveSynId
+    const entity = entityHeaders?.results.find((el) => el.id === value.trim())
+    const name = entity?.name ?? ''
+    if (!name) {
       console.error('No value mapped for ', columnName)
       return <></>
-    } else if (
-      columnType === EntityColumnType.STRING_LIST ||
-      columnType === EntityColumnType.INTEGER_LIST
-    ) {
-      try {
-        rawValue = JSON.parse(rawValue)
-      } catch (e) {
-        console.error('Error on parsing value ', e)
-        return <></>
-      }
+    }
+    if (resolveSynId.title) {
+      entityTitle = name
     }
 
-    let split: string[] = ['']
-    if (el.injectMarkdown) {
-      split = [rawValue]
-    } else if (typeof rawValue === 'object') {
-      split = rawValue
-    } else {
-      split = rawValue.split(',')
+    // use entity name according to resolveSynId
+    if (resolveSynId.value) {
+      value = name
+      lockedFacet.value = name
     }
-    /*
-      There's a known ineffeciency here, we have components like CardContainer where it makes sense
-      to construct a sql statement with a chain of OR statements rather than having N different queries.
+  }
 
-      But this doesn't work for a component like MarkdownSynapse where there is a desire to have
-      N different markdown components.
+  let searchParams: Dictionary<string> | undefined = undefined
+  if (el.tableSqlKeys) {
+    // create component's query according to keys and value
+    searchParams = {}
+    el.tableSqlKeys.forEach((key: string) => {
+      searchParams![key] = value
+    })
+  }
+  const injectedProps = injectPropsIntoConfig(value, el, {
+    ...deepCloneOfProps,
+  })
 
-      For simplicity's sake this will be left as is, but this could be revisited if performance is an issue.
-    */
-    return split.map((splitString) => {
-      let value = splitString.trim()
-      let entityTitle = ''
+  // For explorer 2.0, cannot assign key `lockedFacet` to deepCloneOfProps due to type errors,
+  // assign lockedFacet value directly to injectedProps only if resolveSynId.value is true
+  injectedProps['lockedFacet'] = lockedFacet
 
-      // For explorer 2.0, construct an object to contain the locked facet name and facet value
-      const lockedFacet: LockedFacet = {
-        facet: columnName,
-      }
-
-      if (resolveSynId) {
-        // use entity name as either title or value according to resolveSynId
-        const entity = entityHeaders?.results.find(
-          (el) => el.id === value.trim(),
-        )
-        const name = entity?.name ?? ''
-        if (!name) {
-          console.error('No value mapped for ', columnName)
-          return <></>
-        }
-        if (resolveSynId.title) {
-          entityTitle = name
-        }
-
-        // use entity name according to resolveSynId
-        if (resolveSynId.value) {
-          value = name
-          lockedFacet.value = name
-        }
-      }
-
-      let searchParams: Dictionary<string> | undefined = undefined
-      if (el.tableSqlKeys) {
-        // create component's query according to keys and value
-        searchParams = {}
-        el.tableSqlKeys.forEach((key: string) => {
-          searchParams![key] = value
-        })
-      }
-      const injectedProps = injectPropsIntoConfig(value, el, {
-        ...deepCloneOfProps,
-      })
-
-      // For explorer 2.0, cannot assign key `lockedFacet` to deepCloneOfProps due to type errors,
-      // assign lockedFacet value directly to injectedProps only if resolveSynId.value is true
-      injectedProps['lockedFacet'] = lockedFacet
-
-      const synapseConfigWithInjectedProps: SynapseConfig = {
-        ...el,
-        props: injectedProps,
-      }
-      if (el.resolveSynId && entityTitle) {
-        return (
-          <React.Fragment key={splitString}>
-            {entityTitle && (
-              <>
-                <h2>
-                  {el.title}: {entityTitle}
-                </h2>
-                <hr />
-              </>
-            )}
-            <SynapseComponentWithContext
-              synapseConfig={synapseConfigWithInjectedProps}
-              searchParams={searchParams}
-            />
-          </React.Fragment>
-        )
-      }
-      return (
+  const synapseConfigWithInjectedProps: SynapseConfig = {
+    ...el,
+    props: injectedProps,
+  }
+  if (el.resolveSynId && entityTitle) {
+    return (
+      <React.Fragment>
+        {entityTitle && (
+          <>
+            <h2>
+              {el.title}: {entityTitle}
+            </h2>
+            <hr />
+          </>
+        )}
         <SynapseComponentWithContext
-          key={splitString}
           synapseConfig={synapseConfigWithInjectedProps}
           searchParams={searchParams}
         />
-      )
-    })
+      </React.Fragment>
+    )
   }
+  return (
+    <SynapseComponentWithContext
+      synapseConfig={synapseConfigWithInjectedProps}
+      searchParams={searchParams}
+    />
+  )
+}
+
+function isReactFragment(variableToInspect: any): boolean {
+  if (variableToInspect.type) {
+    return variableToInspect.type === React.Fragment
+  }
+  return variableToInspect === React.Fragment
+}
+
+export const DetailsPageSynapseConfigArray: React.FC<{
+  synapseConfigArray: RowSynapseConfig[]
+  queryResultBundle?: QueryResultBundle
+}> = ({ synapseConfigArray, queryResultBundle }) => {
+  return (
+    <>
+      {synapseConfigArray.map((el: RowSynapseConfig, index) => {
+        const id = COMPONENT_ID_PREFIX + index
+        const { standalone, resolveSynId, showTitleSeperator = true } = el
+        const key = JSON.stringify(el)
+        const headerClassName =
+          index === 0 && showTitleSeperator ? 'first-title' : 'title'
+        const hasTitleFromSynId = resolveSynId && resolveSynId.title
+        // don't show this title if component is rendering entity names adjacet to the title
+        let title: any = ''
+        if (!hasTitleFromSynId) {
+          title = (
+            <>
+              <h2 className={headerClassName}> {el.title}</h2>
+              {showTitleSeperator && <hr />}
+            </>
+          )
+        }
+        const component = standalone ? (
+          <SynapseComponentWithContext synapseConfig={el} />
+        ) : queryResultBundle ? (
+          <SynapseObject el={el} queryResultBundle={queryResultBundle} />
+        ) : (
+          <></>
+        )
+
+        if (isReactFragment(component)) {
+          return <></>
+        }
+
+        return (
+          <div id={id} key={key}>
+            {title}
+            {component}
+          </div>
+        )
+      })}
+    </>
+  )
 }

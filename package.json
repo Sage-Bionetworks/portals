@@ -9,6 +9,7 @@
     "@fortawesome/react-fontawesome": "^0.1.3",
     "@material-ui/core": "^4.12.3",
     "@material-ui/icons": "^4.9.1",
+    "@sage-bionetworks/react-base-table": "^1.12.3",
     "clone-deep": "^4.0.1",
     "lodash-es": "^4.17.21",
     "plotly.js-basic-dist": "^1.47.3",
@@ -25,7 +26,6 @@
     "sass": "^1.30.0",
     "source-map-explorer": "^2.5.2",
     "synapse-react-client": "2.0.50",
-    "@sage-bionetworks/react-base-table": "^1.12.3",
     "typescript": "4.3.5"
   },
   "jest": {
@@ -48,11 +48,12 @@
     "test": "yarn run copy-test-configuration && react-scripts test --env=jsdom --setupFiles ./src/tests/setupTests.ts",
     "generate-sitemap": "node sitemap/generate-sitemap.js",
     "eject": "react-scripts eject",
-    "analyze": "yarn run copy-test-configuration && react-scripts --max_old_space_size=4096 build && source-map-explorer 'build/static/js/*.js'",
+    "analyze": "yarn run copy-test-configuration && react-scripts --max_old_space_size=4096 build && source-map-explorer 'build/static/js/*.js'"
     "link-src": "yarn link synapse-react-client && yarn link react && yarn link react-router && yarn link react-router-dom"
   },
   "devDependencies": {
     "@testing-library/react": "^12.1.0",
+    "@testing-library/user-event": "^13.5.0",
     "@types/enzyme": "^3.10.8",
     "@types/enzyme-adapter-react-16": "^1.0.6",
     "@types/jest": "24.0.9",

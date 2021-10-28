@@ -47,7 +47,7 @@ export const studyCardConfiguration: CardConfiguration = {
       'studyId',
       'grantDOI',
     ],
-    dataTypeIconNames: 'dataType'
+    dataTypeIconNames: 'dataType',
   },
   labelLinkConfig: [
     {
@@ -67,30 +67,45 @@ export const studyCardConfiguration: CardConfiguration = {
   },
   columnIconOptions: {
     columns: {
-      'dataStatus': {
-        'Available': { icon: 'data', color: '#28A745' },
+      dataStatus: {
+        Available: { icon: 'data', color: '#28A745' },
         'Partially Available': { icon: 'data', color: '#DE9A1F' },
         'Under Embargo': { icon: 'dataLocked', color: '#D46D1E' },
-        'None': { icon: 'data', color: '#BBBBBC' },
+        None: { icon: 'data', color: '#BBBBBC' },
       },
-      'studyStatus': {
-        'Active': { icon: 'reload', color: '#28A745' },
-        'Completed': { icon: 'check', color: '#B2242A' },
+      studyStatus: {
+        Active: { icon: 'reload', color: '#28A745' },
+        Completed: { icon: 'check', color: '#B2242A' },
       },
-      'dataType': {
-        'genomicVariants': { icon: 'geneVariants', label: 'Genomic Variants Data Available' },
-        'geneExpression': { icon: 'geneExpression', label: 'Gene Expression Data Available' },
-        'image': { icon: 'imaging', label: 'Image Data Available' },
-        'drugScreen': { icon: 'lineGraph', label: 'Drug Screen (Cell) Data Available' },
-        'behavior process': { icon: 'rat', label: 'Behavior Process Data Available' },
-        'chromatinActivity': { icon: 'chromatin', label: 'Chromatin Activity Data Available' },
-        'proteomics': { icon: 'proteomics', label: 'Proteomics Data Available' },
-        'kinomics': { icon: 'kinomics', label: 'Kinomics Data Available' },
-        'clinical': { icon: 'clinical', label: 'Clinical Data Available' },
-        'other': { icon: 'other', label: 'Other Data Available' },
-      }
-    }
-  }
+      dataType: {
+        genomicVariants: {
+          icon: 'geneVariants',
+          label: 'Genomic Variants Data Available',
+        },
+        geneExpression: {
+          icon: 'geneExpression',
+          label: 'Gene Expression Data Available',
+        },
+        image: { icon: 'imaging', label: 'Image Data Available' },
+        drugScreen: {
+          icon: 'lineGraph',
+          label: 'Drug Screen (Cell) Data Available',
+        },
+        'behavior process': {
+          icon: 'rat',
+          label: 'Behavior Process Data Available',
+        },
+        chromatinActivity: {
+          icon: 'chromatin',
+          label: 'Chromatin Activity Data Available',
+        },
+        proteomics: { icon: 'proteomics', label: 'Proteomics Data Available' },
+        kinomics: { icon: 'kinomics', label: 'Kinomics Data Available' },
+        clinical: { icon: 'clinical', label: 'Clinical Data Available' },
+        other: { icon: 'other', label: 'Other Data Available' },
+      },
+    },
+  },
 }
 
 const studies: HomeExploreConfig = {
@@ -138,112 +153,108 @@ export const studiesDetailPage: DetailsPageProps = {
   sql: studiesSql,
   tabLayout: [
     {
-      title: "Study Details",
-      iconName: "study",
-    },
-    {
-      title: "Study Data",
-      iconName: "database",
-      cssClass: "tab-database"
-    }
-  ],
-  synapseConfigArray: [
-    {
-      name: 'Markdown',
-      columnName: 'accessRequirements',
-      title: 'Access Requirements',
-      injectMarkdown: true,
-      props: {},
-      tabIndex: 0,
-    },
-    {
-      name: 'Markdown',
-      columnName: 'acknowledgementStatements',
-      title: 'Acknowledgement Statements',
-      injectMarkdown: true,
-      props: {},
-      tabIndex: 0,
-    },
-    {
-      name: 'CardContainerLogic',
-      title: 'Tools',
-      columnName: 'studyId',
-      tableSqlKeys: ['studyId'],
-      props: {
-        sql: toolsSql,
-        ...toolsCardConfiguration,
-      },
-      tabIndex: 0,
-    },
-    {
-      name: 'CardContainerLogic',
-      title: 'Publications',
-      columnName: 'studyId',
-      tableSqlKeys: ['studyId'],
-      props: {
-        sql: publicationsSql,
-        ...publicationsCardConfiguration,
-      },
-      tabIndex: 0,
-    },
-    {
-      name: 'CardContainerLogic',
-      title: 'Related Studies',
-      columnName: 'relatedStudies',
-      tableSqlKeys: ['studyId'],
-      props: {
-        sqlOperator: 'LIKE',
-        sql: studiesSql,
-        facetAliases,
-        ...studyCardConfiguration,
-      },
-      tabIndex: 0,
-    },
-    {
-      name: 'QueryWrapperPlotNav',
-      tabIndex: 1,
-      props: {
-        rgbIndex: 8,
-        shouldDeepLink: false,
-        sql: filesSql,
-        visibleColumnCount: 7,
-        sqlOperator: 'LIKE',
-        tableConfiguration: {
-          showAccessColumn: true,
-          showDownloadColumn: true,
+      title: 'Study Details',
+      iconName: 'study',
+      synapseConfigArray: [
+        {
+          name: 'Markdown',
+          columnName: 'accessRequirements',
+          title: 'Access Requirements',
+          injectMarkdown: true,
+          props: {},
         },
-        name: 'Data Files',
-        facetAliases,
-        searchConfiguration,
-      },
-      tableSqlKeys: ['studyId'],
-      columnName: 'studyId',
+        {
+          name: 'Markdown',
+          columnName: 'acknowledgementStatements',
+          title: 'Acknowledgement Statements',
+          injectMarkdown: true,
+          props: {},
+        },
+        {
+          name: 'CardContainerLogic',
+          title: 'Tools',
+          columnName: 'studyId',
+          tableSqlKeys: ['studyId'],
+          props: {
+            sql: toolsSql,
+            ...toolsCardConfiguration,
+          },
+        },
+        {
+          name: 'CardContainerLogic',
+          title: 'Publications',
+          columnName: 'studyId',
+          tableSqlKeys: ['studyId'],
+          props: {
+            sql: publicationsSql,
+            ...publicationsCardConfiguration,
+          },
+        },
+        {
+          name: 'CardContainerLogic',
+          title: 'Related Studies',
+          columnName: 'relatedStudies',
+          tableSqlKeys: ['studyId'],
+          props: {
+            sqlOperator: 'LIKE',
+            sql: studiesSql,
+            facetAliases,
+            ...studyCardConfiguration,
+          },
+        },
+      ],
     },
     {
-      name: 'CardContainerLogic',
-      columnName: 'studyId',
-      title: 'Datasets',
-      tableSqlKeys: ['studyId'],
-      props: {
-        sql: datasetsSql,
-        sqlOperator: '=',
-        type: 'dataset',
-      },
-      tabIndex: 1,
-    },
-    {
-      name: 'StandaloneQueryWrapper',
-      tabIndex: 1,
-      title: 'Metadata Files',
-      columnName: 'studyId',
-      tableSqlKeys: ['studyId'],
-      props: {
-        visibleColumnCount: 7,
-        sql: metadataFilesSql,
-          rgbIndex,
-        title: 'Metadata Files',
-      },
-      className: 'metadata-table',
+      title: 'Study Data',
+      iconName: 'database',
+      cssClass: 'tab-database',
+      synapseConfigArray: [
+        {
+          name: 'QueryWrapperPlotNav',
+          props: {
+            rgbIndex: 8,
+            shouldDeepLink: false,
+            sql: filesSql,
+            visibleColumnCount: 7,
+            sqlOperator: 'LIKE',
+            tableConfiguration: {
+              showAccessColumn: true,
+              showDownloadColumn: true,
+            },
+            name: 'Data Files',
+            facetAliases,
+            searchConfiguration,
+          },
+          tableSqlKeys: ['studyId'],
+          columnName: 'studyId',
+        },
+
+        {
+          name: 'CardContainerLogic',
+          columnName: 'studyId',
+          title: 'Datasets',
+          tableSqlKeys: ['studyId'],
+          props: {
+            sql: datasetsSql,
+            sqlOperator: '=',
+            type: 'dataset',
+          },
+        },
+
+        {
+          name: 'StandaloneQueryWrapper',
+          title: 'Metadata Files',
+          columnName: 'studyId',
+          tableSqlKeys: ['studyId'],
+          props: {
+            visibleColumnCount: 7,
+            sql: metadataFilesSql,
+            rgbIndex,
+            title: 'Metadata Files',
+          },
+          className: 'metadata-table',
+        },
+      ],
     },
   ],
 }

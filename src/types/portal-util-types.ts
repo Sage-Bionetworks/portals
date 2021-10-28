@@ -9,7 +9,7 @@ import { SQLOperator } from 'synapse-react-client/dist/utils/functions/sqlFuncti
 // The props for DetailsPageProps are kept here so that
 // the configuration files can import the type
 
-type ResolveSynId = {
+export type ResolveSynId = {
   title?: boolean
   value?: boolean
 }
@@ -21,23 +21,25 @@ type RowToPropTransform = {
   columnName?: string
   injectMarkdown?: boolean
   showTitleSeperator?: boolean
-  tabIndex?: number
 }
 
 export type RowSynapseConfig = SynapseConfig & RowToPropTransform
+
 export type DetailsPageProps = {
   showMenu?: boolean // default to true
   searchParams?: {
     [index: string]: string
   }
   sql: string
-  synapseConfigArray: RowSynapseConfig[]
+  synapseConfigArray?: RowSynapseConfig[]
   sqlOperator?: SQLOperator
   tabLayout?: DetailsPageTabProps[]
 }
 
 export type DetailsPageTabProps = {
   title: string
-  iconName: string
+  iconName?: string
   cssClass?: string
+  tabLayout?: DetailsPageTabProps[]
+  synapseConfigArray?: RowSynapseConfig[]
 }
