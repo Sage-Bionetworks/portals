@@ -7,25 +7,27 @@ import {
   parseEntityIdFromSqlStatement,
 } from 'synapse-react-client/dist/utils/functions/sqlFunctions'
 import {
-  EntityHeader,
-  PaginatedResults,
   QueryBundleRequest,
   QueryResultBundle,
-  ReferenceList,
   EntityColumnType,
 } from 'synapse-react-client/dist/utils/synapseTypes/'
 import { SynapseConfig } from 'types/portal-config'
-import { DetailsPageProps, RowSynapseConfig } from 'types/portal-util-types'
+import {
+  DetailsPageProps,
+  ResolveSynId,
+  RowSynapseConfig,
+} from 'types/portal-util-types'
 import injectPropsIntoConfig from './injectPropsIntoConfig'
 import { ExternalFileHandleLink } from 'synapse-react-client/dist/containers/ExternalFileHandleLink'
 import { BarLoader } from 'react-spinners'
 import { LockedFacet } from 'synapse-react-client/dist/containers/QueryWrapper'
 import DetailsPageTabs from './DetailsPageTabs'
 import { SynapseContext } from 'synapse-react-client/dist/utils/SynapseContext'
+import { useGetEntityHeaders } from 'synapse-react-client/dist/utils/hooks/SynapseAPI/useGetEntityHeaders'
+import { SYNAPSE_ENTITY_ID_REGEX } from 'synapse-react-client/dist/utils/functions/RegularExpressions'
 
 type State = {
   queryResultBundle: QueryResultBundle | undefined
-  entityHeaders: PaginatedResults<EntityHeader> | undefined
   isLoading: boolean
   hasError: boolean
 }
@@ -61,7 +63,6 @@ export default class DetailsPage extends React.Component<
     super(props)
     this.state = {
       queryResultBundle: undefined,
-      entityHeaders: undefined,
       isLoading: true,
       hasError: false,
     }
@@ -79,12 +80,7 @@ export default class DetailsPage extends React.Component<
   }
 
   getData = () => {
-    const {
-      sql,
-      searchParams = {},
-      synapseConfigArray,
-      sqlOperator,
-    } = this.props
+    const { sql, searchParams = {}, sqlOperator } = this.props
     const sqlUsed = insertConditionsFromSearchParams(
       searchParams,
       sql,
@@ -104,85 +100,10 @@ export default class DetailsPage extends React.Component<
       this.context.accessToken,
     )
       .then((data) => {
-        const rows = data.queryResult.queryResults.rows
-        if (rows.length !== 1) {
-          console.error(
-            'Error on request, expected rows to be length 1 but got ',
-            rows.length,
-          )
-          this.setState({
-            hasError: true,
-          })
-          return
-        }
-        const row = rows[0].values
-        // map column name to index
-        const mapColumnHeaderToRowIndex: Dictionary<{
-          index: number
-          columnType: EntityColumnType
-        }> = {}
-        data.queryResult.queryResults.headers.forEach((el, index) => {
-          mapColumnHeaderToRowIndex[el.name] = {
-            index,
-            columnType: el.columnType,
-          }
-        })
-        const references: ReferenceList = []
-        if (synapseConfigArray) {
-          synapseConfigArray.forEach((el: RowSynapseConfig) => {
-            if (el.resolveSynId && el.columnName) {
-              const { index, columnType } =
-                mapColumnHeaderToRowIndex[el.columnName] ?? {}
-              let value: string = row[index]
-              if (
-                columnType === EntityColumnType.STRING_LIST ||
-                columnType === EntityColumnType.INTEGER_LIST
-              ) {
-                try {
-                  value = JSON.parse(value)
-                } catch (e) {
-                  console.error('value could not be parsed as string_list', e)
-                  return
-                }
-              }
-              if (typeof value === 'object') {
-                ;(value as string[])?.forEach((val) => {
-                  if (!references.find((el) => el.targetId === val)) {
-                    references.push({
-                      targetId: val,
-                    })
-                  }
-                })
-              } else {
-                value?.split(',').forEach((val) => {
-                  if (!references.find((el) => el.targetId === val)) {
-                    references.push({
-                      targetId: val,
-                    })
-                  }
-                })
-              }
-            }
-          })
-        }
-        if (references.length === 0) {
-          this.setState({
-            queryResultBundle: data,
-            isLoading: false,
-            hasError: false,
-          })
-          return
-        }
-        SynapseClient.getEntityHeaders(
-          references,
-          this.context.accessToken,
-        ).then((entityHeaders) => {
-          this.setState({
-            queryResultBundle: data,
-            entityHeaders,
-            isLoading: false,
-            hasError: false,
-          })
+        this.setState({
+          queryResultBundle: data,
+          isLoading: false,
+          hasError: false,
         })
       })
       .catch((e) => {
@@ -256,7 +177,6 @@ export default class DetailsPage extends React.Component<
                 tabConfigs={tabLayout}
                 loading={isLoading}
                 queryResultBundle={this.state.queryResultBundle}
-                entityHeaders={this.state.entityHeaders}
               ></DetailsPageTabs>
             }
           </div>
@@ -270,7 +190,6 @@ export default class DetailsPage extends React.Component<
             <DetailsPageSynapseConfigArray
               synapseConfigArray={synapseConfigArray}
               queryResultBundle={this.state.queryResultBundle}
-              entityHeaders={this.state.entityHeaders}
             />
           )}
         </>
@@ -345,8 +264,7 @@ export default class DetailsPage extends React.Component<
 const SynapseObject: React.FC<{
   el: RowSynapseConfig
   queryResultBundle: QueryResultBundle
-  entityHeaders?: PaginatedResults<EntityHeader>
-}> = ({ el, queryResultBundle, entityHeaders }) => {
+}> = ({ el, queryResultBundle }) => {
   const { columnName = '', resolveSynId, props } = el
   const deepCloneOfProps = cloneDeep(props)
   const row = queryResultBundle!.queryResult.queryResults.rows[0].values
@@ -394,83 +312,108 @@ const SynapseObject: React.FC<{
   */
   return (
     <>
-      {split.map((splitString) => {
-        let value = splitString.trim()
-        let entityTitle = ''
-
-        // For explorer 2.0, construct an object to contain the locked facet name and facet value
-        const lockedFacet: LockedFacet = {
-          facet: columnName,
-        }
-
-        if (resolveSynId) {
-          // use entity name as either title or value according to resolveSynId
-          const entity = entityHeaders?.results.find(
-            (el) => el.id === value.trim(),
-          )
-          const name = entity?.name ?? ''
-          if (!name) {
-            console.error('No value mapped for ', columnName)
-            return <></>
-          }
-          if (resolveSynId.title) {
-            entityTitle = name
-          }
-
-          // use entity name according to resolveSynId
-          if (resolveSynId.value) {
-            value = name
-            lockedFacet.value = name
-          }
-        }
-
-        let searchParams: Dictionary<string> | undefined = undefined
-        if (el.tableSqlKeys) {
-          // create component's query according to keys and value
-          searchParams = {}
-          el.tableSqlKeys.forEach((key: string) => {
-            searchParams![key] = value
-          })
-        }
-        const injectedProps = injectPropsIntoConfig(value, el, {
-          ...deepCloneOfProps,
-        })
-
-        // For explorer 2.0, cannot assign key `lockedFacet` to deepCloneOfProps due to type errors,
-        // assign lockedFacet value directly to injectedProps only if resolveSynId.value is true
-        injectedProps['lockedFacet'] = lockedFacet
-
-        const synapseConfigWithInjectedProps: SynapseConfig = {
-          ...el,
-          props: injectedProps,
-        }
-        if (el.resolveSynId && entityTitle) {
-          return (
-            <React.Fragment key={splitString}>
-              {entityTitle && (
-                <>
-                  <h2>
-                    {el.title}: {entityTitle}
-                  </h2>
-                  <hr />
-                </>
-              )}
-              <SynapseComponentWithContext
-                synapseConfig={synapseConfigWithInjectedProps}
-                searchParams={searchParams}
-              />
-            </React.Fragment>
-          )
-        }
-        return (
-          <SynapseComponentWithContext
-            key={splitString}
-            synapseConfig={synapseConfigWithInjectedProps}
-            searchParams={searchParams}
-          />
-        )
-      })}
+      {split.map((splitString) => (
+        <SplitStringToComponent
+          key={splitString}
+          splitString={splitString}
+          resolveSynId={resolveSynId}
+          columnName={columnName}
+          el={el}
+          deepCloneOfProps={deepCloneOfProps}
+        />
+      ))}
     </>
+  )
+}
+
+const SplitStringToComponent: React.FC<{
+  splitString: string
+  resolveSynId?: ResolveSynId
+  columnName: string
+  el: RowSynapseConfig
+  deepCloneOfProps: any
+}> = ({ splitString, resolveSynId, columnName, el, deepCloneOfProps }) => {
+  let value = splitString.trim()
+
+  const valueIsSynId = React.useMemo(
+    () => !!SYNAPSE_ENTITY_ID_REGEX.exec(value),
+    [value],
+  )
+
+  let entityTitle = ''
+
+  // For explorer 2.0, construct an object to contain the locked facet name and facet value
+  const lockedFacet: LockedFacet = {
+    facet: columnName,
+  }
+
+  const { data: entityHeaders } = useGetEntityHeaders([{ targetId: value }], {
+    enabled: valueIsSynId,
+    refetchInterval: false,
+  })
+
+  if (resolveSynId) {
+    // use entity name as either title or value according to resolveSynId
+    const entity = entityHeaders?.results.find((el) => el.id === value.trim())
+    const name = entity?.name ?? ''
+    if (!name) {
+      console.error('No value mapped for ', columnName)
+      return <></>
+    }
+    if (resolveSynId.title) {
+      entityTitle = name
+    }
+
+    // use entity name according to resolveSynId
+    if (resolveSynId.value) {
+      value = name
+      lockedFacet.value = name
+    }
+  }
+
+  let searchParams: Dictionary<string> | undefined = undefined
+  if (el.tableSqlKeys) {
+    // create component's query according to keys and value
+    searchParams = {}
+    el.tableSqlKeys.forEach((key: string) => {
+      searchParams![key] = value
+    })
+  }
+  const injectedProps = injectPropsIntoConfig(value, el, {
+    ...deepCloneOfProps,
+  })
+
+  // For explorer 2.0, cannot assign key `lockedFacet` to deepCloneOfProps due to type errors,
+  // assign lockedFacet value directly to injectedProps only if resolveSynId.value is true
+  injectedProps['lockedFacet'] = lockedFacet
+
+  const synapseConfigWithInjectedProps: SynapseConfig = {
+    ...el,
+    props: injectedProps,
+  }
+  if (el.resolveSynId && entityTitle) {
+    return (
+      <React.Fragment>
+        {entityTitle && (
+          <>
+            <h2>
+              {el.title}: {entityTitle}
+            </h2>
+            <hr />
+          </>
+        )}
+        <SynapseComponentWithContext
+          synapseConfig={synapseConfigWithInjectedProps}
+          searchParams={searchParams}
+        />
+      </React.Fragment>
+    )
+  }
+  return (
+    <SynapseComponentWithContext
+      synapseConfig={synapseConfigWithInjectedProps}
+      searchParams={searchParams}
+    />
   )
 }
 
@@ -484,8 +427,7 @@ function isReactFragment(variableToInspect: any): boolean {
 export const DetailsPageSynapseConfigArray: React.FC<{
   synapseConfigArray: RowSynapseConfig[]
   queryResultBundle?: QueryResultBundle
-  entityHeaders?: PaginatedResults<EntityHeader>
-}> = ({ synapseConfigArray, queryResultBundle, entityHeaders }) => {
+}> = ({ synapseConfigArray, queryResultBundle }) => {
   return (
     <>
       {synapseConfigArray.map((el: RowSynapseConfig, index) => {
@@ -508,11 +450,7 @@ export const DetailsPageSynapseConfigArray: React.FC<{
         const component = standalone ? (
           <SynapseComponentWithContext synapseConfig={el} />
         ) : queryResultBundle ? (
-          <SynapseObject
-            el={el}
-            queryResultBundle={queryResultBundle}
-            entityHeaders={entityHeaders}
-          />
+          <SynapseObject el={el} queryResultBundle={queryResultBundle} />
         ) : (
           <></>
         )

@@ -4,24 +4,19 @@ import { DetailsPageTabProps } from 'types/portal-util-types'
 import { Icon } from 'synapse-react-client/dist/containers/row_renderers/utils'
 import { BarLoader } from 'react-spinners'
 import { DetailsPageSynapseConfigArray } from './DetailsPage'
-import {
-  QueryResultBundle,
-  PaginatedResults,
-  EntityHeader,
-} from 'synapse-react-client/dist/utils/synapseTypes'
+import { QueryResultBundle } from 'synapse-react-client/dist/utils/synapseTypes'
 
 export type DetailsPageTabsProps = {
   tabConfigs: DetailsPageTabProps[]
   loading: boolean
   queryResultBundle?: QueryResultBundle
-  entityHeaders?: PaginatedResults<EntityHeader>
 }
 
 const DetailsPageTabs: React.FunctionComponent<DetailsPageTabsProps> = (
   props,
 ) => {
   const [selectedTabIndex, setSelectedTabIndex] = useState<number>(0)
-  const { tabConfigs, loading, queryResultBundle, entityHeaders } = props
+  const { tabConfigs, loading, queryResultBundle } = props
 
   return (
     <>
@@ -60,14 +55,12 @@ const DetailsPageTabs: React.FunctionComponent<DetailsPageTabsProps> = (
                     tabConfigs={tabConfig.tabLayout}
                     loading={loading}
                     queryResultBundle={queryResultBundle}
-                    entityHeaders={entityHeaders}
                   ></DetailsPageTabs>
                 )}
                 {tabConfig.synapseConfigArray && (
                   <DetailsPageSynapseConfigArray
                     synapseConfigArray={tabConfig.synapseConfigArray!}
                     queryResultBundle={queryResultBundle}
-                    entityHeaders={entityHeaders}
                   />
                 )}
               </div>

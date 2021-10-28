@@ -9,7 +9,7 @@ import { SQLOperator } from 'synapse-react-client/dist/utils/functions/sqlFuncti
 // The props for DetailsPageProps are kept here so that
 // the configuration files can import the type
 
-type ResolveSynId = {
+export type ResolveSynId = {
   title?: boolean
   value?: boolean
 }
