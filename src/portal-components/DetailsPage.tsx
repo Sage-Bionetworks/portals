@@ -79,7 +79,7 @@ export default class DetailsPage extends React.Component<
     }
   }
 
-  getData = () => {
+  getData = async () => {
     const { sql, searchParams = {}, sqlOperator } = this.props
     const sqlUsed = insertConditionsFromSearchParams(
       searchParams,
@@ -95,20 +95,19 @@ export default class DetailsPage extends React.Component<
         sql: sqlUsed,
       },
     }
-    SynapseClient.getQueryTableResults(
-      queryBundleRequest,
-      this.context.accessToken,
-    )
-      .then((data) => {
-        this.setState({
-          queryResultBundle: data,
-          isLoading: false,
-          hasError: false,
-        })
+    try {
+      const data = await SynapseClient.getQueryTableResults(
+        queryBundleRequest,
+        this.context.accessToken,
+      )
+      this.setState({
+        queryResultBundle: data,
+        isLoading: false,
+        hasError: false,
       })
-      .catch((e) => {
-        console.log('getQueryTableResults: Error getting data', e)
-      })
+    } catch (e) {
+      console.log('getQueryTableResults: Error getting data', e)
+    }
   }
 
   handleMenuClick = (index: number) => {
