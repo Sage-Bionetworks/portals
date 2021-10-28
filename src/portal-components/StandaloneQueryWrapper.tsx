@@ -72,8 +72,8 @@ const StandaloneQueryWrapper: React.FunctionComponent<StandaloneQueryWrapperProp
 
   if (searchParams) {
     derivedQueryRequestFromSearchParams.query.sql = insertConditionsFromSearchParams(
-      searchParams,
       derivedQueryRequestFromSearchParams.query.sql,
+      searchParams,
       sqlOperator,
     )
   }

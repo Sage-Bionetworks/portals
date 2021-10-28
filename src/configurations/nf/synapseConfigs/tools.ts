@@ -4,11 +4,10 @@ import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig, SynapseConfig } from 'types/portal-config'
 import { facetAliases } from './commonProps'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
-import { filesSql, toolsSql, observationsSql } from '../resources'
+import { toolsSql, observationsSql, investigatorSql } from '../resources'
 import { DetailsPageProps } from 'types/portal-util-types'
 
 export const newToolsSql = `${toolsSql} order by ROW_ID desc limit 3`
-const visibleColumnCount = 7
 
 export const toolsSchema: GenericCardSchema = {
   type: 'TOOL',
@@ -85,13 +84,18 @@ export const toolDetailsPageConfig: DetailsPageProps = {
   ],
   synapseConfigArray: [
     {
-      name: 'Markdown',
+      name: 'UserCardListRotate',
+      title: 'Investigator',
+      outsideContainerClassName: 'home-spacer',
       props: {
-        ownerId: 'syn22272075',
-        wikiId: '604853',
+        sql: investigatorSql,
+        count: 1,
+        size: SynapseConstants.MEDIUM_USER_CARD,
+        useQueryResultUserData: true,
+        sqlOperator: '=',
       },
-      title: 'Detailed',
-      standalone: true,
+      tableSqlKeys: ['Resource_id'],
+      columnName: 'Resource_id',
       tabIndex: 0,
     },
     {
@@ -118,25 +122,25 @@ export const toolDetailsPageConfig: DetailsPageProps = {
       columnName: 'Resource_id',
       tabIndex: 1,
     },
-    {
-      name: 'QueryWrapperPlotNav',
-      props: {
-        sqlOperator: '=',
-        rgbIndex,
-        name: 'Files',
-        sql: filesSql,
-        visibleColumnCount,
-        tableConfiguration: {
-          showAccessColumn: true,
-          showDownloadColumn: true,
-        },
-        shouldDeepLink: false,
-        facetAliases,
-      },
-      tabIndex: 2,
-      tableSqlKeys: ['Resource_id'], // TODO: replace with the new resource annotation key name
-      columnName: 'Resource_id'
-    },
+    // {
+    //   name: 'QueryWrapperPlotNav',
+    //   props: {
+    //     sqlOperator: '=',
+    //     rgbIndex,
+    //     name: 'Files',
+    //     sql: filesSql,
+    //     visibleColumnCount,
+    //     tableConfiguration: {
+    //       showAccessColumn: true,
+    //       showDownloadColumn: true,
+    //     },
+    //     shouldDeepLink: false,
+    //     facetAliases,
+    //   },
+    //   tabIndex: 2,
+    //   tableSqlKeys: ['Resource_id'], // TODO: replace with the new resource annotation key name
+    //   columnName: 'Resource_id'
+    // },
   ],
 }
 

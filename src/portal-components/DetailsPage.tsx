@@ -88,8 +88,8 @@ export default class DetailsPage extends React.Component<
       sqlOperator,
     } = this.props
     const sqlUsed = insertConditionsFromSearchParams(
-      searchParams,
       sql,
+      searchParams,
       sqlOperator,
     )
     const entityId = parseEntityIdFromSqlStatement(sql)

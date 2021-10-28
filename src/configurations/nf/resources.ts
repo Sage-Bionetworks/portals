@@ -9,3 +9,4 @@ export const metadataFilesSql = `SELECT id, dataType, assay, diagnosis, tumorTyp
 export const fundersSql = 'SELECT * FROM syn16858699'
 export const hackathonsSql = 'SELECT * FROM syn25585549'
 export const observationsSql = 'SELECT "Observation Submitter Name" as "submitterName", Synapse_id as "submitterUserId", "Observation Time" as "time", "Observation Time Units" as "timeUnits", "Observation Text" as "text", "Observation Type" as "tag" FROM syn26344832 '
+export const investigatorSql = `SELECT "Investigator Name" as "firstName", ' ' as "lastName", "Institution" as "institution", "Investigator SynapseId" as "USERID" FROM syn26344827`
