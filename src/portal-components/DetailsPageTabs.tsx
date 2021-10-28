@@ -53,28 +53,25 @@ const DetailsPageTabs: React.FunctionComponent<DetailsPageTabsProps> = (
             )
           }
           return (
-            <div
-              key={index}
-              className={`tab-content${
-                index === selectedTabIndex ? '-active' : ''
-              }`}
-            >
-              {tabConfig.tabLayout && (
-                <DetailsPageTabs
-                  tabConfigs={tabConfig.tabLayout}
-                  loading={loading}
-                  queryResultBundle={queryResultBundle}
-                  entityHeaders={entityHeaders}
-                ></DetailsPageTabs>
-              )}
-              {tabConfig.synapseConfigArray && (
-                <DetailsPageSynapseConfigArray
-                  synapseConfigArray={tabConfig.synapseConfigArray!}
-                  queryResultBundle={queryResultBundle}
-                  entityHeaders={entityHeaders}
-                />
-              )}
-            </div>
+            selectedTabIndex === index && (
+              <div key={index} className="tab-content">
+                {tabConfig.tabLayout && (
+                  <DetailsPageTabs
+                    tabConfigs={tabConfig.tabLayout}
+                    loading={loading}
+                    queryResultBundle={queryResultBundle}
+                    entityHeaders={entityHeaders}
+                  ></DetailsPageTabs>
+                )}
+                {tabConfig.synapseConfigArray && (
+                  <DetailsPageSynapseConfigArray
+                    synapseConfigArray={tabConfig.synapseConfigArray!}
+                    queryResultBundle={queryResultBundle}
+                    entityHeaders={entityHeaders}
+                  />
+                )}
+              </div>
+            )
           )
         })}
       </div>
