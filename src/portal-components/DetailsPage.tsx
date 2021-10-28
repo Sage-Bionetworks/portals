@@ -349,7 +349,6 @@ const SplitStringToComponent: React.FC<{
 
   const { data: entityHeaders } = useGetEntityHeaders([{ targetId: value }], {
     enabled: valueIsSynId,
-    refetchInterval: false,
   })
 
   if (resolveSynId) {
