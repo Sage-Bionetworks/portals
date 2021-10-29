@@ -48,7 +48,7 @@ const facetAliases = {
   DataType_All: 'Data Types',
   Data_Contributor: 'Data Contributor',
   Study_Description: 'Study Description',
-  Study_Name: 'Study Name',  
+  Study_Name: 'Study Name',
   Number_of_Individuals: 'Individuals',
   'Grant Number': 'Grant',
 }
@@ -95,136 +95,129 @@ export const studiesDetailsPageProps: DetailsPageProps = {
   sqlOperator: 'LIKE',
   tabLayout: [
     {
-      title: "Study Details",
-      iconName: "study",
-    },
-    {
-      title: "Study Data",
-      iconName: "database",
-      cssClass: "tab-database"
-    },
-  ],
-  synapseConfigArray: [
-    {
-      name: 'Markdown',
-      columnName: 'Study',
-      title: 'Study Description',
-      props: {},
-      tabIndex: 0,
-    },
-    {
-      name: 'Markdown',
-      columnName: 'Methods',
-      title: 'Methods',
-      props: {},
-      resolveSynId: {
-        title: true,
-      },
-      tabIndex: 0,
-    },
-    {
-      name: 'Markdown',
-      title: 'Acknowledgement',
-      columnName: 'Acknowledgement',
-      props: {},
-      tabIndex: 0,
-    },
-    {
-      name: 'CardContainerLogic',
-      columnName: 'Related_Studies',
-      title: 'Related Studies',
-      tableSqlKeys: ['Study'],
-      props: {
-        sqlOperator: '=',
-        sql: studiesSql,
-        ...studyCardConfiguration,
-      },
-      tabIndex: 0,
-    },
-    {
-      name: 'RssFeedCards',
-      title: 'Recent Data Updates',
-      columnName: 'Study',
-      resolveSynId: {
-        value: true,
-      },
-      props: {
-        url: 'https://news.adknowledgeportal.org',
-        itemsToShow:3,
-        allowCategories: ['Data Release', 'News', 'Webinar'],
-        // mailChimpListName: 'study specific list name????',
-        // mailChimpUrl:'https://study specific url????'
-        viewAllNewsButtonText: 'VIEW ALL DATA UPDATES',
-      },
-      tabIndex: 1,
-    },
-    {
-      name: 'Markdown',
-      title: 'Access Requirements',
-      columnName: 'accessReqs',
-      props: {},
-      tabIndex: 1,
-    },
-    {
-      name: 'Markdown',
-      title: 'Study Metadata',
-      columnName: 'studyMetadata',
-      props: {},
-      tabIndex: 1,
-    },
-    {
-      name: "QueryWrapperPlotNav",
-      tabIndex: 1,
-      props: {
-        sqlOperator: 'HAS',
-        showColumnSelection: true,
-        rgbIndex,
-        name: 'Metadata Files',
-        visibleColumnCount: 10,
-        tableConfiguration: {
-          showAccessColumn: true,
-          showDownloadColumn: true,
+      title: 'Study Details',
+      iconName: 'study',
+      synapseConfigArray: [
+        {
+          name: 'Markdown',
+          columnName: 'Study',
+          title: 'Study Description',
+          props: {},
         },
-        facetsToFilter:['metadataType', 'dataType', 'assay'],
-        sql: dataOnStudiesPageSql,
-        shouldDeepLink: false,
-        defaultShowFacetVisualization: false,
-      },
-      resolveSynId: {
-        value: true,
-      },
-      tableSqlKeys: ['study'],
-      columnName: 'Study'
-    },    
+        {
+          name: 'Markdown',
+          columnName: 'Methods',
+          title: 'Methods',
+          props: {},
+          resolveSynId: {
+            title: true,
+          },
+        },
+        {
+          name: 'Markdown',
+          title: 'Acknowledgement',
+          columnName: 'Acknowledgement',
+          props: {},
+        },
+        {
+          name: 'CardContainerLogic',
+          columnName: 'Related_Studies',
+          title: 'Related Studies',
+          tableSqlKeys: ['Study'],
+          props: {
+            sqlOperator: '=',
+            sql: studiesSql,
+            ...studyCardConfiguration,
+          },
+        },
+      ],
+    },
     {
-      name: "QueryWrapperPlotNav",
-      tabIndex: 1,
-      props: {
-        sqlOperator: 'HAS',
-        rgbIndex,
-        name: 'Study Data',
-        visibleColumnCount: 10,
-        tableConfiguration: {
-          showAccessColumn: true,
-          showDownloadColumn: true,
-          columnLinks: [
-            {
-              matchColumnName: 'study',
-              isMarkdown: false,
-              baseURL: 'Explore/Studies/DetailsPage',
-              URLColumnName: 'Study_Name',
-              wrapValueWithParens: true,
+      title: 'Study Data',
+      iconName: 'database',
+      cssClass: 'tab-database',
+      synapseConfigArray: [
+        {
+          name: 'RssFeedCards',
+          title: 'Recent Data Updates',
+          columnName: 'Study',
+          resolveSynId: {
+            value: true,
+          },
+          props: {
+            url: 'https://news.adknowledgeportal.org',
+            itemsToShow: 3,
+            allowCategories: ['Data Release', 'News', 'Webinar'],
+            // mailChimpListName: 'study specific list name????',
+            // mailChimpUrl:'https://study specific url????'
+            viewAllNewsButtonText: 'VIEW ALL DATA UPDATES',
+          },
+        },
+        {
+          name: 'Markdown',
+          title: 'Access Requirements',
+          columnName: 'accessReqs',
+          props: {},
+        },
+        {
+          name: 'Markdown',
+          title: 'Study Metadata',
+          columnName: 'studyMetadata',
+          props: {},
+        },
+        {
+          name: 'QueryWrapperPlotNav',
+          props: {
+            sqlOperator: 'HAS',
+            showColumnSelection: true,
+            rgbIndex,
+            name: 'Metadata Files',
+            visibleColumnCount: 10,
+            tableConfiguration: {
+              showAccessColumn: true,
+              showDownloadColumn: true,
             },
-          ],
+            facetsToFilter: ['metadataType', 'dataType', 'assay'],
+            sql: dataOnStudiesPageSql,
+            shouldDeepLink: false,
+            defaultShowFacetVisualization: false,
+          },
+          resolveSynId: {
+            value: true,
+          },
+          tableSqlKeys: ['study'],
+          columnName: 'Study',
         },
-        sql: dataSql,
-        shouldDeepLink: false,
-      },
-      resolveSynId: {
-        value: true,
-      },
-      tableSqlKeys: ['study'],
-      columnName: 'Study'
+        {
+          name: 'QueryWrapperPlotNav',
+          props: {
+            sqlOperator: 'HAS',
+            rgbIndex,
+            name: 'Study Data',
+            visibleColumnCount: 10,
+            tableConfiguration: {
+              showAccessColumn: true,
+              showDownloadColumn: true,
+              columnLinks: [
+                {
+                  matchColumnName: 'study',
+                  isMarkdown: false,
+                  baseURL: 'Explore/Studies/DetailsPage',
+                  URLColumnName: 'Study_Name',
+                  wrapValueWithParens: true,
+                },
+              ],
+            },
+            sql: dataSql,
+            shouldDeepLink: false,
+          },
+          resolveSynId: {
+            value: true,
+          },
+          tableSqlKeys: ['study'],
+          columnName: 'Study',
+        },
+      ],
     },
   ],
 }
@@ -240,7 +233,7 @@ export const studiesProgrammaticRouteConfig: SynapseConfig[] = [
       facetAliases,
       isAlignToLeftNav: true,
       secondaryLabelLimit: Infinity,
-      
+
       iconOptions: {
         study: studyHeaderSvg,
       },

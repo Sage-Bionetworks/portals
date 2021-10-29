@@ -1,35 +1,71 @@
 import * as React from 'react'
 import { useState } from 'react'
 import { DetailsPageTabProps } from 'types/portal-util-types'
-import { Icon } from "synapse-react-client/dist/containers/row_renderers/utils"
-import { BarLoader } from "react-spinners";
+import { Icon } from 'synapse-react-client/dist/containers/row_renderers/utils'
+import { BarLoader } from 'react-spinners'
+import { DetailsPageSynapseConfigArray } from './DetailsPage'
+import { QueryResultBundle } from 'synapse-react-client/dist/utils/synapseTypes'
 
 export type DetailsPageTabsProps = {
-  tabConfigs: DetailsPageTabProps[],
-  loading: boolean,
-  tabContents: JSX.Element[] | false
+  tabConfigs: DetailsPageTabProps[]
+  loading: boolean
+  queryResultBundle?: QueryResultBundle
 }
 
-const DetailsPageTabs: React.FunctionComponent<DetailsPageTabsProps> = props => {
+const DetailsPageTabs: React.FunctionComponent<DetailsPageTabsProps> = (
+  props,
+) => {
   const [selectedTabIndex, setSelectedTabIndex] = useState<number>(0)
-  const { tabConfigs, loading, tabContents } = props
+  const { tabConfigs, loading, queryResultBundle } = props
 
   return (
     <>
       <div className="tab-groups">
         {tabConfigs.map((tab, index) => {
-          const tabClass = selectedTabIndex === index ? `tab-item-active ${tab.cssClass || ''}`: `tab-item ${tab.cssClass || ''}`
-          return <span key={`detailPage-tab-${index}`} className={tabClass} onClick={() => { setSelectedTabIndex(index) }}>
-          { <Icon type={tab.iconName}></Icon> }{tab.title}</span>
+          return (
+            <span
+              key={`detailPage-tab-${index}`}
+              className={'tab-item'}
+              aria-selected={selectedTabIndex === index}
+              onClick={() => {
+                setSelectedTabIndex(index)
+              }}
+            >
+              {tab.iconName && <Icon type={tab.iconName}></Icon>}
+              {tab.title}
+            </span>
+          )
         })}
       </div>
-      {loading && <BarLoader color="#878787" loading={true} height={5}/>}
+      {loading && <BarLoader color="#878787" loading={true} height={5} />}
       <div className="tab-content-group">
-        {tabContents && tabContents.map((content, index) => {
-          const tabClass = selectedTabIndex === index ? `tab-content-active` : `tab-content`
-          return <div key={`detailPage-tabcontent-${index}`} className={tabClass}>
-            {content}
-          </div>
+        {tabConfigs.map((tabConfig, index) => {
+          if (tabConfig.tabLayout && tabConfig.synapseConfigArray) {
+            // It doesn't make sense to show both sub-tabs and Synapse components
+            console.warn(
+              'tabLayout and synapseConfigArray were both specified in the following tabConfig when only one is supported.',
+              tabConfig,
+            )
+          }
+          return (
+            selectedTabIndex === index && (
+              <div key={index} className="tab-content">
+                {tabConfig.tabLayout && (
+                  <DetailsPageTabs
+                    tabConfigs={tabConfig.tabLayout}
+                    loading={loading}
+                    queryResultBundle={queryResultBundle}
+                  ></DetailsPageTabs>
+                )}
+                {tabConfig.synapseConfigArray && (
+                  <DetailsPageSynapseConfigArray
+                    synapseConfigArray={tabConfig.synapseConfigArray!}
+                    queryResultBundle={queryResultBundle}
+                  />
+                )}
+              </div>
+            )
+          )
         })}
       </div>
     </>

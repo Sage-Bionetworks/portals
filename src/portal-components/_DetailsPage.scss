@@ -1,4 +1,6 @@
 @use 'variables' as Portal;
+@use 'node_modules/synapse-react-client/dist/style/abstracts/mixins' as
+  SrcMixins;
 // local variable for study page
 
 $marginTop: 40px;
@@ -112,8 +114,7 @@ $svg-icon-height: 30px;
     height: $study-page-tab-height;
     line-height: $study-page-tab-height;
 
-    .tab-item,
-    .tab-item-active {
+    .tab-item {
       cursor: pointer;
       display: inline-block;
       margin: 0 4px;
@@ -130,7 +131,7 @@ $svg-icon-height: 30px;
         width: auto;
       }
     }
-    .tab-item {
+    .tab-item[aria-selected='false'] {
       background: rgba(0, 0, 0, 0.4);
       color: #fff;
       svg,
@@ -138,7 +139,7 @@ $svg-icon-height: 30px;
         @extend %svg-icon;
       }
     }
-    .tab-item-active {
+    .tab-item[aria-selected='true'] {
       background-color: #fff;
       svg,
       path {
@@ -148,23 +149,26 @@ $svg-icon-height: 30px;
     .tab-database svg {
       height: 26px;
     }
-    .tab-item:first-child,
-    .tab-item-active:first-child {
+    .tab-item:first-child {
       margin-left: 0;
     }
 
-    .tab-item:last-child,
-    .tab-item-active:last-child {
+    .tab-item:last-child {
       margin-right: 0;
     }
   }
 
-  .tab-content-group {
-    .tab-content {
-      display: none;
-    }
-    .tab-content-active {
-      display: block;
+  .tab-content .tab-groups {
+    height: 55px;
+    box-shadow: 0px 1px 5px 1px rgb(0, 0, 0, 0.15);
+    @include SrcMixins.underline-tabs($inactive-color: unset);
+    justify-content: center;
+    .tab-item {
+      font-weight: 700;
+      flex-grow: 0.2;
+      border-radius: 0px;
+      color: unset;
+      background-color: unset;
     }
   }
 
@@ -174,8 +178,7 @@ $svg-icon-height: 30px;
 
   @media screen and (max-width: 800px) {
     .tab-groups {
-      .tab-item,
-      .tab-item-active {
+      .tab-item {
         padding: 0 2%;
       }
     }
@@ -186,8 +189,7 @@ $svg-icon-height: 30px;
       overflow-x: auto;
       justify-content: left;
 
-      .tab-item,
-      .tab-item-active {
+      .tab-item {
         font-size: 14px;
 
         svg {
