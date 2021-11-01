@@ -441,7 +441,8 @@ export const DetailsPageSynapseConfigArray: React.FC<{
           title = (
             <>
               <h2 className={headerClassName}> {el.title}</h2>
-              {showTitleSeperator && <hr />}
+              {showTitleSeperator && el.title && <hr />}
+              {el.subtitle && <div className='bootstrap-4-backport'><h4>{el.subtitle}</h4></div>}
             </>
           )
         }

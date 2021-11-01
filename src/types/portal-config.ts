@@ -10,6 +10,7 @@ import { GoalsProps } from 'synapse-react-client/dist/containers/home_page/goals
 import { ProgramsProps } from 'synapse-react-client/dist/containers/home_page/programs/Programs'
 import { ResourcesProps } from 'synapse-react-client/dist/containers/home_page/resources/Resources'
 import { UserCardListRotateProps } from 'synapse-react-client/dist/containers/UserCardListRotate'
+import { SubsectionRowRendererProps } from 'synapse-react-client/dist/containers/SubsectionRowRenderer'
 import { SynapseFormSubmissionGridProps } from 'synapse-react-client/dist/containers/synapse_form_wrapper/SynapseFormSubmissionsGrid'
 import { QueryWrapperPlotNavProps } from 'synapse-react-client/dist/containers/query_wrapper_plot_nav/QueryWrapperPlotNav'
 import { SynapseFormWrapperProps } from 'synapse-react-client/dist/containers/synapse_form_wrapper/SynapseFormWrapper'
@@ -171,7 +172,10 @@ type UserCardListRotate = {
   name: 'UserCardListRotate'
   props: UserCardListRotateProps
 }
-
+type SubsectionRowRenderer = {
+  name: 'SubsectionRowRenderer'
+  props: SubsectionRowRendererProps
+}
 type Image = {
   name: 'Image'
   props: ImageProps
@@ -273,6 +277,7 @@ export type SynapseConfig = (
   | TableFeedCards
   | DownloadCartPage
   | BrowseToolsPage
+  | SubsectionRowRenderer
 ) &
   Metadata
 export type SynapseConfigArray = SynapseConfig[]

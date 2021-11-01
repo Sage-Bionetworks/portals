@@ -4,7 +4,7 @@ import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig, SynapseConfig } from 'types/portal-config'
 import { facetAliases } from './commonProps'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
-import { toolsSql, observationsSql, investigatorSql } from '../resources'
+import { toolsSql, observationsSql, investigatorSql, developmentPublicationSql,publicationCitationSql, fundingAgencySql, usageRequirementsSql, vendorSql } from '../resources'
 import { DetailsPageProps } from 'types/portal-util-types'
 
 export const newToolsSql = `${toolsSql} order by ROW_ID desc limit 3`
@@ -72,8 +72,8 @@ export const toolDetailsPageConfig: DetailsPageProps = {
       synapseConfigArray: [
         {
           name: 'UserCardListRotate',
-          title: 'Investigator',
-          outsideContainerClassName: 'home-spacer',
+          title: 'Tool Origin',
+          subtitle: 'Investigator',
           props: {
             sql: investigatorSql,
             count: 1,
@@ -83,7 +83,85 @@ export const toolDetailsPageConfig: DetailsPageProps = {
           },
           tableSqlKeys: ['Resource_id'],
           columnName: 'Resource_id',
-        }]
+        },
+        {
+          name: 'SubsectionRowRenderer',
+          outsideContainerClassName: 'home-spacer',
+          props: {
+            sql: developmentPublicationSql,
+            isMarkdown: true,
+            sqlOperator: '=',
+          },
+          tableSqlKeys: ['Resource_id'],
+          columnName: 'Resource_id',
+        },
+        {
+          name: 'SubsectionRowRenderer',
+          outsideContainerClassName: 'home-spacer',
+          props: {
+            sql: publicationCitationSql,
+            isMarkdown: true,
+            sqlOperator: '=',
+          },
+          tableSqlKeys: ['Resource_id'],
+          columnName: 'Resource_id',
+        },
+        {
+          name: 'SubsectionRowRenderer',
+          outsideContainerClassName: 'home-spacer',
+          props: {
+            sql: fundingAgencySql,
+            isMarkdown: true,
+            sqlOperator: '=',
+          },
+          tableSqlKeys: ['Resource_id'],
+          columnName: 'Resource_id',
+        },
+        {
+          name: 'SubsectionRowRenderer',
+          title: 'Tool Availability',
+          outsideContainerClassName: 'home-spacer',
+          props: {
+            sql: usageRequirementsSql,
+            isMarkdown: true,
+            sqlOperator: '=',
+          },
+          tableSqlKeys: ['resourceId'],
+          columnName: 'Resource_id',
+        },
+        {
+          name: 'SubsectionRowRenderer',
+          outsideContainerClassName: 'home-spacer',
+          props: {
+            sql: vendorSql,
+            sqlOperator: '=',
+            columnLink: {
+              linkColumnName: 'Vendor Url',
+              matchColumnName: 'Vendor',
+              isMarkdown: false,
+            }
+          },
+          tableSqlKeys: ['Resource_id'],
+          columnName: 'Resource_id',
+        },
+        {
+          name: 'SubsectionRowRenderer',
+          outsideContainerClassName: 'home-spacer',
+          props: {
+            sql: catalogNumberSql,
+            sqlOperator: '=',
+            columnLink: {
+              linkColumnName: 'Catalog Number URL',
+              matchColumnName: 'Catalog Number',
+              isMarkdown: false,
+            }
+          },
+          tableSqlKeys: ['Resource_id'],
+          columnName: 'Resource_id',
+        }
+
+
+      ]
     },
     {
       title: "Observations",
