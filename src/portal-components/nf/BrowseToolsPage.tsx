@@ -5,6 +5,7 @@ import { Button, Form } from 'react-bootstrap'
 import FeaturedToolsList from 'synapse-react-client/dist/containers/home_page/featured_tools/FeaturedToolsList'
 import IconSvg from 'synapse-react-client/dist/containers/IconSvg'
 import { Query } from 'synapse-react-client/dist/utils/synapseTypes'
+import { TextMatchesQueryFilter } from 'synapse-react-client/dist/utils/synapseTypes/Table/QueryFilter'
 import { ReactComponent as AnimalModels } from './assets/animalmodels.svg'
 import { ReactComponent as Antibodies } from './assets/antibodies.svg'
 import { ReactComponent as Biobanks } from './assets/biobanks.svg'
@@ -13,22 +14,33 @@ import { ReactComponent as PlasmidsReagents } from './assets/plasmids-reagents.s
 
 const BrowseToolsPage = () => {
   const [searchText, setSearchText] = React.useState<string>('')
-  const gotoExploreTools = (selectedResource?: string) => {
-    if (selectedResource) {
-      const query: Query = {
-        sql: toolsSql,
-        selectedFacets: [
-          {
-            concreteType: "org.sagebionetworks.repo.model.table.FacetColumnValuesRequest",
-            columnName: 'Resource Type',
-            facetValues: [selectedResource]
-          }
-        ]
-      }
-      window.location.assign(`/Explore/Tools?QueryWrapper0=${JSON.stringify(query)}`)
-    } else {
-      window.location.assign('/Explore/Tools')
+  const gotoExploreTools = () => {
+    window.location.assign('/Explore/Tools')
+  }
+  
+  const gotoExploreToolsWithSelectedResource = (selectedResource: string) => {
+    const query: Query = {
+      sql: toolsSql,
+      selectedFacets: [
+        {
+          concreteType: "org.sagebionetworks.repo.model.table.FacetColumnValuesRequest",
+          columnName: 'Resource Type',
+          facetValues: [selectedResource]
+        }
+      ],
     }
+    window.location.assign(`/Explore/Tools?QueryWrapper0=${JSON.stringify(query)}`)
+  }
+  const gotoExploreToolsWithFullTextSearch = (fullTextSearchString: string) => {
+    const filter:TextMatchesQueryFilter = {
+        concreteType: "org.sagebionetworks.repo.model.table.TextMatchesQueryFilter",
+        searchExpression: fullTextSearchString,
+      } 
+    const query: Query = {
+      sql: toolsSql,
+      additionalFilters: [ filter ],
+    }
+    window.location.assign(`/Explore/Tools?QueryWrapper0=${JSON.stringify(query)}`)
   }
 
   return (
@@ -55,10 +67,15 @@ const BrowseToolsPage = () => {
                 onChange={event => {
                   setSearchText(event.target.value)
                 }}
+                onKeyPress={ evt => {
+                  if (evt.key === 'Enter') {
+                    gotoExploreToolsWithFullTextSearch(searchText)
+                  }
+                }}
               />
             </div>
             <div className="search-button-container bootstrap-4-backport">
-              <Button className="pill-xl" variant="default">SEARCH</Button>
+              <Button className="pill-xl" variant="default" onClick={()=> gotoExploreToolsWithFullTextSearch(searchText)}>SEARCH</Button>
             </div>
           </div>
         </div>
@@ -80,23 +97,23 @@ const BrowseToolsPage = () => {
           Drill-down to explore specific types of NF research tools.
         </p>
         <div className="categories">
-          <button onClick={() => gotoExploreTools('Animal Model')}>
+          <button onClick={() => gotoExploreToolsWithSelectedResource('Animal Model')}>
             <AnimalModels />
             <p>Animal Models</p>
           </button>
-          <button onClick={() => gotoExploreTools('Antibody')}>
+          <button onClick={() => gotoExploreToolsWithSelectedResource('Antibody')}>
             <Antibodies />
             <p>Antibodies</p>
           </button>
-          <button onClick={() => gotoExploreTools('Genetic Reagent')}>
+          <button onClick={() => gotoExploreToolsWithSelectedResource('Genetic Reagent')}>
             <PlasmidsReagents />
             <p>Plasmids/Reagents</p>
           </button>
-          <button onClick={() => gotoExploreTools('Cell Line')}>
+          <button onClick={() => gotoExploreToolsWithSelectedResource('Cell Line')}>
             <CellLines />
             <p>Cell Lines</p>
           </button>
-          <button onClick={() => gotoExploreTools('Biobank')}>
+          <button onClick={() => gotoExploreToolsWithSelectedResource('Biobank')}>
             <Biobanks />
             <p>Biobanks</p>
           </button>

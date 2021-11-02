@@ -69,6 +69,7 @@ const StandaloneQueryWrapper: React.FunctionComponent<StandaloneQueryWrapperProp
   } = props
 
   let derivedQueryRequestFromSearchParams = generateInitQueryRequest(sql)
+
   if (searchParams) {
     derivedQueryRequestFromSearchParams.query.sql = insertConditionsFromSearchParams(
       derivedQueryRequestFromSearchParams.query.sql,
@@ -81,22 +82,29 @@ const StandaloneQueryWrapper: React.FunctionComponent<StandaloneQueryWrapperProp
       {...rest}
       initQueryRequest={derivedQueryRequestFromSearchParams}
     >
-      {link && linkText ? (
-        <SynapseComponents.StackedBarChart
-          link={link}
-          linkText={linkText}
-        />
-      ) : (
-        <React.Fragment />
-      )}
-      {title ? (
-        <SynapseComponents.SynapseTable
-          showAccessColumn={showAccessColumn}
-          title={title}
-        />
-      ) : (
-        <React.Fragment />
-      )}
+      {queryWrapperChildProps => {
+        return (
+          <>
+            {link && linkText ? (
+              <SynapseComponents.StackedBarChart
+                {...queryWrapperChildProps}
+                link={link}
+                linkText={linkText}
+              />
+            ) : (
+              <React.Fragment />
+            )}
+            {title ? (
+              <SynapseComponents.SynapseTable
+                {...queryWrapperChildProps}
+                showAccessColumn={showAccessColumn}
+                title={title}
+              />
+            ) : (
+              <React.Fragment />
+            )}
+          </>
+      )}}
     </SynapseComponents.QueryWrapper>
   )
 }
