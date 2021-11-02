@@ -17,3 +17,4 @@ export const usageRequirementsSql = `SELECT usageRequirements as "Usage Restrict
 export const vendorSql = `SELECT "Vendor Name" as "Vendor", "Vendor Url" FROM syn26344830 WHERE "Vendor Name" IS NOT NULL`
 export const catalogNumberSql = `SELECT "Catalog Number", "Catalog Number URL" FROM syn26344830 WHERE "Catalog Number" IS NOT NULL`
 export const mtaRequiredSql = `SELECT mTARequired as "MTA Requirements" FROM syn26433426 WHERE mTARequired IS NOT NULL`
+export const toolApplicationsSql = `SELECT applications as "Tool Applications" FROM syn26433391 WHERE applications IS NOT NULL`

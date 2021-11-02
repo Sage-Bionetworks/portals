@@ -4,7 +4,7 @@ import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig, SynapseConfig } from 'types/portal-config'
 import { facetAliases } from './commonProps'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
-import { toolsSql, observationsSql, investigatorSql, developmentPublicationSql,publicationCitationSql, fundingAgencySql, usageRequirementsSql, vendorSql, catalogNumberSql, mtaRequiredSql } from '../resources'
+import { toolsSql, observationsSql, investigatorSql, developmentPublicationSql,publicationCitationSql, fundingAgencySql, usageRequirementsSql, vendorSql, catalogNumberSql, mtaRequiredSql, toolApplicationsSql } from '../resources'
 import { DetailsPageProps } from 'types/portal-util-types'
 
 export const newToolsSql = `${toolsSql} order by ROW_ID desc limit 3`
@@ -139,7 +139,8 @@ export const toolDetailsPageConfig: DetailsPageProps = {
               linkColumnName: 'Vendor Url',
               matchColumnName: 'Vendor',
               isMarkdown: false,
-            }
+            },
+            limit: 1,
           },
           tableSqlKeys: ['Resource_id'],
           columnName: 'Resource_id',
@@ -165,12 +166,25 @@ export const toolDetailsPageConfig: DetailsPageProps = {
           props: {
             sql: mtaRequiredSql,
             sqlOperator: '=',
+            columnNameIsSectionTitle: true,
             isMarkdown: true,
             friendlyValuesMap: {
               'no': 'A MTA is **not** required for usage of this resource.',
               'yes': 'A MTA is required for usage of this resource.',
               'unknown': 'It is unknown whether a MTA is required for usage of this resource.'
             }
+          },
+          tableSqlKeys: ['resourceId'],
+          columnName: 'Resource_id',
+        },
+        {
+          name: 'SubsectionRowRenderer',
+          outsideContainerClassName: 'home-spacer',
+          props: {
+            sql: toolApplicationsSql,
+            columnNameIsSectionTitle: true,
+            sqlOperator: '=',
+            limit: 1,
           },
           tableSqlKeys: ['resourceId'],
           columnName: 'Resource_id',
