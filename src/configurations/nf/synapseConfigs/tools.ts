@@ -4,7 +4,7 @@ import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig, SynapseConfig } from 'types/portal-config'
 import { facetAliases } from './commonProps'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
-import { toolsSql, observationsSql, investigatorSql, developmentPublicationSql,publicationCitationSql, fundingAgencySql, usageRequirementsSql, vendorSql } from '../resources'
+import { toolsSql, observationsSql, investigatorSql, developmentPublicationSql,publicationCitationSql, fundingAgencySql, usageRequirementsSql, vendorSql, catalogNumberSql, mtaRequiredSql } from '../resources'
 import { DetailsPageProps } from 'types/portal-util-types'
 
 export const newToolsSql = `${toolsSql} order by ROW_ID desc limit 3`
@@ -81,7 +81,7 @@ export const toolDetailsPageConfig: DetailsPageProps = {
             useQueryResultUserData: true,
             sqlOperator: '=',
           },
-          tableSqlKeys: ['Resource_id'],
+          tableSqlKeys: ['resourceId'],
           columnName: 'Resource_id',
         },
         {
@@ -158,9 +158,23 @@ export const toolDetailsPageConfig: DetailsPageProps = {
           },
           tableSqlKeys: ['Resource_id'],
           columnName: 'Resource_id',
-        }
-
-
+        },
+        {
+          name: 'SubsectionRowRenderer',
+          outsideContainerClassName: 'home-spacer',
+          props: {
+            sql: mtaRequiredSql,
+            sqlOperator: '=',
+            isMarkdown: true,
+            friendlyValuesMap: {
+              'no': 'A MTA is **not** required for usage of this resource.',
+              'yes': 'A MTA is required for usage of this resource.',
+              'unknown': 'It is unknown whether a MTA is required for usage of this resource.'
+            }
+          },
+          tableSqlKeys: ['resourceId'],
+          columnName: 'Resource_id',
+        },
       ]
     },
     {
