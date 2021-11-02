@@ -4,7 +4,7 @@ import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig, SynapseConfig } from 'types/portal-config'
 import { facetAliases } from './commonProps'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
-import { toolsSql, observationsSql, investigatorSql, developmentPublicationSql,publicationCitationSql, fundingAgencySql, usageRequirementsSql, vendorSql, catalogNumberSql, mtaRequiredSql, toolApplicationsSql } from '../resources'
+import { toolsSql, observationsSql, investigatorSql, developmentPublicationSql,publicationCitationSql, fundingAgencySql, usageRequirementsSql, vendorSql, catalogNumberSql, mtaRequiredSql, toolApplicationsSql, mutationsSql } from '../resources'
 import { DetailsPageProps } from 'types/portal-util-types'
 
 export const newToolsSql = `${toolsSql} order by ROW_ID desc limit 3`
@@ -92,7 +92,7 @@ export const toolDetailsPageConfig: DetailsPageProps = {
             isMarkdown: true,
             sqlOperator: '=',
           },
-          tableSqlKeys: ['Resource_id'],
+          tableSqlKeys: ['resourceId'],
           columnName: 'Resource_id',
         },
         {
@@ -103,7 +103,7 @@ export const toolDetailsPageConfig: DetailsPageProps = {
             isMarkdown: true,
             sqlOperator: '=',
           },
-          tableSqlKeys: ['Resource_id'],
+          tableSqlKeys: ['resourceId'],
           columnName: 'Resource_id',
         },
         {
@@ -114,7 +114,7 @@ export const toolDetailsPageConfig: DetailsPageProps = {
             isMarkdown: true,
             sqlOperator: '=',
           },
-          tableSqlKeys: ['Resource_id'],
+          tableSqlKeys: ['resourceId'],
           columnName: 'Resource_id',
         },
         {
@@ -142,7 +142,7 @@ export const toolDetailsPageConfig: DetailsPageProps = {
             },
             limit: 1,
           },
-          tableSqlKeys: ['Resource_id'],
+          tableSqlKeys: ['resourceId'],
           columnName: 'Resource_id',
         },
         {
@@ -157,7 +157,7 @@ export const toolDetailsPageConfig: DetailsPageProps = {
               isMarkdown: false,
             }
           },
-          tableSqlKeys: ['Resource_id'],
+          tableSqlKeys: ['resourceId'],
           columnName: 'Resource_id',
         },
         {
@@ -188,6 +188,20 @@ export const toolDetailsPageConfig: DetailsPageProps = {
           },
           tableSqlKeys: ['resourceId'],
           columnName: 'Resource_id',
+        },
+        {
+          name: 'StandaloneQueryWrapper',
+          title: 'Mutations',
+          props: {
+            title: 'Mutations',
+            unitDescription: 'Mutations',
+            sqlOperator: '=',
+            rgbIndex,
+            name: 'Mutations',
+            sql: mutationsSql,
+          },
+          tableSqlKeys: ['resourceId'],
+          columnName: 'Resource_id'
         },
       ]
     },

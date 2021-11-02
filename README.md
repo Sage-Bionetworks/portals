@@ -36,7 +36,7 @@ $ ./linkConfig <portal-name> # last step is to launch a portal
 # can continue to run as you make changes.
 ```
 
-To unlink synapse react-client run `rm -r node_modules` and `yarn install`. You can also manually unlink the packages by using [yarn unlink](https://classic.yarnpkg.com/en/docs/cli/unlink/).
+To unlink synapse react-client run `yarn unlink-src`
 
 # Build/Deploy Process
 
