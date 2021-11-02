@@ -49,7 +49,8 @@
     "generate-sitemap": "node sitemap/generate-sitemap.js",
     "eject": "react-scripts eject",
     "analyze": "yarn run copy-test-configuration && react-scripts --max_old_space_size=4096 build && source-map-explorer 'build/static/js/*.js'",
-    "link-src": "yarn link synapse-react-client && yarn link react && yarn link react-router && yarn link react-router-dom"
+    "link-src": "yarn link synapse-react-client && yarn link react && yarn link react-router && yarn link react-router-dom",
+    "unlink-src": "yarn unlink synapse-react-client && yarn unlink react && yarn unlink react-router && yarn unlink react-router-dom && yarn install --check-files"
   },
   "devDependencies": {
     "@testing-library/react": "^12.1.0",
