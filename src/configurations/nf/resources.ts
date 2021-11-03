@@ -8,7 +8,7 @@ export const filesSql = `SELECT id AS "File ID", assay, dataType, diagnosis, tum
 export const metadataFilesSql = `SELECT id, dataType, assay, diagnosis, tumorType, species, individualID, fileFormat, dataSubtype, nf1Genotype, nf2Genotype, fundingAgency, consortium FROM syn16858331.8 where resourceType ='report'`
 export const fundersSql = 'SELECT * FROM syn16858699'
 export const hackathonsSql = 'SELECT * FROM syn25585549'
-export const observationsSql = 'SELECT "Observation Submitter Name" as "submitterName", Synapse_id as "submitterUserId", "Observation Time" as "time", "Observation Time Units" as "timeUnits", "Observation Text" as "text", "Observation Type" as "tag" FROM syn26344832 '
+export const observationsSql = 'SELECT observationSubmitterName as "submitterName", synapseId as "submitterUserId", observationTime as "time", observationTimeUnits as "timeUnits", observationText as "text", observationType as "tag" FROM syn26433431 '
 export const investigatorSql = `SELECT investigatorName as "firstName", ' ' as "lastName", institution, investigatorSynapseId as "USERID" FROM syn26433620 WHERE (investigatorSynapseId <> 'NaN' OR investigatorName <> 'NaN')`
 export const developmentPublicationSql = `SELECT doi as "Development Publication" FROM syn26433434`
 export const publicationCitationSql = `SELECT citation as "Publication Citation" FROM syn26433434`

@@ -11,8 +11,7 @@ import { publicationsV2CardConfiguration } from './publications'
 export const newToolsSql = `${toolsSql} order by ROW_ID desc limit 3`
 
 export const toolsSchema: GenericCardSchema = {
-  type: 'TOOL',
-  icon: 'icon', // TODO: use a column to determine what icon to show?
+  type: SynapseConstants.EXPERIMENTAL_TOOL,
   title: 'Resource Name',
   subTitle: 'Resource Type',
   description: 'Description',
@@ -55,10 +54,6 @@ const tools: HomeExploreConfig = {
       name: 'Tools',
       cardConfiguration: toolsCardConfiguration,
       facetAliases,
-      searchConfiguration: {
-        searchable: [
-        ],
-      },
     },
   },
 }
@@ -235,23 +230,23 @@ export const toolDetailsPageConfig: DetailsPageProps = {
         {
           name: 'CardContainerLogic',
           props: {
-            sql: `${observationsSql} WHERE "Observation Time" IS NOT NULL ORDER BY "Observation Time" DESC`,
+            sql: `${observationsSql} WHERE observationTime IS NOT NULL ORDER BY observationTime DESC`,
             type: SynapseConstants.OBSERVATION_CARD,
             limit: 3,
           },
           title: 'Experimental Tool Timeline',
-          tableSqlKeys: ['Resource_id'],
+          tableSqlKeys: ['resourceId'],
           columnName: 'Resource_id',
         },
         {
           name: 'CardContainerLogic',
           props: {
-            sql: `${observationsSql} WHERE "Observation Time" IS NULL`,
+            sql: `${observationsSql} WHERE observationTime IS NULL`,
             type: SynapseConstants.OBSERVATION_CARD,
             limit: 3,
           },
           title: 'Community Observations',
-          tableSqlKeys: ['Resource_id'],
+          tableSqlKeys: ['resourceId'],
           columnName: 'Resource_id',
         },
         {
@@ -293,29 +288,12 @@ export const toolDetailsPageConfig: DetailsPageProps = {
             // },
           ],
         },
-        {
-          title: 'Datasets',
-          synapseConfigArray: [
-            // {
-            //   name: 'QueryWrapperPlotNav',
-            //   props: {
-            //     sqlOperator: '=',
-            //     rgbIndex,
-            //     name: 'Datasets',
-            //     sql: dataSetsSql,
-            //     visibleColumnCount,
-            //     tableConfiguration: {
-            //       showAccessColumn: true,
-            //       showDownloadColumn: true,
-            //     },
-            //     shouldDeepLink: false,
-            //     facetAliases,
-            //   },
-            //   tableSqlKeys: ['Resource_id'], // TODO: replace with the new resource annotation key name
-            //   columnName: 'Resource_id'
-            // },
-          ],
-        },
+        // {
+        //   title: 'Datasets',
+        //   synapseConfigArray: [
+        //     ...
+        //   ],
+        // },
         {
           title: 'Metadata Files',
           synapseConfigArray: [
