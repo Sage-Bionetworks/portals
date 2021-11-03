@@ -4,8 +4,9 @@ import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig, SynapseConfig } from 'types/portal-config'
 import { facetAliases } from './commonProps'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
-import { toolsSql, observationsSql, investigatorSql, developmentPublicationSql,publicationCitationSql, fundingAgencySql, usageRequirementsSql, vendorSql, catalogNumberSql, mtaRequiredSql, toolApplicationsSql, mutationsSql } from '../resources'
+import { toolsSql, observationsSql, investigatorSql, developmentPublicationSql,publicationCitationSql, fundingAgencySql, usageRequirementsSql, vendorSql, catalogNumberSql, mtaRequiredSql, toolApplicationsSql, mutationsSql, publicationsV2Sql } from '../resources'
 import { DetailsPageProps } from 'types/portal-util-types'
+import { publicationsV2CardConfiguration } from './publications'
 
 export const newToolsSql = `${toolsSql} order by ROW_ID desc limit 3`
 
@@ -203,6 +204,27 @@ export const toolDetailsPageConfig: DetailsPageProps = {
           tableSqlKeys: ['resourceId'],
           columnName: 'Resource_id'
         },
+        {
+          name: 'CardContainerLogic',
+          title: 'Publications',
+          props: {
+            limit: 3,
+            facetAliases,
+            sql: publicationsV2Sql,
+            ...publicationsV2CardConfiguration,
+          },
+          tableSqlKeys: ['resourceId'],
+          columnName: 'Resource_id'
+        },
+        {
+          name: 'Markdown',
+          title: 'Submit an Observation',
+          standalone: true,
+          props: {
+            ownerId: 'syn26338068',
+            wikiId: '613438',
+          },
+        },
       ]
     },
     {
@@ -231,6 +253,15 @@ export const toolDetailsPageConfig: DetailsPageProps = {
           title: 'Community Observations',
           tableSqlKeys: ['Resource_id'],
           columnName: 'Resource_id',
+        },
+        {
+          name: 'Markdown',
+          title: 'Submit an Observation',
+          standalone: true,
+          props: {
+            ownerId: 'syn26338068',
+            wikiId: '613438',
+          },
         },
       ]
     },

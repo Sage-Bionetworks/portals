@@ -19,3 +19,4 @@ export const catalogNumberSql = `SELECT catalogNumber as "Catalog Number", catal
 export const mtaRequiredSql = `SELECT mTARequired as "MTA Requirements" FROM syn26433426 WHERE mTARequired IS NOT NULL`
 export const toolApplicationsSql = `SELECT applications as "Tool Applications" FROM syn26433391 WHERE applications IS NOT NULL`
 export const mutationsSql = 'SELECT resourceName, resourceType, externalMutationID, alleleType, mutationType, mutationMethod, affectedGeneSymbol, affectedGeneName, sequenceVariation, proteinVariation, animalModelMutation, humanClinVarMutation, chromosome FROM syn26433432'
+export const publicationsV2Sql = 'SELECT * FROM syn26433391'
