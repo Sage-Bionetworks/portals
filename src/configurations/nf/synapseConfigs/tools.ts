@@ -4,7 +4,7 @@ import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig, SynapseConfig } from 'types/portal-config'
 import { facetAliases } from './commonProps'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
-import { toolsSql, observationsSql, investigatorSql, developmentPublicationSql,publicationCitationSql, fundingAgencySql, usageRequirementsSql, vendorSql, catalogNumberSql, mtaRequiredSql, toolApplicationsSql, mutationsSql, publicationsV2Sql } from '../resources'
+import { toolsSql, observationsSql, investigatorSql, developmentPublicationSql,publicationCitationSql, fundingAgencySql, usageRequirementsSql, vendorSql, catalogNumberSql, mtaRequiredSql, toolApplicationsSql, mutationsSql, publicationsV2Sql, filesSql } from '../resources'
 import { DetailsPageProps } from 'types/portal-util-types'
 import { publicationsV2CardConfiguration } from './publications'
 
@@ -64,7 +64,6 @@ export const toolDetailsPageConfig: DetailsPageProps = {
   tabLayout: [
     {
       title: "Details",
-      iconName: "study",
       synapseConfigArray: [
         {
           name: 'UserCardListRotate',
@@ -224,8 +223,6 @@ export const toolDetailsPageConfig: DetailsPageProps = {
     },
     {
       title: "Observations",
-      iconName: "database",
-      cssClass: "tab-database",
       synapseConfigArray: [
         {
           name: 'CardContainerLogic',
@@ -262,30 +259,28 @@ export const toolDetailsPageConfig: DetailsPageProps = {
     },
     {
       title: "Data",
-      iconName: "database",
-      cssClass: "tab-database",
       tabLayout: [
         {
-          title: 'Data Files',
+          title: 'Files',
           synapseConfigArray: [
-            // {
-            //   name: 'QueryWrapperPlotNav',
-            //   props: {
-            //     sqlOperator: '=',
-            //     rgbIndex,
-            //     name: 'Files',
-            //     sql: filesSql,
-            //     visibleColumnCount,
-            //     tableConfiguration: {
-            //       showAccessColumn: true,
-            //       showDownloadColumn: true,
-            //     },
-            //     shouldDeepLink: false,
-            //     facetAliases,
-            //   },
-            //   tableSqlKeys: ['resourceId'], // TODO: replace with the new resource annotation key name
-            //   columnName: 'resourceId'
-            // },
+            {
+              name: 'QueryWrapperPlotNav',
+              props: {
+                sqlOperator: 'HAS',
+                rgbIndex,
+                name: 'Files',
+                sql: filesSql,
+                visibleColumnCount: 7,
+                tableConfiguration: {
+                  showAccessColumn: true,
+                  showDownloadColumn: true,
+                },
+                shouldDeepLink: false,
+                facetAliases,
+              },
+              tableSqlKeys: ['Resource_id'],
+              columnName: 'resourceId'
+            },
           ],
         },
         // {
