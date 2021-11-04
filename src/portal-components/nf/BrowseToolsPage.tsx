@@ -1,4 +1,4 @@
-import { toolsSql } from 'config/resources'
+import { popularSearchesSql, toolsSql } from 'configurations/nf/resources'
 import Layout from 'portal-components/Layout'
 import * as React from 'react'
 import { Button, Form } from 'react-bootstrap'
@@ -11,34 +11,36 @@ import { ReactComponent as Antibodies } from './assets/antibodies.svg'
 import { ReactComponent as Biobanks } from './assets/biobanks.svg'
 import { ReactComponent as CellLines } from './assets/cell-lines.svg'
 import { ReactComponent as PlasmidsReagents } from './assets/plasmids-reagents.svg'
+import PopularSearches from './PopularSearches'
+
+export const gotoExploreToolsWithFullTextSearch = (fullTextSearchString: string) => {
+  const filter: TextMatchesQueryFilter = {
+    concreteType: "org.sagebionetworks.repo.model.table.TextMatchesQueryFilter",
+    searchExpression: fullTextSearchString,
+  }
+  const query: Query = {
+    sql: toolsSql,
+    additionalFilters: [filter],
+  }
+  window.location.assign(`/Explore/Tools?QueryWrapper0=${JSON.stringify(query)}`)
+}
 
 const BrowseToolsPage = () => {
   const [searchText, setSearchText] = React.useState<string>('')
   const gotoExploreTools = () => {
     window.location.assign('/Explore/Tools')
   }
-  
+
   const gotoExploreToolsWithSelectedResource = (selectedResource: string) => {
     const query: Query = {
       sql: toolsSql,
       selectedFacets: [
         {
           concreteType: "org.sagebionetworks.repo.model.table.FacetColumnValuesRequest",
-          columnName: 'Resource Type',
+          columnName: 'resourceType',
           facetValues: [selectedResource]
         }
       ],
-    }
-    window.location.assign(`/Explore/Tools?QueryWrapper0=${JSON.stringify(query)}`)
-  }
-  const gotoExploreToolsWithFullTextSearch = (fullTextSearchString: string) => {
-    const filter:TextMatchesQueryFilter = {
-        concreteType: "org.sagebionetworks.repo.model.table.TextMatchesQueryFilter",
-        searchExpression: fullTextSearchString,
-      } 
-    const query: Query = {
-      sql: toolsSql,
-      additionalFilters: [ filter ],
     }
     window.location.assign(`/Explore/Tools?QueryWrapper0=${JSON.stringify(query)}`)
   }
@@ -67,7 +69,7 @@ const BrowseToolsPage = () => {
                 onChange={event => {
                   setSearchText(event.target.value)
                 }}
-                onKeyPress={ evt => {
+                onKeyPress={evt => {
                   if (evt.key === 'Enter') {
                     gotoExploreToolsWithFullTextSearch(searchText)
                   }
@@ -75,18 +77,13 @@ const BrowseToolsPage = () => {
               />
             </div>
             <div className="search-button-container bootstrap-4-backport">
-              <Button className="pill-xl" variant="default" onClick={()=> gotoExploreToolsWithFullTextSearch(searchText)}>SEARCH</Button>
+              <Button className="pill-xl" variant="default" onClick={() => gotoExploreToolsWithFullTextSearch(searchText)}>SEARCH</Button>
             </div>
           </div>
         </div>
         <h2 className="title center-title" style={{ marginTop: 50 }}>Popular Searches</h2>
         <div className="center-content">
-          <div className="popularSearchesContainer">
-            <a>Animal models for NF1 OPG</a>
-            <a>Human Cell Lines for NF1</a>
-            <a>NF1 Mouse Models</a>
-            <a>NF PDX Lines</a>
-          </div>
+          <PopularSearches sql={popularSearchesSql} />
         </div>
       </div>
       <Layout outsideContainerClassName="home-spacer home-bg-dark">
