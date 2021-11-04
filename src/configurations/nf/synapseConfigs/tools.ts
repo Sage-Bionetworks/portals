@@ -12,9 +12,9 @@ export const newToolsSql = `${toolsSql} order by ROW_ID desc limit 3`
 
 export const toolsSchema: GenericCardSchema = {
   type: SynapseConstants.EXPERIMENTAL_TOOL,
-  title: 'Resource Name',
-  subTitle: 'Resource Type',
-  description: 'Description',
+  title: 'resourceName',
+  subTitle: 'resourceType',
+  description: 'description',
   secondaryLabels: [
     'rrid',
     'Synonyms',
@@ -26,8 +26,8 @@ export const toolsCardConfiguration: CardConfiguration = {
   titleLinkConfig: {
     isMarkdown: false,
     baseURL: 'Explore/Tools/DetailsPage',
-    URLColumnName: 'Resource_id',
-    matchColumnName: 'Resource_id',
+    URLColumnName: 'resourceId',
+    matchColumnName: 'resourceId',
   },
   genericCardSchema: toolsSchema,
 }
@@ -78,7 +78,7 @@ export const toolDetailsPageConfig: DetailsPageProps = {
             sqlOperator: '=',
           },
           tableSqlKeys: ['resourceId'],
-          columnName: 'Resource_id',
+          columnName: 'resourceId',
         },
         {
           name: 'SubsectionRowRenderer',
@@ -89,7 +89,7 @@ export const toolDetailsPageConfig: DetailsPageProps = {
             sqlOperator: '=',
           },
           tableSqlKeys: ['resourceId'],
-          columnName: 'Resource_id',
+          columnName: 'resourceId',
         },
         {
           name: 'SubsectionRowRenderer',
@@ -100,7 +100,7 @@ export const toolDetailsPageConfig: DetailsPageProps = {
             sqlOperator: '=',
           },
           tableSqlKeys: ['resourceId'],
-          columnName: 'Resource_id',
+          columnName: 'resourceId',
         },
         {
           name: 'SubsectionRowRenderer',
@@ -111,7 +111,7 @@ export const toolDetailsPageConfig: DetailsPageProps = {
             sqlOperator: '=',
           },
           tableSqlKeys: ['resourceId'],
-          columnName: 'Resource_id',
+          columnName: 'resourceId',
         },
         {
           name: 'SubsectionRowRenderer',
@@ -123,7 +123,7 @@ export const toolDetailsPageConfig: DetailsPageProps = {
             sqlOperator: '=',
           },
           tableSqlKeys: ['resourceId'],
-          columnName: 'Resource_id',
+          columnName: 'resourceId',
         },
         {
           name: 'SubsectionRowRenderer',
@@ -139,7 +139,7 @@ export const toolDetailsPageConfig: DetailsPageProps = {
             limit: 1,
           },
           tableSqlKeys: ['resourceId'],
-          columnName: 'Resource_id',
+          columnName: 'resourceId',
         },
         {
           name: 'SubsectionRowRenderer',
@@ -154,7 +154,7 @@ export const toolDetailsPageConfig: DetailsPageProps = {
             }
           },
           tableSqlKeys: ['resourceId'],
-          columnName: 'Resource_id',
+          columnName: 'resourceId',
         },
         {
           name: 'SubsectionRowRenderer',
@@ -171,7 +171,7 @@ export const toolDetailsPageConfig: DetailsPageProps = {
             }
           },
           tableSqlKeys: ['resourceId'],
-          columnName: 'Resource_id',
+          columnName: 'resourceId',
         },
         {
           name: 'SubsectionRowRenderer',
@@ -183,7 +183,7 @@ export const toolDetailsPageConfig: DetailsPageProps = {
             limit: 1,
           },
           tableSqlKeys: ['resourceId'],
-          columnName: 'Resource_id',
+          columnName: 'resourceId',
         },
         {
           name: 'StandaloneQueryWrapper',
@@ -197,7 +197,7 @@ export const toolDetailsPageConfig: DetailsPageProps = {
             sql: mutationsSql,
           },
           tableSqlKeys: ['resourceId'],
-          columnName: 'Resource_id'
+          columnName: 'resourceId'
         },
         {
           name: 'CardContainerLogic',
@@ -209,7 +209,7 @@ export const toolDetailsPageConfig: DetailsPageProps = {
             ...publicationsV2CardConfiguration,
           },
           tableSqlKeys: ['resourceId'],
-          columnName: 'Resource_id'
+          columnName: 'resourceId'
         },
         {
           name: 'Markdown',
@@ -236,7 +236,7 @@ export const toolDetailsPageConfig: DetailsPageProps = {
           },
           title: 'Experimental Tool Timeline',
           tableSqlKeys: ['resourceId'],
-          columnName: 'Resource_id',
+          columnName: 'resourceId',
         },
         {
           name: 'CardContainerLogic',
@@ -247,7 +247,7 @@ export const toolDetailsPageConfig: DetailsPageProps = {
           },
           title: 'Community Observations',
           tableSqlKeys: ['resourceId'],
-          columnName: 'Resource_id',
+          columnName: 'resourceId',
         },
         {
           name: 'Markdown',
@@ -283,8 +283,8 @@ export const toolDetailsPageConfig: DetailsPageProps = {
             //     shouldDeepLink: false,
             //     facetAliases,
             //   },
-            //   tableSqlKeys: ['Resource_id'], // TODO: replace with the new resource annotation key name
-            //   columnName: 'Resource_id'
+            //   tableSqlKeys: ['resourceId'], // TODO: replace with the new resource annotation key name
+            //   columnName: 'resourceId'
             // },
           ],
         },
@@ -312,8 +312,8 @@ export const toolDetailsPageConfig: DetailsPageProps = {
             //     shouldDeepLink: false,
             //     facetAliases,
             //   },
-            //   tableSqlKeys: ['Resource_id'], // TODO: replace with the new resource annotation key name
-            //   columnName: 'Resource_id'
+            //   tableSqlKeys: ['resourceId'], // TODO: replace with the new resource annotation key name
+            //   columnName: 'resourceId'
             // },
           ],
         },

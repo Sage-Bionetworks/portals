@@ -139,7 +139,7 @@ const BrowseToolsPage = () => {
             descriptionColumnName={'description'}
             typeColumnName={'resourceType'}
             dateColumnName={'dateAdded'}
-            toolDetailPageURL={'/Explore/Tools/DetailsPage?Resource_id='}
+            toolDetailPageURL={'/Explore/Tools/DetailsPage?resourceId='}
           />
         </div>
         <div className="center-content bootstrap-4-backport" style={{ marginTop: 50 }}>
