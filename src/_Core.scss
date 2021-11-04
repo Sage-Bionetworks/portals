@@ -703,3 +703,8 @@ div.SRC-marginBottomTen {
     }
   }
 }
+
+// Portal specific styling of Typography
+p[class^='SRC-Typography-sectionTitle'], p[class*=' SRC-Typography-sectionTitle']{
+  padding-top: 30px;
+}

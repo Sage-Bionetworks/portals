@@ -171,6 +171,9 @@ $svg-icon-height: 30px;
       background-color: unset;
     }
   }
+  .tab-content-group {
+    padding-top: 40px;
+  }
 
   .metadata-table table {
     width: 100% !important; // Override !important from js library

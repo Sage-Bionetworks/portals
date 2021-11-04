@@ -1,7 +1,7 @@
 import { cloneDeep, Dictionary } from 'lodash'
 import * as React from 'react'
 import { SynapseComponentWithContext } from 'RouteResolver'
-import { SynapseClient, SynapseConstants } from 'synapse-react-client'
+import { SynapseClient, SynapseConstants, Typography } from 'synapse-react-client'
 import {
   insertConditionsFromSearchParams,
   parseEntityIdFromSqlStatement,
@@ -148,7 +148,7 @@ export default class DetailsPage extends React.Component<
       const name = currentLocation[currentLocation.length - 2]
       return (
         <div className="DetailsPage__ComingSoon">
-          <h2> Coming Soon! </h2>
+          <Typography variant='headline1'>Coming Soon! </Typography>
           <p>
             {/*
                 pluralize is used to convert the detail of interest e.g. studies/publications/etc
@@ -394,9 +394,9 @@ const SplitStringToComponent: React.FC<{
       <React.Fragment>
         {entityTitle && (
           <>
-            <h2>
+            <Typography variant='sectionTitle'>
               {el.title}: {entityTitle}
-            </h2>
+            </Typography>
             <hr />
           </>
         )}
@@ -432,17 +432,17 @@ export const DetailsPageSynapseConfigArray: React.FC<{
         const id = COMPONENT_ID_PREFIX + index
         const { standalone, resolveSynId, showTitleSeperator = true } = el
         const key = JSON.stringify(el)
-        const headerClassName =
-          index === 0 && showTitleSeperator ? 'first-title' : 'title'
         const hasTitleFromSynId = resolveSynId && resolveSynId.title
         // don't show this title if component is rendering entity names adjacet to the title
         let title: any = ''
         if (!hasTitleFromSynId) {
           title = (
             <>
-              {el.title && <h2 className={headerClassName}> {el.title}</h2>}
+              {el.title && <Typography variant='sectionTitle'>
+                {el.title}
+              </Typography>}
               {showTitleSeperator && el.title && <hr />}
-              {el.subtitle && <div className='bootstrap-4-backport'><h4>{el.subtitle}</h4></div>}
+              {el.subtitle && <div className='bootstrap-4-backport'><Typography variant='subsectionHeader'>{el.subtitle}</Typography></div>}
             </>
           )
         }
