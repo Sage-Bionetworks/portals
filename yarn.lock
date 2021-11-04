@@ -3680,10 +3680,10 @@ boolbase@^1.0.0, boolbase@~1.0.0:
   resolved "https://registry.yarnpkg.com/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
   integrity sha1-aN/1++YMUes3cl6p4+0xDcwed24=
 
-bootstrap@^4.6.0:
-  version "4.6.0"
-  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.6.0.tgz#97b9f29ac98f98dfa43bf7468262d84392552fd7"
-  integrity sha512-Io55IuQY3kydzHtbGvQya3H+KorS/M9rSNyfCGCg9WZ4pyT/lCxIlpJgG1GXW/PswzC84Tr2fBYi+7+jFVQQBw==
+bootstrap@^4.6.1:
+  version "4.6.1"
+  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.6.1.tgz#bc25380c2c14192374e8dec07cf01b2742d222a2"
+  integrity sha512-0dj+VgI9Ecom+rvvpNZ4MUZJz8dcX7WCX+eTID9+/8HgOkv3dsRzi8BGeZJCQU6flWQVYxwTQnEZFrmJSEO7og==
 
 brace-expansion@^1.1.7:
   version "1.1.11"
@@ -11123,10 +11123,10 @@ react-popper@^2.2.5:
     react-fast-compare "^3.0.1"
     warning "^4.0.2"
 
-react-query@^3.25.1:
-  version "3.26.0"
-  resolved "https://registry.yarnpkg.com/react-query/-/react-query-3.26.0.tgz#7083a8622afdf946ee6d8f3a6d94591b980c1aa0"
-  integrity sha512-wFPnL9Y+9xf6gJHAQ8ue+vBurciJ4cfQL4dhsI0x3YyRaEXlyklUQpJzbR63CfFULVekP3iWoyFxhaNVS9RFDw==
+react-query@3.31.0:
+  version "3.31.0"
+  resolved "https://registry.yarnpkg.com/react-query/-/react-query-3.31.0.tgz#297add9301d15ef2e004297e72a8e46f7aa5616a"
+  integrity sha512-6NiXgjdXBKGA9ge04NI21uqTCIpH6qzR8AGGom/nR/emaGc//D9KM6C6+AEy8zLYl4RYjvd/XhA3lWME5kGMiw==
   dependencies:
     "@babel/runtime" "^7.5.5"
     broadcast-channel "^3.4.1"
@@ -12778,10 +12778,10 @@ symbol-tree@^3.2.4:
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.4.tgz#430637d248ba77e078883951fb9aa0eed7c63fa2"
   integrity sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==
 
-synapse-react-client@2.0.50:
-  version "2.0.50"
-  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-2.0.50.tgz#7a7a71afec38468b5cff52dc7ab926c9debe0425"
-  integrity sha512-aaSi2ZabGL/Qm1eoq5f/Ka5o7+zRtgpfGkd5E/HaSEMR0qfYoghVg9vSYV4qdWyGoSFZxffOyvzK0xMIBAmliw==
+synapse-react-client@2.0.52:
+  version "2.0.52"
+  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-2.0.52.tgz#f784ab4fb8e8e0190815176da4d2cb245b79f99c"
+  integrity sha512-R/PFHpZllieLxpMynu950Cqdv7LA34wouMqJED1IiCstiX/dmHOWomBvKFvMAwqxPR3Y0Pz8tVA3naB4sv3x5w==
   dependencies:
     "@brainhubeu/react-carousel" "1.19.26"
     "@fortawesome/fontawesome-free" "^5.13.0"
@@ -12798,7 +12798,7 @@ synapse-react-client@2.0.50:
     "@sage-bionetworks/rjsf-core" "^3.1.4"
     "@upsetjs/react" "^1.6.2"
     animate.css "^4.1.1"
-    bootstrap "^4.6.0"
+    bootstrap "^4.6.1"
     column-resizer "^1.3.5"
     downshift "^6.1.2"
     gh-pages "^2.0.0"
@@ -12839,7 +12839,7 @@ synapse-react-client@2.0.50:
     react-plotly.js "^2.5.1"
     react-plotlyjs-ts "^2.2.1"
     react-popper "^2.2.5"
-    react-query "^3.25.1"
+    react-query "3.31.0"
     react-reflex "^4.0.0"
     react-router-dom "5.3.0"
     react-scripts "^4.0.3"
