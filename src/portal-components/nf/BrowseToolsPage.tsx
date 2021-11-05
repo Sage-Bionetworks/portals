@@ -149,7 +149,7 @@ const BrowseToolsPage = () => {
         </h2>
         <div className="center-content">
           <p className="description">
-            We are currently accepting submissions that describe any NF1-related mouse model, cell line, genetic reagent (e.g. plasmid, CRISPR), antibody, or biobank. If you have a tool that you would like to add to the Research Tools Database, please reach out to us and we will be in touch with how to submit your tool.
+            We are currently accepting submissions that describe any NF1-related mouse model, cell line, genetic reagent (e.g. plasmid, CRISPR), antibody, or biobank. If you have a tool that you would like to add to the Research Tools Database, please click the {'"'}Submit a Tool{'"'} button below to learn more.
           </p>
         </div>
         <div className="center-content bootstrap-4-backport" style={{ marginTop: 50 }}>

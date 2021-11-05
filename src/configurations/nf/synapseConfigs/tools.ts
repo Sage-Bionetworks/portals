@@ -4,7 +4,7 @@ import { SynapseConstants } from 'synapse-react-client'
 import { HomeExploreConfig, SynapseConfig } from 'types/portal-config'
 import { facetAliases } from './commonProps'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
-import { toolsSql, observationsSql, investigatorSql, developmentPublicationSql,publicationCitationSql, fundingAgencySql, usageRequirementsSql, vendorSql, catalogNumberSql, mtaRequiredSql, toolApplicationsSql, mutationsSql, publicationsV2Sql, filesSql, studiesSql } from '../resources'
+import { toolsSql, observationsSql, investigatorSql, developmentPublicationSql, fundingAgencySql, usageRequirementsSql, vendorSql, catalogNumberSql, mtaRequiredSql, toolApplicationsSql, mutationsSql, publicationsV2Sql, filesSql, studiesSql } from '../resources'
 import { DetailsPageProps } from 'types/portal-util-types'
 import { publicationsV2CardConfiguration } from './publications'
 
@@ -39,6 +39,7 @@ export const toolsCardConfiguration: CardConfiguration = {
     URLColumnName: 'resourceId',
     matchColumnName: 'resourceId',
   },
+  secondaryLabelLimit: 4,
   genericCardSchema: toolsSchema,
 }
 const rgbIndex = 6
@@ -90,26 +91,17 @@ export const toolDetailsPageConfig: DetailsPageProps = {
           columnName: 'resourceId',
         },
         {
-          name: 'SubsectionRowRenderer',
-          outsideContainerClassName: 'home-spacer',
+          name: 'CardContainerLogic',
+          title: 'Development Publication',
           props: {
+            limit: 3,
+            facetAliases,
             sql: developmentPublicationSql,
-            isMarkdown: true,
-            sqlOperator: '=',
+            secondaryLabelLimit: 4,
+            ...publicationsV2CardConfiguration,
           },
           tableSqlKeys: ['resourceId'],
-          columnName: 'resourceId',
-        },
-        {
-          name: 'SubsectionRowRenderer',
-          outsideContainerClassName: 'home-spacer',
-          props: {
-            sql: publicationCitationSql,
-            isMarkdown: true,
-            sqlOperator: '=',
-          },
-          tableSqlKeys: ['resourceId'],
-          columnName: 'resourceId',
+          columnName: 'resourceId'
         },
         {
           name: 'SubsectionRowRenderer',
@@ -335,6 +327,7 @@ export const toolsDetailsPage: SynapseConfig[] = [
       sql: toolsSql,
       type: SynapseConstants.GENERIC_CARD,
       genericCardSchema: toolsSchema,
+      secondaryLabelLimit: 6,
       isHeader: true,
     },
   },
