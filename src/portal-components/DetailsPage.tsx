@@ -33,7 +33,7 @@ type State = {
 }
 
 const pluralize = require('pluralize')
-const COMPONENT_ID_PREFIX = 'src-component-'
+const COMPONENT_ID_PREFIX = 'details-page-src-component-'
 /**
  * The details pages give a deeper dive into a particular portal section.
  *
@@ -391,10 +391,10 @@ const SplitStringToComponent: React.FC<{
   }
   if (el.resolveSynId && entityTitle) {
     return (
-      <React.Fragment>
+      <div>
         {entityTitle && (
           <>
-            <Typography variant='sectionTitle'>
+            <Typography variant='sectionTitle' role='heading'>
               {el.title}: {entityTitle}
             </Typography>
             <hr />
@@ -404,14 +404,17 @@ const SplitStringToComponent: React.FC<{
           synapseConfig={synapseConfigWithInjectedProps}
           searchParams={searchParams}
         />
-      </React.Fragment>
+      </div>
     )
   }
   return (
-    <SynapseComponentWithContext
-      synapseConfig={synapseConfigWithInjectedProps}
-      searchParams={searchParams}
-    />
+    <div >
+      <SynapseComponentWithContext
+          synapseConfig={synapseConfigWithInjectedProps}
+          searchParams={searchParams}
+        />
+    </div>
+    
   )
 }
 
@@ -438,11 +441,11 @@ export const DetailsPageSynapseConfigArray: React.FC<{
         if (!hasTitleFromSynId) {
           title = (
             <>
-              {el.title && <Typography variant='sectionTitle'>
+              {el.title && <Typography variant='sectionTitle' role='heading'>
                 {el.title}
               </Typography>}
               {showTitleSeperator && el.title && <hr />}
-              {el.subtitle && <div className='bootstrap-4-backport'><Typography variant='subsectionHeader'>{el.subtitle}</Typography></div>}
+              {el.subtitle && <div className='bootstrap-4-backport'><Typography variant='subsectionHeader' role='heading'>{el.subtitle}</Typography></div>}
             </>
           )
         }
