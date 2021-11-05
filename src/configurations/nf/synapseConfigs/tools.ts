@@ -17,7 +17,17 @@ export const toolsSchema: GenericCardSchema = {
   description: 'description',
   secondaryLabels: [
     'rrid',
-    'Synonyms',
+    'synonyms',
+    'cellLineCategory',
+    'cellLineDisease',
+    'modelofManifestation',
+    'backgroundStrain',
+    'backgroundSubstrain',
+    'animalModelDisease',
+    'animalModelOfManifestation',
+    'targetAntigen',
+    'reactiveSpecies',
+    'hostOrganism'
   ],
 }
 
