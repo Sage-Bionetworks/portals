@@ -1,8 +1,8 @@
 import { HomeExploreConfig } from 'types/portal-config'
 import facetAliases from '../facetAliases'
 import { LabelLinkConfig } from 'synapse-react-client/dist/containers/CardContainerLogic'
-import { StandaloneQueryWrapperProps } from 'portal-components/StandaloneQueryWrapper'
 import { dataSql } from '../resources'
+import { StandaloneQueryWrapperProps } from 'synapse-react-client/dist/containers/table/StandaloneQueryWrapper'
 
 const unitDescription = 'Data'
 const rgbIndex = 0

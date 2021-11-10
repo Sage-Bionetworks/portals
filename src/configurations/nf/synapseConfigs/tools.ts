@@ -188,14 +188,14 @@ export const toolDetailsPageConfig: DetailsPageProps = {
         },
         {
           name: 'StandaloneQueryWrapper',
-          title: 'Mutations',
           props: {
             title: 'Mutations',
+            name: 'Mutations',
             unitDescription: 'Mutations',
             sqlOperator: '=',
             rgbIndex,
-            name: 'Mutations',
             sql: mutationsSql,
+            showTopLevelControls: true,
           },
           tableSqlKeys: ['resourceId'],
           columnName: 'resourceId'

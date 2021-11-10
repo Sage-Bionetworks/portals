@@ -21,7 +21,7 @@ import { HomePageCardContainerProps } from '../portal-components/csbc-home-page/
 import { AboutPortalProps } from '../portal-components/csbc-home-page/AboutPortal'
 import { EcosystemProps } from '../portal-components/csbc-home-page/Ecosystem'
 import { DetailsPageProps } from './portal-util-types'
-import { StandaloneQueryWrapperProps } from '../portal-components/StandaloneQueryWrapper'
+import { StandaloneQueryWrapperProps } from 'synapse-react-client/dist/containers/table/StandaloneQueryWrapper'
 import { ParticipantsBarPlotProps } from '../portal-components/crc-researcher/ParticipantsBarPlot'
 import { StatusLineChartProps } from '../portal-components/crc-researcher/StatusLineChart'
 import { SurveysCompletedPlotsProps } from 'portal-components/crc-researcher/SurveysCompletedPlots'
