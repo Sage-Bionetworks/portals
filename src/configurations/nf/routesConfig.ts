@@ -416,6 +416,14 @@ const routes: GenericRoute[] = [
   },
   {
     isNested: false,
+    displayName: 'Contribute Data',
+    to: undefined,
+    target: '_blank',
+    link: 'https://help.nf.synapse.org/NFdocs/How-to-Share-Data-(an-Overview).1994489966.html',
+    synapseConfigArray: [],
+  },
+  {
+    isNested: false,
     displayName: 'News',
     to: undefined,
     target: '_blank',
