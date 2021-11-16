@@ -9,7 +9,7 @@ import {
 import {
   QueryBundleRequest,
   QueryResultBundle,
-  EntityColumnType,
+  ColumnType,
 } from 'synapse-react-client/dist/utils/synapseTypes/'
 import { SynapseConfig } from 'types/portal-config'
 import {
@@ -270,7 +270,7 @@ const SynapseObject: React.FC<{
   // map column name to index
   const mapColumnHeaderToRowIndex: Dictionary<{
     index: number
-    columnType: EntityColumnType
+    columnType: ColumnType
   }> = {}
   queryResultBundle!.queryResult.queryResults.headers.forEach((el, index) => {
     mapColumnHeaderToRowIndex[el.name] = { index, columnType: el.columnType }
@@ -281,8 +281,8 @@ const SynapseObject: React.FC<{
     console.error('No value mapped for ', columnName)
     return <></>
   } else if (
-    columnType === EntityColumnType.STRING_LIST ||
-    columnType === EntityColumnType.INTEGER_LIST
+    columnType === ColumnType.STRING_LIST ||
+    columnType === ColumnType.INTEGER_LIST
   ) {
     try {
       rawValue = JSON.parse(rawValue)

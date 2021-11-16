@@ -12,11 +12,11 @@ import { toolsCardConfiguration } from './tools'
 import { publicationsCardConfiguration } from './publications'
 import {
   studiesSql,
-  toolsSql,
   datasetsSql,
   publicationsSql,
   filesSql,
   metadataFilesSql,
+  toolStudySql,
 } from '../resources'
 
 export const newStudiesSql = `${studiesSql} order by ROW_ID desc limit 3`
@@ -176,7 +176,7 @@ export const studiesDetailPage: DetailsPageProps = {
           columnName: 'studyId',
           tableSqlKeys: ['studyId'],
           props: {
-            sql: toolsSql,
+            sql: toolStudySql,
             ...toolsCardConfiguration,
           },
         },
