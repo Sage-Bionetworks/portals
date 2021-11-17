@@ -31,6 +31,7 @@ import {
   peopleSql,
   programsSql,
   experimentalModelsSql,
+  modelADStrainsSelectedFacet,
 } from './resources'
 
 const routes: GenericRoute[] = [
@@ -226,7 +227,7 @@ const routes: GenericRoute[] = [
         name: 'Redirect',
         props: {
           from: 'MODEL-ADstrains',
-          to: { pathname: '/Explore/Experimental Models', search: `QueryWrapper0={"sql":"${encodeURI(experimentalModelsSql)}","limit":25,"offset":0,"selectedFacets":[{"concreteType":"org.sagebionetworks.repo.model.table.FacetColumnValuesRequest","columnName":"program","facetValues":["MODEL-AD"]}]}` },
+          to: { pathname: '/Explore/Experimental Models', search: `QueryWrapper0={"sql":"${encodeURI(experimentalModelsSql)}","limit":25,"offset":0,"selectedFacets":[{"concreteType":"org.sagebionetworks.repo.model.table.FacetColumnValuesRequest","columnName":"${modelADStrainsSelectedFacet.columnName}","facetValues":["${modelADStrainsSelectedFacet.facetValue}"]}]}` },
         },
       },
     ],
