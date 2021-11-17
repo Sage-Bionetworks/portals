@@ -230,8 +230,14 @@ type RedirectWithQuery = {
   props: RedirectProps
 }
 
+type Redirect = {
+  name: 'Redirect'
+  props: RedirectProps
+}
+
 export type SynapseConfig = (
   | RedirectWithQuery
+  | Redirect
   | StatefulButtonControl
   | RouteControl
   | CardContainerLogic

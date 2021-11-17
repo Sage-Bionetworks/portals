@@ -30,6 +30,7 @@ import {
   studiesSql,
   peopleSql,
   programsSql,
+  experimentalModelsSql,
 } from './resources'
 
 const routes: GenericRoute[] = [
@@ -215,7 +216,21 @@ const routes: GenericRoute[] = [
       },
     ],
   },
-
+  {
+    // PORTALS-2028 (part 2): redirect /MODEL-ADstrains to /Explore/Experimental%20Models with query request
+    isNested: false,
+    to: 'MODEL-ADstrains',
+    hideRouteFromNavbar: true,
+    synapseConfigArray: [
+      {
+        name: 'Redirect',
+        props: {
+          from: 'MODEL-ADstrains',
+          to: { pathname: '/Explore/Experimental Models', search: `QueryWrapper0={"sql":"${encodeURI(experimentalModelsSql)}","limit":25,"offset":0,"selectedFacets":[{"concreteType":"org.sagebionetworks.repo.model.table.FacetColumnValuesRequest","columnName":"program","facetValues":["MODEL-AD"]}]}` },
+        },
+      },
+    ],
+  },
   {
     to: 'Explore',
     isNested: true,
