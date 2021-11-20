@@ -2,6 +2,7 @@ import { popularSearchesSql, toolsSql } from 'configurations/nf/resources'
 import Layout from 'portal-components/Layout'
 import * as React from 'react'
 import { Button, Form } from 'react-bootstrap'
+import { Typography } from 'synapse-react-client'
 import FeaturedToolsList from 'synapse-react-client/dist/containers/home_page/featured_tools/FeaturedToolsList'
 import IconSvg from 'synapse-react-client/dist/containers/IconSvg'
 import { Query } from 'synapse-react-client/dist/utils/synapseTypes'
@@ -47,14 +48,16 @@ const BrowseToolsPage = () => {
 
   return (
     <div className="browse-tools-page">
-      <div className="SRC-portalCard SRC-portalCardHeader bootstrap-4-backport">
-        <div className="home-container-description header-text" style={{ padding: 0, marginTop: 0, marginBottom: 0 }}>
-          <h2 className="center-title">NF Research Tools Database</h2>
-          <p className="text-align-center">
-            The NF Research Tools Database aims to support the development of a robust research toolkit and lower the barrier of entry to neurofibromatosis (NF) research. The database includes NF-associated animal models, cell lines, antibodies, and genetic reagents and details on tool characteristics and sourcing, as well as observational and experimental data.
-          </p>
+      <div className="header bootstrap-4-backport">
+        <div className="home-container-description" style={{ padding: 0, marginTop: 0, marginBottom: 0 }}>
+          <Typography variant="headline1" className="center-title">
+            NF Research Tools Database
+          </Typography>
+          <Typography variant="body1" className="text-align-center">
+          The NF Research Tools Database aims to support the development of a robust research toolkit and lower the barrier of entry to neurofibromatosis (NF) research. The database includes NF-associated animal models, cell lines, antibodies, and genetic reagents and details on tool characteristics and sourcing, as well as observational and experimental data.
+          </Typography>
           <div className="center-content">
-            <Button className="pill-xl" variant="white" style={{ marginTop: 50 }}>SUBMIT A TOOL</Button>
+            <Button  href="https://help.nf.synapse.org/NFdocs/2555543592.html" className="pill-xl" variant="white" style={{ marginTop: 50, color: 'rgba(0, 0, 0, 0.54)' }} target="_blank">SUBMIT A TOOL</Button>
           </div>
         </div>
       </div>
@@ -153,7 +156,7 @@ const BrowseToolsPage = () => {
           </p>
         </div>
         <div className="center-content bootstrap-4-backport" style={{ marginTop: 50 }}>
-          <Button className="pill-xl" variant="primary">SUBMIT A TOOL</Button>
+          <Button href="https://help.nf.synapse.org/NFdocs/2555543592.html" className="pill-xl" variant="primary" target="_blank">SUBMIT A TOOL</Button>
         </div>
       </Layout>
     </div>
