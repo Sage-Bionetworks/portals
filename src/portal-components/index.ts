@@ -13,6 +13,7 @@ import StatusLineChart from './crc-researcher/StatusLineChart'
 import SurveysCompletedPlots from './crc-researcher/SurveysCompletedPlots'
 import Image from './Image'
 import RedirectWithQuery from './RedirectWithQuery'
+import { Redirect } from 'react-router'
 
 const PortalComponents = {
   StatefulButtonControlWrapper,
@@ -29,6 +30,7 @@ const PortalComponents = {
   SurveysCompletedPlots,
   Image,
   RedirectWithQuery,
+  Redirect,
   BrowseToolsPage,
 }
 

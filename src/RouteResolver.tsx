@@ -171,7 +171,7 @@ const RouteResolver: React.FunctionComponent<RouteComponentProps> = () => {
     // If we landed on a route that redirects, then don't push the new pathname because it won't take into account the redirect
     if (
       (route.synapseConfigArray ?? []).filter(
-        (el) => el.name === 'RedirectWithQuery',
+        (el) => (el.name === 'RedirectWithQuery' || el.name === 'Redirect'),
       ).length === 0
     ) {
       history.push({ pathname: newPathname, search, hash })
