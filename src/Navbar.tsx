@@ -373,9 +373,9 @@ class Navbar extends React.Component<any, State> {
                 })
             }
             {
-              // if theres less than 8 navbar items show the home page button
+              // if theres less than 7 navbar items show the home page button
               routesConfig.filter((el) => !el.hideRouteFromNavbar).length <
-                8 && (
+                7 && (
                 <Dropdown className={this.getBorder('')}>
                   <Dropdown.Toggle
                     variant="light"
