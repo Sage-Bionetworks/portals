@@ -56,12 +56,12 @@ const BrowseToolsPage = () => {
           <div className="center-content">
             <div className="description">
               <Typography variant="body1">
-              The NF Research Tools Database aims to support the development of a robust research toolkit and lower the barrier of entry to neurofibromatosis (NF) research. The database includes NF-associated animal models, cell lines, antibodies, and genetic reagents and details on tool characteristics and sourcing, as well as observational and experimental data.
+                The NF Research Tools Database aims to support the development of a robust research toolkit and lower the barrier of entry to neurofibromatosis (NF) research. The database includes NF-associated animal models, cell lines, antibodies, and genetic reagents and details on tool characteristics and sourcing, as well as observational and experimental data.
               </Typography>
             </div>
           </div>
           <div className="center-content">
-            <Button  href="https://help.nf.synapse.org/NFdocs/2555543592.html" className="pill-xl" variant="white" target="_blank">SUBMIT A TOOL</Button>
+            <Button href="https://help.nf.synapse.org/NFdocs/2555543592.html" className="pill-xl" variant="white" target="_blank">SUBMIT A TOOL</Button>
           </div>
         </div>
       </div>
@@ -145,7 +145,7 @@ const BrowseToolsPage = () => {
           Featured Tools
         </Typography>
         <Typography variant="body1" className="sectionSubtitle">
-            Check out some recently-catalogued research resources below.
+          Check out some recently-catalogued research resources below.
         </Typography>
         <div className="center-content">
           <FeaturedToolsList
