@@ -391,7 +391,7 @@ const SplitStringToComponent: React.FC<{
   }
   if (el.resolveSynId && entityTitle) {
     return (
-      <div>
+      <>
         {entityTitle && (
           <>
             <Typography variant='sectionTitle' role='heading'>
@@ -404,17 +404,14 @@ const SplitStringToComponent: React.FC<{
           synapseConfig={synapseConfigWithInjectedProps}
           searchParams={searchParams}
         />
-      </div>
+      </>
     )
   }
   return (
-    <div >
-      <SynapseComponentWithContext
-          synapseConfig={synapseConfigWithInjectedProps}
-          searchParams={searchParams}
-        />
-    </div>
-    
+    <SynapseComponentWithContext
+        synapseConfig={synapseConfigWithInjectedProps}
+        searchParams={searchParams}
+      />
   )
 }
 

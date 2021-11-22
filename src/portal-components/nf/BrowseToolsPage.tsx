@@ -49,20 +49,26 @@ const BrowseToolsPage = () => {
   return (
     <div className="browse-tools-page">
       <div className="header bootstrap-4-backport">
-        <div className="home-container-description" style={{ padding: 0, marginTop: 0, marginBottom: 0 }}>
-          <Typography variant="headline1" className="center-title">
+        <div className="home-container-description">
+          <Typography variant="headline1" className="sectionTitle">
             NF Research Tools Database
           </Typography>
-          <Typography variant="body1" className="text-align-center">
-          The NF Research Tools Database aims to support the development of a robust research toolkit and lower the barrier of entry to neurofibromatosis (NF) research. The database includes NF-associated animal models, cell lines, antibodies, and genetic reagents and details on tool characteristics and sourcing, as well as observational and experimental data.
-          </Typography>
           <div className="center-content">
-            <Button  href="https://help.nf.synapse.org/NFdocs/2555543592.html" className="pill-xl" variant="white" style={{ marginTop: 50, color: 'rgba(0, 0, 0, 0.54)' }} target="_blank">SUBMIT A TOOL</Button>
+            <div className="description">
+              <Typography variant="body1">
+              The NF Research Tools Database aims to support the development of a robust research toolkit and lower the barrier of entry to neurofibromatosis (NF) research. The database includes NF-associated animal models, cell lines, antibodies, and genetic reagents and details on tool characteristics and sourcing, as well as observational and experimental data.
+              </Typography>
+            </div>
+          </div>
+          <div className="center-content">
+            <Button  href="https://help.nf.synapse.org/NFdocs/2555543592.html" className="pill-xl" variant="white" target="_blank">SUBMIT A TOOL</Button>
           </div>
         </div>
       </div>
       <div className="home-container-description">
-        <h2 className="title center-title" style={{ marginTop: 50 }}>What Tools Can We Help You Find?</h2>
+        <Typography variant="sectionTitle" className="sectionTitle">
+          What Tools Can We Help You Find?
+        </Typography>
         <div className="center-content">
           <div className="searchToolsRow">
             <div className="searchInputWithIcon">
@@ -84,53 +90,63 @@ const BrowseToolsPage = () => {
             </div>
           </div>
         </div>
-        <h2 className="title center-title" style={{ marginTop: 50 }}>Popular Searches</h2>
+        <Typography variant="sectionTitle" className="sectionTitle">
+          Popular Searches
+        </Typography>
         <div className="center-content">
           <PopularSearches sql={popularSearchesSql} />
         </div>
       </div>
       <Layout outsideContainerClassName="home-spacer home-bg-dark">
-        <h2 className="title center-title">
+        <Typography variant="sectionTitle" className="sectionTitle">
           Browse Tools by Category
-        </h2>
-        <p className="center-title">
+        </Typography>
+        <Typography variant="body1" className="sectionSubtitle">
           Drill-down to explore specific types of NF research tools.
-        </p>
+        </Typography>
         <div className="categories">
           <button onClick={() => gotoExploreToolsWithSelectedResource('Animal Model')}>
             <AnimalModels />
-            <p>Animal Models</p>
+            <Typography variant="headline3">
+              Animal Models
+            </Typography>
           </button>
           <button onClick={() => gotoExploreToolsWithSelectedResource('Antibody')}>
             <Antibodies />
-            <p>Antibodies</p>
+            <Typography variant="headline3">
+              Antibodies
+            </Typography>
           </button>
           <button onClick={() => gotoExploreToolsWithSelectedResource('Genetic Reagent')}>
             <PlasmidsReagents />
-            <p>Plasmids/Reagents</p>
+            <Typography variant="headline3">
+              Plasmids/Reagents
+            </Typography>
           </button>
           <button onClick={() => gotoExploreToolsWithSelectedResource('Cell Line')}>
             <CellLines />
-            <p>Cell Lines</p>
+            <Typography variant="headline3">
+              Cell Lines
+            </Typography>
           </button>
           <button onClick={() => gotoExploreToolsWithSelectedResource('Biobank')}>
             <Biobanks />
-            <p>Biobanks</p>
+            <Typography variant="headline3">
+              Biobanks
+            </Typography>
           </button>
         </div>
-        <div className="center-content bootstrap-4-backport" style={{ marginTop: 50 }}>
+        <div className="center-content bootstrap-4-backport">
           <Button className="pill-xl" variant="primary" onClick={() => gotoExploreTools()}>VIEW ALL TOOLS</Button>
         </div>
       </Layout>
       <Layout outsideContainerClassName="home-spacer">
-        <h2 className="title center-title">
+        <Typography variant="sectionTitle" className="sectionTitle">
           Featured Tools
-        </h2>
-        <div className="center-content">
-          <p className="description">
+        </Typography>
+        <Typography variant="body1" className="sectionSubtitle">
             Check out some recently-catalogued research resources below.
-          </p>
-        </div>
+        </Typography>
         <div className="center-content">
           <FeaturedToolsList
             entityId={'syn26450069'}
@@ -142,20 +158,22 @@ const BrowseToolsPage = () => {
             toolDetailPageURL={'/Explore/Tools/DetailsPage?resourceId='}
           />
         </div>
-        <div className="center-content bootstrap-4-backport" style={{ marginTop: 50 }}>
+        <div className="center-content bootstrap-4-backport">
           <Button className="pill-xl" variant="primary" onClick={() => gotoExploreTools()}>VIEW ALL TOOLS</Button>
         </div>
       </Layout>
       <Layout outsideContainerClassName="home-spacer home-bg-dark">
-        <h2 className="title center-title">
+        <Typography variant="sectionTitle" className="sectionTitle">
           Submit a Tool to the Database
-        </h2>
+        </Typography>
         <div className="center-content">
-          <p className="description">
-            We are currently accepting submissions that describe any NF1-related mouse model, cell line, genetic reagent (e.g. plasmid, CRISPR), antibody, or biobank. If you have a tool that you would like to add to the Research Tools Database, please click the {'"'}Submit a Tool{'"'} button below to learn more.
-          </p>
+          <div className="description">
+            <Typography variant="body1">
+              We are currently accepting submissions that describe any NF1-related mouse model, cell line, genetic reagent (e.g. plasmid, CRISPR), antibody, or biobank. If you have a tool that you would like to add to the Research Tools Database, please click the {'"'}Submit a Tool{'"'} button below to learn more.
+            </Typography>
+          </div>
         </div>
-        <div className="center-content bootstrap-4-backport" style={{ marginTop: 50 }}>
+        <div className="center-content bootstrap-4-backport">
           <Button href="https://help.nf.synapse.org/NFdocs/2555543592.html" className="pill-xl" variant="primary" target="_blank">SUBMIT A TOOL</Button>
         </div>
       </Layout>
