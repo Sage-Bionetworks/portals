@@ -172,11 +172,12 @@ export const studiesDetailPage: DetailsPageProps = {
         },
         {
           name: 'CardContainerLogic',
-          title: 'Tools',
+          title: 'Tools Used',
           columnName: 'studyId',
           tableSqlKeys: ['studyId'],
           props: {
             sql: toolsSql,
+            limit: 3,
             ...toolsCardConfiguration,
           },
         },
