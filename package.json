@@ -25,7 +25,7 @@
     "react-use": "^17.3.1",
     "sass": "^1.30.0",
     "source-map-explorer": "^2.5.2",
-    "synapse-react-client": "2.0.48",
+    "synapse-react-client": "2.0.59",
     "typescript": "4.3.5"
   },
   "jest": {
@@ -48,7 +48,9 @@
     "test": "yarn run copy-test-configuration && react-scripts test --env=jsdom --setupFiles ./src/tests/setupTests.ts",
     "generate-sitemap": "node sitemap/generate-sitemap.js",
     "eject": "react-scripts eject",
-    "analyze": "yarn run copy-test-configuration && react-scripts --max_old_space_size=4096 build && source-map-explorer 'build/static/js/*.js'"
+    "analyze": "yarn run copy-test-configuration && react-scripts --max_old_space_size=4096 build && source-map-explorer 'build/static/js/*.js'",
+    "link-src": "yarn link synapse-react-client && yarn link react && yarn link react-router && yarn link react-router-dom",
+    "unlink-src": "yarn unlink synapse-react-client && yarn unlink react && yarn unlink react-router && yarn unlink react-router-dom && yarn install --check-files"
   },
   "devDependencies": {
     "@testing-library/react": "^12.1.0",

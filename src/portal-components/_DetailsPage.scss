@@ -160,7 +160,7 @@ $svg-icon-height: 30px;
 
   .tab-content .tab-groups {
     height: 55px;
-    box-shadow: 0px 1px 5px 1px rgb(0, 0, 0, 0.15);
+    box-shadow: 0px 5px 6px -4px rgb(0 0 0 / 15%);
     @include SrcMixins.underline-tabs($inactive-color: unset);
     justify-content: center;
     .tab-item {
@@ -170,6 +170,9 @@ $svg-icon-height: 30px;
       color: unset;
       background-color: unset;
     }
+  }
+  .tab-content-group {
+    padding-top: 30px;
   }
 
   .metadata-table table {
