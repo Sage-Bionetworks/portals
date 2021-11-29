@@ -383,8 +383,9 @@ const SplitStringToComponent: React.FC<{
 
   // For explorer 2.0, cannot assign key `lockedFacet` to deepCloneOfProps due to type errors,
   // assign lockedFacet value directly to injectedProps only if resolveSynId.value is true
+  // PORTALS-2060: Also for explorer 2.0, hide the query count if on a details page.
   injectedProps['lockedFacet'] = lockedFacet
-
+  injectedProps['hideQueryCount'] = true
   const synapseConfigWithInjectedProps: SynapseConfig = {
     ...el,
     props: injectedProps,
