@@ -25,28 +25,18 @@ To run a portal with a local version of SRC run the following commands:
 ```sh
 # In Synapse-React-Client/
 # Symlink the package itself as well as the local react, react-router, and react-router-dom packages
-$ yarn link
-$ cd node_modules/react
-$ yarn link
-$ cd ../react-router
-$ yarn link
-$ cd ../react-router-dom
-$ yarn link
-$ cd ../../
+$ yarn link-src
 $ yarn build # last step is to build the project
 
 # In portals/
-$ yarn link synapse-react-client
-$ yarn link react
-$ yarn link react-router
-$ yarn link react-router-dom
+$ yarn link-src
 $ ./linkConfig <portal-name>
 # Note that you can make changes in the SRC project and reflect
 # them in the portals by running yarn build again. The portals project
 # can continue to run as you make changes.
 ```
 
-To unlink synapse react-client run `rm -r node_modules` and `yarn install`. You can also manually unlink the packages by using [yarn unlink](https://classic.yarnpkg.com/en/docs/cli/unlink/).
+To unlink synapse react-client run `yarn unlink-src`
 
 # Build/Deploy Process
 

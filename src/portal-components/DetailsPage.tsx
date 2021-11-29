@@ -1,7 +1,7 @@
 import { cloneDeep, Dictionary } from 'lodash'
 import * as React from 'react'
 import { SynapseComponentWithContext } from 'RouteResolver'
-import { SynapseClient, SynapseConstants } from 'synapse-react-client'
+import { SynapseClient, SynapseConstants, Typography } from 'synapse-react-client'
 import {
   insertConditionsFromSearchParams,
   parseEntityIdFromSqlStatement,
@@ -9,7 +9,7 @@ import {
 import {
   QueryBundleRequest,
   QueryResultBundle,
-  EntityColumnType,
+  ColumnType,
 } from 'synapse-react-client/dist/utils/synapseTypes/'
 import { SynapseConfig } from 'types/portal-config'
 import {
@@ -33,7 +33,7 @@ type State = {
 }
 
 const pluralize = require('pluralize')
-const COMPONENT_ID_PREFIX = 'src-component-'
+const COMPONENT_ID_PREFIX = 'details-page-src-component-'
 /**
  * The details pages give a deeper dive into a particular portal section.
  *
@@ -82,8 +82,8 @@ export default class DetailsPage extends React.Component<
   getData = async () => {
     const { sql, searchParams = {}, sqlOperator } = this.props
     const sqlUsed = insertConditionsFromSearchParams(
-      searchParams,
       sql,
+      searchParams,
       sqlOperator,
     )
     const entityId = parseEntityIdFromSqlStatement(sql)
@@ -148,7 +148,7 @@ export default class DetailsPage extends React.Component<
       const name = currentLocation[currentLocation.length - 2]
       return (
         <div className="DetailsPage__ComingSoon">
-          <h2> Coming Soon! </h2>
+          <Typography variant='headline1'>Coming Soon! </Typography>
           <p>
             {/*
                 pluralize is used to convert the detail of interest e.g. studies/publications/etc
@@ -270,7 +270,7 @@ const SynapseObject: React.FC<{
   // map column name to index
   const mapColumnHeaderToRowIndex: Dictionary<{
     index: number
-    columnType: EntityColumnType
+    columnType: ColumnType
   }> = {}
   queryResultBundle!.queryResult.queryResults.headers.forEach((el, index) => {
     mapColumnHeaderToRowIndex[el.name] = { index, columnType: el.columnType }
@@ -281,8 +281,8 @@ const SynapseObject: React.FC<{
     console.error('No value mapped for ', columnName)
     return <></>
   } else if (
-    columnType === EntityColumnType.STRING_LIST ||
-    columnType === EntityColumnType.INTEGER_LIST
+    columnType === ColumnType.STRING_LIST ||
+    columnType === ColumnType.INTEGER_LIST
   ) {
     try {
       rawValue = JSON.parse(rawValue)
@@ -383,20 +383,21 @@ const SplitStringToComponent: React.FC<{
 
   // For explorer 2.0, cannot assign key `lockedFacet` to deepCloneOfProps due to type errors,
   // assign lockedFacet value directly to injectedProps only if resolveSynId.value is true
+  // PORTALS-2060: Also for explorer 2.0, hide the query count if on a details page.
   injectedProps['lockedFacet'] = lockedFacet
-
+  injectedProps['hideQueryCount'] = true
   const synapseConfigWithInjectedProps: SynapseConfig = {
     ...el,
     props: injectedProps,
   }
   if (el.resolveSynId && entityTitle) {
     return (
-      <React.Fragment>
+      <>
         {entityTitle && (
           <>
-            <h2>
+            <Typography variant='sectionTitle' role='heading'>
               {el.title}: {entityTitle}
-            </h2>
+            </Typography>
             <hr />
           </>
         )}
@@ -404,14 +405,14 @@ const SplitStringToComponent: React.FC<{
           synapseConfig={synapseConfigWithInjectedProps}
           searchParams={searchParams}
         />
-      </React.Fragment>
+      </>
     )
   }
   return (
     <SynapseComponentWithContext
-      synapseConfig={synapseConfigWithInjectedProps}
-      searchParams={searchParams}
-    />
+        synapseConfig={synapseConfigWithInjectedProps}
+        searchParams={searchParams}
+      />
   )
 }
 
@@ -432,16 +433,17 @@ export const DetailsPageSynapseConfigArray: React.FC<{
         const id = COMPONENT_ID_PREFIX + index
         const { standalone, resolveSynId, showTitleSeperator = true } = el
         const key = JSON.stringify(el)
-        const headerClassName =
-          index === 0 && showTitleSeperator ? 'first-title' : 'title'
         const hasTitleFromSynId = resolveSynId && resolveSynId.title
         // don't show this title if component is rendering entity names adjacet to the title
         let title: any = ''
         if (!hasTitleFromSynId) {
           title = (
             <>
-              <h2 className={headerClassName}> {el.title}</h2>
-              {showTitleSeperator && <hr />}
+              {el.title && <Typography variant='sectionTitle' role='heading'>
+                {el.title}
+              </Typography>}
+              {showTitleSeperator && el.title && <hr />}
+              {el.subtitle && <div className='bootstrap-4-backport'><Typography variant='subsectionHeader' role='heading'>{el.subtitle}</Typography></div>}
             </>
           )
         }
