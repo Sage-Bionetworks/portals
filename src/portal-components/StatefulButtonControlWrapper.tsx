@@ -59,9 +59,9 @@ class StatefulButtonControl extends React.Component<
     return (
       <React.Fragment>
         <RouteControl {...buttonControlProps} />
-        {name && sql && entityId && (
+        {sql && entityId && (
           <h3 className="SRC-boldText queryCountHeader">
-            <QueryCount name={name} sql={sql} />
+            {name} <QueryCount sql={sql} />
           </h3>
         )}
         {synapseConfigArray.map((config) => {
