@@ -30,7 +30,7 @@ $ yarn build # last step is to build the project
 
 # In portals/
 $ yarn link-src
-$ ./linkConfig <portal-name> # last step is to launch a portal
+$ ./linkConfig <portal-name>
 # Note that you can make changes in the SRC project and reflect
 # them in the portals by running yarn build again. The portals project
 # can continue to run as you make changes.
