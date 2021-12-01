@@ -86,7 +86,7 @@ const BrowseToolsPage = () => {
               />
             </div>
             <div className="search-button-container bootstrap-4-backport">
-              <Button className="pill-xl" variant="default" onClick={() => gotoExploreToolsWithFullTextSearch(searchText)}>SEARCH</Button>
+              <Button className="pill-xl" variant="primary" onClick={() => gotoExploreToolsWithFullTextSearch(searchText)}>SEARCH</Button>
             </div>
           </div>
         </div>
