@@ -147,7 +147,7 @@ export const studiesDetailsPageProps: DetailsPageProps = {
           props: {
             url: 'https://news.adknowledgeportal.org',
             itemsToShow: 3,
-            allowCategories: [''],
+            allowCategories: [],
             // mailChimpListName: 'study specific list name????',
             // mailChimpUrl:'https://study specific url????'
             viewAllNewsButtonText: 'VIEW ALL DATA UPDATES',
