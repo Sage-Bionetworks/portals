@@ -120,7 +120,7 @@ const BrowseToolsPage = () => {
           <button onClick={() => gotoExploreToolsWithSelectedResource('Genetic Reagent')}>
             <PlasmidsReagents />
             <Typography variant="headline3">
-              Plasmids/Reagents
+              Genetic Reagents
             </Typography>
           </button>
           <button onClick={() => gotoExploreToolsWithSelectedResource('Cell Line')}>
