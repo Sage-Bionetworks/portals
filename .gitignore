@@ -6,3 +6,13 @@ src/config/
 .DS_Store
 .vscode/
 .idea/
+
+# Yarn -- we're not using Zero-Installs, for now.
+# https://yarnpkg.com/getting-started/qa#which-files-should-be-gitignored
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
