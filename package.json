@@ -111,5 +111,6 @@
     "react": "16.13.1",
     "@types/react": "17.0.1",
     "@types/react-dom": "16.9.6"
-  }
+  },
+  "packageManager": "yarn@3.1.1"
 }
