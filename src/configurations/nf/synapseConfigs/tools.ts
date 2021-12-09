@@ -27,7 +27,13 @@ export const toolsSchema: GenericCardSchema = {
     'animalModelOfManifestation',
     'targetAntigen',
     'reactiveSpecies',
-    'hostOrganism'
+    'hostOrganism',
+    'specimenTissueType',
+    'specimenPreparationMethod,
+    'diseaseType',
+    'tumorType',
+    'specimenFormat',
+    'specimenType'
   ],
 }
 
