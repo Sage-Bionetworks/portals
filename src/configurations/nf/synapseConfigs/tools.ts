@@ -29,7 +29,7 @@ export const toolsSchema: GenericCardSchema = {
     'reactiveSpecies',
     'hostOrganism',
     'specimenTissueType',
-    'specimenPreparationMethod,
+    'specimenPreparationMethod',
     'diseaseType',
     'tumorType',
     'specimenFormat',
