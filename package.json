@@ -9,7 +9,6 @@
     "@fortawesome/react-fontawesome": "^0.1.3",
     "@material-ui/core": "^4.12.3",
     "@material-ui/icons": "^4.9.1",
-    "@sage-bionetworks/react-base-table": "^1.12.3",
     "clone-deep": "^4.0.1",
     "lodash-es": "^4.17.21",
     "plotly.js-basic-dist": "^1.47.3",
@@ -25,7 +24,7 @@
     "react-use": "^17.3.1",
     "sass": "^1.30.0",
     "source-map-explorer": "^2.5.2",
-    "synapse-react-client": "2.0.62",
+    "synapse-react-client": "2.1.2",
     "typescript": "4.3.5"
   },
   "jest": {
@@ -37,8 +36,8 @@
     ]
   },
   "scripts": {
-    "build-css": "sass src/:src/ --load-path=src/config/style --load-path=src/style --load-path=.",
-    "watch-css": "yarn run build-css && sass src/ --watch --load-path=src/config/style --load-path=src/style --load-path=.",
+    "build-css": "sass src/:src/ --load-path=src/config/style --load-path=src/style --load-path=node_modules",
+    "watch-css": "yarn run build-css && sass src/ --watch --load-path=src/config/style --load-path=src/style --load-path=node_modules",
     "start-js": "DISABLE_ESLINT_PLUGIN=true react-scripts start",
     "copy-favicon": "cp src/config/style/favicon* public/",
     "save-build-date": "date > public/build-date.txt",

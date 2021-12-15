@@ -1,6 +1,5 @@
 @use 'variables' as Portal;
-@use 'node_modules/synapse-react-client/dist/style/abstracts/mixins' as
-  SrcMixins;
+@use 'synapse-react-client/dist/style/abstracts/mixins' as SrcMixins;
 // local variable for study page
 
 $marginTop: 40px;
