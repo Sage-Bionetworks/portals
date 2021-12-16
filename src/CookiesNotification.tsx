@@ -52,7 +52,7 @@ class CookiesNotification extends React.Component<
         primaryButtonText="ACCEPT AND CONTINUE"
         onPrimaryButtonClick={this.setHasAgreedToCookies}
         secondaryButtonText="LEARN MORE"
-        secondaryButtonHref='https://s3.amazonaws.com/static.synapse.org/governance/SynapsePrivacyPolicy.pdf'
+        onSecondaryButtonClickOrHref='https://s3.amazonaws.com/static.synapse.org/governance/SynapsePrivacyPolicy.pdf'
         isGlobal={true}
         />
     )
