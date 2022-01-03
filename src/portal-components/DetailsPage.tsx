@@ -216,9 +216,6 @@ const renderMenu = (
   return (
     synapseConfigArray &&
     synapseConfigArray.map((el: RowSynapseConfig, index) => {
-      if (!el.title) {
-        return <></>
-      }
       const style: React.CSSProperties = {}
       const { columnName = '' } = el
       const isDisabled =
@@ -239,6 +236,9 @@ const renderMenu = (
             synId={el.props.synId}
           />
         )
+      }
+      if (!el.title) {
+        return <></>
       }
       return (
         <button
