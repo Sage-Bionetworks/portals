@@ -56,7 +56,6 @@ export default class DetailsPage extends React.Component<
   DetailsPageProps,
   State
 > {
-  public ref: React.RefObject<HTMLDivElement>
   static contextType = SynapseContext
 
   constructor(props: DetailsPageProps) {
@@ -66,7 +65,6 @@ export default class DetailsPage extends React.Component<
       isLoading: true,
       hasError: false,
     }
-    this.ref = React.createRef()
   }
 
   componentDidMount() {
@@ -110,26 +108,6 @@ export default class DetailsPage extends React.Component<
     }
   }
 
-  handleMenuClick = (index: number) => {
-    const wrapper = this.ref.current?.querySelector<HTMLDivElement>(
-      `#${COMPONENT_ID_PREFIX}${index}`,
-    )
-    if (wrapper) {
-      // https://stackoverflow.com/a/49924496
-      const offset = 85
-      const bodyRect = document.body.getBoundingClientRect().top
-      const elementRect = wrapper.getBoundingClientRect().top
-      const elementPosition = elementRect - bodyRect
-      const offsetPosition = elementPosition - offset
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth',
-      })
-    } else {
-      console.error('Could not scroll to element with index ', index)
-    }
-  }
-
   goToExplorePage = () => {
     /*
       Below assumes that going from the details page url up one level will work,
@@ -170,94 +148,110 @@ export default class DetailsPage extends React.Component<
     if (tabLayout?.length) {
       return (
         <div className="DetailsPage tab-layout">
-          <div className="component-container" ref={this.ref}>
+          <div className="component-container">
             {
               <DetailsPageTabs
                 tabConfigs={tabLayout}
                 loading={isLoading}
                 queryResultBundle={this.state.queryResultBundle}
+                showMenu={showMenu}
               ></DetailsPageTabs>
             }
           </div>
         </div>
       )
     } else {
-      const synapseConfigContent = (
+      return (
         <>
           {isLoading && <BarLoader color="#878787" loading={true} height={5} />}
           {!isLoading && synapseConfigArray && (
             <DetailsPageSynapseConfigArray
+              showMenu={showMenu}
               synapseConfigArray={synapseConfigArray}
               queryResultBundle={this.state.queryResultBundle}
             />
           )}
         </>
       )
-      if (showMenu) {
-        return (
-          <div className="DetailsPage">
-            <div className="button-container">{this.renderMenu()}</div>
-            <div className="component-container" ref={this.ref}>
-              {synapseConfigContent}
-            </div>
-          </div>
-        )
-      } else {
-        return synapseConfigContent
-      }
     }
   } // end render()
+}
 
-  renderMenu = () => {
-    const { synapseConfigArray } = this.props
-    const { queryResultBundle } = this.state
-    const mapColumnHeaderToRowIndex: Dictionary<number> = {}
-    let row: string[] = []
-    if (queryResultBundle) {
-      queryResultBundle.queryResult.queryResults.headers.forEach(
-        (el, index) => {
-          mapColumnHeaderToRowIndex[el.name] = index
-        },
-      )
-      row = queryResultBundle.queryResult.queryResults.rows[0].values
-    }
-    return (
-      synapseConfigArray &&
-      synapseConfigArray.map((el: RowSynapseConfig, index) => {
-        const style: React.CSSProperties = {}
-        const { columnName = '' } = el
-        const isDisabled =
-          queryResultBundle &&
-          !row[mapColumnHeaderToRowIndex[columnName]] &&
-          !el.standalone
-        if (isDisabled) {
-          style.color = '#BBBBBC'
-          style.cursor = 'not-allowed'
-        }
-        const className = `menu-row-button ${
-          isDisabled ? '' : 'SRC-primary-background-color-hover'
-        }`
-        if (el.name === 'ExternalFileHandleLink') {
-          return (
-            <ExternalFileHandleLink
-              className={className}
-              synId={el.props.synId}
-            />
-          )
-        }
-        return (
-          <button
-            style={style}
-            key={JSON.stringify(el)}
-            onClick={isDisabled ? undefined : () => this.handleMenuClick(index)}
-            className={className}
-          >
-            {el.title}
-          </button>
-        )
-      })
-    )
+const handleMenuClick = (
+  ref: React.RefObject<HTMLDivElement>,
+  index: number) => {
+  const wrapper = ref.current?.querySelector<HTMLDivElement>(
+    `#${COMPONENT_ID_PREFIX}${index}`,
+  )
+  if (wrapper) {
+    // https://stackoverflow.com/a/49924496
+    const offset = 85
+    const bodyRect = document.body.getBoundingClientRect().top
+    const elementRect = wrapper.getBoundingClientRect().top
+    const elementPosition = elementRect - bodyRect
+    const offsetPosition = elementPosition - offset
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth',
+    })
+  } else {
+    console.error('Could not scroll to element with index ', index)
   }
+}
+const renderMenu = (
+  ref: React.RefObject<HTMLDivElement>,
+  synapseConfigArray?: RowSynapseConfig[],
+  queryResultBundle?: QueryResultBundle
+) => {
+  const mapColumnHeaderToRowIndex: Dictionary<number> = {}
+  let row: string[] = []
+  if (queryResultBundle) {
+    queryResultBundle.queryResult.queryResults.headers.forEach(
+      (el, index) => {
+        mapColumnHeaderToRowIndex[el.name] = index
+      },
+    )
+    row = queryResultBundle.queryResult.queryResults.rows[0].values
+  }
+  return (
+    synapseConfigArray &&
+    synapseConfigArray.map((el: RowSynapseConfig, index) => {
+      if (!el.title) {
+        return <></>
+      }
+      const style: React.CSSProperties = {}
+      const { columnName = '' } = el
+      const isDisabled =
+        queryResultBundle &&
+        !row[mapColumnHeaderToRowIndex[columnName]] &&
+        !el.standalone
+      if (isDisabled) {
+        style.color = '#BBBBBC'
+        style.cursor = 'not-allowed'
+      }
+      const className = `menu-row-button ${
+        isDisabled ? '' : 'SRC-primary-background-color-hover'
+      }`
+      if (el.name === 'ExternalFileHandleLink') {
+        return (
+          <ExternalFileHandleLink
+            className={className}
+            synId={el.props.synId}
+          />
+        )
+      }
+      return (
+        <button
+          style={style}
+          key={JSON.stringify(el)}
+          onClick={isDisabled ? undefined : () => handleMenuClick(ref, index)}
+          className={className}
+        >
+          {el.title}
+        </button>
+      )
+    })
+  )
 }
 
 const SynapseObject: React.FC<{
@@ -424,10 +418,12 @@ function isReactFragment(variableToInspect: any): boolean {
 }
 
 export const DetailsPageSynapseConfigArray: React.FC<{
+  showMenu: boolean
   synapseConfigArray: RowSynapseConfig[]
   queryResultBundle?: QueryResultBundle
-}> = ({ synapseConfigArray, queryResultBundle }) => {
-  return (
+}> = ({ showMenu, synapseConfigArray, queryResultBundle }) => {
+  const ref = React.useRef(null)
+  const synapseConfigContent = (
     <>
       {synapseConfigArray.map((el: RowSynapseConfig, index) => {
         const id = COMPONENT_ID_PREFIX + index
@@ -468,4 +464,14 @@ export const DetailsPageSynapseConfigArray: React.FC<{
       })}
     </>
   )
+  if (showMenu) {
+    return (
+      <div className="DetailsPage">
+        <div className="button-container">{renderMenu(ref, synapseConfigArray, queryResultBundle)}</div>
+        <div className="component-container" ref={ref}>
+          {synapseConfigContent}
+        </div>
+      </div>
+    )
+  } else return synapseConfigContent
 }
