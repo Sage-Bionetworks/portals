@@ -9,6 +9,7 @@ import { QueryResultBundle } from 'synapse-react-client/dist/utils/synapseTypes'
 export type DetailsPageTabsProps = {
   tabConfigs: DetailsPageTabProps[]
   loading: boolean
+  showMenu: boolean
   queryResultBundle?: QueryResultBundle
 }
 
@@ -16,8 +17,7 @@ const DetailsPageTabs: React.FunctionComponent<DetailsPageTabsProps> = (
   props,
 ) => {
   const [selectedTabIndex, setSelectedTabIndex] = useState<number>(0)
-  const { tabConfigs, loading, queryResultBundle } = props
-
+  const { tabConfigs, loading, queryResultBundle, showMenu } = props
   return (
     <>
       <div className="tab-groups">
@@ -55,10 +55,12 @@ const DetailsPageTabs: React.FunctionComponent<DetailsPageTabsProps> = (
                     tabConfigs={tabConfig.tabLayout}
                     loading={loading}
                     queryResultBundle={queryResultBundle}
+                    showMenu={showMenu}
                   ></DetailsPageTabs>
                 )}
                 {tabConfig.synapseConfigArray && (
                   <DetailsPageSynapseConfigArray
+                    showMenu={showMenu}
                     synapseConfigArray={tabConfig.synapseConfigArray!}
                     queryResultBundle={queryResultBundle}
                   />
