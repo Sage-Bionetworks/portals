@@ -78,6 +78,7 @@ const tools: HomeExploreConfig = {
 export const toolDetailsPageConfig: DetailsPageProps = {
   sql: toolsSql,
   sqlOperator: '=',
+  showMenu: false,
   tabLayout: [
     {
       title: "Details",
