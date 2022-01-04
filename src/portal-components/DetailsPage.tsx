@@ -198,11 +198,12 @@ const handleMenuClick = (
     console.error('Could not scroll to element with index ', index)
   }
 }
-const renderMenu = (
-  ref: React.RefObject<HTMLDivElement>,
-  synapseConfigArray?: RowSynapseConfig[],
+
+const SideNavMenu: React.FC<{
+  clickRef: React.RefObject<HTMLDivElement>
+  synapseConfigArray?: RowSynapseConfig[]
   queryResultBundle?: QueryResultBundle
-) => {
+}> = ({ clickRef, synapseConfigArray, queryResultBundle }) => {
   const mapColumnHeaderToRowIndex: Dictionary<number> = {}
   let row: string[] = []
   if (queryResultBundle) {
@@ -214,43 +215,45 @@ const renderMenu = (
     row = queryResultBundle.queryResult.queryResults.rows[0].values
   }
   return (
-    synapseConfigArray &&
-    synapseConfigArray.map((el: RowSynapseConfig, index) => {
-      const style: React.CSSProperties = {}
-      const { columnName = '' } = el
-      const isDisabled =
-        queryResultBundle &&
-        !row[mapColumnHeaderToRowIndex[columnName]] &&
-        !el.standalone
-      if (isDisabled) {
-        style.color = '#BBBBBC'
-        style.cursor = 'not-allowed'
+    <>
+      {synapseConfigArray &&
+        synapseConfigArray.map((el: RowSynapseConfig, index) => {
+          const style: React.CSSProperties = {}
+          const { columnName = '' } = el
+          const isDisabled =
+            queryResultBundle &&
+            !row[mapColumnHeaderToRowIndex[columnName]] &&
+            !el.standalone
+          if (isDisabled) {
+            style.color = '#BBBBBC'
+            style.cursor = 'not-allowed'
+          }
+          const className = `menu-row-button ${isDisabled ? '' : 'SRC-primary-background-color-hover'
+            }`
+          if (el.name === 'ExternalFileHandleLink') {
+            return (
+              <ExternalFileHandleLink
+                className={className}
+                synId={el.props.synId}
+              />
+            )
+          }
+          if (!el.title) {
+            return <></>
+          }
+          return (
+            <button
+              style={style}
+              key={JSON.stringify(el)}
+              onClick={isDisabled ? undefined : () => handleMenuClick(clickRef, index)}
+              className={className}
+            >
+              {el.title}
+            </button>
+          )
+        })
       }
-      const className = `menu-row-button ${
-        isDisabled ? '' : 'SRC-primary-background-color-hover'
-      }`
-      if (el.name === 'ExternalFileHandleLink') {
-        return (
-          <ExternalFileHandleLink
-            className={className}
-            synId={el.props.synId}
-          />
-        )
-      }
-      if (!el.title) {
-        return <></>
-      }
-      return (
-        <button
-          style={style}
-          key={JSON.stringify(el)}
-          onClick={isDisabled ? undefined : () => handleMenuClick(ref, index)}
-          className={className}
-        >
-          {el.title}
-        </button>
-      )
-    })
+    </>
   )
 }
 
@@ -466,9 +469,13 @@ export const DetailsPageSynapseConfigArray: React.FC<{
   )
   if (showMenu) {
     return (
-      <div className="DetailsPage">
-        <div className="button-container">{renderMenu(ref, synapseConfigArray, queryResultBundle)}</div>
-        <div className="component-container" ref={ref}>
+      <div className="DetailsPage" ref={ref}>
+        <div className="button-container">
+          <SideNavMenu clickRef={ref}
+            synapseConfigArray={synapseConfigArray}
+            queryResultBundle={queryResultBundle} />
+        </div>
+        <div className="component-container">
           {synapseConfigContent}
         </div>
       </div>
