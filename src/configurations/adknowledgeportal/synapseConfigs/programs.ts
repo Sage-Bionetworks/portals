@@ -10,6 +10,7 @@ export const programCardConfiguration: CardConfiguration = {
     title: 'Full Name',
     subTitle: 'Short Description',
     icon: 'Program',
+    secondaryLabels: ['More Information']
   },
   titleLinkConfig: {
     isMarkdown: false,
@@ -18,6 +19,11 @@ export const programCardConfiguration: CardConfiguration = {
     matchColumnName: 'Program',
   },
   secondaryLabelLimit: 4,
+  labelLinkConfig: [{
+    isMarkdown: false,
+    matchColumnName: 'More Information',
+    linkColumnName: 'More Information URL'
+  }]
 }
 
 export default programCardConfiguration
