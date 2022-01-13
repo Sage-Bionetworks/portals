@@ -44,6 +44,7 @@ export const toolsCardConfiguration: CardConfiguration = {
     baseURL: 'Explore/Tools/DetailsPage',
     URLColumnName: 'resourceId',
     matchColumnName: 'resourceId',
+    conditionalLinkColumnName: 'enableTitleLink',
   },
   secondaryLabelLimit: 4,
   genericCardSchema: toolsSchema,
