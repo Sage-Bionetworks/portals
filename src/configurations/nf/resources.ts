@@ -19,5 +19,5 @@ export const mtaRequiredSql = `SELECT mTARequired as "MTA Requirements" FROM syn
 export const toolApplicationsSql = `SELECT applications as "Tool Applications" FROM syn26470588 WHERE applications IS NOT NULL`
 export const toolStudySql = `SELECT * FROM syn26461958`
 export const mutationsSql = 'SELECT externalMutationID, alleleType, mutationType, mutationMethod, affectedGeneSymbol, affectedGeneName, sequenceVariation, proteinVariation, animalModelMutation, humanClinVarMutation, chromosome FROM syn26450014'
-export const publicationsV2Sql = 'SELECT * FROM syn26470588'
+export const publicationsV2Sql = 'SELECT * FROM syn26851997'
 export const popularSearchesSql = 'SELECT displayText, fullTextSearch FROM syn26436892'
