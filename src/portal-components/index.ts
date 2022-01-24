@@ -7,6 +7,7 @@ import Ecosystem from './csbc-home-page/Ecosystem'
 import AboutPortal from './csbc-home-page/AboutPortal'
 import FunderCards from './csbc-home-page/FunderCards'
 import DevelopedBySage from './csbc-home-page/DevelopedBySage'
+import BrowseToolsPage from './nf/BrowseToolsPage'
 import ParticipantsBarPlot from './crc-researcher/ParticipantsBarPlot'
 import StatusLineChart from './crc-researcher/StatusLineChart'
 import SurveysCompletedPlots from './crc-researcher/SurveysCompletedPlots'
@@ -29,7 +30,8 @@ const PortalComponents = {
   SurveysCompletedPlots,
   Image,
   RedirectWithQuery,
-  Redirect
+  Redirect,
+  BrowseToolsPage,
 }
 
 export default PortalComponents

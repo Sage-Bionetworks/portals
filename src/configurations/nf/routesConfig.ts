@@ -28,6 +28,7 @@ import routeControlWrapperProps from './routeControlWrapperProps'
 import { facetAliases } from './synapseConfigs/commonProps'
 import { organizationCardSchema, organizationDetailsPage, organizationDetailsPageLinkConfig } from './organizations'
 import { fundersSql, hackathonsSql, initiativesSql, peopleSql, studiesSql } from './resources'
+import { toolsDetailsPage } from './synapseConfigs/tools'
 
 const limit = 3
 
@@ -152,6 +153,17 @@ const routes: GenericRoute[] = [
         }
       },
     ],    
+  },
+  {
+    to: 'Browse Tools',
+    isNested: false,
+    synapseConfigArray: [
+      {
+        name: 'BrowseToolsPage',
+        props: undefined,
+        isOutsideContainer: true,
+      },
+    ],
   },
   {
     to: 'Explore',
@@ -283,8 +295,15 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        isNested: false,
+        isNested: true,
         to: 'Tools',
+        routes: [
+          {
+            to: 'DetailsPage',
+            isNested: false,
+            synapseConfigArray: toolsDetailsPage,
+          },
+        ],
         synapseConfigArray: [
           {
             name: 'RouteControlWrapper',
@@ -380,6 +399,7 @@ const routes: GenericRoute[] = [
       },
     ],
   },
+
   {
     to: 'About',
     isNested: false,
@@ -393,6 +413,14 @@ const routes: GenericRoute[] = [
         },
       },
     ],
+  },
+  {
+    isNested: false,
+    displayName: 'Contribute Data',
+    to: undefined,
+    target: '_blank',
+    link: 'https://help.nf.synapse.org/NFdocs/How-to-Share-Data-(an-Overview).1994489966.html',
+    synapseConfigArray: [],
   },
   {
     isNested: false,

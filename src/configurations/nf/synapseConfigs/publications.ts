@@ -80,4 +80,29 @@ const publications: HomeExploreConfig = {
   },
 }
 
+///////// utilize NF GFF database
+
+export const publicationsV2CardConfiguration: CardConfiguration = {
+  type,
+  labelLinkConfig: [
+    {
+      isMarkdown: true,
+      matchColumnName: 'doi',
+    },
+  ],
+  genericCardSchema: {
+    title: 'publicationTitle',
+    type: SynapseConstants.PUBLICATION,
+    subTitle: 'authors',
+    link: 'doi',
+    secondaryLabels: [
+      'journal',
+      'publicationDate',
+      'applications',
+      'pmid',
+      'doi',
+    ],
+  },
+}
+
 export default publications
