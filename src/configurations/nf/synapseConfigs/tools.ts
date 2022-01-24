@@ -102,11 +102,11 @@ export const toolDetailsPageConfig: DetailsPageProps = {
           name: 'CardContainerLogic',
           title: 'Development Publication',
           props: {
+            ...publicationsV2CardConfiguration,
             limit: 3,
             facetAliases,
             sql: developmentPublicationSql,
             secondaryLabelLimit: 4,
-            ...publicationsV2CardConfiguration,
           },
           tableSqlKeys: ['resourceId'],
           columnName: 'resourceId'
@@ -212,10 +212,10 @@ export const toolDetailsPageConfig: DetailsPageProps = {
           name: 'CardContainerLogic',
           title: 'Publications',
           props: {
+            ...publicationsV2CardConfiguration,
             limit: 3,
             facetAliases,
             sql: publicationsV2Sql,
-            ...publicationsV2CardConfiguration,
           },
           tableSqlKeys: ['resourceId'],
           columnName: 'resourceId'
