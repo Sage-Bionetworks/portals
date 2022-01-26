@@ -73,7 +73,6 @@ export const getRouteFromParams = (
     route = route.routes[0]
     routePathName += '/' + route.to
   }
-
   return [route, routePathName]
 }
 
@@ -174,7 +173,10 @@ const RouteResolver: React.FunctionComponent<RouteComponentProps> = () => {
         (el) => (el.name === 'RedirectWithQuery' || el.name === 'Redirect'),
       ).length === 0
     ) {
-      history.push({ pathname: newPathname, search, hash })
+      //PORTALS-2057: if new path name contains a search query, do not include it more than once (will be represented in the search string)
+      const indexOfQuestionMark = newPathname.indexOf('?')
+      const pathNameWithoutSearch = indexOfQuestionMark > -1 ? newPathname.substring(0, indexOfQuestionMark) : newPathname
+      history.push({ pathname: pathNameWithoutSearch, search, hash })
     }
   }, [newPathname])
 
