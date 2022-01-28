@@ -49,10 +49,14 @@ class CookiesNotification extends React.Component<
         variant="info" 
         title="Our site uses cookies."
         description="This website uses cookies to enhance your experience and to analyze our traffic. Using this website means that you agree with our cookie policy." 
-        primaryButtonText="ACCEPT AND CONTINUE"
-        onPrimaryButtonClick={this.setHasAgreedToCookies}
-        secondaryButtonText="LEARN MORE"
-        onSecondaryButtonClickOrHref='https://s3.amazonaws.com/static.synapse.org/governance/SynapsePrivacyPolicy.pdf'
+        primaryButtonConfig={{
+          text: "ACCEPT AND CONTINUE",
+          onClick: this.setHasAgreedToCookies
+        }}
+        secondaryButtonConfig={{
+          text: "LEARN MORE",
+          href: 'https://s3.amazonaws.com/static.synapse.org/governance/SynapsePrivacyPolicy.pdf'
+        }}
         isGlobal={true}
         />
     )
