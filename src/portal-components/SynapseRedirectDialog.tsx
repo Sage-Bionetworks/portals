@@ -1,13 +1,15 @@
 import * as React from 'react'
-import Dialog from '@material-ui/core/Dialog'
+import { Modal } from 'react-bootstrap'
+import { Typography } from 'synapse-react-client'
 
 export type SynapseRedirectDialogProps = {
-  synapseRedirectUrl?: string  
+  onCancelRedirect: ()=>void
+  synapseRedirectUrl?: string
 }
 
 const SynapseRedirectDialog = (props: SynapseRedirectDialogProps) => {
   const [countdownSeconds, setCountdownSeconds] = React.useState(10)
-  const {synapseRedirectUrl} = props
+  const {synapseRedirectUrl, onCancelRedirect} = props
   React.useEffect(() => {
     if (synapseRedirectUrl) {
       // You would expect that we should redirect when countdownSeconds reaches 0,
@@ -19,38 +21,57 @@ const SynapseRedirectDialog = (props: SynapseRedirectDialogProps) => {
       setTimeout(() => {
         setCountdownSeconds(countdownSeconds => countdownSeconds - 1)
       }, 1000)
-    }     
+    }
   }, [synapseRedirectUrl, countdownSeconds])
 
+  const onClose = () => {
+    // cancel the redirect
+    onCancelRedirect()
+    // and reset countdown seconds
+    setCountdownSeconds(10)
+  }
   return ( 
     <>
-      {synapseRedirectUrl && (<Dialog
-            open={synapseRedirectUrl ? true : false}
+      {synapseRedirectUrl && (<Modal
+            animation={false}
+            show={true}
+            // @ts-ignore
+            onHide={onClose}
+            className='SynapseRedirectDialog'
           >
-            <div className="redirect-dialog-body">
-              <h4>Hang tight!</h4>
-              <p>You are being redirected to Synapse to view this data.<br/>
-              You will be redirected in <strong>{countdownSeconds} seconds</strong><br />
-              <button className="btn btn-link" onClick={() => {
-                window.location.assign(synapseRedirectUrl!)
-              }}>Go to Synapse now</button>
-              </p>
-            </div>
-            <div className="redirect-dialog-footer">
-              <img
-                className="synapse-logo-image"
-                src="https://www.synapse.org/images/logo.svg"
-                alt=""
-              />
-              <h3 className="synapse-logo-text">SYNAPSE</h3>
-              <img
-                className="synapse-hero-image"
-                src="https://s3.amazonaws.com/static.synapse.org/images/homepage-composite.svg"
-                alt=""
-              />
-            </div>            
-        </Dialog>)
-      }
+            <Modal.Header
+              // @ts-ignore
+              onHide={onClose}
+              closeButton={true}
+            ></Modal.Header>
+            <Modal.Body>
+              <div className="redirect-dialog-body">
+                <Typography variant="headline1" className='redirect-title'>Hang tight!</Typography>
+                <p>You are being redirected to Synapse to view this data.<br/>
+                You will be redirected in <strong>{countdownSeconds} seconds</strong>
+                <div className="links-container">
+                  <button className="btn btn-link" onClick={() => {
+                    window.location.assign(synapseRedirectUrl!)
+                  }}>Go to Synapse now</button>
+                  <button className="btn btn-link" onClick={onClose}>Stay in the Portal</button>
+                </div>
+                </p>
+              </div>
+              <div className="redirect-dialog-footer">
+                <img
+                  className="synapse-logo-image"
+                  src="https://www.synapse.org/images/logo.svg"
+                  alt=""
+                />
+                <h3 className="synapse-logo-text">SYNAPSE</h3>
+                <img
+                  className="synapse-hero-image"
+                  src="https://s3.amazonaws.com/static.synapse.org/images/homepage-composite.svg"
+                  alt=""
+                />
+              </div>
+            </Modal.Body>
+          </Modal>)}
     </>
   )
 }
