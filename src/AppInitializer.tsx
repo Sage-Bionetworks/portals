@@ -168,6 +168,7 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
           }
         })}
         <SynapseRedirectDialog
+          onCancelRedirect={() => this.setState({ synapseRedirectUrl: undefined })}
           synapseRedirectUrl={this.state.synapseRedirectUrl}
         />
       </SynapseContextProvider>
