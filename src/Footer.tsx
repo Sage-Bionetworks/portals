@@ -54,12 +54,12 @@ export const Footer: React.SFC<{}> = () => {
           </a>
         )}
         {footerConfig.forum && (
-          <a href={footerConfig.forum} className="footer-item">
+          <a href={footerConfig.forum} className="footer-item" target="_blank" rel="noreferrer">
             Forum
           </a>
         )}
         {footerConfig.about && (
-          <a href={footerConfig.about} className="footer-item">
+          <a href={footerConfig.about} className="footer-item" target="_blank" rel="noreferrer">
             About
           </a>
         )}
