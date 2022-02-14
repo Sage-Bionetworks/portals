@@ -712,3 +712,8 @@ div.SRC-marginBottomTen {
 [id^=details-page-src-component] .TopLevelControls *[role=heading] {
   padding-top: 0px;
 }
+
+// PORTALS-2065 : max width of tooltips in the portals should be 400px
+div[data-id="tooltip"] {
+  max-width: 400px;
+}
