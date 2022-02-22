@@ -12,15 +12,16 @@ export const toolsSchema: GenericCardSchema = {
   title: 'toolName',
   description: 'description',
   secondaryLabels: [
-    'documentationUrl',
     'inputData',
     'inputFormat',
     'outputData',
     'outputFormat',
     'language',
     'toolType',
+    'operation',
     'topic',
-    'downloadUrl'
+    'downloadUrl',
+    'consortium',
   ],
 }
 
