@@ -9,6 +9,9 @@ import NavLink from 'portal-components/NavLink'
 import NavUserLink from './portal-components/NavUserLink'
 import { GenericRoute } from 'types/portal-config'
 import Button from 'react-bootstrap/esm/Button'
+import IconButton from '@material-ui/core/IconButton'
+import CloseIcon from '@material-ui/icons/Close'
+import DialogTitle from '@material-ui/core/DialogTitle'
 
 type SynapseSettingLink = {
   text: string
@@ -197,6 +200,11 @@ class Navbar extends React.Component<any, State> {
                     onClose={handleCloseLoginDialog}
                     open={showLoginDialog}
                   >
+                    <DialogTitle style={{'paddingBottom': 0}}>
+                      <IconButton style={{'float': 'right', 'padding': 0}} onClick={()=>handleCloseLoginDialog()}>
+                        <CloseIcon/>
+                      </IconButton>
+                    </DialogTitle>
                     <SynapseComponents.Login
                       sessionCallback={() => getSession()}
                     />

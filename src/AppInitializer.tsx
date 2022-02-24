@@ -114,7 +114,8 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
     })
   }
 
-  handleCloseLoginDialog = () => {
+  handleCloseLoginDialog = (event, reason) => {
+    if(reason && reason === "backdropClick") return
     this.setState({
       showLoginDialog: false,
     })
