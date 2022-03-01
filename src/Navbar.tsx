@@ -1,8 +1,8 @@
 import * as React from 'react'
 import routesConfig from './config/routesConfig'
 import logoHeaderConfig from './config/logoHeaderConfig'
-import Dialog from '@material-ui/core/Dialog'
 import Dropdown from 'react-bootstrap/Dropdown'
+import Modal from 'react-bootstrap/Modal'
 import { SynapseComponents } from 'synapse-react-client'
 import { SignInProps } from './AppInitializer'
 import NavLink from 'portal-components/NavLink'
@@ -192,15 +192,16 @@ class Navbar extends React.Component<any, State> {
                   >
                     SIGN&nbsp;IN
                   </Button>
-                  <Dialog
-                    // @ts-ignore
-                    onClose={handleCloseLoginDialog}
-                    open={showLoginDialog}
-                  >
-                    <SynapseComponents.Login
-                      sessionCallback={() => getSession()}
-                    />
-                  </Dialog>
+                  <Modal 
+                    animation={false}
+                    backdrop={'static'}
+                    keyboard={false}
+                    onHide={handleCloseLoginDialog} 
+                    style={{'marginTop':'32px'}}
+                    show={showLoginDialog}>
+                    <Modal.Header closeButton/>
+                    <SynapseComponents.Login sessionCallback={() => getSession()}/>
+                  </Modal>
                 </div>
               )}
 
