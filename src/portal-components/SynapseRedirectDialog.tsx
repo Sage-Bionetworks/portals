@@ -37,6 +37,7 @@ const SynapseRedirectDialog = (props: SynapseRedirectDialogProps) => {
             show={true}
             // @ts-ignore
             onHide={onClose}
+            backdrop='static'
             className='SynapseRedirectDialog'
           >
             <Modal.Header

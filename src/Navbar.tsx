@@ -194,7 +194,7 @@ class Navbar extends React.Component<any, State> {
                   </Button>
                   <Modal 
                     animation={false}
-                    backdrop={'static'}
+                    backdrop='static'
                     keyboard={false}
                     onHide={handleCloseLoginDialog} 
                     style={{'marginTop':'32px'}}
