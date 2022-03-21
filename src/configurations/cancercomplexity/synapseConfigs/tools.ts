@@ -20,7 +20,7 @@ export const toolsSchema: GenericCardSchema = {
     'toolType',
     'operation',
     'topic',
-    'downloadUrl',
+    'downloadLink',
     'consortium',
   ],
 }
@@ -36,6 +36,10 @@ export const toolsConfiguration: CardConfiguration = {
     baseURL: 'Explore/Tools/DetailsPage',
   },
   labelLinkConfig: [
+    {
+      isMarkdown: true,
+      matchColumnName: 'downloadLink',
+    },
     {
       isMarkdown: false,
       URLColumnName: 'publicationTitle',
