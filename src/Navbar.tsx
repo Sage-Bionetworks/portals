@@ -197,7 +197,7 @@ class Navbar extends React.Component<any, State> {
                     backdrop={'static'}
                     keyboard={false}
                     onHide={handleCloseLoginDialog} 
-                    style={{'marginTop':'32px'}}
+                    className="login-modal"
                     show={showLoginDialog}>
                     <Modal.Header closeButton/>
                     <SynapseComponents.Login sessionCallback={() => getSession()}/>
