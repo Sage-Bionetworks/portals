@@ -33,7 +33,7 @@ const routes: GenericRoute[] = [
         title: 'Consortia Activity',
         centerTitle: true,
         outsideContainerClassName: 'home-spacer home-bg-dark',
-        props: undefined,        
+        props: undefined,
       },
       {
         name: 'ThemesPlot',
@@ -97,7 +97,7 @@ const routes: GenericRoute[] = [
         title: 'The Cancer Resource Information Ecosystem',
         centerTitle: true,
         subtitle:
-            'The Cancer Resource Information ecosystem contains a growing list of tools and resources. Explore some of them below.',
+          'The Cancer Resource Information ecosystem contains a growing list of tools and resources. Explore some of them below.',
         outsideContainerClassName: 'home-spacer home-bg-dark',
         props: {
           config: [
@@ -134,7 +134,7 @@ const routes: GenericRoute[] = [
         title: 'About the Cancer Complexity Knowledge Portal',
         subtitle: 'The portal is built to disseminate resources to accelerate discovery and collaboration in the cancer research community. We aim to provide rich context about and access to activities and contributors that have produced the resources hosted within this and other repositories.',
         centerTitle: true,
-        props: {          
+        props: {
           cardProps: [
             { ownerId: 'syn21498902', wikiId: '601369' },
             { ownerId: 'syn21498902', wikiId: '601370' },
@@ -174,7 +174,6 @@ const routes: GenericRoute[] = [
                 isOutsideContainer: true,
                 props: {
                   isHeader: true,
-                  
                   ...grantsCardConfiguration,
                   secondaryLabelLimit: Infinity,
                   sql: grantsSql,
@@ -263,7 +262,6 @@ const routes: GenericRoute[] = [
                 isOutsideContainer: true,
                 props: {
                   isHeader: true,
-                  
                   ...publicationsCardConfiguration,
                   secondaryLabelLimit: Infinity,
                   facetAliases,
@@ -330,7 +328,6 @@ const routes: GenericRoute[] = [
                 isOutsideContainer: true,
                 props: {
                   isHeader: true,
-                  
                   sqlOperator: '=',
                   ...datasetCardConfiguration,
                   secondaryLabelLimit: Infinity,
@@ -383,7 +380,7 @@ const routes: GenericRoute[] = [
       },
       {
         to: 'Tools',
-        isNested: false,
+        isNested: true,
         synapseConfigArray: [
           {
             name: 'RouteControlWrapper',
@@ -392,6 +389,62 @@ const routes: GenericRoute[] = [
               ...RouteControlWrapperProps,
               synapseConfig: tools.explorePageSynapseObject,
             },
+          },
+        ],
+        routes: [
+          {
+            to: 'DetailsPage',
+            isNested: false,
+            synapseConfigArray: [
+              {
+                name: 'CardContainerLogic',
+                isOutsideContainer: true,
+                props: {
+                  isHeader: true,
+                  sqlOperator: '=',
+                  ...toolsConfiguration,
+                  secondaryLabelLimit: Infinity,
+                  sql: toolsSql,
+                  iconOptions: {
+                    dataset: DatasetSvg,
+                  },
+                  facetAliases,
+                },
+              },
+              {
+                name: 'DetailsPage',
+                props: {
+                  sql: toolsSql,
+                  sqlOperator: 'LIKE',
+                  synapseConfigArray: [
+                    {
+                      name: 'CardContainerLogic',
+                      columnName: 'grantName',
+                      title: 'Related Grants',
+                      tableSqlKeys: ['grantName'],
+                      props: {
+                        sqlOperator: 'LIKE',
+                        sql: grantsSql,
+                        ...grantsCardConfiguration,
+                        facetAliases,
+                      },
+                    },
+                    {
+                      name: 'CardContainerLogic',
+                      columnName: 'publicationTitle',
+                      title: 'Related Publications',
+                      tableSqlKeys: ['publicationTitle'],
+                      props: {
+                        sqlOperator: 'LIKE',
+                        sql: publicationSql,
+                        ...publicationsCardConfiguration,
+                        facetAliases,
+                      },
+                    },
+                  ],
+                },
+              },
+            ],
           },
         ],
       },
