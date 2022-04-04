@@ -12,7 +12,7 @@ import publications from './synapseConfigs/publications'
 import tools from './synapseConfigs/tools'
 import people from './synapseConfigs/people'
 import { studiesSql, projectsSql } from './resources'
-import {SynapseConstants} from "synapse-react-client";
+import { SynapseConstants } from 'synapse-react-client'
 
 const routes: GenericRoute[] = [
   {
@@ -40,7 +40,7 @@ const routes: GenericRoute[] = [
         centerTitle: true,
         outsideContainerClassName: 'home-spacer home-bg-dark',
         props: {
-          sql: 'SELECT * FROM syn21781196 WHERE isFeatured=\'true\'',
+          sql: "SELECT * FROM syn21781196 WHERE isFeatured='true'",
           columnName: 'Project Title',
           facetValues: [
             'Somatic Mosaicism in the brain of Tourette syndrome',
@@ -55,10 +55,10 @@ const routes: GenericRoute[] = [
           ],
           size: SynapseConstants.MEDIUM_USER_CARD,
           useQueryResultUserData: true,
-          summaryLinkText:'EXPLORE ALL PEOPLE',
+          summaryLinkText: 'EXPLORE ALL PEOPLE',
           summaryLink: '/Explore/People',
-          count: 6
-        }
+          count: 6,
+        },
       },
       {
         title: 'Acknowledgement',
@@ -80,10 +80,10 @@ const routes: GenericRoute[] = [
         synapseConfigArray: [
           {
             name: 'RouteControlWrapper',
-            isOutsideContainer: true,            
+            isOutsideContainer: true,
             props: {
               ...RouteControlWrapperProps,
-              synapseConfig: projects.explorePageSynapseObject,
+              synapseConfig: projects,
             },
           },
         ],
@@ -101,7 +101,6 @@ const routes: GenericRoute[] = [
                   sql: projectsSql,
                   isAlignToLeftNav: true,
                   secondaryLabelLimit: Infinity,
-                  
                 },
               },
               {
@@ -121,7 +120,7 @@ const routes: GenericRoute[] = [
             isOutsideContainer: true,
             props: {
               ...RouteControlWrapperProps,
-              synapseConfig: studies.explorePageSynapseObject,
+              synapseConfig: studies,
             },
           },
         ],
@@ -140,7 +139,6 @@ const routes: GenericRoute[] = [
                   sql: studiesSql,
                   isAlignToLeftNav: true,
                   secondaryLabelLimit: Infinity,
-                  
                 },
               },
               {
@@ -160,7 +158,7 @@ const routes: GenericRoute[] = [
             isOutsideContainer: true,
             props: {
               ...RouteControlWrapperProps,
-              synapseConfig: tools.explorePageSynapseObject,
+              synapseConfig: tools,
             },
           },
         ],
@@ -174,7 +172,7 @@ const routes: GenericRoute[] = [
             isOutsideContainer: true,
             props: {
               ...RouteControlWrapperProps,
-              synapseConfig: people.explorePageSynapseObject,
+              synapseConfig: people,
             },
           },
         ],
@@ -188,7 +186,7 @@ const routes: GenericRoute[] = [
             isOutsideContainer: true,
             props: {
               ...RouteControlWrapperProps,
-              synapseConfig: publications.explorePageSynapseObject,
+              synapseConfig: publications,
             },
           },
         ],

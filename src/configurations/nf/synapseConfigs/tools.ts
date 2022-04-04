@@ -1,10 +1,25 @@
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 
 import { SynapseConstants } from 'synapse-react-client'
-import { HomeExploreConfig, SynapseConfig } from 'types/portal-config'
+import { SynapseConfig } from 'types/portal-config'
 import { facetAliases } from './commonProps'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
-import { toolsSql, observationsSql, investigatorSql, developmentPublicationSql, fundingAgencySql, usageRequirementsSql, vendorSql, catalogNumberSql, mtaRequiredSql, toolApplicationsSql, mutationsSql, publicationsV2Sql, filesSql, studiesSql } from '../resources'
+import {
+  toolsSql,
+  observationsSql,
+  investigatorSql,
+  developmentPublicationSql,
+  fundingAgencySql,
+  usageRequirementsSql,
+  vendorSql,
+  catalogNumberSql,
+  mtaRequiredSql,
+  toolApplicationsSql,
+  mutationsSql,
+  publicationsV2Sql,
+  filesSql,
+  studiesSql,
+} from '../resources'
 import { DetailsPageProps } from 'types/portal-util-types'
 import { publicationsV2CardConfiguration } from './publications'
 
@@ -33,7 +48,7 @@ export const toolsSchema: GenericCardSchema = {
     'diseaseType',
     'tumorType',
     'specimenFormat',
-    'specimenType'
+    'specimenType',
   ],
 }
 
@@ -50,29 +65,15 @@ export const toolsCardConfiguration: CardConfiguration = {
   genericCardSchema: toolsSchema,
 }
 const rgbIndex = 6
-const tools: HomeExploreConfig = {
-  homePageSynapseObject: {
-    name: 'StandaloneQueryWrapper',
-    props: {
-      rgbIndex,
-      unitDescription: 'Tools',
-      link: 'Explore/Tools',
-      linkText: 'Explore Tools',
-      facet: 'type',
-      sql: toolsSql,
-      facetAliases,
-    },
-  },
-  explorePageSynapseObject: {
-    name: 'QueryWrapperPlotNav',
-    props: {
-      rgbIndex,
-      sql: toolsSql,
-      shouldDeepLink: true,
-      name: 'Tools',
-      cardConfiguration: toolsCardConfiguration,
-      facetAliases,
-    },
+const tools: SynapseConfig = {
+  name: 'QueryWrapperPlotNav',
+  props: {
+    rgbIndex,
+    sql: toolsSql,
+    shouldDeepLink: true,
+    name: 'Tools',
+    cardConfiguration: toolsCardConfiguration,
+    facetAliases,
   },
 }
 
@@ -82,7 +83,7 @@ export const toolDetailsPageConfig: DetailsPageProps = {
   showMenu: false,
   tabLayout: [
     {
-      title: "Details",
+      title: 'Details',
       synapseConfigArray: [
         {
           name: 'UserCardListRotate',
@@ -109,7 +110,7 @@ export const toolDetailsPageConfig: DetailsPageProps = {
             secondaryLabelLimit: 4,
           },
           tableSqlKeys: ['resourceId'],
-          columnName: 'resourceId'
+          columnName: 'resourceId',
         },
         {
           name: 'SubsectionRowRenderer',
@@ -160,7 +161,7 @@ export const toolDetailsPageConfig: DetailsPageProps = {
               linkColumnName: 'Catalog Number URL',
               matchColumnName: 'Catalog Number',
               isMarkdown: false,
-            }
+            },
           },
           tableSqlKeys: ['resourceId'],
           columnName: 'resourceId',
@@ -174,10 +175,11 @@ export const toolDetailsPageConfig: DetailsPageProps = {
             columnNameIsSectionTitle: true,
             isMarkdown: true,
             friendlyValuesMap: {
-              'no': 'A MTA is **not** required for usage of this resource.',
-              'yes': 'A MTA is required for usage of this resource.',
-              'unknown': 'It is unknown whether a MTA is required for usage of this resource.'
-            }
+              no: 'A MTA is **not** required for usage of this resource.',
+              yes: 'A MTA is required for usage of this resource.',
+              unknown:
+                'It is unknown whether a MTA is required for usage of this resource.',
+            },
           },
           tableSqlKeys: ['resourceId'],
           columnName: 'resourceId',
@@ -206,7 +208,7 @@ export const toolDetailsPageConfig: DetailsPageProps = {
             showTopLevelControls: true,
           },
           tableSqlKeys: ['resourceId'],
-          columnName: 'resourceId'
+          columnName: 'resourceId',
         },
         {
           name: 'CardContainerLogic',
@@ -218,7 +220,7 @@ export const toolDetailsPageConfig: DetailsPageProps = {
             sql: publicationsV2Sql,
           },
           tableSqlKeys: ['resourceId'],
-          columnName: 'resourceId'
+          columnName: 'resourceId',
         },
         {
           name: 'Markdown',
@@ -229,10 +231,10 @@ export const toolDetailsPageConfig: DetailsPageProps = {
             wikiId: '613438',
           },
         },
-      ]
+      ],
     },
     {
-      title: "Observations",
+      title: 'Observations',
       synapseConfigArray: [
         {
           name: 'CardContainerLogic',
@@ -265,10 +267,10 @@ export const toolDetailsPageConfig: DetailsPageProps = {
             wikiId: '613438',
           },
         },
-      ]
+      ],
     },
     {
-      title: "Data",
+      title: 'Data',
       tabLayout: [
         {
           title: 'Files',
@@ -289,7 +291,7 @@ export const toolDetailsPageConfig: DetailsPageProps = {
                 facetAliases,
               },
               tableSqlKeys: ['Resource_id'],
-              columnName: 'resourceId'
+              columnName: 'resourceId',
             },
           ],
         },
@@ -318,12 +320,12 @@ export const toolDetailsPageConfig: DetailsPageProps = {
                 facetAliases,
               },
               tableSqlKeys: ['Resource_id'],
-              columnName: 'resourceId'
+              columnName: 'resourceId',
             },
           ],
         },
-      ]
-    }
+      ],
+    },
   ],
 }
 

@@ -1,7 +1,11 @@
 import { cloneDeep, Dictionary } from 'lodash'
 import * as React from 'react'
 import { SynapseComponentWithContext } from 'RouteResolver'
-import { SynapseClient, SynapseConstants, Typography } from 'synapse-react-client'
+import {
+  SynapseClient,
+  SynapseConstants,
+  Typography,
+} from 'synapse-react-client'
 import {
   insertConditionsFromSearchParams,
   parseEntityIdFromSqlStatement,
@@ -126,7 +130,7 @@ export default class DetailsPage extends React.Component<
       const name = currentLocation[currentLocation.length - 2]
       return (
         <div className="DetailsPage__ComingSoon">
-          <Typography variant='headline1'>Coming Soon! </Typography>
+          <Typography variant="headline1">Coming Soon! </Typography>
           <p>
             {/*
                 pluralize is used to convert the detail of interest e.g. studies/publications/etc
@@ -179,7 +183,8 @@ export default class DetailsPage extends React.Component<
 
 const handleMenuClick = (
   ref: React.RefObject<HTMLDivElement>,
-  index: number) => {
+  index: number,
+) => {
   const wrapper = ref.current?.querySelector<HTMLDivElement>(
     `#${COMPONENT_ID_PREFIX}${index}`,
   )
@@ -207,11 +212,9 @@ const SideNavMenu: React.FC<{
   const mapColumnHeaderToRowIndex: Dictionary<number> = {}
   let row: string[] = []
   if (queryResultBundle) {
-    queryResultBundle.queryResult.queryResults.headers.forEach(
-      (el, index) => {
-        mapColumnHeaderToRowIndex[el.name] = index
-      },
-    )
+    queryResultBundle.queryResult.queryResults.headers.forEach((el, index) => {
+      mapColumnHeaderToRowIndex[el.name] = index
+    })
     row = queryResultBundle.queryResult.queryResults.rows[0].values
   }
   return (
@@ -228,8 +231,9 @@ const SideNavMenu: React.FC<{
             style.color = '#BBBBBC'
             style.cursor = 'not-allowed'
           }
-          const className = `menu-row-button ${isDisabled ? '' : 'SRC-primary-background-color-hover'
-            }`
+          const className = `menu-row-button ${
+            isDisabled ? '' : 'SRC-primary-background-color-hover'
+          }`
           if (el.name === 'ExternalFileHandleLink') {
             return (
               <ExternalFileHandleLink
@@ -245,14 +249,15 @@ const SideNavMenu: React.FC<{
             <button
               style={style}
               key={JSON.stringify(el)}
-              onClick={isDisabled ? undefined : () => handleMenuClick(clickRef, index)}
+              onClick={
+                isDisabled ? undefined : () => handleMenuClick(clickRef, index)
+              }
               className={className}
             >
               {el.title}
             </button>
           )
-        })
-      }
+        })}
     </>
   )
 }
@@ -392,7 +397,7 @@ const SplitStringToComponent: React.FC<{
       <>
         {entityTitle && (
           <>
-            <Typography variant='sectionTitle' role='heading'>
+            <Typography variant="sectionTitle" role="heading">
               {el.title}: {entityTitle}
             </Typography>
             <hr />
@@ -407,9 +412,9 @@ const SplitStringToComponent: React.FC<{
   }
   return (
     <SynapseComponentWithContext
-        synapseConfig={synapseConfigWithInjectedProps}
-        searchParams={searchParams}
-      />
+      synapseConfig={synapseConfigWithInjectedProps}
+      searchParams={searchParams}
+    />
   )
 }
 
@@ -438,11 +443,19 @@ export const DetailsPageSynapseConfigArray: React.FC<{
         if (!hasTitleFromSynId) {
           title = (
             <>
-              {el.title && <Typography variant='sectionTitle' role='heading'>
-                {el.title}
-              </Typography>}
+              {el.title && (
+                <Typography variant="sectionTitle" role="heading">
+                  {el.title}
+                </Typography>
+              )}
               {showTitleSeperator && el.title && <hr />}
-              {el.subtitle && <div className='bootstrap-4-backport'><Typography variant='subsectionHeader' role='heading'>{el.subtitle}</Typography></div>}
+              {el.subtitle && (
+                <div className="bootstrap-4-backport">
+                  <Typography variant="subsectionHeader" role="heading">
+                    {el.subtitle}
+                  </Typography>
+                </div>
+              )}
             </>
           )
         }
@@ -471,14 +484,14 @@ export const DetailsPageSynapseConfigArray: React.FC<{
     return (
       <div className="DetailsPage" ref={ref}>
         <div className="button-container">
-          <SideNavMenu clickRef={ref}
+          <SideNavMenu
+            clickRef={ref}
             synapseConfigArray={synapseConfigArray}
-            queryResultBundle={queryResultBundle} />
+            queryResultBundle={queryResultBundle}
+          />
         </div>
-        <div className="component-container">
-          {synapseConfigContent}
-        </div>
+        <div className="component-container">{synapseConfigContent}</div>
       </div>
     )
-  } else return synapseConfigContent
+  } else return <>{synapseConfigContent}</>
 }

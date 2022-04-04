@@ -32,12 +32,12 @@ routes[EXPLORE_INDEX] = {
     {
       isNested: false,
       to: 'Data',
-      synapseConfigArray: [studies.explorePageSynapseObject],
+      synapseConfigArray: [studies],
     },
     {
       isNested: false,
       to: 'Publications',
-      synapseConfigArray: [publications.explorePageSynapseObject],
+      synapseConfigArray: [publications],
     },
   ],
 }
@@ -101,12 +101,9 @@ routes[HOME_INDEX] = {
         configs: [
           {
             name: 'testroute',
-            synapseConfigArray: [
-              studies.homePageSynapseObject,
-              publications.homePageSynapseObject,
-            ],
+            synapseConfigArray: [studies, publications],
           },
-        ],        
+        ],
       },
     },
     {

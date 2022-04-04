@@ -1,5 +1,4 @@
 import { SynapseConstants } from 'synapse-react-client'
-import { HomeExploreConfig } from 'types/portal-config'
 import {
   GenericCardSchema,
   IconOptions,
@@ -7,7 +6,7 @@ import {
 import { Project } from 'synapse-react-client/dist/assets/themed_icons/Project'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import { grantsSql } from '../resources'
-const unitDescription = 'Grants'
+import { SynapseConfig } from 'types/portal-config'
 const rgbIndex = 3
 
 export const grantsSchema: GenericCardSchema = {
@@ -26,7 +25,7 @@ export const grantsSchema: GenericCardSchema = {
 
 // TODO: Change iconOptions type to map () => string | JSX.Element and remove cast
 const iconOptions: IconOptions = {
-  Grant: (Project as unknown) as string,
+  Grant: Project as unknown as string,
 }
 
 export const grantsCardConfiguration: CardConfiguration = {
@@ -42,36 +41,23 @@ export const grantsCardConfiguration: CardConfiguration = {
   iconOptions,
 }
 
-export const grants: HomeExploreConfig = {
-  homePageSynapseObject: {
-    name: 'StandaloneQueryWrapper',
-    props: {
-      unitDescription,
-      rgbIndex: 3,
-      facet: 'grantType',
-      link: 'Explore/Grants',
-      linkText: 'Explore Grants',
-      sql: grantsSql,
-    },
-  },
-  explorePageSynapseObject: {
-    name: 'QueryWrapperPlotNav',
-    props: {
-      rgbIndex,
-      sql: grantsSql,
-      cardConfiguration: grantsCardConfiguration,
-      shouldDeepLink: true,
-      name: 'Grants',
-      facetsToPlot: ['consortium', 'grantType'],
-      searchConfiguration: {
-        searchable: [
-          'grantName',
-          'abstract',
-          'grantInstitution',
-          'investigator',
-          'grantNumber',
-        ],
-      },
+export const grants: SynapseConfig = {
+  name: 'QueryWrapperPlotNav',
+  props: {
+    rgbIndex,
+    sql: grantsSql,
+    cardConfiguration: grantsCardConfiguration,
+    shouldDeepLink: true,
+    name: 'Grants',
+    facetsToPlot: ['consortium', 'grantType'],
+    searchConfiguration: {
+      searchable: [
+        'grantName',
+        'abstract',
+        'grantInstitution',
+        'investigator',
+        'grantNumber',
+      ],
     },
   },
 }

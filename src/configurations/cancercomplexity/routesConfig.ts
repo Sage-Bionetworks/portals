@@ -132,7 +132,8 @@ const routes: GenericRoute[] = [
       {
         name: 'AboutPortal',
         title: 'About the Cancer Complexity Knowledge Portal',
-        subtitle: 'The portal is built to disseminate resources to accelerate discovery and collaboration in the cancer research community. We aim to provide rich context about and access to activities and contributors that have produced the resources hosted within this and other repositories.',
+        subtitle:
+          'The portal is built to disseminate resources to accelerate discovery and collaboration in the cancer research community. We aim to provide rich context about and access to activities and contributors that have produced the resources hosted within this and other repositories.',
         centerTitle: true,
         props: {
           cardProps: [
@@ -160,7 +161,7 @@ const routes: GenericRoute[] = [
             isOutsideContainer: true,
             props: {
               ...RouteControlWrapperProps,
-              synapseConfig: grants.explorePageSynapseObject,
+              synapseConfig: grants,
             },
           },
         ],
@@ -248,7 +249,7 @@ const routes: GenericRoute[] = [
             isOutsideContainer: true,
             props: {
               ...RouteControlWrapperProps,
-              synapseConfig: publications.explorePageSynapseObject,
+              synapseConfig: publications,
             },
           },
         ],
@@ -314,7 +315,7 @@ const routes: GenericRoute[] = [
             isOutsideContainer: true,
             props: {
               ...RouteControlWrapperProps,
-              synapseConfig: datasets.explorePageSynapseObject,
+              synapseConfig: datasets,
             },
           },
         ],
@@ -373,7 +374,7 @@ const routes: GenericRoute[] = [
             isOutsideContainer: true,
             props: {
               ...RouteControlWrapperProps,
-              synapseConfig: files.explorePageSynapseObject,
+              synapseConfig: files,
             },
           },
         ],
@@ -387,7 +388,7 @@ const routes: GenericRoute[] = [
             isOutsideContainer: true,
             props: {
               ...RouteControlWrapperProps,
-              synapseConfig: tools.explorePageSynapseObject,
+              synapseConfig: tools,
             },
           },
         ],

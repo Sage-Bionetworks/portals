@@ -1,5 +1,5 @@
 import { SynapseConstants } from 'synapse-react-client'
-import { HomeExploreConfig } from 'types/portal-config'
+import { SynapseConfig } from 'types/portal-config'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import {
   CardConfiguration,
@@ -8,8 +8,6 @@ import {
 import { publicationSql } from '../resources'
 
 const rgbIndex = 7
-const unitDescription = 'Publications'
-const facet = 'Study'
 
 export const publicationSchema: GenericCardSchema = {
   type: SynapseConstants.PUBLICATION,
@@ -51,41 +49,28 @@ export const publicationCardConfiguration: CardConfiguration = {
   ],
 }
 
-export const publications: HomeExploreConfig = {
-  homePageSynapseObject: {
-    name: 'StandaloneQueryWrapper',
-    props: {
-      rgbIndex,
-      facet,
-      unitDescription,
-      link: 'Explore/Files',
-      linkText: 'Explore Files',
-      sql: publicationSql,
-    },
-  },
-  explorePageSynapseObject: {
-    name: 'QueryWrapperPlotNav',
-    props: {
-      rgbIndex,
-      shouldDeepLink: true,
-      hideDownload: true,
-      sql: publicationSql,
-      name: 'Publications',
-      cardConfiguration: publicationCardConfiguration,
-      visibleColumnCount: Infinity,
-      searchConfiguration: {
-        searchable: [
-          'Author',
-          'Diagnosis',
-          'Journal',
-          'Title',
-          'Year',
-          'digitalAssessmentCategory',
-          'sensorType',
-          'Tools',
-          'Study',
-        ],
-      },
+export const publications: SynapseConfig = {
+  name: 'QueryWrapperPlotNav',
+  props: {
+    rgbIndex,
+    shouldDeepLink: true,
+    hideDownload: true,
+    sql: publicationSql,
+    name: 'Publications',
+    cardConfiguration: publicationCardConfiguration,
+    visibleColumnCount: Infinity,
+    searchConfiguration: {
+      searchable: [
+        'Author',
+        'Diagnosis',
+        'Journal',
+        'Title',
+        'Year',
+        'digitalAssessmentCategory',
+        'sensorType',
+        'Tools',
+        'Study',
+      ],
     },
   },
 }

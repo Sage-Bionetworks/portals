@@ -1,6 +1,5 @@
 import { CardContainerLogicProps } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import { QueryWrapperProps } from 'synapse-react-client/dist/containers/QueryWrapper'
-import { StackedBarChartProps } from 'synapse-react-client/dist/containers/StackedBarChart'
 import { UserCardProps } from 'synapse-react-client/dist/containers/UserCard'
 import { ExternalFileHandleLinkProps } from 'synapse-react-client/dist/containers/ExternalFileHandleLink'
 import { UpsetPlotProps } from 'synapse-react-client/dist/containers/UpsetPlot'
@@ -51,11 +50,6 @@ type CardContainerLogic = {
 type QueryWrapper = {
   name: 'QueryWrapper'
   props: QueryWrapperProps
-}
-
-type StackedBarChart = {
-  name: 'StackedBarChart'
-  props: StackedBarChartProps
 }
 
 type QueryWrapperPlotNav = {
@@ -250,7 +244,6 @@ export type SynapseConfig = (
   | StatefulButtonControl
   | RouteControl
   | CardContainerLogic
-  | StackedBarChart
   | QueryWrapper
   | UserCard
   | Markdown
@@ -287,12 +280,6 @@ export type SynapseConfig = (
 ) &
   Metadata
 export type SynapseConfigArray = SynapseConfig[]
-
-// utility for inside the explore page
-export type HomeExploreConfig = {
-  homePageSynapseObject: SynapseConfig
-  explorePageSynapseObject: SynapseConfig
-}
 
 interface RouteOptions {
   displayName?: string

@@ -1,4 +1,4 @@
-import { HomeExploreConfig } from 'types/portal-config'
+import { SynapseConfig } from 'types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import {
@@ -17,9 +17,7 @@ import { computationalCardConfiguration } from './computational_tools'
 import { targetEnablingResourcesDetailsPageSql } from '../resources'
 import { targetEnablingResourcesCardConfiguration } from './target_enabling_resources'
 
-const unitDescription = 'Projects'
 const rgbIndex = 4
-const facet = 'Program'
 
 export const projectCardConfiguration: CardConfiguration = {
   type: SynapseConstants.GENERIC_CARD,
@@ -111,37 +109,24 @@ export const projectsDetailsPageConfiguration: DetailsPageProps = {
   ],
 }
 
-const projects: HomeExploreConfig = {
-  homePageSynapseObject: {
-    name: 'StandaloneQueryWrapper',
-    props: {
-      unitDescription,
-      rgbIndex,
-      facet,
-      link: 'Explore/Projects',
-      linkText: 'Explore Projects',
-      sql: projectsSql,
-    },
-  },
-  explorePageSynapseObject: {
-    name: 'QueryWrapperPlotNav',
-    props: {
-      rgbIndex,
-      sql: projectsSql,
-      shouldDeepLink: true,
-      name: 'Projects',
-      cardConfiguration: projectCardConfiguration,
-      // unitDescription: 'Projects',
-      searchConfiguration: {
-        searchable: [
-          'Name',
-          'Grant Number',
-          'Program',
-          'Principal Investigators',
-          'Institutions',
-          'Abstract',
-        ],
-      },
+const projects: SynapseConfig = {
+  name: 'QueryWrapperPlotNav',
+  props: {
+    rgbIndex,
+    sql: projectsSql,
+    shouldDeepLink: true,
+    name: 'Projects',
+    cardConfiguration: projectCardConfiguration,
+    // unitDescription: 'Projects',
+    searchConfiguration: {
+      searchable: [
+        'Name',
+        'Grant Number',
+        'Program',
+        'Principal Investigators',
+        'Institutions',
+        'Abstract',
+      ],
     },
   },
 }

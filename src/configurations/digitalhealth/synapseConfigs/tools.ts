@@ -1,5 +1,5 @@
 import { SynapseConstants } from 'synapse-react-client'
-import { HomeExploreConfig, SynapseConfigArray } from 'types/portal-config'
+import { SynapseConfig, SynapseConfigArray } from 'types/portal-config'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import {
   CardConfiguration,
@@ -8,7 +8,6 @@ import {
 import facetAliases from '../facetAliases'
 import { toolsSql } from '../resources'
 
-const unitDescription = 'Tools'
 const rgbIndex = 3
 
 export const toolsSchema: GenericCardSchema = {
@@ -31,45 +30,32 @@ export const toolsCardConfiguration: CardConfiguration = {
   genericCardSchema: toolsSchema,
 }
 
-export const tools: HomeExploreConfig = {
-  homePageSynapseObject: {
-    name: 'StandaloneQueryWrapper',
-    props: {
-      rgbIndex,
-      unitDescription,
-      facet: 'theme',
-      link: 'Explore/Collections',
-      linkText: 'Explore Collections',
-      sql: toolsSql,
-    },
-  },
-  explorePageSynapseObject: {
-    name: 'QueryWrapperPlotNav',
-    props: {
-      rgbIndex,
-      cardConfiguration: toolsCardConfiguration,
-      sql: toolsSql,
-      hideDownload: true,
-      shouldDeepLink: true,
-      defaultColumn: 'softwareType',
-      name: 'Tools',
-      facetAliases,
-      facetsToPlot: [
+export const tools: SynapseConfig = {
+  name: 'QueryWrapperPlotNav',
+  props: {
+    rgbIndex,
+    cardConfiguration: toolsCardConfiguration,
+    sql: toolsSql,
+    hideDownload: true,
+    shouldDeepLink: true,
+    defaultColumn: 'softwareType',
+    name: 'Tools',
+    facetAliases,
+    facetsToPlot: [
+      'digitalAssessmentCategory',
+      'inputDataType',
+      'outputDataType',
+      'softwareLanguage',
+      'softwareType',
+    ],
+    searchConfiguration: {
+      searchable: [
         'digitalAssessmentCategory',
         'inputDataType',
         'outputDataType',
-        'softwareLanguage',
-        'softwareType',
+        'softwareAuthor',
+        'softwareName',
       ],
-      searchConfiguration: {
-        searchable: [
-          'digitalAssessmentCategory',
-          'inputDataType',
-          'outputDataType',
-          'softwareAuthor',
-          'softwareName',
-        ],
-      },
     },
   },
 }
@@ -88,7 +74,7 @@ export const toolsDetailsLandingPage: SynapseConfigArray = [
     props: {
       isHeader: true,
       isAlignToLeftNav: true,
-      
+
       ...toolsCardConfiguration,
       titleLinkConfig: undefined,
       facetAliases,

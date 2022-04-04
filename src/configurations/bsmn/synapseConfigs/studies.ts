@@ -1,13 +1,11 @@
-import { HomeExploreConfig } from 'types/portal-config'
+import { SynapseConfig } from 'types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import { DetailsPageProps } from 'types/portal-util-types'
 import { publicationsCardConfiguration } from './publications'
 import { publicationsSql, studiesSql } from '../resources'
 
-const unitDescription = 'Datasets'
 const rgbIndex = 0
-const facet = 'Program'
 
 export const studyCardConfiguration: CardConfiguration = {
   type: SynapseConstants.GENERIC_CARD,
@@ -46,48 +44,35 @@ export const studyCardConfiguration: CardConfiguration = {
   },
 }
 
-const studies: HomeExploreConfig = {
-  homePageSynapseObject: {
-    name: 'StandaloneQueryWrapper',
-    props: {
-      unitDescription,
-      rgbIndex,
-      facet,
-      link: 'Explore/Data',
-      linkText: 'Explore Studies',
-      sql: studiesSql,
-    },
-  },
-  explorePageSynapseObject: {
-    name: 'QueryWrapperPlotNav',
-    props: {
-      rgbIndex,
-      shouldDeepLink: true,
-      sql: studiesSql,
-      hideDownload: true,
-      name: 'Data',
-      cardConfiguration: studyCardConfiguration,
-      facetsToPlot: [
-        'studyStatus',
+const studies: SynapseConfig = {
+  name: 'QueryWrapperPlotNav',
+  props: {
+    rgbIndex,
+    shouldDeepLink: true,
+    sql: studiesSql,
+    hideDownload: true,
+    name: 'Data',
+    cardConfiguration: studyCardConfiguration,
+    facetsToPlot: [
+      'studyStatus',
+      'diagnosis',
+      'organs',
+      'tissues',
+      'dataTypes',
+      'tissueFraction',
+    ],
+    searchConfiguration: {
+      searchable: [
+        'studyName',
+        'institutions',
+        'studyDescription',
         'diagnosis',
         'organs',
         'tissues',
-        'dataTypes',
         'tissueFraction',
+        'dataTypes',
+        'methods',
       ],
-      searchConfiguration: {
-        searchable: [
-          'studyName',
-          'institutions',
-          'studyDescription',
-          'diagnosis',
-          'organs',
-          'tissues',
-          'tissueFraction',
-          'dataTypes',
-          'methods',          
-        ],
-      },
     },
   },
 }

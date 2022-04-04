@@ -1,5 +1,5 @@
 import { SynapseConstants } from 'synapse-react-client'
-import { HomeExploreConfig, SynapseConfigArray } from 'types/portal-config'
+import { SynapseConfig, SynapseConfigArray } from 'types/portal-config'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import facetAliases from '../facetAliases'
@@ -10,7 +10,6 @@ import { publicationDetailPageProps } from './publications'
 import { studySql } from '../resources'
 import { iconOptions } from './iconOptions'
 
-const unitDescription = 'Collections'
 const rgbIndex = 9
 
 export const studySchema: GenericCardSchema = {
@@ -56,51 +55,38 @@ export const studiesCardConfiguration: CardConfiguration = {
   ],
 }
 
-export const studies: HomeExploreConfig = {
-  homePageSynapseObject: {
-    name: 'StandaloneQueryWrapper',
-    props: {
-      rgbIndex,
-      unitDescription,
-      facet: 'theme',
-      link: 'Explore/Collections',
-      linkText: 'Explore Collections',
-      sql: studySql,
-    },
-  },
-  explorePageSynapseObject: {
-    name: 'QueryWrapperPlotNav',
-    props: {
-      rgbIndex,
-      cardConfiguration: studiesCardConfiguration,
-      sql: studySql,
-      shouldDeepLink: true,
-      hideDownload: true,
-      name: 'Collections',
-      facetAliases,
-      facetsToPlot: [
-        'collectionType',
-        'deviceLocation',
-        'devicePlatform',
-        'deviceType',
+export const studies: SynapseConfig = {
+  name: 'QueryWrapperPlotNav',
+  props: {
+    rgbIndex,
+    cardConfiguration: studiesCardConfiguration,
+    sql: studySql,
+    shouldDeepLink: true,
+    hideDownload: true,
+    name: 'Collections',
+    facetAliases,
+    facetsToPlot: [
+      'collectionType',
+      'deviceLocation',
+      'devicePlatform',
+      'deviceType',
+      'diagnosis',
+      'digitalAssessmentCategory',
+      'intervention',
+      'reportedOutcome',
+      'sensorType',
+    ],
+    searchConfiguration: {
+      searchable: [
         'diagnosis',
         'digitalAssessmentCategory',
+        'digitalAssessmentDetails',
         'intervention',
+        'investigator',
+        'keywords',
         'reportedOutcome',
-        'sensorType',
+        'study',
       ],
-      searchConfiguration: {
-        searchable: [
-          'diagnosis',
-          'digitalAssessmentCategory',
-          'digitalAssessmentDetails',
-          'intervention',
-          'investigator',
-          'keywords',
-          'reportedOutcome',
-          'study',
-        ],
-      },
     },
   },
 }

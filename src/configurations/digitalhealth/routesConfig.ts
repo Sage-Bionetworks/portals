@@ -25,40 +25,55 @@ const routes: GenericRoute[] = [
         centerTitle: true,
         outsideContainerClassName: 'home-bg-dark home-spacer',
         props: {
-          sql:'SELECT * FROM syn21994974',
+          sql: 'SELECT * FROM syn21994974',
           rgbIndex: 3,
-          configs:
-            [
-              {
-                title: 'Studies',
-                icon: SynapseConstants.FILE,
-                explorePagePath:'/Explore/Collections',
-                exploreObjectType:'Collections',
-                plotsConfig: {
-                  sql: 'SELECT * FROM syn21994974 WHERE ( ( "collectionType" = \'Validation Study\' OR "collectionType" = \'Interventional Study\' OR "collectionType" = \'Observational Study\' ) )',
-                  configs: [{
-                    facetsToPlot:['diagnosis', 'dataCollectionMethod','digitalAssessmentCategory', 'sensorType', 'devicePlatform' ],
-                  },]
-                },
+          configs: [
+            {
+              title: 'Studies',
+              icon: SynapseConstants.FILE,
+              explorePagePath: '/Explore/Collections',
+              exploreObjectType: 'Collections',
+              plotsConfig: {
+                sql: 'SELECT * FROM syn21994974 WHERE ( ( "collectionType" = \'Validation Study\' OR "collectionType" = \'Interventional Study\' OR "collectionType" = \'Observational Study\' ) )',
+                configs: [
+                  {
+                    facetsToPlot: [
+                      'diagnosis',
+                      'dataCollectionMethod',
+                      'digitalAssessmentCategory',
+                      'sensorType',
+                      'devicePlatform',
+                    ],
+                  },
+                ],
               },
-              {
-                title: 'Analysis',
-                icon: SynapseConstants.CHART2,
-                explorePagePath:'/Explore/Collections',
-                exploreObjectType:'Collections',
-                plotsConfig: {
-                  sql: 'SELECT * FROM syn21994974 WHERE ( ( "collectionType" = \'Analysis\' OR "collectionType" = \'Challenge\' ) )',
-                  configs: [{
-                    facetsToPlot:['diagnosis', 'dataCollectionMethod','digitalAssessmentCategory', 'sensorType', 'devicePlatform' ],
-                  },]
-                },
-              }
-            ]  
-          },
+            },
+            {
+              title: 'Analysis',
+              icon: SynapseConstants.CHART2,
+              explorePagePath: '/Explore/Collections',
+              exploreObjectType: 'Collections',
+              plotsConfig: {
+                sql: 'SELECT * FROM syn21994974 WHERE ( ( "collectionType" = \'Analysis\' OR "collectionType" = \'Challenge\' ) )',
+                configs: [
+                  {
+                    facetsToPlot: [
+                      'diagnosis',
+                      'dataCollectionMethod',
+                      'digitalAssessmentCategory',
+                      'sensorType',
+                      'devicePlatform',
+                    ],
+                  },
+                ],
+              },
+            },
+          ],
+        },
       },
       {
         name: 'TableFeedCards',
-        title: 'What\'s New',
+        title: "What's New",
         centerTitle: true,
         props: {
           tableEntityId: 'syn23520190',
@@ -79,7 +94,7 @@ const routes: GenericRoute[] = [
             isOutsideContainer: true,
             props: {
               ...RouteControlWrapperProps,
-              synapseConfig: studies.explorePageSynapseObject,
+              synapseConfig: studies,
             },
           },
         ],
@@ -100,7 +115,7 @@ const routes: GenericRoute[] = [
             isOutsideContainer: true,
             props: {
               ...RouteControlWrapperProps,
-              synapseConfig: data.explorePageSynapseObject,
+              synapseConfig: data,
             },
           },
         ],
@@ -114,7 +129,7 @@ const routes: GenericRoute[] = [
             isOutsideContainer: true,
             props: {
               ...RouteControlWrapperProps,
-              synapseConfig: tools.explorePageSynapseObject,
+              synapseConfig: tools,
             },
           },
         ],
@@ -135,7 +150,7 @@ const routes: GenericRoute[] = [
             isOutsideContainer: true,
             props: {
               ...RouteControlWrapperProps,
-              synapseConfig: publications.explorePageSynapseObject,
+              synapseConfig: publications,
             },
           },
         ],

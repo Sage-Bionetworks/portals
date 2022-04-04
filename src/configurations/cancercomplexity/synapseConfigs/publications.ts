@@ -1,10 +1,10 @@
 import { SynapseConstants } from 'synapse-react-client'
-import { HomeExploreConfig } from 'types/portal-config'
+import { SynapseConfig } from 'types/portal-config'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import facetAliases from '../facetAliases'
 import { publicationSql } from '../resources'
-const unitDescription = 'Publications'
+
 const rgbIndex = 1
 
 export const publicationSchema: GenericCardSchema = {
@@ -57,43 +57,30 @@ export const publicationsCardConfiguration: CardConfiguration = {
   ],
 }
 
-export const publications: HomeExploreConfig = {
-  homePageSynapseObject: {
-    name: 'StandaloneQueryWrapper',
-    props: {
-      rgbIndex,
-      unitDescription,
-      facet: 'theme',
-      link: 'Explore/Publications',
-      linkText: 'Explore Publications',
-      sql: publicationSql,
-    },
-  },
-  explorePageSynapseObject: {
-    name: 'QueryWrapperPlotNav',
-    props: {
-      rgbIndex,
-      cardConfiguration: publicationsCardConfiguration,
-      sql: publicationSql,
-      shouldDeepLink: true,
-      name: 'Publications',
-      facetAliases,
-      searchConfiguration: {
-        searchable: [
-          'publicationTitle',
-          'authors',
-          'journal',
-          'doi',
-          'pubMedId',
-          'keywords',
-          'tummorType',
-          'tissue',
-          'assay',
-          'grantName',
-          'grantNumber',
-          'dataset',
-        ],
-      },
+export const publications: SynapseConfig = {
+  name: 'QueryWrapperPlotNav',
+  props: {
+    rgbIndex,
+    cardConfiguration: publicationsCardConfiguration,
+    sql: publicationSql,
+    shouldDeepLink: true,
+    name: 'Publications',
+    facetAliases,
+    searchConfiguration: {
+      searchable: [
+        'publicationTitle',
+        'authors',
+        'journal',
+        'doi',
+        'pubMedId',
+        'keywords',
+        'tummorType',
+        'tissue',
+        'assay',
+        'grantName',
+        'grantNumber',
+        'dataset',
+      ],
     },
   },
 }

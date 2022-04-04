@@ -5,7 +5,7 @@ import {
   files,
   studies,
   publications,
-  tools,  
+  tools,
   initiatives,
   hackathons,
 } from './synapseConfigs'
@@ -20,14 +20,24 @@ import {
   hackathonsDetailPage,
 } from './synapseConfigs/hackathons'
 
-import {  
+import {
   initiativeCardConfiguration,
   initiativeDetailsPageConfiguration,
 } from './synapseConfigs/initiatives'
 import routeControlWrapperProps from './routeControlWrapperProps'
 import { facetAliases } from './synapseConfigs/commonProps'
-import { organizationCardSchema, organizationDetailsPage, organizationDetailsPageLinkConfig } from './organizations'
-import { fundersSql, hackathonsSql, initiativesSql, peopleSql, studiesSql } from './resources'
+import {
+  organizationCardSchema,
+  organizationDetailsPage,
+  organizationDetailsPageLinkConfig,
+} from './organizations'
+import {
+  fundersSql,
+  hackathonsSql,
+  initiativesSql,
+  peopleSql,
+  studiesSql,
+} from './resources'
 import { toolsDetailsPage } from './synapseConfigs/tools'
 
 const limit = 3
@@ -81,7 +91,7 @@ const routes: GenericRoute[] = [
         props: {
           config: [
             {
-              title: 'Children\'s Tumor Foundation',
+              title: "Children's Tumor Foundation",
               ownerId: 'syn26451327',
               wikiId: '614272',
             },
@@ -119,40 +129,45 @@ const routes: GenericRoute[] = [
         outsideContainerClassName: 'home-spacer',
         centerTitle: true,
         props: {
-            facetAliases,
-            sql: fundersSql,
-            type: SynapseConstants.GENERIC_CARD,
-            titleLinkConfig: organizationDetailsPageLinkConfig,
-            genericCardSchema: {
-              ...organizationCardSchema,
-              imageFileHandleColumnName: 'cardLogo',
-            },
-            descriptionConfig: {
-              showFullDescriptionByDefault: true
-            },
-            ctaLinkConfig: {
-              text: 'Visit Website',
-              link: 'website'
-            }
+          facetAliases,
+          sql: fundersSql,
+          type: SynapseConstants.GENERIC_CARD,
+          titleLinkConfig: organizationDetailsPageLinkConfig,
+          genericCardSchema: {
+            ...organizationCardSchema,
+            imageFileHandleColumnName: 'cardLogo',
           },
+          descriptionConfig: {
+            showFullDescriptionByDefault: true,
+          },
+          ctaLinkConfig: {
+            text: 'Visit Website',
+            link: 'website',
+          },
+        },
       },
       {
         name: 'RssFeedCards',
-        title: 'What\'s New',
+        title: "What's New",
         centerTitle: true,
         outsideContainerClassName: 'home-spacer home-bg-dark',
         props: {
           url: 'https://news.nfdataportal.org',
-          itemsToShow:3,
-          allowCategories: ['Newsletter', 'Hackathon', 'Publication', 'Funding'],
+          itemsToShow: 3,
+          allowCategories: [
+            'Newsletter',
+            'Hackathon',
+            'Publication',
+            'Funding',
+          ],
           // mailChimpListName: 'NF quarterly newsletter',
           // mailChimpUrl:'https://sagebase.us7.list-manage.com/subscribe/post?u=abcdefghi...',
           lockedFacet: {
-            value: 'featured'
-          }
-        }
+            value: 'featured',
+          },
+        },
       },
-    ],    
+    ],
   },
   {
     to: 'Browse Tools',
@@ -176,10 +191,10 @@ const routes: GenericRoute[] = [
           {
             name: 'RouteControlWrapper',
             isOutsideContainer: true,
-            outsideContainerClassName:'container-fluid',
+            outsideContainerClassName: 'container-fluid',
             props: {
               ...routeControlWrapperProps,
-              synapseConfig: initiatives.explorePageSynapseObject,
+              synapseConfig: initiatives,
             },
           },
         ],
@@ -194,7 +209,7 @@ const routes: GenericRoute[] = [
                 props: {
                   sqlOperator: '=',
                   isHeader: true,
-                  
+
                   ...initiativeCardConfiguration,
                   facetAliases,
                   sql: initiativesSql,
@@ -219,7 +234,7 @@ const routes: GenericRoute[] = [
             isOutsideContainer: true,
             props: {
               ...routeControlWrapperProps,
-              synapseConfig: studies.explorePageSynapseObject,
+              synapseConfig: studies,
             },
           },
         ],
@@ -234,7 +249,7 @@ const routes: GenericRoute[] = [
                 props: {
                   sqlOperator: '=',
                   isHeader: true,
-                  
+
                   ...studyCardConfiguration,
                   facetAliases,
                   iconOptions: studyHeaderIconOptions,
@@ -261,7 +276,7 @@ const routes: GenericRoute[] = [
             isOutsideContainer: true,
             props: {
               ...routeControlWrapperProps,
-              synapseConfig: datasets.explorePageSynapseObject,
+              synapseConfig: datasets,
             },
           },
         ],
@@ -275,7 +290,7 @@ const routes: GenericRoute[] = [
             isOutsideContainer: true,
             props: {
               ...routeControlWrapperProps,
-              synapseConfig: files.explorePageSynapseObject,
+              synapseConfig: files,
             },
           },
         ],
@@ -289,7 +304,7 @@ const routes: GenericRoute[] = [
             isOutsideContainer: true,
             props: {
               ...routeControlWrapperProps,
-              synapseConfig: publications.explorePageSynapseObject,
+              synapseConfig: publications,
             },
           },
         ],
@@ -310,7 +325,7 @@ const routes: GenericRoute[] = [
             isOutsideContainer: true,
             props: {
               ...routeControlWrapperProps,
-              synapseConfig: tools.explorePageSynapseObject,
+              synapseConfig: tools,
             },
           },
         ],
@@ -324,7 +339,7 @@ const routes: GenericRoute[] = [
             isOutsideContainer: true,
             props: {
               ...routeControlWrapperProps,
-              synapseConfig: hackathons.explorePageSynapseObject,
+              synapseConfig: hackathons,
             },
           },
         ],
@@ -340,7 +355,7 @@ const routes: GenericRoute[] = [
                   sqlOperator: '=',
                   isHeader: true,
                   ...hackathonCardConfiguration,
-                  facetAliases: {...facetAliases, studyStatus: 'Status'},
+                  facetAliases: { ...facetAliases, studyStatus: 'Status' },
                   secondaryLabelLimit: Infinity,
                   sql: hackathonsSql,
                 },
