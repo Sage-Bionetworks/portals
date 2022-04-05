@@ -115,24 +115,24 @@ const routes: GenericRoute[] = [
                       '/Explore/Studies/DetailsPage?Study=syn16798076',
                   },
                   {
-                    title: 'The IU/Jax/Pitt MODEL-AD Primary Screen Study',
+                    title: 'The IU/Jax/Pitt MODEL-AD Levetiracetam 5XFAD Study',
                     description:
-                      "This study provides an initial molecular and behavioral characterization of mouse models of Late-Onset Alzheimer's disease.",
+                      "This study provides pharmacokinetic, imaging, and behavior data on the 5XFAD mouse model dosed with levetiracetam.",
                     facetsToPlot: ['dataType', 'assay'],
                     selectFacetColumnName: 'study',
-                    selectFacetColumnValue: 'Jax.IU.Pitt_PrimaryScreen',
+                    selectFacetColumnValue: 'Jax.IU.Pitt_Levetiracetam-5XFAD',
                     detailsPagePath:
-                      '/Explore/Studies/DetailsPage?Study=syn21595258',
+                      '/Explore/Studies/DetailsPage?Study=syn21784897',
                   },
                   {
-                    title: 'The IU/Jax/Pit MODEL-AD APOE/TREM2 Study',
+                    title: 'The IU/Jax/Pitt MODEL-AD Verubecestat 5XFAD Study',
                     description:
-                      "This study provides deep phenotyping data on a late onset Alzheimer's disease model with humanized APOE and TREM2.",
+                      "This study provides pharmacokinetic, imaging, immunoassay, and behavior data on the 5XFAD mouse model dosed with verubecestat.",
                     facetsToPlot: ['dataType', 'assay'],
                     selectFacetColumnName: 'study',
-                    selectFacetColumnValue: 'Jax.IU.Pitt_APOE4.Trem2.R47H',
+                    selectFacetColumnValue: 'Jax.IU.Pitt_Verubecestat_5XFAD',
                     detailsPagePath:
-                      '/Explore/Studies/DetailsPage?Study=syn17095980',
+                      '/Explore/Studies/DetailsPage?Study=syn21863375',
                   },
                 ],
               },
