@@ -7,11 +7,11 @@ import routesConfig, {
   EXPLORE_INDEX,
 } from '../test-configuration/routesConfig'
 import { NestedRoute, SynapseConfig } from 'types/portal-config'
-import CardContainerLogic from 'synapse-react-client/dist/containers/CardContainerLogic'
 import { mount } from 'enzyme'
 import StatefulButtonControlWrapper from '../portal-components/StatefulButtonControlWrapper'
 import { MemoryRouter } from 'react-router'
 import { SynapseContextProvider } from 'synapse-react-client/dist/utils/SynapseContext'
+import MarkdownSynapse from 'synapse-react-client/dist/containers/MarkdownSynapse'
 
 describe('getRouteFromParams works', () => {
   // The home page route is a special case that we have to handle
@@ -70,11 +70,9 @@ describe('getRouteFromParams works', () => {
 describe('RouteResolver works', () => {
   it('renders SRC components correctly', () => {
     const mockedSynObject: SynapseConfig = {
-      name: 'CardContainerLogic',
+      name: 'Markdown',
       props: {
-        sql: '',
-        type: '',
-        entityId: '',
+        markdown: '## This is a markdown component',
       },
     }
     const synObj = mount(
@@ -88,7 +86,7 @@ describe('RouteResolver works', () => {
         <SynapseComponent synapseConfig={mockedSynObject} />
       </SynapseContextProvider>,
     )
-    expect(synObj.find(CardContainerLogic)).toHaveLength(1)
+    expect(synObj.find(MarkdownSynapse)).toHaveLength(1)
   })
 
   it('renders portal specific components correctly', () => {
@@ -100,10 +98,9 @@ describe('RouteResolver works', () => {
             name: 'mock2',
             synapseConfigArray: [
               {
-                name: 'CardContainerLogic',
+                name: 'Markdown',
                 props: {
-                  sql: '',
-                  type: '',
+                  markdown: '## This is a markdown component',
                 },
               },
             ],

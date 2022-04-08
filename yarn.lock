@@ -2517,10 +2517,17 @@
   resolved "https://registry.yarnpkg.com/@types/parse-json/-/parse-json-4.0.0.tgz#2f8bb441434d163b35fb8ffdccd7138927ffb8c0"
   integrity sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==
 
-"@types/plotly.js@*", "@types/plotly.js@^1.54.10":
+"@types/plotly.js@*":
   version "1.54.10"
   resolved "https://registry.yarnpkg.com/@types/plotly.js/-/plotly.js-1.54.10.tgz#608ecf2b348006cff9e449c6e5e32625a675909e"
   integrity sha512-38CuUoM5M1jQl5setuGl4yj59+7Cn6WYIQyeGLptJpAJre9/wZLl0EzdnImVB3l+qUBYxkbCH9FIDV/JoPzTXQ==
+  dependencies:
+    "@types/d3" "^3"
+
+"@types/plotly.js@^1.54.20":
+  version "1.54.20"
+  resolved "https://registry.yarnpkg.com/@types/plotly.js/-/plotly.js-1.54.20.tgz#88fd8500f4860eb7590cb38366fa098618cc68df"
+  integrity sha512-vqiqq5chr72QoApD+6Hu52iuBvT5/po/sdVF74IBnacQV6J1MjH9OeFZ3GFDwKLF24xT++FMkEGAWcgVMwg2YQ==
   dependencies:
     "@types/d3" "^3"
 
@@ -9937,15 +9944,10 @@ pkg-up@^2.0.0:
   dependencies:
     find-up "^2.1.0"
 
-plotly.js-basic-dist@^1.47.3:
-  version "1.58.5"
-  resolved "https://registry.yarnpkg.com/plotly.js-basic-dist/-/plotly.js-basic-dist-1.58.5.tgz#13f52eb93a989899f288dec342048f0dafcb1da1"
-  integrity sha512-Srbt1ACLknY2r655udWwc8cxEan0FvhQUDkX/VW9NATNs5g38mc+OTLmZIRmUrJu2Sr/jDXqZ4EqFnzN9dOXvQ==
-
-plotly.js-basic-dist@^1.54.7:
-  version "1.58.4"
-  resolved "https://registry.yarnpkg.com/plotly.js-basic-dist/-/plotly.js-basic-dist-1.58.4.tgz#abb139d253a7a17bb68a9a190b0f2ad6002c3f44"
-  integrity sha512-WaxrfR06KGeR73PEEcbQIws4E2TZeI5LFWrqNN3COrT12+y6WI7IONgz0iFSvZouRL/8VQvvzWjJHf5MJ/MwfQ==
+plotly.js-basic-dist@^2.11.1:
+  version "2.11.1"
+  resolved "https://registry.yarnpkg.com/plotly.js-basic-dist/-/plotly.js-basic-dist-2.11.1.tgz#e4488b302524823154a902c0c004db3cc464b7ed"
+  integrity sha512-ZJL/dupVLsNwB1B5IeEQZngZIu3OWDt6BfS5SX031UyjdYa6xbF2wmVVj6amPVsuwENXvvOGrAmhORG08KX8zA==
 
 pluralize@^8.0.0:
   version "8.0.0"
@@ -12832,10 +12834,10 @@ symbol-tree@^3.2.4:
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.4.tgz#430637d248ba77e078883951fb9aa0eed7c63fa2"
   integrity sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==
 
-synapse-react-client@3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-3.0.0.tgz#92677b8d9e36838b8ac99cb65c79d504b76c4b83"
-  integrity sha512-5NPz/9lOJJq16H/QAf38aPWxMdRzlUspUyjNOtJFFiUjCqAzjb6CLYqPXGeP+XWBsmYwKScb+/HNl6ezdcbXtw==
+synapse-react-client@3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-3.0.1.tgz#8d55388daace094fd93d4d0da3bbb6cbb64867a2"
+  integrity sha512-SuPcUZ/0r8ftbYbUfs4MWq5htjhY0B4g8emkQnoVhpvGKu1BCOmSRpRWP74ie5AOjIsmndKOC/4l88Y9C+uPmQ==
   dependencies:
     "@apidevtools/json-schema-ref-parser" "^9.0.9"
     "@brainhubeu/react-carousel" "1.19.26"
@@ -12877,7 +12879,7 @@ synapse-react-client@3.0.0:
     markdown-it-synapse-table "^1.0.6"
     moment "^2.24.0"
     moment-timezone "^0.5.32"
-    plotly.js-basic-dist "^1.54.7"
+    plotly.js-basic-dist "^2.11.1"
     pluralize "^8.0.0"
     raf "^3.4.1"
     react "16.14.0"
@@ -12896,6 +12898,7 @@ synapse-react-client@3.0.0:
     react-popper "^2.2.5"
     react-query "3.33.1"
     react-reflex "^4.0.0"
+    react-router "5.2.1"
     react-router-dom "5.3.0"
     react-select "^4.3.1"
     react-sizeme "^2.6.12"
