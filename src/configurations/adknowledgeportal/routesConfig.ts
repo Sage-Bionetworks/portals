@@ -64,6 +64,26 @@ const routes: GenericRoute[] = [
               plotsConfig: {
                 configs: [
                   {
+                    title: 'The Whole Genome Sequencing Harmonization Study',
+                    description:
+                      'This study provides a set of harmonized WGS data generated from the three primary AMP-AD cohort studies: ROSMAP, MSBB, and MayoRNAseq.',
+                    facetsToPlot: ['dataType', 'assay'],
+                    selectFacetColumnName: 'study',
+                    selectFacetColumnValue: 'WGS_Harmonization',
+                    detailsPagePath:
+                      '/Explore/Studies/DetailsPage?Study=syn22264775',
+                  },
+                  {
+                    title: 'The RNAseq Harmonization Study',
+                    description:
+                      'This study provides harmonized RNA sequencing data from the ROSMAP, MSBB, and MayoRNAseq studies that have been aligned to the GRCh38 human genome build.',
+                    facetsToPlot: ['dataType', 'assay'],
+                    selectFacetColumnName: 'study',
+                    selectFacetColumnValue: 'RNAseq_Harmonization',
+                    detailsPagePath:
+                      '/Explore/Studies/DetailsPage?Study=syn21241740',
+                  },
+                  {
                     title:
                       'The Religious Orders and Memory and Aging Project Study',
                     description:
@@ -73,27 +93,7 @@ const routes: GenericRoute[] = [
                     selectFacetColumnValue: 'ROSMAP',
                     detailsPagePath:
                       '/Explore/Studies/DetailsPage?Study=syn3219045',
-                  },
-                  {
-                    title: 'The Mount Sinai Brain Bank Study',
-                    description:
-                      'This study generated gene expression, genomic variant and proteomic data from brain specimens obtained from the Mount Sinai/JJ Peters VA Medical Center Brain Bank (MSBB).',
-                    facetsToPlot: ['dataType', 'assay'],
-                    selectFacetColumnName: 'study',
-                    selectFacetColumnValue: 'MSBB',
-                    detailsPagePath:
-                      '/Explore/Studies/DetailsPage?Study=syn3159438',
-                  },
-                  {
-                    title: 'The RNAseq Harmonization Study',
-                    description:
-                      'The goal of this project was to create a uniformly processed RNAseq dataset across the three largest AMP-AD contributed studies (ROSMAP/MSBB/MayoRNAseq).',
-                    facetsToPlot: ['dataType', 'assay'],
-                    selectFacetColumnName: 'study',
-                    selectFacetColumnValue: 'rnaSeqReprocessing',
-                    detailsPagePath:
-                      '/Explore/Studies/DetailsPage?Study=syn9702085',
-                  },
+                  }
                 ],
               },
             },
@@ -115,24 +115,24 @@ const routes: GenericRoute[] = [
                       '/Explore/Studies/DetailsPage?Study=syn16798076',
                   },
                   {
-                    title: 'The IU/Jax/Pitt MODEL-AD Primary Screen Study',
+                    title: 'The IU/Jax/Pitt MODEL-AD Levetiracetam 5XFAD Study',
                     description:
-                      "This study provides an initial molecular and behavioral characterization of mouse models of Late-Onset Alzheimer's disease.",
+                      "This study provides pharmacokinetic, imaging, and behavior data on the 5XFAD mouse model dosed with levetiracetam.",
                     facetsToPlot: ['dataType', 'assay'],
                     selectFacetColumnName: 'study',
-                    selectFacetColumnValue: 'Jax.IU.Pitt_PrimaryScreen',
+                    selectFacetColumnValue: 'Jax.IU.Pitt_Levetiracetam-5XFAD',
                     detailsPagePath:
-                      '/Explore/Studies/DetailsPage?Study=syn21595258',
+                      '/Explore/Studies/DetailsPage?Study=syn21784897',
                   },
                   {
-                    title: 'The IU/Jax/Pit MODEL-AD APOE/TREM2 Study',
+                    title: 'The IU/Jax/Pitt MODEL-AD Verubecestat 5XFAD Study',
                     description:
-                      "This study provides deep phenotyping data on a late onset Alzheimer's disease model with humanized APOE and TREM2.",
+                      "This study provides pharmacokinetic, imaging, immunoassay, and behavior data on the 5XFAD mouse model dosed with verubecestat.",
                     facetsToPlot: ['dataType', 'assay'],
                     selectFacetColumnName: 'study',
-                    selectFacetColumnValue: 'Jax.IU.Pitt_APOE4.Trem2.R47H',
+                    selectFacetColumnValue: 'Jax.IU.Pitt_Verubecestat_5XFAD',
                     detailsPagePath:
-                      '/Explore/Studies/DetailsPage?Study=syn17095980',
+                      '/Explore/Studies/DetailsPage?Study=syn21863375',
                   },
                 ],
               },
