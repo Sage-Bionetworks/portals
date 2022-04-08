@@ -9,7 +9,7 @@ import SynapseRedirectDialog from 'portal-components/SynapseRedirectDialog'
 import { SynapseContextProvider } from 'synapse-react-client/dist/utils/SynapseContext'
 
 export type AppInitializerState = {
-  token: string
+  token?: string
   showLoginDialog: boolean
   synapseRedirectUrl?: string
   userProfile: UserProfile | undefined
@@ -35,15 +35,14 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
   constructor(props: Props) {
     super(props)
     this.state = {
-      token: '',
+      token: undefined,
       hasCalledGetSession: false,
       userProfile: undefined,
       showLoginDialog: false,
       synapseRedirectUrl: undefined,
     }
-    this.updateSynapseCallbackCookie = this.updateSynapseCallbackCookie.bind(
-      this,
-    )
+    this.updateSynapseCallbackCookie =
+      this.updateSynapseCallbackCookie.bind(this)
   }
 
   resetSession = () => {
@@ -57,7 +56,7 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
     SynapseClient.signOut(() => {
       // reset token and user profile
       this.setState({
-        token: '',
+        token: undefined,
         userProfile: undefined,
         hasCalledGetSession: true,
       })
@@ -147,8 +146,7 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
       <SynapseContextProvider
         synapseContext={{
           accessToken: this.state.token,
-          isInExperimentalMode:
-            SynapseClient.isInSynapseExperimentalMode(),
+          isInExperimentalMode: SynapseClient.isInSynapseExperimentalMode(),
           utcTime: SynapseClient.getUseUtcTimeFromCookie(),
         }}
       >
@@ -168,7 +166,9 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
           }
         })}
         <SynapseRedirectDialog
-          onCancelRedirect={() => this.setState({ synapseRedirectUrl: undefined })}
+          onCancelRedirect={() =>
+            this.setState({ synapseRedirectUrl: undefined })
+          }
           synapseRedirectUrl={this.state.synapseRedirectUrl}
         />
       </SynapseContextProvider>
@@ -190,7 +190,7 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
       isInvokingDownloadTable = anchorElement.text === DOWNLOAD_FILES_MENU_TEXT
       if (anchorElement.href) {
         const { hostname } = new URL(anchorElement.href)
-        if (hostname.toLowerCase() === 'www.synapse.org' ) {
+        if (hostname.toLowerCase() === 'www.synapse.org') {
           // && anchorElement.target !== '_blank') {  // should we skip the dialog if opening in a new window?
           ev.preventDefault()
           if (!this.state.synapseRedirectUrl) {
@@ -199,11 +199,12 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
         }
       }
     }
-    if (ev.target instanceof HTMLButtonElement || ev.target instanceof HTMLAnchorElement) {
+    if (
+      ev.target instanceof HTMLButtonElement ||
+      ev.target instanceof HTMLAnchorElement
+    ) {
       const el = ev.target as HTMLElement
-      if (
-        el.classList.contains(SynapseConstants.SRC_SIGN_IN_CLASS)
-      ) {
+      if (el.classList.contains(SynapseConstants.SRC_SIGN_IN_CLASS)) {
         if (!this.state.showLoginDialog) {
           this.setState({ showLoginDialog: true })
         }
