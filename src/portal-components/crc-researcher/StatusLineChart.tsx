@@ -215,7 +215,7 @@ const StatusLineChart: FunctionComponent<StatusLineChartProps> = ({
             layout={layoutConfig}
             style={{ width: '100%' }}
             config={optionsConfig}
-            data={getChartDataPoints(plotData)}
+            data={getChartDataPoints(plotData) as PlotParams['data']}
           />
         </div>
       )}

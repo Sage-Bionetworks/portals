@@ -58,7 +58,10 @@ function getLayoutConfig(
   ]
   return newLayoutConfig
 }
-function getChartDataPoints(offset: number, plotData: PlotData) {
+function getChartDataPoints(
+  offset: number,
+  plotData: PlotData,
+): PlotParams['data'] {
   const surveyData: Plotly.Data = {
     values: [
       plotData.surveyCounts[offset],
@@ -74,7 +77,7 @@ function getChartDataPoints(offset: number, plotData: PlotData) {
   }
 
   const data = [surveyData]
-  return data
+  return data as PlotParams['data']
 }
 
 export function fetchData(
