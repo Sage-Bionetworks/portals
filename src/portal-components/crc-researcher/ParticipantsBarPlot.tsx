@@ -1,13 +1,17 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import Plotly from 'plotly.js-basic-dist'
-import * as PlotlyTyped from 'plotly.js'
 import createPlotlyComponent from 'react-plotly.js/factory'
 import _ from 'lodash-es'
 import { SynapseConstants } from 'synapse-react-client'
-import { QueryBundleRequest, QueryResultBundle, RowSet } from 'synapse-react-client/dist/utils/synapseTypes'
+import {
+  QueryBundleRequest,
+  QueryResultBundle,
+  RowSet,
+} from 'synapse-react-client/dist/utils/synapseTypes'
 import { getFullQueryTableResults } from 'synapse-react-client/dist/utils/SynapseClient'
 import { GraphItem } from 'synapse-react-client/dist/containers/widgets/themes-plot/types'
 import { resultToJson } from 'synapse-react-client/dist/utils/functions/sqlFunctions'
+import { PlotParams } from 'react-plotly.js'
 
 const Plot = createPlotlyComponent(Plotly)
 
@@ -16,7 +20,7 @@ export type ParticipantsBarPlotProps = {
   style?: React.CSSProperties
 }
 
-const barLayoutConfig: Partial<PlotlyTyped.Layout> = {
+const barLayoutConfig: Partial<Plotly.Layout> = {
   barmode: 'stack',
   showlegend: false,
   dragmode: false,
@@ -30,7 +34,7 @@ const barLayoutConfig: Partial<PlotlyTyped.Layout> = {
   },
 }
 
-const optionsConfig: Partial<PlotlyTyped.Config> = {
+const optionsConfig: PlotParams['config'] = {
   responsive: true,
   scrollZoom: false,
   editable: false,
@@ -38,7 +42,13 @@ const optionsConfig: Partial<PlotlyTyped.Config> = {
   displayModeBar: false,
 }
 
-function getTraceItem(x:string[], y:number[], name:string, tooltips: string[], color:string):any {
+function getTraceItem(
+  x: string[],
+  y: number[],
+  name: string,
+  tooltips: string[],
+  color: string,
+): any {
   return {
     // flip x and y since we are showing a horizontal bar chart
     x: y,
@@ -55,29 +65,24 @@ function getTraceItem(x:string[], y:number[], name:string, tooltips: string[], c
   }
 }
 
-
-function getTotalSurveysReceived(
-  data: any[]
-): number {
-  let totalCount:number = 0
+function getTotalSurveysReceived(data: any[]): number {
+  let totalCount: number = 0
   data.forEach((row, i) => {
     totalCount += parseInt(row['count'])
   })
   return totalCount
 }
-function getBarPlotDataPoints(
-  data: any[]
-): any[] {
-  let totalCount:number = getTotalSurveysReceived(data)
-  
-  let invitedRows = data.filter(item => item['x'] === 'Invited')
-  let scheduledRows = data.filter(item => item['x'] === 'Scheduled')
-  let testedRows = data.filter(item => item['x'] === 'Tested')
+function getBarPlotDataPoints(data: any[]): any[] {
+  let totalCount: number = getTotalSurveysReceived(data)
+
+  let invitedRows = data.filter((item) => item['x'] === 'Invited')
+  let scheduledRows = data.filter((item) => item['x'] === 'Scheduled')
+  let testedRows = data.filter((item) => item['x'] === 'Tested')
 
   const result: any[] = []
   const defaultColors = [`black`, `#C4C4C4`]
 
-  let invitedCount = 0  
+  let invitedCount = 0
   let scheduledCount = 0
   let testedCount = 0
 
@@ -94,36 +99,47 @@ function getBarPlotDataPoints(
     invitedCount = parseInt(invitedRows[0].count) + scheduledCount + testedCount
   }
 
-  const x:string[] = ['Samples collected', 'Labs scheduled', 'Invitations sent']
-  const y1:number[] = [testedCount, scheduledCount, invitedCount]
-  const y2:number[] = [scheduledCount - testedCount, invitedCount - scheduledCount, totalCount - invitedCount]
-  const tooltips:string[] = [`${testedCount}/${scheduledCount}`, `${scheduledCount}/${invitedCount}`, `${invitedCount}/${totalCount}`]
+  const x: string[] = [
+    'Samples collected',
+    'Labs scheduled',
+    'Invitations sent',
+  ]
+  const y1: number[] = [testedCount, scheduledCount, invitedCount]
+  const y2: number[] = [
+    scheduledCount - testedCount,
+    invitedCount - scheduledCount,
+    totalCount - invitedCount,
+  ]
+  const tooltips: string[] = [
+    `${testedCount}/${scheduledCount}`,
+    `${scheduledCount}/${invitedCount}`,
+    `${invitedCount}/${totalCount}`,
+  ]
   result.push(getTraceItem(x, y1, 'Current', tooltips, defaultColors[0]))
   result.push(getTraceItem(x, y2, 'Out of', tooltips, defaultColors[1]))
   return result
 }
 
 function getLayout(
-  layoutConfig: Partial<PlotlyTyped.Layout>,
-  totalNumberOfResults: number
-): Partial<PlotlyTyped.Layout> {
+  layoutConfig: Partial<Plotly.LayoutAxis>,
+  totalNumberOfResults: number,
+): Partial<Plotly.LayoutAxis> {
   const layout = _.cloneDeep(layoutConfig)
   layout.xaxis = {
     visible: false,
   }
   layout.title = {
-    text: `Total surveys received: ${totalNumberOfResults}`
+    text: `Total surveys received: ${totalNumberOfResults}`,
   }
   layout.showlegend = false
   layout.height = 240
   return layout
 }
 
-export function fetchData(
-  token: string
-): Promise<RowSet> {
-  const sql = 'SELECT WorkflowState as "x", count(healthCode) as "count" FROM syn22154087 WHERE dataGroups NOT HAS (\'test_user\') AND testLocation IN (\'lab\', \'home\', \'noTest\') GROUP BY WorkflowState'
-  
+export function fetchData(token: string): Promise<RowSet> {
+  const sql =
+    "SELECT WorkflowState as \"x\", count(healthCode) as \"count\" FROM syn22154087 WHERE dataGroups NOT HAS ('test_user') AND testLocation IN ('lab', 'home', 'noTest') GROUP BY WorkflowState"
+
   const queryRequest: QueryBundleRequest = {
     concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
     partMask: SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
@@ -142,23 +158,23 @@ export function fetchData(
 
 const ParticipantsBarPlot: FunctionComponent<ParticipantsBarPlotProps> = ({
   token,
-  style = { width: '100%', height: '100%', margin: '30px 10px' },  
+  style = { width: '100%', height: '100%', margin: '30px 10px' },
 }: ParticipantsBarPlotProps) => {
-// get plot data!
-const [isLoaded, setIsLoaded] = useState(false)
-const [barPlotQueryData, setBarPlotQueryData] = useState<GraphItem[]>([])
-useEffect(() => {
-  const barPlotData = fetchData(token!)
-  Promise.all([barPlotData])
-    .then(result => {
-      setBarPlotQueryData(resultToJson(result[0].headers, result[0].rows))
-      setIsLoaded(true)
-    })
-    .catch(err => {
-      throw err
-    })
-  return () => {}
-}, [token])
+  // get plot data!
+  const [isLoaded, setIsLoaded] = useState(false)
+  const [barPlotQueryData, setBarPlotQueryData] = useState<GraphItem[]>([])
+  useEffect(() => {
+    const barPlotData = fetchData(token!)
+    Promise.all([barPlotData])
+      .then((result) => {
+        setBarPlotQueryData(resultToJson(result[0].headers, result[0].rows))
+        setIsLoaded(true)
+      })
+      .catch((err) => {
+        throw err
+      })
+    return () => {}
+  }, [token])
 
   return (
     <>
@@ -170,7 +186,10 @@ useEffect(() => {
       {isLoaded && barPlotQueryData && token && (
         <Plot
           style={style}
-          layout={getLayout(barLayoutConfig, getTotalSurveysReceived(barPlotQueryData))}
+          layout={getLayout(
+            barLayoutConfig,
+            getTotalSurveysReceived(barPlotQueryData),
+          )}
           config={optionsConfig}
           data={getBarPlotDataPoints(barPlotQueryData)}
         />

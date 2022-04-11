@@ -2517,14 +2517,7 @@
   resolved "https://registry.yarnpkg.com/@types/parse-json/-/parse-json-4.0.0.tgz#2f8bb441434d163b35fb8ffdccd7138927ffb8c0"
   integrity sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==
 
-"@types/plotly.js@*":
-  version "1.54.10"
-  resolved "https://registry.yarnpkg.com/@types/plotly.js/-/plotly.js-1.54.10.tgz#608ecf2b348006cff9e449c6e5e32625a675909e"
-  integrity sha512-38CuUoM5M1jQl5setuGl4yj59+7Cn6WYIQyeGLptJpAJre9/wZLl0EzdnImVB3l+qUBYxkbCH9FIDV/JoPzTXQ==
-  dependencies:
-    "@types/d3" "^3"
-
-"@types/plotly.js@^1.54.20":
+"@types/plotly.js@*", "@types/plotly.js@^1.54.10":
   version "1.54.20"
   resolved "https://registry.yarnpkg.com/@types/plotly.js/-/plotly.js-1.54.20.tgz#88fd8500f4860eb7590cb38366fa098618cc68df"
   integrity sha512-vqiqq5chr72QoApD+6Hu52iuBvT5/po/sdVF74IBnacQV6J1MjH9OeFZ3GFDwKLF24xT++FMkEGAWcgVMwg2YQ==
@@ -9944,10 +9937,10 @@ pkg-up@^2.0.0:
   dependencies:
     find-up "^2.1.0"
 
-plotly.js-basic-dist@^2.11.1:
-  version "2.11.1"
-  resolved "https://registry.yarnpkg.com/plotly.js-basic-dist/-/plotly.js-basic-dist-2.11.1.tgz#e4488b302524823154a902c0c004db3cc464b7ed"
-  integrity sha512-ZJL/dupVLsNwB1B5IeEQZngZIu3OWDt6BfS5SX031UyjdYa6xbF2wmVVj6amPVsuwENXvvOGrAmhORG08KX8zA==
+plotly.js-basic-dist@^1.47.3, plotly.js-basic-dist@^2.11.1:
+  version "1.58.5"
+  resolved "https://registry.yarnpkg.com/plotly.js-basic-dist/-/plotly.js-basic-dist-1.58.5.tgz#13f52eb93a989899f288dec342048f0dafcb1da1"
+  integrity sha512-Srbt1ACLknY2r655udWwc8cxEan0FvhQUDkX/VW9NATNs5g38mc+OTLmZIRmUrJu2Sr/jDXqZ4EqFnzN9dOXvQ==
 
 pluralize@^8.0.0:
   version "8.0.0"
