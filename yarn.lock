@@ -12827,10 +12827,10 @@ symbol-tree@^3.2.4:
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.4.tgz#430637d248ba77e078883951fb9aa0eed7c63fa2"
   integrity sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==
 
-synapse-react-client@3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-3.0.1.tgz#8d55388daace094fd93d4d0da3bbb6cbb64867a2"
-  integrity sha512-SuPcUZ/0r8ftbYbUfs4MWq5htjhY0B4g8emkQnoVhpvGKu1BCOmSRpRWP74ie5AOjIsmndKOC/4l88Y9C+uPmQ==
+synapse-react-client@3.0.3:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-3.0.3.tgz#2abdb76767eab2f397cf5549ab2485f6f32a3873"
+  integrity sha512-EJEpvTtfyMWUDwJGy48yyxGC92AEdfRMo6Ndfl3Fe6LVYDcxGEePlodculjLH+9ZMcOcHOE4YSk0kinkMaQjgg==
   dependencies:
     "@apidevtools/json-schema-ref-parser" "^9.0.9"
     "@brainhubeu/react-carousel" "1.19.26"
