@@ -1,5 +1,5 @@
 import { SynapseConstants } from 'synapse-react-client'
-import { HomeExploreConfig } from 'types/portal-config'
+import { SynapseConfig } from 'types/portal-config'
 import { facetAliases } from './commonProps'
 
 import hackathonActiveSvg from '../style/hackathon-active.svg'
@@ -9,7 +9,6 @@ import { DetailsPageProps } from 'types/portal-util-types'
 import { hackathonsSql } from '../resources'
 
 const type = SynapseConstants.GENERIC_CARD
-const unitDescription = 'Hackathon Projects'
 const rgbIndex = 5
 
 export const hackathonCardConfiguration: CardConfiguration = {
@@ -81,39 +80,25 @@ export const hackathonCardConfiguration: CardConfiguration = {
   },
 }
 
-const hackathons: HomeExploreConfig = {
-  homePageSynapseObject: {
-    name: 'StandaloneQueryWrapper',
-    props: {
-      facetAliases,
-      unitDescription,
-      rgbIndex,
-      link: 'Explore/Hackathon%20Projects',
-      linkText: 'Explore Hackathon Projects',
-      facet: 'diseaseFocus',
-      sql: hackathonsSql,
-    },
-  },
-  explorePageSynapseObject: {
-    name: 'QueryWrapperPlotNav',
-    props: {
-      rgbIndex,
-      sql: hackathonsSql,
-      name: 'Hackathon Projects',
-      shouldDeepLink: true,
-      cardConfiguration: hackathonCardConfiguration,
-      facetAliases: { ...facetAliases, studyStatus: 'Status' },
-      searchConfiguration: {
-        searchable: [
-          'name',
-          'summary',
-          'studyStatus',
-          'institutions',
-          'diseaseFocus',
-          'fundingAgency',
-          'manifestation',
-        ],
-      },
+const hackathons: SynapseConfig = {
+  name: 'QueryWrapperPlotNav',
+  props: {
+    rgbIndex,
+    sql: hackathonsSql,
+    name: 'Hackathon Projects',
+    shouldDeepLink: true,
+    cardConfiguration: hackathonCardConfiguration,
+    facetAliases: { ...facetAliases, studyStatus: 'Status' },
+    searchConfiguration: {
+      searchable: [
+        'name',
+        'summary',
+        'studyStatus',
+        'institutions',
+        'diseaseFocus',
+        'fundingAgency',
+        'manifestation',
+      ],
     },
   },
 }

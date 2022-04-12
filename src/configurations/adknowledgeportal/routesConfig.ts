@@ -227,7 +227,14 @@ const routes: GenericRoute[] = [
         name: 'Redirect',
         props: {
           from: 'MODEL-ADstrains',
-          to: { pathname: '/Explore/Experimental Models', search: `QueryWrapper0={"sql":"${encodeURI(experimentalModelsSql)}","limit":25,"offset":0,"selectedFacets":[{"concreteType":"org.sagebionetworks.repo.model.table.FacetColumnValuesRequest","columnName":"${modelADStrainsSelectedFacet.columnName}","facetValues":["${modelADStrainsSelectedFacet.facetValue}"]}]}` },
+          to: {
+            pathname: '/Explore/Experimental Models',
+            search: `QueryWrapper0={"sql":"${encodeURI(
+              experimentalModelsSql,
+            )}","limit":25,"offset":0,"selectedFacets":[{"concreteType":"org.sagebionetworks.repo.model.table.FacetColumnValuesRequest","columnName":"${
+              modelADStrainsSelectedFacet.columnName
+            }","facetValues":["${modelADStrainsSelectedFacet.facetValue}"]}]}`,
+          },
         },
       },
     ],
@@ -324,7 +331,7 @@ const routes: GenericRoute[] = [
             isOutsideContainer: true,
             props: {
               ...RouteControlWrapperProps,
-              synapseConfig: projects.explorePageSynapseObject,
+              synapseConfig: projects,
             },
           },
         ],
@@ -338,7 +345,7 @@ const routes: GenericRoute[] = [
             isOutsideContainer: true,
             props: {
               ...RouteControlWrapperProps,
-              synapseConfig: studies.explorePageSynapseObject,
+              synapseConfig: studies,
             },
           },
         ],
@@ -359,7 +366,7 @@ const routes: GenericRoute[] = [
             isOutsideContainer: true,
             props: {
               ...RouteControlWrapperProps,
-              synapseConfig: data.explorePageSynapseObject,
+              synapseConfig: data,
             },
           },
         ],
@@ -373,7 +380,7 @@ const routes: GenericRoute[] = [
             isOutsideContainer: true,
             props: {
               ...RouteControlWrapperProps,
-              synapseConfig: publications.explorePageSynapseObject,
+              synapseConfig: publications,
             },
           },
         ],
@@ -387,7 +394,7 @@ const routes: GenericRoute[] = [
             isOutsideContainer: true,
             props: {
               ...RouteControlWrapperProps,
-              synapseConfig: people.explorePageSynapseObject,
+              synapseConfig: people,
             },
           },
         ],
@@ -418,7 +425,7 @@ const routes: GenericRoute[] = [
             isOutsideContainer: true,
             props: {
               ...RouteControlWrapperProps,
-              synapseConfig: experimentalTools.explorePageSynapseObject,
+              synapseConfig: experimentalTools,
             },
           },
         ],
@@ -432,7 +439,7 @@ const routes: GenericRoute[] = [
             isOutsideContainer: true,
             props: {
               ...RouteControlWrapperProps,
-              synapseConfig: computationalTools.explorePageSynapseObject,
+              synapseConfig: computationalTools,
             },
           },
         ],
@@ -446,7 +453,7 @@ const routes: GenericRoute[] = [
             isOutsideContainer: true,
             props: {
               ...RouteControlWrapperProps,
-              synapseConfig: targetEnablingResources.explorePageSynapseObject,
+              synapseConfig: targetEnablingResources,
             },
           },
         ],

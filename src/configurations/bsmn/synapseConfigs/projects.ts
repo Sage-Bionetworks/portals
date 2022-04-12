@@ -1,4 +1,4 @@
-import { HomeExploreConfig } from 'types/portal-config'
+import { SynapseConfig } from 'types/portal-config'
 import { SynapseConstants } from 'synapse-react-client'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import { DetailsPageProps } from 'types/portal-util-types'
@@ -13,9 +13,7 @@ import {
   publicationsSql,
 } from '../resources'
 
-const unitDescription = 'Projects'
 const rgbIndex = 7
-const facet = 'Program'
 
 export const projectCardConfiguration: CardConfiguration = {
   type: SynapseConstants.GENERIC_CARD,
@@ -46,42 +44,29 @@ export const projectCardConfiguration: CardConfiguration = {
   },
 }
 
-const projects: HomeExploreConfig = {
-  homePageSynapseObject: {
-    name: 'StandaloneQueryWrapper',
-    props: {
-      unitDescription,
-      rgbIndex,
-      facet,
-      link: 'Explore/Projects',
-      linkText: 'Explore Projects',
-      sql: projectsSql,
+const projects: SynapseConfig = {
+  name: 'QueryWrapperPlotNav',
+  props: {
+    rgbIndex,
+    sql: projectsSql,
+    name: 'Projects',
+    cardConfiguration: projectCardConfiguration,
+    shouldDeepLink: true,
+    hideDownload: true,
+    facetsToPlot: ['primaryInvestigators', 'grantNumber', 'institutions'],
+    facetAliases: {
+      ndaCollection: 'NDA Collection',
     },
-  },
-  explorePageSynapseObject: {
-    name: 'QueryWrapperPlotNav',
-    props: {
-      rgbIndex,
-      sql: projectsSql,
-      name: 'Projects',
-      cardConfiguration: projectCardConfiguration,
-      shouldDeepLink: true,
-      hideDownload: true,
-      facetsToPlot: ['primaryInvestigators', 'grantNumber', 'institutions'],
-      facetAliases: {
-        ndaCollection: 'NDA Collection',
-      },
-      searchConfiguration: {
-        searchable: [
-          'title',
-          'primaryInvestigators',
-          'abstract',
-          'grantNumber',
-          'institution',
-          'contributors',
-          'ndaCollection',
-        ],
-      },
+    searchConfiguration: {
+      searchable: [
+        'title',
+        'primaryInvestigators',
+        'abstract',
+        'grantNumber',
+        'institution',
+        'contributors',
+        'ndaCollection',
+      ],
     },
   },
 }

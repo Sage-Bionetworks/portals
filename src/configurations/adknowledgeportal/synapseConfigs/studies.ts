@@ -1,13 +1,11 @@
-import { HomeExploreConfig, SynapseConfig } from 'types/portal-config'
+import { SynapseConfig } from 'types/portal-config'
 import { DetailsPageProps } from 'types/portal-util-types'
 import { SynapseConstants } from 'synapse-react-client'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import studyHeaderSvg from '../style/study-header.svg'
 import { studiesSql, dataSql, dataOnStudiesPageSql } from '../resources'
 
-const unitDescription = 'studies'
 const rgbIndex = 0
-const facet = 'Species'
 export const studyCardConfiguration: CardConfiguration = {
   type: SynapseConstants.GENERIC_CARD,
   secondaryLabelLimit: 4,
@@ -52,40 +50,27 @@ const facetAliases = {
   Number_of_Individuals: 'Individuals',
   'Grant Number': 'Grant',
 }
-const studies: HomeExploreConfig = {
-  homePageSynapseObject: {
-    name: 'StandaloneQueryWrapper',
-    props: {
-      unitDescription,
-      rgbIndex,
-      facet,
-      link: 'Explore/Studies',
-      linkText: 'Explore Studies',
-      sql: studiesSql,
-    },
-  },
-  explorePageSynapseObject: {
-    name: 'QueryWrapperPlotNav',
-    props: {
-      rgbIndex,
-      facetAliases,
-      sql: studiesSql,
-      name: 'Studies',
-      shouldDeepLink: true,
-      cardConfiguration: studyCardConfiguration,
-      searchConfiguration: {
-        searchable: [
-          'Study_Name',
-          'Study_Description',
-          'DataType_All',
-          'studyFocus',
-          'Data_Contributor',
-          'specimenType',
-          'Species',
-          'Grant Number',
-          'Program',
-        ],
-      },
+const studies: SynapseConfig = {
+  name: 'QueryWrapperPlotNav',
+  props: {
+    rgbIndex,
+    facetAliases,
+    sql: studiesSql,
+    name: 'Studies',
+    shouldDeepLink: true,
+    cardConfiguration: studyCardConfiguration,
+    searchConfiguration: {
+      searchable: [
+        'Study_Name',
+        'Study_Description',
+        'DataType_All',
+        'studyFocus',
+        'Data_Contributor',
+        'specimenType',
+        'Species',
+        'Grant Number',
+        'Program',
+      ],
     },
   },
 }

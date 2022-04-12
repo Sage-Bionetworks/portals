@@ -1,13 +1,13 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import Plotly from 'plotly.js-basic-dist'
-import * as PlotlyTyped from 'plotly.js'
 import createPlotlyComponent from 'react-plotly.js/factory'
 import { SynapseConstants } from 'synapse-react-client'
 import {
   QueryBundleRequest,
-  QueryResultBundle
+  QueryResultBundle,
 } from 'synapse-react-client/dist/utils/synapseTypes'
 import { getQueryTableResults } from 'synapse-react-client/dist/utils/SynapseClient'
+import { PlotParams } from 'react-plotly.js'
 
 const Plot = createPlotlyComponent(Plotly)
 
@@ -22,7 +22,7 @@ type PlotData = {
 }
 
 const colors: string[] = ['#D099CA', '#7292C1', '#7472C1', '#72C1A5']
-const baseLayoutConfig: Partial<PlotlyTyped.Layout> = {
+const baseLayoutConfig: PlotParams['layout'] = {
   showlegend: false,
   margin: {
     l: 25,
@@ -31,42 +31,53 @@ const baseLayoutConfig: Partial<PlotlyTyped.Layout> = {
     t: 25,
     pad: 15,
   },
-  height: 200, 
-  hovermode: false
+  height: 200,
+  hovermode: false,
 }
 
-const optionsConfig: Partial<PlotlyTyped.Config> = {
+const optionsConfig: PlotParams['config'] = {
   responsive: true,
   scrollZoom: false,
   editable: false,
   autosizable: true,
   displayModeBar: false,
 }
-function getLayoutConfig(offset: number, plotData: PlotData): Partial<PlotlyTyped.Layout> {
-  const newLayoutConfig: Partial<PlotlyTyped.Layout> = {...baseLayoutConfig}
-  
+function getLayoutConfig(
+  offset: number,
+  plotData: PlotData,
+): PlotParams['layout'] {
+  const newLayoutConfig: PlotParams['layout'] = { ...baseLayoutConfig }
+
   newLayoutConfig.annotations = [
     {
-      text: `${plotData.surveyCounts[offset]}/${plotData.totalCount} <br />completed <br />surveys ${offset + 1}`,
+      text: `${plotData.surveyCounts[offset]}/${
+        plotData.totalCount
+      } <br />completed <br />surveys ${offset + 1}`,
       showarrow: false,
-    }
+    },
   ]
   return newLayoutConfig
 }
-function getChartDataPoints(offset: number, plotData: PlotData) {
-  const surveyData: PlotlyTyped.Data = {
-    values: [plotData.surveyCounts[offset], plotData.totalCount - plotData.surveyCounts[offset]],
+function getChartDataPoints(
+  offset: number,
+  plotData: PlotData,
+): PlotParams['data'] {
+  const surveyData: Plotly.Data = {
+    values: [
+      plotData.surveyCounts[offset],
+      plotData.totalCount - plotData.surveyCounts[offset],
+    ],
     name: `Survey ${offset + 1} Completed`,
-    hole: .6,
+    hole: 0.6,
     type: 'pie',
     marker: {
-      colors: [colors[offset], '#E9F1F5']
+      colors: [colors[offset], '#E9F1F5'],
     },
-    textinfo: 'none'
+    textinfo: 'none',
   }
 
   const data = [surveyData]
-  return data
+  return data as PlotParams['data']
 }
 
 export function fetchData(
@@ -91,9 +102,8 @@ export function fetchData(
 
 const SurveysCompletedPlots: FunctionComponent<SurveysCompletedPlotsProps> = ({
   token,
-  style = { width: '100%', height: '400px', padding: '100px 50px'},
+  style = { width: '100%', height: '400px', padding: '100px 50px' },
 }: SurveysCompletedPlotsProps) => {
-
   const [isLoaded, setIsLoaded] = useState(false)
   const [plotData, setPlotData] = useState<PlotData | null>(null)
 
@@ -102,19 +112,19 @@ const SurveysCompletedPlots: FunctionComponent<SurveysCompletedPlotsProps> = ({
   const survey3Sql = 'SELECT SUM(survey_3) FROM syn22314856'
   const survey4Sql = 'SELECT SUM(survey_4) FROM syn22314856'
   const totalSql = 'SELECT SUM(CONTACT) FROM syn22314856'
-  
+
   useEffect(() => {
     const survey1Data = fetchData(token!, survey1Sql, 'syn22314856')
     const survey2Data = fetchData(token!, survey2Sql, 'syn22314856')
     const survey3Data = fetchData(token!, survey3Sql, 'syn22314856')
     const survey4Data = fetchData(token!, survey4Sql, 'syn22314856')
     const totalData = fetchData(token!, totalSql, 'syn22314856')
-    
+
     Promise.all([survey1Data, survey2Data, survey3Data, survey4Data, totalData])
       .then((result) => {
         setPlotData({
           surveyCounts: [result[0], result[1], result[2], result[3]],
-          totalCount: result[4]
+          totalCount: result[4],
         })
         setIsLoaded(true)
       })
@@ -140,25 +150,25 @@ const SurveysCompletedPlots: FunctionComponent<SurveysCompletedPlotsProps> = ({
               layout={getLayoutConfig(0, plotData)}
               config={optionsConfig}
               data={getChartDataPoints(0, plotData)}
-              style={{flexBasis: '25%'}}
+              style={{ flexBasis: '25%' }}
             />
             <Plot
               layout={getLayoutConfig(1, plotData)}
               config={optionsConfig}
               data={getChartDataPoints(1, plotData)}
-              style={{flexBasis: '25%'}}
+              style={{ flexBasis: '25%' }}
             />
             <Plot
               layout={getLayoutConfig(2, plotData)}
               config={optionsConfig}
               data={getChartDataPoints(2, plotData)}
-              style={{flexBasis: '25%'}}
+              style={{ flexBasis: '25%' }}
             />
             <Plot
               layout={getLayoutConfig(3, plotData)}
               config={optionsConfig}
               data={getChartDataPoints(3, plotData)}
-              style={{flexBasis: '25%'}}
+              style={{ flexBasis: '25%' }}
             />
           </div>
         </div>

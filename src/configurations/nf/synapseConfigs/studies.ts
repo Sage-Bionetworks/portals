@@ -1,5 +1,5 @@
 import { SynapseConstants } from 'synapse-react-client'
-import { HomeExploreConfig } from 'types/portal-config'
+import { SynapseConfig } from 'types/portal-config'
 import { facetAliases, searchConfiguration } from './commonProps'
 
 import studyActiveSvg from '../style/study-active.svg'
@@ -21,7 +21,7 @@ import {
 
 export const newStudiesSql = `${studiesSql} order by ROW_ID desc limit 3`
 const type = SynapseConstants.GENERIC_CARD
-const unitDescription = 'Studies'
+
 const rgbIndex = 5
 
 export const studyHeaderIconOptions = {
@@ -108,42 +108,28 @@ export const studyCardConfiguration: CardConfiguration = {
   },
 }
 
-const studies: HomeExploreConfig = {
-  homePageSynapseObject: {
-    name: 'StandaloneQueryWrapper',
-    props: {
-      facetAliases,
-      unitDescription,
-      rgbIndex,
-      link: 'Explore/Studies',
-      linkText: 'Explore Studies',
-      facet: 'diseaseFocus',
-      sql: studiesSql,
-    },
-  },
-  explorePageSynapseObject: {
-    name: 'QueryWrapperPlotNav',
-    props: {
-      rgbIndex,
-      sql: studiesSql,
-      name: 'Studies',
-      shouldDeepLink: true,
-      cardConfiguration: studyCardConfiguration,
-      facetAliases,
-      searchConfiguration: {
-        searchable: [
-          'studyName',
-          'summary',
-          'studyLeads',
-          'studyStatus',
-          'dataStatus',
-          'institutions',
-          'diseaseFocus',
-          'manifestation',
-          'fundingAgency',
-          'grantDOI',
-        ],
-      },
+const studies: SynapseConfig = {
+  name: 'QueryWrapperPlotNav',
+  props: {
+    rgbIndex,
+    sql: studiesSql,
+    name: 'Studies',
+    shouldDeepLink: true,
+    cardConfiguration: studyCardConfiguration,
+    facetAliases,
+    searchConfiguration: {
+      searchable: [
+        'studyName',
+        'summary',
+        'studyLeads',
+        'studyStatus',
+        'dataStatus',
+        'institutions',
+        'diseaseFocus',
+        'manifestation',
+        'fundingAgency',
+        'grantDOI',
+      ],
     },
   },
 }

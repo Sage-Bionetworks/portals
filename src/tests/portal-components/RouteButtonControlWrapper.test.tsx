@@ -6,16 +6,15 @@ import RouteControlWrapper, {
 import { MemoryRouter } from 'react-router'
 import CardContainerLogic from 'synapse-react-client/dist/containers/CardContainerLogic'
 import { SynapseContextProvider } from 'synapse-react-client/dist/utils/SynapseContext'
+import MarkdownSynapse from 'synapse-react-client/dist/containers/MarkdownSynapse'
 
 describe('RouteControlWrapper works', () => {
   const routeName = 'custom route'
   const props: RouteControlWrapperProps = {
     synapseConfig: {
-      name: 'CardContainerLogic',
+      name: 'Markdown',
       props: {
-        sql: '',
-        type: '',
-        entityId: '',
+        markdown: '## This is a markdown component',
       },
     },
     customRoutes: [routeName],
@@ -37,8 +36,8 @@ describe('RouteControlWrapper works', () => {
     )
     // check its defined
     expect(component).toBeDefined()
-    // check that it renders a CardContainerLogic component
-    expect(component.find(CardContainerLogic)).toHaveLength(1)
+    // check that it renders a MarkdownSynapse component
+    expect(component.find(MarkdownSynapse)).toHaveLength(1)
     expect(component.find('button').text()).toEqual(routeName)
   })
 })

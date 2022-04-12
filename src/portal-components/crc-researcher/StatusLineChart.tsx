@@ -1,6 +1,5 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import Plotly from 'plotly.js-basic-dist'
-import * as PlotlyTyped from 'plotly.js'
 import createPlotlyComponent from 'react-plotly.js/factory'
 import { SynapseConstants } from 'synapse-react-client'
 import {
@@ -11,6 +10,7 @@ import {
 import { getFullQueryTableResults } from 'synapse-react-client/dist/utils/SynapseClient'
 import { GraphItem } from 'synapse-react-client/dist/containers/widgets/themes-plot/types'
 import { resultToJson } from 'synapse-react-client/dist/utils/functions/sqlFunctions'
+import { PlotParams } from 'react-plotly.js'
 
 const Plot = createPlotlyComponent(Plotly)
 
@@ -26,7 +26,7 @@ type PlotData = {
   apptMade: GraphItem[]
 }
 
-const layoutConfig: Partial<PlotlyTyped.Layout> = {
+const layoutConfig: PlotParams['layout'] = {
   showlegend: true,
   yaxis: {
     title: {
@@ -52,7 +52,7 @@ const layoutConfig: Partial<PlotlyTyped.Layout> = {
   },
 }
 
-const optionsConfig: Partial<PlotlyTyped.Config> = {
+const optionsConfig: PlotParams['config'] = {
   responsive: true,
   scrollZoom: false,
   editable: false,
@@ -61,7 +61,7 @@ const optionsConfig: Partial<PlotlyTyped.Config> = {
 }
 
 function getChartDataPoints(data: PlotData) {
-  const collectedData: PlotlyTyped.Data = {
+  const collectedData: Plotly.Data = {
     x: data.collected.map((val) => new Date(Number(val.x))),
     y: data.collected.map((val) => val.y),
     name: 'New uncategorized participants',
@@ -79,7 +79,7 @@ function getChartDataPoints(data: PlotData) {
     },
   }
 
-  var invitedData: PlotlyTyped.Data = {
+  var invitedData: Plotly.Data = {
     x: data.invited.map((val) => new Date(Number(val.x))),
     y: data.invited.map((val) => val.y),
     name: 'Invitations sent',
@@ -97,7 +97,7 @@ function getChartDataPoints(data: PlotData) {
     },
   }
 
-  var aptScheduledData: PlotlyTyped.Data = {
+  var aptScheduledData: Plotly.Data = {
     x: data.apptScheduled.map((val) => new Date(Number(val.x))),
     y: data.apptScheduled.map((val) => val.y),
     name: 'Labs scheduled',
@@ -114,7 +114,7 @@ function getChartDataPoints(data: PlotData) {
       symbol: 'circle',
     },
   }
-  var apptMadeData: PlotlyTyped.Data = {
+  var apptMadeData: Plotly.Data = {
     x: data.apptMade.map((val) => new Date(val.x)),
     y: data.apptMade.map((val) => val.y),
     name: 'Samples Collected/Appointments Made ',
@@ -160,16 +160,15 @@ export function fetchData(
 
 const StatusLineChart: FunctionComponent<StatusLineChartProps> = ({
   token,
-  style = { width: '100%'},
+  style = { width: '100%' },
 }: StatusLineChartProps) => {
-
   const [isLoaded, setIsLoaded] = useState(false)
   const [plotData, setPlotData] = useState<PlotData | null>(null)
 
   const samplesCollectedSql =
-    'SELECT uploadDate as "x", count(distinct(recordId)) as "y" FROM syn22154087 WHERE uploadDate IS NOT NULL AND dataGroups NOT HAS (\'test_user\') AND uploadDate > 1595808000000 AND testLocation IN (\'lab\', \'home\', \'noTest\') GROUP BY uploadDate ORDER BY uploadDate'
+    "SELECT uploadDate as \"x\", count(distinct(recordId)) as \"y\" FROM syn22154087 WHERE uploadDate IS NOT NULL AND dataGroups NOT HAS ('test_user') AND uploadDate > 1595808000000 AND testLocation IN ('lab', 'home', 'noTest') GROUP BY uploadDate ORDER BY uploadDate"
   const inviteSentSql =
-    'SELECT inviteSentOn as "x", count(distinct(recordId)) as "y" FROM syn22154087 WHERE inviteSentOn IS NOT NULL AND dataGroups NOT HAS (\'test_user\') AND uploadDate > 1595808000000 AND testLocation IN (\'lab\', \'home\', \'noTest\') GROUP BY inviteSentOn ORDER BY inviteSentOn'
+    "SELECT inviteSentOn as \"x\", count(distinct(recordId)) as \"y\" FROM syn22154087 WHERE inviteSentOn IS NOT NULL AND dataGroups NOT HAS ('test_user') AND uploadDate > 1595808000000 AND testLocation IN ('lab', 'home', 'noTest') GROUP BY inviteSentOn ORDER BY inviteSentOn"
   const appointmentScheduledSql =
     'SELECT scheduledLabDrawOn as "x", count(distinct(recordId)) as "y" FROM syn22154087 WHERE scheduledLabDrawOn IS NOT NULL AND dataGroups NOT HAS (\'test_user\') AND uploadDate > 1595808000000 GROUP BY scheduledLabDrawOn ORDER BY scheduledLabDrawOn'
 
@@ -216,7 +215,7 @@ const StatusLineChart: FunctionComponent<StatusLineChartProps> = ({
             layout={layoutConfig}
             style={{ width: '100%' }}
             config={optionsConfig}
-            data={getChartDataPoints(plotData)}
+            data={getChartDataPoints(plotData) as PlotParams['data']}
           />
         </div>
       )}
