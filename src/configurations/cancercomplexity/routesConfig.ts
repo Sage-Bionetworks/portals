@@ -243,84 +243,6 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        to: 'Publications',
-        isNested: true,
-        synapseConfigArray: [
-          {
-            name: 'RouteControlWrapper',
-            isOutsideContainer: true,
-            props: {
-              ...RouteControlWrapperProps,
-              synapseConfig: publications,
-            },
-          },
-        ],
-        routes: [
-          {
-            to: 'DetailsPage',
-            isNested: false,
-            synapseConfigArray: [
-              {
-                name: 'CardContainerLogic',
-                isOutsideContainer: true,
-                props: {
-                  isHeader: true,
-                  ...publicationsCardConfiguration,
-                  secondaryLabelLimit: Infinity,
-                  facetAliases,
-                  sql: publicationSql,
-                },
-              },
-              {
-                name: 'DetailsPage',
-                props: {
-                  sql: publicationSql,
-                  sqlOperator: 'LIKE',
-                  synapseConfigArray: [
-                    {
-                      name: 'CardContainerLogic',
-                      columnName: 'publicationId',
-                      title: 'Related People',
-                      tableSqlKeys: ['publicationId'],
-                      props: {
-                        sqlOperator: 'LIKE',
-                        sql: peopleSql,
-                        ...peopleCardConfiguration,
-                        facetAliases,
-                      },
-                    },
-                    {
-                      name: 'CardContainerLogic',
-                      columnName: 'publicationTitle',
-                      title: 'Related Datasets',
-                      tableSqlKeys: ['publicationTitle'],
-                      props: {
-                        sqlOperator: 'LIKE',
-                        sql: datasetsSql,
-                        ...datasetCardConfiguration,
-                        facetAliases,
-                      },
-                    },
-                    {
-                      name: 'CardContainerLogic',
-                      columnName: 'publicationTitle',
-                      title: 'Related Tools',
-                      tableSqlKeys: ['publicationTitle'],
-                      props: {
-                        sqlOperator: 'LIKE',
-                        sql: toolsSql,
-                        ...toolsConfiguration,
-                        facetAliases,
-                      },
-                    },
-                  ],
-                },
-              },
-            ],
-          },
-        ],
-      },
-      {
         to: 'People',
         isNested: true,
         synapseConfigArray: [
@@ -387,6 +309,84 @@ const routes: GenericRoute[] = [
                       tableSqlKeys: ['toolId'],
                       props: {
                         sqlOperator: '=',
+                        sql: toolsSql,
+                        ...toolsConfiguration,
+                        facetAliases,
+                      },
+                    },
+                  ],
+                },
+              },
+            ],
+          },
+        ],
+      },
+      {
+        to: 'Publications',
+        isNested: true,
+        synapseConfigArray: [
+          {
+            name: 'RouteControlWrapper',
+            isOutsideContainer: true,
+            props: {
+              ...RouteControlWrapperProps,
+              synapseConfig: publications,
+            },
+          },
+        ],
+        routes: [
+          {
+            to: 'DetailsPage',
+            isNested: false,
+            synapseConfigArray: [
+              {
+                name: 'CardContainerLogic',
+                isOutsideContainer: true,
+                props: {
+                  isHeader: true,
+                  ...publicationsCardConfiguration,
+                  secondaryLabelLimit: Infinity,
+                  facetAliases,
+                  sql: publicationSql,
+                },
+              },
+              {
+                name: 'DetailsPage',
+                props: {
+                  sql: publicationSql,
+                  sqlOperator: 'LIKE',
+                  synapseConfigArray: [
+                    {
+                      name: 'CardContainerLogic',
+                      columnName: 'publicationId',
+                      title: 'Related People',
+                      tableSqlKeys: ['publicationId'],
+                      props: {
+                        sqlOperator: 'LIKE',
+                        sql: peopleSql,
+                        ...peopleCardConfiguration,
+                        facetAliases,
+                      },
+                    },
+                    {
+                      name: 'CardContainerLogic',
+                      columnName: 'publicationTitle',
+                      title: 'Related Datasets',
+                      tableSqlKeys: ['publicationTitle'],
+                      props: {
+                        sqlOperator: 'LIKE',
+                        sql: datasetsSql,
+                        ...datasetCardConfiguration,
+                        facetAliases,
+                      },
+                    },
+                    {
+                      name: 'CardContainerLogic',
+                      columnName: 'publicationTitle',
+                      title: 'Related Tools',
+                      tableSqlKeys: ['publicationTitle'],
+                      props: {
+                        sqlOperator: 'LIKE',
                         sql: toolsSql,
                         ...toolsConfiguration,
                         facetAliases,
