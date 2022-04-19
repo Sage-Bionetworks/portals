@@ -129,7 +129,7 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
       const windowAny: any = window
       const gtag = windowAny.gtag
       if (gtag) {
-        gtag('config', 'UA-29804340-1', {
+        gtag('config', 'G-CEKFPZDZX7', {
           page_location: window.location.href,
           page_path: `/${this.props.location.pathname}`,
         })
