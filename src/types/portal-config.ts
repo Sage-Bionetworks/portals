@@ -31,6 +31,7 @@ import { UserCardListGroupsProps } from 'synapse-react-client/dist/containers/ho
 import { TableFeedCardsProps } from 'synapse-react-client/dist/containers/TableFeedCards'
 import { DownloadCartPageProps } from 'synapse-react-client/dist/containers/download_list_v2/DownloadCartPage'
 import { RedirectProps } from 'react-router'
+import { MarkdownCollapseProps } from 'portal-components/MarkdownCollapse'
 
 // For styling the header on the home page -- the main title and the summary text
 export type HomePageHeaderConfig = {
@@ -65,6 +66,11 @@ type UserCard = {
 type Markdown = {
   name: 'Markdown'
   props: MarkdownSynapseProps
+}
+
+type MarkdownCollapse = {
+  name: 'MarkdownCollapse'
+  props: MarkdownCollapseProps
 }
 
 type ThemesPlot = {
@@ -247,6 +253,7 @@ export type SynapseConfig = (
   | QueryWrapper
   | UserCard
   | Markdown
+  | MarkdownCollapse
   | DetailsPage
   | SynapseFormWrapper
   | SynapseFormSubmissionsGrid

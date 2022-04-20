@@ -105,6 +105,11 @@ export const studiesDetailsPageProps: DetailsPageProps = {
           props: {},
         },
         {
+          name: 'MarkdownCollapse',
+          columnName: 'Acknowledgement', //ackContext
+          props: {showCopyPlainText:true},
+        },
+        {
           name: 'CardContainerLogic',
           columnName: 'Related_Studies',
           title: 'Related Studies',
