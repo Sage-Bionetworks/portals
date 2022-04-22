@@ -78,6 +78,7 @@ const studies: SynapseConfig = {
 export const studiesDetailsPageProps: DetailsPageProps = {
   sql: studiesSql,
   sqlOperator: 'LIKE',
+  showMenu: false, //PORTALS-2131
   tabLayout: [
     {
       title: 'Study Details',
@@ -101,8 +102,19 @@ export const studiesDetailsPageProps: DetailsPageProps = {
         {
           name: 'Markdown',
           title: 'Acknowledgement',
-          columnName: 'Acknowledgement',
-          props: {},
+          standalone: true,
+          props: {
+            ownerId:'syn12666371',
+            wikiId:'617506'
+          },
+        },
+        {
+          name: 'MarkdownCollapse',
+          columnName: 'ackContext',
+          props: {
+            textDescription:'full statement',
+            showCopyPlainText:true
+          },
         },
         {
           name: 'CardContainerLogic',
