@@ -78,6 +78,7 @@ const studies: SynapseConfig = {
 export const studiesDetailsPageProps: DetailsPageProps = {
   sql: studiesSql,
   sqlOperator: 'LIKE',
+  showMenu: false, //PORTALS-2131
   tabLayout: [
     {
       title: 'Study Details',

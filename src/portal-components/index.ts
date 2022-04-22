@@ -1,7 +1,6 @@
 import StatefulButtonControlWrapper from './StatefulButtonControlWrapper'
 import RouteControlWrapper from './RouteControlWrapper'
 import DetailsPage from './DetailsPage'
-import MarkdownCollapse from './MarkdownCollapse'
 import ConsortiaGoals from './csbc-home-page/ConsortiaGoals'
 import HomePageCardContainer from './csbc-home-page/HomePageCardContainer'
 import Ecosystem from './csbc-home-page/Ecosystem'
@@ -20,7 +19,6 @@ const PortalComponents = {
   StatefulButtonControlWrapper,
   RouteControlWrapper,
   DetailsPage,
-  MarkdownCollapse,
   ConsortiaGoals,
   HomePageCardContainer,
   Ecosystem,
