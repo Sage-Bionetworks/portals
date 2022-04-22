@@ -27,7 +27,7 @@ import { BarLoader } from 'react-spinners'
 import { LockedFacet } from 'synapse-react-client/dist/containers/QueryWrapper'
 import DetailsPageTabs from './DetailsPageTabs'
 import { SynapseContext } from 'synapse-react-client/dist/utils/SynapseContext'
-import { useGetEntityHeaders } from 'synapse-react-client/dist/utils/hooks/SynapseAPI/useGetEntityHeaders'
+import { useGetEntityHeaders } from 'synapse-react-client/dist/utils/hooks/SynapseAPI/entity/useGetEntityHeaders'
 import { SYNAPSE_ENTITY_ID_REGEX } from 'synapse-react-client/dist/utils/functions/RegularExpressions'
 
 type State = {

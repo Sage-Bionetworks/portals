@@ -102,13 +102,19 @@ export const studiesDetailsPageProps: DetailsPageProps = {
         {
           name: 'Markdown',
           title: 'Acknowledgement',
-          columnName: 'Acknowledgement',
-          props: {},
+          standalone: true,
+          props: {
+            ownerId:'syn12666371',
+            wikiId:'617506'
+          },
         },
         {
           name: 'MarkdownCollapse',
-          columnName: 'Acknowledgement', //ackContext
-          props: {showCopyPlainText:true},
+          columnName: 'ackContext',
+          props: {
+            textDescription:'full statement',
+            showCopyPlainText:true
+          },
         },
         {
           name: 'CardContainerLogic',
