@@ -60,44 +60,9 @@ const BrowseToolsPage = () => {
               </Typography>
             </div>
           </div>
-          <div className="center-content">
-            <Button href="https://help.nf.synapse.org/NFdocs/2555543592.html" className="pill-xl" variant="white" target="_blank">SUBMIT A TOOL</Button>
-          </div>
         </div>
       </div>
-      <div className="home-container-description">
-        <Typography variant="sectionTitle" className="sectionTitle">
-          What Tools Can We Help You Find?
-        </Typography>
-        <div className="center-content">
-          <div className="searchToolsRow">
-            <div className="searchInputWithIcon">
-              <IconSvg options={{ icon: 'searchOutlined' }} />
-              <Form.Control type="search" placeholder=""
-                value={searchText}
-                onChange={event => {
-                  setSearchText(event.target.value)
-                }}
-                onKeyPress={evt => {
-                  if (evt.key === 'Enter') {
-                    gotoExploreToolsWithFullTextSearch(searchText)
-                  }
-                }}
-              />
-            </div>
-            <div className="search-button-container bootstrap-4-backport">
-              <Button className="pill-xl" variant="primary" onClick={() => gotoExploreToolsWithFullTextSearch(searchText)}>SEARCH</Button>
-            </div>
-          </div>
-        </div>
-        <Typography variant="sectionTitle" className="sectionTitle">
-          Popular Searches
-        </Typography>
-        <div className="center-content">
-          <PopularSearches sql={popularSearchesSql} />
-        </div>
-      </div>
-      <Layout outsideContainerClassName="home-spacer home-bg-dark">
+      <Layout outsideContainerClassName="home-spacer">
         <Typography variant="sectionTitle" className="sectionTitle">
           Browse Tools by Category
         </Typography>
@@ -140,6 +105,39 @@ const BrowseToolsPage = () => {
           <Button className="pill-xl" variant="primary" onClick={() => gotoExploreTools()}>VIEW ALL TOOLS</Button>
         </div>
       </Layout>
+      <div className="home-container-description  home-bg-dark home-spacer">
+        <Typography variant="sectionTitle" className="sectionTitle">
+          What Tools Can We Help You Find?
+        </Typography>
+        <div className="center-content">
+          <div className="searchToolsRow">
+            <div className="searchInputWithIcon">
+              <IconSvg options={{ icon: 'searchOutlined' }} />
+              <Form.Control type="search" placeholder=""
+                value={searchText}
+                onChange={event => {
+                  setSearchText(event.target.value)
+                }}
+                onKeyPress={evt => {
+                  if (evt.key === 'Enter') {
+                    gotoExploreToolsWithFullTextSearch(searchText)
+                  }
+                }}
+              />
+            </div>
+            <div className="search-button-container bootstrap-4-backport">
+              <Button className="pill-xl" variant="primary" onClick={() => gotoExploreToolsWithFullTextSearch(searchText)}>SEARCH</Button>
+            </div>
+          </div>
+        </div>
+        <Typography variant="sectionTitle" className="sectionTitle">
+          Suggested Searches
+        </Typography>
+        <div className="center-content">
+          <PopularSearches sql={popularSearchesSql} />
+        </div>
+      </div>
+      
       <Layout outsideContainerClassName="home-spacer">
         <Typography variant="sectionTitle" className="sectionTitle">
           Featured Tools
