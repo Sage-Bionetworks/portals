@@ -362,7 +362,7 @@ const routes: GenericRoute[] = [
                       title: 'Related People',
                       tableSqlKeys: ['publicationId'],
                       props: {
-                        sqlOperator: 'LIKE',
+                        sqlOperator: '=',
                         sql: peopleSql,
                         ...peopleCardConfiguration,
                         facetAliases,
@@ -529,7 +529,7 @@ const routes: GenericRoute[] = [
                       title: 'Related People',
                       tableSqlKeys: ['toolId'],
                       props: {
-                        sqlOperator: 'LIKE',
+                        sqlOperator: '=',
                         sql: peopleSql,
                         ...peopleCardConfiguration,
                         facetAliases,
