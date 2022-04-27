@@ -101,16 +101,13 @@ export const studiesDetailsPageProps: DetailsPageProps = {
         },
         {
           name: 'Markdown',
+          columnName: 'ackContext',
           title: 'Acknowledgement',
-          standalone: true,
-          props: {
-            ownerId:'syn12666371',
-            wikiId:'617506'
-          },
+          props: {},
         },
         {
           name: 'MarkdownCollapse',
-          columnName: 'ackContext',
+          columnName: 'Acknowledgement',
           props: {
             textDescription:'full statement',
             showCopyPlainText:true
