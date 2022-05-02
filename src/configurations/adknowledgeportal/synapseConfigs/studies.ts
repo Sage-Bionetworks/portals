@@ -183,10 +183,10 @@ export const studiesDetailsPageProps: DetailsPageProps = {
         },
         {
           name: 'QueryWrapperPlotNav',
+          title: 'Study Data',
           props: {
             sqlOperator: 'HAS',
             rgbIndex,
-            name: 'Study Data',
             visibleColumnCount: 10,
             tableConfiguration: {
               showAccessColumn: true,
