@@ -4,7 +4,6 @@ import RouteControlWrapper, {
   RouteControlWrapperProps,
 } from '../../portal-components/RouteControlWrapper'
 import { MemoryRouter } from 'react-router'
-import CardContainerLogic from 'synapse-react-client/dist/containers/CardContainerLogic'
 import { SynapseContextProvider } from 'synapse-react-client/dist/utils/SynapseContext'
 import MarkdownSynapse from 'synapse-react-client/dist/containers/MarkdownSynapse'
 
