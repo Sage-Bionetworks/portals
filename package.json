@@ -55,7 +55,7 @@
     "@testing-library/user-event": "^13.5.0",
     "@types/enzyme": "^3.10.8",
     "@types/enzyme-adapter-react-16": "^1.0.6",
-    "@types/jest": "24.0.9",
+    "@types/jest": "^27.5.0",
     "@types/katex": "^0.5.0",
     "@types/node": "11.10.4",
     "@types/plotly.js": "^1.54.10",
@@ -118,7 +118,7 @@
     ]
   },
   "resolutions": {
-    "babel-jest": "^26.6.3",
+    "babel-jest": "^27.5.1",
     "js-yaml": "3.13.1",
     "plotly.js-basic-dist": "^1.47.3",
     "react": "16.14.0",
