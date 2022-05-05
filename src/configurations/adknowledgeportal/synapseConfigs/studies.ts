@@ -91,15 +91,6 @@ export const studiesDetailsPageProps: DetailsPageProps = {
         },
         {
           name: 'Markdown',
-          columnName: 'Methods',
-          title: 'Methods',
-          props: {},
-          resolveSynId: {
-            title: true,
-          },
-        },
-        {
-          name: 'Markdown',
           columnName: 'ackContext',
           title: 'Acknowledgement',
           props: {},
@@ -110,6 +101,15 @@ export const studiesDetailsPageProps: DetailsPageProps = {
           props: {
             textDescription:'full statement',
             showCopyPlainText:true
+          },
+        },
+        {
+          name: 'Markdown',
+          columnName: 'Methods',
+          title: 'Methods',
+          props: {},
+          resolveSynId: {
+            title: true,
           },
         },
         {
