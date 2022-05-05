@@ -243,7 +243,7 @@ export const toolDetailsPageConfig: DetailsPageProps = {
             type: SynapseConstants.OBSERVATION_CARD,
             limit: 3,
           },
-          title: 'Experimental Tool Timeline',
+          title: 'Natural History Observations',
           tableSqlKeys: ['resourceId'],
           columnName: 'resourceId',
         },
