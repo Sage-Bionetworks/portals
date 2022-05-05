@@ -61,6 +61,7 @@ export default class DetailsPage extends React.Component<
   State
 > {
   static contextType = SynapseContext
+  context!: React.ContextType<typeof SynapseContext>
 
   constructor(props: DetailsPageProps) {
     super(props)
@@ -100,7 +101,7 @@ export default class DetailsPage extends React.Component<
     try {
       const data = await SynapseClient.getQueryTableResults(
         queryBundleRequest,
-        this.context.accessToken,
+        this.context!.accessToken,
       )
       this.setState({
         queryResultBundle: data,

@@ -3,9 +3,9 @@ import footerConfig from './config/footerConfig'
 import logoFooterConfig from './config/logoFooterConfig'
 import { ReactComponent as PoweredBySvg } from './portal-assets/poweredbysynapse.svg'
 import Versions from 'portal-components/Versions'
-import ExperimentalMode from "synapse-react-client/dist/containers/ExperimentalMode";  // synapse-react-client/dist/utils/functions/sqlFunctions
+import ExperimentalMode from 'synapse-react-client/dist/containers/ExperimentalMode' // synapse-react-client/dist/utils/functions/sqlFunctions
 
-export const Footer: React.SFC<{}> = () => {
+export const Footer: React.FC<{}> = () => {
   const goToTop = () => {
     window.scroll({ top: 0, behavior: 'smooth' })
   }
@@ -25,7 +25,9 @@ export const Footer: React.SFC<{}> = () => {
   ) : (
     <img alt="footer logo" className="nav-logo" src={icon} />
   )
-  const termsOfServiceUrl = footerConfig.termsOfService ?? 'https://s3.amazonaws.com/static.synapse.org/governance/SageBionetworksSynapseTermsandConditionsofUse.pdf?v=5'
+  const termsOfServiceUrl =
+    footerConfig.termsOfService ??
+    'https://s3.amazonaws.com/static.synapse.org/governance/SageBionetworksSynapseTermsandConditionsofUse.pdf?v=5'
   return (
     <footer id="footer" className="center-content">
       <div id="portal-title-footer">
@@ -36,9 +38,7 @@ export const Footer: React.SFC<{}> = () => {
         <Versions />
         <a
           rel="noopener noreferrer"
-          target={
-            termsOfServiceUrl.charAt(0) === '/' ? '_self' : '_blank'
-          }
+          target={termsOfServiceUrl.charAt(0) === '/' ? '_self' : '_blank'}
           href={termsOfServiceUrl}
           className="footer-item"
         >
@@ -54,12 +54,22 @@ export const Footer: React.SFC<{}> = () => {
           </a>
         )}
         {footerConfig.forum && (
-          <a href={footerConfig.forum} className="footer-item" target="_blank" rel="noreferrer">
+          <a
+            href={footerConfig.forum}
+            className="footer-item"
+            target="_blank"
+            rel="noreferrer"
+          >
             Forum
           </a>
         )}
         {footerConfig.about && (
-          <a href={footerConfig.about} className="footer-item" target="_blank" rel="noreferrer">
+          <a
+            href={footerConfig.about}
+            className="footer-item"
+            target="_blank"
+            rel="noreferrer"
+          >
             About
           </a>
         )}
