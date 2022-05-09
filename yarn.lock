@@ -11444,6 +11444,7 @@ __metadata:
     pluralize: ^8.0.0
     postcss-normalize: ^10.0.1
     process: ^0.11.10
+    raf: ^3.4.1
     react: 16.14.0
     react-app-polyfill: ^3.0.0
     react-bootstrap: ^1.5.2
@@ -14782,9 +14783,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"synapse-react-client@npm:3.0.12":
-  version: 3.0.12
-  resolution: "synapse-react-client@npm:3.0.12"
+"synapse-react-client@portal:/Users/nickgros/Sage/web/Synapse-React-Client::locator=portals%40workspace%3A.":
+  version: 0.0.0-use.local
+  resolution: "synapse-react-client@portal:/Users/nickgros/Sage/web/Synapse-React-Client::locator=portals%40workspace%3A."
   dependencies:
     "@apidevtools/json-schema-ref-parser": ^9.0.9
     "@brainhubeu/react-carousel": 1.19.26
@@ -14869,9 +14870,8 @@ __metadata:
   peerDependencies:
     react: ^16.14.0
     react-dom: ^16.14.0
-  checksum: 10fc1d66c239be9eb596cfe0e22ca3f9c0eee5c0c7e03b18e774d299c6f4515fea672d8e5742d2800b9e5eee9573969b9f101b2b872dce186844e275a528e219
   languageName: node
-  linkType: hard
+  linkType: soft
 
 "tailwindcss@npm:^3.0.2":
   version: 3.0.24
