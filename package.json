@@ -14,7 +14,7 @@
     "clone-deep": "^4.0.1",
     "lodash-es": "^4.17.21",
     "moment": "^2.29.3",
-    "plotly.js-basic-dist": "^1.47.3",
+    "plotly.js-basic-dist": "^2.11.1",
     "react": "16.14.0",
     "react-app-polyfill": "^3.0.0",
     "react-bootstrap": "^1.5.2",
@@ -41,7 +41,7 @@
     "copy-favicon": "cp src/config/style/favicon* public/",
     "save-build-date": "date > public/build-date.txt",
     "start": "craco start",
-    "build": "yarn copy-favicon; yarn save-build-date; yarn run build-css && CI=false GENERATE_SOURCEMAP=false craco --max_old_space_size=7168 build",
+    "build": "yarn copy-favicon; yarn save-build-date; CI=false GENERATE_SOURCEMAP=false craco --max_old_space_size=7168 build",
     "copy-test-configuration": "cp -r src/test-configuration/ src/config/",
     "test": "yarn run copy-test-configuration && craco test --env=jsdom --setupFiles ./src/tests/setupTests.ts",
     "generate-sitemap": "node sitemap/generate-sitemap.js",
@@ -65,6 +65,7 @@
     "@types/react-router-dom": "^5.1.7",
     "@types/react-tooltip": "^4.2.4",
     "assert": "^2.0.0",
+    "babel-plugin-transform-remove-strict-mode": "^0.0.2",
     "browserify-fs": "^1.0.0",
     "buffer": "^6.0.3",
     "enzyme": "^3.10.0",
@@ -124,11 +125,11 @@
   "resolutions": {
     "babel-jest": "^27.5.1",
     "js-yaml": "3.13.1",
-    "plotly.js-basic-dist": "^1.47.3",
-    "@types/plotly.js": "^1.54.10",
+    "@types/plotly.js": "^1.54.20",
     "@types/react": "17.0.1",
     "@types/react-dom": "16.9.6",
-    "synapse-react-client": "portal:/Users/nickgros/Sage/web/Synapse-React-Client"
+    "synapse-react-client": "portal:/Users/nickgros/Sage/web/Synapse-React-Client",
+    "sql-parser@0.5.0": "patch:sql-parser@npm:0.5.0#.yarn/patches/sql-parser-npm-0.5.0-0cac28ba04.patch"
   },
   "packageManager": "yarn@3.2.0"
 }

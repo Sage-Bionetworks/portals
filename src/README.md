@@ -3,7 +3,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 Structure of the codebase
 
 <pre>
-├── App.scss              # Main styling for the application, uses variables from test-configuration/_overrides.scss
 ├── App.tsx               # Main entry point with route configuration
 ├── ButtonControl.tsx     # Explore buttons that are used both on the home page and the explore page
 ├── Footer.tsx            # Footer with contact us/terms of service
@@ -18,6 +17,9 @@ Structure of the codebase
 ├── configurations        # folder containing all the portal configs
 ├── tests                 # all the tests for the application
 └── types                 # types used throughout the project
+└── style                 # Sass stylesheets
+  └── App.scss            # Main entrypoint for the application styles
+
 </pre>
 
 # Configuration Example
@@ -49,10 +51,10 @@ test-configuration/
 
 We are currently using [Dart Sass](https://sass-lang.com/dart-sass) and taking advantage of its [module system](https://sass-lang.com/documentation/at-rules/use). Key differences between the module system and the legacy `@import` rule are
 
-* `@use` imports can use namespaces. They do not load global variables.
-* Each file is loaded only once if called via `@use`.
+- `@use` imports can use namespaces. They do not load global variables.
+- Each file is loaded only once if called via `@use`.
 
-To support building the package without specifying a portal configuration, we have empty overrides files at [src/style/_variable_overrides.scss](style/_variable_overrides.scss) and [src/style/_style_overrides.scss](style/_style_overrides.scss). Without these files, Sass compilation will fail.
+To support building the package without specifying a portal configuration, we have empty overrides files in the test configuration. Without these files, Sass compilation will fail.
 
 We ensure that overrides in Portal configurations are used over these blank configurations by placing the active configuration folder earlier in the order of the (load paths)[https://sass-lang.com/documentation/cli/dart-sass#load-path] in our `build-css` command in [package.json](../package.json).
 

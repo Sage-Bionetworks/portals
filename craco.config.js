@@ -28,4 +28,7 @@ module.exports = {
   eslint: {
     enable: false,
   },
+  babel: {
+    // plugins: ['transform-remove-strict-mode'],
+  },
 }

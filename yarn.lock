@@ -3182,7 +3182,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/plotly.js@npm:^1.54.10":
+"@types/plotly.js@npm:^1.54.20":
   version: 1.54.20
   resolution: "@types/plotly.js@npm:1.54.20"
   dependencies:
@@ -4430,6 +4430,13 @@ __metadata:
   version: 0.4.24
   resolution: "babel-plugin-transform-react-remove-prop-types@npm:0.4.24"
   checksum: 54afe56d67f0d118c9da23996f39948e502a152b3f582eb6e8f163fcb76c2c1ea4e0cdd4f9fac5c0ef050eab4fe0a950b0b74aae6237bcc0d31d8fc4cc808d1a
+  languageName: node
+  linkType: hard
+
+"babel-plugin-transform-remove-strict-mode@npm:^0.0.2":
+  version: 0.0.2
+  resolution: "babel-plugin-transform-remove-strict-mode@npm:0.0.2"
+  checksum: 63519ad11d02a7806f9d1383c1f7c78a4fc0d29484365487e39677c7b44cc764df56f622f79501f2887a1313727a98a3afbe425df5637720712cdb20d8b87b73
   languageName: node
   linkType: hard
 
@@ -11364,10 +11371,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"plotly.js-basic-dist@npm:^1.47.3":
-  version: 1.58.5
-  resolution: "plotly.js-basic-dist@npm:1.58.5"
-  checksum: 6e5cf7e59f369683b918c8b26d6cbbbd2c262c0416515dc69f939d32121e5fc3cafae2a3001596faf0d53c48bb8348e2a5ab202a6f62db00de23bd440d750534
+"plotly.js-basic-dist@npm:^2.11.1":
+  version: 2.12.0
+  resolution: "plotly.js-basic-dist@npm:2.12.0"
+  checksum: 73e64020142852a7eb6b133acc2689d913f042ec9fdc6cdaf958ad8f9b9c33fc43345e26f54add899ed7e96d549f8945b31f553dc706c0f77cf86a307f6f55e2
   languageName: node
   linkType: hard
 
@@ -11413,6 +11420,7 @@ __metadata:
     "@types/react-tooltip": ^4.2.4
     animate.css: ^4.1.1
     assert: ^2.0.0
+    babel-plugin-transform-remove-strict-mode: ^0.0.2
     browserify-fs: ^1.0.0
     buffer: ^6.0.3
     clone-deep: ^4.0.1
@@ -11440,7 +11448,7 @@ __metadata:
     moment: ^2.29.3
     npm-run-all: ^4.1.5
     path-browserify: ^1.0.1
-    plotly.js-basic-dist: ^1.47.3
+    plotly.js-basic-dist: ^2.11.1
     pluralize: ^8.0.0
     postcss-normalize: ^10.0.1
     process: ^0.11.10
