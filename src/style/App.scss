@@ -1,5 +1,7 @@
-@use 'variable_overrides';
-@use 'variables' as Portal;
+@use 'config/style/variable_overrides';
+@use 'style/variables' as Portal;
+
+@use 'animate.css/animate';
 
 @use 'synapse-react-client/dist/style/main.scss' with (
   $primary-action-color: Portal.$primary-action-color,
@@ -8,15 +10,15 @@
   $primary-bgcolor-rgba: unset
 );
 @use 'synapse-react-client/dist/template_style/Index.scss';
-@use '../portal-components/csbc-home-page/style/all.scss';
+@use 'portal-components/csbc-home-page/style/all.scss';
 
 @use 'Core';
 @use 'Markdown';
 @use 'Navbar';
 @use 'ExploreMenu';
 @use 'SynapseRedirectDialog';
-@use '../portal-components/DetailsPage';
+@use 'DetailsPage';
 @use '../portal-components/nf/style/_BrowseToolsPage';
 
 // style_overrides should be last to ensure its styles have higher priority
-@use 'style_overrides';
+@use 'config/style/style_overrides';

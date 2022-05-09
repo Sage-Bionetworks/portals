@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { withRouter, RouteComponentProps } from 'react-router-dom'
 import docTitleConfig from './config/docTitleConfig'
 import { SynapseClient, SynapseConstants } from 'synapse-react-client'
