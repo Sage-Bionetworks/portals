@@ -11,6 +11,7 @@ module.exports = {
           https: require.resolve('https-browserify'),
           stream: require.resolve('stream-browserify'),
           http: require.resolve('stream-http'),
+          events: require.resolve('events'),
         },
       },
       ignoreWarnings: [/Failed to parse source map/],

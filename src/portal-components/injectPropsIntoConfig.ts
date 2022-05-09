@@ -1,4 +1,4 @@
-import { cloneDeep } from 'lodash'
+import { cloneDeep } from 'lodash-es'
 import { MarkdownSynapseProps } from 'synapse-react-client/dist/containers/MarkdownSynapse'
 import { SynapseConfig } from 'types/portal-config'
 import { RowSynapseConfig } from 'types/portal-util-types'

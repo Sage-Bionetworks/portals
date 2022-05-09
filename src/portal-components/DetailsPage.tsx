@@ -1,4 +1,4 @@
-import { cloneDeep, Dictionary } from 'lodash'
+import { cloneDeep, Dictionary } from 'lodash-es'
 import * as React from 'react'
 import { SynapseComponentWithContext } from 'RouteResolver'
 import {
