@@ -106,7 +106,6 @@ describe('RouteResolver works', () => {
             ],
           },
         ],
-        colors: ['red'],
       },
     }
     const synObj = mount(

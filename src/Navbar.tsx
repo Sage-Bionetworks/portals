@@ -105,7 +105,12 @@ class Navbar extends React.Component<any, State> {
     } = this.props as SignInProps
     const { name, icon, hideLogin = false } = logoHeaderConfig
     const imageElement = icon ? (
-      <img id="header-logo-image" alt="navigation logo" className="nav-logo" src={icon} />
+      <img
+        id="header-logo-image"
+        alt="navigation logo"
+        className="nav-logo"
+        src={icon}
+      />
     ) : (
       <></>
     )
@@ -192,15 +197,20 @@ class Navbar extends React.Component<any, State> {
                   >
                     SIGN&nbsp;IN
                   </Button>
-                  <Modal 
+                  <Modal
                     animation={false}
-                    backdrop='static'
+                    backdrop="static"
                     keyboard={false}
-                    onHide={handleCloseLoginDialog} 
+                    onHide={() => {
+                      handleCloseLoginDialog()
+                    }}
                     className="login-modal"
-                    show={showLoginDialog}>
-                    <Modal.Header closeButton/>
-                    <SynapseComponents.Login sessionCallback={() => getSession()}/>
+                    show={showLoginDialog}
+                  >
+                    <Modal.Header closeButton />
+                    <SynapseComponents.Login
+                      sessionCallback={() => getSession()}
+                    />
                   </Modal>
                 </div>
               )}
@@ -267,7 +277,12 @@ class Navbar extends React.Component<any, State> {
                   </a>
                 </>
               )}
-            {userProfile && <SynapseComponents.ShowDownloadV2 className="nav-button nav-button-container center-content" to='/DownloadCart' />}
+            {userProfile && (
+              <SynapseComponents.ShowDownloadV2
+                className="nav-button nav-button-container center-content"
+                to="/DownloadCart"
+              />
+            )}
             {
               // we have to loop backwards due to css rendering of flex-direction: row-reverse
               routesConfig
