@@ -293,7 +293,7 @@ const routes: GenericRoute[] = [
                       title: 'Related Tools',
                       tableSqlKeys: ['pubMedId'],
                       props: {
-                        sqlOperator: 'HAS',
+                        sqlOperator: '=',
                         sql: toolsSql,
                         ...toolsConfiguration,
                         facetAliases,
