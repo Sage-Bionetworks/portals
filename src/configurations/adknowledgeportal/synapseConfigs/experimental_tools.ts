@@ -33,8 +33,10 @@ export const experimentalToolsCardConfiguration: CardConfiguration = {
       matchColumnName: 'alzforumInformation',
     },
     {
-      isMarkdown: true,
+      isMarkdown: false,
       matchColumnName: 'availableData',
+      URLColumnName: 'modelSystemName',
+      baseURL: 'Explore/Data',
     },
     {
       isMarkdown: true,

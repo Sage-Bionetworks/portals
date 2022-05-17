@@ -273,6 +273,7 @@ const routes: GenericRoute[] = [
                 props: {
                   sql: programsSql,
                   isHeader: true,
+                  sqlOperator: '=',
                   ...programCardConfiguration,
                   genericCardSchema: {
                     ...programCardConfiguration.genericCardSchema!,
@@ -282,21 +283,36 @@ const routes: GenericRoute[] = [
                 },
               },
               {
-                name: 'CardContainerLogic',
-                title: 'Explore Projects',
+                name: 'DetailsPage',
                 props: {
-                  ...projectCardConfiguration,
-                  sql: projectsSql,
-                },
-              },
-              {
-                name: 'CardContainerLogic',
-                title: 'Explore Studies',
-                props: {
-                  ...studyCardConfiguration,
-                  sql: studiesSql,
-                },
-              },
+                  showMenu: true,
+                  sql: programsSql,
+                  synapseConfigArray: [
+                    {
+                      name: 'CardContainerLogic',
+                      title: 'Projects',
+                      columnName: 'Program',
+                      showTitleSeperator: false,
+                      tableSqlKeys: ['Program'],
+                      props: {
+                        ...projectCardConfiguration,
+                        sql: projectsSql,
+                      },
+                    },
+                    {
+                      name: 'CardContainerLogic',
+                      title: 'Studies',
+                      columnName: 'Program',
+                      showTitleSeperator: false,
+                      tableSqlKeys: ['Program'],
+                      props: {
+                        ...studyCardConfiguration,
+                        sql: studiesSql,
+                      },
+                    },
+                  ],
+                }
+              }
             ],
           },
         ],
