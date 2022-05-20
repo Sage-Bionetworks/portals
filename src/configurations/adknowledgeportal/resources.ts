@@ -15,6 +15,6 @@ export const modelADStrainsSelectedFacet = {columnName: 'program', facetValue: '
 
 // Convert the `title` column to markdown, linking to the `link` column
 export const targetEnablingResourcesExploreSql =
-  'select title, category, target, related_target, program, grant, contributing_center, link from syn26146692 WHERE `isPublic` = true'
+  'select * from syn26146692 WHERE `isPublic` = true'
 export const targetEnablingResourcesDetailsPageSql =
   'select * from syn26146692 WHERE `isPublic` = true'
