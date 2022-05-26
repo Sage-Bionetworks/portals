@@ -8,7 +8,7 @@ export const publicationsSql = 'SELECT * FROM syn20448807'
 export const studiesSql = 'SELECT * FROM syn17083367 ORDER BY isFeatured DESC'
 export const programsSql = 'SELECT * FROM syn17024173'
 
-export const experimentalModelsSql = 'select * from syn22219805'
+export const experimentalModelsSql = 'select * from syn22219805 ORDER BY isFeatured DESC'
 
 // PORTALS-2028: /MODEL-ADstrains redirects to "/Explore/Experimental Models" with this facet preselected
 export const modelADStrainsSelectedFacet = {columnName: 'program', facetValue: 'MODEL-AD'}
