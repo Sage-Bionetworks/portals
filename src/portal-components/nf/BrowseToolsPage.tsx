@@ -140,7 +140,7 @@ const BrowseToolsPage = () => {
       
       <Layout outsideContainerClassName="home-spacer">
         <Typography variant="sectionTitle" className="sectionTitle">
-          Featured Tools
+          Recently Added Tools
         </Typography>
         <Typography variant="body1" className="sectionSubtitle">
           Check out some recently-catalogued research resources below.
