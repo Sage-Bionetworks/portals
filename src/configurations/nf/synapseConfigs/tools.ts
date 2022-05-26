@@ -74,6 +74,7 @@ const tools: SynapseConfig = {
     name: 'Tools',
     cardConfiguration: toolsCardConfiguration,
     facetAliases,
+    defaultShowSearchBox: true,
   },
 }
 
