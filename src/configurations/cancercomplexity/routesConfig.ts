@@ -452,17 +452,12 @@ const routes: GenericRoute[] = [
     ],
   },
   {
-    to: 'About',
     isNested: false,
-    synapseConfigArray: [
-      {
-        name: 'Markdown',
-        props: {
-          ownerId: 'syn7080714',
-          wikiId: '470467',
-        },
-      },
-    ],
+    displayName: 'Help',
+    to: undefined,
+    target: '_blank',
+    link: 'http://help.cancercomplexity.synapse.org/',
+    synapseConfigArray: [],
   },
 ]
 
