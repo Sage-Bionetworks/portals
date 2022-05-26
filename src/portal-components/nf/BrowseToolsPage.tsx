@@ -160,7 +160,7 @@ const BrowseToolsPage = () => {
           <Button className="pill-xl" variant="primary" onClick={() => gotoExploreTools()}>VIEW ALL TOOLS</Button>
         </div>
       </Layout>
-      <Layout outsideContainerClassName="home-spacer home-bg-dark">
+      <Layout outsideContainerClassName="home-spacer highlightSubmitToolContainer">
         <Typography variant="sectionTitle" className="sectionTitle">
           Submit a Tool to the Database
         </Typography>
@@ -172,7 +172,7 @@ const BrowseToolsPage = () => {
           </div>
         </div>
         <div className="center-content bootstrap-4-backport">
-          <Button href="https://help.nf.synapse.org/NFdocs/2555543592.html" className="pill-xl" variant="primary" target="_blank">SUBMIT A TOOL</Button>
+          <Button href="https://help.nf.synapse.org/NFdocs/2555543592.html" className="pill-xl highlightSubmitToolButton" variant="secondary" target="_blank">SUBMIT A TOOL</Button>
         </div>
       </Layout>
     </div>
