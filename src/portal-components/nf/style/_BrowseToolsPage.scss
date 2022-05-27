@@ -1,6 +1,8 @@
 @use 'variables' as Portal;
 
 .browse-tools-page {
+  // main contain has a padding bottom. Negative margin-bottom to connect last section to footer.
+  margin-bottom: -60px;
   .home-container-description {
     padding: 0px 0px 60px 0px;
     margin: 0px;
