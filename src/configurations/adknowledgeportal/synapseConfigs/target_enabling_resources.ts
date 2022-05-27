@@ -76,6 +76,7 @@ const targetEnablingResources: SynapseConfig = {
     hideDownload: true,
     tableConfiguration: targetEnablingResourcesTableConfiguration,
     facetAliases: {
+      TEP_type: 'TEP Type',
       related_target: 'Related Target',
       contributing_center: 'Contributing Center',
     },
