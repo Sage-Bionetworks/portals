@@ -2,7 +2,7 @@ import { popularSearchesSql, toolsSql } from 'configurations/nf/resources'
 import Layout from 'portal-components/Layout'
 import * as React from 'react'
 import { Button, Form } from 'react-bootstrap'
-import { Typography } from 'synapse-react-client'
+import { Typography, HelpPopover } from 'synapse-react-client'
 import FeaturedToolsList from 'synapse-react-client/dist/containers/home_page/featured_tools/FeaturedToolsList'
 import IconSvg from 'synapse-react-client/dist/containers/IconSvg'
 import { Query } from 'synapse-react-client/dist/utils/synapseTypes'
@@ -127,6 +127,13 @@ const BrowseToolsPage = () => {
             </div>
             <div className="search-button-container bootstrap-4-backport">
               <Button className="pill-xl" variant="primary" onClick={() => gotoExploreToolsWithFullTextSearch(searchText)}>SEARCH</Button>
+            </div>
+            <div className="help-popover">
+              <HelpPopover
+                markdownText={'This search bar is powered by MySQL Full Text Search.'}
+                helpUrl={'https://help.nf.synapse.org/NFdocs/Tips-for-Search.2640478225.html'}
+                placement="left"
+              />
             </div>
           </div>
         </div>
