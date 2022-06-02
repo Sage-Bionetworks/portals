@@ -7,6 +7,7 @@ import FeaturedToolsList from 'synapse-react-client/dist/containers/home_page/fe
 import IconSvg from 'synapse-react-client/dist/containers/IconSvg'
 import { Query } from 'synapse-react-client/dist/utils/synapseTypes'
 import { TextMatchesQueryFilter } from 'synapse-react-client/dist/utils/synapseTypes/Table/QueryFilter'
+import { HelpPopover } from 'synapse-react-client/dist/containers/HelpPopover'
 import { ReactComponent as AnimalModels } from './assets/animalmodels.svg'
 import { ReactComponent as Antibodies } from './assets/antibodies.svg'
 import { ReactComponent as Biobanks } from './assets/biobanks.svg'
@@ -127,6 +128,13 @@ const BrowseToolsPage = () => {
             </div>
             <div className="search-button-container bootstrap-4-backport">
               <Button className="pill-xl" variant="primary" onClick={() => gotoExploreToolsWithFullTextSearch(searchText)}>SEARCH</Button>
+            </div>
+            <div className="help-popover">
+              <HelpPopover
+                markdownText={'This search bar is powered by MySQL Full Text Search.'}
+                helpUrl={'https://help.nf.synapse.org/NFdocs/Tips-for-Search.2640478225.html'}
+                placement="left"
+              />
             </div>
           </div>
         </div>

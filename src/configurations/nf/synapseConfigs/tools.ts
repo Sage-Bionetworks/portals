@@ -75,6 +75,9 @@ const tools: SynapseConfig = {
     cardConfiguration: toolsCardConfiguration,
     facetAliases,
     defaultShowSearchBox: true,
+    searchConfiguration: {
+      fullTextSearchHelpURL: 'https://help.nf.synapse.org/NFdocs/Tips-for-Search.2640478225.html'
+    }
   },
 }
 
