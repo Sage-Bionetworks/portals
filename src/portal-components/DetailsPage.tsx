@@ -328,7 +328,7 @@ const SynapseObject: React.FC<{
   )
 }
 
-const SplitStringToComponent: React.FC<{
+export const SplitStringToComponent: React.FC<{
   splitString: string
   resolveSynId?: ResolveSynId
   columnName: string
