@@ -39,6 +39,7 @@ import {
   studiesSql,
 } from './resources'
 import { toolsDetailsPage } from './synapseConfigs/tools'
+import datasetsV2, { datasetsDetailsPage } from './synapseConfigs/datasetsV2'
 
 const limit = 3
 
@@ -278,6 +279,27 @@ const routes: GenericRoute[] = [
               ...routeControlWrapperProps,
               synapseConfig: datasets,
             },
+          },
+        ],
+      },
+      {
+        isNested: true,
+        to: 'DatasetsV2',
+        synapseConfigArray: [
+          {
+            name: 'RouteControlWrapper',
+            isOutsideContainer: true,
+            props: {
+              ...routeControlWrapperProps,
+              synapseConfig: datasetsV2,
+            },
+          },
+        ],
+        routes: [
+          {
+            to: 'DetailsPage',
+            isNested: false,
+            synapseConfigArray: datasetsDetailsPage
           },
         ],
       },

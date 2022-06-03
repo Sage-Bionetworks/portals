@@ -266,7 +266,7 @@ const SynapseObject: React.FC<{
   el: RowSynapseConfig
   queryResultBundle: QueryResultBundle
 }> = ({ el, queryResultBundle }) => {
-  const { columnName = '', resolveSynId, props } = el
+  const { columnName = '', resolveSynId, props, overrideSqlSourceTable } = el
   const deepCloneOfProps = cloneDeep(props)
   const row = queryResultBundle!.queryResult.queryResults.rows[0].values
   // map column name to index
@@ -321,6 +321,7 @@ const SynapseObject: React.FC<{
           columnName={columnName}
           el={el}
           deepCloneOfProps={deepCloneOfProps}
+          overrideSqlSourceTable={overrideSqlSourceTable}
         />
       ))}
     </>
@@ -333,7 +334,8 @@ const SplitStringToComponent: React.FC<{
   columnName: string
   el: RowSynapseConfig
   deepCloneOfProps: any
-}> = ({ splitString, resolveSynId, columnName, el, deepCloneOfProps }) => {
+  overrideSqlSourceTable?: boolean
+}> = ({ splitString, resolveSynId, columnName, el, deepCloneOfProps, overrideSqlSourceTable }) => {
   let value = splitString.trim()
 
   const valueIsSynId = React.useMemo(
@@ -382,6 +384,10 @@ const SplitStringToComponent: React.FC<{
   const injectedProps = injectPropsIntoConfig(value, el, {
     ...deepCloneOfProps,
   })
+  if (overrideSqlSourceTable) {
+    // use the search param value to override the sql param.
+    injectedProps['sql'] = `SELECT  *  FROM  ${value}`
+  }
 
   // For explorer 2.0, cannot assign key `lockedFacet` to deepCloneOfProps due to type errors,
   // assign lockedFacet value directly to injectedProps only if resolveSynId.value is true

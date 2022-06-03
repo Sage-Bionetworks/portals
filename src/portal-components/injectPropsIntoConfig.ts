@@ -17,6 +17,7 @@ const injectPropsIntoConfig = (
   el: RowSynapseConfig,
   props: any,
 ): any => {
+  // If isValueSourceEntity, then 
   const internalProps = cloneDeep(props)
   if (el.name === 'Markdown' || el.name === 'MarkdownCollapse') {
     const markdownProps = internalProps as MarkdownSynapseProps
