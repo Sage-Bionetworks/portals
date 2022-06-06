@@ -206,9 +206,7 @@ describe('DetailsPage tests', () => {
         }
         return <div>My Query Wrapper Plot Nav</div>
       })
-    const mockSynapseComponentWithContext =
-      SynapseComponentWithContext.SynapseComponentWithContext
-
+    
     const queryPlotNavRowConfig: RowSynapseConfig = {
       name: 'QueryWrapperPlotNav',
       props: {
