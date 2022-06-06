@@ -1,6 +1,6 @@
 import { cloneDeep, Dictionary } from 'lodash'
 import * as React from 'react'
-import { SynapseComponentWithContext } from 'RouteResolver'
+import { SynapseComponentWithContext } from '../SynapseComponentWithContext'
 import {
   SynapseClient,
   SynapseConstants,
@@ -335,7 +335,14 @@ export const SplitStringToComponent: React.FC<{
   el: RowSynapseConfig
   deepCloneOfProps: any
   overrideSqlSourceTable?: boolean
-}> = ({ splitString, resolveSynId, columnName, el, deepCloneOfProps, overrideSqlSourceTable }) => {
+}> = ({
+  splitString,
+  resolveSynId,
+  columnName,
+  el,
+  deepCloneOfProps,
+  overrideSqlSourceTable,
+}) => {
   let value = splitString.trim()
 
   const valueIsSynId = React.useMemo(

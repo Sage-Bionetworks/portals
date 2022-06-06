@@ -1,15 +1,8 @@
 import { isEmpty } from 'lodash-es'
 import * as React from 'react'
-import {
-  RouteComponentProps,
-  useLocation,
-  withRouter,
-} from 'react-router'
+import { RouteComponentProps, useLocation, withRouter } from 'react-router'
 import { SynapseComponents } from 'synapse-react-client'
-import {
-  SynapseContextConsumer,
-  SynapseContextType,
-} from 'synapse-react-client/dist/utils/SynapseContext'
+import { SynapseComponentWithContext } from 'SynapseComponentWithContext'
 import { GenericRoute, SynapseConfig } from 'types/portal-config'
 import { scrollToWithOffset } from 'utils'
 import docTitleConfig from './config/docTitleConfig'
@@ -100,39 +93,6 @@ export const SynapseComponent: React.FC<SynapseComponentProps> = ({
     return component
   }
 }
-
-type SynapseComponentWithContextProps = {
-  synapseConfig: SynapseConfig
-  searchParams?: any
-}
-
-export const SynapseComponentWithContext: React.FC<SynapseComponentWithContextProps> =
-  ({ synapseConfig, searchParams }) => {
-    // return the synapse object but with token/search params injected into its props from the context created in AppInitializer
-    const { props, ...rest } = synapseConfig
-    const key = JSON.stringify(props)
-    return (
-      <SynapseContextConsumer key={key}>
-        {(ctx?: SynapseContextType) => {
-          const propsWithSearchAndToken = {
-            ...props,
-            searchParams,
-            token: ctx?.accessToken,
-            accessToken: ctx?.accessToken,
-          }
-          // TODO: Understand why typescript is throwing an error below
-          // @ts-ignore
-          const synapseObjectWithTokenAndSearch: SynapseConfig = {
-            props: propsWithSearchAndToken,
-            ...rest,
-          }
-          return (
-            <SynapseComponent synapseConfig={synapseObjectWithTokenAndSearch} />
-          )
-        }}
-      </SynapseContextConsumer>
-    )
-  }
 
 /*
   Given a location join with the routesConfig to render the appropriate component.

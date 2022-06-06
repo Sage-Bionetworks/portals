@@ -1,5 +1,7 @@
 import React from 'react'
-import DetailsPage, { SplitStringToComponent } from '../../portal-components/DetailsPage'
+import DetailsPage, {
+  SplitStringToComponent,
+} from '../../portal-components/DetailsPage'
 import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { DetailsPageTabProps, RowSynapseConfig } from 'types/portal-util-types'
@@ -28,6 +30,9 @@ const SynapseClient = require('synapse-react-client/dist/utils/SynapseClient')
 SynapseClient.getQueryTableResults = jest
   .fn()
   .mockResolvedValue(syn16787123Json)
+
+const SynapseComponentWithContext = require('../../SynapseComponentWithContext')
+let getSynapseConfig: () => SynapseConfig
 
 describe('DetailsPage tests', () => {
   it('Renders synapseConfigArray with no tabs', async () => {
@@ -192,40 +197,54 @@ describe('DetailsPage tests', () => {
     await screen.findByText('Subtab 2')
   })
 
-  const RouteResolver = require('RouteResolver')
-  let getSynapseConfig: () => SynapseConfig
-
-  RouteResolver.SynapseComponentWithContext = jest
-  .fn()
-  .mockImplementation(({ synapseConfig }) => {
-    getSynapseConfig = () => {return synapseConfig}
-    return <div>My Query Wrapper Plot Nav</div>
-  })
-  const mockSynapseComponentWithContext = RouteResolver.SynapseComponentWithContext
-  
   it('Test overrideSqlSourceTable', async () => {
+    SynapseComponentWithContext.SynapseComponentWithContext = jest
+      .fn()
+      .mockImplementation(({ synapseConfig }) => {
+        getSynapseConfig = () => {
+          return synapseConfig
+        }
+        return <div>My Query Wrapper Plot Nav</div>
+      })
+    const mockSynapseComponentWithContext =
+      SynapseComponentWithContext.SynapseComponentWithContext
+
     const queryPlotNavRowConfig: RowSynapseConfig = {
-        name: 'QueryWrapperPlotNav',
-        props: {
-          sqlOperator: 'HAS',
-          name: 'Files',
-          sql: 'select * from syn1',
-          visibleColumnCount: 7,
-          tableConfiguration: {
-            showAccessColumn: true,
-            showDownloadColumn: true,
-          },
-          shouldDeepLink: false,
+      name: 'QueryWrapperPlotNav',
+      props: {
+        sqlOperator: 'HAS',
+        name: 'Files',
+        sql: 'select * from syn1',
+        visibleColumnCount: 7,
+        tableConfiguration: {
+          showAccessColumn: true,
+          showDownloadColumn: true,
         },
-        overrideSqlSourceTable: true
-      }
+        shouldDeepLink: false,
+      },
+      overrideSqlSourceTable: true,
+    }
     const deepCloneOfProps = {
-      sqlOperator:"HAS",rgbIndex:6,name:"Files",sql:"",visibleColumnCount:7,tableConfiguration:{showAccessColumn:true,showDownloadColumn:true},shouldDeepLink:false}
+      sqlOperator: 'HAS',
+      rgbIndex: 6,
+      name: 'Files',
+      sql: '',
+      visibleColumnCount: 7,
+      tableConfiguration: { showAccessColumn: true, showDownloadColumn: true },
+      shouldDeepLink: false,
+    }
     renderWithContext(
-      <SplitStringToComponent splitString='syn26843747' deepCloneOfProps={deepCloneOfProps} el={queryPlotNavRowConfig} columnName='id'/>,
+      <SplitStringToComponent
+        splitString="syn26843747"
+        deepCloneOfProps={deepCloneOfProps}
+        el={queryPlotNavRowConfig}
+        columnName="id"
+      />,
     )
     await waitFor(() => screen.getByText('My Query Wrapper Plot Nav'))
     const modifiedSynapseConfig = getSynapseConfig()
-    assert(modifiedSynapseConfig!.props!['sql'] === 'SELECT  *  FROM  syn26843747')
+    assert(
+      modifiedSynapseConfig!.props!['sql'] === 'SELECT  *  FROM  syn26843747',
+    )
   })
 })
