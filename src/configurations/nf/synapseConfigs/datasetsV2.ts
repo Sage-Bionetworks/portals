@@ -4,9 +4,6 @@ import { SynapseConstants } from 'synapse-react-client'
 import { SynapseConfig } from 'types/portal-config'
 import { facetAliases } from './commonProps'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
-import {
-  filesSql,
-} from '../resources'
 import { DetailsPageProps } from 'types/portal-util-types'
 
 const datasetsSql = 'SELECT * FROM syn31543490'
@@ -66,7 +63,7 @@ export const datasetDetailsPageConfig: DetailsPageProps = {
         sqlOperator: 'HAS',
         rgbIndex,
         name: 'Files',
-        sql: filesSql,
+        sql: '',
         visibleColumnCount: 7,
         tableConfiguration: {
           showAccessColumn: true,
