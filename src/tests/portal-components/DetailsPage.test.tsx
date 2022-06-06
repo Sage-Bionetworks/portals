@@ -9,6 +9,7 @@ import { SynapseContextProvider } from 'synapse-react-client/dist/utils/SynapseC
 import syn16787123Json from '../../mocks/syn16787123.json'
 import { SynapseConfig } from 'types/portal-config'
 import { assert } from 'console'
+import { EntityHeader, PaginatedResults } from 'synapse-react-client/dist/utils/synapseTypes'
 
 function renderWithContext(component) {
   return render(
@@ -30,6 +31,25 @@ const SynapseClient = require('synapse-react-client/dist/utils/SynapseClient')
 SynapseClient.getQueryTableResults = jest
   .fn()
   .mockResolvedValue(syn16787123Json)
+
+const expected: PaginatedResults<EntityHeader> = {
+  results: [
+    {
+      id: 'syn26843747',
+      name: 'My Entity',
+      type: 'org.sagebionetworks.repo.model.FileEntity',
+      versionNumber: 1,
+      versionLabel: '1',
+      benefactorId: 122,
+      createdOn: 'today',
+      modifiedOn: 'earlier',
+      createdBy: 'me',
+      modifiedBy: 'you',
+    },
+  ],
+}
+
+SynapseClient.getEntityHeaders = jest.fn().mockResolvedValue(expected)
 
 const SynapseComponentWithContext = require('../../SynapseComponentWithContext')
 let getSynapseConfig: () => SynapseConfig
