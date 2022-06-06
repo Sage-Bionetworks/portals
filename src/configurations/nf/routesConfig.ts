@@ -285,6 +285,7 @@ const routes: GenericRoute[] = [
       {
         isNested: true,
         to: 'DatasetsV2',
+        hideRouteFromNavbar: true,
         synapseConfigArray: [
           {
             name: 'RouteControlWrapper',
