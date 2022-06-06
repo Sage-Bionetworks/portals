@@ -2,7 +2,7 @@ import * as React from 'react'
 import { RouteControl, RouteControlProps } from '../RouteControl'
 import { withRouter, RouteComponentProps } from 'react-router-dom'
 import { SynapseConfig } from 'types/portal-config'
-import { SynapseComponentWithContext } from '../RouteResolver'
+import { SynapseComponentWithContext } from '../SynapseComponentWithContext'
 import { useEffect, useState } from 'react'
 import { ArrowDropDown, ArrowDropUp } from '@material-ui/icons'
 

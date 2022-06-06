@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { SynapseConfigArray } from 'types/portal-config'
-import { SynapseComponentWithContext } from '../RouteResolver'
+import { SynapseComponentWithContext } from '../SynapseComponentWithContext'
 import QueryCount from 'synapse-react-client/dist/containers/QueryCount'
 import { RouteControl, RouteControlProps } from 'RouteControl'
 
