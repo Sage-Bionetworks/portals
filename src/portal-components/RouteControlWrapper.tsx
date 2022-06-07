@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { RouteControl, RouteControlProps } from '../RouteControl'
-import { withRouter, RouteComponentProps } from 'react-router-dom'
+import { useLocation, useHistory } from 'react-router-dom'
 import { SynapseConfig } from 'types/portal-config'
 import { SynapseComponentWithContext } from '../SynapseComponentWithContext'
 import { useEffect, useState } from 'react'
@@ -13,7 +13,7 @@ export type RouteControlWrapperProps = {
   searchParams?: any
 }
 
-type Props = RouteComponentProps & RouteControlWrapperProps
+type Props = RouteControlWrapperProps
 
 /**
  * RouteControl is the set of controls used on the /Explore page to navigate the
@@ -23,12 +23,12 @@ type Props = RouteComponentProps & RouteControlWrapperProps
  * @returns
  */
 const RouteControlWrapper: React.FunctionComponent<Props> = ({
-  location,
   synapseConfig,
-  history,
   customRoutes = [],
   searchParams,
 }) => {
+  const location = useLocation()
+  const history = useHistory()
   const pathname = location.pathname
   const subPath = pathname.substring('/Explore/'.length)
   const handleChangesFn = (val: string, _index: number) => {
@@ -88,4 +88,4 @@ const RouteControlWrapper: React.FunctionComponent<Props> = ({
   )
 }
 
-export default withRouter(RouteControlWrapper)
+export default RouteControlWrapper

@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { withRouter, RouteComponentProps } from 'react-router-dom'
 import docTitleConfig from './config/docTitleConfig'
 import { SynapseClient, SynapseConstants } from 'synapse-react-client'
 import { withCookies, ReactCookieProps } from 'react-cookie'
@@ -7,6 +6,7 @@ import { DOWNLOAD_FILES_MENU_TEXT } from 'synapse-react-client/dist/containers/t
 import { UserProfile } from 'synapse-react-client/dist/utils/synapseTypes'
 import SynapseRedirectDialog from 'portal-components/SynapseRedirectDialog'
 import { SynapseContextProvider } from 'synapse-react-client/dist/utils/SynapseContext'
+import withLocation, { WithLocationPropType } from 'withLocation'
 
 export type AppInitializerState = {
   token?: string
@@ -18,7 +18,7 @@ export type AppInitializerState = {
   hasCalledGetSession: boolean
 }
 
-type Props = RouteComponentProps & ReactCookieProps
+type Props = WithLocationPropType & ReactCookieProps
 
 export type SignInProps = {
   userProfile: UserProfile | undefined
@@ -247,4 +247,4 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
   }
 }
 
-export default withRouter(withCookies(AppInitializer))
+export default withLocation(withCookies(AppInitializer))

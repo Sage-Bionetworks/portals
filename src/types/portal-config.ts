@@ -30,7 +30,7 @@ import { FeaturedDataTabsProps } from 'synapse-react-client/dist/containers/home
 import { UserCardListGroupsProps } from 'synapse-react-client/dist/containers/home_page/people/UserCardListGroups'
 import { TableFeedCardsProps } from 'synapse-react-client/dist/containers/TableFeedCards'
 import { DownloadCartPageProps } from 'synapse-react-client/dist/containers/download_list_v2/DownloadCartPage'
-import { RedirectProps } from 'react-router'
+import { RedirectProps } from 'react-router-dom'
 import { MarkdownCollapseProps } from 'synapse-react-client/dist/containers/MarkdownCollapse'
 
 // For styling the header on the home page -- the main title and the summary text

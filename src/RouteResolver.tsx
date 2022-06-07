@@ -1,6 +1,6 @@
 import { isEmpty } from 'lodash-es'
 import * as React from 'react'
-import { RouteComponentProps, useLocation, withRouter } from 'react-router'
+import { useLocation } from 'react-router-dom'
 import { SynapseComponents } from 'synapse-react-client'
 import { SynapseComponentWithContext } from 'SynapseComponentWithContext'
 import { GenericRoute, SynapseConfig } from 'types/portal-config'
@@ -97,7 +97,7 @@ export const SynapseComponent: React.FC<SynapseComponentProps> = ({
 /*
   Given a location join with the routesConfig to render the appropriate component.
 */
-const RouteResolver: React.FunctionComponent<RouteComponentProps> = () => {
+const RouteResolver = () => {
   // Map this to route in configuration files
   const { pathname, search, hash } = useLocation()
   // get the route object and the typical path of the route
@@ -197,4 +197,4 @@ const RouteResolver: React.FunctionComponent<RouteComponentProps> = () => {
   )
 }
 
-export default withRouter(RouteResolver)
+export default RouteResolver
