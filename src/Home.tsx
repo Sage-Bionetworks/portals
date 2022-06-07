@@ -1,9 +1,8 @@
 import * as React from 'react'
 import { Header } from './Header'
-import { withRouter } from 'react-router-dom'
 import RouteResolver from './RouteResolver'
 
-const Home: React.SFC = () => {
+const Home = () => {
   return (
     <div>
       <Header />
@@ -12,4 +11,4 @@ const Home: React.SFC = () => {
   )
 }
 
-export default withRouter(Home)
+export default Home

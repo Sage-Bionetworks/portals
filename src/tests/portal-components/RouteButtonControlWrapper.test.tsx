@@ -3,7 +3,7 @@ import { mount } from 'enzyme'
 import RouteControlWrapper, {
   RouteControlWrapperProps,
 } from '../../portal-components/RouteControlWrapper'
-import { MemoryRouter } from 'react-router'
+import { MemoryRouter } from 'react-router-dom'
 import { SynapseContextProvider } from 'synapse-react-client/dist/utils/SynapseContext'
 import MarkdownSynapse from 'synapse-react-client/dist/containers/MarkdownSynapse'
 

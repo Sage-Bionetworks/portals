@@ -13,7 +13,7 @@ import StatusLineChart from './crc-researcher/StatusLineChart'
 import SurveysCompletedPlots from './crc-researcher/SurveysCompletedPlots'
 import Image from './Image'
 import RedirectWithQuery from './RedirectWithQuery'
-import { Redirect } from 'react-router'
+import { Redirect } from 'react-router-dom'
 
 const PortalComponents = {
   StatefulButtonControlWrapper,

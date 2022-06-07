@@ -9,7 +9,7 @@ import routesConfig, {
 import { NestedRoute, SynapseConfig } from 'types/portal-config'
 import { mount } from 'enzyme'
 import StatefulButtonControlWrapper from '../portal-components/StatefulButtonControlWrapper'
-import { MemoryRouter } from 'react-router'
+import { MemoryRouter } from 'react-router-dom'
 import { SynapseContextProvider } from 'synapse-react-client/dist/utils/SynapseContext'
 import MarkdownSynapse from 'synapse-react-client/dist/containers/MarkdownSynapse'
 

@@ -1,10 +1,10 @@
 import React from 'react'
-import { Redirect, RedirectProps, useLocation } from 'react-router'
+import { Redirect, RedirectProps, useLocation } from 'react-router-dom'
 
 /**
  * Allows us to use react-router's Redirect as a portal component without losing the query params.
- * @param props 
- * @returns 
+ * @param props
+ * @returns
  */
 export default function RedirectWithQuery(props: RedirectProps) {
   const { search } = useLocation()
