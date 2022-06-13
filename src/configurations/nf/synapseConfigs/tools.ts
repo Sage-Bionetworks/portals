@@ -90,6 +90,13 @@ export const toolDetailsPageConfig: DetailsPageProps = {
       title: 'Details',
       synapseConfigArray: [
         {
+          name: 'Markdown',
+          columnName: 'howToAcquire',
+          title: 'How To Obtain The Tool',
+          injectMarkdown: true,
+          props: {},
+        },
+        {
           name: 'UserCardListRotate',
           title: 'Tool Origin',
           subtitle: 'Investigator',
