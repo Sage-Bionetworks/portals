@@ -1,13 +1,11 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import * as React from 'react'
 import './App.css'
-import '@fortawesome/fontawesome-free/css/all.css'
 import { Footer } from './Footer'
 import AppInitializer from './AppInitializer'
 import Navbar from './Navbar'
 import CookiesNotification from './CookiesNotification'
 import { CookiesProvider } from 'react-cookie'
-import '@fortawesome/fontawesome-free/css/all.css'
 import { SynapseComponents } from 'synapse-react-client'
 
 const Home = React.lazy(() => import('./Home'))
