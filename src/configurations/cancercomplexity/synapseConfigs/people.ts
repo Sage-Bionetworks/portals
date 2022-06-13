@@ -35,8 +35,8 @@ export const peopleCardConfiguration: CardConfiguration = {
   genericCardSchema: peopleSchema,
   titleLinkConfig: {
     isMarkdown: false,
-    URLColumnName: 'personId',
-    matchColumnName: 'personId',
+    URLColumnName: 'name',
+    matchColumnName: 'name',
     baseURL: 'Explore/People/DetailsPage',
   },
   labelLinkConfig: [

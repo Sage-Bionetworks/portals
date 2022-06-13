@@ -282,7 +282,7 @@ const routes: GenericRoute[] = [
                       name: 'CardContainerLogic',
                       columnName: 'publicationId',
                       title: 'Related Publications',
-                      tableSqlKeys: ['publicationId'],
+                      tableSqlKeys: ['pubMedId'],
                       props: {
                         sqlOperator: '=',
                         sql: publicationSql,
@@ -294,7 +294,7 @@ const routes: GenericRoute[] = [
                       name: 'CardContainerLogic',
                       columnName: 'datasetId',
                       title: 'Related Datasets',
-                      tableSqlKeys: ['datasetId'],
+                      tableSqlKeys: ['datasetAlias'],
                       props: {
                         sqlOperator: '=',
                         sql: datasetsSql,
@@ -306,7 +306,7 @@ const routes: GenericRoute[] = [
                       name: 'CardContainerLogic',
                       columnName: 'toolId',
                       title: 'Related Tools',
-                      tableSqlKeys: ['toolId'],
+                      tableSqlKeys: ['toolName'],
                       props: {
                         sqlOperator: '=',
                         sql: toolsSql,
@@ -358,11 +358,11 @@ const routes: GenericRoute[] = [
                   synapseConfigArray: [
                     {
                       name: 'CardContainerLogic',
-                      columnName: 'publicationId',
+                      columnName: 'pubMedId',
                       title: 'Related People',
                       tableSqlKeys: ['publicationId'],
                       props: {
-                        sqlOperator: '=',
+                        sqlOperator: 'LIKE',
                         sql: peopleSql,
                         ...peopleCardConfiguration,
                         facetAliases,
@@ -525,11 +525,11 @@ const routes: GenericRoute[] = [
                     },
                     {
                       name: 'CardContainerLogic',
-                      columnName: 'toolId',
+                      columnName: 'toolName',
                       title: 'Related People',
                       tableSqlKeys: ['toolId'],
                       props: {
-                        sqlOperator: '=',
+                        sqlOperator: 'LIKE',
                         sql: peopleSql,
                         ...peopleCardConfiguration,
                         facetAliases,
