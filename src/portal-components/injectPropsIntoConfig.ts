@@ -18,7 +18,7 @@ const injectPropsIntoConfig = (
   props: any,
 ): any => {
   const internalProps = cloneDeep(props)
-  if (el.name === 'Markdown') {
+  if (el.name === 'Markdown' || el.name === 'MarkdownCollapse') {
     const markdownProps = internalProps as MarkdownSynapseProps
     if (el.injectMarkdown) {
       markdownProps.markdown = value

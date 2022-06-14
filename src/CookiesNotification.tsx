@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { withRouter, RouteComponentProps } from 'react-router-dom'
 import { withCookies, ReactCookieProps } from 'react-cookie'
 import { SynapseComponents } from 'synapse-react-client'
 
@@ -7,7 +6,7 @@ export type CookiesNotificationToken = {
   hasAgreedToCookies: boolean
 }
 
-type Props = RouteComponentProps & ReactCookieProps
+type Props = ReactCookieProps
 
 const hasAgreedToCookiesKey =
   'org.sagebionetworks.security.cookies.portal.notification.okclicked'
@@ -45,22 +44,22 @@ class CookiesNotification extends React.Component<
     return this.state.hasAgreedToCookies ? (
       false
     ) : (
-      <SynapseComponents.FullWidthAlert 
-        variant="info" 
+      <SynapseComponents.FullWidthAlert
+        variant="info"
         title="Our site uses cookies."
-        description="This website uses cookies to enhance your experience and to analyze our traffic. Using this website means that you agree with our cookie policy." 
+        description="This website uses cookies to enhance your experience and to analyze our traffic. Using this website means that you agree with our cookie policy."
         primaryButtonConfig={{
-          text: "ACCEPT AND CONTINUE",
-          onClick: this.setHasAgreedToCookies
+          text: 'ACCEPT AND CONTINUE',
+          onClick: this.setHasAgreedToCookies,
         }}
         secondaryButtonConfig={{
-          text: "LEARN MORE",
-          href: 'https://s3.amazonaws.com/static.synapse.org/governance/SynapsePrivacyPolicy.pdf'
+          text: 'LEARN MORE',
+          href: 'https://s3.amazonaws.com/static.synapse.org/governance/SynapsePrivacyPolicy.pdf',
         }}
         isGlobal={true}
-        />
+      />
     )
   }
 }
 
-export default withRouter(withCookies(CookiesNotification))
+export default withCookies(CookiesNotification)

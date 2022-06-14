@@ -43,17 +43,6 @@ export const projectsDetailsPageConfiguration: DetailsPageProps = {
   synapseConfigArray: [
     {
       name: 'CardContainerLogic',
-      title: 'People',
-      columnName: 'Grant Number',
-      tableSqlKeys: ['Grant Number'],
-      props: {
-        sql: peopleSql,
-        limit: 6,
-        type: SynapseConstants.MEDIUM_USER_CARD,
-      },
-    },
-    {
-      name: 'CardContainerLogic',
       columnName: 'Grant Number',
       title: 'Studies',
       tableSqlKeys: ['Grant Number'],
@@ -104,6 +93,17 @@ export const projectsDetailsPageConfiguration: DetailsPageProps = {
       props: {
         sql: targetEnablingResourcesDetailsPageSql,
         ...targetEnablingResourcesCardConfiguration,
+      },
+    },
+    {
+      name: 'CardContainerLogic',
+      title: 'People',
+      columnName: 'Grant Number',
+      tableSqlKeys: ['Grant Number'],
+      props: {
+        sql: peopleSql,
+        limit: 6,
+        type: SynapseConstants.MEDIUM_USER_CARD,
       },
     },
   ],

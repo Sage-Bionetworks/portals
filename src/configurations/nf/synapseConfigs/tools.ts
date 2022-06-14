@@ -74,6 +74,10 @@ const tools: SynapseConfig = {
     name: 'Tools',
     cardConfiguration: toolsCardConfiguration,
     facetAliases,
+    defaultShowSearchBox: true,
+    searchConfiguration: {
+      fullTextSearchHelpURL: 'https://help.nf.synapse.org/NFdocs/Tips-for-Search.2640478225.html'
+    }
   },
 }
 
@@ -243,7 +247,7 @@ export const toolDetailsPageConfig: DetailsPageProps = {
             type: SynapseConstants.OBSERVATION_CARD,
             limit: 3,
           },
-          title: 'Experimental Tool Timeline',
+          title: 'Natural History Observations',
           tableSqlKeys: ['resourceId'],
           columnName: 'resourceId',
         },

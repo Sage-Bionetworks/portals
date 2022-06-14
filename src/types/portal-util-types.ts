@@ -21,6 +21,7 @@ type RowToPropTransform = {
   columnName?: string
   injectMarkdown?: boolean
   showTitleSeperator?: boolean
+  overrideSqlSourceTable?: boolean
 }
 
 export type RowSynapseConfig = SynapseConfig & RowToPropTransform

@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { mount } from 'enzyme'
-import { MemoryRouter } from 'react-router'
+import { MemoryRouter } from 'react-router-dom'
 import StatefulButtonControlWrapper, {
   StatefulButtonControlWrapperProps,
 } from '../../portal-components/StatefulButtonControlWrapper'

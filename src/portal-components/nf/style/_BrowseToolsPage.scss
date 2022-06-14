@@ -1,8 +1,10 @@
 @use 'variables' as Portal;
 
 .browse-tools-page {
+  // main contain has a padding bottom. Negative margin-bottom to connect last section to footer.
+  margin-bottom: -60px;
   .home-container-description {
-    padding: 0px;
+    padding: 0px 0px 60px 0px;
     margin: 0px;
   }
 
@@ -12,7 +14,7 @@
     padding: 50px 0px 30px 0px;
   }
   .sectionTitle {
-    margin: 50px 0px 15px 0px;
+    padding: 50px 0px 45px 0px;
     text-align: center;
   }
   .sectionSubtitle {
@@ -26,11 +28,15 @@
     margin-top: 20px;
     display: grid;
     max-width: 750px;
-    grid-template-columns: 500px 200px;
+    grid-template-columns: 500px 200px 25px;
     input {
       height: 41px;
     }
     .search-button-container {
+      place-self: center;
+    }
+    .help-popover {
+      font-size: 20px;
       place-self: center;
     }
   }
@@ -52,9 +58,19 @@
       color: #fff!important;
       border-bottom: 1px transparent;
       position: relative;
-      top: -65px;
+      top: -84px;
       display: block;
       font-size: 18px;
     }
+  }
+  .highlightSubmitToolContainer {
+    background-color: #003a55;
+    color: white;
+    padding: 50px 0px 100px 0px;
+  }
+
+  .bootstrap-4-backport .highlightSubmitToolButton {
+    background-color: #e27134;
+    color: white;
   }
 }

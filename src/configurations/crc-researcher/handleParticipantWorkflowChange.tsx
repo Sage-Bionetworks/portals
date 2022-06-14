@@ -30,7 +30,7 @@ const handleParticipantWorkflowChange = async (
   const rows: Row[] = event.data?.queryResult.queryResults!.rows!
   for (let index = 0; index < event.selectedRowIndices!.length; index++) {
     rowUpdates.push({
-      rowId: rows[event.selectedRowIndices![index]].rowId,
+      rowId: rows[event.selectedRowIndices![index]].rowId!,
       values: [
         {
           key: targetColumn?.id!,

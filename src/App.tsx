@@ -25,9 +25,13 @@ const App: React.FC = () => {
             <React.Suspense fallback={<div />}>
               <Switch>
                 {/* exact takes precendence over RouteResolver */}
-                <Route exact={true} path="/" component={Home} />
+                <Route exact={true} path="/">
+                  <Home />
+                </Route>
                 {/* all other routes handled programatically */}
-                <Route path="/" component={RouteResolver} />
+                <Route path="/">
+                  <RouteResolver />
+                </Route>
               </Switch>
             </React.Suspense>
           </main>

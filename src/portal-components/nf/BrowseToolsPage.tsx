@@ -7,6 +7,7 @@ import FeaturedToolsList from 'synapse-react-client/dist/containers/home_page/fe
 import IconSvg from 'synapse-react-client/dist/containers/IconSvg'
 import { Query } from 'synapse-react-client/dist/utils/synapseTypes'
 import { TextMatchesQueryFilter } from 'synapse-react-client/dist/utils/synapseTypes/Table/QueryFilter'
+import { HelpPopover } from 'synapse-react-client/dist/containers/HelpPopover'
 import { ReactComponent as AnimalModels } from './assets/animalmodels.svg'
 import { ReactComponent as Antibodies } from './assets/antibodies.svg'
 import { ReactComponent as Biobanks } from './assets/biobanks.svg'
@@ -60,44 +61,9 @@ const BrowseToolsPage = () => {
               </Typography>
             </div>
           </div>
-          <div className="center-content">
-            <Button href="https://help.nf.synapse.org/NFdocs/2555543592.html" className="pill-xl" variant="white" target="_blank">SUBMIT A TOOL</Button>
-          </div>
         </div>
       </div>
-      <div className="home-container-description">
-        <Typography variant="sectionTitle" className="sectionTitle">
-          What Tools Can We Help You Find?
-        </Typography>
-        <div className="center-content">
-          <div className="searchToolsRow">
-            <div className="searchInputWithIcon">
-              <IconSvg options={{ icon: 'searchOutlined' }} />
-              <Form.Control type="search" placeholder=""
-                value={searchText}
-                onChange={event => {
-                  setSearchText(event.target.value)
-                }}
-                onKeyPress={evt => {
-                  if (evt.key === 'Enter') {
-                    gotoExploreToolsWithFullTextSearch(searchText)
-                  }
-                }}
-              />
-            </div>
-            <div className="search-button-container bootstrap-4-backport">
-              <Button className="pill-xl" variant="primary" onClick={() => gotoExploreToolsWithFullTextSearch(searchText)}>SEARCH</Button>
-            </div>
-          </div>
-        </div>
-        <Typography variant="sectionTitle" className="sectionTitle">
-          Popular Searches
-        </Typography>
-        <div className="center-content">
-          <PopularSearches sql={popularSearchesSql} />
-        </div>
-      </div>
-      <Layout outsideContainerClassName="home-spacer home-bg-dark">
+      <Layout outsideContainerClassName="home-spacer">
         <Typography variant="sectionTitle" className="sectionTitle">
           Browse Tools by Category
         </Typography>
@@ -140,9 +106,49 @@ const BrowseToolsPage = () => {
           <Button className="pill-xl" variant="primary" onClick={() => gotoExploreTools()}>VIEW ALL TOOLS</Button>
         </div>
       </Layout>
+      <div className="home-container-description  home-bg-dark home-spacer">
+        <Typography variant="sectionTitle" className="sectionTitle">
+          What Tools Can We Help You Find?
+        </Typography>
+        <div className="center-content">
+          <div className="searchToolsRow">
+            <div className="searchInputWithIcon">
+              <IconSvg options={{ icon: 'searchOutlined' }} />
+              <Form.Control type="search" placeholder=""
+                value={searchText}
+                onChange={event => {
+                  setSearchText(event.target.value)
+                }}
+                onKeyPress={evt => {
+                  if (evt.key === 'Enter') {
+                    gotoExploreToolsWithFullTextSearch(searchText)
+                  }
+                }}
+              />
+            </div>
+            <div className="search-button-container bootstrap-4-backport">
+              <Button className="pill-xl" variant="primary" onClick={() => gotoExploreToolsWithFullTextSearch(searchText)}>SEARCH</Button>
+            </div>
+            <div className="help-popover">
+              <HelpPopover
+                markdownText={'This search bar is powered by MySQL Full Text Search.'}
+                helpUrl={'https://help.nf.synapse.org/NFdocs/Tips-for-Search.2640478225.html'}
+                placement="left"
+              />
+            </div>
+          </div>
+        </div>
+        <Typography variant="sectionTitle" className="sectionTitle">
+          Suggested Searches
+        </Typography>
+        <div className="center-content">
+          <PopularSearches sql={popularSearchesSql} />
+        </div>
+      </div>
+      
       <Layout outsideContainerClassName="home-spacer">
         <Typography variant="sectionTitle" className="sectionTitle">
-          Featured Tools
+          Recently Added Tools
         </Typography>
         <Typography variant="body1" className="sectionSubtitle">
           Check out some recently-catalogued research resources below.
@@ -162,7 +168,7 @@ const BrowseToolsPage = () => {
           <Button className="pill-xl" variant="primary" onClick={() => gotoExploreTools()}>VIEW ALL TOOLS</Button>
         </div>
       </Layout>
-      <Layout outsideContainerClassName="home-spacer home-bg-dark">
+      <Layout outsideContainerClassName="home-spacer highlightSubmitToolContainer">
         <Typography variant="sectionTitle" className="sectionTitle">
           Submit a Tool to the Database
         </Typography>
@@ -174,7 +180,7 @@ const BrowseToolsPage = () => {
           </div>
         </div>
         <div className="center-content bootstrap-4-backport">
-          <Button href="https://help.nf.synapse.org/NFdocs/2555543592.html" className="pill-xl" variant="primary" target="_blank">SUBMIT A TOOL</Button>
+          <Button href="https://help.nf.synapse.org/NFdocs/2555543592.html" className="pill-xl highlightSubmitToolButton" variant="secondary" target="_blank">SUBMIT A TOOL</Button>
         </div>
       </Layout>
     </div>

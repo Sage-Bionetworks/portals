@@ -33,8 +33,8 @@ export const publicationsCardConfiguration: CardConfiguration = {
   secondaryLabelLimit: 5,
   titleLinkConfig: {
     isMarkdown: false,
-    URLColumnName: 'publicationTitle',
-    matchColumnName: 'publicationTitle',
+    URLColumnName: 'pubMedId',
+    matchColumnName: 'pubMedId',
     baseURL: 'Explore/Publications/DetailsPage',
   },
   labelLinkConfig: [

@@ -91,18 +91,26 @@ export const studiesDetailsPageProps: DetailsPageProps = {
         },
         {
           name: 'Markdown',
+          columnName: 'ackContext',
+          title: 'Acknowledgement',
+          props: {},
+        },
+        {
+          name: 'MarkdownCollapse',
+          columnName: 'Acknowledgement',
+          props: {
+            textDescription:'full statement',
+            showCopyPlainText:true
+          },
+        },
+        {
+          name: 'Markdown',
           columnName: 'Methods',
           title: 'Methods',
           props: {},
           resolveSynId: {
             title: true,
           },
-        },
-        {
-          name: 'Markdown',
-          title: 'Acknowledgement',
-          columnName: 'Acknowledgement',
-          props: {},
         },
         {
           name: 'CardContainerLogic',
@@ -175,10 +183,10 @@ export const studiesDetailsPageProps: DetailsPageProps = {
         },
         {
           name: 'QueryWrapperPlotNav',
+          title: 'Study Data',
           props: {
             sqlOperator: 'HAS',
             rgbIndex,
-            name: 'Study Data',
             visibleColumnCount: 10,
             tableConfiguration: {
               showAccessColumn: true,

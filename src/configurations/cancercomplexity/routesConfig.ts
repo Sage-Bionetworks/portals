@@ -354,7 +354,7 @@ const routes: GenericRoute[] = [
                 name: 'DetailsPage',
                 props: {
                   sql: publicationSql,
-                  sqlOperator: 'LIKE',
+                  sqlOperator: '=',
                   synapseConfigArray: [
                     {
                       name: 'CardContainerLogic',
@@ -371,10 +371,11 @@ const routes: GenericRoute[] = [
                     {
                       name: 'CardContainerLogic',
                       columnName: 'publicationTitle',
+
                       title: 'Related Datasets',
-                      tableSqlKeys: ['publicationTitle'],
+                      tableSqlKeys: ['pubMedId'],
                       props: {
-                        sqlOperator: 'LIKE',
+                        sqlOperator: 'HAS',
                         sql: datasetsSql,
                         ...datasetCardConfiguration,
                         facetAliases,
@@ -382,11 +383,11 @@ const routes: GenericRoute[] = [
                     },
                     {
                       name: 'CardContainerLogic',
-                      columnName: 'publicationTitle',
+                      columnName: 'pubMedId',
                       title: 'Related Tools',
-                      tableSqlKeys: ['publicationTitle'],
+                      tableSqlKeys: ['pubMedId'],
                       props: {
-                        sqlOperator: 'LIKE',
+                        sqlOperator: '=',
                         sql: toolsSql,
                         ...toolsConfiguration,
                         facetAliases,
@@ -557,17 +558,12 @@ const routes: GenericRoute[] = [
     ],
   },
   {
-    to: 'About',
     isNested: false,
-    synapseConfigArray: [
-      {
-        name: 'Markdown',
-        props: {
-          ownerId: 'syn7080714',
-          wikiId: '470467',
-        },
-      },
-    ],
+    displayName: 'Help',
+    to: undefined,
+    target: '_blank',
+    link: 'http://help.cancercomplexity.synapse.org/',
+    synapseConfigArray: [],
   },
 ]
 
