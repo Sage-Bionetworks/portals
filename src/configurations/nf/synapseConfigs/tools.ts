@@ -31,6 +31,8 @@ export const toolsSchema: GenericCardSchema = {
   subTitle: 'resourceType',
   description: 'description',
   secondaryLabels: [
+    'investigatorName',
+    'investigatorWebsite',
     'rrid',
     'synonyms',
     'cellLineCategory',
@@ -62,6 +64,12 @@ export const toolsCardConfiguration: CardConfiguration = {
     overrideLinkURLColumnName: 'biobankURL',
   },
   secondaryLabelLimit: 4,
+  labelLinkConfig: [
+    {
+      isMarkdown: true,
+      matchColumnName: 'investigatorWebsite',
+    },
+  ],
   genericCardSchema: toolsSchema,
 }
 const rgbIndex = 6
@@ -350,6 +358,12 @@ export const toolsDetailsPage: SynapseConfig[] = [
       genericCardSchema: toolsSchema,
       secondaryLabelLimit: 6,
       isHeader: true,
+      labelLinkConfig: [
+        {
+          isMarkdown: true,
+          matchColumnName: 'investigatorWebsite',
+        },
+      ],
     },
   },
   {
