@@ -19,7 +19,7 @@ export const peopleSchema: GenericCardSchema = {
     'grantName',
     'consortium',
     'synapseProfileLink',
-    'chairRoles',
+    'workingGroupParticipation',
   ],
 }
 
