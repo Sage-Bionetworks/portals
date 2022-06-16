@@ -11,6 +11,7 @@ const DevelopedBySage = () => {
         <a
           className="SRC-primary-text-color SRC-boldText"
           href="https://sagebionetworks.org/"
+          target="_blank" rel="noreferrer"
         >
           &nbsp;Sage Bionetworks&nbsp;
         </a>
@@ -18,6 +19,7 @@ const DevelopedBySage = () => {
         <a
           className="SRC-primary-text-color SRC-boldText"
           href="https://sagebionetworks.org/tools_resources/synapse-platform/"
+          target="_blank" rel="noreferrer"
         >
           &nbsp;Sage Platform.&nbsp;
         </a>
@@ -27,8 +29,9 @@ const DevelopedBySage = () => {
         <a
           className="SRC-primary-text-color SRC-boldText"
           href="https://s3.amazonaws.com/static.synapse.org/governance/SageBionetworksSynapseTermsandConditionsofUse.pdf?v=5"
+          target="_blank" rel="noreferrer"
         >
-          &nbsp;Terms and Conditions.
+          &nbsp;Terms and Conditions
         </a>
         .
       </p>
@@ -37,13 +40,13 @@ const DevelopedBySage = () => {
         (5U24CA209923).
       </p>
       <p className="logos">
-        <a href="https://www.nih.gov/">
+        <a href="https://www.nih.gov/" target="_blank" rel="noreferrer">
           <NIH id="nih-logo" />
         </a>
-        <a href="https://sagebionetworks.org/tools_resources/synapse-platform/">
+        <a href="https://sagebionetworks.org/tools_resources/synapse-platform/" target="_blank" rel="noreferrer">
           <SageLogo id="sage-logo" />
         </a>
-        <a href="https://www.cancer.gov/">
+        <a href="https://www.cancer.gov/" target="_blank" rel="noreferrer">
           <NCI id="nci-logo" />
         </a>
       </p>
