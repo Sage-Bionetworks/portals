@@ -15,10 +15,10 @@ export const peopleSchema: GenericCardSchema = {
   subTitle: 'lastKnownInstitution',
   description: '',
   secondaryLabels: [
-    'synapseProfileLink',
     'orcidId',
     'grantName',
     'consortium',
+    'synapseProfileLink',
     'chairRoles',
   ],
 }
@@ -30,7 +30,7 @@ const iconOptions: IconOptions = {
 
 export const peopleCardConfiguration: CardConfiguration = {
   type: SynapseConstants.GENERIC_CARD,
-  secondaryLabelLimit: 4,
+  secondaryLabelLimit: 3,
   iconOptions,
   genericCardSchema: peopleSchema,
   titleLinkConfig: {
