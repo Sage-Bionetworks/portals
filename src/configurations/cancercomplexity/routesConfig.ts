@@ -188,9 +188,9 @@ const routes: GenericRoute[] = [
                   synapseConfigArray: [
                     {
                       name: 'CardContainerLogic',
-                      columnName: 'grantName',
+                      columnName: 'grantNumber',
                       title: 'Related Projects',
-                      tableSqlKeys: ['grantName'],
+                      tableSqlKeys: ['grant'],
                       props: {
                         sqlOperator: 'LIKE',
                         sql: `${projectsSql} where grantType LIKE '%U54%'`,
