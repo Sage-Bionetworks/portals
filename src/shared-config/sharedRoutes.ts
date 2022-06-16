@@ -25,7 +25,10 @@ const routes: GenericRoute[] = [
     synapseConfigArray: [
       {
         name: 'DownloadCartPage',
-        props: {},
+        props: {
+          onViewSharingSettingsClicked: benefactorEntityId => {
+            window.open(`https://www.synapse.org/#!Synapse:${benefactorEntityId}`, '_blank')
+          }},
         isOutsideContainer: true,
       },
     ],
