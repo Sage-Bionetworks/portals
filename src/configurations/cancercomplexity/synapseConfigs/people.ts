@@ -18,8 +18,8 @@ export const peopleSchema: GenericCardSchema = {
     'orcidId',
     'grantName',
     'consortium',
-    'synapseProfileLink',
     'workingGroupParticipation',
+    'synapseProfileLink',
   ],
 }
 
