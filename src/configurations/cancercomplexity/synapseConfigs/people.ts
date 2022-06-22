@@ -15,6 +15,7 @@ export const peopleSchema: GenericCardSchema = {
   subTitle: 'lastKnownInstitution',
   description: '',
   secondaryLabels: [
+    'email',
     'orcidId',
     'grantName',
     'consortium',
