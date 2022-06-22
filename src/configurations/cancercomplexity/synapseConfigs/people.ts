@@ -59,9 +59,10 @@ export const people: SynapseConfig = {
     facetsToPlot: ['consortium', 'grantNumber'],
     searchConfiguration: {
       searchable: [
+        'name',
         'grantName',
         'grantNumber',
-        'chairRoles',
+        'workingGroupParticipation',
       ],
     },
   },
