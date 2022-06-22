@@ -26,7 +26,7 @@ export const projectCardConfiguration: CardConfiguration = {
     title: 'Name',
     subTitle: 'Principal Investigators',
     description: 'Abstract',
-    secondaryLabels: ['Institutions', 'Program', 'Grant Number'],
+    secondaryLabels: ['Institutions', 'Program', 'Grant Number', 'More Information'],
   },
   secondaryLabelLimit: 4,
   titleLinkConfig: {
@@ -35,6 +35,11 @@ export const projectCardConfiguration: CardConfiguration = {
     URLColumnName: 'Grant Number',
     matchColumnName: 'Grant Number',
   },
+  labelLinkConfig: [{
+    isMarkdown: false,
+    matchColumnName: 'More Information',
+    linkColumnName: 'More Information URL'
+  }]
 }
 
 export const projectsDetailsPageConfiguration: DetailsPageProps = {
