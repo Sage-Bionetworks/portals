@@ -15,6 +15,7 @@ export const peopleSchema: GenericCardSchema = {
   subTitle: 'lastKnownInstitution',
   description: '',
   secondaryLabels: [
+    'email',
     'orcidId',
     'grantName',
     'consortium',
@@ -58,9 +59,10 @@ export const people: SynapseConfig = {
     facetsToPlot: ['consortium', 'grantNumber'],
     searchConfiguration: {
       searchable: [
+        'name',
         'grantName',
         'grantNumber',
-        'chairRoles',
+        'workingGroupParticipation',
       ],
     },
   },
