@@ -201,6 +201,18 @@ const routes: GenericRoute[] = [
                     },
                     {
                       name: 'CardContainerLogic',
+                      columnName: 'grantNumber',
+                      title: 'Related People',
+                      tableSqlKeys: ['grantNumber'],
+                      props: {
+                        sqlOperator: 'LIKE',
+                        sql: peopleSql,
+                        ...peopleCardConfiguration,
+                        facetAliases,
+                      },
+                    },
+                    {
+                      name: 'CardContainerLogic',
                       columnName: 'grantName',
                       title: 'Related Publications',
                       tableSqlKeys: ['grantName'],
