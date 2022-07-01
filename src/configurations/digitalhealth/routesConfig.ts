@@ -171,6 +171,14 @@ const routes: GenericRoute[] = [
       },
     ],
   },
+  {
+    isNested: false,
+    displayName: 'Help',
+    to: undefined,
+    target: '_blank',
+    link: 'https://help.dhealth.synapse.org/doc/',
+    synapseConfigArray: [],
+  },  
 ]
 
 export default routes
