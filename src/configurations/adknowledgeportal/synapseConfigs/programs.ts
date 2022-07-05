@@ -10,7 +10,8 @@ export const programCardConfiguration: CardConfiguration = {
     title: 'Full Name',
     subTitle: 'Short Description',
     icon: 'Program',
-    secondaryLabels: ['More Information']
+    secondaryLabels: ['More Information'],
+    imageFileHandleColumnName: 'Details Page Image',
   },
   titleLinkConfig: {
     isMarkdown: false,
