@@ -24,11 +24,11 @@ import {
 import injectPropsIntoConfig from './injectPropsIntoConfig'
 import { ExternalFileHandleLink } from 'synapse-react-client/dist/containers/ExternalFileHandleLink'
 import { BarLoader } from 'react-spinners'
-import { LockedFacet } from 'synapse-react-client/dist/containers/QueryWrapper'
 import DetailsPageTabs from './DetailsPageTabs'
 import { SynapseContext } from 'synapse-react-client/dist/utils/SynapseContext'
 import { useGetEntityHeaders } from 'synapse-react-client/dist/utils/hooks/SynapseAPI/entity/useGetEntityHeaders'
 import { SYNAPSE_ENTITY_ID_REGEX } from 'synapse-react-client/dist/utils/functions/RegularExpressions'
+import { LockedFacet } from 'synapse-react-client/dist/containers/QueryContext'
 
 type State = {
   queryResultBundle: QueryResultBundle | undefined
@@ -353,8 +353,8 @@ export const SplitStringToComponent: React.FC<{
   let entityTitle = ''
 
   // For explorer 2.0, construct an object to contain the locked facet name and facet value
-  const lockedFacet: LockedFacet = {
-    facet: columnName,
+  const lockedFacet:LockedFacet = {
+    facet: columnName
   }
 
   const { data: entityHeaders } = useGetEntityHeaders([{ targetId: value }], {

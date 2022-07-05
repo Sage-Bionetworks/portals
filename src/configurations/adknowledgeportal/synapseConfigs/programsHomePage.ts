@@ -1,11 +1,9 @@
-import { iconOptions } from './iconOptions'
 import { ProgramsProps } from 'synapse-react-client/dist/containers/home_page/programs/Programs'
 
 export const programsHomePageConfig: ProgramsProps = {
   entityId:'syn17024173',
   titleColumnName: 'Program',
-  iconOptions,
-  iconColumnName: 'Program',
+  imageFileHandleColumnName: 'Homepage Image',
   linkColumnName: 'Website',
   summaryColumnName: 'Short Description',  
   rgbIndex: 1,
