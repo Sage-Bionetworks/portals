@@ -18,7 +18,6 @@ import { targetEnablingResourcesDetailsPageSql } from '../resources'
 import { targetEnablingResourcesCardConfiguration } from './target_enabling_resources'
 
 const rgbIndex = 4
-
 export const projectCardConfiguration: CardConfiguration = {
   type: SynapseConstants.GENERIC_CARD,
   genericCardSchema: {
@@ -71,8 +70,9 @@ export const projectsDetailsPageConfiguration: DetailsPageProps = {
       name: 'ToggleSynapseObjects',
       title: 'Experimental Models',
       showTitleSeperator: false,
+      standalone: true,
       toggleConfigs: {
-        icon1: 'accessOpen',
+        icon1: 'table',
         config1: {
           name: 'StandaloneQueryWrapper',
           props: {
@@ -83,7 +83,7 @@ export const projectsDetailsPageConfiguration: DetailsPageProps = {
           columnName: 'Grant Number',
           tableSqlKeys: ['grant'],
         },
-        icon2: 'accessClosed',
+        icon2: 'accessOpen',
         config2: {
           name: 'CardContainerLogic',
           columnName: 'Grant Number',

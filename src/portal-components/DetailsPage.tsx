@@ -345,7 +345,6 @@ export const SplitStringToComponent: React.FC<{
   overrideSqlSourceTable,
 }) => {
   let value = splitString.trim()
-
   const valueIsSynId = React.useMemo(
     () => !!SYNAPSE_ENTITY_ID_REGEX.exec(value),
     [value],
@@ -439,6 +438,15 @@ function isReactFragment(variableToInspect: any): boolean {
   return variableToInspect === React.Fragment
 }
 
+const getSynapseComponent = (el: RowSynapseConfig, queryResultBundle?: QueryResultBundle) => {
+  return el.standalone ? (
+    <SynapseComponentWithContext synapseConfig={el} />
+  ) : queryResultBundle ? (
+    <SynapseObject el={el} queryResultBundle={queryResultBundle} />
+  ) : (
+    <></>
+  )
+}
 export const DetailsPageSynapseConfigArray: React.FC<{
   showMenu: boolean
   synapseConfigArray: RowSynapseConfig[]
@@ -449,7 +457,7 @@ export const DetailsPageSynapseConfigArray: React.FC<{
     <>
       {synapseConfigArray.map((el: RowSynapseConfig, index) => {
         const id = COMPONENT_ID_PREFIX + index
-        const { standalone, resolveSynId, showTitleSeperator = true } = el
+        const { resolveSynId, showTitleSeperator = true } = el
         const key = JSON.stringify(el)
         const hasTitleFromSynId = resolveSynId && resolveSynId.title
         // don't show this title if component is rendering entity names adjacet to the title
@@ -475,32 +483,17 @@ export const DetailsPageSynapseConfigArray: React.FC<{
         }
 
         let component
-        // PORTALS-2229: If this is a Toggle, then set these values appropriately
+        // PORTALS-2229: If this is a Toggle, then get a ToggleSynapseObjects component
         if (el.toggleConfigs) {
           const tc = el.toggleConfigs
-          if (standalone) {
-            component = <ToggleSynapseObjects
-              icon1={tc.icon1}
-              synapseObject1={<SynapseComponentWithContext synapseConfig={tc.config1} />}
-              icon2={tc.icon2}
-              synapseObject2={<SynapseComponentWithContext synapseConfig={tc.config2} />} />
-          } else if (queryResultBundle) {
-            component = <ToggleSynapseObjects
-              icon1={tc.icon1}
-              synapseObject1={<SynapseObject el={tc.config1} queryResultBundle={queryResultBundle} />}
-              icon2={tc.icon2}
-              synapseObject2={<SynapseObject el={tc.config2} queryResultBundle={queryResultBundle} />} />
-          }
+          component = <ToggleSynapseObjects
+            icon1={tc.icon1}
+            synapseObject1={getSynapseComponent(tc.config1, queryResultBundle)}
+            icon2={tc.icon2}
+            synapseObject2={getSynapseComponent(tc.config2, queryResultBundle)} />
         } else {
-          component = standalone ? (
-            <SynapseComponentWithContext synapseConfig={el} />
-          ) : queryResultBundle ? (
-            <SynapseObject el={el} queryResultBundle={queryResultBundle} />
-          ) : (
-            <></>
-          )
+          component = getSynapseComponent(el, queryResultBundle)
         }
-        
         if (isReactFragment(component)) {
           return <></>
         }

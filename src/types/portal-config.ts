@@ -192,7 +192,7 @@ type UserCardListGroups = {
 }
 type ToggleSynapseObjects = {
   name: 'ToggleSynapseObjects'
-  props: ToggleSynapseObjectsProps // empty because DetailsPage uses the toggleConfigs to create Synapse Objects
+  props: ToggleSynapseObjectsProps
 }
 
 type Metadata = {
