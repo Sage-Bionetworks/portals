@@ -29,6 +29,7 @@ import { SynapseContext } from 'synapse-react-client/dist/utils/SynapseContext'
 import { useGetEntityHeaders } from 'synapse-react-client/dist/utils/hooks/SynapseAPI/entity/useGetEntityHeaders'
 import { SYNAPSE_ENTITY_ID_REGEX } from 'synapse-react-client/dist/utils/functions/RegularExpressions'
 import { LockedFacet } from 'synapse-react-client/dist/containers/QueryContext'
+import ToggleSynapseObjects from './ToggleSynapseObjects'
 
 type State = {
   queryResultBundle: QueryResultBundle | undefined
@@ -472,14 +473,34 @@ export const DetailsPageSynapseConfigArray: React.FC<{
             </>
           )
         }
-        const component = standalone ? (
-          <SynapseComponentWithContext synapseConfig={el} />
-        ) : queryResultBundle ? (
-          <SynapseObject el={el} queryResultBundle={queryResultBundle} />
-        ) : (
-          <></>
-        )
 
+        let component
+        // PORTALS-2229: If this is a Toggle, then set these values appropriately
+        if (el.toggleConfigs) {
+          const tc = el.toggleConfigs
+          if (standalone) {
+            component = <ToggleSynapseObjects
+              icon1={tc.icon1}
+              synapseObject1={<SynapseComponentWithContext synapseConfig={tc.config1} />}
+              icon2={tc.icon2}
+              synapseObject2={<SynapseComponentWithContext synapseConfig={tc.config2} />} />
+          } else if (queryResultBundle) {
+            component = <ToggleSynapseObjects
+              icon1={tc.icon1}
+              synapseObject1={<SynapseObject el={tc.config1} queryResultBundle={queryResultBundle} />}
+              icon2={tc.icon2}
+              synapseObject2={<SynapseObject el={tc.config2} queryResultBundle={queryResultBundle} />} />
+          }
+        } else {
+          component = standalone ? (
+            <SynapseComponentWithContext synapseConfig={el} />
+          ) : queryResultBundle ? (
+            <SynapseObject el={el} queryResultBundle={queryResultBundle} />
+          ) : (
+            <></>
+          )
+        }
+        
         if (isReactFragment(component)) {
           return <></>
         }

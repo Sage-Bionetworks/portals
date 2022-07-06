@@ -68,15 +68,33 @@ export const projectsDetailsPageConfiguration: DetailsPageProps = {
       },
     },
     {
-      name: 'CardContainerLogic',
-      columnName: 'Grant Number',
+      name: 'ToggleSynapseObjects',
       title: 'Experimental Models',
       showTitleSeperator: false,
-      tableSqlKeys: ['grant'],
-      props: {
-        sql: experimentalModelsSql,
-        ...experimentalToolsCardConfiguration,
+      toggleConfigs: {
+        icon1: 'accessOpen',
+        config1: {
+          name: 'StandaloneQueryWrapper',
+          props: {
+            sql: experimentalModelsSql,
+            rgbIndex,
+            sqlOperator: '=',
+          },
+          columnName: 'Grant Number',
+          tableSqlKeys: ['grant'],
+        },
+        icon2: 'accessClosed',
+        config2: {
+          name: 'CardContainerLogic',
+          columnName: 'Grant Number',
+          tableSqlKeys: ['grant'],
+          props: {
+            sql: experimentalModelsSql,
+            ...experimentalToolsCardConfiguration,
+          },
+        },
       },
+      props: {},
     },
     {
       name: 'CardContainerLogic',
