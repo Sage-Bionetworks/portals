@@ -12,7 +12,7 @@ import {
 import { DetailsPageProps } from 'types/portal-util-types'
 import { studyCardConfiguration } from './studies'
 import { publicationCardProps } from './publications'
-import { experimentalToolsCardConfiguration } from './experimental_tools'
+import { experimentalDetailsTableConfigurationColumnLinks, experimentalToolsCardConfiguration } from './experimental_tools'
 import { computationalCardConfiguration } from './computational_tools'
 import { targetEnablingResourcesDetailsPageSql } from '../resources'
 import { targetEnablingResourcesCardConfiguration } from './target_enabling_resources'
@@ -79,11 +79,12 @@ export const projectsDetailsPageConfiguration: DetailsPageProps = {
             sql: experimentalModelsSql,
             rgbIndex,
             sqlOperator: '=',
+            columnLinks: experimentalDetailsTableConfigurationColumnLinks,
           },
           columnName: 'Grant Number',
           tableSqlKeys: ['grant'],
         },
-        icon2: 'accessOpen',
+        icon2: 'entityview',
         config2: {
           name: 'CardContainerLogic',
           columnName: 'Grant Number',
