@@ -1,9 +1,7 @@
 import { SynapseConstants } from 'synapse-react-client'
-import { iconOptions } from './iconOptions'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 
 export const programCardConfiguration: CardConfiguration = {
-  iconOptions,
   type: SynapseConstants.GENERIC_CARD,
   genericCardSchema: {
     type: 'Program',
