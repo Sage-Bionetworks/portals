@@ -84,7 +84,7 @@ export const projectsDetailsPageConfiguration: DetailsPageProps = {
           columnName: 'Grant Number',
           tableSqlKeys: ['grant'],
         },
-        icon2: 'entityview',
+        icon2: 'cards',
         config2: {
           name: 'CardContainerLogic',
           columnName: 'Grant Number',
