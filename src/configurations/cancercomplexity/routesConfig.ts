@@ -205,7 +205,7 @@ const routes: GenericRoute[] = [
                       title: 'Related People',
                       tableSqlKeys: ['grantNumber'],
                       props: {
-                        sqlOperator: 'LIKE',
+                        sqlOperator: 'HAS',
                         sql: peopleSql,
                         ...peopleCardConfiguration,
                         facetAliases,
