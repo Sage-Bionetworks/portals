@@ -23,6 +23,7 @@ export const initiativeCardConfiguration: CardConfiguration = {
 
 const initiatives: SynapseConfig = {
   name: 'QueryWrapperPlotNav',
+  className: 'InitiativeCardList',
   props: {
     rgbIndex,
     defaultShowFacetVisualization: false,

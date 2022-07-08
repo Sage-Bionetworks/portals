@@ -18,7 +18,6 @@ import {
   projectsDetailsPageConfiguration,
 } from './synapseConfigs/projects'
 import { results } from './synapseConfigs/results'
-import { iconHeaderOptions } from './synapseConfigs/iconOptions'
 import { programCardConfiguration } from './synapseConfigs/programs'
 import { programsHomePageConfig } from './synapseConfigs/programsHomePage'
 import experimentalTools from './synapseConfigs/experimental_tools'
@@ -250,6 +249,7 @@ const routes: GenericRoute[] = [
           {
             name: 'RouteControlWrapper',
             isOutsideContainer: true,
+            className: 'ProgramCardList',
             props: {
               ...RouteControlWrapperProps,
               synapseConfig: {
@@ -279,7 +279,6 @@ const routes: GenericRoute[] = [
                     ...programCardConfiguration.genericCardSchema!,
                     description: 'Long Description',
                   },
-                  iconOptions: iconHeaderOptions,
                 },
               },
               {
