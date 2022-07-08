@@ -11,6 +11,6 @@
   }
   color: Portal.$primary-action-color;
   .unselected {
-    color: #AEB5BC;
+    color: map.get(SrcVariables.$colors, 'gray-600');
   }
 }
