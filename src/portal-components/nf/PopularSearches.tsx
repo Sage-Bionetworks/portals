@@ -40,7 +40,7 @@ const PopularSearches: React.FunctionComponent<PopularSearchesProps> = ({
       )
       setIsLoading(false)
       const { queryResult } = queryResultBundle
-      const { queryResults } = queryResult
+      const queryResults = queryResult?.queryResults
       if (queryResults) {
         if (mounted) {
           setRowSet(queryResults)

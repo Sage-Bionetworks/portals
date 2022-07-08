@@ -213,10 +213,10 @@ const SideNavMenu: React.FC<{
   const mapColumnHeaderToRowIndex: Dictionary<number> = {}
   let row: string[] = []
   if (queryResultBundle) {
-    queryResultBundle.queryResult.queryResults.headers.forEach((el, index) => {
+    queryResultBundle.queryResult!.queryResults.headers.forEach((el, index) => {
       mapColumnHeaderToRowIndex[el.name] = index
     })
-    row = queryResultBundle.queryResult.queryResults.rows[0].values
+    row = queryResultBundle.queryResult!.queryResults.rows[0].values
   }
   return (
     <>
@@ -269,13 +269,13 @@ const SynapseObject: React.FC<{
 }> = ({ el, queryResultBundle }) => {
   const { columnName = '', resolveSynId, props, overrideSqlSourceTable } = el
   const deepCloneOfProps = cloneDeep(props)
-  const row = queryResultBundle!.queryResult.queryResults.rows[0].values
+  const row = queryResultBundle!.queryResult!.queryResults.rows[0].values
   // map column name to index
   const mapColumnHeaderToRowIndex: Dictionary<{
     index: number
     columnType: ColumnType
   }> = {}
-  queryResultBundle!.queryResult.queryResults.headers.forEach((el, index) => {
+  queryResultBundle!.queryResult!.queryResults.headers.forEach((el, index) => {
     mapColumnHeaderToRowIndex[el.name] = { index, columnType: el.columnType }
   })
   const { index, columnType } = mapColumnHeaderToRowIndex[columnName] ?? {}

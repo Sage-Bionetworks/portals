@@ -151,7 +151,7 @@ export function fetchData(token: string): Promise<RowSet> {
 
   return getFullQueryTableResults(queryRequest, token).then(
     (data: QueryResultBundle) => {
-      return data.queryResult.queryResults
+      return data.queryResult!.queryResults
     },
   )
 }
