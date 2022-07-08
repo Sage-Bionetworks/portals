@@ -1,7 +1,7 @@
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import { SynapseConstants } from 'synapse-react-client'
 import { SynapseConfig } from 'types/portal-config'
-import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
+import { CardConfiguration, LabelLinkConfig } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import { experimentalModelsSql } from '../resources'
 import { QueryWrapperPlotNavProps } from 'synapse-react-client/dist/containers/query_wrapper_plot_nav/QueryWrapperPlotNav'
 
@@ -61,47 +61,49 @@ export const experimentalToolsCardConfiguration: CardConfiguration = {
   ],
 }
 
+export const experimentalDetailsTableConfigurationColumnLinks: LabelLinkConfig = [
+  {
+    isMarkdown: false,
+    matchColumnName: 'name',
+    linkColumnName: 'url',
+  },
+  {
+    isMarkdown: true,
+    matchColumnName: 'alzforumInformation',
+  },
+  {
+    isMarkdown: false,
+    matchColumnName: 'availableData',
+    URLColumnName: 'modelSystemName',
+    baseURL: 'Explore/Data',
+  },
+  {
+    isMarkdown: false,
+    matchColumnName: 'data',
+    URLColumnName: 'Study_Name',
+    baseURL: 'Explore/Studies/DetailsPage',
+  },
+  {
+    isMarkdown: true,
+    matchColumnName: 'supplementaryInformation',
+  },
+  {
+    isMarkdown: true,
+    matchColumnName: 'mouseModelReport',
+  },
+  {
+    isMarkdown: false,
+    matchColumnName: 'grant',
+    URLColumnName: 'Grant Number',
+    baseURL: 'Explore/Projects/DetailsPage',
+  },
+]
+
 export const experimentalDetailsTableConfiguration: QueryWrapperPlotNavProps['tableConfiguration'] =
   {
     showDownloadColumn: false,
     showAccessColumn: false,
-    columnLinks: [
-      {
-        isMarkdown: false,
-        matchColumnName: 'name',
-        linkColumnName: 'url',
-      },
-      {
-        isMarkdown: true,
-        matchColumnName: 'alzforumInformation',
-      },
-      {
-        isMarkdown: false,
-        matchColumnName: 'availableData',
-        URLColumnName: 'modelSystemName',
-        baseURL: 'Explore/Data',
-      },
-      {
-        isMarkdown: false,
-        matchColumnName: 'data',
-        URLColumnName: 'Study_Name',
-        baseURL: 'Explore/Studies/DetailsPage',
-      },
-      {
-        isMarkdown: true,
-        matchColumnName: 'supplementaryInformation',
-      },
-      {
-        isMarkdown: true,
-        matchColumnName: 'mouseModelReport',
-      },
-      {
-        isMarkdown: false,
-        matchColumnName: 'grant',
-        URLColumnName: 'Grant Number',
-        baseURL: 'Explore/Projects/DetailsPage',
-      },
-    ],
+    columnLinks: experimentalDetailsTableConfigurationColumnLinks,
   }
 
 const rgbIndex = 6

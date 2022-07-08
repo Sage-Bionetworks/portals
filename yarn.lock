@@ -9716,6 +9716,13 @@ react-switch@^5.0.1:
   dependencies:
     prop-types "^15.6.2"
 
+react-switch@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/react-switch/-/react-switch-7.0.0.tgz#400990bb9822864938e343ed24f13276a617bdc0"
+  integrity sha512-KkDeW+cozZXI6knDPyUt3KBN1rmhoVYgAdCJqAh7st7tk8YE6N0iR89zjCWO8T8dUTeJGTR0KU+5CHCRMRffiA==
+  dependencies:
+    prop-types "^15.7.2"
+
 react-test-renderer@16.14.0, react-test-renderer@^16.0.0-0:
   version "16.14.0"
   resolved "https://registry.yarnpkg.com/react-test-renderer/-/react-test-renderer-16.14.0.tgz#e98360087348e260c56d4fe2315e970480c228ae"
@@ -10920,10 +10927,10 @@ symbol-tree@^3.2.4:
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.4.tgz#430637d248ba77e078883951fb9aa0eed7c63fa2"
   integrity sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==
 
-synapse-react-client@3.0.27:
-  version "3.0.27"
-  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-3.0.27.tgz#662c269f8ea2d14f191f6ff21fc1c6f35893bdab"
-  integrity sha512-etc0zPEczvzhgyT2kcesDZQr0/D+wrvtIvMIhlwJdqIYC7paDdiDGX9CTkeHg29i4k7BnvEohiiOgMAvAKoZTQ==
+synapse-react-client@3.0.28:
+  version "3.0.28"
+  resolved "https://registry.yarnpkg.com/synapse-react-client/-/synapse-react-client-3.0.28.tgz#70f54b5bfb557c79841942f8cb10874476481aee"
+  integrity sha512-XCKQogqmZjCtMF+BCzGg5t1cKzNK44KbUXlSspKquUsO8jnkFzEaIMFeC7XW4EOzlSEblHNaifpw3j2yofjZgA==
   dependencies:
     "@apidevtools/json-schema-ref-parser" "^9.0.9"
     "@brainhubeu/react-carousel" "1.19.26"

@@ -32,6 +32,7 @@ import { TableFeedCardsProps } from 'synapse-react-client/dist/containers/TableF
 import { RedirectProps } from 'react-router-dom'
 import { MarkdownCollapseProps } from 'synapse-react-client/dist/containers/MarkdownCollapse'
 import { DownloadListActionsRequiredProps } from 'synapse-react-client/dist/containers/download_list_v2/DownloadListActionsRequired'
+import { ToggleSynapseObjectsProps } from 'portal-components/ToggleSynapseObjects'
 
 // For styling the header on the home page -- the main title and the summary text
 export type HomePageHeaderConfig = {
@@ -189,6 +190,10 @@ type UserCardListGroups = {
   name: 'UserCardListGroups'
   props: UserCardListGroupsProps
 }
+type ToggleSynapseObjects = {
+  name: 'ToggleSynapseObjects'
+  props: ToggleSynapseObjectsProps
+}
 
 type Metadata = {
   title?: string
@@ -284,6 +289,7 @@ export type SynapseConfig = (
   | DownloadCartPage
   | BrowseToolsPage
   | SubsectionRowRenderer
+  | ToggleSynapseObjects
 ) &
   Metadata
 export type SynapseConfigArray = SynapseConfig[]

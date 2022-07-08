@@ -12,13 +12,12 @@ import {
 import { DetailsPageProps } from 'types/portal-util-types'
 import { studyCardConfiguration } from './studies'
 import { publicationCardProps } from './publications'
-import { experimentalToolsCardConfiguration } from './experimental_tools'
+import { experimentalDetailsTableConfigurationColumnLinks, experimentalToolsCardConfiguration } from './experimental_tools'
 import { computationalCardConfiguration } from './computational_tools'
 import { targetEnablingResourcesDetailsPageSql } from '../resources'
 import { targetEnablingResourcesCardConfiguration } from './target_enabling_resources'
 
 const rgbIndex = 4
-
 export const projectCardConfiguration: CardConfiguration = {
   type: SynapseConstants.GENERIC_CARD,
   genericCardSchema: {
@@ -68,15 +67,35 @@ export const projectsDetailsPageConfiguration: DetailsPageProps = {
       },
     },
     {
-      name: 'CardContainerLogic',
-      columnName: 'Grant Number',
+      name: 'ToggleSynapseObjects',
       title: 'Experimental Models',
       showTitleSeperator: false,
-      tableSqlKeys: ['grant'],
-      props: {
-        sql: experimentalModelsSql,
-        ...experimentalToolsCardConfiguration,
+      standalone: true,
+      toggleConfigs: {
+        icon1: 'table',
+        config1: {
+          name: 'StandaloneQueryWrapper',
+          props: {
+            sql: experimentalModelsSql,
+            rgbIndex,
+            sqlOperator: '=',
+            columnLinks: experimentalDetailsTableConfigurationColumnLinks,
+          },
+          columnName: 'Grant Number',
+          tableSqlKeys: ['grant'],
+        },
+        icon2: 'cards',
+        config2: {
+          name: 'CardContainerLogic',
+          columnName: 'Grant Number',
+          tableSqlKeys: ['grant'],
+          props: {
+            sql: experimentalModelsSql,
+            ...experimentalToolsCardConfiguration,
+          },
+        },
       },
+      props: {},
     },
     {
       name: 'CardContainerLogic',
