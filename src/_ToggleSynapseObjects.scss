@@ -10,8 +10,8 @@
     position: absolute;
     right: 0px;
     margin-top: -54px;
+    color: Portal.$primary-action-color;
   }
-  color: Portal.$primary-action-color;
   .unselected {
     color: map.get(SrcVariables.$colors, 'gray-600');
   }
