@@ -7,7 +7,7 @@ import { SynapseComponents } from 'synapse-react-client'
 import { SignInProps } from './AppInitializer'
 import NavLink from 'portal-components/NavLink'
 import NavUserLink from './portal-components/NavUserLink'
-import { GenericRoute } from 'types/portal-config'
+import { ConfigRoute, GenericRoute } from 'types/portal-config'
 import Button from 'react-bootstrap/esm/Button'
 
 type SynapseSettingLink = {
@@ -85,8 +85,8 @@ class Navbar extends React.Component<any, State> {
     topLevelTo?: string,
     includeQueryParams?: boolean,
   ) => {
-    const { to, link } = route
-    let href = link ?? `/${topLevelTo}/${to}`
+    const { path, link } = route
+    let href = link ?? `/${topLevelTo}/${path}`
     const indexOfQuestionMark = href.indexOf('?')
     if (!includeQueryParams && indexOfQuestionMark > -1) {
       href = href.slice(0, indexOfQuestionMark)
@@ -128,9 +128,16 @@ class Navbar extends React.Component<any, State> {
       !hideLogin
     const isHomeSelectedCssClassName =
       window.location.pathname.replace('/', '') === '' ? 'isSelected' : ''
-    const homeRouteConfig: GenericRoute = routesConfig.filter((r) => {
-      return r.to === ''
-    })[0]
+    const homeRouteConfig: ConfigRoute | undefined = routesConfig.filter(
+      (r: GenericRoute): r is ConfigRoute => {
+        return !!(
+          r.path === '' &&
+          r.synapseConfigArray &&
+          r.synapseConfigArray.length > 0
+        )
+      },
+    )[0]
+
     return (
       <React.Fragment>
         <nav
@@ -288,9 +295,9 @@ class Navbar extends React.Component<any, State> {
               routesConfig
                 .slice()
                 .reverse()
-                .filter((el) => el.to !== '')
-                .map((el) => {
-                  const topLevelTo = el.to
+                .filter((el) => !['', '/'].includes(el.path!))
+                .map((el: GenericRoute) => {
+                  const topLevelTo = el.path
                   let displayName = el.displayName ? el.displayName : topLevelTo
                   const icon = el.icon && (
                     <img style={{ padding: '0px 4px' }} src={el.icon} />
@@ -300,37 +307,41 @@ class Navbar extends React.Component<any, State> {
                   }
                   // hide children and only show top level element if all nested routes are hidden
                   const hideChildren =
-                    el.isNested &&
-                    el.routes.every((route) => route.hideRouteFromNavbar)
-                  if (el.isNested && !hideChildren) {
-                    const isSelected = el.routes.some(
-                      (route) =>
-                        this.getLinkHref(route, topLevelTo, false) ===
-                        decodeURIComponent(window.location.pathname),
-                    )
+                    el.exact ||
+                    (el.routes &&
+                      el.routes.every((route) => route.hideRouteFromNavbar))
+                  if (!el.exact && !hideChildren) {
+                    const isSelected =
+                      el.routes &&
+                      el.routes.some(
+                        (route) =>
+                          this.getLinkHref(route, topLevelTo, false) ===
+                          decodeURIComponent(window.location.pathname),
+                      )
                     const isSelectedCssClassName = isSelected
                       ? 'isSelected'
                       : ''
                     return (
-                      <>
-                        {el.routes.map((route) => {
-                          const { to, link } = route
-                          // Add anchors to the DOM for a crawler to find.  This is an attempt to fix an issue where all routes are Excluded from the index.
-                          if (route.hideRouteFromNavbar) {
-                            return false
-                          }
-                          const routeDisplayName = route.displayName ?? to
-                          const linkDisplay = link ?? `/${topLevelTo}/${to}`
-                          return (
-                            <a
-                              key={`${to}-seo-anchor`}
-                              className="crawler-link"
-                              href={linkDisplay}
-                            >
-                              {routeDisplayName}
-                            </a>
-                          )
-                        })}
+                      <React.Fragment key={topLevelTo}>
+                        {el.routes &&
+                          el.routes.map((route) => {
+                            const { path: to, link } = route
+                            // Add anchors to the DOM for a crawler to find.  This is an attempt to fix an issue where all routes are Excluded from the index.
+                            if (route.hideRouteFromNavbar) {
+                              return false
+                            }
+                            const routeDisplayName = route.displayName ?? to
+                            const linkDisplay = link ?? `/${topLevelTo}/${to}`
+                            return (
+                              <a
+                                key={`${to}-seo-anchor`}
+                                className="crawler-link"
+                                href={linkDisplay}
+                              >
+                                {routeDisplayName}
+                              </a>
+                            )
+                          })}
                         <Dropdown className={this.getBorder(topLevelTo)}>
                           <Dropdown.Toggle
                             variant="light"
@@ -340,30 +351,32 @@ class Navbar extends React.Component<any, State> {
                             {displayName}
                           </Dropdown.Toggle>
                           <Dropdown.Menu className="portal-nav-menu">
-                            {el.routes.map((route) => {
-                              const { to } = route
-                              if (route.hideRouteFromNavbar) {
-                                return false
-                              }
-                              const routeDisplayName = route.displayName ?? to!
-                              const linkDisplay = this.getLinkHref(
-                                route,
-                                topLevelTo,
-                                true,
-                              )
-                              return (
-                                <Dropdown.Item key={to} as="li">
-                                  <NavLink
-                                    className="dropdown-item SRC-primary-background-color-hover SRC-nested-color"
-                                    to={linkDisplay}
-                                    text={routeDisplayName}
-                                  />
-                                </Dropdown.Item>
-                              )
-                            })}
+                            {el.routes &&
+                              el.routes.map((route) => {
+                                const { path: to } = route
+                                if (route.hideRouteFromNavbar) {
+                                  return false
+                                }
+                                const routeDisplayName =
+                                  route.displayName ?? to!
+                                const linkDisplay = this.getLinkHref(
+                                  route,
+                                  topLevelTo,
+                                  true,
+                                )
+                                return (
+                                  <Dropdown.Item key={to} as="li">
+                                    <NavLink
+                                      className="dropdown-item SRC-primary-background-color-hover SRC-nested-color"
+                                      to={linkDisplay}
+                                      text={routeDisplayName}
+                                    />
+                                  </Dropdown.Item>
+                                )
+                              })}
                           </Dropdown.Menu>
                         </Dropdown>
-                      </>
+                      </React.Fragment>
                     )
                   }
                   const linkOrTo = el.link ?? `/${topLevelTo}`
@@ -401,22 +414,23 @@ class Navbar extends React.Component<any, State> {
                     Home
                   </Dropdown.Toggle>
                   <Dropdown.Menu className="portal-nav-menu">
-                    {homeRouteConfig.synapseConfigArray!.map(
-                      (config, index) => {
-                        const { title } = config
-                        if (!title) return
+                    {homeRouteConfig &&
+                      homeRouteConfig.synapseConfigArray?.map(
+                        (config, index) => {
+                          const { title } = config
+                          if (!title) return <React.Fragment key={index} />
 
-                        return (
-                          <Dropdown.Item key={title} as="li">
-                            <NavLink
-                              className="dropdown-item SRC-primary-background-color-hover SRC-nested-color"
-                              text={title}
-                              to={`/#${encodeURI(title)}`}
-                            />
-                          </Dropdown.Item>
-                        )
-                      },
-                    )}
+                          return (
+                            <Dropdown.Item key={title} as="li">
+                              <NavLink
+                                className="dropdown-item SRC-primary-background-color-hover SRC-nested-color"
+                                text={title}
+                                to={`/#${encodeURI(title)}`}
+                              />
+                            </Dropdown.Item>
+                          )
+                        },
+                      )}
                   </Dropdown.Menu>
                 </Dropdown>
               )

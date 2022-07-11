@@ -16,8 +16,8 @@ import { SynapseConstants } from 'synapse-react-client'
 
 const routes: GenericRoute[] = [
   {
-    to: '',
-    isNested: false,
+    path: '',
+    exact: true,
     synapseConfigArray: [
       {
         title: 'About the Portal',
@@ -71,26 +71,27 @@ const routes: GenericRoute[] = [
     ],
   },
   {
-    to: 'Explore',
-    isNested: true,
+    path: 'Explore',
     routes: [
       {
-        to: 'Projects',
-        isNested: true,
-        synapseConfigArray: [
-          {
-            name: 'RouteControlWrapper',
-            isOutsideContainer: true,
-            props: {
-              ...RouteControlWrapperProps,
-              synapseConfig: projects,
-            },
-          },
-        ],
+        path: 'Projects',
         routes: [
           {
-            isNested: false,
-            to: 'DetailsPage',
+            path: '',
+            exact: true,
+            synapseConfigArray: [
+              {
+                name: 'RouteControlWrapper',
+                isOutsideContainer: true,
+                props: {
+                  ...RouteControlWrapperProps,
+                  synapseConfig: projects,
+                },
+              },
+            ],
+          },
+          {
+            path: 'DetailsPage',
             synapseConfigArray: [
               {
                 name: 'CardContainerLogic',
@@ -112,22 +113,26 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        to: 'Data',
-        isNested: true,
-        synapseConfigArray: [
-          {
-            name: 'RouteControlWrapper',
-            isOutsideContainer: true,
-            props: {
-              ...RouteControlWrapperProps,
-              synapseConfig: studies,
-            },
-          },
-        ],
+        path: 'Data',
+
         routes: [
           {
-            to: 'DetailsPage',
-            isNested: false,
+            path: '',
+            exact: true,
+            synapseConfigArray: [
+              {
+                name: 'RouteControlWrapper',
+                isOutsideContainer: true,
+                props: {
+                  ...RouteControlWrapperProps,
+                  synapseConfig: studies,
+                },
+              },
+            ],
+          },
+          {
+            path: 'DetailsPage',
+            exact: false,
             synapseConfigArray: [
               {
                 name: 'CardContainerLogic',
@@ -150,8 +155,7 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        to: 'Tools',
-        isNested: false,
+        path: 'Tools',
         synapseConfigArray: [
           {
             name: 'RouteControlWrapper',
@@ -164,8 +168,7 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        to: 'People',
-        isNested: false,
+        path: 'People',
         synapseConfigArray: [
           {
             name: 'RouteControlWrapper',
@@ -178,8 +181,7 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        to: 'Publications',
-        isNested: false,
+        path: 'Publications',
         synapseConfigArray: [
           {
             name: 'RouteControlWrapper',
@@ -194,8 +196,8 @@ const routes: GenericRoute[] = [
     ],
   },
   {
-    to: 'About',
-    isNested: false,
+    path: 'About',
+    exact: true,
     synapseConfigArray: [
       {
         name: 'Markdown',

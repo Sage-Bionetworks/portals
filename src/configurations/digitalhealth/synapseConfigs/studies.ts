@@ -1,5 +1,5 @@
 import { SynapseConstants } from 'synapse-react-client'
-import { SynapseConfig, SynapseConfigArray } from 'types/portal-config'
+import { SynapseConfig } from 'types/portal-config'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import facetAliases from '../facetAliases'
@@ -140,7 +140,7 @@ export const details: DetailsPageProps = {
   ],
 }
 
-export const studyDetailPage: SynapseConfigArray = [
+export const studyDetailPage: SynapseConfig[] = [
   {
     name: 'CardContainerLogic',
     isOutsideContainer: true,

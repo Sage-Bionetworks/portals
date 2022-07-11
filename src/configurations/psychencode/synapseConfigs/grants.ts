@@ -1,5 +1,5 @@
 import { SynapseConstants } from 'synapse-react-client'
-import { SynapseConfigArray, SynapseConfig } from 'types/portal-config'
+import { SynapseConfig } from 'types/portal-config'
 
 import {
   GenericCardSchema,
@@ -24,7 +24,7 @@ export const grantSchema: GenericCardSchema = {
 }
 
 const iconOptions: IconOptions = {
-  Grant: (Project as unknown) as string,
+  Grant: Project as unknown as string,
 }
 
 export const grantCardConfiguration: CardConfiguration = {
@@ -50,12 +50,7 @@ export const grants: SynapseConfig = {
     name: 'Grants',
     facetsToPlot: ['grants', 'phase'],
     searchConfiguration: {
-      searchable: [
-        'title',
-        'keyInvestigators',
-        'institutions',
-        'grants',
-      ],
+      searchable: ['title', 'keyInvestigators', 'institutions', 'grants'],
     },
   },
 }
@@ -98,14 +93,14 @@ const details: DetailsPageProps = {
   ],
 }
 
-export const grantsDetailPage: SynapseConfigArray = [
+export const grantsDetailPage: SynapseConfig[] = [
   {
     name: 'CardContainerLogic',
     isOutsideContainer: true,
     props: {
       isHeader: true,
       isAlignToLeftNav: true,
-      
+
       ...grantCardConfiguration,
       titleLinkConfig: undefined,
       genericCardSchema: grantSchema,

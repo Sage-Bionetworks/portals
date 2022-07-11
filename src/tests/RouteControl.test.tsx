@@ -7,7 +7,7 @@ describe('RouteControl works', () => {
   const props: RouteControlProps = {
     customRoutes,
     handleChanges: jest.fn(),
-    isSelected: jest.fn(),
+    isSelected: (route) => route === 'route1',
   }
   it('renders the route tabs', () => {
     render(<RouteControl {...props} />)

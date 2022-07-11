@@ -1,10 +1,23 @@
-import { GenericRoute } from 'types/portal-config'
+import { GenericRoute, NestedRoute } from 'types/portal-config'
 
-// We handle the "normal" home route in App.tsx
-// This just gives us a fallback to use if we hit a failure case in the RouteResolver
-export const homeRoute: GenericRoute = {
-  to: '/Home',
-  isNested: false,
+const homeRoute: GenericRoute = {
+  path: '',
+  exact: true,
+  hideRouteFromNavbar: true,
+  synapseConfigArray: [
+    {
+      name: 'Header',
+      props: undefined,
+      isOutsideContainer: true,
+    },
+  ],
+}
+
+// Handles redirecting '/Home' to '/'
+export const homeRedirectRoute: GenericRoute = {
+  path: 'Home',
+  exact: true,
+  hideRouteFromNavbar: true,
   synapseConfigArray: [
     {
       name: 'RedirectWithQuery',
@@ -15,24 +28,32 @@ export const homeRoute: GenericRoute = {
   ],
 }
 
-const routes: GenericRoute[] = [
-  homeRoute,
-  {
-    to: 'DownloadCart',
-    isNested: false,
-    hideRouteFromNavbar: true,
-    displayName: 'Download Cart',
-    synapseConfigArray: [
-      {
-        name: 'DownloadCartPage',
-        props: {
-          onViewSharingSettingsClicked: benefactorEntityId => {
-            window.open(`https://www.synapse.org/#!Synapse:${benefactorEntityId}`, '_blank')
-          }},
-        isOutsideContainer: true,
-      },
-    ],
-  },
-]
+const routes: NestedRoute = {
+  path: '/',
+  routes: [
+    homeRoute,
+    homeRedirectRoute,
+    {
+      path: 'DownloadCart',
+      exact: true,
+      hideRouteFromNavbar: true,
+      displayName: 'Download Cart',
+      synapseConfigArray: [
+        {
+          name: 'DownloadCartPage',
+          props: {
+            onViewSharingSettingsClicked: (benefactorEntityId) => {
+              window.open(
+                `https://www.synapse.org/#!Synapse:${benefactorEntityId}`,
+                '_blank',
+              )
+            },
+          },
+          isOutsideContainer: true,
+        },
+      ],
+    },
+  ],
+}
 
 export default routes

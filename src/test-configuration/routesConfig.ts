@@ -11,8 +11,8 @@ export const HOME_INDEX = 0
 const routes: GenericRoute[] = []
 
 routes[ABOUT_INDEX] = {
-  isNested: false,
-  to: 'About',
+  exact: true,
+  path: 'About',
   synapseConfigArray: [
     {
       title: 'About',
@@ -26,29 +26,27 @@ routes[ABOUT_INDEX] = {
 }
 
 routes[EXPLORE_INDEX] = {
-  to: 'Explore',
-  isNested: true,
+  path: 'Explore',
   routes: [
     {
-      isNested: false,
-      to: 'Data',
+      path: 'Data',
+      exact: true,
       synapseConfigArray: [studies],
     },
     {
-      isNested: false,
-      to: 'Publications',
+      path: 'Publications',
+      exact: true,
       synapseConfigArray: [publications],
     },
   ],
 }
 
 routes[ORGANIZATION_INDEX] = {
-  to: 'Organizations',
-  isNested: true,
+  path: 'Organizations',
   routes: [
     {
-      isNested: true,
-      to: 'Content',
+      path: 'Content',
+      exact: true,
       synapseConfigArray: [
         {
           title: 'Grants',
@@ -71,19 +69,17 @@ routes[ORGANIZATION_INDEX] = {
           },
         },
       ],
-      routes: [
+    },
+    {
+      path: 'Subcontent',
+      exact: true,
+      synapseConfigArray: [
         {
-          to: 'Subcontent',
-          isNested: false,
-          synapseConfigArray: [
-            {
-              name: 'Markdown',
-              props: {
-                ownerId: 'syn18421331',
-                wikiId: '590615',
-              },
-            },
-          ],
+          name: 'Markdown',
+          props: {
+            ownerId: 'syn18421331',
+            wikiId: '590615',
+          },
         },
       ],
     },
@@ -91,8 +87,8 @@ routes[ORGANIZATION_INDEX] = {
 }
 
 routes[HOME_INDEX] = {
-  to: '',
-  isNested: false,
+  path: '',
+  exact: true,
   synapseConfigArray: [
     {
       title: 'Explore Portal',

@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { RouteControl, RouteControlProps } from '../RouteControl'
 import { useLocation, useHistory } from 'react-router-dom'
+import { SynapseComponent } from 'SynapseComponent'
 import { SynapseConfig } from 'types/portal-config'
-import { SynapseComponentWithContext } from '../SynapseComponentWithContext'
 import { useEffect, useState } from 'react'
 import { ArrowDropDown, ArrowDropUp } from '@material-ui/icons'
 
@@ -78,7 +78,7 @@ const RouteControlWrapper: React.FunctionComponent<Props> = ({
       </div>
       <div>
         {synapseConfig && (
-          <SynapseComponentWithContext
+          <SynapseComponent
             synapseConfig={synapseConfig}
             searchParams={searchParams}
           />

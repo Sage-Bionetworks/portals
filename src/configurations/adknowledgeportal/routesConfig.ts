@@ -35,8 +35,9 @@ import {
 
 const routes: GenericRoute[] = [
   {
-    to: '',
-    isNested: false,
+    path: '',
+    hideRouteFromNavbar: true,
+    exact: true,
     synapseConfigArray: [
       {
         name: 'Programs',
@@ -92,7 +93,7 @@ const routes: GenericRoute[] = [
                     selectFacetColumnValue: 'ROSMAP',
                     detailsPagePath:
                       '/Explore/Studies/DetailsPage?Study=syn3219045',
-                  }
+                  },
                 ],
               },
             },
@@ -116,7 +117,7 @@ const routes: GenericRoute[] = [
                   {
                     title: 'The IU/Jax/Pitt MODEL-AD Levetiracetam 5XFAD Study',
                     description:
-                      "This study provides pharmacokinetic, imaging, and behavior data on the 5XFAD mouse model dosed with levetiracetam.",
+                      'This study provides pharmacokinetic, imaging, and behavior data on the 5XFAD mouse model dosed with levetiracetam.',
                     facetsToPlot: ['dataType', 'assay'],
                     selectFacetColumnName: 'study',
                     selectFacetColumnValue: 'Jax.IU.Pitt_Levetiracetam-5XFAD',
@@ -126,7 +127,7 @@ const routes: GenericRoute[] = [
                   {
                     title: 'The IU/Jax/Pitt MODEL-AD Verubecestat 5XFAD Study',
                     description:
-                      "This study provides pharmacokinetic, imaging, immunoassay, and behavior data on the 5XFAD mouse model dosed with verubecestat.",
+                      'This study provides pharmacokinetic, imaging, immunoassay, and behavior data on the 5XFAD mouse model dosed with verubecestat.',
                     facetsToPlot: ['dataType', 'assay'],
                     selectFacetColumnName: 'study',
                     selectFacetColumnValue: 'Jax.IU.Pitt_Verubecestat_5XFAD',
@@ -201,8 +202,8 @@ const routes: GenericRoute[] = [
   },
   {
     // PORTALS-2028: redirect /ExperimentalModels to /Explore/Experimental%20Models
-    isNested: false,
-    to: 'ExperimentalModels',
+    exact: true,
+    path: '/ExperimentalModels',
     hideRouteFromNavbar: true,
     synapseConfigArray: [
       {
@@ -218,8 +219,8 @@ const routes: GenericRoute[] = [
   },
   {
     // PORTALS-2028 (part 2): redirect /MODEL-ADstrains to /Explore/Experimental%20Models with query request
-    isNested: false,
-    to: 'MODEL-ADstrains',
+    exact: true,
+    path: '/MODEL-ADstrains',
     hideRouteFromNavbar: true,
     synapseConfigArray: [
       {
@@ -239,33 +240,35 @@ const routes: GenericRoute[] = [
     ],
   },
   {
-    to: 'Explore',
-    isNested: true,
+    path: 'Explore',
     routes: [
       {
-        isNested: true,
-        to: 'Programs',
-        synapseConfigArray: [
-          {
-            name: 'RouteControlWrapper',
-            isOutsideContainer: true,
-            className: 'ProgramCardList',
-            props: {
-              ...RouteControlWrapperProps,
-              synapseConfig: {
-                name: 'CardContainerLogic',
-                props: {
-                  ...programs,
-                  sql: programsSql,
-                },
-              },
-            },
-          },
-        ],
+        path: 'Programs',
         routes: [
           {
-            isNested: false,
-            to: 'DetailsPage',
+            path: '',
+            exact: true,
+            synapseConfigArray: [
+              {
+                name: 'RouteControlWrapper',
+                isOutsideContainer: true,
+                className: 'ProgramCardList',
+                props: {
+                  ...RouteControlWrapperProps,
+                  synapseConfig: {
+                    name: 'CardContainerLogic',
+                    props: {
+                      ...programs,
+                      sql: programsSql,
+                    },
+                  },
+                },
+              },
+            ],
+          },
+          {
+            exact: true,
+            path: 'DetailsPage',
             synapseConfigArray: [
               {
                 name: 'CardContainerLogic',
@@ -310,19 +313,32 @@ const routes: GenericRoute[] = [
                       },
                     },
                   ],
-                }
-              }
+                },
+              },
             ],
           },
         ],
       },
       {
-        isNested: true,
-        to: 'Projects',
+        path: 'Projects',
         routes: [
           {
-            to: 'DetailsPage',
-            isNested: false,
+            path: '',
+            exact: true,
+            synapseConfigArray: [
+              {
+                name: 'RouteControlWrapper',
+                isOutsideContainer: true,
+                props: {
+                  ...RouteControlWrapperProps,
+                  synapseConfig: projects,
+                },
+              },
+            ],
+          },
+          {
+            path: 'DetailsPage',
+            exact: true,
             synapseConfigArray: [
               {
                 name: 'CardContainerLogic',
@@ -340,41 +356,35 @@ const routes: GenericRoute[] = [
             ],
           },
         ],
-        synapseConfigArray: [
-          {
-            name: 'RouteControlWrapper',
-            isOutsideContainer: true,
-            props: {
-              ...RouteControlWrapperProps,
-              synapseConfig: projects,
-            },
-          },
-        ],
       },
       {
-        isNested: true,
-        to: 'Studies',
-        synapseConfigArray: [
-          {
-            name: 'RouteControlWrapper',
-            isOutsideContainer: true,
-            props: {
-              ...RouteControlWrapperProps,
-              synapseConfig: studies,
-            },
-          },
-        ],
+        path: 'Studies',
         routes: [
           {
-            to: 'DetailsPage',
-            isNested: false,
-            synapseConfigArray: studiesProgrammaticRouteConfig,
+            path: '',
+            exact: true,
+            synapseConfigArray: [
+              {
+                name: 'RouteControlWrapper',
+                isOutsideContainer: true,
+                props: {
+                  ...RouteControlWrapperProps,
+                  synapseConfig: studies,
+                },
+              },
+            ],
+          },
+          {
+            path: 'DetailsPage',
+            routes: [
+              { path: '', synapseConfigArray: studiesProgrammaticRouteConfig },
+            ],
           },
         ],
       },
       {
-        isNested: false,
-        to: 'Data',
+        exact: true,
+        path: 'Data',
         synapseConfigArray: [
           {
             name: 'RouteControlWrapper',
@@ -387,8 +397,8 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        isNested: false,
-        to: 'Publications',
+        exact: true,
+        path: 'Publications',
         synapseConfigArray: [
           {
             name: 'RouteControlWrapper',
@@ -401,8 +411,8 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        isNested: false,
-        to: 'People',
+        exact: true,
+        path: 'People',
         synapseConfigArray: [
           {
             name: 'RouteControlWrapper',
@@ -415,8 +425,8 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        isNested: false,
-        to: 'Experimental Tools',
+        exact: true,
+        path: 'Experimental Tools',
         hideRouteFromNavbar: true,
         synapseConfigArray: [
           // PORTALS-2001 - we renamed "Experimental Tools" to "Experimental Models"
@@ -432,8 +442,8 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        isNested: false,
-        to: 'Experimental Models',
+        exact: true,
+        path: 'Experimental Models',
         synapseConfigArray: [
           {
             name: 'RouteControlWrapper',
@@ -446,8 +456,8 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        isNested: false,
-        to: 'Computational Tools',
+        exact: true,
+        path: 'Computational Tools',
         synapseConfigArray: [
           {
             name: 'RouteControlWrapper',
@@ -460,8 +470,8 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        isNested: false,
-        to: 'Target Enabling Resources',
+        exact: true,
+        path: 'Target Enabling Resources',
         synapseConfigArray: [
           {
             name: 'RouteControlWrapper',
@@ -474,8 +484,8 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        isNested: false,
-        to: 'Results',
+        exact: true,
+        path: 'Results',
         synapseConfigArray: [
           {
             name: 'RouteControlWrapper',
@@ -490,8 +500,8 @@ const routes: GenericRoute[] = [
     ],
   },
   {
-    isNested: false,
-    to: 'Analytical Workspace',
+    exact: true,
+    path: 'Analytical Workspace',
     synapseConfigArray: [
       {
         name: 'Markdown',
@@ -503,14 +513,13 @@ const routes: GenericRoute[] = [
     ],
   },
   {
-    to: 'DataAccess',
+    path: 'DataAccess',
     displayName: 'Data Access',
-    isNested: true,
     routes: [
       {
         displayName: 'Getting Access to Data',
-        isNested: false,
-        to: 'Instructions',
+        exact: true,
+        path: 'Instructions',
         synapseConfigArray: [
           {
             name: 'Markdown',
@@ -523,9 +532,9 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        to: 'DataUseCertificates',
+        path: 'DataUseCertificates',
         displayName: 'Data Use Certificates',
-        isNested: false,
+        exact: true,
         synapseConfigArray: [
           {
             name: 'Markdown',
@@ -539,8 +548,8 @@ const routes: GenericRoute[] = [
       },
       {
         displayName: 'Acknowledging Data Use',
-        isNested: false,
-        to: 'AcknowledgementStatements',
+        exact: true,
+        path: 'AcknowledgementStatements',
         synapseConfigArray: [
           {
             name: 'Markdown',
@@ -554,8 +563,8 @@ const routes: GenericRoute[] = [
       },
       {
         displayName: 'Data Use Proposals',
-        isNested: false,
-        to: 'DataUseProposals',
+        exact: true,
+        path: 'DataUseProposals',
         synapseConfigArray: [
           {
             name: 'Markdown',
@@ -571,32 +580,36 @@ const routes: GenericRoute[] = [
   },
   // Uncomment to expose Contribute route (once research team is monitoring submissions)
   {
-    isNested: true,
-    to: 'Contribute',
-    synapseConfigArray: [
-      {
-        name: 'Markdown',
-        title: 'Contribute',
-        className: 'amp-project-component',
-        props: {
-          ownerId: 'syn12666371',
-          wikiId: '600033',
-        },
-      },
-      {
-        name: 'SynapseFormSubmissionsGrid',
-        props: {
-          pathpart: '/Contribute/FormSubmission',
-          formGroupId: '11',
-          itemNoun: 'contribution-request',
-          formClass: 'contribution-request',
-        },
-      },
-    ],
+    path: 'Contribute',
     routes: [
       {
-        isNested: false,
-        to: 'FormSubmission',
+        exact: true,
+        path: '',
+        hideRouteFromNavbar: true,
+        synapseConfigArray: [
+          {
+            name: 'Markdown',
+            title: 'Contribute',
+            className: 'amp-project-component',
+            props: {
+              ownerId: 'syn12666371',
+              wikiId: '600033',
+            },
+          },
+          {
+            name: 'SynapseFormSubmissionsGrid',
+            props: {
+              pathpart: '/Contribute/FormSubmission',
+              formGroupId: '11',
+              itemNoun: 'contribution-request',
+              formClass: 'contribution-request',
+            },
+          },
+        ],
+      },
+      {
+        exact: true,
+        path: 'FormSubmission',
         hideRouteFromNavbar: true,
         synapseConfigArray: [
           {
@@ -623,8 +636,8 @@ const routes: GenericRoute[] = [
     ],
   },
   {
-    isNested: false,
-    to: 'About',
+    exact: true,
+    path: 'About',
     hideRouteFromNavbar: true,
     synapseConfigArray: [
       {
@@ -638,17 +651,17 @@ const routes: GenericRoute[] = [
     ],
   },
   {
-    isNested: false,
+    exact: true,
     displayName: 'News',
-    to: undefined,
+    path: undefined,
     target: '_blank',
     link: 'https://news.adknowledgeportal.org/',
     synapseConfigArray: [],
   },
   {
-    isNested: false,
+    exact: true,
     displayName: 'Help',
-    to: undefined,
+    path: undefined,
     target: '_blank',
     link: 'https://help.adknowledgeportal.org/apd/',
     synapseConfigArray: [],

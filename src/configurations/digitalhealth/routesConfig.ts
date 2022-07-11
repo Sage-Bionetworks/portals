@@ -7,8 +7,8 @@ import { SynapseConstants } from 'synapse-react-client'
 
 const routes: GenericRoute[] = [
   {
-    to: '',
-    isNested: false,
+    path: '',
+    exact: true,
     synapseConfigArray: [
       {
         name: 'Goals',
@@ -82,33 +82,35 @@ const routes: GenericRoute[] = [
     ],
   },
   {
-    to: 'Explore',
-    isNested: true,
+    path: 'Explore',
     routes: [
       {
-        to: 'Collections',
-        isNested: true,
-        synapseConfigArray: [
-          {
-            name: 'RouteControlWrapper',
-            isOutsideContainer: true,
-            props: {
-              ...RouteControlWrapperProps,
-              synapseConfig: studies,
-            },
-          },
-        ],
+        path: 'Collections',
         routes: [
           {
-            to: 'DetailsPage',
-            isNested: false,
+            path: '',
+            exact: true,
+            synapseConfigArray: [
+              {
+                name: 'RouteControlWrapper',
+                isOutsideContainer: true,
+                props: {
+                  ...RouteControlWrapperProps,
+                  synapseConfig: studies,
+                },
+              },
+            ],
+          },
+          {
+            path: 'DetailsPage',
+            exact: false,
             synapseConfigArray: studyDetailPage,
           },
         ],
       },
       {
-        to: 'Data',
-        isNested: false,
+        path: 'Data',
+        exact: true,
         synapseConfigArray: [
           {
             name: 'RouteControlWrapper',
@@ -121,29 +123,31 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        to: 'Tools',
-        isNested: true,
-        synapseConfigArray: [
-          {
-            name: 'RouteControlWrapper',
-            isOutsideContainer: true,
-            props: {
-              ...RouteControlWrapperProps,
-              synapseConfig: tools,
-            },
-          },
-        ],
+        path: 'Tools',
         routes: [
           {
-            to: 'DetailsPage',
-            isNested: false,
+            path: '',
+            exact: true,
+            synapseConfigArray: [
+              {
+                name: 'RouteControlWrapper',
+                isOutsideContainer: true,
+                props: {
+                  ...RouteControlWrapperProps,
+                  synapseConfig: tools,
+                },
+              },
+            ],
+          },
+          {
+            path: 'DetailsPage',
             synapseConfigArray: toolsDetailsLandingPage,
           },
         ],
       },
       {
-        to: 'Publications',
-        isNested: false,
+        path: 'Publications',
+        exact: true,
         synapseConfigArray: [
           {
             name: 'RouteControlWrapper',
@@ -158,8 +162,8 @@ const routes: GenericRoute[] = [
     ],
   },
   {
-    to: 'About',
-    isNested: false,
+    path: 'About',
+    exact: true,
     synapseConfigArray: [
       {
         name: 'Markdown',
@@ -172,13 +176,12 @@ const routes: GenericRoute[] = [
     ],
   },
   {
-    isNested: false,
+    exact: true,
     displayName: 'Help',
-    to: undefined,
+    path: undefined,
     target: '_blank',
     link: 'https://help.dhealth.synapse.org/doc/',
-    synapseConfigArray: [],
-  },  
+  },
 ]
 
 export default routes

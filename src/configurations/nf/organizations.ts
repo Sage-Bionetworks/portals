@@ -19,6 +19,7 @@ export const organizationDetailsPageConfig: DetailsPageProps = {
   tabLayout: [
     {
       title: 'Organization Details',
+      uriValue: 'Details',
       iconName: 'study',
       synapseConfigArray: [
         {
@@ -57,6 +58,7 @@ export const organizationDetailsPageConfig: DetailsPageProps = {
     },
     {
       title: 'Organization Data',
+      uriValue: 'Data',
       iconName: 'database',
       cssClass: 'tab-database',
       synapseConfigArray: [

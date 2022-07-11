@@ -1,5 +1,12 @@
 import { GenericRoute } from 'types/portal-config'
-import { publications, files, datasets, grants, tools, people } from './synapseConfigs'
+import {
+  publications,
+  files,
+  datasets,
+  grants,
+  tools,
+  people,
+} from './synapseConfigs'
 import { projectCardConfiguration } from './synapseConfigs/projects'
 import { datasetCardConfiguration } from './synapseConfigs/datasets'
 import RouteControlWrapperProps from './routeControlWrapperProps'
@@ -22,8 +29,8 @@ import {
 
 const routes: GenericRoute[] = [
   {
-    to: '',
-    isNested: false,
+    path: '',
+    exact: true,
     synapseConfigArray: [
       {
         name: 'FunderCards',
@@ -151,26 +158,28 @@ const routes: GenericRoute[] = [
     ],
   },
   {
-    to: 'Explore',
-    isNested: true,
+    path: 'Explore',
     routes: [
       {
-        to: 'Grants',
-        isNested: true,
-        synapseConfigArray: [
-          {
-            name: 'RouteControlWrapper',
-            isOutsideContainer: true,
-            props: {
-              ...RouteControlWrapperProps,
-              synapseConfig: grants,
-            },
-          },
-        ],
+        path: 'Grants',
         routes: [
           {
-            to: 'DetailsPage',
-            isNested: false,
+            path: '',
+            exact: true,
+            synapseConfigArray: [
+              {
+                name: 'RouteControlWrapper',
+                isOutsideContainer: true,
+                props: {
+                  ...RouteControlWrapperProps,
+                  synapseConfig: grants,
+                },
+              },
+            ],
+          },
+          {
+            path: 'DetailsPage',
+            exact: false,
             synapseConfigArray: [
               {
                 name: 'CardContainerLogic',
@@ -243,22 +252,25 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        to: 'People',
-        isNested: true,
-        synapseConfigArray: [
-          {
-            name: 'RouteControlWrapper',
-            isOutsideContainer: true,
-            props: {
-              ...RouteControlWrapperProps,
-              synapseConfig: people,
-            },
-          },
-        ],
+        path: 'People',
         routes: [
           {
-            to: 'DetailsPage',
-            isNested: false,
+            path: '',
+            exact: true,
+            synapseConfigArray: [
+              {
+                name: 'RouteControlWrapper',
+                isOutsideContainer: true,
+                props: {
+                  ...RouteControlWrapperProps,
+                  synapseConfig: people,
+                },
+              },
+            ],
+          },
+          {
+            path: 'DetailsPage',
+            exact: false,
             synapseConfigArray: [
               {
                 name: 'CardContainerLogic',
@@ -322,22 +334,25 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        to: 'Publications',
-        isNested: true,
-        synapseConfigArray: [
-          {
-            name: 'RouteControlWrapper',
-            isOutsideContainer: true,
-            props: {
-              ...RouteControlWrapperProps,
-              synapseConfig: publications,
-            },
-          },
-        ],
+        path: 'Publications',
         routes: [
           {
-            to: 'DetailsPage',
-            isNested: false,
+            path: '',
+            exact: true,
+            synapseConfigArray: [
+              {
+                name: 'RouteControlWrapper',
+                isOutsideContainer: true,
+                props: {
+                  ...RouteControlWrapperProps,
+                  synapseConfig: publications,
+                },
+              },
+            ],
+          },
+          {
+            path: 'DetailsPage',
+            exact: false,
             synapseConfigArray: [
               {
                 name: 'CardContainerLogic',
@@ -401,22 +416,25 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        to: 'Datasets',
-        isNested: true,
-        synapseConfigArray: [
-          {
-            name: 'RouteControlWrapper',
-            isOutsideContainer: true,
-            props: {
-              ...RouteControlWrapperProps,
-              synapseConfig: datasets,
-            },
-          },
-        ],
+        path: 'Datasets',
         routes: [
           {
-            to: 'DetailsPage',
-            isNested: false,
+            path: '',
+            exact: true,
+            synapseConfigArray: [
+              {
+                name: 'RouteControlWrapper',
+                isOutsideContainer: true,
+                props: {
+                  ...RouteControlWrapperProps,
+                  synapseConfig: datasets,
+                },
+              },
+            ],
+          },
+          {
+            path: 'DetailsPage',
+            exact: false,
             synapseConfigArray: [
               {
                 name: 'CardContainerLogic',
@@ -460,8 +478,8 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        to: 'Files',
-        isNested: false,
+        path: 'Files',
+        exact: true,
         synapseConfigArray: [
           {
             name: 'RouteControlWrapper',
@@ -474,22 +492,25 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        to: 'Tools',
-        isNested: true,
-        synapseConfigArray: [
-          {
-            name: 'RouteControlWrapper',
-            isOutsideContainer: true,
-            props: {
-              ...RouteControlWrapperProps,
-              synapseConfig: tools,
-            },
-          },
-        ],
+        path: 'Tools',
         routes: [
           {
-            to: 'DetailsPage',
-            isNested: false,
+            path: '',
+            exact: true,
+            synapseConfigArray: [
+              {
+                name: 'RouteControlWrapper',
+                isOutsideContainer: true,
+                props: {
+                  ...RouteControlWrapperProps,
+                  synapseConfig: tools,
+                },
+              },
+            ],
+          },
+          {
+            path: 'DetailsPage',
+            exact: false,
             synapseConfigArray: [
               {
                 name: 'CardContainerLogic',
@@ -558,9 +579,9 @@ const routes: GenericRoute[] = [
     ],
   },
   {
-    isNested: false,
+    exact: true,
     displayName: 'Help',
-    to: undefined,
+    path: undefined,
     target: '_blank',
     link: 'http://help.cancercomplexity.synapse.org/',
     synapseConfigArray: [],

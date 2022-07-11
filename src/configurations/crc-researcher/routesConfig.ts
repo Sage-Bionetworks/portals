@@ -11,8 +11,8 @@ import RouteControlWrapperProps from './routeControlWrapperProps'
 
 const routes: GenericRoute[] = [
   {
-    to: '',
-    isNested: false,
+    path: '',
+    exact: true,
     synapseConfigArray: [
       {
         name: 'SurveysCompletedPlots',
@@ -51,12 +51,11 @@ const routes: GenericRoute[] = [
     ],
   },
   {
-    isNested: true,
-    to: 'Explore',
+    path: 'Explore',
     routes: [
       {
-        to: '1. Uncategorized',
-        isNested: false,
+        path: '1. Uncategorized',
+        exact: true,
         synapseConfigArray: [
           {
             name: 'RouteControlWrapper',
@@ -69,8 +68,8 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        to: '2. Potential',
-        isNested: false,
+        path: '2. Potential',
+        exact: true,
         synapseConfigArray: [
           {
             name: 'RouteControlWrapper',
@@ -83,8 +82,8 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        to: '3. Invited',
-        isNested: false,
+        path: '3. Invited',
+        exact: true,
         synapseConfigArray: [
           {
             name: 'RouteControlWrapper',
@@ -97,8 +96,8 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        to: '4. Scheduled',
-        isNested: false,
+        path: '4. Scheduled',
+        exact: true,
         synapseConfigArray: [
           {
             name: 'RouteControlWrapper',
@@ -111,8 +110,8 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        to: '5. Tested',
-        isNested: false,
+        path: '5. Tested',
+        exact: true,
         synapseConfigArray: [
           {
             name: 'RouteControlWrapper',
@@ -125,8 +124,8 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        to: 'Hidden',
-        isNested: false,
+        path: 'Hidden',
+        exact: true,
         synapseConfigArray: [
           {
             name: 'RouteControlWrapper',

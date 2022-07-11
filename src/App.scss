@@ -16,7 +16,7 @@
 @use 'ExploreMenu';
 @use 'SynapseRedirectDialog';
 @use 'ToggleSynapseObjects';
-@use '../portal-components/DetailsPage';
+@use '../portal-components/DetailsPage/DetailsPage';
 @use '../portal-components/nf/style/_BrowseToolsPage';
 
 // style_overrides should be last to ensure its styles have higher priority
