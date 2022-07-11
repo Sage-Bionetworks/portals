@@ -21,23 +21,22 @@ const DetailsPageTabs: React.FunctionComponent<DetailsPageTabsProps> = (
   const [selectedTabIndex, setSelectedTabIndex] = useState<number>(0)
   const { tabConfigs, loading, queryResultBundle, showMenu } = props
   const { url } = useRouteMatch()
+  const urlWithTrailingSlash = `${url}${url.endsWith('/') ? '' : '/'}`
   const { search } = useLocation()
-  console.log(url)
-  const urlPrefix = `${url}${url.endsWith('/') ? '' : '/'}`
   return (
     <>
       <RedirectWithQuery
         exact={true}
-        from=""
-        to={`${urlPrefix}${tabConfigs[0].uriValue}`}
+        from={urlWithTrailingSlash}
+        to={`${urlWithTrailingSlash}${tabConfigs[0].uriValue}`}
       />
       <div className="tab-groups">
         {tabConfigs.map((tab, index) => {
           return (
             <NavLink
-              to={tab.uriValue + search}
+              to={`${urlWithTrailingSlash}${tab.uriValue + search}`}
               key={`detailPage-tab-${index}`}
-              className={'tab-item'}
+              className={'tab-item ignoreLink'}
               aria-selected={selectedTabIndex === index}
               onClick={() => {
                 setSelectedTabIndex(index)
@@ -58,7 +57,7 @@ const DetailsPageTabs: React.FunctionComponent<DetailsPageTabsProps> = (
               return (
                 <Route
                   key={tabConfig.uriValue}
-                  path={`${urlPrefix}${tabConfig.uriValue}`}
+                  path={`${urlWithTrailingSlash}${tabConfig.uriValue}`}
                 >
                   {'tabLayout' in tabConfig && tabConfig.tabLayout && (
                     <DetailsPageTabs

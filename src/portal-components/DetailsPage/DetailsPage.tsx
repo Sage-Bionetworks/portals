@@ -174,7 +174,6 @@ export default function DetailsPage(props: DetailsPageProps) {
       </div>
     )
   } else {
-    console.log(isLoading, config)
     return (
       <>
         {isLoading && <BarLoader color="#878787" loading={true} height={5} />}
