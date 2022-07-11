@@ -1,10 +1,9 @@
 import * as React from 'react'
-import { mount } from 'enzyme'
+import { render, screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import StatefulButtonControlWrapper, {
   StatefulButtonControlWrapperProps,
 } from '../../portal-components/StatefulButtonControlWrapper'
-import MarkdownSynapse from 'synapse-react-client/dist/containers/MarkdownSynapse'
 
 // Michael TODO: Investigate why SynapseComponents has undefined CardContainer/CardContainerLogic
 // exclusively at the start of this test
@@ -16,9 +15,9 @@ describe('StatefulButtonControlWrapper works', () => {
           {
             name: 'Markdown',
             props: {
-              ownerId: 'syn21641142',
+              markdown: '## This is a markdown component',
             },
-          },
+                },
         ],
         name: 'Route 1',
       },
@@ -26,14 +25,12 @@ describe('StatefulButtonControlWrapper works', () => {
   }
 
   it('renders correctly', async () => {
-    const component = await mount(
+    render(
       <MemoryRouter>
         <StatefulButtonControlWrapper {...props} />
       </MemoryRouter>,
     )
-    // check its defined
-    expect(component).toBeDefined()
     // check that it renders a markdown component
-    expect(component.find(MarkdownSynapse)).toHaveLength(1)
+    screen.getByText('This is a markdown component')
   })
 })
