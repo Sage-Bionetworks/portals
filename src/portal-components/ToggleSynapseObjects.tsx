@@ -19,12 +19,14 @@ export default function ToggleSynapseObjects(props: ToggleSynapseObjectsProps) {
       <Switch
         checked={toggleValue}
         onChange={()=>{setToggleValue(!toggleValue)}}
-        uncheckedIcon={<span className='unselected'>{icon2Jsx}</span>}
-        checkedIcon={<span className='unselected'>{icon1Jsx}</span>}
-        uncheckedHandleIcon={icon1Jsx}
-        checkedHandleIcon={icon2Jsx}
+        uncheckedIcon={<span className='icon unselected'>{icon2Jsx}</span>}
+        checkedIcon={<span className='icon unselected'>{icon1Jsx}</span>}
+        uncheckedHandleIcon={<span className='icon selected'>{icon1Jsx}</span>}
+        checkedHandleIcon={<span className='icon selected'>{icon2Jsx}</span>}
         offColor='#F1F3F5'
         onColor='#F1F3F5'
+        width={70}
+        height={33}
       />
     </div>
     {!toggleValue && synapseObject1}
