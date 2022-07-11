@@ -10,8 +10,11 @@ import syn16787123Json from '../../mocks/syn16787123.json'
 import { SynapseConfig } from 'types/portal-config'
 import { assert } from 'console'
 import {
+  AsynchronousJobStatus,
   EntityHeader,
   PaginatedResults,
+  QueryBundleRequest,
+  QueryResultBundle,
 } from 'synapse-react-client/dist/utils/synapseTypes'
 import * as SynapseComponentModule from 'SynapseComponent'
 import { MemoryRouter } from 'react-router-dom'
@@ -35,9 +38,10 @@ function renderWithContext(component) {
 
 // We have to mock fetching a table query result, but those details remain untested
 // eslint-disable-next-line no-import-assign
-jest
-  .spyOn(SynapseClient, 'getQueryTableAsyncJobResults')
-  .mockResolvedValue({ jobStatus: 'COMPLETE', responseBody: syn16787123Json })
+jest.spyOn(SynapseClient, 'getQueryTableAsyncJobResults').mockResolvedValue({
+  jobState: 'COMPLETE',
+  responseBody: syn16787123Json as QueryResultBundle,
+} as AsynchronousJobStatus<QueryBundleRequest, QueryResultBundle>)
 
 const expected: PaginatedResults<EntityHeader> = {
   results: [
@@ -108,7 +112,7 @@ describe('DetailsPage tests', () => {
       },
     ]
 
-    renderWithContext(<DetailsPage tabLayout={tabLayout} sql="" />, [''])
+    renderWithContext(<DetailsPage tabLayout={tabLayout} sql="" />)
 
     // Tab buttons should be visible
     const tab1 = await screen.findByText('Tab 1')
