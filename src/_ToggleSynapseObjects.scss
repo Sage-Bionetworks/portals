@@ -6,11 +6,16 @@
 .ToggleSynapseObjects {
   margin-top: 30px;
   .reactSwitchContainer{
-    width: 60px;
     position: absolute;
     right: 0px;
     margin-top: -54px;
     color: Portal.$primary-action-color;
+  }
+  .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
   }
   .unselected {
     color: map.get(SrcVariables.$colors, 'gray-600');
