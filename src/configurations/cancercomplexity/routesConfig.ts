@@ -201,6 +201,18 @@ const routes: GenericRoute[] = [
                     },
                     {
                       name: 'CardContainerLogic',
+                      columnName: 'grantNumber',
+                      title: 'Related People',
+                      tableSqlKeys: ['grantNumber'],
+                      props: {
+                        sqlOperator: 'HAS',
+                        sql: peopleSql,
+                        ...peopleCardConfiguration,
+                        facetAliases,
+                      },
+                    },
+                    {
+                      name: 'CardContainerLogic',
                       columnName: 'grantName',
                       title: 'Related Publications',
                       tableSqlKeys: ['grantName'],
@@ -278,6 +290,18 @@ const routes: GenericRoute[] = [
                   sql: peopleSql,
                   sqlOperator: 'LIKE',
                   synapseConfigArray: [
+                    {
+                      name: 'CardContainerLogic',
+                      columnName: 'grantNumber',
+                      title: 'Related Grants',
+                      tableSqlKeys: ['grantNumber'],
+                      props: {
+                        sqlOperator: '=',
+                        sql: grantsSql,
+                        ...grantsCardConfiguration,
+                        facetAliases,
+                      },
+                    },
                     {
                       name: 'CardContainerLogic',
                       columnName: 'publicationId',
