@@ -309,7 +309,7 @@ type RouteOptions = {
 }
 
 export type ConfigRoute = RouteOptions & {
-  /** If true, will render the components specified in `synapseConfigArray` if on a child page. See react-router's exact */
+  /** See react-router's exact */
   exact?: boolean
   synapseConfigArray?: SynapseConfig[]
   routes?: never
