@@ -23,7 +23,7 @@ export function useScrollOnMount() {
   const { hash } = useLocation()
 
   React.useEffect(() => {
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       if (hash) {
         const id = hash.replace('#', '')
         const element = document.getElementById(id)
@@ -33,6 +33,9 @@ export function useScrollOnMount() {
         }
       }
     }, 1000)
+    return () => {
+      clearTimeout(timer)
+    }
     // Empty dependency array to intentionally run only on mount
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])

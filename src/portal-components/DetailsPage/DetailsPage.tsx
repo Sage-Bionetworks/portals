@@ -65,8 +65,8 @@ function HeadlineWithLink(props: { title: string; id: string }) {
         {title}
         <span
           style={{
-            position: 'relative',
-            top: '-1px',
+            position: 'absolute',
+            marginTop: '-1px',
             ...(showLink ? { display: 'inline' } : { display: 'none' }),
           }}
         >
@@ -118,17 +118,13 @@ export default function DetailsPage(props: DetailsPageProps) {
     return queryBundleRequest
   }, [searchParams, sql, sqlOperator])
 
-  const query =
-    SynapseQueries.useGetQueryResultBundleWithAsyncStatus(queryBundleRequest)
-
   const {
     data: asyncJobStatus,
-    isLoading: queryIsLoading,
+    isLoading,
     error: hasError,
-  } = query
-  const queryResultBundle = asyncJobStatus?.responseBody
+  } = SynapseQueries.useGetQueryResultBundleWithAsyncStatus(queryBundleRequest)
 
-  const isLoading = queryIsLoading || asyncJobStatus?.jobState === 'PROCESSING'
+  const queryResultBundle = asyncJobStatus?.responseBody
 
   const tabLayout = 'tabLayout' in props ? props.tabLayout : undefined
   const config =

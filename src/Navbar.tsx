@@ -313,10 +313,10 @@ class Navbar extends React.Component<any, State> {
                   if (!el.exact && !hideChildren) {
                     const isSelected =
                       el.routes &&
-                      el.routes.some(
-                        (route) =>
-                          this.getLinkHref(route, topLevelTo, false) ===
-                          decodeURIComponent(window.location.pathname),
+                      el.routes.some((route) =>
+                        decodeURIComponent(window.location.pathname).includes(
+                          this.getLinkHref(route, topLevelTo, false),
+                        ),
                       )
                     const isSelectedCssClassName = isSelected
                       ? 'isSelected'
