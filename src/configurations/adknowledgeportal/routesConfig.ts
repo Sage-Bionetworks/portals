@@ -203,7 +203,7 @@ const routes: GenericRoute[] = [
   {
     // PORTALS-2028: redirect /ExperimentalModels to /Explore/Experimental%20Models
     exact: true,
-    path: '/ExperimentalModels',
+    path: 'ExperimentalModels',
     hideRouteFromNavbar: true,
     synapseConfigArray: [
       {
@@ -220,7 +220,7 @@ const routes: GenericRoute[] = [
   {
     // PORTALS-2028 (part 2): redirect /MODEL-ADstrains to /Explore/Experimental%20Models with query request
     exact: true,
-    path: '/MODEL-ADstrains',
+    path: 'MODEL-ADstrains',
     hideRouteFromNavbar: true,
     synapseConfigArray: [
       {

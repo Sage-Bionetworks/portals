@@ -2,7 +2,6 @@ import { cloneDeep, Dictionary } from 'lodash'
 import pluralize from 'pluralize'
 import * as React from 'react'
 import { useState } from 'react'
-import { ReactQueryDevtools } from 'react-query/devtools'
 import { BarLoader } from 'react-spinners'
 import {
   SynapseConstants,
@@ -442,7 +441,6 @@ export const DetailsPageSynapseConfigArray: React.FC<{
   if (showMenu) {
     return (
       <div className="DetailsPage">
-        <ReactQueryDevtools></ReactQueryDevtools>
         <div className="button-container">
           <SideNavMenu
             synapseConfigArray={synapseConfigArray}

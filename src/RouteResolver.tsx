@@ -1,4 +1,3 @@
-// import docTitleConfig from 'config/docTitleConfig'
 import * as React from 'react'
 import { Route, useLocation, useRouteMatch } from 'react-router-dom'
 import { SynapseComponent } from 'SynapseComponent'
@@ -143,20 +142,6 @@ function RecursiveRouteRenderer(props: {
   Given a location join with the routesConfig to render the appropriate component.
 */
 const RouteResolver = () => {
-  // Map this to route in configuration files
-  const { search } = useLocation()
-  // If url has search params transform into key-value dictionary that can be passed into
-  // the component which is rendered
-  let searchParamsProps: any = undefined
-  if (search) {
-    searchParamsProps = {}
-    // https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams -- needs polyfill for ie11
-    const searchParams = new URLSearchParams(search)
-    searchParams.forEach((value, key) => {
-      searchParamsProps[key] = value
-    })
-  }
-
   return (
     <RecursiveRouteRenderer
       route={ROUTES}
