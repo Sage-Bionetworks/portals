@@ -70,6 +70,7 @@ export const RouteControl: React.FunctionComponent<RouteControlProps> = ({
       {customRoutes.map((name, index) => {
         return (
           <Tab
+            value={name}
             ref={isSelected(name) ? selectedRef : undefined}
             key={name}
             label={<div className={`explore-nav-button-text `}>{name}</div>}

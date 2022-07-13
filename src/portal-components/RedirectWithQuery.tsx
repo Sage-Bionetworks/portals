@@ -8,6 +8,7 @@ import { Redirect, RedirectProps, useLocation } from 'react-router-dom'
  */
 export default function RedirectWithQuery(props: RedirectProps) {
   const { search } = useLocation()
+  const hash = window.location.hash
 
   return (
     <Redirect
@@ -15,6 +16,7 @@ export default function RedirectWithQuery(props: RedirectProps) {
       to={{
         pathname: props.to as string,
         search,
+        hash,
       }}
     />
   )

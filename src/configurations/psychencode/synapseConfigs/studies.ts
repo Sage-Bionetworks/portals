@@ -2,7 +2,7 @@ import { SynapseConstants } from 'synapse-react-client'
 
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
-import { SynapseConfig, SynapseConfigArray } from 'types/portal-config'
+import { SynapseConfig } from 'types/portal-config'
 import { DetailsPageProps } from 'types/portal-util-types'
 import { studiesSql, dataSql, metadataSql } from '../resources'
 import { SQLOperator } from 'synapse-react-client/dist/utils/functions/sqlFunctions'
@@ -73,6 +73,7 @@ export const details: DetailsPageProps = {
   tabLayout: [
     {
       title: 'Study Details',
+      uriValue: 'StudyDetails',
       iconName: 'study',
       synapseConfigArray: [
         {
@@ -115,6 +116,7 @@ export const details: DetailsPageProps = {
     },
     {
       title: 'Study Data',
+      uriValue: 'StudyData',
       iconName: 'database',
       cssClass: 'tab-database',
       synapseConfigArray: [
@@ -193,7 +195,7 @@ export const details: DetailsPageProps = {
   ],
 }
 
-export const studyDetailPage: SynapseConfigArray = [
+export const studyDetailPage: SynapseConfig[] = [
   {
     name: 'CardContainerLogic',
     isOutsideContainer: true,

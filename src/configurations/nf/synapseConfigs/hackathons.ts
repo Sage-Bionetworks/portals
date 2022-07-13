@@ -110,6 +110,7 @@ export const hackathonsDetailPage: DetailsPageProps = {
   tabLayout: [
     {
       title: 'Background & Results',
+      uriValue: 'Background%24Results',
       iconName: 'chart',
       synapseConfigArray: [
         {
@@ -130,6 +131,7 @@ export const hackathonsDetailPage: DetailsPageProps = {
     },
     {
       title: 'Methodology',
+      uriValue: 'Methodology',
       iconName: 'database',
       cssClass: 'tab-database',
       synapseConfigArray: [

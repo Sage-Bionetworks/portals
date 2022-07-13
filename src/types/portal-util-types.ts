@@ -35,21 +35,27 @@ type RowToPropTransform = {
 
 export type RowSynapseConfig = SynapseConfig & RowToPropTransform
 
-export type DetailsPageProps = {
+/**
+ * The content of a DetailsPage is either a tab layout, or config array, but not both
+ */
+export type DetailsPageContent =
+  | { tabLayout: DetailsPageTabProps[] }
+  | { synapseConfigArray: RowSynapseConfig[] }
+
+export type DetailsPageProps = DetailsPageContent & {
   showMenu?: boolean // default to true
   searchParams?: {
     [index: string]: string
   }
   sql: string
-  synapseConfigArray?: RowSynapseConfig[]
   sqlOperator?: SQLOperator
-  tabLayout?: DetailsPageTabProps[]
 }
 
-export type DetailsPageTabProps = {
+export type DetailsPageTabProps = DetailsPageContent & {
+  /** The title of the tab shown in the UI */
   title: string
+  /** The path string that will be used to route the content of the tab. Must be unique across a set of tabs */
+  uriValue: string
   iconName?: string
   cssClass?: string
-  tabLayout?: DetailsPageTabProps[]
-  synapseConfigArray?: RowSynapseConfig[]
 }

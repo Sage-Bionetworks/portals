@@ -1,11 +1,11 @@
 import * as React from 'react'
-import { SynapseConfigArray } from 'types/portal-config'
-import { SynapseComponentWithContext } from '../SynapseComponentWithContext'
+import { SynapseConfig } from 'types/portal-config'
 import QueryCount from 'synapse-react-client/dist/containers/QueryCount'
 import { RouteControl, RouteControlProps } from 'RouteControl'
+import { SynapseComponent } from 'SynapseComponent'
 
 export type StatefulButtonControlConfigs = {
-  synapseConfigArray: SynapseConfigArray
+  synapseConfigArray: SynapseConfig[]
   name: string
   sql?: string
   entityId?: string
@@ -70,7 +70,7 @@ class StatefulButtonControl extends React.Component<
               {config.title && (
                 <h2 className="title statefulButtonTitle"> {config.title} </h2>
               )}
-              <SynapseComponentWithContext synapseConfig={config} />
+              <SynapseComponent synapseConfig={config} />
             </React.Fragment>
           )
         })}

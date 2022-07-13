@@ -120,10 +120,7 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
   }
 
   componentDidUpdate(prevProps: Props) {
-    // https://github.com/ReactTraining/react-router/blob/master/packages/react-router-dom/docs/guides/scroll-restoration.md
     if (this.props.location !== prevProps.location) {
-      // scroll to the top
-      window.scrollTo(0, 0)
       // send page view event to Google Analytics
       // (casting to 'any' type to get compile-time access to gtag())
       const windowAny: any = window

@@ -81,6 +81,7 @@ export const studiesDetailsPageProps: DetailsPageProps = {
   tabLayout: [
     {
       title: 'Study Details',
+      uriValue: 'StudyDetails',
       iconName: 'study',
       synapseConfigArray: [
         {
@@ -99,8 +100,8 @@ export const studiesDetailsPageProps: DetailsPageProps = {
           name: 'MarkdownCollapse',
           columnName: 'Acknowledgement',
           props: {
-            textDescription:'full statement',
-            showCopyPlainText:true
+            textDescription: 'full statement',
+            showCopyPlainText: true,
           },
         },
         {
@@ -127,6 +128,7 @@ export const studiesDetailsPageProps: DetailsPageProps = {
     },
     {
       title: 'Study Data',
+      uriValue: 'StudyData',
       iconName: 'database',
       cssClass: 'tab-database',
       synapseConfigArray: [

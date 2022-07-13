@@ -249,6 +249,11 @@ type Redirect = {
   props: RedirectProps
 }
 
+type Header = {
+  name: 'Header'
+  props: undefined
+}
+
 export type SynapseConfig = (
   | RedirectWithQuery
   | Redirect
@@ -290,31 +295,32 @@ export type SynapseConfig = (
   | BrowseToolsPage
   | SubsectionRowRenderer
   | ToggleSynapseObjects
+  | Header
 ) &
   Metadata
-export type SynapseConfigArray = SynapseConfig[]
 
-interface RouteOptions {
+type RouteOptions = {
   displayName?: string
-  isNested: boolean
   hideRouteFromNavbar?: boolean
-  to: string | undefined
+  path?: string
   target?: string | undefined
   link?: string
   icon?: string
-  synapseConfigArray?: SynapseConfigArray
 }
 
-export interface BaseRoute extends RouteOptions {
-  isNested: false
+export type ConfigRoute = RouteOptions & {
+  /** See react-router's exact */
+  exact?: boolean
+  synapseConfigArray?: SynapseConfig[]
+  routes?: never
 }
-
-export interface NestedRoute extends RouteOptions {
-  isNested: true
-  routes: Array<BaseRoute | NestedRoute>
+export type NestedRoute = RouteOptions & {
+  routes?: GenericRoute[]
+  synapseConfigArray?: never
+  /** While it's possible to specify 'exact' for a NestedRoute, it's not typically useful because the inner routes won't render */
+  exact?: never
 }
-
-export type GenericRoute = NestedRoute | BaseRoute
+export type GenericRoute = NestedRoute | ConfigRoute
 // Route - end
 
 // Footer - start

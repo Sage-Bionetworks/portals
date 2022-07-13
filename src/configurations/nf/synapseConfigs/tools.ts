@@ -84,8 +84,9 @@ const tools: SynapseConfig = {
     facetAliases,
     defaultShowSearchBox: true,
     searchConfiguration: {
-      fullTextSearchHelpURL: 'https://help.nf.synapse.org/NFdocs/Tips-for-Search.2640478225.html'
-    }
+      fullTextSearchHelpURL:
+        'https://help.nf.synapse.org/NFdocs/Tips-for-Search.2640478225.html',
+    },
   },
 }
 
@@ -96,6 +97,7 @@ export const toolDetailsPageConfig: DetailsPageProps = {
   tabLayout: [
     {
       title: 'Details',
+      uriValue: 'Details',
       synapseConfigArray: [
         {
           name: 'Markdown',
@@ -253,6 +255,7 @@ export const toolDetailsPageConfig: DetailsPageProps = {
     },
     {
       title: 'Observations',
+      uriValue: 'Observations',
       synapseConfigArray: [
         {
           name: 'CardContainerLogic',
@@ -289,9 +292,11 @@ export const toolDetailsPageConfig: DetailsPageProps = {
     },
     {
       title: 'Data',
+      uriValue: 'Data',
       tabLayout: [
         {
           title: 'Files',
+          uriValue: 'Files',
           synapseConfigArray: [
             {
               name: 'QueryWrapperPlotNav',
@@ -321,6 +326,7 @@ export const toolDetailsPageConfig: DetailsPageProps = {
         // },
         {
           title: 'Studies',
+          uriValue: 'Studies',
           synapseConfigArray: [
             {
               name: 'QueryWrapperPlotNav',

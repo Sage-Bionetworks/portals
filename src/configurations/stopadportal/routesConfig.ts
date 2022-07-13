@@ -2,8 +2,8 @@ import { GenericRoute } from 'types/portal-config'
 
 const routes: GenericRoute[] = [
   {
-    to: '',
-    isNested: false,
+    path: '',
+    exact: true,
     synapseConfigArray: [
       {
         name: 'Markdown',
@@ -16,31 +16,35 @@ const routes: GenericRoute[] = [
     ],
   },
   {
-    to: 'Apply',
-    isNested: true,
-    synapseConfigArray: [
-      {
-        name: 'Markdown',
-        props: {
-          ownerId: 'syn20717442',
-          wikiId: '595813',
-        },
-      },
-      {
-        name: 'SynapseFormSubmissionsGrid',
-        props: {
-          pathpart: '/Apply/FormSubmission',
-          formGroupId: '9',
-          itemNoun: 'Compound',
-          formClass: 'drug-upload-tool',
-        },
-      },
-    ],
+    path: 'Apply',
     routes: [
       {
-        isNested: false,
+        path: '',
+        exact: true,
         hideRouteFromNavbar: true,
-        to: 'FormSubmission',
+        synapseConfigArray: [
+          {
+            name: 'Markdown',
+            props: {
+              ownerId: 'syn20717442',
+              wikiId: '595813',
+            },
+          },
+          {
+            name: 'SynapseFormSubmissionsGrid',
+            props: {
+              pathpart: '/Apply/FormSubmission',
+              formGroupId: '9',
+              itemNoun: 'Compound',
+              formClass: 'drug-upload-tool',
+            },
+          },
+        ],
+      },
+      {
+        exact: true,
+        hideRouteFromNavbar: true,
+        path: 'FormSubmission',
         synapseConfigArray: [
           {
             name: 'SynapseFormWrapper',
@@ -58,12 +62,10 @@ const routes: GenericRoute[] = [
     ],
   },
   {
-    to: 'Help',
-    isNested: true,
+    path: 'Help',
     routes: [
       {
-        to: 'How It Works',
-        isNested: false,
+        path: 'How It Works',
         synapseConfigArray: [
           {
             name: 'Markdown',
@@ -76,8 +78,7 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        to: 'Data Requirements',
-        isNested: false,
+        path: 'Data Requirements',
         synapseConfigArray: [
           {
             name: 'Markdown',
@@ -92,8 +93,8 @@ const routes: GenericRoute[] = [
     ],
   },
   {
-    to: 'Terms',
-    isNested: false,
+    path: 'Terms',
+    exact: true,
     hideRouteFromNavbar: true,
     synapseConfigArray: [
       {
@@ -107,8 +108,8 @@ const routes: GenericRoute[] = [
   },
   // https://www.synapse.org/#!Synapse:syn20717442/wiki/596047
   {
-    to: 'Contact Us',
-    isNested: false,
+    path: 'Contact Us',
+    exact: true,
     hideRouteFromNavbar: true,
     synapseConfigArray: [
       {

@@ -45,8 +45,8 @@ const limit = 3
 
 const routes: GenericRoute[] = [
   {
-    to: '',
-    isNested: false,
+    path: '',
+    exact: true,
     synapseConfigArray: [
       {
         name: 'Goals',
@@ -171,8 +171,8 @@ const routes: GenericRoute[] = [
     ],
   },
   {
-    to: 'Browse Tools',
-    isNested: false,
+    path: 'Browse Tools',
+    exact: true,
     synapseConfigArray: [
       {
         name: 'BrowseToolsPage',
@@ -182,27 +182,29 @@ const routes: GenericRoute[] = [
     ],
   },
   {
-    to: 'Explore',
-    isNested: true,
+    path: 'Explore',
     routes: [
       {
-        isNested: true,
-        to: 'Initiatives',
-        synapseConfigArray: [
-          {
-            name: 'RouteControlWrapper',
-            isOutsideContainer: true,
-            outsideContainerClassName: 'container-fluid',
-            props: {
-              ...routeControlWrapperProps,
-              synapseConfig: initiatives,
-            },
-          },
-        ],
+        path: 'Initiatives',
         routes: [
           {
-            to: 'DetailsPage',
-            isNested: false,
+            path: '',
+            exact: true,
+            synapseConfigArray: [
+              {
+                name: 'RouteControlWrapper',
+                isOutsideContainer: true,
+                outsideContainerClassName: 'container-fluid',
+                props: {
+                  ...routeControlWrapperProps,
+                  synapseConfig: initiatives,
+                },
+              },
+            ],
+          },
+          {
+            path: 'DetailsPage',
+            exact: true,
             synapseConfigArray: [
               {
                 name: 'CardContainerLogic',
@@ -227,22 +229,25 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        isNested: true,
-        to: 'Studies',
-        synapseConfigArray: [
-          {
-            name: 'RouteControlWrapper',
-            isOutsideContainer: true,
-            props: {
-              ...routeControlWrapperProps,
-              synapseConfig: studies,
-            },
-          },
-        ],
+        path: 'Studies',
         routes: [
           {
-            to: 'DetailsPage',
-            isNested: false,
+            path: '',
+            exact: true,
+            synapseConfigArray: [
+              {
+                name: 'RouteControlWrapper',
+                isOutsideContainer: true,
+                props: {
+                  ...routeControlWrapperProps,
+                  synapseConfig: studies,
+                },
+              },
+            ],
+          },
+          {
+            path: 'DetailsPage',
+            exact: true,
             synapseConfigArray: [
               {
                 name: 'CardContainerLogic',
@@ -269,8 +274,8 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        isNested: false,
-        to: 'Datasets',
+        exact: true,
+        path: 'Datasets',
         synapseConfigArray: [
           {
             name: 'RouteControlWrapper',
@@ -283,30 +288,33 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        isNested: true,
-        to: 'DatasetsV2',
+        path: 'DatasetsV2',
         hideRouteFromNavbar: true,
-        synapseConfigArray: [
-          {
-            name: 'RouteControlWrapper',
-            isOutsideContainer: true,
-            props: {
-              ...routeControlWrapperProps,
-              synapseConfig: datasetsV2,
-            },
-          },
-        ],
         routes: [
           {
-            to: 'DetailsPage',
-            isNested: false,
-            synapseConfigArray: datasetsDetailsPage
+            path: '',
+            exact: true,
+            synapseConfigArray: [
+              {
+                name: 'RouteControlWrapper',
+                isOutsideContainer: true,
+                props: {
+                  ...routeControlWrapperProps,
+                  synapseConfig: datasetsV2,
+                },
+              },
+            ],
+          },
+          {
+            path: 'DetailsPage',
+            exact: true,
+            synapseConfigArray: datasetsDetailsPage,
           },
         ],
       },
       {
-        isNested: false,
-        to: 'Files',
+        exact: true,
+        path: 'Files',
         synapseConfigArray: [
           {
             name: 'RouteControlWrapper',
@@ -319,8 +327,8 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        isNested: false,
-        to: 'Publications',
+        exact: true,
+        path: 'Publications',
         synapseConfigArray: [
           {
             name: 'RouteControlWrapper',
@@ -333,43 +341,49 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        isNested: true,
-        to: 'Tools',
+        path: 'Tools',
         routes: [
           {
-            to: 'DetailsPage',
-            isNested: false,
-            synapseConfigArray: toolsDetailsPage,
+            path: '',
+            exact: true,
+            synapseConfigArray: [
+              {
+                name: 'RouteControlWrapper',
+                isOutsideContainer: true,
+                props: {
+                  ...routeControlWrapperProps,
+                  synapseConfig: tools,
+                },
+              },
+            ],
           },
-        ],
-        synapseConfigArray: [
           {
-            name: 'RouteControlWrapper',
-            isOutsideContainer: true,
-            props: {
-              ...routeControlWrapperProps,
-              synapseConfig: tools,
-            },
+            path: 'DetailsPage',
+            exact: false,
+            synapseConfigArray: toolsDetailsPage,
           },
         ],
       },
       {
-        isNested: true,
-        to: 'Hackathon Projects',
-        synapseConfigArray: [
-          {
-            name: 'RouteControlWrapper',
-            isOutsideContainer: true,
-            props: {
-              ...routeControlWrapperProps,
-              synapseConfig: hackathons,
-            },
-          },
-        ],
+        path: 'Hackathon Projects',
         routes: [
           {
-            to: 'DetailsPage',
-            isNested: false,
+            path: '',
+            exact: true,
+            synapseConfigArray: [
+              {
+                name: 'RouteControlWrapper',
+                isOutsideContainer: true,
+                props: {
+                  ...routeControlWrapperProps,
+                  synapseConfig: hackathons,
+                },
+              },
+            ],
+          },
+          {
+            path: 'DetailsPage',
+            exact: true,
             synapseConfigArray: [
               {
                 name: 'CardContainerLogic',
@@ -396,51 +410,50 @@ const routes: GenericRoute[] = [
     ],
   },
   {
-    to: 'Organizations',
-    isNested: true,
+    path: 'Organizations',
     routes: [
       {
         displayName: 'CTF',
-        to: 'DetailsPage?abbreviation=CTF',
-        isNested: false,
+        path: 'DetailsPage?abbreviation=CTF',
+        exact: true,
         synapseConfigArray: organizationDetailsPage,
       },
       {
         displayName: 'NTAP',
-        to: 'DetailsPage?abbreviation=NTAP',
-        isNested: false,
+        path: 'DetailsPage?abbreviation=NTAP',
+        exact: true,
         synapseConfigArray: organizationDetailsPage,
       },
       {
         displayName: 'GFF',
-        to: 'DetailsPage?abbreviation=GFF',
-        isNested: false,
+        path: 'DetailsPage?abbreviation=GFF',
+        exact: true,
         synapseConfigArray: organizationDetailsPage,
       },
       {
         displayName: 'NCI DHART SPORE',
-        to: 'DetailsPage?fundingAgency=NIH-NCI',
-        isNested: false,
+        path: 'DetailsPage?fundingAgency=NIH-NCI',
+        exact: true,
         synapseConfigArray: organizationDetailsPage,
       },
       {
         displayName: 'CDMRP NFRP',
-        to: 'DetailsPage?abbreviation=CDMRP',
-        isNested: false,
+        path: 'DetailsPage?abbreviation=CDMRP',
+        exact: true,
         synapseConfigArray: organizationDetailsPage,
       },
       {
         displayName: 'NFRI',
-        to: 'DetailsPage?abbreviation=NFRI',
-        isNested: false,
+        path: 'DetailsPage?abbreviation=NFRI',
+        exact: true,
         synapseConfigArray: organizationDetailsPage,
       },
     ],
   },
 
   {
-    to: 'About',
-    isNested: false,
+    path: 'About',
+    exact: true,
     synapseConfigArray: [
       {
         name: 'Markdown',
@@ -453,25 +466,25 @@ const routes: GenericRoute[] = [
     ],
   },
   {
-    isNested: false,
+    exact: true,
     displayName: 'Contribute Data',
-    to: undefined,
+    path: undefined,
     target: '_blank',
     link: 'https://help.nf.synapse.org/NFdocs/How-to-Share-Data-(an-Overview).1994489966.html',
     synapseConfigArray: [],
   },
   {
-    isNested: false,
+    exact: true,
     displayName: 'News',
-    to: undefined,
+    path: undefined,
     target: '_blank',
     link: 'https://news.nfdataportal.org/',
     synapseConfigArray: [],
   },
   {
-    isNested: false,
+    exact: true,
     displayName: 'Help',
-    to: undefined,
+    path: undefined,
     target: '_blank',
     link: 'https://help.nf.synapse.org/',
     synapseConfigArray: [],

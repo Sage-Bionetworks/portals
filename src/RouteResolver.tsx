@@ -1,107 +1,28 @@
-import { isEmpty } from 'lodash-es'
 import * as React from 'react'
-import { useLocation } from 'react-router-dom'
-import { SynapseComponents } from 'synapse-react-client'
-import { SynapseComponentWithContext } from 'SynapseComponentWithContext'
-import { GenericRoute, SynapseConfig } from 'types/portal-config'
+import { Route, useLocation, useRouteMatch } from 'react-router-dom'
+import { SynapseComponent } from 'SynapseComponent'
+import { SynapseConfig, GenericRoute } from 'types/portal-config'
 import { scrollToWithOffset } from 'utils'
-import docTitleConfig from './config/docTitleConfig'
-import routesConfig from './config/routesConfig'
-import PortalComponents from './portal-components/'
+import docTitleConfig from 'config/docTitleConfig'
+import routesConfig from 'config/routesConfig'
 import Layout from './portal-components/Layout'
-import sharedRouteConfig, { homeRoute } from './shared-config/sharedRoutes'
+import sharedRouteConfig from './shared-config/sharedRoutes'
 
-/**
- * Given a pathname, return the matching route object and the route's pathname.
- * @param pathname
- * @returns
- */
-export const getRouteFromParams = (
-  pathname: string,
-): [GenericRoute, string] => {
-  // e.g. pathname = /Explore/Programs
-  const split: string[] = pathname.split('/').slice(1)
-  // e.g. split = 'Explore', 'Programs
-  // if the last element is index.html (case insensitive, 'l' optional)
-  if (split[split.length - 1].match(/index\.html?/gim)) {
-    // remove index.html
-    split.pop()
-    if (split.length === 0) {
-      // need to have at least 1 items
-      split.push('')
-    }
-  }
-  let route = ([...sharedRouteConfig, ...routesConfig] as GenericRoute[]).find(
-    (el) => split[0] === el.to,
-  )!
-
-  if (route == null) {
-    console.warn(`Error: url at ${pathname} has no route mapping`)
-    return [homeRoute, '/']
-  }
-
-  let routePathName = '/' + route.to
-
-  // search the route configs for the pathname
-  for (let i = 1; i < split.length; i += 1) {
-    if (route.isNested) {
-      const nextRoute = route.routes.find((el) => el.to!.includes(split[i]))
-      if (nextRoute) {
-        route = nextRoute
-        routePathName += '/' + route.to
-      } else {
-        // If we can't find a matching nested route, return the last route that was found
-        console.warn(
-          `Error: url at ${pathname} has no route mapping. Could not find route to ${split[i]}`,
-        )
-        break
-      }
-    }
-  }
-
-  // If there's no SynapseConfigArray, then the route we settled on wasn't meant to be a standalone page, and we have nothing to render.
-  // This isn't typical, but just so we can load something, we (recursively) get the first child until we find a route with a SynapseConfigArray
-  while (isEmpty(route.synapseConfigArray) && route.isNested) {
-    route = route.routes[0]
-    routePathName += '/' + route.to
-  }
-  return [route, routePathName]
+const ROUTES: GenericRoute = {
+  ...sharedRouteConfig,
+  routes: [...(sharedRouteConfig.routes ?? []), ...routesConfig],
 }
 
-type SynapseComponentProps = {
-  synapseConfig: SynapseConfig
-}
-
-export const SynapseComponent: React.FC<SynapseComponentProps> = ({
-  synapseConfig,
-}) => {
-  const Component =
-    (PortalComponents as any)[synapseConfig.name] ??
-    (SynapseComponents as any)[synapseConfig.name]
-  if (!Component) {
-    throw Error(`No synapse object could be mapped for ${synapseConfig.name}`)
-  }
-  const component = <Component {...synapseConfig.props} />
-  const { style, className } = synapseConfig
-  if (style || className) {
-    return (
-      <div className={className} style={style}>
-        {component}
-      </div>
-    )
-  } else {
-    return component
-  }
-}
-
-/*
-  Given a location join with the routesConfig to render the appropriate component.
-*/
-const RouteResolver = () => {
-  // Map this to route in configuration files
-  const { pathname, search, hash } = useLocation()
-  // get the route object and the typical path of the route
-  const [route] = getRouteFromParams(pathname)
+function ComponentRenderer(props: { config: SynapseConfig }) {
+  const {
+    containerClassName,
+    outsideContainerClassName,
+    isOutsideContainer,
+    title,
+    centerTitle,
+    subtitle,
+  } = props.config
+  const { search, hash } = useLocation()
   // If url has search params transform into key-value dictionary that can be passed into
   // the component which is rendered
   let searchParamsProps: any = undefined
@@ -113,16 +34,13 @@ const RouteResolver = () => {
       searchParamsProps[key] = value
     })
   }
-  const synapseConfigArray: SynapseConfig[] = route.synapseConfigArray!
-  const pageName = route.displayName ?? route.to
-
-  // get page title and set document title to it
-  const newTitle: string = `${docTitleConfig.name} - ${pageName}`
-  if (document.title !== newTitle) {
-    document.title = newTitle
-  }
-  const scrollToRef = React.useRef<HTMLElement>(null)
-
+  const scrollToRef = React.useRef(null)
+  const scrollToJsx =
+    title && hash && hash === `#${encodeURI(title)}` ? (
+      <span ref={scrollToRef} />
+    ) : (
+      <></>
+    )
   // this delay is here to improve the location of the element, since it's position depends on the layout of other components on the page (that also need to load)
   setTimeout(() => {
     if (scrollToRef.current) {
@@ -130,70 +48,105 @@ const RouteResolver = () => {
     }
   }, 500)
   return (
-    <React.Fragment>
-      {synapseConfigArray.map((el: SynapseConfig) => {
-        const {
-          containerClassName,
-          outsideContainerClassName,
-          isOutsideContainer,
-          title,
-          centerTitle,
-          subtitle,
-          props,
-        } = el
-        const scrollToJsx =
-          title && hash && hash === `#${encodeURI(title)}` ? (
-            <span ref={scrollToRef} />
-          ) : (
-            <></>
-          )
-        return (
-          <React.Fragment key={JSON.stringify(el.props)}>
-            {isOutsideContainer ? (
-              <div className={containerClassName}>
-                {title && (
-                  <h2 className={`title ${centerTitle ? 'center-title' : ''}`}>
-                    {title}
-                  </h2>
-                )}
-                {subtitle && (
-                  <p className={`${centerTitle ? 'center-title' : ''}`}>
-                    {subtitle}
-                  </p>
-                )}
-                <SynapseComponentWithContext
-                  synapseConfig={el}
-                  searchParams={searchParamsProps}
-                />
-              </div>
-            ) : (
-              <Layout
-                key={JSON.stringify(props)}
-                containerClassName={containerClassName}
-                outsideContainerClassName={outsideContainerClassName}
-              >
-                {scrollToJsx}
-                {/* re-think how this renders! remove specific styling */}
-                {title && (
-                  <h2 className={`title ${centerTitle ? 'center-title' : ''}`}>
-                    {title}
-                  </h2>
-                )}
-                {subtitle && (
-                  <p className={`${centerTitle ? 'center-title' : ''}`}>
-                    {subtitle}
-                  </p>
-                )}
-                <SynapseComponentWithContext
-                  synapseConfig={el}
-                  searchParams={searchParamsProps}
-                />
-              </Layout>
-            )}
-          </React.Fragment>
-        )
-      })}
+    <React.Fragment key={JSON.stringify(props)}>
+      {isOutsideContainer ? (
+        <div className={containerClassName}>
+          {title && (
+            <h2 className={`title ${centerTitle ? 'center-title' : ''}`}>
+              {title}
+            </h2>
+          )}
+          {subtitle && (
+            <p className={`${centerTitle ? 'center-title' : ''}`}>{subtitle}</p>
+          )}
+          <SynapseComponent
+            synapseConfig={props.config}
+            searchParams={searchParamsProps}
+          />
+        </div>
+      ) : (
+        <Layout
+          key={JSON.stringify(props)}
+          containerClassName={containerClassName}
+          outsideContainerClassName={outsideContainerClassName}
+        >
+          {scrollToJsx}
+          {/* re-think how this renders! remove specific styling */}
+          {title && (
+            <h2 className={`title ${centerTitle ? 'center-title' : ''}`}>
+              {title}
+            </h2>
+          )}
+          {subtitle && (
+            <p className={`${centerTitle ? 'center-title' : ''}`}>{subtitle}</p>
+          )}
+          <SynapseComponent
+            synapseConfig={props.config}
+            searchParams={searchParamsProps}
+          />
+        </Layout>
+      )}
     </React.Fragment>
+  )
+}
+
+function RecursiveRouteRenderer(props: {
+  route: GenericRoute
+  getPageNameFromParentRoute: () => string
+}) {
+  const { route, getPageNameFromParentRoute } = props
+  const { url } = useRouteMatch()
+
+  const pageName = route.displayName ?? route.path?.replaceAll('/', '')
+  const getPageName = () =>
+    pageName
+      ? `${docTitleConfig.name} - ${pageName}`
+      : getPageNameFromParentRoute()
+
+  // if there are children, don't update the title
+  if (!route.routes || route.routes.length === 0) {
+    const newTitle: string = getPageName()
+    if (document.title !== newTitle) {
+      document.title = newTitle
+    }
+  }
+
+  return (
+    <>
+      {'synapseConfigArray' in route &&
+        route.synapseConfigArray &&
+        route.synapseConfigArray.map((config, index) => {
+          return <ComponentRenderer key={index} config={config} />
+        })}
+      {'routes' in route &&
+        route.routes &&
+        route.routes.map((r) => {
+          return (
+            <Route
+              key={JSON.stringify(r)}
+              path={`${url}${url.endsWith('/') ? '' : '/'}${r.path}`}
+              exact={r.exact}
+            >
+              <RecursiveRouteRenderer
+                route={r}
+                getPageNameFromParentRoute={getPageName}
+              />
+            </Route>
+          )
+        })}
+    </>
+  )
+}
+
+/*
+  Given a location join with the routesConfig to render the appropriate component.
+*/
+const RouteResolver = () => {
+  return (
+    <RecursiveRouteRenderer
+      route={ROUTES}
+      getPageNameFromParentRoute={() => docTitleConfig.name}
+    />
   )
 }
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import DetailsPage, {
   SplitStringToComponent,
-} from '../../portal-components/DetailsPage'
+} from '../../portal-components/DetailsPage/DetailsPage'
 import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { DetailsPageTabProps, RowSynapseConfig } from 'types/portal-util-types'
@@ -9,28 +9,39 @@ import { SynapseContextProvider } from 'synapse-react-client/dist/utils/SynapseC
 import syn16787123Json from '../../mocks/syn16787123.json'
 import { SynapseConfig } from 'types/portal-config'
 import { assert } from 'console'
-import { EntityHeader, PaginatedResults } from 'synapse-react-client/dist/utils/synapseTypes'
+import {
+  AsynchronousJobStatus,
+  EntityHeader,
+  PaginatedResults,
+  QueryBundleRequest,
+  QueryResultBundle,
+} from 'synapse-react-client/dist/utils/synapseTypes'
+import * as SynapseComponentModule from 'SynapseComponent'
+import { MemoryRouter } from 'react-router-dom'
+import * as SynapseClient from 'synapse-react-client/dist/utils/SynapseClient'
 
 function renderWithContext(component) {
   return render(
-    <SynapseContextProvider
-      synapseContext={{
-        accessToken: 'abcd',
-        utcTime: false,
-        isInExperimentalMode: false,
-      }}
-    >
-      {component}
-    </SynapseContextProvider>,
+    <MemoryRouter>
+      <SynapseContextProvider
+        synapseContext={{
+          accessToken: 'abcd',
+          utcTime: false,
+          isInExperimentalMode: false,
+        }}
+      >
+        {component}
+      </SynapseContextProvider>
+    </MemoryRouter>,
   )
 }
 
 // We have to mock fetching a table query result, but those details remain untested
-const SynapseClient = require('synapse-react-client/dist/utils/SynapseClient')
 // eslint-disable-next-line no-import-assign
-SynapseClient.getQueryTableResults = jest
-  .fn()
-  .mockResolvedValue(syn16787123Json)
+jest.spyOn(SynapseClient, 'getQueryTableAsyncJobResults').mockResolvedValue({
+  jobState: 'COMPLETE',
+  responseBody: syn16787123Json as QueryResultBundle,
+} as AsynchronousJobStatus<QueryBundleRequest, QueryResultBundle>)
 
 const expected: PaginatedResults<EntityHeader> = {
   results: [
@@ -49,9 +60,8 @@ const expected: PaginatedResults<EntityHeader> = {
   ],
 }
 
-SynapseClient.getEntityHeaders = jest.fn().mockResolvedValue(expected)
+jest.spyOn(SynapseClient, 'getEntityHeaders').mockResolvedValue(expected)
 
-const SynapseComponentWithContext = require('../../SynapseComponentWithContext')
 let getSynapseConfig: () => SynapseConfig
 
 describe('DetailsPage tests', () => {
@@ -76,6 +86,7 @@ describe('DetailsPage tests', () => {
     const tabLayout: DetailsPageTabProps[] = [
       {
         title: 'Tab 1',
+        uriValue: 'Tab1',
         synapseConfigArray: [
           {
             name: 'Markdown',
@@ -88,6 +99,7 @@ describe('DetailsPage tests', () => {
       },
       {
         title: 'Tab 2',
+        uriValue: 'Tab2',
         synapseConfigArray: [
           {
             name: 'Markdown',
@@ -99,6 +111,7 @@ describe('DetailsPage tests', () => {
         ],
       },
     ]
+
     renderWithContext(<DetailsPage tabLayout={tabLayout} sql="" />)
 
     // Tab buttons should be visible
@@ -126,9 +139,11 @@ describe('DetailsPage tests', () => {
     const tabLayout: DetailsPageTabProps[] = [
       {
         title: 'Tab 1',
+        uriValue: 'Tab1',
         tabLayout: [
           {
             title: 'Subtab 1',
+            uriValue: 'Subtab1',
             synapseConfigArray: [
               {
                 name: 'Markdown',
@@ -141,6 +156,7 @@ describe('DetailsPage tests', () => {
           },
           {
             title: 'Subtab 2',
+            uriValue: 'Subtab2',
             synapseConfigArray: [
               {
                 name: 'Markdown',
@@ -155,6 +171,7 @@ describe('DetailsPage tests', () => {
       },
       {
         title: 'Tab 2',
+        uriValue: 'Tab2',
         synapseConfigArray: [
           {
             name: 'Markdown',
@@ -168,13 +185,16 @@ describe('DetailsPage tests', () => {
     ]
     renderWithContext(<DetailsPage tabLayout={tabLayout} sql="" />)
 
-    // Tab buttons should be visible
-    const tab1 = await screen.findByText('Tab 1')
-    const tab2 = await screen.findByText('Tab 2')
+    const getTab1 = async () => await screen.findByText('Tab 1')
+    const getTab2 = async () => await screen.findByText('Tab 2')
+    const getSubtab1 = async () => await screen.findByText('Subtab 1')
+    const getSubtab2 = async () => await screen.findByText('Subtab 2')
 
-    // Sub tab buttons should be visible
-    const subtab1 = await screen.findByText('Subtab 1')
-    const subtab2 = await screen.findByText('Subtab 2')
+    // Tab buttons should be visible
+    await getTab1()
+    await getTab2()
+    await getSubtab1()
+    await getSubtab2()
 
     // Component in first subtab should be visible, second should not
     await screen.findByText('Synapse component in first subtab')
@@ -183,7 +203,7 @@ describe('DetailsPage tests', () => {
     ).toBeNull()
 
     // Click the second subtab and which component is visible should switch
-    userEvent.click(subtab2)
+    userEvent.click(await getSubtab2())
 
     await screen.findByText('Synapse component in second subtab')
     expect(
@@ -191,7 +211,7 @@ describe('DetailsPage tests', () => {
     ).toBeNull()
 
     // Click the first subtab and it should switch back
-    userEvent.click(subtab1)
+    userEvent.click(await getSubtab1())
 
     await screen.findByText('Synapse component in first subtab')
     expect(
@@ -199,7 +219,7 @@ describe('DetailsPage tests', () => {
     ).toBeNull()
 
     // Click tab 2 and the subtabs and content should disappear
-    userEvent.click(tab2)
+    userEvent.click(await getTab2())
 
     await screen.findByText('Synapse component in second tab')
     expect(await screen.queryByText('Subtab 1')).toBeNull()
@@ -212,21 +232,21 @@ describe('DetailsPage tests', () => {
     ).toBeNull()
 
     // Click tab 1 and the subtabs should reappear
-    userEvent.click(tab1)
+    userEvent.click(await getTab1())
     await screen.findByText('Subtab 1')
     await screen.findByText('Subtab 2')
   })
 
   it('Test overrideSqlSourceTable', async () => {
-    SynapseComponentWithContext.SynapseComponentWithContext = jest
-      .fn()
+    jest
+      .spyOn(SynapseComponentModule, 'SynapseComponent')
       .mockImplementation(({ synapseConfig }) => {
         getSynapseConfig = () => {
           return synapseConfig
         }
         return <div>My Query Wrapper Plot Nav</div>
       })
-    
+
     const queryPlotNavRowConfig: RowSynapseConfig = {
       name: 'QueryWrapperPlotNav',
       props: {

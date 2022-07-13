@@ -140,6 +140,7 @@ export const studiesDetailPage: DetailsPageProps = {
   tabLayout: [
     {
       title: 'Study Details',
+      uriValue: 'Details',
       iconName: 'study',
       synapseConfigArray: [
         {
@@ -193,6 +194,7 @@ export const studiesDetailPage: DetailsPageProps = {
     },
     {
       title: 'Study Data',
+      uriValue: 'Data',
       iconName: 'database',
       cssClass: 'tab-database',
       synapseConfigArray: [

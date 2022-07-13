@@ -9,8 +9,8 @@ import { peopleSql, upsetplotSql } from './resources'
 
 const routes: GenericRoute[] = [
   {
-    to: '',
-    isNested: false,
+    path: '',
+    exact: true,
     synapseConfigArray: [
       {
         name: 'Goals',
@@ -81,14 +81,14 @@ const routes: GenericRoute[] = [
       },
       {
         name: 'RssFeedCards',
-        title: 'What\'s New',
+        title: "What's New",
         centerTitle: true,
         outsideContainerClassName: 'home-spacer',
         props: {
           url: 'https://news.psychencode.org',
-          itemsToShow:3,
-          allowCategories: ['Data Releases','Preprint','Publication'],
-        }
+          itemsToShow: 3,
+          allowCategories: ['Data Releases', 'Preprint', 'Publication'],
+        },
       },
       {
         name: 'Markdown',
@@ -102,33 +102,33 @@ const routes: GenericRoute[] = [
     ],
   },
   {
-    to: 'Explore',
-    isNested: true,
+    path: 'Explore',
     routes: [
       {
-        to: 'Studies',
-        isNested: true,
-        synapseConfigArray: [
-          {
-            name: 'RouteControlWrapper',
-            isOutsideContainer: true,
-            props: {
-              ...RouteControlWrapperProps,
-              synapseConfig: studies,
-            },
-          },
-        ],
+        path: 'Studies',
         routes: [
           {
-            to: 'DetailsPage',
-            isNested: false,
+            path: '',
+            exact: true,
+            synapseConfigArray: [
+              {
+                name: 'RouteControlWrapper',
+                isOutsideContainer: true,
+                props: {
+                  ...RouteControlWrapperProps,
+                  synapseConfig: studies,
+                },
+              },
+            ],
+          },
+          {
+            path: 'DetailsPage',
             synapseConfigArray: studyDetailPage,
           },
         ],
       },
       {
-        to: 'Data',
-        isNested: false,
+        path: 'Data',
         synapseConfigArray: [
           {
             name: 'RouteControlWrapper',
@@ -141,29 +141,30 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        to: 'Grants',
-        isNested: true,
-        synapseConfigArray: [
-          {
-            name: 'RouteControlWrapper',
-            isOutsideContainer: true,
-            props: {
-              ...RouteControlWrapperProps,
-              synapseConfig: grants,
-            },
-          },
-        ],
+        path: 'Grants',
         routes: [
           {
-            to: 'DetailsPage',
-            isNested: false,
+            path: '',
+            exact: true,
+            synapseConfigArray: [
+              {
+                name: 'RouteControlWrapper',
+                isOutsideContainer: true,
+                props: {
+                  ...RouteControlWrapperProps,
+                  synapseConfig: grants,
+                },
+              },
+            ],
+          },
+          {
+            path: 'DetailsPage',
             synapseConfigArray: grantsDetailPage,
           },
         ],
       },
       {
-        to: 'Publications',
-        isNested: false,
+        path: 'Publications',
         synapseConfigArray: [
           {
             name: 'RouteControlWrapper',
@@ -176,8 +177,7 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        to: 'People',
-        isNested: false,
+        path: 'People',
         synapseConfigArray: [
           {
             name: 'RouteControlWrapper',
@@ -193,8 +193,8 @@ const routes: GenericRoute[] = [
   },
   {
     displayName: 'Data Access',
-    to: 'DataAccess',
-    isNested: false,
+    path: 'DataAccess',
+    exact: true,
     synapseConfigArray: [
       {
         name: 'Markdown',
@@ -207,16 +207,15 @@ const routes: GenericRoute[] = [
     ],
   },
   {
-    isNested: false,
+    exact: true,
     displayName: 'News',
-    to: undefined,
+    path: undefined,
     target: '_blank',
     link: 'https://news.psychencode.org/',
-    synapseConfigArray: [],
   },
   {
-    to: 'About',
-    isNested: false,
+    path: 'About',
+    exact: true,
     synapseConfigArray: [
       {
         name: 'Markdown',
@@ -229,12 +228,11 @@ const routes: GenericRoute[] = [
     ],
   },
   {
-    isNested: false,
+    exact: true,
     displayName: 'Help',
-    to: undefined,
+    path: undefined,
     target: '_blank',
     link: 'https://help.psychencode.synapse.org/',
-    synapseConfigArray: [],
   },
 ]
 

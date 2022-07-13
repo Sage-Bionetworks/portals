@@ -1,44 +1,82 @@
 import { cloneDeep, Dictionary } from 'lodash'
+import pluralize from 'pluralize'
 import * as React from 'react'
-import { SynapseComponentWithContext } from '../SynapseComponentWithContext'
+import { useState } from 'react'
+import { BarLoader } from 'react-spinners'
 import {
-  SynapseClient,
   SynapseConstants,
+  SynapseQueries,
   Typography,
 } from 'synapse-react-client'
+import IconSvg from 'synapse-react-client/dist/containers/IconSvg'
+import { LockedFacet } from 'synapse-react-client/dist/containers/QueryContext'
+import { SYNAPSE_ENTITY_ID_REGEX } from 'synapse-react-client/dist/utils/functions/RegularExpressions'
 import {
   insertConditionsFromSearchParams,
   parseEntityIdFromSqlStatement,
 } from 'synapse-react-client/dist/utils/functions/sqlFunctions'
+import { useGetEntityHeaders } from 'synapse-react-client/dist/utils/hooks/SynapseAPI/entity/useGetEntityHeaders'
 import {
+  ColumnType,
   QueryBundleRequest,
   QueryResultBundle,
-  ColumnType,
 } from 'synapse-react-client/dist/utils/synapseTypes/'
+import { SynapseComponent } from 'SynapseComponent'
 import { SynapseConfig } from 'types/portal-config'
 import {
   DetailsPageProps,
   ResolveSynId,
   RowSynapseConfig,
 } from 'types/portal-util-types'
-import injectPropsIntoConfig from './injectPropsIntoConfig'
-import { ExternalFileHandleLink } from 'synapse-react-client/dist/containers/ExternalFileHandleLink'
-import { BarLoader } from 'react-spinners'
 import DetailsPageTabs from './DetailsPageTabs'
-import { SynapseContext } from 'synapse-react-client/dist/utils/SynapseContext'
-import { useGetEntityHeaders } from 'synapse-react-client/dist/utils/hooks/SynapseAPI/entity/useGetEntityHeaders'
-import { SYNAPSE_ENTITY_ID_REGEX } from 'synapse-react-client/dist/utils/functions/RegularExpressions'
-import { LockedFacet } from 'synapse-react-client/dist/containers/QueryContext'
-import ToggleSynapseObjects from './ToggleSynapseObjects'
+import injectPropsIntoConfig from '../injectPropsIntoConfig'
+import { handleMenuClick, SideNavMenu } from './SideNavMenu'
+import ToggleSynapseObjects from '../ToggleSynapseObjects'
+import { getComponentId, useScrollOnMount } from './utils'
 
-type State = {
-  queryResultBundle: QueryResultBundle | undefined
-  isLoading: boolean
-  hasError: boolean
+const goToExplorePage = () => {
+  /*
+    Below assumes that going from the details page url up one level will work,
+    for the current set of portals this assumption will hold true.
+  */
+  const lastLocation = window.location.href.split('/')
+  const lastPlace = lastLocation.slice(0, lastLocation.length - 1).join('/')
+  window.location.assign(lastPlace)
 }
 
-const pluralize = require('pluralize')
-const COMPONENT_ID_PREFIX = 'details-page-src-component-'
+function HeadlineWithLink(props: { title: string; id: string }) {
+  const { title, id } = props
+  const [showLink, setShowLink] = useState(false)
+
+  return (
+    <div
+      style={{ cursor: 'pointer' }}
+      onClick={() => {
+        handleMenuClick(id)
+      }}
+      onMouseOver={() => {
+        setShowLink(true)
+      }}
+      onMouseOut={() => {
+        setShowLink(false)
+      }}
+    >
+      <Typography variant="sectionTitle" role="heading">
+        {title}
+        <span
+          style={{
+            position: 'absolute',
+            marginTop: '-1px',
+            ...(showLink ? { display: 'inline' } : { display: 'none' }),
+          }}
+        >
+          <IconSvg options={{ icon: 'link', padding: 'left' }} />
+        </span>
+      </Typography>
+    </div>
+  )
+}
+
 /**
  * The details pages give a deeper dive into a particular portal section.
  *
@@ -57,33 +95,12 @@ const COMPONENT_ID_PREFIX = 'details-page-src-component-'
  * @class DetailsPage
  * @extends {React.Component<DetailsPageProps, State>}
  */
-export default class DetailsPage extends React.Component<
-  DetailsPageProps,
-  State
-> {
-  static contextType = SynapseContext
+export default function DetailsPage(props: DetailsPageProps) {
+  const { sql, searchParams = {}, sqlOperator, showMenu = true } = props
 
-  constructor(props: DetailsPageProps) {
-    super(props)
-    this.state = {
-      queryResultBundle: undefined,
-      isLoading: true,
-      hasError: false,
-    }
-  }
+  useScrollOnMount()
 
-  componentDidMount() {
-    this.getData()
-  }
-
-  componentDidUpdate(prevProps: DetailsPageProps) {
-    if (this.props.searchParams !== prevProps.searchParams) {
-      this.getData()
-    }
-  }
-
-  getData = async () => {
-    const { sql, searchParams = {}, sqlOperator } = this.props
+  const queryBundleRequest = React.useMemo(() => {
     const sqlUsed = insertConditionsFromSearchParams(
       sql,
       searchParams,
@@ -98,169 +115,73 @@ export default class DetailsPage extends React.Component<
         sql: sqlUsed,
       },
     }
-    try {
-      const data = await SynapseClient.getQueryTableResults(
-        queryBundleRequest,
-        this.context.accessToken,
-      )
-      this.setState({
-        queryResultBundle: data,
-        isLoading: false,
-        hasError: false,
-      })
-    } catch (e) {
-      console.log('getQueryTableResults: Error getting data', e)
-    }
-  }
+    return queryBundleRequest
+  }, [searchParams, sql, sqlOperator])
 
-  goToExplorePage = () => {
-    /*
-      Below assumes that going from the details page url up one level will work,
-      for the current set of portals this assumption will hold true.
-    */
-    const lastLocation = window.location.href.split('/')
-    const lastPlace = lastLocation.slice(0, lastLocation.length - 1).join('/')
-    window.location.assign(lastPlace)
-  }
+  const {
+    data: asyncJobStatus,
+    isLoading,
+    error: hasError,
+  } = SynapseQueries.useGetQueryResultBundleWithAsyncStatus(queryBundleRequest)
 
-  render() {
-    const { isLoading, hasError } = this.state
-    const { showMenu = true, tabLayout, synapseConfigArray } = this.props
-    if (hasError) {
-      const currentLocation = window.location.href.split('/')
-      const name = currentLocation[currentLocation.length - 2]
-      return (
-        <div className="DetailsPage__ComingSoon">
-          <Typography variant="headline1">Coming Soon! </Typography>
-          <p>
-            {/*
+  const queryResultBundle = asyncJobStatus?.responseBody
+
+  const tabLayout = 'tabLayout' in props ? props.tabLayout : undefined
+  const config =
+    'synapseConfigArray' in props ? props.synapseConfigArray : undefined
+  if (hasError) {
+    const currentLocation = window.location.href.split('/')
+    const name = currentLocation[currentLocation.length - 2]
+    return (
+      <div className="DetailsPage__ComingSoon">
+        <Typography variant="headline1">Coming Soon! </Typography>
+        <p>
+          {/*
                 pluralize is used to convert the detail of interest e.g. studies/publications/etc
                 to a singular form like study/publication/etc
             */}
-            This {pluralize.singular(name).toLowerCase()} is not yet available,
-            please check back soon.
-          </p>
-          <button
-            onClick={this.goToExplorePage}
-            className="SRC-standard-button-shape SRC-primary-background-color SRC-whiteText"
-          >
-            CONTINUE EXPLORING
-          </button>
-        </div>
-      )
-    }
+          This {pluralize.singular(name).toLowerCase()} is not yet available,
+          please check back soon.
+        </p>
+        <button
+          onClick={goToExplorePage}
+          className="SRC-standard-button-shape SRC-primary-background-color SRC-whiteText"
+        >
+          CONTINUE EXPLORING
+        </button>
+      </div>
+    )
+  }
 
-    if (tabLayout?.length) {
-      return (
-        <div className="DetailsPage tab-layout">
-          <div className="component-container">
-            {
-              <DetailsPageTabs
-                tabConfigs={tabLayout}
-                loading={isLoading}
-                queryResultBundle={this.state.queryResultBundle}
-                showMenu={showMenu}
-              ></DetailsPageTabs>
-            }
-          </div>
-        </div>
-      )
-    } else {
-      return (
-        <>
-          {isLoading && <BarLoader color="#878787" loading={true} height={5} />}
-          {!isLoading && synapseConfigArray && (
-            <DetailsPageSynapseConfigArray
+  if (tabLayout?.length) {
+    return (
+      <div className="DetailsPage tab-layout">
+        <div className="component-container">
+          {
+            <DetailsPageTabs
+              tabConfigs={tabLayout}
+              loading={isLoading}
+              queryResultBundle={queryResultBundle}
               showMenu={showMenu}
-              synapseConfigArray={synapseConfigArray}
-              queryResultBundle={this.state.queryResultBundle}
-            />
-          )}
-        </>
-      )
-    }
-  } // end render()
-}
-
-const handleMenuClick = (
-  ref: React.RefObject<HTMLDivElement>,
-  index: number,
-) => {
-  const wrapper = ref.current?.querySelector<HTMLDivElement>(
-    `#${COMPONENT_ID_PREFIX}${index}`,
-  )
-  if (wrapper) {
-    // https://stackoverflow.com/a/49924496
-    const offset = 85
-    const bodyRect = document.body.getBoundingClientRect().top
-    const elementRect = wrapper.getBoundingClientRect().top
-    const elementPosition = elementRect - bodyRect
-    const offsetPosition = elementPosition - offset
-    window.scrollTo({
-      top: offsetPosition,
-      behavior: 'smooth',
-    })
+            ></DetailsPageTabs>
+          }
+        </div>
+      </div>
+    )
   } else {
-    console.error('Could not scroll to element with index ', index)
+    return (
+      <>
+        {isLoading && <BarLoader color="#878787" loading={true} height={5} />}
+        {!isLoading && config && (
+          <DetailsPageSynapseConfigArray
+            showMenu={showMenu}
+            synapseConfigArray={config}
+            queryResultBundle={queryResultBundle}
+          />
+        )}
+      </>
+    )
   }
-}
-
-const SideNavMenu: React.FC<{
-  clickRef: React.RefObject<HTMLDivElement>
-  synapseConfigArray?: RowSynapseConfig[]
-  queryResultBundle?: QueryResultBundle
-}> = ({ clickRef, synapseConfigArray, queryResultBundle }) => {
-  const mapColumnHeaderToRowIndex: Dictionary<number> = {}
-  let row: string[] = []
-  if (queryResultBundle) {
-    queryResultBundle.queryResult!.queryResults.headers.forEach((el, index) => {
-      mapColumnHeaderToRowIndex[el.name] = index
-    })
-    row = queryResultBundle.queryResult!.queryResults.rows[0].values
-  }
-  return (
-    <>
-      {synapseConfigArray &&
-        synapseConfigArray.map((el: RowSynapseConfig, index) => {
-          const style: React.CSSProperties = {}
-          const { columnName = '' } = el
-          const isDisabled =
-            queryResultBundle &&
-            !row[mapColumnHeaderToRowIndex[columnName]] &&
-            !el.standalone
-          if (isDisabled) {
-            style.color = '#BBBBBC'
-            style.cursor = 'not-allowed'
-          }
-          const className = `menu-row-button ${
-            isDisabled ? '' : 'SRC-primary-background-color-hover'
-          }`
-          if (el.name === 'ExternalFileHandleLink') {
-            return (
-              <ExternalFileHandleLink
-                className={className}
-                synId={el.props.synId}
-              />
-            )
-          }
-          if (!el.title) {
-            return <></>
-          }
-          return (
-            <button
-              style={style}
-              key={JSON.stringify(el)}
-              onClick={
-                isDisabled ? undefined : () => handleMenuClick(clickRef, index)
-              }
-              className={className}
-            >
-              {el.title}
-            </button>
-          )
-        })}
-    </>
-  )
 }
 
 const SynapseObject: React.FC<{
@@ -353,8 +274,8 @@ export const SplitStringToComponent: React.FC<{
   let entityTitle = ''
 
   // For explorer 2.0, construct an object to contain the locked facet name and facet value
-  const lockedFacet:LockedFacet = {
-    facet: columnName
+  const lockedFacet: LockedFacet = {
+    facet: columnName,
   }
 
   const { data: entityHeaders } = useGetEntityHeaders([{ targetId: value }], {
@@ -406,17 +327,16 @@ export const SplitStringToComponent: React.FC<{
     props: injectedProps,
   }
   if (el.resolveSynId && entityTitle) {
+    const id = getComponentId(el, entityTitle)
     return (
       <>
         {entityTitle && (
-          <>
-            <Typography variant="sectionTitle" role="heading">
-              {el.title}: {entityTitle}
-            </Typography>
+          <div id={id}>
+            <HeadlineWithLink id={id} title={`${el.title}: ${entityTitle}`} />
             <hr />
-          </>
+          </div>
         )}
-        <SynapseComponentWithContext
+        <SynapseComponent
           synapseConfig={synapseConfigWithInjectedProps}
           searchParams={searchParams}
         />
@@ -424,7 +344,7 @@ export const SplitStringToComponent: React.FC<{
     )
   }
   return (
-    <SynapseComponentWithContext
+    <SynapseComponent
       synapseConfig={synapseConfigWithInjectedProps}
       searchParams={searchParams}
     />
@@ -438,9 +358,12 @@ function isReactFragment(variableToInspect: any): boolean {
   return variableToInspect === React.Fragment
 }
 
-const getSynapseComponent = (el: RowSynapseConfig, queryResultBundle?: QueryResultBundle) => {
+const getSynapseComponent = (
+  el: RowSynapseConfig,
+  queryResultBundle?: QueryResultBundle,
+) => {
   return el.standalone ? (
-    <SynapseComponentWithContext synapseConfig={el} />
+    <SynapseComponent synapseConfig={el} />
   ) : queryResultBundle ? (
     <SynapseObject el={el} queryResultBundle={queryResultBundle} />
   ) : (
@@ -452,11 +375,10 @@ export const DetailsPageSynapseConfigArray: React.FC<{
   synapseConfigArray: RowSynapseConfig[]
   queryResultBundle?: QueryResultBundle
 }> = ({ showMenu, synapseConfigArray, queryResultBundle }) => {
-  const ref = React.useRef(null)
   const synapseConfigContent = (
     <>
       {synapseConfigArray.map((el: RowSynapseConfig, index) => {
-        const id = COMPONENT_ID_PREFIX + index
+        const id = getComponentId(el, '', index)
         const { resolveSynId, showTitleSeperator = true } = el
         const key = JSON.stringify(el)
         const hasTitleFromSynId = resolveSynId && resolveSynId.title
@@ -465,11 +387,7 @@ export const DetailsPageSynapseConfigArray: React.FC<{
         if (!hasTitleFromSynId) {
           title = (
             <>
-              {el.title && (
-                <Typography variant="sectionTitle" role="heading">
-                  {el.title}
-                </Typography>
-              )}
+              {el.title && <HeadlineWithLink title={el.title} id={id} />}
               {showTitleSeperator && el.title && <hr />}
               {el.subtitle && (
                 <div className="bootstrap-4-backport">
@@ -486,16 +404,25 @@ export const DetailsPageSynapseConfigArray: React.FC<{
         // PORTALS-2229: If this is a Toggle, then get a ToggleSynapseObjects component
         if (el.toggleConfigs) {
           const tc = el.toggleConfigs
-          component = <ToggleSynapseObjects
-            icon1={tc.icon1}
-            synapseObject1={getSynapseComponent(tc.config1, queryResultBundle)}
-            icon2={tc.icon2}
-            synapseObject2={getSynapseComponent(tc.config2, queryResultBundle)} />
+          component = (
+            <ToggleSynapseObjects
+              icon1={tc.icon1}
+              synapseObject1={getSynapseComponent(
+                tc.config1,
+                queryResultBundle,
+              )}
+              icon2={tc.icon2}
+              synapseObject2={getSynapseComponent(
+                tc.config2,
+                queryResultBundle,
+              )}
+            />
+          )
         } else {
           component = getSynapseComponent(el, queryResultBundle)
         }
         if (isReactFragment(component)) {
-          return <></>
+          return <React.Fragment key={index}></React.Fragment>
         }
 
         return (
@@ -509,10 +436,9 @@ export const DetailsPageSynapseConfigArray: React.FC<{
   )
   if (showMenu) {
     return (
-      <div className="DetailsPage" ref={ref}>
+      <div className="DetailsPage">
         <div className="button-container">
           <SideNavMenu
-            clickRef={ref}
             synapseConfigArray={synapseConfigArray}
             queryResultBundle={queryResultBundle}
           />
