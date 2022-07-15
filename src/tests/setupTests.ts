@@ -1,5 +1,5 @@
-import 'isomorphic-fetch' // polyfill for fetch
 import 'raf/polyfill' // polyfill for requestAnimationFrame
+import 'whatwg-fetch'
 
 declare var global: any
 global.markdownit = require('markdown-it')
@@ -16,6 +16,7 @@ global.markdownitInlineComments = require('markdown-it-inline-comments')
 global.markdownitBr = require('markdown-it-br')
 global.sanitizeHtml = require('sanitize-html')
 global.markdownitMath = require('markdown-it-synapse-math')
+
 
 // Line below is used because plotly has a dependency on mapbox-gl
 // which requires a browser env and doesn't provide support for headless
