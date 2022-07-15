@@ -413,40 +413,33 @@ const routes: GenericRoute[] = [
     path: 'Organizations',
     routes: [
       {
+        hideRouteFromNavbar: true,
+        path: 'DetailsPage',
+        synapseConfigArray: organizationDetailsPage,
+      },
+      {
         displayName: 'CTF',
         path: 'DetailsPage?abbreviation=CTF',
-        exact: true,
-        synapseConfigArray: organizationDetailsPage,
       },
       {
         displayName: 'NTAP',
         path: 'DetailsPage?abbreviation=NTAP',
-        exact: true,
-        synapseConfigArray: organizationDetailsPage,
       },
       {
         displayName: 'GFF',
         path: 'DetailsPage?abbreviation=GFF',
-        exact: true,
-        synapseConfigArray: organizationDetailsPage,
       },
       {
         displayName: 'NCI DHART SPORE',
         path: 'DetailsPage?fundingAgency=NIH-NCI',
-        exact: true,
-        synapseConfigArray: organizationDetailsPage,
       },
       {
         displayName: 'CDMRP NFRP',
         path: 'DetailsPage?abbreviation=CDMRP',
-        exact: true,
-        synapseConfigArray: organizationDetailsPage,
       },
       {
         displayName: 'NFRI',
         path: 'DetailsPage?abbreviation=NFRI',
-        exact: true,
-        synapseConfigArray: organizationDetailsPage,
       },
     ],
   },
