@@ -247,29 +247,30 @@ const routes: GenericRoute[] = [
           },
           {
             path: 'DetailsPage',
-            exact: true,
-            synapseConfigArray: [
-              {
-                name: 'CardContainerLogic',
-                isOutsideContainer: true,
-                props: {
-                  sqlOperator: '=',
-                  isHeader: true,
-
-                  ...studyCardConfiguration,
-                  facetAliases,
-                  iconOptions: studyHeaderIconOptions,
-                  secondaryLabelLimit: Infinity,
-                  sql: studiesSql,
+            routes: [
+              { path: '', synapseConfigArray: [
+                {
+                  name: 'CardContainerLogic',
+                  isOutsideContainer: true,
+                  props: {
+                    sqlOperator: '=',
+                    isHeader: true,
+  
+                    ...studyCardConfiguration,
+                    facetAliases,
+                    iconOptions: studyHeaderIconOptions,
+                    secondaryLabelLimit: Infinity,
+                    sql: studiesSql,
+                  },
                 },
-              },
-              {
-                name: 'DetailsPage',
-                isOutsideContainer: false,
-                props: studiesDetailPage,
-                containerClassName: 'container-full-width',
-              },
-            ],
+                {
+                  name: 'DetailsPage',
+                  isOutsideContainer: false,
+                  props: studiesDetailPage,
+                  containerClassName: 'container-full-width',
+                },
+              ],
+            },]
           },
         ],
       },
