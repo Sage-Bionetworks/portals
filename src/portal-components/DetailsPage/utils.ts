@@ -9,10 +9,7 @@ export function getComponentId(
   index: number = 0,
 ) {
   return (
-    (
-      rowSynapseConfig.title + entityTitle ??
-      rowSynapseConfig.name + entityTitle + index
-    )
+    `${rowSynapseConfig.title}-${entityTitle}-${rowSynapseConfig.name}-${index}`
       // Remove illegal characters for HTML5 IDs
       .replaceAll(/([^\d\w-])/g, '')
   )
