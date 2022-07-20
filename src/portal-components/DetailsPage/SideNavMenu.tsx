@@ -63,7 +63,7 @@ export const SideNavMenu: React.FC<{
               onClick={
                 isDisabled
                   ? undefined
-                  : () => handleMenuClick(getComponentId(el))
+                  : () => handleMenuClick(getComponentId(el, '', index))
               }
               className={className}
             >

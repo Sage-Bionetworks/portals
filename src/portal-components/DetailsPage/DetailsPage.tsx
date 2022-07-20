@@ -21,6 +21,7 @@ import {
   QueryBundleRequest,
   QueryResultBundle,
 } from 'synapse-react-client/dist/utils/synapseTypes/'
+import Tooltip from 'synapse-react-client/dist/utils/tooltip/Tooltip'
 import { SynapseComponent } from 'SynapseComponent'
 import { SynapseConfig } from 'types/portal-config'
 import {
@@ -28,10 +29,10 @@ import {
   ResolveSynId,
   RowSynapseConfig,
 } from 'types/portal-util-types'
-import DetailsPageTabs from './DetailsPageTabs'
 import injectPropsIntoConfig from '../injectPropsIntoConfig'
-import { handleMenuClick, SideNavMenu } from './SideNavMenu'
 import ToggleSynapseObjects from '../ToggleSynapseObjects'
+import DetailsPageTabs from './DetailsPageTabs'
+import { SideNavMenu } from './SideNavMenu'
 import { getComponentId, useScrollOnMount } from './utils'
 
 const goToExplorePage = () => {
@@ -47,13 +48,10 @@ const goToExplorePage = () => {
 function HeadlineWithLink(props: { title: string; id: string }) {
   const { title, id } = props
   const [showLink, setShowLink] = useState(false)
+  const [copied, setCopied] = useState(false)
 
   return (
     <div
-      style={{ cursor: 'pointer' }}
-      onClick={() => {
-        handleMenuClick(id)
-      }}
       onMouseOver={() => {
         setShowLink(true)
       }}
@@ -70,7 +68,26 @@ function HeadlineWithLink(props: { title: string; id: string }) {
             ...(showLink ? { display: 'inline' } : { display: 'none' }),
           }}
         >
-          <IconSvg options={{ icon: 'link', padding: 'left' }} />
+          <Tooltip
+            title={copied ? 'Copied' : 'Copy link to section'}
+            placement="right"
+          >
+            <div
+              style={{ cursor: 'pointer' }}
+              onClick={() => {
+                const urlWithoutHash = window.location.href.replace(
+                  window.location.hash,
+                  '',
+                )
+                const url = `${urlWithoutHash}#${id}`
+                navigator.clipboard.writeText(url).then(() => {
+                  setCopied(true)
+                })
+              }}
+            >
+              <IconSvg options={{ icon: 'link', padding: 'left' }} />
+            </div>
+          </Tooltip>
         </span>
       </Typography>
     </div>
