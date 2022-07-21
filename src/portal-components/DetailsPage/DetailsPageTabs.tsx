@@ -1,12 +1,18 @@
 import * as React from 'react'
 import { useState } from 'react'
-import { Icon } from 'synapse-react-client/dist/containers/row_renderers/utils'
+import {
+  NavLink,
+  Route,
+  Switch,
+  useLocation,
+  useRouteMatch,
+} from 'react-router-dom'
 import { BarLoader } from 'react-spinners'
-import { DetailsPageSynapseConfigArray } from './DetailsPage'
+import { Icon } from 'synapse-react-client/dist/containers/row_renderers/utils'
 import { QueryResultBundle } from 'synapse-react-client/dist/utils/synapseTypes'
-import { NavLink, Route, useLocation, useRouteMatch } from 'react-router-dom'
-import RedirectWithQuery from '../RedirectWithQuery'
 import { DetailsPageTabProps } from 'types/portal-util-types'
+import RedirectWithQuery from '../RedirectWithQuery'
+import { DetailsPageSynapseConfigArray } from './DetailsPage'
 
 export type DetailsPageTabsProps = {
   tabConfigs: DetailsPageTabProps[]
@@ -25,11 +31,14 @@ const DetailsPageTabs: React.FunctionComponent<DetailsPageTabsProps> = (
   const { search } = useLocation()
   return (
     <>
-      <RedirectWithQuery
-        exact={true}
-        from={urlWithTrailingSlash}
-        to={`${urlWithTrailingSlash}${tabConfigs[0].uriValue}`}
-      />
+      <Switch>
+        {/* Note -- `exact` in Redirect doesn't work without a Switch */}
+        <RedirectWithQuery
+          exact={true}
+          from={urlWithTrailingSlash}
+          to={`${urlWithTrailingSlash}${tabConfigs[0].uriValue}`}
+        />
+      </Switch>
       <div className="tab-groups">
         {tabConfigs.map((tab, index) => {
           return (
