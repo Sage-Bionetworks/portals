@@ -127,7 +127,7 @@ $svg-icon-height: 30px;
         width: auto;
       }
     }
-    .tab-item[aria-selected='false'] {
+    .tab-item:not([aria-current='true']) {
       background: rgba(0, 0, 0, 0.4);
       color: #fff;
       svg,
@@ -135,7 +135,7 @@ $svg-icon-height: 30px;
         @extend %svg-icon;
       }
     }
-    .tab-item[aria-selected='true'] {
+    .tab-item[aria-current='true'] {
       background-color: #fff;
       svg,
       path {
@@ -155,10 +155,10 @@ $svg-icon-height: 30px;
   }
 
   .tab-content {
-    [role=heading] {
+    [role='heading'] {
       padding-top: 30px;
     }
-    .TopLevelControls [role=heading]{
+    .TopLevelControls [role='heading'] {
       padding-top: 0px;
     }
     .tab-groups {
