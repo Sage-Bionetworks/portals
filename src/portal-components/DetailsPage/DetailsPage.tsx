@@ -395,7 +395,7 @@ export const DetailsPageSynapseConfigArray: React.FC<{
   const synapseConfigContent = (
     <>
       {synapseConfigArray.map((el: RowSynapseConfig, index) => {
-        const id = getComponentId(el, '', index)
+        const id = getComponentId(el)
         const { resolveSynId, showTitleSeperator = true } = el
         const key = JSON.stringify(el)
         const hasTitleFromSynId = resolveSynId && resolveSynId.title

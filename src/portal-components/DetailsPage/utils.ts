@@ -6,10 +6,19 @@ import { scrollToWithOffset } from 'utils'
 export function getComponentId(
   rowSynapseConfig: RowSynapseConfig,
   entityTitle: string = '',
-  index: number = 0,
 ) {
+  // The ID should consist of the title and entity title
+  const idParts = [rowSynapseConfig.title, entityTitle].filter((item) => !!item)
+
+  // If both of the above are empty or undefined, use the component name
+  if (idParts.length === 0 && rowSynapseConfig.name) {
+    idParts.push(rowSynapseConfig.name)
+  }
+
+  // Join the parts with a '-'. If there are no parts, return an empty string.
   return (
-    `${rowSynapseConfig.title}-${entityTitle}-${rowSynapseConfig.name}-${index}`
+    idParts
+      .join('-')
       // Remove illegal characters for HTML5 IDs
       .replaceAll(/([^\d\w-])/g, '')
   )
