@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { useState } from 'react'
 import {
   NavLink,
   Route,
@@ -24,7 +23,6 @@ export type DetailsPageTabsProps = {
 const DetailsPageTabs: React.FunctionComponent<DetailsPageTabsProps> = (
   props,
 ) => {
-  const [selectedTabIndex, setSelectedTabIndex] = useState<number>(0)
   const { tabConfigs, loading, queryResultBundle, showMenu } = props
   const { url } = useRouteMatch()
   const urlWithTrailingSlash = `${url}${url.endsWith('/') ? '' : '/'}`
@@ -46,10 +44,7 @@ const DetailsPageTabs: React.FunctionComponent<DetailsPageTabsProps> = (
               to={`${urlWithTrailingSlash}${tab.uriValue + search}`}
               key={`detailPage-tab-${index}`}
               className={'tab-item ignoreLink'}
-              aria-selected={selectedTabIndex === index}
-              onClick={() => {
-                setSelectedTabIndex(index)
-              }}
+              aria-current="true"
             >
               {tab.iconName && <Icon type={tab.iconName}></Icon>}
               {tab.title}
