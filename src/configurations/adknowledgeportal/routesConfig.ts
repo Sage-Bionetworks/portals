@@ -513,71 +513,20 @@ const routes: GenericRoute[] = [
     ],
   },
   {
-    path: 'DataAccess',
-    displayName: 'Data Access',
-    routes: [
+    path: 'Data Access',
+    exact: true,
+    synapseConfigArray: [
       {
-        displayName: 'Getting Access to Data',
-        exact: true,
-        path: 'Instructions',
-        synapseConfigArray: [
-          {
-            name: 'Markdown',
-            title: 'GETTING ACCESS TO DATA',
-            props: {
-              ownerId: 'syn12666371',
-              wikiId: '585317',
-            },
-          },
-        ],
-      },
-      {
-        path: 'DataUseCertificates',
-        displayName: 'Data Use Certificates',
-        exact: true,
-        synapseConfigArray: [
-          {
-            name: 'Markdown',
-            title: 'Data Use Certificates',
-            props: {
-              ownerId: 'syn12666371',
-              wikiId: '585318',
-            },
-          },
-        ],
-      },
-      {
-        displayName: 'Acknowledging Data Use',
-        exact: true,
-        path: 'AcknowledgementStatements',
-        synapseConfigArray: [
-          {
-            name: 'Markdown',
-            title: 'ACKNOWLEDGEMENT STATEMENTS',
-            props: {
-              ownerId: 'syn12666371',
-              wikiId: '602387',
-            },
-          },
-        ],
-      },
-      {
-        displayName: 'Data Use Proposals',
-        exact: true,
-        path: 'DataUseProposals',
-        synapseConfigArray: [
-          {
-            name: 'Markdown',
-            title: 'DATA USE PROPOSALS',
-            props: {
-              ownerId: 'syn12666371',
-              wikiId: '608698',
-            },
-          },
-        ],
+        name: 'Markdown',
+        title: 'Data Access',
+        props: {
+          ownerId: 'syn12666371',
+          wikiId: '581937',
+        },
       },
     ],
   },
+
   // Uncomment to expose Contribute route (once research team is monitoring submissions)
   {
     path: 'Contribute',
