@@ -58,4 +58,5 @@ export type DetailsPageTabProps = DetailsPageContent & {
   uriValue: string
   iconName?: string
   cssClass?: string
+  toolTip?: string
 }

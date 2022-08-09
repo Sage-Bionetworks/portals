@@ -60,6 +60,7 @@ export const organizationDetailsPageConfig: DetailsPageProps = {
       title: 'Organization Data',
       uriValue: 'Data',
       iconName: 'database',
+      toolTip: 'All of the Data generated from this Organization’s studies',
       cssClass: 'tab-database',
       synapseConfigArray: [
         {

@@ -142,6 +142,7 @@ export const studiesDetailPage: DetailsPageProps = {
       title: 'Study Details',
       uriValue: 'Details',
       iconName: 'study',
+      toolTip: 'Description, methods, acknowledgements and related studies',
       synapseConfigArray: [
         {
           name: 'Markdown',
@@ -196,6 +197,7 @@ export const studiesDetailPage: DetailsPageProps = {
       title: 'Study Data',
       uriValue: 'Data',
       iconName: 'database',
+      toolTip: 'All of the Data generated within this study',
       cssClass: 'tab-database',
       synapseConfigArray: [
         {
