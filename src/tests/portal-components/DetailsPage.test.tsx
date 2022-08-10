@@ -56,7 +56,6 @@ const expected: PaginatedResults<EntityHeader> = {
       modifiedOn: 'earlier',
       createdBy: 'me',
       modifiedBy: 'you',
-      isLatestVersion: true,
     },
   ],
 }
