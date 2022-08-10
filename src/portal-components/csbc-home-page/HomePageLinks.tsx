@@ -52,13 +52,11 @@ const PortalHomePageLinks = () => {
     <div className="HomePageLinks">
       <h2 className="title center-title">Portal Goals</h2>
       <p>
-        The CSBC/PS-ON Knowledge Portal is a Community Research resource which
-        aims to
-        <a href="https://synapse.org">
+      The Cancer Complexity Knowledge Portal is a Community Research resource which aims to 
+        <a href="https://www.synapse.org">
           &nbsp;<i>synthesize and expose the activities and outputs</i>&nbsp;
         </a>
-        of these consortia. In this portal, users can find information about and
-        access to the following:
+        of these consortia. In this portal, users can find information about and access to the following:
       </p>
       <div className="link-container">
         {links.map((el) => {
