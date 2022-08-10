@@ -9,6 +9,7 @@ import {
 import { BarLoader } from 'react-spinners'
 import { Icon } from 'synapse-react-client/dist/containers/row_renderers/utils'
 import { QueryResultBundle } from 'synapse-react-client/dist/utils/synapseTypes'
+import Tooltip from 'synapse-react-client/dist/utils/tooltip/Tooltip'
 import { DetailsPageTabProps } from 'types/portal-util-types'
 import RedirectWithQuery from '../RedirectWithQuery'
 import { DetailsPageSynapseConfigArray } from './DetailsPage'
@@ -40,6 +41,7 @@ const DetailsPageTabs: React.FunctionComponent<DetailsPageTabsProps> = (
       <div className="tab-groups">
         {tabConfigs.map((tab, index) => {
           return (
+            <Tooltip title={tab.toolTip ?? ''} placement='top'>
             <NavLink
               to={`${urlWithTrailingSlash}${tab.uriValue + search}`}
               key={`detailPage-tab-${index}`}
@@ -49,6 +51,8 @@ const DetailsPageTabs: React.FunctionComponent<DetailsPageTabsProps> = (
               {tab.iconName && <Icon type={tab.iconName}></Icon>}
               {tab.title}
             </NavLink>
+            </Tooltip>
+
           )
         })}
       </div>
@@ -64,12 +68,12 @@ const DetailsPageTabs: React.FunctionComponent<DetailsPageTabsProps> = (
                   path={`${urlWithTrailingSlash}${tabConfig.uriValue}`}
                 >
                   {'tabLayout' in tabConfig && tabConfig.tabLayout && (
-                    <DetailsPageTabs
-                      tabConfigs={tabConfig.tabLayout}
-                      loading={loading}
-                      queryResultBundle={queryResultBundle}
-                      showMenu={showMenu}
-                    ></DetailsPageTabs>
+                      <DetailsPageTabs
+                        tabConfigs={tabConfig.tabLayout}
+                        loading={loading}
+                        queryResultBundle={queryResultBundle}
+                        showMenu={showMenu}
+                      ></DetailsPageTabs>
                   )}
                   {'synapseConfigArray' in tabConfig &&
                     tabConfig.synapseConfigArray && (
