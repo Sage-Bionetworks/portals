@@ -26,12 +26,21 @@ import {
   toolsSql,
   peopleSql,
 } from './resources'
+import consortiaHomePageConfig from './synapseConfigs/consortiaHomePage'
 
 const routes: GenericRoute[] = [
   {
     path: '',
     exact: true,
     synapseConfigArray: [
+      {
+        name: 'Programs',
+        title: 'Consortia',
+        centerTitle: true,
+        props: {
+          ...consortiaHomePageConfig,
+        },
+      },
       {
         name: 'FunderCards',
         props: undefined,
