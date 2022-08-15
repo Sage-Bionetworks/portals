@@ -41,7 +41,7 @@ const DetailsPageTabs: React.FunctionComponent<DetailsPageTabsProps> = (
       <div className="tab-groups">
         {tabConfigs.map((tab, index) => {
           return (
-            <Tooltip title={tab.toolTip ?? ''} placement='top'>
+            <Tooltip key={tab.uriValue} title={tab.toolTip ?? ''} placement='top'>
             <NavLink
               to={`${urlWithTrailingSlash}${tab.uriValue + search}`}
               key={`detailPage-tab-${index}`}
