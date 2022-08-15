@@ -36,15 +36,11 @@ const routes: GenericRoute[] = [
       {
         name: 'Programs',
         title: 'Consortia',
+        outsideContainerClassName: 'home-spacer cancercomplexity-consortia',
         centerTitle: true,
         props: {
           ...consortiaHomePageConfig,
         },
-      },
-      {
-        name: 'FunderCards',
-        props: undefined,
-        isOutsideContainer: true,
       },
       {
         name: 'ConsortiaGoals',

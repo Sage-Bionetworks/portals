@@ -5,7 +5,6 @@ import ConsortiaGoals from './csbc-home-page/ConsortiaGoals'
 import HomePageCardContainer from './csbc-home-page/HomePageCardContainer'
 import Ecosystem from './csbc-home-page/Ecosystem'
 import AboutPortal from './csbc-home-page/AboutPortal'
-import FunderCards from './csbc-home-page/FunderCards'
 import DevelopedBySage from './csbc-home-page/DevelopedBySage'
 import BrowseToolsPage from './nf/BrowseToolsPage'
 import ParticipantsBarPlot from './crc-researcher/ParticipantsBarPlot'
@@ -25,7 +24,6 @@ const PortalComponents = {
   Ecosystem,
   AboutPortal,
   DevelopedBySage,
-  FunderCards,
   ParticipantsBarPlot,
   StatusLineChart,
   SurveysCompletedPlots,
