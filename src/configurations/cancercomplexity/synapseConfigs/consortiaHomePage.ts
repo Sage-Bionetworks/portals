@@ -2,7 +2,7 @@ import { ProgramsProps } from 'synapse-react-client/dist/containers/home_page/pr
 
 export const consortiaHomePageConfig: ProgramsProps = {
   entityId:'syn34267412',
-  titleColumnName: 'Full Name',
+  titleColumnName: 'Consortium',
   imageFileHandleColumnName: 'Item Order',
   linkColumnName: 'Website Link',
   summaryColumnName: 'Short Description',
