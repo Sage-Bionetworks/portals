@@ -95,7 +95,9 @@ export function fetchData(
   }
   return getQueryTableResults(queryRequest, token).then(
     (data: QueryResultBundle) => {
-      return parseInt(data.queryResult!.queryResults.rows[0].values[0])
+      return parseInt(
+        data.queryResult!.queryResults.rows[0].values[0] as string,
+      )
     },
   )
 }

@@ -21,7 +21,7 @@ export const SideNavMenu: React.FC<{
   queryResultBundle?: QueryResultBundle
 }> = ({ synapseConfigArray, queryResultBundle }) => {
   const mapColumnHeaderToRowIndex: Dictionary<number> = {}
-  let row: string[] = []
+  let row: (string | null)[] = []
   if (queryResultBundle?.queryResult) {
     queryResultBundle.queryResult.queryResults.headers.forEach((el, index) => {
       mapColumnHeaderToRowIndex[el.name] = index

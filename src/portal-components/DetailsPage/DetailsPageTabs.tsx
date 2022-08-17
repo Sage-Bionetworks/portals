@@ -52,7 +52,6 @@ const DetailsPageTabs: React.FunctionComponent<DetailsPageTabsProps> = (
               {tab.title}
             </NavLink>
             </Tooltip>
-
           )
         })}
       </div>
@@ -68,12 +67,12 @@ const DetailsPageTabs: React.FunctionComponent<DetailsPageTabsProps> = (
                   path={`${urlWithTrailingSlash}${tabConfig.uriValue}`}
                 >
                   {'tabLayout' in tabConfig && tabConfig.tabLayout && (
-                      <DetailsPageTabs
-                        tabConfigs={tabConfig.tabLayout}
-                        loading={loading}
-                        queryResultBundle={queryResultBundle}
-                        showMenu={showMenu}
-                      ></DetailsPageTabs>
+                    <DetailsPageTabs
+                      tabConfigs={tabConfig.tabLayout}
+                      loading={loading}
+                      queryResultBundle={queryResultBundle}
+                      showMenu={showMenu}
+                    ></DetailsPageTabs>
                   )}
                   {'synapseConfigArray' in tabConfig &&
                     tabConfig.synapseConfigArray && (
