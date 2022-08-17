@@ -217,7 +217,7 @@ const SynapseObject: React.FC<{
     mapColumnHeaderToRowIndex[el.name] = { index, columnType: el.columnType }
   })
   const { index, columnType } = mapColumnHeaderToRowIndex[columnName] ?? {}
-  let rawValue: string = row[index]
+  let rawValue: string | null = row[index]
   if (!rawValue) {
     console.error('No value mapped for ', columnName)
     return <></>
@@ -234,7 +234,9 @@ const SynapseObject: React.FC<{
   }
 
   let split: string[] = ['']
-  if (el.injectMarkdown) {
+  if (rawValue === null) {
+    split = ['']
+  } else if (el.injectMarkdown) {
     split = [rawValue]
   } else if (typeof rawValue === 'object') {
     split = rawValue

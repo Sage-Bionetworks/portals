@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import moment from 'moment'
 import './Versions.css'
-import ReactTooltip from 'react-tooltip'
 import packageJson from '../../package.json'
+import Tooltip from 'synapse-react-client/dist/utils/tooltip/Tooltip'
 
 // To test this component, create a deploy_date.txt in the public folder (just like the deploy jobs do):
 // date +"%D %T" > ./public/deploy_date.txt
@@ -61,27 +61,28 @@ const Versions: React.FunctionComponent = () => {
   return (
     <>
       {deployDate && buildDate && (
-        <span
-          data-for="versions"
-          data-tip={`Built: ${buildDate},<br>Deployed: ${deployDate},<br>SRC Version: ${packageJson.dependencies['synapse-react-client']}`}
+        <Tooltip
+          title={
+            <div style={{ textAlign: 'center' }}>
+              Built: {buildDate}
+              <br />
+              Deployed: {deployDate}
+              <br />
+              SRC Version: {packageJson.dependencies['synapse-react-client']}
+            </div>
+          }
         >
-          <a
-            className="Versions footer-item"
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://github.com/Sage-Bionetworks/portals"
-          >
-            VERSION
-          </a>
-          <ReactTooltip
-            delayShow={500}
-            id="versions"
-            multiline={true}
-            place="top"
-            type="dark"
-            effect="solid"
-          />
-        </span>
+          <span>
+            <a
+              className="Versions footer-item"
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://github.com/Sage-Bionetworks/portals"
+            >
+              VERSION
+            </a>
+          </span>
+        </Tooltip>
       )}
     </>
   )

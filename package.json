@@ -20,7 +20,7 @@
     "react-switch": "^7.0.0",
     "react-use": "^17.3.1",
     "sass": "^1.30.0",
-    "synapse-react-client": "3.0.34"
+    "synapse-react-client": "3.0.35"
   },
   "jest": {
     "moduleNameMapper": {
@@ -60,7 +60,6 @@
     "@types/react-dom": "^16.9.14",
     "@types/react-plotly.js": "^2.2.4",
     "@types/react-router-dom": "^5.1.7",
-    "@types/react-tooltip": "^4.2.4",
     "assert": "^2.0.0",
     "browserify-fs": "^1.0.0",
     "buffer": "^6.0.3",
@@ -114,9 +113,11 @@
   },
   "resolutions": {
     "babel-jest": "^27.5.1",
+    "goober": "2.1.9",
     "js-yaml": "3.13.1",
     "plotly.js-basic-dist": "^1.47.3",
     "react": "16.14.0",
+    "react-hot-toast": "2.2.0",
     "@types/plotly.js": "^1.54.10",
     "@types/react": "17.0.1",
     "@types/react-dom": "16.9.6"
