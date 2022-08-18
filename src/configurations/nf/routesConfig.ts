@@ -366,7 +366,7 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        path: 'Hackathon Projects',
+        path: 'Hackathon',
         routes: [
           {
             path: '',
@@ -384,7 +384,7 @@ const routes: GenericRoute[] = [
           },
           {
             path: 'DetailsPage',
-            exact: true,
+            exact: false,
             synapseConfigArray: [
               {
                 name: 'CardContainerLogic',
@@ -405,6 +405,23 @@ const routes: GenericRoute[] = [
                 containerClassName: 'container-full-width',
               },
             ],
+          },
+        ],
+      },
+      {
+        exact: true,
+        path: 'Hackathon Projects',
+        hideRouteFromNavbar: true,
+        synapseConfigArray: [
+          // PORTALS-2277 - Renamed "Hackathon Projects" to "Hackathon"
+          {
+            name: 'RedirectWithQuery',
+            props: {
+              exact: false,
+              strict: false,
+              from: 'Hackathon Projects',
+              to: 'Hackathon',
+            },
           },
         ],
       },
