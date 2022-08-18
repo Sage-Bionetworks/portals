@@ -367,6 +367,7 @@ const routes: GenericRoute[] = [
       },
       {
         path: 'Hackathon',
+        displayName: 'Hackathon Projects',
         routes: [
           {
             path: '',
