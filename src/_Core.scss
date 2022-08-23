@@ -719,5 +719,12 @@ div[data-id="tooltip"] {
   .QueryFilter {
     padding: 10px 30px;
   }
-
+}
+.DetailsPage {
+  .QueryWrapperPlotNav {
+    .TopLevelControls,
+    .QueryFilter {
+      padding: 0px;
+    }
+  } 
 }
