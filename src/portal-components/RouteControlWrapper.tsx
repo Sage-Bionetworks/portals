@@ -50,31 +50,29 @@ const RouteControlWrapper: React.FunctionComponent<Props> = ({
   return (
     <>
       <div className="explore-nav-container">
-        <div className="container-fluid">
-          <h2 className="title">Explore</h2>
-          <h4 className={'mobile-explore-nav-selected'}>
-            {selectedTab}
-            {showSubNav ? (
-              <ArrowDropDown
-                fontSize={'large'}
-                onClick={() => setShowSubNav(false)}
-              />
-            ) : (
-              <ArrowDropUp
-                fontSize={'large'}
-                onClick={() => setShowSubNav(true)}
-              />
-            )}
-          </h4>
-          <div className={'route-control'}>
+        <h2 className="title">Explore</h2>
+        <h4 className={'mobile-explore-nav-selected'}>
+          {selectedTab}
+          {showSubNav ? (
+            <ArrowDropDown
+              fontSize={'large'}
+              onClick={() => setShowSubNav(false)}
+            />
+          ) : (
+            <ArrowDropUp
+              fontSize={'large'}
+              onClick={() => setShowSubNav(true)}
+            />
+          )}
+        </h4>
+        <div className={'route-control'}>
+          <RouteControl {...routeControlProps} />
+        </div>
+        {showSubNav && ( // default visibility for mobile sub menu is hidden
+          <div className={'mobile-route-control'}>
             <RouteControl {...routeControlProps} />
           </div>
-          {showSubNav && ( // default visibility for mobile sub menu is hidden
-            <div className={'mobile-route-control'}>
-              <RouteControl {...routeControlProps} />
-            </div>
-          )}
-        </div>
+        )}
       </div>
       <div>
         {synapseConfig && (
