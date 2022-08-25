@@ -1,7 +1,7 @@
 import { BrowserRouter, Switch } from 'react-router-dom'
 import * as React from 'react'
 import './App.css'
-import { Footer } from './Footer'
+import Footer from './Footer'
 import AppInitializer from './AppInitializer'
 import Navbar from './Navbar'
 import CookiesNotification from './CookiesNotification'
@@ -9,7 +9,7 @@ import { CookiesProvider } from 'react-cookie'
 import { SynapseComponents } from 'synapse-react-client'
 
 const RouteResolver = React.lazy(() => import('./RouteResolver'))
-const App: React.FC = () => {
+function App() {
   return (
     <CookiesProvider>
       <BrowserRouter>

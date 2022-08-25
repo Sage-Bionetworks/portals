@@ -2,7 +2,12 @@ import React from 'react'
 import DetailsPage, {
   SplitStringToComponent,
 } from '../../portal-components/DetailsPage/DetailsPage'
-import { render, screen, waitFor } from '@testing-library/react'
+import {
+  render,
+  screen,
+  waitFor,
+  waitForElementToBeRemoved,
+} from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { DetailsPageTabProps, RowSynapseConfig } from 'types/portal-util-types'
 import { SynapseContextProvider } from 'synapse-react-client/dist/utils/SynapseContext'
@@ -120,13 +125,14 @@ describe('DetailsPage tests', () => {
     const tab2 = await screen.findByText('Tab 2')
 
     // Component 1 should be visible at first, component 2 should not be visible
-    await screen.findByText('Synapse Component 1')
+    const component1 = await screen.findByText('Synapse Component 1')
     expect(await screen.queryByText('Synapse Component 2')).toBeNull()
 
     // Call under test - click tab 2 to reveal tab 2's contents and hide tab 1's contents
     userEvent.click(tab2)
 
-    expect(await screen.queryByText('Synapse Component 1')).toBeNull()
+    await waitForElementToBeRemoved(component1)
+
     await screen.findByText('Synapse Component 2')
 
     // Call under test -- click back to tab 1
