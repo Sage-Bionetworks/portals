@@ -83,7 +83,11 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
       console.error('Error on getSession: ', e)
       // intentionally calling sign out because there token could be stale so we want
       // the stored session to be cleared out.
-      this.initAnonymousUserState()
+      SynapseClient.signOut(() => {
+        // PORTALS-2293: if the token was invalid (caused an error), reload the app to ensure all children
+        // are loading as the anonymous user
+        window.location.reload()
+      })
     }
   }
 
