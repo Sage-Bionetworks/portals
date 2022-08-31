@@ -1,12 +1,17 @@
 import SynapseRedirectDialog from 'portal-components/SynapseRedirectDialog'
-import React, { useCallback, useEffect, useState } from 'react'
-import { useMemo } from 'react'
+import React, {
+  SetStateAction,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react'
 import { useCookies } from 'react-cookie'
-import { useLocation } from 'react-router-dom'
 import { SynapseClient, SynapseConstants } from 'synapse-react-client'
 import { DOWNLOAD_FILES_MENU_TEXT } from 'synapse-react-client/dist/containers/table/SynapseTableConstants'
 import { SynapseContextProvider } from 'synapse-react-client/dist/utils/SynapseContext'
 import { UserProfile } from 'synapse-react-client/dist/utils/synapseTypes'
+import useAnalytics from 'useAnalytics'
 import docTitleConfig from './config/docTitleConfig'
 
 export type AppInitializerState = {
@@ -30,15 +35,28 @@ export type SignInProps = {
 
 const COOKIE_CONFIG_KEY = 'org.sagebionetworks.security.cookies.portal.config'
 
-function AppInitializer(props: { children?: React.ReactNode }) {
-  const location = useLocation()
-  const [cookies, setCookie] = useCookies([COOKIE_CONFIG_KEY])
+/** On mount, update the document title and meta description using data from the portal config */
+function useSetDocumentMetadataFromConfig() {
+  useEffect(() => {
+    if (document.title !== docTitleConfig.name) {
+      document.title = docTitleConfig.name
+    }
+    document
+      .querySelector('meta[name="description"]')!
+      .setAttribute('content', docTitleConfig.description)
+  }, [])
+}
+
+/**
+ * State and helpers for managing a user session in the portal
+ * @param setShowLoginDialog
+ * @returns
+ */
+function useSession(
+  setShowLoginDialog: React.Dispatch<SetStateAction<boolean>>,
+) {
   const [token, setToken] = useState<string | undefined>(undefined)
   const [hasCalledGetSession, setHasCalledGetSession] = useState(false)
-  const [showLoginDialog, setShowLoginDialog] = useState(false)
-  const [synapseRedirectUrl, setSynapseRedirectUrl] = useState<
-    string | undefined
-  >(undefined)
   const [userProfile, setUserProfile] = useState<UserProfile | undefined>(
     undefined,
   )
@@ -78,43 +96,44 @@ function AppInitializer(props: { children?: React.ReactNode }) {
   const resetSession = useCallback(() => {
     SynapseClient.signOut(getSession)
     setShowLoginDialog(false)
-  }, [getSession])
+  }, [getSession, setShowLoginDialog])
+
+  return {
+    token,
+    userProfile,
+    hasCalledGetSession,
+    getSession,
+    resetSession,
+  }
+}
+
+function AppInitializer(props: { children?: React.ReactNode }) {
+  const [cookies, setCookie] = useCookies([COOKIE_CONFIG_KEY])
+  const [showLoginDialog, setShowLoginDialog] = useState(false)
+  const [synapseRedirectUrl, setSynapseRedirectUrl] = useState<
+    string | undefined
+  >(undefined)
+
+  const { token, userProfile, getSession, hasCalledGetSession, resetSession } =
+    useSession(setShowLoginDialog)
+
+  /** Call getSession on mount */
+  useEffect(() => {
+    getSession()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  useSetDocumentMetadataFromConfig()
+
+  useAnalytics()
 
   useEffect(() => {
-    if (document.title !== docTitleConfig.name) {
-      document.title = docTitleConfig.name
-    }
-    document
-      .querySelector('meta[name="description"]')!
-      .setAttribute('content', docTitleConfig.description)
-
-    getSession()
-    // Technically, the AppInitializer is only mounted once during the portal app lifecycle.
-    // But it's best practice to clean up the global listener on component unmount.
-    window.addEventListener('click', updateSynapseCallbackCookie)
-    // on first time, also check for the SSO code
-    SynapseClient.detectSSOCode()
-    return () => {
-      window.removeEventListener('click', updateSynapseCallbackCookie)
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- run only on mount
-  }, [])
-
-  const onSignIn = useCallback(() => {
-    setShowLoginDialog(true)
-  }, [])
-
-  const handleCloseLoginDialog = React.useCallback(() => {
-    setShowLoginDialog(false)
-  }, [])
-
-  /**
-   * PORTALS-490: Set Synapse callback cookie
-   * Will attempt to set a .synapse.org domain cookie that has enough information to lead the user
-   * back to this portal after visiting www.synapse.org.
-   */
-  const updateSynapseCallbackCookie = React.useCallback(
-    (ev: MouseEvent) => {
+    /**
+     * PORTALS-490: Set Synapse callback cookie
+     * Will attempt to set a .synapse.org domain cookie that has enough information to lead the user
+     * back to this portal after visiting www.synapse.org.
+     */
+    function updateSynapseCallbackCookie(ev: MouseEvent) {
       if (!cookies) {
         return
       }
@@ -179,22 +198,31 @@ function AppInitializer(props: { children?: React.ReactNode }) {
         domain: domainValue,
         maxAge: 20,
       })
-    },
-    [cookies, setCookie, showLoginDialog, synapseRedirectUrl],
-  )
+    }
+
+    window.addEventListener('click', updateSynapseCallbackCookie)
+
+    // Technically, the AppInitializer is only mounted once during the portal app lifecycle.
+    // But it's best practice to clean up the global listener on component unmount.
+
+    return () => {
+      window.removeEventListener('click', updateSynapseCallbackCookie)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- run only on mount
+  }, [])
 
   useEffect(() => {
-    // send page view event to Google Analytics
-    // (casting to 'any' type to get compile-time access to gtag())
-    const windowAny: any = window
-    const gtag = windowAny.gtag
-    if (gtag) {
-      gtag('config', 'G-CEKFPZDZX7', {
-        page_location: window.location.href,
-        page_path: `/${location.pathname}`,
-      })
-    }
-  }, [location])
+    // on first time, also check for the SSO code
+    SynapseClient.detectSSOCode()
+  }, [])
+
+  const onSignInClicked = useCallback(() => {
+    setShowLoginDialog(true)
+  }, [])
+
+  const handleCloseLoginDialog = React.useCallback(() => {
+    setShowLoginDialog(false)
+  }, [])
 
   const clonedChildren = useMemo(
     () =>
@@ -205,7 +233,7 @@ function AppInitializer(props: { children?: React.ReactNode }) {
           const props: SignInProps = {
             showLoginDialog: showLoginDialog,
             getSession: getSession,
-            onSignIn: onSignIn,
+            onSignIn: onSignInClicked,
             userProfile: userProfile,
             resetSession: resetSession,
             handleCloseLoginDialog: handleCloseLoginDialog,
@@ -216,7 +244,7 @@ function AppInitializer(props: { children?: React.ReactNode }) {
     [
       getSession,
       handleCloseLoginDialog,
-      onSignIn,
+      onSignInClicked,
       props.children,
       resetSession,
       showLoginDialog,
@@ -225,7 +253,8 @@ function AppInitializer(props: { children?: React.ReactNode }) {
   )
 
   if (!hasCalledGetSession) {
-    // prevent componentDidUpdate all over the page by waiting for get session call
+    // Don't render anything until the session has been established
+    // Otherwise we may end up reloading components and making duplicate requests
     return <></>
   }
   return (
