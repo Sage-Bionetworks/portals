@@ -189,7 +189,7 @@ function AppInitializer(props: { children?: React.ReactNode }) {
       // expire after 10 seconds
       const domainValue = window.location.hostname
         .toLowerCase()
-        .includes('.synapse.org')
+        .endsWith('.synapse.org')
         ? '.synapse.org'
         : undefined
       // Cookies provider exists above AppInitializer so the cookies prop will exist
