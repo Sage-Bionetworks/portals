@@ -89,7 +89,11 @@ function useSession(
       console.error('Error on getSession: ', e)
       // intentionally calling sign out because there token could be stale so we want
       // the stored session to be cleared out.
-      initAnonymousUserState()
+      SynapseClient.signOut(() => {
+        // PORTALS-2293: if the token was invalid (caused an error), reload the app to ensure all children
+        // are loading as the anonymous user
+        window.location.reload()
+      })
     }
   }, [initAnonymousUserState])
 
@@ -275,5 +279,7 @@ function AppInitializer(props: { children?: React.ReactNode }) {
     </SynapseContextProvider>
   )
 }
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- run only on mount
+  }, [])
 
 export default AppInitializer
