@@ -1,12 +1,18 @@
-import * as React from 'react'
-import docTitleConfig from './config/docTitleConfig'
-import { SynapseClient, SynapseConstants } from 'synapse-react-client'
-import { withCookies, ReactCookieProps } from 'react-cookie'
-import { DOWNLOAD_FILES_MENU_TEXT } from 'synapse-react-client/dist/containers/table/SynapseTableConstants'
-import { UserProfile } from 'synapse-react-client/dist/utils/synapseTypes'
 import SynapseRedirectDialog from 'portal-components/SynapseRedirectDialog'
+import React, {
+  SetStateAction,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react'
+import { useCookies } from 'react-cookie'
+import { SynapseClient, SynapseConstants } from 'synapse-react-client'
+import { DOWNLOAD_FILES_MENU_TEXT } from 'synapse-react-client/dist/containers/table/SynapseTableConstants'
 import { SynapseContextProvider } from 'synapse-react-client/dist/utils/SynapseContext'
-import withLocation, { WithLocationPropType } from 'withLocation'
+import { UserProfile } from 'synapse-react-client/dist/utils/synapseTypes'
+import useAnalytics from 'useAnalytics'
+import docTitleConfig from './config/docTitleConfig'
 
 export type AppInitializerState = {
   token?: string
@@ -17,8 +23,6 @@ export type AppInitializerState = {
   // after page load
   hasCalledGetSession: boolean
 }
-
-type Props = WithLocationPropType & ReactCookieProps
 
 export type SignInProps = {
   userProfile: UserProfile | undefined
@@ -31,61 +35,63 @@ export type SignInProps = {
 
 const COOKIE_CONFIG_KEY = 'org.sagebionetworks.security.cookies.portal.config'
 
-class AppInitializer extends React.Component<Props, AppInitializerState> {
-  constructor(props: Props) {
-    super(props)
-    this.state = {
-      token: undefined,
-      hasCalledGetSession: false,
-      userProfile: undefined,
-      showLoginDialog: false,
-      synapseRedirectUrl: undefined,
+/** On mount, update the document title and meta description using data from the portal config */
+function useSetDocumentMetadataFromConfig() {
+  useEffect(() => {
+    if (document.title !== docTitleConfig.name) {
+      document.title = docTitleConfig.name
     }
-    this.updateSynapseCallbackCookie =
-      this.updateSynapseCallbackCookie.bind(this)
-  }
+    document
+      .querySelector('meta[name="description"]')!
+      .setAttribute('content', docTitleConfig.description)
+  }, [])
+}
 
-  resetSession = () => {
-    SynapseClient.signOut(this.getSession)
-    this.setState({
-      showLoginDialog: false,
-    })
-  }
+/**
+ * State and helpers for managing a user session in the portal
+ * @param setShowLoginDialog
+ * @returns
+ */
+function useSession(
+  setShowLoginDialog: React.Dispatch<SetStateAction<boolean>>,
+) {
+  const [token, setToken] = useState<string | undefined>(undefined)
+  const [hasCalledGetSession, setHasCalledGetSession] = useState(false)
+  const [userProfile, setUserProfile] = useState<UserProfile | undefined>(
+    undefined,
+  )
 
-  initAnonymousUserState = () => {
+  const initAnonymousUserState = useCallback(() => {
     SynapseClient.signOut(() => {
       // reset token and user profile
-      this.setState({
-        token: undefined,
-        userProfile: undefined,
-        hasCalledGetSession: true,
-      })
+      setToken(undefined)
+      setUserProfile(undefined)
+      setHasCalledGetSession(true)
     })
-  }
+  }, [])
 
-  getSession = async () => {
+  const getSession = useCallback(async () => {
     let token
     try {
       token = await SynapseClient.getAccessTokenFromCookie()
       if (!token) {
-        this.initAnonymousUserState()
+        initAnonymousUserState()
         return
       }
     } catch (e) {
       console.error('Unable to get the access token: ', e)
-      this.initAnonymousUserState()
+      initAnonymousUserState()
       return
     }
     try {
-      this.setState({ token, hasCalledGetSession: true })
+      setToken(token)
+      setHasCalledGetSession(true)
       // get user profile
       const userProfile = await SynapseClient.getUserProfile(token)
       if (userProfile.profilePicureFileHandleId) {
         userProfile.clientPreSignedURL = `https://www.synapse.org/Portal/filehandleassociation?associatedObjectId=${userProfile.ownerId}&associatedObjectType=UserProfileAttachment&fileHandleId=${userProfile.profilePicureFileHandleId}`
       }
-      this.setState({
-        userProfile,
-      })
+      setUserProfile(userProfile)
     } catch (e) {
       console.error('Error on getSession: ', e)
       // intentionally calling sign out because there token could be stale so we want
@@ -96,163 +102,189 @@ class AppInitializer extends React.Component<Props, AppInitializerState> {
         window.location.reload()
       })
     }
-  }
+  }, [initAnonymousUserState])
 
-  componentDidMount() {
-    if (document.title !== docTitleConfig.name) {
-      document.title = docTitleConfig.name
-    }
-    document
-      .querySelector('meta[name="description"]')!
-      .setAttribute('content', docTitleConfig.description)
+  const resetSession = useCallback(() => {
+    SynapseClient.signOut(getSession)
+    setShowLoginDialog(false)
+  }, [getSession, setShowLoginDialog])
 
-    this.getSession()
-    // Technically, the AppInitializer is only mounted once during the portal app lifecycle.
-    // But it's best practice to clean up the global listener on component unmount.
-    window.addEventListener('click', this.updateSynapseCallbackCookie)
-    // on first time, also check for the SSO code
-    SynapseClient.detectSSOCode()
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('click', this.updateSynapseCallbackCookie)
-  }
-
-  onSignIn = () => {
-    this.setState({
-      showLoginDialog: true,
-    })
-  }
-
-  handleCloseLoginDialog = () => {
-    this.setState({
-      showLoginDialog: false,
-    })
-  }
-
-  componentDidUpdate(prevProps: Props) {
-    if (this.props.location !== prevProps.location) {
-      // send page view event to Google Analytics
-      // (casting to 'any' type to get compile-time access to gtag())
-      const windowAny: any = window
-      const gtag = windowAny.gtag
-      if (gtag) {
-        gtag('config', 'G-CEKFPZDZX7', {
-          page_location: window.location.href,
-          page_path: `/${this.props.location.pathname}`,
-        })
-      }
-    }
-  }
-
-  render() {
-    if (!this.state.hasCalledGetSession) {
-      // prevent componentDidUpdate all over the page by waiting for get session call
-      return <></>
-    }
-    return (
-      <SynapseContextProvider
-        synapseContext={{
-          accessToken: this.state.token,
-          isInExperimentalMode: SynapseClient.isInSynapseExperimentalMode(),
-          utcTime: SynapseClient.getUseUtcTimeFromCookie(),
-        }}
-      >
-        {React.Children.map(this.props.children, (child: any) => {
-          if (!child) {
-            return false
-          } else {
-            const props: SignInProps = {
-              showLoginDialog: this.state.showLoginDialog,
-              getSession: this.getSession,
-              onSignIn: this.onSignIn,
-              userProfile: this.state.userProfile,
-              resetSession: this.resetSession,
-              handleCloseLoginDialog: this.handleCloseLoginDialog,
-            }
-            return React.cloneElement(child, props)
-          }
-        })}
-        <SynapseRedirectDialog
-          onCancelRedirect={() =>
-            this.setState({ synapseRedirectUrl: undefined })
-          }
-          synapseRedirectUrl={this.state.synapseRedirectUrl}
-        />
-      </SynapseContextProvider>
-    )
-  }
-
-  /**
-   * PORTALS-490: Set Synapse callback cookie
-   * Will attempt to set a .synapse.org domain cookie that has enough information to lead the user
-   * back to this portal after visiting www.synapse.org.
-   */
-  updateSynapseCallbackCookie(ev: MouseEvent) {
-    if (!this.props || !this.props.cookies) {
-      return
-    }
-    let isInvokingDownloadTable: boolean = false
-    if (ev.target instanceof HTMLAnchorElement) {
-      const anchorElement = ev.target as HTMLAnchorElement
-      isInvokingDownloadTable = anchorElement.text === DOWNLOAD_FILES_MENU_TEXT
-      if (anchorElement.href) {
-        const { hostname } = new URL(anchorElement.href)
-        if (hostname.toLowerCase() === 'www.synapse.org') {
-          // && anchorElement.target !== '_blank') {  // should we skip the dialog if opening in a new window?
-          ev.preventDefault()
-          if (!this.state.synapseRedirectUrl) {
-            this.setState({ synapseRedirectUrl: anchorElement.href })
-          }
-        }
-      }
-    }
-    if (
-      ev.target instanceof HTMLButtonElement ||
-      ev.target instanceof HTMLAnchorElement
-    ) {
-      const el = ev.target as HTMLElement
-      if (el.classList.contains(SynapseConstants.SRC_SIGN_IN_CLASS)) {
-        if (!this.state.showLoginDialog) {
-          this.setState({ showLoginDialog: true })
-        }
-      }
-    }
-    let name = ''
-    let icon = ''
-    const logoImgElement = document.querySelector('#header-logo-image')
-    if (logoImgElement) {
-      let imageSrc = logoImgElement.getAttribute('src')
-      if (imageSrc) {
-        if (!imageSrc.toLowerCase().startsWith('http')) {
-          imageSrc = SynapseClient.getRootURL() + imageSrc.substring(1)
-        }
-        icon = imageSrc
-      }
-    }
-    const footerLinkElement = document.querySelector('#footer-logo-link')
-    if (footerLinkElement && footerLinkElement.textContent) {
-      name = footerLinkElement.textContent
-    }
-    const cookieValue = {
-      isInvokingDownloadTable,
-      callbackUrl: window.location.href,
-      logoUrl: icon,
-      portalName: name,
-    }
-    // expire after 10 seconds
-    const domainValue = window.location.hostname
-      .toLowerCase()
-      .includes('.synapse.org')
-      ? '.synapse.org'
-      : undefined
-    // Cookies provider exists above AppInitializer so the cookies prop will exist
-    this.props.cookies.set(COOKIE_CONFIG_KEY, JSON.stringify(cookieValue), {
-      path: '/',
-      domain: domainValue,
-      maxAge: 20,
-    })
+  return {
+    token,
+    userProfile,
+    hasCalledGetSession,
+    getSession,
+    resetSession,
   }
 }
 
-export default withLocation(withCookies(AppInitializer))
+function AppInitializer(props: { children?: React.ReactNode }) {
+  const [cookies, setCookie] = useCookies([COOKIE_CONFIG_KEY])
+  const [showLoginDialog, setShowLoginDialog] = useState(false)
+  const [synapseRedirectUrl, setSynapseRedirectUrl] = useState<
+    string | undefined
+  >(undefined)
+
+  const { token, userProfile, getSession, hasCalledGetSession, resetSession } =
+    useSession(setShowLoginDialog)
+
+  /** Call getSession on mount */
+  useEffect(() => {
+    getSession()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  useSetDocumentMetadataFromConfig()
+
+  useAnalytics()
+
+  useEffect(() => {
+    /**
+     * PORTALS-490: Set Synapse callback cookie
+     * Will attempt to set a .synapse.org domain cookie that has enough information to lead the user
+     * back to this portal after visiting www.synapse.org.
+     */
+    function updateSynapseCallbackCookie(ev: MouseEvent) {
+      if (!cookies) {
+        return
+      }
+      let isInvokingDownloadTable: boolean = false
+      if (ev.target instanceof HTMLAnchorElement) {
+        const anchorElement = ev.target as HTMLAnchorElement
+        isInvokingDownloadTable =
+          anchorElement.text === DOWNLOAD_FILES_MENU_TEXT
+        if (anchorElement.href) {
+          const { hostname } = new URL(anchorElement.href)
+          if (hostname.toLowerCase() === 'www.synapse.org') {
+            // && anchorElement.target !== '_blank') {  // should we skip the dialog if opening in a new window?
+            ev.preventDefault()
+            if (!synapseRedirectUrl) {
+              setSynapseRedirectUrl(anchorElement.href)
+            }
+          }
+        }
+      }
+      if (
+        ev.target instanceof HTMLButtonElement ||
+        ev.target instanceof HTMLAnchorElement
+      ) {
+        const el = ev.target as HTMLElement
+        if (el.classList.contains(SynapseConstants.SRC_SIGN_IN_CLASS)) {
+          if (!showLoginDialog) {
+            setShowLoginDialog(true)
+          }
+        }
+      }
+      let name = ''
+      let icon = ''
+      const logoImgElement = document.querySelector('#header-logo-image')
+      if (logoImgElement) {
+        let imageSrc = logoImgElement.getAttribute('src')
+        if (imageSrc) {
+          if (!imageSrc.toLowerCase().startsWith('http')) {
+            imageSrc = SynapseClient.getRootURL() + imageSrc.substring(1)
+          }
+          icon = imageSrc
+        }
+      }
+      const footerLinkElement = document.querySelector('#footer-logo-link')
+      if (footerLinkElement && footerLinkElement.textContent) {
+        name = footerLinkElement.textContent
+      }
+      const cookieValue = {
+        isInvokingDownloadTable,
+        callbackUrl: window.location.href,
+        logoUrl: icon,
+        portalName: name,
+      }
+      // expire after 10 seconds
+      const domainValue = window.location.hostname
+        .toLowerCase()
+        .endsWith('.synapse.org')
+        ? '.synapse.org'
+        : undefined
+      // Cookies provider exists above AppInitializer so the cookies prop will exist
+      setCookie(COOKIE_CONFIG_KEY, JSON.stringify(cookieValue), {
+        path: '/',
+        domain: domainValue,
+        maxAge: 20,
+      })
+    }
+
+    window.addEventListener('click', updateSynapseCallbackCookie)
+
+    // Technically, the AppInitializer is only mounted once during the portal app lifecycle.
+    // But it's best practice to clean up the global listener on component unmount.
+
+    return () => {
+      window.removeEventListener('click', updateSynapseCallbackCookie)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- run only on mount
+  }, [])
+
+  useEffect(() => {
+    // on first time, also check for the SSO code
+    SynapseClient.detectSSOCode()
+  }, [])
+
+  const onSignInClicked = useCallback(() => {
+    setShowLoginDialog(true)
+  }, [])
+
+  const handleCloseLoginDialog = React.useCallback(() => {
+    setShowLoginDialog(false)
+  }, [])
+
+  const clonedChildren = useMemo(
+    () =>
+      React.Children.map(props.children, (child: any) => {
+        if (!child) {
+          return false
+        } else {
+          const props: SignInProps = {
+            showLoginDialog: showLoginDialog,
+            getSession: getSession,
+            onSignIn: onSignInClicked,
+            userProfile: userProfile,
+            resetSession: resetSession,
+            handleCloseLoginDialog: handleCloseLoginDialog,
+          }
+          return React.cloneElement(child, props)
+        }
+      }),
+    [
+      getSession,
+      handleCloseLoginDialog,
+      onSignInClicked,
+      props.children,
+      resetSession,
+      showLoginDialog,
+      userProfile,
+    ],
+  )
+
+  if (!hasCalledGetSession) {
+    // Don't render anything until the session has been established
+    // Otherwise we may end up reloading components and making duplicate requests
+    return <></>
+  }
+  return (
+    <SynapseContextProvider
+      synapseContext={{
+        accessToken: token,
+        isInExperimentalMode: SynapseClient.isInSynapseExperimentalMode(),
+        utcTime: SynapseClient.getUseUtcTimeFromCookie(),
+      }}
+    >
+      {clonedChildren}
+      <SynapseRedirectDialog
+        onCancelRedirect={() => {
+          setSynapseRedirectUrl(undefined)
+        }}
+        synapseRedirectUrl={synapseRedirectUrl}
+      />
+    </SynapseContextProvider>
+  )
+}
+
+export default AppInitializer

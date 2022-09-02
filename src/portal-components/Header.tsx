@@ -1,7 +1,7 @@
 import * as React from 'react'
 import headerConfig from '../config/headerConfig'
 
-export const Header: React.SFC<{}> = () => {
+function Header() {
   const {
     summary,
     title,
@@ -40,3 +40,5 @@ export const Header: React.SFC<{}> = () => {
     </header>
   )
 }
+
+export default React.memo(Header)
