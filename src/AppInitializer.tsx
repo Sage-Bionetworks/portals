@@ -286,7 +286,5 @@ function AppInitializer(props: { children?: React.ReactNode }) {
     </SynapseContextProvider>
   )
 }
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- run only on mount
-  }, [])
 
 export default AppInitializer
