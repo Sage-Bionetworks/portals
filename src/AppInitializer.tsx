@@ -71,12 +71,19 @@ function useSession(
   }, [])
 
   const getSession = useCallback(async () => {
+    let token
     try {
-      const token = await SynapseClient.getAccessTokenFromCookie()
+      token = await SynapseClient.getAccessTokenFromCookie()
       if (!token) {
         initAnonymousUserState()
         return
       }
+    } catch (e) {
+      console.error('Unable to get the access token: ', e)
+      initAnonymousUserState()
+      return
+    }
+    try {
       setToken(token)
       setHasCalledGetSession(true)
       // get user profile
