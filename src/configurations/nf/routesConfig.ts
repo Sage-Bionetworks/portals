@@ -163,7 +163,7 @@ const routes: GenericRoute[] = [
           ],
           // mailChimpListName: 'NF quarterly newsletter',
           // mailChimpUrl:'https://sagebase.us7.list-manage.com/subscribe/post?u=abcdefghi...',
-          lockedFacet: {
+          lockedColumn: {
             value: 'featured',
           },
         },
@@ -248,29 +248,32 @@ const routes: GenericRoute[] = [
           {
             path: 'DetailsPage',
             routes: [
-              { path: '', synapseConfigArray: [
-                {
-                  name: 'CardContainerLogic',
-                  isOutsideContainer: true,
-                  props: {
-                    sqlOperator: '=',
-                    isHeader: true,
-  
-                    ...studyCardConfiguration,
-                    facetAliases,
-                    iconOptions: studyHeaderIconOptions,
-                    secondaryLabelLimit: Infinity,
-                    sql: studiesSql,
+              {
+                path: '',
+                synapseConfigArray: [
+                  {
+                    name: 'CardContainerLogic',
+                    isOutsideContainer: true,
+                    props: {
+                      sqlOperator: '=',
+                      isHeader: true,
+
+                      ...studyCardConfiguration,
+                      facetAliases,
+                      iconOptions: studyHeaderIconOptions,
+                      secondaryLabelLimit: Infinity,
+                      sql: studiesSql,
+                    },
                   },
-                },
-                {
-                  name: 'DetailsPage',
-                  isOutsideContainer: false,
-                  props: studiesDetailPage,
-                  containerClassName: 'container-full-width',
-                },
-              ],
-            },]
+                  {
+                    name: 'DetailsPage',
+                    isOutsideContainer: false,
+                    props: studiesDetailPage,
+                    containerClassName: 'container-full-width',
+                  },
+                ],
+              },
+            ],
           },
         ],
       },
