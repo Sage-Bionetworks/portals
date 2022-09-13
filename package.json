@@ -20,7 +20,7 @@
     "react-switch": "^7.0.0",
     "react-use": "^17.3.1",
     "sass": "^1.30.0",
-    "synapse-react-client": "3.1.0"
+    "synapse-react-client": "3.1.1"
   },
   "jest": {
     "moduleNameMapper": {
@@ -65,7 +65,7 @@
     "https-browserify": "^1.0.0",
     "identity-obj-proxy": "^3.0.0",
     "katex": "^0.10.0-rc.1",
-    "markdown-it": "^8.4.2",
+    "markdown-it": "^13.0.1",
     "markdown-it-br": "^1.0.0",
     "markdown-it-center-text": "^1.0.4",
     "markdown-it-container": "^2.0.0",
