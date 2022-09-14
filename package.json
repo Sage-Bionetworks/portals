@@ -118,5 +118,6 @@
     "react-hot-toast": "2.2.0",
     "@types/plotly.js": "^1.54.10",
     "@types/react": "^18.0.17"
-  }
+  },
+  "packageManager": "yarn@3.2.3"
 }

@@ -6,3 +6,12 @@ src/config/
 .DS_Store
 .vscode/
 .idea/
+
+# Yarn - not using Zero-Installs
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
