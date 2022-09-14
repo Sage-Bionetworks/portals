@@ -10,6 +10,11 @@ const routes: GenericRoute[] = [
     exact: true,
     synapseConfigArray: [
       {
+        name: 'ARKWelcomePage',
+        props: undefined,
+        isOutsideContainer: true,
+      },
+      {
         name: 'Goals',
         outsideContainerClassName: 'home-spacer',
         props: {

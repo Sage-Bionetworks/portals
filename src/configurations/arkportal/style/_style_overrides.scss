@@ -5,31 +5,12 @@
   background-image: none;
 }
 #footer {
-  height: 75px;
+  height: 120px;
   background-image: none;
 }
 
 #header {
-  position: relative;
-  .header-text {
-    position: absolute;
-    top: 20%;
-    min-height: 50%;
-    @media only screen and (max-width: 1200px) {
-      top: 5%;
-      width: 90%;
-      left: 5%;
-      height: 90%;
-    }
-    height: fit-content;
-    h2 {
-      margin-bottom: 20px;
-    }
-    width: 60%;
-    left: 10%;
-    margin: 0px;
-    padding: 25px;
-  }
+  display: none;
 }
 
 #footer {
