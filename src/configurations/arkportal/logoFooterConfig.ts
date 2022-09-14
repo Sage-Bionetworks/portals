@@ -1,6 +1,6 @@
 import { LogoConfig } from 'types/portal-config'
+import logoSvg from './style/iconFooter.svg'
 const logo: LogoConfig = {
-  name: 'ARK PORTAL',
-  
+  icon: logoSvg
 }
 export default logo
