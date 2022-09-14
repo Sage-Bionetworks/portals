@@ -18,6 +18,7 @@
 @use 'ToggleSynapseObjects';
 @use '../portal-components/DetailsPage/DetailsPage';
 @use '../portal-components/nf/style/_BrowseToolsPage';
+@use '../portal-components/arkportal/style/_ARKWelcomePage';
 
 // style_overrides should be last to ensure its styles have higher priority
 @use 'style_overrides';
