@@ -149,6 +149,11 @@ type BrowseToolsPage = {
   props: undefined
 }
 
+type ARKWelcomePage = {
+  name: 'ARKWelcomePage'
+  props: undefined
+}
+
 type ExternalFileHandleLink = {
   name: 'ExternalFileHandleLink'
   props: ExternalFileHandleLinkProps
@@ -293,6 +298,7 @@ export type SynapseConfig = (
   | TableFeedCards
   | DownloadCartPage
   | BrowseToolsPage
+  | ARKWelcomePage
   | SubsectionRowRenderer
   | ToggleSynapseObjects
   | Header

@@ -138,6 +138,9 @@ class Navbar extends React.Component<any, State> {
       },
     )[0]
 
+    // if the home route does not contain any titles, then just show a link
+    const homeConfigTitleCount = homeRouteConfig?.synapseConfigArray?.filter(config => config.title !== undefined).length
+    const isHomeDropdown = homeConfigTitleCount ? homeConfigTitleCount > 0 : false
     return (
       <React.Fragment>
         <nav
@@ -405,34 +408,40 @@ class Navbar extends React.Component<any, State> {
               // if theres less than 7 navbar items show the home page button
               routesConfig.filter((el) => !el.hideRouteFromNavbar).length <
                 7 && (
-                <Dropdown className={this.getBorder('')}>
-                  <Dropdown.Toggle
-                    variant="light"
-                    id={'Navbar-dropdown-Home'}
-                    className={`nav-button-container nav-button ${isHomeSelectedCssClassName}`}
-                  >
-                    Home
-                  </Dropdown.Toggle>
-                  <Dropdown.Menu className="portal-nav-menu">
-                    {homeRouteConfig &&
-                      homeRouteConfig.synapseConfigArray?.map(
-                        (config, index) => {
-                          const { title } = config
-                          if (!title) return <React.Fragment key={index} />
+                  isHomeDropdown ? 
+                  <Dropdown className={this.getBorder('')}>
+                    <Dropdown.Toggle
+                      variant="light"
+                      id={'Navbar-dropdown-Home'}
+                      className={`nav-button-container nav-button ${isHomeSelectedCssClassName}`}
+                    >
+                      Home
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu className="portal-nav-menu">
+                      {homeRouteConfig &&
+                        homeRouteConfig.synapseConfigArray?.map(
+                          (config, index) => {
+                            const { title } = config
+                            if (!title) return <React.Fragment key={index} />
 
-                          return (
-                            <Dropdown.Item key={title} as="li">
-                              <NavLink
-                                className="dropdown-item SRC-primary-background-color-hover SRC-nested-color"
-                                text={title}
-                                to={`/#${encodeURI(title)}`}
-                              />
-                            </Dropdown.Item>
-                          )
-                        },
-                      )}
-                  </Dropdown.Menu>
-                </Dropdown>
+                            return (
+                              <Dropdown.Item key={title} as="li">
+                                <NavLink
+                                  className="dropdown-item SRC-primary-background-color-hover SRC-nested-color"
+                                  text={title}
+                                  to={`/#${encodeURI(title)}`}
+                                />
+                              </Dropdown.Item>
+                            )
+                          },
+                        )}
+                    </Dropdown.Menu>
+                  </Dropdown> :
+                  <NavLink
+                    className={`nav-button nav-button-container center-content ${isHomeSelectedCssClassName}`}
+                    to={'/'}
+                    text='Home'
+                />
               )
             }
           </div>
