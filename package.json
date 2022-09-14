@@ -41,11 +41,9 @@
     "build": "yarn copy-favicon; yarn save-build-date; yarn run build-css && CI=false GENERATE_SOURCEMAP=false craco --max_old_space_size=7168 build",
     "copy-test-configuration": "cp -r src/test-configuration/ src/config/",
     "test": "yarn run copy-test-configuration && craco test --env=jsdom --setupFiles ./src/tests/setupTests.ts",
-    "generate-sitemap": "node sitemap/generate-sitemap.js",
+    "generate-sitemap": "yarn node sitemap/generate-sitemap.js",
     "eject": "craco eject",
-    "analyze": "yarn run copy-test-configuration && craco --max_old_space_size=4096 build && source-map-explorer 'build/static/js/*.js'",
-    "link-src": "yarn link synapse-react-client && yarn link react && yarn link react-router && yarn link react-router-dom",
-    "unlink-src": "yarn unlink synapse-react-client && yarn unlink react && yarn unlink react-router && yarn unlink react-router-dom && yarn install --check-files"
+    "analyze": "yarn run copy-test-configuration && craco --max_old_space_size=4096 build && source-map-explorer 'build/static/js/*.js'"
   },
   "devDependencies": {
     "@craco/craco": "^6.4.3",
