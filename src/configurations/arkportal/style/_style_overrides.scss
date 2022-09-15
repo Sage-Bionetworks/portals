@@ -47,6 +47,15 @@ td.SRC_noBorderTop:nth-child(n + 4) {
     }
   }
 }
+.bootstrap-4-backport {
+  .btn-secondary,
+  .btn-secondary-base {
+    color: white;
+    &:hover {
+      color: white;
+    }
+  }
+}
 
 .AboutPage {
   margin-top: 25px !important;
