@@ -36,7 +36,7 @@ const DevelopedBySage = () => {
         .
       </p>
       <p>
-        Research and Portal development was supported by the NCI at the NIH (U24CA209923)
+        Research and Portal development was supported by the NCI at the NIH (U24CA209923, U24CA274494)
       </p>
       <p className="logos">
         <a href="https://www.nih.gov/" target="_blank" rel="noreferrer">
