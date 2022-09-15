@@ -9,7 +9,7 @@ import {
   Typography,
 } from 'synapse-react-client'
 import IconSvg from 'synapse-react-client/dist/containers/IconSvg'
-import { LockedFacet } from 'synapse-react-client/dist/containers/QueryContext'
+import { LockedColumn } from 'synapse-react-client/dist/containers/QueryContext'
 import { SYNAPSE_ENTITY_ID_REGEX } from 'synapse-react-client/dist/utils/functions/RegularExpressions'
 import {
   insertConditionsFromSearchParams,
@@ -293,8 +293,8 @@ export const SplitStringToComponent: React.FC<{
   let entityTitle = ''
 
   // For explorer 2.0, construct an object to contain the locked facet name and facet value
-  const lockedFacet: LockedFacet = {
-    facet: columnName,
+  const lockedColumn: LockedColumn = {
+    columnName: columnName
   }
 
   const { data: entityHeaders } = useGetEntityHeaders([{ targetId: value }], {
@@ -316,7 +316,7 @@ export const SplitStringToComponent: React.FC<{
     // use entity name according to resolveSynId
     if (resolveSynId.value) {
       value = name
-      lockedFacet.value = name
+      lockedColumn.value = name
     }
   }
 
@@ -336,10 +336,10 @@ export const SplitStringToComponent: React.FC<{
     injectedProps['sql'] = `SELECT  *  FROM  ${value}`
   }
 
-  // For explorer 2.0, cannot assign key `lockedFacet` to deepCloneOfProps due to type errors,
-  // assign lockedFacet value directly to injectedProps only if resolveSynId.value is true
+  // For explorer 2.0, cannot assign key `lockedColumn` to deepCloneOfProps due to type errors,
+  // assign lockedColumn value directly to injectedProps only if resolveSynId.value is true
   // PORTALS-2060: Also for explorer 2.0, hide the query count if on a details page.
-  injectedProps['lockedFacet'] = lockedFacet
+  injectedProps['lockedColumn'] = lockedColumn
   injectedProps['hideQueryCount'] = true
   const synapseConfigWithInjectedProps: SynapseConfig = {
     ...el,
