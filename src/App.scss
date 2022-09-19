@@ -1,5 +1,6 @@
-@use 'variable_overrides';
-@use 'variables' as Portal;
+// Load variable_overrides first, so correct values for variables will be applied to the rest of the styles
+@use './config/style/variable_overrides';
+@use './style/variables' as Portal;
 
 @use 'synapse-react-client/dist/style/main.scss' with (
   $primary-action-color: Portal.$primary-action-color,
@@ -8,7 +9,7 @@
   $primary-bgcolor-rgba: unset
 );
 @use 'synapse-react-client/dist/template_style/Index.scss';
-@use '../portal-components/csbc-home-page/style/all.scss';
+@use './portal-components/csbc-home-page/style/all.scss';
 
 @use 'Core';
 @use 'Markdown';
@@ -16,9 +17,9 @@
 @use 'ExploreMenu';
 @use 'SynapseRedirectDialog';
 @use 'ToggleSynapseObjects';
-@use '../portal-components/DetailsPage/DetailsPage';
-@use '../portal-components/nf/style/_BrowseToolsPage';
-@use '../portal-components/arkportal/style/_ARKWelcomePage';
+@use './portal-components/DetailsPage/DetailsPage';
+@use './portal-components/nf/style/_BrowseToolsPage';
+@use './portal-components/arkportal/style/_ARKWelcomePage';
 
-// style_overrides should be last to ensure its styles have higher priority
-@use 'style_overrides';
+// style_overrides should be last to ensure its styles have highest priority
+@use './config/style/style_overrides';
