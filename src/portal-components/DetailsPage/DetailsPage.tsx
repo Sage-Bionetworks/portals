@@ -1,4 +1,4 @@
-import { cloneDeep, Dictionary } from 'lodash'
+import { cloneDeep } from 'lodash-es'
 import pluralize from 'pluralize'
 import * as React from 'react'
 import { useState } from 'react'
@@ -209,10 +209,13 @@ const SynapseObject: React.FC<{
   const deepCloneOfProps = cloneDeep(props)
   const row = queryResultBundle!.queryResult!.queryResults.rows[0].values
   // map column name to index
-  const mapColumnHeaderToRowIndex: Dictionary<{
-    index: number
-    columnType: ColumnType
-  }> = {}
+  const mapColumnHeaderToRowIndex: Record<
+    string,
+    {
+      index: number
+      columnType: ColumnType
+    }
+  > = {}
   queryResultBundle!.queryResult!.queryResults.headers.forEach((el, index) => {
     mapColumnHeaderToRowIndex[el.name] = { index, columnType: el.columnType }
   })
@@ -320,7 +323,7 @@ export const SplitStringToComponent: React.FC<{
     }
   }
 
-  let searchParams: Dictionary<string> | undefined = undefined
+  let searchParams: Record<string, string> | undefined = undefined
   if (el.tableSqlKeys) {
     // create component's query according to keys and value
     searchParams = {}

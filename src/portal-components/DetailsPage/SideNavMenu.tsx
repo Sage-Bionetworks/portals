@@ -1,4 +1,3 @@
-import { Dictionary } from 'lodash'
 import * as React from 'react'
 import { ExternalFileHandleLink } from 'synapse-react-client/dist/containers/ExternalFileHandleLink'
 import { QueryResultBundle } from 'synapse-react-client/dist/utils/synapseTypes/'
@@ -20,7 +19,7 @@ export const SideNavMenu: React.FC<{
   synapseConfigArray?: RowSynapseConfig[]
   queryResultBundle?: QueryResultBundle
 }> = ({ synapseConfigArray, queryResultBundle }) => {
-  const mapColumnHeaderToRowIndex: Dictionary<number> = {}
+  const mapColumnHeaderToRowIndex: Record<string, number> = {}
   let row: (string | null)[] = []
   if (queryResultBundle?.queryResult) {
     queryResultBundle.queryResult.queryResults.headers.forEach((el, index) => {

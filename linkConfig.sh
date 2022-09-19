@@ -76,6 +76,4 @@ cd ./$ACTIVE_CONFIGURATION
 ln -s ../../config/* .
 cd ../../../
 # start the project
-# Fixes node binding error when switching between packages and forgetting to run this command...
-npm rebuild node-sass
 yarn && yarn start
