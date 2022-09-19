@@ -75,7 +75,6 @@
     "markdown-it-synapse-heading": "^1.0.1",
     "markdown-it-synapse-math": "^3.0.4",
     "markdown-it-synapse-table": "^1.0.6",
-    "npm-run-all": "^4.1.5",
     "path-browserify": "^1.0.1",
     "pluralize": "^8.0.0",
     "postcss-normalize": "^10.0.1",

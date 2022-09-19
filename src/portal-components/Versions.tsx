@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import moment from 'moment'
-import './Versions.css'
+import './Versions.scss'
 import packageJson from '../../package.json'
 import Tooltip from 'synapse-react-client/dist/utils/tooltip/Tooltip'
 
