@@ -1,4 +1,4 @@
-@use 'variables' as Portal;
+@use '../../style/variables' as Portal;
 
 #header,
 #footer {
@@ -35,6 +35,6 @@ footer {
     max-width: 100px;
     padding-top: 20px;
     padding-right: 30px;
-    float: right
+    float: right;
   }
 }

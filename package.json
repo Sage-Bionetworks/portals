@@ -32,13 +32,10 @@
     ]
   },
   "scripts": {
-    "build-css": "sass src/:src/ --load-path=src/config/style --load-path=src/style --load-path=node_modules",
-    "watch-css": "yarn run build-css && sass src/ --watch --load-path=src/config/style --load-path=src/style --load-path=node_modules",
-    "start-js": "craco start",
     "copy-favicon": "cp src/config/style/favicon* public/",
     "save-build-date": "date > public/build-date.txt",
-    "start": "npm-run-all -p watch-css start-js",
-    "build": "yarn copy-favicon; yarn save-build-date; yarn run build-css && CI=false GENERATE_SOURCEMAP=false craco --max_old_space_size=7168 build",
+    "start": "craco start",
+    "build": "yarn copy-favicon; yarn save-build-date; CI=false GENERATE_SOURCEMAP=false craco --max_old_space_size=7168 build",
     "copy-test-configuration": "cp -r src/test-configuration/ src/config/",
     "test": "yarn run copy-test-configuration && craco test --env=jsdom --setupFiles ./src/tests/setupTests.ts",
     "generate-sitemap": "node sitemap/generate-sitemap.js",

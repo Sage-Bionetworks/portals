@@ -1,6 +1,6 @@
 import { BrowserRouter, Switch } from 'react-router-dom'
 import * as React from 'react'
-import './App.css'
+import './App.scss'
 import Footer from './Footer'
 import AppInitializer from './AppInitializer'
 import Navbar from './Navbar'
