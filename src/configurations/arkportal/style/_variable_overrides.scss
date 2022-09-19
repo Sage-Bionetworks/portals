@@ -1,6 +1,6 @@
-@use 'variables' with (
-  $primary-action-color: #E79776,
-  $secondary-action-color:  #E79776,
+@use '../../style/variables' with (
+  $primary-action-color: #e79776,
+  $secondary-action-color: #e79776,
   $header-url: '',
   $footer-url: ''
 );
