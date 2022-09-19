@@ -1,4 +1,4 @@
-@use 'variables' as Portal;
+@use './style/variables' as Portal;
 
 // TODO: This styling should eventually be part of the standard markdown rendering across the portals and synapse.org
 // Its starting to diverge from synapse.org markdown styling, since there has been a lot of wikis made specifically
@@ -33,7 +33,6 @@
     margin: 21px 0;
     padding: 0;
   }
-
 
   a,
   details > summary {

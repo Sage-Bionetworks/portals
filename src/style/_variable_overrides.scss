@@ -1,7 +1,0 @@
-// _variable_overrides should be used to override the Portal SCSS variables, and should be loaded first
-//
-// This file is needed to compile the SCSS without a portal configuration.
-// It will be overridden by src/config/style/_variable_overrides.scss when a portal is linked
-//   because src/config/style is a higher-priority load path.
-//
-// See https://sass-lang.com/documentation/cli/dart-sass#load-path
