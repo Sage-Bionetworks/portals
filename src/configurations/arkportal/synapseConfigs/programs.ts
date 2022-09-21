@@ -5,30 +5,28 @@ import { CardConfiguration } from 'synapse-react-client/dist/containers/CardCont
 import facetAliases from '../facetAliases'
 import { DetailsPageProps } from 'types/portal-util-types'
 import { dataDetailPageProps } from './data'
-import { studySql } from '../resources'
+import { programSql } from '../resources'
 import { iconOptions } from './iconOptions'
 
 const rgbIndex = 9
 
-export const studySchema: GenericCardSchema = {
-  type: SynapseConstants.STUDY,
-  title: 'Study',
-  subTitle: 'Program',
+export const programSchema: GenericCardSchema = {
+  type: 'Program',
+  title: 'Program',
+  // subTitle: 'Short Description',
+  icon: 'Program',
   description: 'Description',
-  secondaryLabels: [
-    'Program',
-  ],
 }
 
-export const studiesCardConfiguration: CardConfiguration = {
+export const programsCardConfiguration: CardConfiguration = {
   type: SynapseConstants.GENERIC_CARD,
-  genericCardSchema: studySchema,
+  genericCardSchema: programSchema,
   iconOptions,
   titleLinkConfig: {
     isMarkdown: false,
-    baseURL: 'Explore/Studies/DetailsPage',
-    URLColumnName: 'Study',
-    matchColumnName: 'Study',
+    baseURL: 'Explore/Programs/DetailsPage',
+    URLColumnName: 'Program',
+    matchColumnName: 'Program',
   },
   labelLinkConfig: [
     {
@@ -38,49 +36,49 @@ export const studiesCardConfiguration: CardConfiguration = {
   ],
 }
 
-export const studies: SynapseConfig = {
+export const programs: SynapseConfig = {
   name: 'QueryWrapperPlotNav',
   props: {
     rgbIndex,
-    cardConfiguration: studiesCardConfiguration,
-    sql: studySql,
+    cardConfiguration: programsCardConfiguration,
+    sql: programSql,
     shouldDeepLink: true,
     hideDownload: true,
-    name: 'Studies',
+    name: 'Programs',
     facetAliases,
     facetsToPlot: [],
   },
 }
 
 export const details: DetailsPageProps = {
-  sql: studySql,
+  sql: programSql,
   synapseConfigArray: [
     {
       name: 'StandaloneQueryWrapper',
       title: 'Data Files',
       columnName: 'id',
-      tableSqlKeys: ['projectId'],
+      tableSqlKeys: ['Program'],
       props: dataDetailPageProps,
     },
   ],
 }
 
-export const studyDetailPage: SynapseConfig[] = [
+export const programDetailPage: SynapseConfig[] = [
   {
     name: 'CardContainerLogic',
     isOutsideContainer: true,
     props: {
       isHeader: true,
       isAlignToLeftNav: true,
-      ...studiesCardConfiguration,
+      ...programsCardConfiguration,
       rgbIndex,
       facetAliases,
       genericCardSchema: {
-        ...studySchema,
-        title: 'Study',
-        link: 'Study',
+        ...programSchema,
+        title: 'Program',
+        link: 'Program',
       },
-      sql: studySql,
+      sql: programSql,
     },
   },
   {
