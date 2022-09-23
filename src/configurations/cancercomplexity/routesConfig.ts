@@ -404,6 +404,18 @@ const routes: GenericRoute[] = [
                   synapseConfigArray: [
                     {
                       name: 'CardContainerLogic',
+                      columnName: 'grantNumber',
+                      title: 'Related Grants',
+                      tableSqlKeys: ['grantNumber'],
+                      props: {
+                        sqlOperator: '=',
+                        sql: grantsSql,
+                        ...grantsCardConfiguration,
+                        facetAliases,
+                      },
+                    },
+                    {
+                      name: 'CardContainerLogic',
                       columnName: 'pubMedId',
                       title: 'Related People',
                       tableSqlKeys: ['publicationId'],
