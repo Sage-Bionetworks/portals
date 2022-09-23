@@ -1,7 +1,6 @@
 import { GenericRoute } from 'types/portal-config'
 import {
   publications,
-  files,
   datasets,
   grants,
   tools,
@@ -506,20 +505,6 @@ const routes: GenericRoute[] = [
                 },
               },
             ],
-          },
-        ],
-      },
-      {
-        path: 'Files',
-        exact: true,
-        synapseConfigArray: [
-          {
-            name: 'RouteControlWrapper',
-            isOutsideContainer: true,
-            props: {
-              ...RouteControlWrapperProps,
-              synapseConfig: files,
-            },
           },
         ],
       },
