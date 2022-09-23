@@ -18,7 +18,6 @@ import { onPointClick } from './synapseConfigs/onPointClick'
 import facetAliases from './facetAliases'
 import {
   datasetsSql,
-  filesSql,
   grantsSql,
   publicationSql,
   projectsSql,
@@ -486,19 +485,42 @@ const routes: GenericRoute[] = [
                 name: 'DetailsPage',
                 props: {
                   sql: datasetsSql,
-                  sqlOperator: 'LIKE',
-                  showMenu: false,
+                  sqlOperator: '=',
                   synapseConfigArray: [
                     {
-                      name: 'StandaloneQueryWrapper',
-                      title: 'Data',
-                      columnName: 'datasetAlias',
-                      tableSqlKeys: ['datasets'],
+                      name: 'CardContainerLogic',
+                      columnName: 'grantNumber',
+                      title: 'Related Grants',
+                      tableSqlKeys: ['grantNumber'],
                       props: {
-                        sql: filesSql,
                         sqlOperator: '=',
-                        rgbIndex: 0,
-                        title: 'Dataset Files',
+                        sql: grantsSql,
+                        ...grantsCardConfiguration,
+                        facetAliases,
+                      },
+                    },
+                    {
+                      name: 'CardContainerLogic',
+                      columnName: 'pubMedId',
+                      title: 'Related People',
+                      tableSqlKeys: ['publicationId'],
+                      props: {
+                        sqlOperator: 'LIKE',
+                        sql: peopleSql,
+                        ...peopleCardConfiguration,
+                        facetAliases,
+                      },
+                    },
+                    {
+                      name: 'CardContainerLogic',
+                      columnName: 'pubMedId',
+                      title: 'Related Publications',
+                      tableSqlKeys: ['pubMedId'],
+                      props: {
+                        sqlOperator: '=',
+                        sql: publicationSql,
+                        ...publicationsCardConfiguration,
+                        facetAliases,
                       },
                     },
                   ],
