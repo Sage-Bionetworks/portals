@@ -12,6 +12,10 @@
     max-width: 700px;
   }
   .welcomeARKLogo {
+    @media (max-width: 1024px) {
+      display: none;
+    }
+
     max-width: 200px;
     max-height: 200px;
     opacity: 0.25;
@@ -22,12 +26,17 @@
 }
 .lowerRightARKLogo {
   position: absolute;
-  right: -200px;
-  opacity: 0.25;
+  right: 0px;
   z-index: -1;
-  max-width: 500px;
-  bottom: -100px;
-  transform: rotate(-110deg);
+  bottom: 0px;
+  overflow: hidden;
+  width: 300px;
+  height: 450px;
+  img {
+    transform: rotate(-180deg);
+    opacity: 0.25;
+    max-width: 500px;
+  }
 }
 
 .lowerLeftARKLogo {

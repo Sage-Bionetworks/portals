@@ -26,7 +26,9 @@ const ARKWelcomePage = () => {
             <img className="welcomeARKLogo" src={logoPath} alt="ARK Portal logo"/>
           </div>
       </Layout>
-      <img className="lowerRightARKLogo" src={logoPath} alt="ARK Portal logo"/>
+      <div className="lowerRightARKLogo">
+        <img src={logoPath} alt="ARK Portal logo"/>
+      </div>
       <img className="lowerLeftARKLogo" src={logoPath} alt="ARK Portal logo"/>
     </>
   )
