@@ -1,8 +1,7 @@
 import { studies } from './studies'
-import { tools } from './tools'
-import { publications } from './publications'
+import { programs } from './programs'
 import data from './data'
 
-export { publications, studies, data, tools }
+export { studies, data, programs }
 
-export default { studies, data, tools, publications }
+export default { studies, data, programs }
