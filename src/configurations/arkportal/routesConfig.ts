@@ -120,6 +120,14 @@ const routes: GenericRoute[] = [
   },
   {
     exact: true,
+    displayName: 'News',
+    path: undefined,
+    target: '_blank',
+    link: 'https://parkportalnews.wpengine.com/',
+    synapseConfigArray: [],
+  },
+  {
+    exact: true,
     displayName: 'Help',
     path: undefined,
     target: '_blank',
