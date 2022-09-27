@@ -32,7 +32,8 @@ const routes: GenericRoute[] = [
         title: 'About',
         className: 'AboutPage',
         props: {
-          ownerId: 'syn22130826',
+          ownerId: 'syn26710600',
+          wikiId: '619467'
         },
       },
     ],
@@ -46,7 +47,8 @@ const routes: GenericRoute[] = [
         title: 'Data Access',
         className: 'DataAccessPage',
         props: {
-          ownerId: 'syn22130826',
+          ownerId: 'syn26710600',
+          wikiId: '619468'
         },
       },
     ],
