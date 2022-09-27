@@ -12,13 +12,13 @@ export const datasetSchema: GenericCardSchema = {
   title: 'datasetName',
   description: 'description',
   secondaryLabels: [
-    'publicationTitle',
     'overallDesign',
     'tumorType',
+    'tissue',
     'assay',
     'species',
+    'fileFormats',
     'externalLink',
-    'grantName',
     'consortium',
   ],
 }

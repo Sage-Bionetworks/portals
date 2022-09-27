@@ -21,9 +21,7 @@ export const publicationSchema: GenericCardSchema = {
     'assay',
     'keywords',
     'doi',
-    'grantName',
     'consortium',
-    'dataset',
   ],
 }
 
