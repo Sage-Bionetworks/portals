@@ -18,7 +18,7 @@ const routes: GenericRoute[] = [
         name: 'Goals',
         outsideContainerClassName: 'home-spacer',
         props: {
-          entityId: 'syn23021143',
+          entityId: 'syn38103451',
         },
       },
     ],
