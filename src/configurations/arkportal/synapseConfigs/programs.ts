@@ -6,7 +6,6 @@ import facetAliases from '../facetAliases'
 import { DetailsPageProps } from 'types/portal-util-types'
 import { dataDetailPageProps } from './data'
 import { programSql } from '../resources'
-import { iconOptions } from './iconOptions'
 
 const rgbIndex = 9
 
@@ -21,7 +20,6 @@ export const programSchema: GenericCardSchema = {
 export const programsCardConfiguration: CardConfiguration = {
   type: SynapseConstants.GENERIC_CARD,
   genericCardSchema: programSchema,
-  iconOptions,
   titleLinkConfig: {
     isMarkdown: false,
     baseURL: 'Explore/Programs/DetailsPage',

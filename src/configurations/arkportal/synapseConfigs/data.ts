@@ -15,10 +15,10 @@ export const dataColumnLinks: LabelLinkConfig = [
     isMarkdown: true,
   },
   {
-    matchColumnName: 'study',
+    matchColumnName: 'project',
     isMarkdown: false,
-    baseURL: 'Explore/Studies/DetailsPage',
-    URLColumnName: 'Study',
+    baseURL: 'Explore/Projects/DetailsPage',
+    URLColumnName: 'Project',
   },
 ]
 

@@ -1,7 +1,5 @@
-import { studies } from './studies'
+import { projects } from './projects'
 import { programs } from './programs'
 import data from './data'
 
-export { studies, data, programs }
-
-export default { studies, data, programs }
+export { projects, data, programs }
