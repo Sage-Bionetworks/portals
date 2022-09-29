@@ -1,7 +1,7 @@
 import { GenericRoute } from 'types/portal-config'
-import { programs, studies, data } from './synapseConfigs'
+import { programs, projects, data } from './synapseConfigs'
 import RouteControlWrapperProps from './routeControlWrapperProps'
-import { studyDetailPage } from './synapseConfigs/studies'
+import { projectDetailPage } from './synapseConfigs/projects'
 import { programDetailPage } from './synapseConfigs/programs'
 
 const routes: GenericRoute[] = [
@@ -81,7 +81,7 @@ const routes: GenericRoute[] = [
         ],
       },
       {
-        path: 'Studies',
+        path: 'Projects',
         routes: [
           {
             path: '',
@@ -92,7 +92,7 @@ const routes: GenericRoute[] = [
                 isOutsideContainer: true,
                 props: {
                   ...RouteControlWrapperProps,
-                  synapseConfig: studies,
+                  synapseConfig: projects,
                 },
               },
             ],
@@ -100,7 +100,7 @@ const routes: GenericRoute[] = [
           {
             path: 'DetailsPage',
             exact: false,
-            synapseConfigArray: studyDetailPage,
+            synapseConfigArray: projectDetailPage,
           },
         ],
       },
