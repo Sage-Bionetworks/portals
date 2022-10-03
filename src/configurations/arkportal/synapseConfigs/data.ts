@@ -7,18 +7,16 @@ import { dataSql } from '../resources'
 const rgbIndex = 0
 export const dataColumnLinks: LabelLinkConfig = [
   {
-    matchColumnName: 'dataDescriptionLocation',
-    isMarkdown: true,
-  },
-  {
-    matchColumnName: 'dataAccessInstructions',
-    isMarkdown: true,
-  },
-  {
     matchColumnName: 'project',
     isMarkdown: false,
     baseURL: 'Explore/Projects/DetailsPage',
     URLColumnName: 'Project',
+  },
+  {
+    matchColumnName: 'program',
+    isMarkdown: false,
+    baseURL: 'Explore/Programs/DetailsPage',
+    URLColumnName: 'Program',
   },
 ]
 
@@ -27,34 +25,20 @@ const data: SynapseConfig = {
   props: {
     rgbIndex,
     shouldDeepLink: true,
-    hideDownload: true,
     sql: dataSql,
     name: 'Data',
     facetAliases,
     tableConfiguration: {
-      showDownloadColumn: false,
       columnLinks: dataColumnLinks,
     },
     facetsToPlot: [
-      'study',
-      'reportedOutcome',
-      'dataCollectionMethod',
-      'deviceType',
-      'devicePlatform',
-      'deviceLocation',
-      'diagnosis',
-      'digitalAssessmentCategory',
-      'dataType',
-      'dataSubtype',
+      'program',
+      'project',
     ],
     searchConfiguration: {
       searchable: [
-        'collection',
-        'reportedOutcome',
-        'devicePlatform',
-        'diagnosis',
-        'digitalAssessmentCategory',
-        'digitalAssessmentDetails',
+        'program',
+        'project',
       ],
     },
   },
@@ -63,7 +47,7 @@ const data: SynapseConfig = {
 export const dataDetailPageProps: StandaloneQueryWrapperProps = {
   sql: dataSql,
   rgbIndex,
-  title: 'Data Files',
+  title: 'Files',
   columnLinks: dataColumnLinks,
   hideDownload: true,
   sqlOperator: '=',
