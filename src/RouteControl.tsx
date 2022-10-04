@@ -66,6 +66,9 @@ export const RouteControl: React.FunctionComponent<RouteControlProps> = ({
       ScrollButtonComponent={CustomScrollButton}
       aria-label="Explore Sections"
       className="flex-display nav explore-nav"
+      TabIndicatorProps={{
+        style: { background: "transparent" }
+      }}
     >
       {customRoutes.map((name, index) => {
         return (

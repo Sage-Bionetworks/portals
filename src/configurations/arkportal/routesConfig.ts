@@ -1,5 +1,5 @@
 import { GenericRoute } from 'types/portal-config'
-import { programs, projects, data, datasets } from './synapseConfigs'
+import { programs, projects, data, datasets, datasetCollections } from './synapseConfigs'
 import RouteControlWrapperProps from './routeControlWrapperProps'
 import { projectDetailPage } from './synapseConfigs/projects'
 import { programDetailPage } from './synapseConfigs/programs'
@@ -101,6 +101,21 @@ const routes: GenericRoute[] = [
             path: 'DetailsPage',
             exact: false,
             synapseConfigArray: projectDetailPage,
+          },
+        ],
+      },
+      {
+        path: 'Collections',
+        exact: true,
+        synapseConfigArray: [
+          {
+            name: 'RouteControlWrapper',
+            isOutsideContainer: true,
+            className: 'CollectionList',
+            props: {
+              ...RouteControlWrapperProps,
+              synapseConfig: datasetCollections,
+            },
           },
         ],
       },
