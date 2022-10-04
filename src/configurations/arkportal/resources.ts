@@ -6,3 +6,4 @@ export const programSql =
 export const projectsSql =
   "SELECT * FROM syn36649647"
 export const datasetsSql = 'SELECT * FROM syn38807115'
+export const datasetCollectionsSql = 'SELECT * FROM syn38814510 ORDER BY ItemOrder'
