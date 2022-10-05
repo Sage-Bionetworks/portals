@@ -17,7 +17,6 @@ export const peopleSchema: GenericCardSchema = {
   secondaryLabels: [
     'email',
     'orcidId',
-    'grantName',
     'consortium',
     'workingGroupParticipation',
     'synapseProfileLink',
