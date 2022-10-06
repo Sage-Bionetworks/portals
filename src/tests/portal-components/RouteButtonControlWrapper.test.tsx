@@ -25,6 +25,7 @@ describe('RouteControlWrapper works', () => {
           accessToken: 'abcd',
           utcTime: false,
           isInExperimentalMode: false,
+          downloadCartPageUrl: '/DownloadCart'
         }}
       >
         <MemoryRouter initialEntries={[`/Explore/${routeName}`]}>

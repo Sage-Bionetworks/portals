@@ -171,6 +171,7 @@ const routes: GenericRoute[] = [
         className: 'AboutPage',
         props: {
           ownerId: 'syn22130826',
+          loadingSkeletonRowCount: 20
         },
       },
     ],

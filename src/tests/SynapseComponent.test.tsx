@@ -19,6 +19,7 @@ describe('SynapseComponent tests', () => {
           accessToken: 'abcd',
           utcTime: false,
           isInExperimentalMode: false,
+          downloadCartPageUrl: '/DownloadCart'
         }}
       >
         <SynapseComponent synapseConfig={synapseConfig} />
@@ -52,6 +53,7 @@ describe('SynapseComponent tests', () => {
           accessToken: 'abcd',
           utcTime: false,
           isInExperimentalMode: false,
+          downloadCartPageUrl: '/DownloadCart'
         }}
       >
         <MemoryRouter>

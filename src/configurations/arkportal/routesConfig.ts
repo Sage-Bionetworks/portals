@@ -1,8 +1,9 @@
 import { GenericRoute } from 'types/portal-config'
 import { programs, projects, data, datasets, datasetCollections } from './synapseConfigs'
-import RouteControlWrapperProps from './routeControlWrapperProps'
+import routeControlWrapperProps from './routeControlWrapperProps'
 import { projectDetailPage } from './synapseConfigs/projects'
 import { programDetailPage } from './synapseConfigs/programs'
+import { datasetsDetailsPage } from './synapseConfigs/datasets'
 
 const routes: GenericRoute[] = [
   {
@@ -33,7 +34,8 @@ const routes: GenericRoute[] = [
         className: 'AboutPage',
         props: {
           ownerId: 'syn26710600',
-          wikiId: '619467'
+          wikiId: '619467',
+          loadingSkeletonRowCount: 8
         },
       },
     ],
@@ -48,7 +50,8 @@ const routes: GenericRoute[] = [
         className: 'DataAccessPage',
         props: {
           ownerId: 'syn26710600',
-          wikiId: '619468'
+          wikiId: '619468',
+          loadingSkeletonRowCount: 8
         },
       },
     ],
@@ -67,7 +70,7 @@ const routes: GenericRoute[] = [
                 name: 'RouteControlWrapper',
                 isOutsideContainer: true,
                 props: {
-                  ...RouteControlWrapperProps,
+                  ...routeControlWrapperProps,
                   synapseConfig: programs,
                 },
               },
@@ -91,7 +94,7 @@ const routes: GenericRoute[] = [
                 name: 'RouteControlWrapper',
                 isOutsideContainer: true,
                 props: {
-                  ...RouteControlWrapperProps,
+                  ...routeControlWrapperProps,
                   synapseConfig: projects,
                 },
               },
@@ -113,7 +116,7 @@ const routes: GenericRoute[] = [
             isOutsideContainer: true,
             className: 'CollectionList',
             props: {
-              ...RouteControlWrapperProps,
+              ...routeControlWrapperProps,
               synapseConfig: datasetCollections,
             },
           },
@@ -121,15 +124,25 @@ const routes: GenericRoute[] = [
       },
       {
         path: 'Datasets',
-        exact: true,
-        synapseConfigArray: [
+        routes: [
           {
-            name: 'RouteControlWrapper',
-            isOutsideContainer: true,
-            props: {
-              ...RouteControlWrapperProps,
-              synapseConfig: datasets,
-            },
+            path: '',
+            exact: true,
+            synapseConfigArray: [
+              {
+                name: 'RouteControlWrapper',
+                isOutsideContainer: true,
+                props: {
+                  ...routeControlWrapperProps,
+                  synapseConfig: datasets,
+                },
+              },
+            ],
+          },
+          {
+            path: 'DetailsPage',
+            exact: true,
+            synapseConfigArray: datasetsDetailsPage,
           },
         ],
       },
@@ -141,7 +154,7 @@ const routes: GenericRoute[] = [
             name: 'RouteControlWrapper',
             isOutsideContainer: true,
             props: {
-              ...RouteControlWrapperProps,
+              ...routeControlWrapperProps,
               synapseConfig: data,
             },
           },
