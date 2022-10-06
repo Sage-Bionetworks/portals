@@ -4,14 +4,14 @@ import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericC
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import facetAliases from '../facetAliases'
 import { DetailsPageProps } from 'types/portal-util-types'
-import { dataDetailPageProps } from './data'
-import { projectsSql } from '../resources'
+import { datasetsSql, projectsSql } from '../resources'
+import { datasetCardConfiguration } from './datasets'
 
 const rgbIndex = 9
 
 export const projectSchema: GenericCardSchema = {
   type: SynapseConstants.PROJECT,
-  title: 'Project',
+  title: 'Full Project Name',
   subTitle: 'Program',
   description: 'Description',
   secondaryLabels: [
@@ -54,11 +54,14 @@ export const details: DetailsPageProps = {
   sql: projectsSql,
   synapseConfigArray: [
     {
-      name: 'StandaloneQueryWrapper',
-      title: 'Data Files',
-      columnName: 'id',
-      tableSqlKeys: ['projectId'],
-      props: dataDetailPageProps,
+      name: 'CardContainerLogic',
+      columnName: 'Project',
+      title: 'Datasets',
+      tableSqlKeys: ['project'],
+      props: {
+        ...datasetCardConfiguration,
+        sql: datasetsSql,
+      },
     },
   ],
 }
@@ -75,10 +78,10 @@ export const projectDetailPage: SynapseConfig[] = [
       facetAliases,
       genericCardSchema: {
         ...projectSchema,
-        title: 'Study',
-        link: 'Study',
+        link: ''
       },
       sql: projectsSql,
+      sqlOperator: '=',
     },
   },
   {
