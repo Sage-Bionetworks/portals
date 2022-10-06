@@ -76,7 +76,6 @@ export const datasetDetailsPageConfig: DetailsPageProps = {
     {
       name: 'QueryWrapperPlotNav',
       props: {
-        sqlOperator: 'HAS',
         rgbIndex,
         name: 'Files',
         sql: '',
@@ -109,6 +108,7 @@ export const datasetsDetailsPage: SynapseConfig[] = [
   },
   {
     name: 'DetailsPage',
+    isOutsideContainer: true,
     props: datasetDetailsPageConfig,
     containerClassName: 'container-full-width',
   },
