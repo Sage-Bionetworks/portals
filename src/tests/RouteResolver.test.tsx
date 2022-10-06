@@ -13,6 +13,7 @@ describe('RouteResolver works', () => {
             accessToken: undefined,
             utcTime: false,
             isInExperimentalMode: false,
+            downloadCartPageUrl: '/DownloadCart'
           }}
         >
           <RouteResolver />

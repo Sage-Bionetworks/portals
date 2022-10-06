@@ -30,6 +30,7 @@ const routes: GenericRoute[] = [
         props: {
           ownerId: 'syn21557271',
           wikiId: '605319',
+          loadingSkeletonRowCount: 10
         },
       },
       {
@@ -97,6 +98,7 @@ const routes: GenericRoute[] = [
         props: {
           ownerId: 'syn21557271',
           wikiId: '605340',
+          loadingSkeletonRowCount: 10
         },
       },
     ],
@@ -202,6 +204,7 @@ const routes: GenericRoute[] = [
         props: {
           ownerId: 'syn4921369',
           wikiId: '477467',
+          loadingSkeletonRowCount: 20
         },
       },
     ],
@@ -223,6 +226,7 @@ const routes: GenericRoute[] = [
         props: {
           ownerId: 'syn4921369',
           wikiId: '607829',
+          loadingSkeletonRowCount: 20
         },
       },
     ],

@@ -1,5 +1,5 @@
 import injectPropsIntoConfig from '../../portal-components/injectPropsIntoConfig'
-import { MarkdownSynapseProps } from 'synapse-react-client/dist/containers/MarkdownSynapse'
+import { MarkdownSynapseProps } from 'synapse-react-client/dist/containers/markdown/MarkdownSynapse'
 
 describe('injectPropsIntoConfig works', () => {
   it('works with markdown and injecting the ownerid', () => {

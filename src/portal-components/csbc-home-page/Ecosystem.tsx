@@ -1,5 +1,5 @@
 import * as React from 'react'
-import MarkdownSynapse from 'synapse-react-client/dist/containers/MarkdownSynapse'
+import { SynapseComponents } from 'synapse-react-client'
 
 type Config = {
   ownerId: string
@@ -36,7 +36,7 @@ const Ecosystem = (props: EcosystemProps) => {
           {config.map((el, curIndex) => {
             return (
               <span key={el.title} className={index === curIndex ? '' : 'hide'}>
-                <MarkdownSynapse ownerId={el.ownerId} wikiId={el.wikiId} />
+                <SynapseComponents.Markdown ownerId={el.ownerId} wikiId={el.wikiId} />
               </span>
             )
           })}

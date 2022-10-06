@@ -274,6 +274,7 @@ function AppInitializer(props: { children?: React.ReactNode }) {
         accessToken: token,
         isInExperimentalMode: SynapseClient.isInSynapseExperimentalMode(),
         utcTime: SynapseClient.getUseUtcTimeFromCookie(),
+        downloadCartPageUrl: '/DownloadCart'
       }}
     >
       {clonedChildren}

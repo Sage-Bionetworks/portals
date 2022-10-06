@@ -25,6 +25,7 @@ const routes: GenericRoute[] = [
         name: 'Markdown',
         props: {
           ownerId: 'syn21645000',
+          loadingSkeletonRowCount: 10
         },
       },
       {
@@ -66,6 +67,7 @@ const routes: GenericRoute[] = [
         name: 'Markdown',
         props: {
           ownerId: 'syn23308351',
+          loadingSkeletonRowCount: 10
         },
       },
     ],
@@ -203,6 +205,7 @@ const routes: GenericRoute[] = [
         name: 'Markdown',
         props: {
           ownerId: 'syn21896405',
+          loadingSkeletonRowCount: 20
         },
       },
     ],

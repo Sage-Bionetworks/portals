@@ -473,6 +473,7 @@ const routes: GenericRoute[] = [
         props: {
           ownerId: 'syn26451327',
           wikiId: '614265',
+          loadingSkeletonRowCount: 20
         },
       },
     ],
