@@ -4,8 +4,9 @@ import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericC
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import facetAliases from '../facetAliases'
 import { DetailsPageProps } from 'types/portal-util-types'
-import { dataDetailPageProps } from './data'
-import { programSql } from '../resources'
+import { datasetsSql, programSql, projectsSql } from '../resources'
+import { projectsCardConfiguration } from './projects'
+import { datasetCardConfiguration } from './datasets'
 
 const rgbIndex = 9
 
@@ -52,11 +53,24 @@ export const details: DetailsPageProps = {
   sql: programSql,
   synapseConfigArray: [
     {
-      name: 'StandaloneQueryWrapper',
-      title: 'Data Files',
-      columnName: 'id',
+      name: 'CardContainerLogic',
+      columnName: 'Program',
+      title: 'Projects',
       tableSqlKeys: ['Program'],
-      props: dataDetailPageProps,
+      props: {
+        ...projectsCardConfiguration,
+        sql: projectsSql,
+      },
+    },
+    {
+      name: 'CardContainerLogic',
+      columnName: 'Program',
+      title: 'Datasets',
+      tableSqlKeys: ['program'],
+      props: {
+        ...datasetCardConfiguration,
+        sql: datasetsSql,
+      },
     },
   ],
 }
