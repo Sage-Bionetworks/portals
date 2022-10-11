@@ -5,7 +5,7 @@ export const programsHomePageConfig: ProgramsProps = {
   titleColumnName: 'Program',
   imageFileHandleColumnName: 'Homepage Image',
   linkColumnName: 'Website',
-  summaryColumnName: 'Short Description',  
+  summaryColumnName: 'Short Description',
   rgbIndex: 1,
   linkConfig: {
     isMarkdown: false,

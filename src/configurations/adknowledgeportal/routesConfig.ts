@@ -42,6 +42,7 @@ const routes: GenericRoute[] = [
       {
         name: 'Programs',
         title: 'Programs',
+        className: 'ProgramsHomePage',
         centerTitle: true,
         props: {
           ...programsHomePageConfig,
