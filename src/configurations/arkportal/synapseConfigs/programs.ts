@@ -46,6 +46,7 @@ export const programs: SynapseConfig = {
     name: 'Programs',
     facetAliases,
     facetsToPlot: [],
+    defaultShowFacetVisualization: false
   },
 }
 
