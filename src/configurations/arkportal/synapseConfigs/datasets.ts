@@ -5,6 +5,9 @@ import { datasetsSql } from '../resources'
 import { SynapseConstants } from 'synapse-react-client'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import { DetailsPageProps } from 'types/portal-util-types'
+import publicationDataSvg from '../style/publicationData.svg'
+import experimentalDataSvg from '../style/experimentalData.svg'
+
 
 const rgbIndex = 0
 export const datasetColumnLinks: LabelLinkConfig = [
@@ -43,17 +46,19 @@ const dataset: SynapseConfig = {
         'assay',
       ],
     },
+    defaultShowFacetVisualization: false
   },
 }
 
 export const datasetSchema: GenericCardSchema = {
-  type: SynapseConstants.DATASET,
+  type: 'Dataset',
   title: 'name',
   subTitle: 'program',
   description: '',
   secondaryLabels: [
     'project',
   ],
+  icon: 'datasetType',
 }
 
 export const datasetCardConfiguration: CardConfiguration = {
@@ -64,6 +69,10 @@ export const datasetCardConfiguration: CardConfiguration = {
     matchColumnName: 'id',
     URLColumnName: 'id',
     baseURL: 'Explore/Datasets/DetailsPage',
+  },
+  iconOptions: {
+    Publication: publicationDataSvg,
+    "Experimental Data": experimentalDataSvg,
   },
 }
 
@@ -100,10 +109,8 @@ export const datasetsDetailsPage: SynapseConfig[] = [
     name: 'CardContainerLogic',
     isOutsideContainer: true,
     props: {
+      ...datasetCardConfiguration,
       sql: datasetsSql,
-      type: SynapseConstants.GENERIC_CARD,
-      genericCardSchema: datasetSchema,
-      secondaryLabelLimit: 6,
       isHeader: true,
     },
   },
