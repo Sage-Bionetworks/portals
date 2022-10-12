@@ -128,6 +128,15 @@ function AppInitializer(props: { children?: React.ReactNode }) {
   const { token, userProfile, getSession, hasCalledGetSession, resetSession } =
     useSession(setShowLoginDialog)
 
+  useEffect(() => {
+    // SWC-6294: on mount, check to see if the website is being hosted on a recognized hostname
+    const hostName = window.location.hostname.toLowerCase()
+    if (!hostName.endsWith(".synapse.org") && hostName !== "localhost" && hostName !== "127.0.0.1") {
+      // take the user to a safe place
+      window.location.assign('https://www.synapse.org')
+    }
+  }, [])
+  
   /** Call getSession on mount */
   useEffect(() => {
     getSession()
