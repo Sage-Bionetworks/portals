@@ -86,6 +86,7 @@ export const datasetDetailsPageConfig: DetailsPageProps = {
         },
         shouldDeepLink: false,
         facetAliases,
+        defaultShowFacetVisualization: false
       },
       // tableSqlKeys: ['id'],  // Do not modify the sql where condition based on search params
       overrideSqlSourceTable: true, // Instead, modify the sql (SELECT * FROM <search_param_value>)

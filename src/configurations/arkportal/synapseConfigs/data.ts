@@ -41,6 +41,7 @@ const data: SynapseConfig = {
         'project',
       ],
     },
+    defaultShowFacetVisualization: false
   },
 }
 

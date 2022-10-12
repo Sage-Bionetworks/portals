@@ -47,6 +47,7 @@ export const projects: SynapseConfig = {
     name: 'Projects',
     facetAliases,
     facetsToPlot: [],
+    defaultShowFacetVisualization: false
   },
 }
 
