@@ -132,8 +132,8 @@ function AppInitializer(props: { children?: React.ReactNode }) {
   useEffect(() => {
     // SWC-6294: on mount, detect and attempt a client-side framebuster (mitigation only, easily bypassed by attacker)
     if (window.top && window.top !== window) {
-      window.top.location = window.location
       setIsFramed(true)
+      window.top.location = window.location
     }
   }, [])
   
