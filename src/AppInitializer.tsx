@@ -124,10 +124,19 @@ function AppInitializer(props: { children?: React.ReactNode }) {
   const [synapseRedirectUrl, setSynapseRedirectUrl] = useState<
     string | undefined
   >(undefined)
+  const [isFramed, setIsFramed] = useState(false)
 
   const { token, userProfile, getSession, hasCalledGetSession, resetSession } =
     useSession(setShowLoginDialog)
 
+  useEffect(() => {
+    // SWC-6294: on mount, detect and attempt a client-side framebuster (mitigation only, easily bypassed by attacker)
+    if (window.top && window.top !== window) {
+      window.top.location = window.location
+      setIsFramed(true)
+    }
+  }, [])
+  
   /** Call getSession on mount */
   useEffect(() => {
     getSession()
@@ -277,7 +286,7 @@ function AppInitializer(props: { children?: React.ReactNode }) {
         downloadCartPageUrl: '/DownloadCart'
       }}
     >
-      {clonedChildren}
+      {!isFramed && clonedChildren}
       <SynapseRedirectDialog
         onCancelRedirect={() => {
           setSynapseRedirectUrl(undefined)
