@@ -132,8 +132,10 @@ function AppInitializer(props: { children?: React.ReactNode }) {
   useEffect(() => {
     // SWC-6294: on mount, detect and attempt a client-side framebuster (mitigation only, easily bypassed by attacker)
     if (window.top && window.top !== window) {
-      window.top.location = window.location
+      // If not sandboxed, make sure not to show any portal content (in case they block window unload via onbeforeunload)
       setIsFramed(true)
+      // If sandboxed, this call will cause an uncaught js exception and portal will not load.
+      window.top.location = window.location
     }
   }, [])
   
