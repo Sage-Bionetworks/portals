@@ -124,16 +124,16 @@ function AppInitializer(props: { children?: React.ReactNode }) {
   const [synapseRedirectUrl, setSynapseRedirectUrl] = useState<
     string | undefined
   >(undefined)
+  const [isFramed, setIsFramed] = useState(false)
 
   const { token, userProfile, getSession, hasCalledGetSession, resetSession } =
     useSession(setShowLoginDialog)
 
   useEffect(() => {
-    // SWC-6294: on mount, check to see if the website is being hosted on a recognized hostname
-    const hostName = window.location.hostname.toLowerCase()
-    if (!hostName.endsWith(".synapse.org") && hostName !== "localhost" && hostName !== "127.0.0.1") {
-      // take the user to a safe place
-      window.location.assign('https://www.synapse.org')
+    // SWC-6294: on mount, detect and attempt a client-side framebuster (mitigation only, easily bypassed by attacker)
+    if (window.top && window.top !== window) {
+      window.top.location = window.location
+      setIsFramed(true)
     }
   }, [])
   
@@ -286,7 +286,7 @@ function AppInitializer(props: { children?: React.ReactNode }) {
         downloadCartPageUrl: '/DownloadCart'
       }}
     >
-      {clonedChildren}
+      {!isFramed && clonedChildren}
       <SynapseRedirectDialog
         onCancelRedirect={() => {
           setSynapseRedirectUrl(undefined)
