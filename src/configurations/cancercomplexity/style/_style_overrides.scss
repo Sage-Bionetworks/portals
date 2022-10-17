@@ -19,6 +19,18 @@
   margin-bottom: 63px;
 }
 
+.Programs__Card__header__info__link {
+  a {
+    visibility: hidden;
+  }
+  a:after {
+    content: 'Visit the NCI Webpage';
+    visibility: visible;
+    display: block;
+    margin-top: -20px;
+  }
+
+}
 .cancercomplexity-consortia {
   .Programs__Card {
     width: 32%;

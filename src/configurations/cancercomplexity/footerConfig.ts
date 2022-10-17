@@ -1,7 +1,7 @@
 import { FooterConfig } from 'types/portal-config'
 
 const footer: FooterConfig = {
-  contactUs: 'mailto:sage-csbc-pson@sagebase.org',
+  contactUs: 'https://help.cancercomplexity.synapse.org/doc/contact-us',
 }
 
 export default footer
