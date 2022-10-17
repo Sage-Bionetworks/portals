@@ -7,6 +7,7 @@ import { DetailsPageProps } from 'types/portal-util-types'
 import { datasetsSql, programSql, projectsSql } from '../resources'
 import { projectsCardConfiguration } from './projects'
 import { datasetCardConfiguration } from './datasets'
+import ampRaSleSvg from '../style/AMP-RA-SLE.svg'
 
 const rgbIndex = 9
 
@@ -33,6 +34,9 @@ export const programsCardConfiguration: CardConfiguration = {
       isMarkdown: true,
     },
   ],
+  iconOptions: {
+    "AMP-RA/SLE": ampRaSleSvg,
+  },
 }
 
 export const programs: SynapseConfig = {
