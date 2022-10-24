@@ -12,10 +12,9 @@ import ampRaSleSvg from '../style/AMP-RA-SLE.svg'
 const rgbIndex = 9
 
 export const programSchema: GenericCardSchema = {
-  type: 'Program',
+  type: 'program',
   title: 'Program',
   // subTitle: 'Short Description',
-  icon: 'Program',
   description: 'Description',
 }
 
