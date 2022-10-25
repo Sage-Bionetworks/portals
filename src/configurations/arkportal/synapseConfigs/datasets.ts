@@ -54,7 +54,7 @@ export const datasetSchema: GenericCardSchema = {
   type: 'Dataset',
   title: 'name',
   subTitle: 'program',
-  description: '',
+  description: 'description',
   secondaryLabels: [
     'project',
   ],
@@ -82,6 +82,12 @@ export const datasetDetailsPageConfig: DetailsPageProps = {
   showMenu: false,
 
   synapseConfigArray: [
+    {
+      name: 'Markdown',
+      columnName: 'acknowledgmentStatement',
+      title: 'Acknowledgment',
+      props: {},
+    },
     {
       name: 'QueryWrapperPlotNav',
       props: {
@@ -118,7 +124,7 @@ export const datasetsDetailsPage: SynapseConfig[] = [
     name: 'DetailsPage',
     isOutsideContainer: true,
     props: datasetDetailsPageConfig,
-    containerClassName: 'container-full-width',
+    containerClassName: 'DatasetDetailPage container-full-width',
   },
 ]
 
