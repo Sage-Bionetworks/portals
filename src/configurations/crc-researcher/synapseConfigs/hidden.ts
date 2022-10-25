@@ -1,5 +1,5 @@
 import { SynapseConfig } from 'types/portal-config'
-import facetAliases from '../facetAliases'
+import columnAliases from '../columnAliases'
 import handleParticipantWorkflowChange from '../handleParticipantWorkflowChange'
 import { baseDataSql, allFacetsToPlot } from './uncategorized'
 
@@ -14,7 +14,7 @@ export const hidden: SynapseConfig = {
     shouldDeepLink: true,
     sql,
     name: 'Hidden Participants',
-    facetAliases,
+    columnAliases,
     facetsToPlot: allFacetsToPlot,
     tableConfiguration: {
       isRowSelectionVisible: true,

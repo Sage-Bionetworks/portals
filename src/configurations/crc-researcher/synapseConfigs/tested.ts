@@ -1,5 +1,5 @@
 import { SynapseConfig } from 'types/portal-config'
-import facetAliases from '../facetAliases'
+import columnAliases from '../columnAliases'
 import {
   baseDataSqlColumns,
   baseDataSqlFrom,
@@ -18,7 +18,7 @@ export const tested: SynapseConfig = {
     shouldDeepLink: true,
     sql,
     name: 'Tested Participants',
-    facetAliases,
+    columnAliases,
     tableConfiguration: {},
     facetsToPlot: allFacetsToPlot,
   },

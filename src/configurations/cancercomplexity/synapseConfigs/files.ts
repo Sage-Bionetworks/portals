@@ -1,5 +1,5 @@
 import { SynapseConfig } from 'types/portal-config'
-import facetAliases from '../facetAliases'
+import columnAliases from '../columnAliases'
 import { filesSql } from '../resources'
 
 const rgbIndex = 8
@@ -15,7 +15,7 @@ export const files: SynapseConfig = {
     tableConfiguration: {
       showDownloadColumn: true,
     },
-    facetAliases,
+    columnAliases,
     searchConfiguration: {
       searchable: [
         'tummorType',

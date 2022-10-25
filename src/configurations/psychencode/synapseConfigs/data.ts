@@ -2,7 +2,7 @@ import { SynapseConfig } from 'types/portal-config'
 
 import { dataSql } from '../resources'
 
-const facetAliases = {
+const columnAliases = {
   id: 'File',
 }
 
@@ -58,7 +58,7 @@ export const data: SynapseConfig = {
     visibleColumnCount: 10,
     shouldDeepLink: true,
     name: 'Data',
-    facetAliases,
+    columnAliases,
     facetsToPlot: [
       'study',
       'dataType',

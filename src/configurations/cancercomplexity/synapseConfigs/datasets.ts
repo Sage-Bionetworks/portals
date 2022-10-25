@@ -2,7 +2,7 @@ import { SynapseConstants } from 'synapse-react-client'
 import { SynapseConfig } from 'types/portal-config'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
-import facetAliases from '../facetAliases'
+import columnAliases from '../columnAliases'
 import { datasetsSql } from '../resources'
 
 const rgbIndex = 0
@@ -61,7 +61,7 @@ export const datasets: SynapseConfig = {
     shouldDeepLink: true,
     name: 'Datasets',
     sql: datasetsSql,
-    facetAliases,
+    columnAliases,
     searchConfiguration: {
       searchable: [
         'datasetName',

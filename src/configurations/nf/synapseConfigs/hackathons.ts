@@ -1,6 +1,6 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { SynapseConfig } from 'types/portal-config'
-import { facetAliases } from './commonProps'
+import { columnAliases } from './commonProps'
 
 import hackathonActiveSvg from '../style/hackathon-active.svg'
 import hackathonCompleteSvg from '../style/hackathon-complete.svg'
@@ -88,7 +88,7 @@ const hackathons: SynapseConfig = {
     name: 'Hackathon Projects',
     shouldDeepLink: true,
     cardConfiguration: hackathonCardConfiguration,
-    facetAliases: { ...facetAliases, studyStatus: 'Status' },
+    columnAliases: { ...columnAliases, studyStatus: 'Status' },
     searchConfiguration: {
       searchable: [
         'name',

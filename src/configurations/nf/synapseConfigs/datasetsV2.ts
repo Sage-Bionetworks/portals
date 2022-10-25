@@ -2,7 +2,7 @@ import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericC
 
 import { SynapseConstants } from 'synapse-react-client'
 import { SynapseConfig } from 'types/portal-config'
-import { facetAliases } from './commonProps'
+import { columnAliases } from './commonProps'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import { DetailsPageProps } from 'types/portal-util-types'
 
@@ -40,7 +40,7 @@ const datasetsV2: SynapseConfig = {
     shouldDeepLink: true,
     name: 'Datasets',
     cardConfiguration: datasetCardConfiguration,
-    facetAliases,
+    columnAliases,
   },
 }
 
@@ -70,7 +70,7 @@ export const datasetDetailsPageConfig: DetailsPageProps = {
           showDownloadColumn: true,
         },
         shouldDeepLink: false,
-        facetAliases,
+        columnAliases,
       },
       // tableSqlKeys: ['id'],  // Do not modify the sql where condition based on search params
       overrideSqlSourceTable: true, // Instead, modify the sql (SELECT * FROM <search_param_value>)

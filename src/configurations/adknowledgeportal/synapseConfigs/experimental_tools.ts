@@ -136,7 +136,7 @@ const experimentalTools: SynapseConfig = {
       'program',
       'toolType',
     ],
-    facetAliases: {
+    columnAliases: {
       mouseModelReport: 'Model Report Card',
     },
     searchConfiguration: {

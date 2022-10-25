@@ -5,7 +5,7 @@ import {
   CardConfiguration,
   CardContainerLogicProps,
 } from 'synapse-react-client/dist/containers/CardContainerLogic'
-import facetAliases from '../facetAliases'
+import columnAliases from '../columnAliases'
 import { toolsSql } from '../resources'
 
 const rgbIndex = 3
@@ -40,7 +40,7 @@ export const tools: SynapseConfig = {
     shouldDeepLink: true,
     defaultColumn: 'softwareType',
     name: 'Tools',
-    facetAliases,
+    columnAliases,
     facetsToPlot: [
       'digitalAssessmentCategory',
       'inputDataType',
@@ -64,7 +64,7 @@ export const toolsDetailPageProps: CardContainerLogicProps = {
   sql: toolsSql,
   ...toolsCardConfiguration,
   sqlOperator: 'LIKE',
-  facetAliases,
+  columnAliases,
 }
 
 export const toolsDetailsLandingPage: SynapseConfig[] = [
@@ -77,7 +77,7 @@ export const toolsDetailsLandingPage: SynapseConfig[] = [
 
       ...toolsCardConfiguration,
       titleLinkConfig: undefined,
-      facetAliases,
+      columnAliases,
       genericCardSchema: toolsSchema,
       rgbIndex,
       sql: toolsSql,

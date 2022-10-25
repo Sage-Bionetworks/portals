@@ -2,7 +2,7 @@ import { SynapseConstants } from 'synapse-react-client'
 import { SynapseConfig } from 'types/portal-config'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
-import facetAliases from '../facetAliases'
+import columnAliases from '../columnAliases'
 import { publicationSql } from '../resources'
 
 const rgbIndex = 1
@@ -63,7 +63,7 @@ export const publications: SynapseConfig = {
     sql: publicationSql,
     shouldDeepLink: true,
     name: 'Publications',
-    facetAliases,
+    columnAliases,
     searchConfiguration: {
       searchable: [
         'publicationTitle',

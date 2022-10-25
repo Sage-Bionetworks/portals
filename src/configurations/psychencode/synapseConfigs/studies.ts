@@ -135,7 +135,7 @@ export const details: DetailsPageProps = {
           name: 'StandaloneQueryWrapper',
           props: {
             sql: metadataSql,
-            facetAliases: {
+            columnAliases: {
               id: 'File Name',
               metadataType: 'Metadata Type',
               dataType: 'Data Type',
@@ -174,7 +174,7 @@ export const details: DetailsPageProps = {
             visibleColumnCount: 10,
             shouldDeepLink: false,
             name: 'Study Data',
-            facetAliases: {
+            columnAliases: {
               id: 'File',
             },
             facetsToPlot: [
