@@ -54,7 +54,7 @@ const projects: SynapseConfig = {
     shouldDeepLink: true,
     hideDownload: true,
     facetsToPlot: ['primaryInvestigators', 'grantNumber', 'institutions'],
-    facetAliases: {
+    columnAliases: {
       ndaCollection: 'NDA Collection',
     },
     searchConfiguration: {

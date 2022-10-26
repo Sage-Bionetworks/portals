@@ -1,6 +1,6 @@
 import { SynapseConfig } from 'types/portal-config'
 
-import { facetAliases } from './commonProps'
+import { columnAliases } from './commonProps'
 import { initiativesSql, studiesSql } from '../resources'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import { SynapseConstants } from 'synapse-react-client'
@@ -43,7 +43,7 @@ const initiatives: SynapseConfig = {
       },
     },
     name: 'Initiatives',
-    facetAliases,
+    columnAliases,
     searchConfiguration: {
       searchable: ['initiative', 'summary'],
     },

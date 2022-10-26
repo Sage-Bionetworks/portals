@@ -1,5 +1,5 @@
 import { SynapseConfig } from 'types/portal-config'
-import facetAliases from '../facetAliases'
+import columnAliases from '../columnAliases'
 import { LabelLinkConfig } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import { StandaloneQueryWrapperProps } from 'synapse-react-client/dist/containers/table/StandaloneQueryWrapper'
 import { dataSql } from '../resources'
@@ -27,7 +27,7 @@ const data: SynapseConfig = {
     shouldDeepLink: true,
     sql: dataSql,
     name: 'Data',
-    facetAliases,
+    columnAliases,
     tableConfiguration: {
       columnLinks: dataColumnLinks,
     },

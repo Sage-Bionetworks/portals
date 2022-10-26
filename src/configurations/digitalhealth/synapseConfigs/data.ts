@@ -1,5 +1,5 @@
 import { SynapseConfig } from 'types/portal-config'
-import facetAliases from '../facetAliases'
+import columnAliases from '../columnAliases'
 import { LabelLinkConfig } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import { StandaloneQueryWrapperProps } from 'synapse-react-client/dist/containers/table/StandaloneQueryWrapper'
 import { dataSql } from '../resources'
@@ -30,7 +30,7 @@ const data: SynapseConfig = {
     hideDownload: true,
     sql: dataSql,
     name: 'Data',
-    facetAliases,
+    columnAliases,
     tableConfiguration: {
       showDownloadColumn: false,
       columnLinks: dataColumnLinks,

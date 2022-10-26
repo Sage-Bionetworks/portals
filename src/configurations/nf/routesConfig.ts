@@ -25,7 +25,7 @@ import {
   initiativeDetailsPageConfiguration,
 } from './synapseConfigs/initiatives'
 import routeControlWrapperProps from './routeControlWrapperProps'
-import { facetAliases } from './synapseConfigs/commonProps'
+import { columnAliases } from './synapseConfigs/commonProps'
 import {
   organizationCardSchema,
   organizationDetailsPage,
@@ -65,7 +65,7 @@ const routes: GenericRoute[] = [
         link: '/Explore/Studies',
         props: {
           limit,
-          facetAliases,
+          columnAliases,
           sql: newStudiesSql,
           ...studyCardConfiguration,
         },
@@ -130,7 +130,7 @@ const routes: GenericRoute[] = [
         outsideContainerClassName: 'home-spacer',
         centerTitle: true,
         props: {
-          facetAliases,
+          columnAliases,
           sql: fundersSql,
           type: SynapseConstants.GENERIC_CARD,
           titleLinkConfig: organizationDetailsPageLinkConfig,
@@ -214,7 +214,7 @@ const routes: GenericRoute[] = [
                   isHeader: true,
 
                   ...initiativeCardConfiguration,
-                  facetAliases,
+                  columnAliases,
                   sql: initiativesSql,
                 },
               },
@@ -257,7 +257,7 @@ const routes: GenericRoute[] = [
                     isHeader: true,
   
                     ...studyCardConfiguration,
-                    facetAliases,
+                    columnAliases,
                     iconOptions: studyHeaderIconOptions,
                     secondaryLabelLimit: Infinity,
                     sql: studiesSql,
@@ -394,7 +394,7 @@ const routes: GenericRoute[] = [
                   sqlOperator: '=',
                   isHeader: true,
                   ...hackathonCardConfiguration,
-                  facetAliases: { ...facetAliases, studyStatus: 'Status' },
+                  columnAliases: { ...columnAliases, studyStatus: 'Status' },
                   secondaryLabelLimit: Infinity,
                   sql: hackathonsSql,
                 },

@@ -1,7 +1,7 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { DetailsPageProps } from 'types/portal-util-types'
 import { SynapseConfig } from 'types/portal-config'
-import { facetAliases, searchConfiguration } from './synapseConfigs/commonProps'
+import { columnAliases, searchConfiguration } from './synapseConfigs/commonProps'
 import { publicationsCardConfiguration } from './synapseConfigs/publications'
 import { studyCardConfiguration } from './synapseConfigs/studies'
 import {
@@ -76,7 +76,7 @@ export const organizationDetailsPageConfig: DetailsPageProps = {
               showDownloadColumn: true,
             },
             name: 'Data Files',
-            facetAliases,
+            columnAliases,
             searchConfiguration,
           },
           tableSqlKeys: ['fundingAgency'],

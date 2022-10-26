@@ -1,5 +1,5 @@
 import { SynapseConfig } from 'types/portal-config'
-import facetAliases from '../facetAliases'
+import columnAliases from '../columnAliases'
 import { CardConfiguration, LabelLinkConfig } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import { datasetsSql } from '../resources'
 import { SynapseConstants } from 'synapse-react-client'
@@ -27,7 +27,7 @@ const dataset: SynapseConfig = {
     shouldDeepLink: true,
     sql: datasetsSql,
     name: 'Datasets',
-    facetAliases,
+    columnAliases,
     tableConfiguration: {
       columnLinks: datasetColumnLinks,
     },
@@ -100,7 +100,7 @@ export const datasetDetailsPageConfig: DetailsPageProps = {
           showDownloadColumn: true,
         },
         shouldDeepLink: false,
-        facetAliases,
+        columnAliases,
         defaultShowFacetVisualization: false
       },
       // tableSqlKeys: ['id'],  // Do not modify the sql where condition based on search params

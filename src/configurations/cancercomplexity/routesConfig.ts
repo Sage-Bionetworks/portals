@@ -15,7 +15,7 @@ import { publicationsCardConfiguration } from './synapseConfigs/publications'
 import { grantsCardConfiguration } from './synapseConfigs/grants'
 import { peopleCardConfiguration } from './synapseConfigs/people'
 import { onPointClick } from './synapseConfigs/onPointClick'
-import facetAliases from './facetAliases'
+import columnAliases from './columnAliases'
 import {
   datasetsSql,
   grantsSql,
@@ -224,7 +224,7 @@ const routes: GenericRoute[] = [
                         sqlOperator: 'HAS',
                         sql: peopleSql,
                         ...peopleCardConfiguration,
-                        facetAliases,
+                        columnAliases,
                       },
                     },
                     {
@@ -236,7 +236,7 @@ const routes: GenericRoute[] = [
                         sqlOperator: 'LIKE',
                         sql: publicationSql,
                         ...publicationsCardConfiguration,
-                        facetAliases,
+                        columnAliases,
                       },
                     },
                     {
@@ -248,7 +248,7 @@ const routes: GenericRoute[] = [
                         sqlOperator: 'LIKE',
                         sql: datasetsSql,
                         ...datasetCardConfiguration,
-                        facetAliases,
+                        columnAliases,
                       },
                     },
                     {
@@ -260,7 +260,7 @@ const routes: GenericRoute[] = [
                         sqlOperator: 'LIKE',
                         sql: toolsSql,
                         ...toolsConfiguration,
-                        facetAliases,
+                        columnAliases,
                       },
                     },
                   ],
@@ -300,7 +300,7 @@ const routes: GenericRoute[] = [
                   ...peopleCardConfiguration,
                   secondaryLabelLimit: Infinity,
                   sql: peopleSql,
-                  facetAliases,
+                  columnAliases,
                 },
               },
               {
@@ -318,7 +318,7 @@ const routes: GenericRoute[] = [
                         sqlOperator: '=',
                         sql: grantsSql,
                         ...grantsCardConfiguration,
-                        facetAliases,
+                        columnAliases,
                       },
                     },
                     {
@@ -330,7 +330,7 @@ const routes: GenericRoute[] = [
                         sqlOperator: '=',
                         sql: publicationSql,
                         ...publicationsCardConfiguration,
-                        facetAliases,
+                        columnAliases,
                       },
                     },
                     {
@@ -342,7 +342,7 @@ const routes: GenericRoute[] = [
                         sqlOperator: '=',
                         sql: datasetsSql,
                         ...datasetCardConfiguration,
-                        facetAliases,
+                        columnAliases,
                       },
                     },
                     {
@@ -354,7 +354,7 @@ const routes: GenericRoute[] = [
                         sqlOperator: '=',
                         sql: toolsSql,
                         ...toolsConfiguration,
-                        facetAliases,
+                        columnAliases,
                       },
                     },
                   ],
@@ -392,7 +392,7 @@ const routes: GenericRoute[] = [
                   isHeader: true,
                   ...publicationsCardConfiguration,
                   secondaryLabelLimit: Infinity,
-                  facetAliases,
+                  columnAliases,
                   sql: publicationSql,
                 },
               },
@@ -411,7 +411,7 @@ const routes: GenericRoute[] = [
                         sqlOperator: '=',
                         sql: grantsSql,
                         ...grantsCardConfiguration,
-                        facetAliases,
+                        columnAliases,
                       },
                     },
                     {
@@ -423,7 +423,7 @@ const routes: GenericRoute[] = [
                         sqlOperator: 'LIKE',
                         sql: peopleSql,
                         ...peopleCardConfiguration,
-                        facetAliases,
+                        columnAliases,
                       },
                     },
                     {
@@ -435,7 +435,7 @@ const routes: GenericRoute[] = [
                         sqlOperator: 'HAS',
                         sql: datasetsSql,
                         ...datasetCardConfiguration,
-                        facetAliases,
+                        columnAliases,
                       },
                     },
                     {
@@ -447,7 +447,7 @@ const routes: GenericRoute[] = [
                         sqlOperator: '=',
                         sql: toolsSql,
                         ...toolsConfiguration,
-                        facetAliases,
+                        columnAliases,
                       },
                     },
                   ],
@@ -490,7 +490,7 @@ const routes: GenericRoute[] = [
                   iconOptions: {
                     dataset: DatasetSvg,
                   },
-                  facetAliases,
+                  columnAliases,
                 },
               },
               {
@@ -508,7 +508,7 @@ const routes: GenericRoute[] = [
                         sqlOperator: '=',
                         sql: grantsSql,
                         ...grantsCardConfiguration,
-                        facetAliases,
+                        columnAliases,
                       },
                     },
                     {
@@ -520,7 +520,7 @@ const routes: GenericRoute[] = [
                         sqlOperator: 'LIKE',
                         sql: peopleSql,
                         ...peopleCardConfiguration,
-                        facetAliases,
+                        columnAliases,
                       },
                     },
                     {
@@ -532,7 +532,7 @@ const routes: GenericRoute[] = [
                         sqlOperator: '=',
                         sql: publicationSql,
                         ...publicationsCardConfiguration,
-                        facetAliases,
+                        columnAliases,
                       },
                     },
                   ],
@@ -575,7 +575,7 @@ const routes: GenericRoute[] = [
                   iconOptions: {
                     dataset: DatasetSvg,
                   },
-                  facetAliases,
+                  columnAliases,
                 },
               },
               {
@@ -593,7 +593,7 @@ const routes: GenericRoute[] = [
                         sqlOperator: '=',
                         sql: grantsSql,
                         ...grantsCardConfiguration,
-                        facetAliases,
+                        columnAliases,
                       },
                     },
                     {
@@ -605,7 +605,7 @@ const routes: GenericRoute[] = [
                         sqlOperator: 'LIKE',
                         sql: peopleSql,
                         ...peopleCardConfiguration,
-                        facetAliases,
+                        columnAliases,
                       },
                     },
                     {
@@ -617,7 +617,7 @@ const routes: GenericRoute[] = [
                         sqlOperator: '=',
                         sql: publicationSql,
                         ...publicationsCardConfiguration,
-                        facetAliases,
+                        columnAliases,
                       },
                     },
                   ],

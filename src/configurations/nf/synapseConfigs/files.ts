@@ -1,5 +1,5 @@
 import { SynapseConfig } from 'types/portal-config'
-import { facetAliases } from './commonProps'
+import { columnAliases } from './commonProps'
 import { filesSql } from '../resources'
 
 const rgbIndex = 1
@@ -17,7 +17,7 @@ const files: SynapseConfig = {
       showDownloadColumn: true,
     },
     shouldDeepLink: true,
-    facetAliases,
+    columnAliases,
   },
 }
 

@@ -2,7 +2,7 @@ import { SynapseConstants } from 'synapse-react-client'
 import { SynapseConfig } from 'types/portal-config'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
-import facetAliases from '../facetAliases'
+import columnAliases from '../columnAliases'
 import { DetailsPageProps } from 'types/portal-util-types'
 import { dataDetailPageProps } from './data'
 import { toolsDetailPageProps } from './tools'
@@ -64,7 +64,7 @@ export const studies: SynapseConfig = {
     shouldDeepLink: true,
     hideDownload: true,
     name: 'Collections',
-    facetAliases,
+    columnAliases,
     facetsToPlot: [
       'collectionType',
       'deviceLocation',
@@ -149,7 +149,7 @@ export const studyDetailPage: SynapseConfig[] = [
       isAlignToLeftNav: true,
       ...studiesCardConfiguration,
       rgbIndex,
-      facetAliases,
+      columnAliases,
       genericCardSchema: {
         ...studySchema,
         title: 'study',

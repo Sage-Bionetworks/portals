@@ -22,7 +22,7 @@ export const publicationCardProps = {
   },
 }
 
-const facetAliases = {
+const columnAliases = {
   pubmed_id: 'Pubmed ID',
 }
 
@@ -35,7 +35,7 @@ const publications: SynapseConfig = {
     shouldDeepLink: true,
     facetsToPlot: ['Program', 'year', 'grant', 'journal'],
     cardConfiguration: publicationCardProps,
-    facetAliases,
+    columnAliases,
   },
 }
 

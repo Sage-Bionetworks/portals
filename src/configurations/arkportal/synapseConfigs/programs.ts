@@ -2,7 +2,7 @@ import { SynapseConstants } from 'synapse-react-client'
 import { SynapseConfig } from 'types/portal-config'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
-import facetAliases from '../facetAliases'
+import columnAliases from '../columnAliases'
 import { DetailsPageProps } from 'types/portal-util-types'
 import { datasetsSql, programSql, projectsSql } from '../resources'
 import { projectsCardConfiguration } from './projects'
@@ -47,7 +47,7 @@ export const programs: SynapseConfig = {
     shouldDeepLink: true,
     hideDownload: true,
     name: 'Programs',
-    facetAliases,
+    columnAliases,
     facetsToPlot: [],
     defaultShowFacetVisualization: false
   },
@@ -88,7 +88,7 @@ export const programDetailPage: SynapseConfig[] = [
       isAlignToLeftNav: true,
       ...programsCardConfiguration,
       rgbIndex,
-      facetAliases,
+      columnAliases,
       genericCardSchema: {
         ...programSchema,
         title: 'Program',

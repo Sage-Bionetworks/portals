@@ -42,7 +42,7 @@ export const studyCardConfiguration: CardConfiguration = {
     ],
   },
 }
-const facetAliases = {
+const columnAliases = {
   DataType_All: 'Data Types',
   Data_Contributor: 'Data Contributor',
   Study_Description: 'Study Description',
@@ -54,7 +54,7 @@ const studies: SynapseConfig = {
   name: 'QueryWrapperPlotNav',
   props: {
     rgbIndex,
-    facetAliases,
+    columnAliases,
     sql: studiesSql,
     name: 'Studies',
     shouldDeepLink: true,
@@ -227,7 +227,7 @@ export const studiesProgrammaticRouteConfig: SynapseConfig[] = [
       isHeader: true,
       ...studyCardConfiguration,
       sql: studiesSql,
-      facetAliases,
+      columnAliases,
       isAlignToLeftNav: true,
       secondaryLabelLimit: Infinity,
 

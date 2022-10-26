@@ -2,7 +2,7 @@ import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericC
 
 import { SynapseConstants } from 'synapse-react-client'
 import { SynapseConfig } from 'types/portal-config'
-import { facetAliases } from './commonProps'
+import { columnAliases } from './commonProps'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
 import {
   toolsSql,
@@ -81,7 +81,7 @@ const tools: SynapseConfig = {
     shouldDeepLink: true,
     name: 'Tools',
     cardConfiguration: toolsCardConfiguration,
-    facetAliases,
+    columnAliases,
     defaultShowSearchBox: true,
     searchConfiguration: {
       fullTextSearchHelpURL:
@@ -168,7 +168,7 @@ export const toolDetailsPageConfig: DetailsPageProps = {
           props: {
             ...publicationsV2CardConfiguration,
             limit: 3,
-            facetAliases,
+            columnAliases,
             sql: developmentPublicationSql,
             secondaryLabelLimit: 4,
           },
@@ -236,7 +236,7 @@ export const toolDetailsPageConfig: DetailsPageProps = {
           props: {
             ...publicationsV2CardConfiguration,
             limit: 3,
-            facetAliases,
+            columnAliases,
             sql: publicationsV2Sql,
           },
           tableSqlKeys: ['resourceId'],
@@ -311,7 +311,7 @@ export const toolDetailsPageConfig: DetailsPageProps = {
                   showDownloadColumn: true,
                 },
                 shouldDeepLink: false,
-                facetAliases,
+                columnAliases,
               },
               tableSqlKeys: ['Resource_id'],
               columnName: 'resourceId',
@@ -341,7 +341,7 @@ export const toolDetailsPageConfig: DetailsPageProps = {
                   showDownloadColumn: true,
                 },
                 shouldDeepLink: false,
-                facetAliases,
+                columnAliases,
               },
               tableSqlKeys: ['Resource_id'],
               columnName: 'resourceId',

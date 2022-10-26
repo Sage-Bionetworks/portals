@@ -1,6 +1,6 @@
 import { SynapseConstants } from 'synapse-react-client'
 import { SynapseConfig } from 'types/portal-config'
-import { facetAliases, searchConfiguration } from './commonProps'
+import { columnAliases, searchConfiguration } from './commonProps'
 
 import studyActiveSvg from '../style/study-active.svg'
 import studyCompleteSvg from '../style/study-complete.svg'
@@ -116,7 +116,7 @@ const studies: SynapseConfig = {
     name: 'Studies',
     shouldDeepLink: true,
     cardConfiguration: studyCardConfiguration,
-    facetAliases,
+    columnAliases,
     searchConfiguration: {
       searchable: [
         'studyName',
@@ -187,7 +187,7 @@ export const studiesDetailPage: DetailsPageProps = {
           props: {
             sqlOperator: 'LIKE',
             sql: studiesSql,
-            facetAliases,
+            columnAliases,
             ...studyCardConfiguration,
           },
         },
@@ -213,7 +213,7 @@ export const studiesDetailPage: DetailsPageProps = {
               showDownloadColumn: true,
             },
             name: 'Data Files',
-            facetAliases,
+            columnAliases,
             searchConfiguration,
           },
           tableSqlKeys: ['studyId'],

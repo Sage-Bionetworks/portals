@@ -1,4 +1,4 @@
-import { facetAliases } from './commonProps'
+import { columnAliases } from './commonProps'
 import { datasetsSql } from '../resources'
 import { SynapseConfig } from 'types/portal-config'
 
@@ -16,7 +16,7 @@ const datasets: SynapseConfig = {
       type,
     },
     name: 'Datasets',
-    facetAliases,
+    columnAliases,
     searchConfiguration: {
       searchable: [
         'datasetName',

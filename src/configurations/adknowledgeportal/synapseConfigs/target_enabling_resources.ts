@@ -75,7 +75,7 @@ const targetEnablingResources: SynapseConfig = {
     shouldDeepLink: true,
     hideDownload: true,
     tableConfiguration: targetEnablingResourcesTableConfiguration,
-    facetAliases: {
+    columnAliases: {
       TEP_type: 'TEP Type',
       related_target: 'Related Target',
       contributing_center: 'Contributing Center',

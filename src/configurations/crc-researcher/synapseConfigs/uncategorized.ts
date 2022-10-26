@@ -1,5 +1,5 @@
 import { SynapseConfig } from 'types/portal-config'
-import facetAliases from '../facetAliases'
+import columnAliases from '../columnAliases'
 import handleParticipantWorkflowChange from '../handleParticipantWorkflowChange'
 
 const rgbIndex = 0
@@ -56,7 +56,7 @@ export const uncategorized: SynapseConfig = {
     shouldDeepLink: true,
     sql,
     name: 'Uncategorized Participants',
-    facetAliases,
+    columnAliases,
     tableConfiguration: {
       isRowSelectionVisible: true,
     },

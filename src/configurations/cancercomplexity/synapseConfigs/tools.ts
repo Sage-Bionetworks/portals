@@ -2,7 +2,7 @@ import { SynapseConstants } from 'synapse-react-client'
 import { SynapseConfig } from 'types/portal-config'
 import { GenericCardSchema } from 'synapse-react-client/dist/containers/GenericCard'
 import { CardConfiguration } from 'synapse-react-client/dist/containers/CardContainerLogic'
-import facetAliases from '../facetAliases'
+import columnAliases from '../columnAliases'
 import { toolsSql } from '../resources'
 
 const rgbIndex = 6
@@ -63,7 +63,7 @@ export const tools: SynapseConfig = {
     cardConfiguration: toolsConfiguration,
     shouldDeepLink: true,
     name: 'Tools',
-    facetAliases,
+    columnAliases,
     searchConfiguration: {
       searchable: [
         'toolName',
