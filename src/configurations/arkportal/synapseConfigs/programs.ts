@@ -33,6 +33,9 @@ export const programsCardConfiguration: CardConfiguration = {
       isMarkdown: true,
     },
   ],
+  descriptionConfig: {
+    showFullDescriptionByDefault: true
+  },
   iconOptions: {
     "AMP-RA/SLE": ampRaSleSvg,
   },
