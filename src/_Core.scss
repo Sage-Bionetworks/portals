@@ -716,7 +716,7 @@ div[data-id='tooltip'] {
 
 .QueryWrapperPlotNav {
   .TopLevelControls,
-  .QueryFilter {
+  .FacetFilterControls {
     padding: 10px 30px;
   }
   .TotalQueryResults {
@@ -727,7 +727,7 @@ div[data-id='tooltip'] {
 .DetailsPage {
   .QueryWrapperPlotNav {
     .TopLevelControls,
-    .QueryFilter,
+    .FacetFilterControls,
     .TotalQueryResults {
       padding: 0px;
     }
