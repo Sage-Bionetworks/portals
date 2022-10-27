@@ -719,17 +719,21 @@ div[data-id='tooltip'] {
   .FacetFilterControls {
     padding: 10px 30px;
   }
-  .TotalQueryResults {
-    padding: 0px 30px;
+  .TotalQueryResults.hasFilters > * {
+    margin-left: 30px;
+    margin-right: 30px;
   }
 }
 
 .DetailsPage {
   .QueryWrapperPlotNav {
     .TopLevelControls,
-    .FacetFilterControls,
-    .TotalQueryResults {
+    .FacetFilterControls {
       padding: 0px;
+    }
+    .TotalQueryResults.hasFilters > * {
+      margin-left: 0px;
+      margin-right: 0px;
     }
   }
 }
