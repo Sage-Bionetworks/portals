@@ -57,6 +57,8 @@ export const datasetSchema: GenericCardSchema = {
   description: 'description',
   secondaryLabels: [
     'project',
+    'assay',
+    'datasetType',
   ],
   icon: 'datasetType',
 }
