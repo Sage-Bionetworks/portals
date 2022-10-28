@@ -229,11 +229,11 @@ const routes: GenericRoute[] = [
                     },
                     {
                       name: 'CardContainerLogic',
-                      columnName: 'grantName',
+                      columnName: 'grantNumber',
                       title: 'Related Publications',
-                      tableSqlKeys: ['grantName'],
+                      tableSqlKeys: ['grantNumber'],
                       props: {
-                        sqlOperator: 'LIKE',
+                        sqlOperator: 'HAS',
                         sql: publicationSql,
                         ...publicationsCardConfiguration,
                         columnAliases,
@@ -241,11 +241,11 @@ const routes: GenericRoute[] = [
                     },
                     {
                       name: 'CardContainerLogic',
-                      columnName: 'grantName',
+                      columnName: 'grantNumber',
                       title: 'Related Datasets',
-                      tableSqlKeys: ['grantName'],
+                      tableSqlKeys: ['grantNumber'],
                       props: {
-                        sqlOperator: 'LIKE',
+                        sqlOperator: 'HAS',
                         sql: datasetsSql,
                         ...datasetCardConfiguration,
                         columnAliases,
