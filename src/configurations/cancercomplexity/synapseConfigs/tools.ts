@@ -40,18 +40,6 @@ export const toolsConfiguration: CardConfiguration = {
       isMarkdown: true,
       matchColumnName: 'downloadLink',
     },
-    {
-      isMarkdown: false,
-      URLColumnName: 'publicationTitle',
-      matchColumnName: 'publicationTitle',
-      baseURL: 'Explore/Publications/DetailsPage',
-    },
-    {
-      isMarkdown: false,
-      URLColumnName: 'grantName',
-      matchColumnName: 'grantName',
-      baseURL: 'Explore/Grants/DetailsPage',
-    },
   ],
 }
 
@@ -71,7 +59,6 @@ export const tools: SynapseConfig = {
         'publicationTitle',
         'inputData',
         'outputData',
-        'grantName',
       ],
     },
   },

@@ -253,11 +253,11 @@ const routes: GenericRoute[] = [
                     },
                     {
                       name: 'CardContainerLogic',
-                      columnName: 'grantName',
+                      columnName: 'grantNumber',
                       title: 'Related Tools',
-                      tableSqlKeys: ['grantName'],
+                      tableSqlKeys: ['grantNumber'],
                       props: {
-                        sqlOperator: 'LIKE',
+                        sqlOperator: 'HAS',
                         sql: toolsSql,
                         ...toolsConfiguration,
                         columnAliases,
