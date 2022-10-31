@@ -37,6 +37,7 @@ const data: SynapseConfig = {
     ],
     searchConfiguration: {
       searchable: [
+        'name',
         'program',
         'project',
       ],
