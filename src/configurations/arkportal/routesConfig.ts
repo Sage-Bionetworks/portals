@@ -167,7 +167,7 @@ const routes: GenericRoute[] = [
     displayName: 'News',
     path: undefined,
     target: '_blank',
-    link: 'https://parkportalnews.wpengine.com/',
+    link: 'https://news.arkportal.org/',
     synapseConfigArray: [],
   },
   {
