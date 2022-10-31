@@ -87,7 +87,6 @@ export const projectsDetailsPageConfiguration: DetailsPageProps = {
             rgbIndex,
             sqlOperator: '=',
             columnLinks: experimentalDetailsTableConfigurationColumnLinks,
-            showNoContentAvailableWhenEmpty: true,
           },
           columnName: 'Grant Number',
           tableSqlKeys: ['grant'],

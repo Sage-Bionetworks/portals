@@ -12,7 +12,7 @@ import IconSvg from 'synapse-react-client/dist/containers/IconSvg'
 import { LockedColumn } from 'synapse-react-client/dist/containers/QueryContext'
 import { SYNAPSE_ENTITY_ID_REGEX } from 'synapse-react-client/dist/utils/functions/RegularExpressions'
 import {
-  insertConditionsFromSearchParams,
+  generateQueryFilterFromSearchParams,
   parseEntityIdFromSqlStatement,
 } from 'synapse-react-client/dist/utils/functions/sqlFunctions'
 import { useGetEntityHeaders } from 'synapse-react-client/dist/utils/hooks/SynapseAPI/entity/useGetEntityHeaders'
@@ -118,8 +118,7 @@ export default function DetailsPage(props: DetailsPageProps) {
   useScrollOnMount()
 
   const queryBundleRequest = React.useMemo(() => {
-    const sqlUsed = insertConditionsFromSearchParams(
-      sql,
+    const additionalFilters = generateQueryFilterFromSearchParams(
       searchParams,
       sqlOperator,
     )
@@ -129,7 +128,8 @@ export default function DetailsPage(props: DetailsPageProps) {
       concreteType: 'org.sagebionetworks.repo.model.table.QueryBundleRequest',
       partMask: SynapseConstants.BUNDLE_MASK_QUERY_RESULTS,
       query: {
-        sql: sqlUsed,
+        sql,
+        additionalFilters
       },
     }
     return queryBundleRequest
