@@ -87,7 +87,7 @@ export const datasetDetailsPageConfig: DetailsPageProps = {
     {
       name: 'Markdown',
       columnName: 'acknowledgmentStatement',
-      title: 'Dataset Description',
+      title: 'Acknowledgment',
       props: {},
     },
     {
