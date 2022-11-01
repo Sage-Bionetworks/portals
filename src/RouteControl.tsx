@@ -1,5 +1,5 @@
 import React, { useLayoutEffect, useRef } from 'react'
-import { Tab, Tabs, TabScrollButton } from '@material-ui/core'
+import { Tab, Tabs, TabScrollButton } from '@mui/material'
 import { useShowDesktop } from 'utils'
 export type NamedRoute = {
   name: string
@@ -83,6 +83,9 @@ export const RouteControl: React.FunctionComponent<RouteControlProps> = ({
             disableRipple={true}
             disableTouchRipple
             onClick={() => handleChanges(name, index)}
+            sx={{
+              padding: "0 2rem"
+            }}
           />
         )
       })}
