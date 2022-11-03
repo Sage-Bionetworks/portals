@@ -4,7 +4,7 @@ import { useLocation, useHistory } from 'react-router-dom'
 import { SynapseComponent } from 'SynapseComponent'
 import { SynapseConfig } from 'types/portal-config'
 import { useEffect, useState } from 'react'
-import { ArrowDropDown, ArrowDropUp } from '@material-ui/icons'
+import { ArrowDropDown, ArrowDropUp } from '@mui/icons-material'
 
 export type RouteControlWrapperProps = {
   synapseConfig?: SynapseConfig

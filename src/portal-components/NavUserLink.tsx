@@ -2,7 +2,7 @@ import React from "react"
 import {UserProfile} from "synapse-react-client/dist/utils/synapseTypes";
 import UserCard from "synapse-react-client/dist/containers/UserCard";
 import {SynapseConstants} from "synapse-react-client";
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 type NavUserLinkProps = {
   userProfile: UserProfile | undefined
