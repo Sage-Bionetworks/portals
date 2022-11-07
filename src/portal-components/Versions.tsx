@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import moment from 'moment'
 import './Versions.scss'
 import packageJson from '../../package.json'
-import Tooltip from 'synapse-react-client/dist/utils/tooltip/Tooltip'
+import { Tooltip } from '@mui/material'
 
 // To test this component, create a deploy_date.txt in the public folder (just like the deploy jobs do):
 // date +"%D %T" > ./public/deploy_date.txt

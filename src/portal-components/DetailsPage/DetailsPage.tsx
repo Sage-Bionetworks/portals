@@ -21,7 +21,7 @@ import {
   QueryBundleRequest,
   QueryResultBundle,
 } from 'synapse-react-client/dist/utils/synapseTypes/'
-import Tooltip from 'synapse-react-client/dist/utils/tooltip/Tooltip'
+import { Tooltip } from '@mui/material'
 import { SynapseComponent } from 'SynapseComponent'
 import { SynapseConfig } from 'types/portal-config'
 import {

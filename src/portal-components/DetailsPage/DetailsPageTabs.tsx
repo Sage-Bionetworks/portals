@@ -9,7 +9,7 @@ import {
 import { BarLoader } from 'react-spinners'
 import { Icon } from 'synapse-react-client/dist/containers/row_renderers/utils'
 import { QueryResultBundle } from 'synapse-react-client/dist/utils/synapseTypes'
-import Tooltip from 'synapse-react-client/dist/utils/tooltip/Tooltip'
+import { Tooltip } from '@mui/material'
 import { DetailsPageTabProps } from 'types/portal-util-types'
 import RedirectWithQuery from '../RedirectWithQuery'
 import { DetailsPageSynapseConfigArray } from './DetailsPage'
