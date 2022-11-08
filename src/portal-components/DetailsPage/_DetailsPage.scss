@@ -78,6 +78,9 @@ $svg-icon-height: 30px;
   .component-container {
     flex: 4;
     overflow: hidden;
+    [role='heading'] {
+      padding-top: 30px;
+    }
   }
 
   &.tab-layout {
@@ -155,9 +158,6 @@ $svg-icon-height: 30px;
   }
 
   .tab-content {
-    [role='heading'] {
-      padding-top: 30px;
-    }
     .TopLevelControls [role='heading'] {
       padding-top: 0px;
     }
