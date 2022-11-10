@@ -1,3 +1,4 @@
+import { HeadTags } from 'portal-components/HeadTags'
 import SynapseRedirectDialog from 'portal-components/SynapseRedirectDialog'
 import React, {
   SetStateAction,
@@ -288,6 +289,7 @@ function AppInitializer(props: { children?: React.ReactNode }) {
         downloadCartPageUrl: '/DownloadCart'
       }}
     >
+      <HeadTags />
       {!isFramed && clonedChildren}
       <SynapseRedirectDialog
         onCancelRedirect={() => {
