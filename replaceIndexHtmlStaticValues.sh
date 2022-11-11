@@ -12,8 +12,8 @@ if [[ -z $1 ]]; then
 fi
 
 chmod +x ./parseJsonKeyValue.py
-PORTAL_NAME="./parseJsonKeyValue.py name"
-PORTAL_DESCRIPTION="./parseJsonKeyValue.py description"
+PORTAL_NAME=`./parseJsonKeyValue.py name`
+PORTAL_DESCRIPTION=`./parseJsonKeyValue.py description`
 PORTAL_PROD_URL="https:\/\/$1.synapse.org"
 
 sed -i '' "s/%PRODUCTION_URL%/$PORTAL_PROD_URL/g" ./public/index.html
