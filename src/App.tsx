@@ -7,28 +7,32 @@ import Navbar from './Navbar'
 import CookiesNotification from './CookiesNotification'
 import { CookiesProvider } from 'react-cookie'
 import { SynapseComponents } from 'synapse-react-client'
+import { HeadTags } from 'portal-components/HeadTags'
 
 const RouteResolver = React.lazy(() => import('./RouteResolver'))
 function App() {
   return (
-    <CookiesProvider>
-      <BrowserRouter>
-        <AppInitializer>
-          <SynapseComponents.SynapseToastContainer />
-          <Navbar />
-          <CookiesNotification />
-          <main className="main">
-            {/* all the content below */}
-            <React.Suspense fallback={<div />}>
-              <Switch>
-                <RouteResolver />
-              </Switch>
-            </React.Suspense>
-          </main>
-          <Footer />
-        </AppInitializer>
-      </BrowserRouter>
-    </CookiesProvider>
+    <>
+      <HeadTags />
+      <CookiesProvider>
+        <BrowserRouter>
+          <AppInitializer>
+            <SynapseComponents.SynapseToastContainer />
+            <Navbar />
+            <CookiesNotification />
+            <main className="main">
+              {/* all the content below */}
+              <React.Suspense fallback={<div />}>
+                <Switch>
+                  <RouteResolver />
+                </Switch>
+              </React.Suspense>
+            </main>
+            <Footer />
+          </AppInitializer>
+        </BrowserRouter>
+      </CookiesProvider>
+    </>
   )
 }
 
