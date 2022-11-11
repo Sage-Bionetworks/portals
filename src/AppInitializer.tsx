@@ -1,4 +1,3 @@
-import { HeadTags } from 'portal-components/HeadTags'
 import SynapseRedirectDialog from 'portal-components/SynapseRedirectDialog'
 import React, {
   SetStateAction,
@@ -278,9 +277,7 @@ function AppInitializer(props: { children?: React.ReactNode }) {
   if (!hasCalledGetSession) {
     // Don't render anything until the session has been established
     // Otherwise we may end up reloading components and making duplicate requests
-    return <>
-      <HeadTags />
-    </>
+    return <></>
   }
   return (
     <SynapseContextProvider
@@ -291,7 +288,6 @@ function AppInitializer(props: { children?: React.ReactNode }) {
         downloadCartPageUrl: '/DownloadCart'
       }}
     >
-      <HeadTags />
       {!isFramed && clonedChildren}
       <SynapseRedirectDialog
         onCancelRedirect={() => {
