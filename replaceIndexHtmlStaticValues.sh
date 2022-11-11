@@ -2,7 +2,7 @@
 # Usage:
 #   ./replaceIndexHtmlStaticValues.sh [portal-name]
 
-# Verify both arguments were specified
+# Verify argument was specified
 if [[ -z $1 ]]; then
   echo "Error: Usage -
   Replace index.html variables using current portal name:
