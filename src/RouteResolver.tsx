@@ -7,7 +7,6 @@ import docTitleConfig from 'config/docTitleConfig'
 import routesConfig from 'config/routesConfig'
 import Layout from './portal-components/Layout'
 import sharedRouteConfig from './shared-config/sharedRoutes'
-import Helmet from "react-helmet"
 
 const ROUTES: GenericRoute = {
   ...sharedRouteConfig,
@@ -103,14 +102,17 @@ function RecursiveRouteRenderer(props: {
     pageName
       ? `${docTitleConfig.name} - ${pageName}`
       : getPageNameFromParentRoute()
+  
+      // if there are children, don't update the title
+  if (!route.routes || route.routes.length === 0) {
+    const newTitle: string = getPageName()
+    if (document.title !== newTitle) {
+      document.title = newTitle
+    }
+  }
 
   return (
     <>
-      {(!route.routes || route.routes.length === 0) && <Helmet>
-        <title>{getPageName()}</title>
-        <meta name="title" key="title" content={getPageName()} />
-        <meta property="og:title" key="og:title" content={getPageName()} />
-      </Helmet>}
       {'synapseConfigArray' in route &&
         route.synapseConfigArray &&
         route.synapseConfigArray.map((config, index) => {

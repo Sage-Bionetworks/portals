@@ -1,8 +1,8 @@
 import { LogoConfig } from 'types/portal-config'
-import portalLogo from './style/portalLogo.svg'
+import icon from './style/logo.svg'
 
 const logoHeader: LogoConfig = {
-  icon: portalLogo,
+  icon,
   hideLogin: true,
 }
 export default logoHeader

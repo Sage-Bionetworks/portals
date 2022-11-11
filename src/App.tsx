@@ -7,13 +7,11 @@ import Navbar from './Navbar'
 import CookiesNotification from './CookiesNotification'
 import { CookiesProvider } from 'react-cookie'
 import { SynapseComponents } from 'synapse-react-client'
-import { HeadTags } from 'portal-components/HeadTags'
 
 const RouteResolver = React.lazy(() => import('./RouteResolver'))
 function App() {
   return (
     <>
-      <HeadTags />
       <CookiesProvider>
         <BrowserRouter>
           <AppInitializer>
