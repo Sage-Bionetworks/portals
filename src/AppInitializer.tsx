@@ -12,7 +12,7 @@ import { DOWNLOAD_FILES_MENU_TEXT } from 'synapse-react-client/dist/containers/t
 import { SynapseContextProvider } from 'synapse-react-client/dist/utils/SynapseContext'
 import { UserProfile } from 'synapse-react-client/dist/utils/synapseTypes'
 import useAnalytics from 'useAnalytics'
-import docTitleConfig from './config/docTitleConfig'
+import docTitleConfig from './config/docTitleConfig.json'
 
 export type AppInitializerState = {
   token?: string
