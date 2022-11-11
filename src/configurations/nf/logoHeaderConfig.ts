@@ -1,7 +1,7 @@
 import { LogoConfig } from 'types/portal-config'
-import nfPortalLogo from './style/nfPortalLogo.svg'
+import icon from './style/logo.svg'
 
 const logoHeader: LogoConfig = {
-  icon: nfPortalLogo,
+  icon,
 }
 export default logoHeader
