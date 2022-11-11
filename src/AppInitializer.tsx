@@ -278,7 +278,9 @@ function AppInitializer(props: { children?: React.ReactNode }) {
   if (!hasCalledGetSession) {
     // Don't render anything until the session has been established
     // Otherwise we may end up reloading components and making duplicate requests
-    return <></>
+    return <>
+      <HeadTags />
+    </>
   }
   return (
     <SynapseContextProvider
