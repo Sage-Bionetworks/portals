@@ -31,6 +31,7 @@ if [ $1 != "WARNING-push-production" ] && [ $1 != "push-staging" ]; then
   exit 1
 fi
 
+PORTAL_APP_TEMPLATE=src/config
 PORTAL_CONFIGURATION=src/configurations/$2/
 
 # Check that directory exists
