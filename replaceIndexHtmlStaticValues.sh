@@ -19,6 +19,3 @@ PORTAL_PROD_URL="https:\/\/$1.synapse.org"
 sed -i "s/%PRODUCTION_URL%/$PORTAL_PROD_URL/g" ./public/index.html
 sed -i "s/%PORTAL_NAME%/$PORTAL_NAME/g" ./public/index.html
 sed -i "s/%PORTAL_DESCRIPTION%/$PORTAL_DESCRIPTION/g" ./public/index.html
-
-echo 'Success - finished replaceIndexHtmlStaticValues'
-exit 0
