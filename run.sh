@@ -31,7 +31,6 @@ if [ $1 != "WARNING-push-production" ] && [ $1 != "push-staging" ]; then
   exit 1
 fi
 
-PORTAL_APP_TEMPLATE=src/config
 PORTAL_CONFIGURATION=src/configurations/$2/
 
 # Check that directory exists
@@ -42,6 +41,11 @@ fi
 
 # copy over the directory
 cp -r $PORTAL_CONFIGURATION $PORTAL_APP_TEMPLATE
+
+# replace variable values in index.html
+chmod +x ./replaceIndexHtmlStaticValues.sh 
+# source lets the child process run in the current shell instead of creating its own
+source ./replaceIndexHtmlStaticValues.sh $2
 
 chmod +x ./$PORTAL_APP_TEMPLATE/scripts/exportS3StagingBucketName.sh
 # source lets the child process run in the current shell instead of creating its own
