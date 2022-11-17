@@ -85,7 +85,7 @@ function HeadlineWithLink(props: { title: string; id: string }) {
                 })
               }}
             >
-              <IconSvg options={{ icon: 'link', padding: 'left' }} />
+              <IconSvg icon='link' sx={{paddingLeft: 10}} />
             </div>
           </Tooltip>
         </span>

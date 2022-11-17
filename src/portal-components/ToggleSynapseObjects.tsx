@@ -12,8 +12,8 @@ export type ToggleSynapseObjectsProps = {
 export default function ToggleSynapseObjects(props: ToggleSynapseObjectsProps) {
   const {icon1, synapseObject1, icon2, synapseObject2} = props
   const [toggleValue, setToggleValue] = useState(false)
-  const icon1Jsx = icon1 && <IconSvg options={{icon: icon1}} />
-  const icon2Jsx = icon2 && <IconSvg options={{icon: icon2}} />
+  const icon1Jsx = icon1 && <IconSvg icon={icon1} />
+  const icon2Jsx = icon2 && <IconSvg icon={icon2} />
   return <div className="ToggleSynapseObjects">
     <div className="reactSwitchContainer">
       <Switch

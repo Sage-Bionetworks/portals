@@ -113,7 +113,7 @@ const BrowseToolsPage = () => {
         <div className="center-content">
           <div className="searchToolsRow">
             <div className="searchInputWithIcon">
-              <IconSvg options={{ icon: 'searchOutlined' }} />
+              <IconSvg icon='searchOutlined' />
               <Form.Control type="search" placeholder=""
                 value={searchText}
                 onChange={event => {

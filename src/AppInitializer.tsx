@@ -13,6 +13,7 @@ import { SynapseContextProvider } from 'synapse-react-client/dist/utils/SynapseC
 import { UserProfile } from 'synapse-react-client/dist/utils/synapseTypes'
 import useAnalytics from 'useAnalytics'
 import docTitleConfig from './config/docTitleConfig.json'
+import palette from './config/paletteConfig'
 
 export type AppInitializerState = {
   token?: string
@@ -286,6 +287,9 @@ function AppInitializer(props: { children?: React.ReactNode }) {
         isInExperimentalMode: SynapseClient.isInSynapseExperimentalMode(),
         utcTime: SynapseClient.getUseUtcTimeFromCookie(),
         downloadCartPageUrl: '/DownloadCart'
+      }}
+      theme={{
+        palette
       }}
     >
       {!isFramed && clonedChildren}
