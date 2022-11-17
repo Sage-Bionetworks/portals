@@ -68,14 +68,14 @@ export const studyCardConfiguration: CardConfiguration = {
   columnIconOptions: {
     columns: {
       dataStatus: {
-        Available: { icon: 'data', color: '#28A745' },
-        'Partially Available': { icon: 'data', color: '#DE9A1F' },
-        'Under Embargo': { icon: 'dataLocked', color: '#D46D1E' },
-        None: { icon: 'data', color: '#BBBBBC' },
+        Available: { icon: 'data', sx: {fill: '#28A745'} },
+        'Partially Available': { icon: 'data', sx: {fill: '#DE9A1F' } },
+        'Under Embargo': { icon: 'dataLocked', sx: {fill: '#D46D1E' } },
+        None: { icon: 'data', sx: {fill: '#BBBBBC' }},
       },
       studyStatus: {
-        Active: { icon: 'reload', color: '#28A745' },
-        Completed: { icon: 'check', color: '#B2242A' },
+        Active: { icon: 'reload', sx: {fill: '#28A745' }},
+        Completed: { icon: 'check', sx: {fill: '#B2242A' }},
       },
       dataType: {
         genomicVariants: {
