@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import moment from 'moment'
 import './Versions.scss'
 import packageJson from '../../package.json'
 import { Tooltip } from '@mui/material'
+import dayjs from 'dayjs'
 
 // To test this component, create a deploy_date.txt in the public folder (just like the deploy jobs do):
 // date +"%D %T" > ./public/deploy_date.txt
@@ -19,7 +19,7 @@ const Versions: React.FunctionComponent = () => {
           v?.text().then((txt) => {
             // if file does not exist, the main html page might be returned.  version should not contain '<'
             if (!isDeployDateFetchCancelled && txt.indexOf('<') === -1) {
-              setDeployDate(moment(txt).format('L LT'))
+              setDeployDate(dayjs(txt).format('L LT'))
             }
           })
         })
@@ -42,7 +42,7 @@ const Versions: React.FunctionComponent = () => {
         fetch('/build-date.txt').then((v) => {
           v?.text().then((txt) => {
             if (!isBuildDateFetchCancelled) {
-              setBuildDate(moment(txt).format('L LT'))
+              setBuildDate(dayjs(txt).format('L LT'))
             }
           })
         })

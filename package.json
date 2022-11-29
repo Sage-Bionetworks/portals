@@ -10,6 +10,7 @@
     "@mui/styles": "^5.10.10",
     "@sage-bionetworks/react-base-table": "^1.13.2",
     "clone-deep": "^4.0.1",
+    "dayjs": "^1.11.6",
     "lodash-es": "^4.17.21",
     "plotly.js-basic-dist": "^1.47.3",
     "react": "^18.2.0",
@@ -23,7 +24,7 @@
     "react-switch": "^7.0.0",
     "react-use": "^17.3.1",
     "sass": "^1.30.0",
-    "synapse-react-client": "3.1.13"
+    "synapse-react-client": "3.1.14"
   },
   "jest": {
     "moduleNameMapper": {
