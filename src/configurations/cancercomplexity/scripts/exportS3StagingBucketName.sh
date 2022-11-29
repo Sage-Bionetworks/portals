@@ -1,1 +1,1 @@
-export S3_STAGING_BUCKET_LOCATION='s3://staging.cancercomplexity.synapse.org'
+export S3_STAGING_BUCKET_LOCATION=s3://staging.cancercomplexity.synapse.org
