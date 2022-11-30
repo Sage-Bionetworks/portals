@@ -11,7 +11,11 @@ export const projectsSchema: GenericCardSchema = {
   title: 'projectName',
   subTitle: 'grantName',
   description: 'description',
-  secondaryLabels: ['consortium', 'grantType'],
+  secondaryLabels: [
+    'investigator',
+    'consortium', 
+    'grantType',
+  ],
 }
 
 export const projectCardConfiguration: CardConfiguration = {
