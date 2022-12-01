@@ -36,11 +36,10 @@
     ]
   },
   "scripts": {
-    "copy-favicon": "cp src/config/style/favicon* public/",
-    "copy-logo": "cp src/config/style/logo.svg public/",
+    "copy-assets": "cp src/config/style/favicon* public/; cp src/config/style/logo.svg public/; cp src/config/style/socialmedia.png public/",
     "save-build-date": "date > public/build-date.txt",
     "start": "craco start",
-    "build": "yarn copy-favicon; yarn copy-logo; yarn save-build-date; CI=false GENERATE_SOURCEMAP=false craco --max_old_space_size=7168 build",
+    "build": "yarn copy-assets; yarn save-build-date; CI=false GENERATE_SOURCEMAP=false craco --max_old_space_size=7168 build",
     "copy-test-configuration": "cp -r src/test-configuration/ src/config/",
     "test": "yarn run copy-test-configuration && craco test --env=jsdom --setupFiles ./src/tests/setupTests.ts",
     "generate-sitemap": "node sitemap/generate-sitemap.js",
