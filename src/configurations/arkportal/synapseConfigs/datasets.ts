@@ -81,9 +81,15 @@ export const datasetCardConfiguration: CardConfiguration = {
 export const datasetDetailsPageConfig: DetailsPageProps = {
   sql: datasetsSql,
   sqlOperator: '=',
-  showMenu: false,
+  showMenu: true,
 
   synapseConfigArray: [
+    {
+      name: 'Markdown',
+      columnName: 'datasetDescription',
+      title: 'Description',
+      props: {},
+    },
     {
       name: 'Markdown',
       columnName: 'acknowledgmentStatement',
@@ -92,9 +98,9 @@ export const datasetDetailsPageConfig: DetailsPageProps = {
     },
     {
       name: 'QueryWrapperPlotNav',
+      title: 'Files',
       props: {
         rgbIndex,
-        name: 'Files',
         sql: '',
         visibleColumnCount: 7,
         tableConfiguration: {
@@ -124,7 +130,7 @@ export const datasetsDetailsPage: SynapseConfig[] = [
   },
   {
     name: 'DetailsPage',
-    isOutsideContainer: true,
+    isOutsideContainer: false,
     props: datasetDetailsPageConfig,
     containerClassName: 'DatasetDetailPage container-full-width',
   },
