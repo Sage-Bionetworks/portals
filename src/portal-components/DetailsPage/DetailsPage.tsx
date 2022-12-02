@@ -208,6 +208,8 @@ const SynapseObject: React.FC<{
   const { columnName = '', resolveSynId, props, overrideSqlSourceTable } = el
   const deepCloneOfProps = cloneDeep(props)
   const row = queryResultBundle!.queryResult!.queryResults.rows[0].values
+  const rowVersionNumber = queryResultBundle!.queryResult!.queryResults.rows[0].versionNumber
+
   // map column name to index
   const mapColumnHeaderToRowIndex: Dictionary<{
     index: number
@@ -263,6 +265,7 @@ const SynapseObject: React.FC<{
           el={el}
           deepCloneOfProps={deepCloneOfProps}
           overrideSqlSourceTable={overrideSqlSourceTable}
+          rowVersionNumber={rowVersionNumber}
         />
       ))}
     </>
@@ -276,6 +279,7 @@ export const SplitStringToComponent: React.FC<{
   el: RowSynapseConfig
   deepCloneOfProps: any
   overrideSqlSourceTable?: boolean
+  rowVersionNumber?: number
 }> = ({
   splitString,
   resolveSynId,
@@ -283,6 +287,7 @@ export const SplitStringToComponent: React.FC<{
   el,
   deepCloneOfProps,
   overrideSqlSourceTable,
+  rowVersionNumber
 }) => {
   let value = splitString.trim()
   const valueIsSynId = React.useMemo(
@@ -333,7 +338,7 @@ export const SplitStringToComponent: React.FC<{
   })
   if (overrideSqlSourceTable) {
     // use the search param value to override the sql param.
-    injectedProps['sql'] = `SELECT  *  FROM  ${value}`
+    injectedProps['sql'] = `SELECT  *  FROM  ${value}.${rowVersionNumber}`
   }
 
   // For explorer 2.0, cannot assign key `lockedColumn` to deepCloneOfProps due to type errors,

@@ -112,7 +112,7 @@ export const datasetDetailsPageConfig: DetailsPageProps = {
         defaultShowFacetVisualization: false
       },
       // tableSqlKeys: ['id'],  // Do not modify the sql where condition based on search params
-      overrideSqlSourceTable: true, // Instead, modify the sql (SELECT * FROM <search_param_value>)
+      overrideSqlSourceTable: true, // Instead, modify the sql (SELECT * FROM <search_param_value>).<rowVersionNumber>
       columnName: 'id',
     },
   ],
