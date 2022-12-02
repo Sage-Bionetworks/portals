@@ -15,7 +15,7 @@ fs.readFile('src/config/routesConfig.ts', (err, data) => {
   const now = new Date().toISOString()
   let fileContent =
     '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-  var regex = /to[:]\s*\'(.*)\'/g
+  var regex = /path[:]\s*\'(.*)\'/g
   var m
 
   do {
@@ -23,7 +23,7 @@ fs.readFile('src/config/routesConfig.ts', (err, data) => {
     if (m) {
       // assuming hash router
       let path = `${m[1]}`
-      fileContent += `\t<url>\n\t\t<loc>${baseUrl}${path}</loc>\n\t\t<lastmod>${now}</lastmod>\n\t</url>\n`
+      fileContent += `\t<url>\n\t\t<loc>${baseUrl}/${path}</loc>\n\t\t<lastmod>${now}</lastmod>\n\t</url>\n`
     }
   } while (m)
   fileContent += '</urlset>'
