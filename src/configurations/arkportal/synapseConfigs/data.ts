@@ -18,6 +18,12 @@ export const dataColumnLinks: LabelLinkConfig = [
     baseURL: 'Explore/Programs/DetailsPage',
     URLColumnName: 'Program',
   },
+  {
+    matchColumnName: 'dataset',
+    isMarkdown: false,
+    baseURL: 'Explore/Datasets/DetailsPage',
+    URLColumnName: 'id',
+  },
 ]
 
 const data: SynapseConfig = {
