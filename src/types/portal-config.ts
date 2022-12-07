@@ -149,6 +149,11 @@ type BrowseToolsPage = {
   props: undefined
 }
 
+type NFSurveyToast = {
+  name: 'NFSurveyToast'
+  props: undefined
+}
+
 type ARKWelcomePage = {
   name: 'ARKWelcomePage'
   props: undefined
@@ -298,6 +303,7 @@ export type SynapseConfig = (
   | TableFeedCards
   | DownloadCartPage
   | BrowseToolsPage
+  | NFSurveyToast
   | ARKWelcomePage
   | SubsectionRowRenderer
   | ToggleSynapseObjects
