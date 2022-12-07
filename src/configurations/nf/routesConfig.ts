@@ -46,14 +46,20 @@ const limit = 3
 const routes: GenericRoute[] = [
   {
     path: '',
-    exact: true,
+    exact: false,
     synapseConfigArray: [
       {
         name: 'NFSurveyToast',
         centerTitle: true,
         outsideContainerClassName: 'home-spacer',
         props: undefined
-      },
+      }
+    ]
+  },
+  {
+    path: '',
+    exact: true,
+    synapseConfigArray: [
       {
         name: 'Goals',
         title: 'Portal Programs and Goals',
@@ -185,14 +191,7 @@ const routes: GenericRoute[] = [
         props: undefined,
         isOutsideContainer: true,
       },
-      {
-        name: 'NFSurveyToast',
-        centerTitle: true,
-        outsideContainerClassName: 'home-spacer',
-        props: undefined
-      },
     ],
-    
   },
   {
     path: 'Explore',

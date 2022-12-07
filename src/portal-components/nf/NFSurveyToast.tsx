@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { useCookies } from 'react-cookie'
-// import { SynapseComponents } from 'synapse-react-client'
 import FullWidthAlert from 'synapse-react-client/dist/containers/FullWidthAlert'
 const NF_SURVEY_COOKIE_KEY = 'org.sagebionetworks.security.cookies.portal.nfsurvey.dismissed'
 const NFSurveyToast = () => {
