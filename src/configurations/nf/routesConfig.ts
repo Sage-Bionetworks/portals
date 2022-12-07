@@ -49,6 +49,12 @@ const routes: GenericRoute[] = [
     exact: true,
     synapseConfigArray: [
       {
+        name: 'NFSurveyToast',
+        centerTitle: true,
+        outsideContainerClassName: 'home-spacer',
+        props: undefined
+      },
+      {
         name: 'Goals',
         title: 'Portal Programs and Goals',
         centerTitle: true,
@@ -179,7 +185,14 @@ const routes: GenericRoute[] = [
         props: undefined,
         isOutsideContainer: true,
       },
+      {
+        name: 'NFSurveyToast',
+        centerTitle: true,
+        outsideContainerClassName: 'home-spacer',
+        props: undefined
+      },
     ],
+    
   },
   {
     path: 'Explore',
