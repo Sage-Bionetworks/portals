@@ -7,7 +7,7 @@ import { DetailsPageProps } from 'types/portal-util-types'
 import { datasetsSql, programSql, projectsSql } from '../resources'
 import { projectsCardConfiguration } from './projects'
 import { datasetCardConfiguration } from './datasets'
-import ampRaSleSvg from '../style/AMP-RA-SLE.svg'
+import tagCloudSvg from '../style/tagCloud.svg'
 
 const rgbIndex = 9
 
@@ -16,6 +16,7 @@ export const programSchema: GenericCardSchema = {
   title: 'Program',
   // subTitle: 'Short Description',
   description: 'Description',
+  icon: 'Program',
 }
 
 export const programsCardConfiguration: CardConfiguration = {
@@ -37,7 +38,7 @@ export const programsCardConfiguration: CardConfiguration = {
     showFullDescriptionByDefault: true
   },
   iconOptions: {
-    "AMP-RA/SLE": ampRaSleSvg,
+    "AMP-RA/SLE": tagCloudSvg,
   },
 }
 
