@@ -18,11 +18,6 @@ const ARKWelcomePage = () => {
                   {docTitleConfig.description}
                 </Typography>
               </div>
-              <div className="funderNote">
-                <Typography variant="body1">
-                  Established by the Accelerating Medicines Partnership® (AMP®)
-                </Typography>
-              </div>
             </div>
             <img className="welcomeARKLogo" src={logoPath} alt="ARK Portal logo"/>
           </div>
