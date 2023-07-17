@@ -1,3 +1,7 @@
+### This repo has been archived since it has been moved into the [synapse-web-monorepo](https://github.com/Sage-Bionetworks/synapse-web-monorepo)
+
+---- 
+
 # A single codebase for Synapse portals
 
 ### Example sites:
